@@ -1,0 +1,24 @@
+# Build artifacts from Verilator
+**/obj_dir/**/*.gch
+**/obj_dir/**/*.a
+**/obj_dir/**/*.o
+**/obj_dir/**/*.d
+
+# Precompiled headers
+*.gch
+
+# Archive files (build artifacts)
+**/obj_dir/**/*__ALL.a
+
+# General build artifacts
+**/obj_dir/
+**/sim_build/
+
+# Log files
+*.log
+
+# Compiled object files
+*.o
+
+# Dependency files
+*.d
