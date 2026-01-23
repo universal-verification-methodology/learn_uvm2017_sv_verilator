@@ -16,15 +16,18 @@ class Vdma_uvm_pkg__03a__03auvm_visitor_;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg);
 
     // INTERNAL METHODS
@@ -40,8 +43,8 @@ class Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor : public Vdma_uvm_p
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_root> __PVT___root;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_v(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_name_constraint(Vdma__Syms* __restrict vlSymsp, std::string &get_name_constraint__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
@@ -52,7 +55,7 @@ class Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor : public Vdma_uvm_p
     Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_component_name_check_visitor>& obj);

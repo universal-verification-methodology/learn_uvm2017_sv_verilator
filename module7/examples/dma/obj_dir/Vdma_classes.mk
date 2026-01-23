@@ -657,21 +657,21 @@ VM_CLASSES_FAST += \
   Vdma_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg__0 \
   Vdma_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg__0 \
   Vdma_uvm_pkg__03a__03a__VDynScope_10__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_14__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_20__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_30__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_41__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_42__Vclpkg__0 \
-  Vdma_uvm_pkg__03a__03a__VDynScope_43__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_15__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_37__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_39__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_44__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_52__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_53__Vclpkg__0 \
+  Vdma_uvm_pkg__03a__03a__VDynScope_55__Vclpkg__0 \
   Vdma__main \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-  Vdma__ConstPool_0 \
+  Vdma__ConstPool__0__Slow \
   Vdma___024root__Slow \
   Vdma___024root__0__Slow \
   Vdma___024unit__Slow \
@@ -1934,26 +1934,26 @@ VM_CLASSES_SLOW += \
   Vdma_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg__0__Slow \
   Vdma_uvm_pkg__03a__03a__VDynScope_10__Vclpkg__Slow \
   Vdma_uvm_pkg__03a__03a__VDynScope_10__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_14__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_14__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_20__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_20__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_30__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_30__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_41__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_41__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_42__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_42__Vclpkg__0__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_43__Vclpkg__Slow \
-  Vdma_uvm_pkg__03a__03a__VDynScope_43__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_15__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_15__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_37__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_37__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_39__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_39__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_44__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_44__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_52__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_52__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_53__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_53__Vclpkg__0__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_55__Vclpkg__Slow \
+  Vdma_uvm_pkg__03a__03a__VDynScope_55__Vclpkg__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
@@ -1962,7 +1962,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vdma__Syms \
+  Vdma__Syms__Slow \
   Vdma__Trace__0__Slow \
   Vdma__TraceDecls__0__Slow \
 

@@ -15,15 +15,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_port_component_base;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271__Vclpkg);
 
     // INTERNAL METHODS
@@ -39,8 +42,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271 : public Varchite
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz240> __PVT__m_port;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_connected_to(Varchitecture__Syms* __restrict vlSymsp, VlAssocArray<std::string, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_port_component_base>> &list);
     void __VnoInFunc_get_port(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz240> &get_port__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Varchitecture__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -55,7 +58,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271 : public Varchite
     Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> parent, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz240> port);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_port_component__Tz271>& obj);

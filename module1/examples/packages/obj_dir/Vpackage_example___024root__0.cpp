@@ -39,8 +39,7 @@ VlCoroutine Vpackage_example___024root___eval_initial__TOP__Vtiming__0(Vpackage_
                                          nullptr, "package_example.sv", 
                                          127);
     VL_FINISH_MT("package_example.sv", 128, "");
-    co_return;
-}
+    co_return;}
 
 VlCoroutine Vpackage_example___024root___eval_initial__TOP__Vtiming__0____Vfork_1__1(Vpackage_example___024root* vlSelf, VlForkSync __Vfork_1__sync) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vpackage_example___024root___eval_initial__TOP__Vtiming__0____Vfork_1__1\n"); );
@@ -68,7 +67,7 @@ VlCoroutine Vpackage_example___024root___eval_initial__TOP__Vtiming__0____Vfork_
         VL_STOP_MT("package_example.sv", 54, "");
     }
     __Vfork_1__sync.done("package_example.sv", 114);
-}
+    co_return;}
 
 VlCoroutine Vpackage_example___024root___eval_initial__TOP__Vtiming__0____Vfork_1__0(Vpackage_example___024root* vlSelf, VlForkSync __Vfork_1__sync) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vpackage_example___024root___eval_initial__TOP__Vtiming__0____Vfork_1__0\n"); );
@@ -80,7 +79,7 @@ VlCoroutine Vpackage_example___024root___eval_initial__TOP__Vtiming__0____Vfork_
                                          111);
     vlSelfRef.package_example__DOT__condition = 1U;
     __Vfork_1__sync.done("package_example.sv", 110);
-}
+    co_return;}
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Vpackage_example___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
@@ -191,7 +190,7 @@ void Vpackage_example___024root___eval(Vpackage_example___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vpackage_example___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("package_example.sv", 62, "", "NBA region did not converge after 100 tries");
+            VL_FATAL_MT("package_example.sv", 62, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -200,7 +199,7 @@ void Vpackage_example___024root___eval(Vpackage_example___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vpackage_example___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("package_example.sv", 62, "", "Active region did not converge after 100 tries");
+                VL_FATAL_MT("package_example.sv", 62, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

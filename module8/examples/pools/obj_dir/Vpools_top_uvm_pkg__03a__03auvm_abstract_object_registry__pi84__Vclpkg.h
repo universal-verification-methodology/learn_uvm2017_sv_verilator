@@ -20,18 +20,21 @@ class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84__Vclpkg);
 
     // INTERNAL METHODS
@@ -59,7 +62,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84 : public Vp
     Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84(Vpools_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi84>& obj);

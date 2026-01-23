@@ -14,15 +14,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,8 +38,8 @@ class Vpools_top__Syms;
 
 class Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base : public Vpools_top_uvm_pkg__03a__03auvm_object {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_create(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> rhs);
     virtual void __VnoInFunc_get_type_handle(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base> &get_type_handle__Vfuncrtn);
@@ -48,7 +51,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base : public Vpools_top_uvm
     Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base>& obj);

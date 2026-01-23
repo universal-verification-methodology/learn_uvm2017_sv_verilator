@@ -25,15 +25,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_report_handler__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_report_handler__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_report_handler__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_report_handler__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_report_handler__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_report_handler__Vclpkg);
 
     // INTERNAL METHODS
@@ -63,8 +66,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_report_handler : public Vpools_top_uvm_pkg
     VlAssocArray<std::string, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_pool__Tz51_TBz51>> __PVT__sev_id_overrides;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_pool__Tz49_TBz50> __PVT__id_file_handles;
     VlAssocArray<CData/*1:0*/, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_pool__Tz49_TBz50>> __PVT__severity_id_file_handles;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_printer> printer);
     void __VnoInFunc_get_action(Vpools_top__Syms* __restrict vlSymsp, CData/*1:0*/ severity, std::string id, IData/*31:0*/ &get_action__Vfuncrtn);
@@ -95,7 +98,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_report_handler : public Vpools_top_uvm_pkg
     Vpools_top_uvm_pkg__03a__03auvm_report_handler(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_report_handler() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_report_handler();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_report_handler>& obj);

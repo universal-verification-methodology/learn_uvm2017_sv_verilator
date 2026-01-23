@@ -6,10 +6,12 @@
 
 void Vdata_structures_example_data_structures_pkg___ctor_var_reset(Vdata_structures_example_data_structures_pkg* vlSelf);
 
-Vdata_structures_example_data_structures_pkg::Vdata_structures_example_data_structures_pkg(Vdata_structures_example__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vdata_structures_example_data_structures_pkg::Vdata_structures_example_data_structures_pkg() = default;
+Vdata_structures_example_data_structures_pkg::~Vdata_structures_example_data_structures_pkg() = default;
+
+void Vdata_structures_example_data_structures_pkg::ctor(Vdata_structures_example__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vdata_structures_example_data_structures_pkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vdata_structures_example_data_structures_pkg::__Vconfigure(bool first) {
     (void)first;  // Prevent unused variable warning
 }
 
-Vdata_structures_example_data_structures_pkg::~Vdata_structures_example_data_structures_pkg() {
+void Vdata_structures_example_data_structures_pkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

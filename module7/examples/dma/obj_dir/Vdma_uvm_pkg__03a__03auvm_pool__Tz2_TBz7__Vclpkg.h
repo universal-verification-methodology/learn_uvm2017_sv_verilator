@@ -20,18 +20,21 @@ class Vdma_uvm_pkg__03a__03auvm_root;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7> __PVT__m_global_pool;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7__Vclpkg);
 
     // INTERNAL METHODS
@@ -51,8 +54,8 @@ class Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7 : public Vdma_uvm_pkg__03a__03auv
 
     // DESIGN SPECIFIC STATE
     VlAssocArray<std::string, VlClassRef<Vdma_uvm_pkg__03a__03auvm_event_>> __PVT__pool;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add(Vdma__Syms* __restrict vlSymsp, std::string key, VlClassRef<Vdma_uvm_pkg__03a__03auvm_event_> item);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_delete(Vdma__Syms* __restrict vlSymsp, std::string key);
@@ -74,7 +77,7 @@ class Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7 : public Vdma_uvm_pkg__03a__03auv
     Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz7>& obj);

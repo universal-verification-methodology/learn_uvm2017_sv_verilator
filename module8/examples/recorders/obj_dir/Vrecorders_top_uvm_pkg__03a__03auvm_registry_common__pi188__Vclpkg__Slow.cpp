@@ -6,10 +6,12 @@
 
 void Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg___ctor_var_reset(Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg* vlSelf);
 
-Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg::Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg::Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg() = default;
+Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg::~Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg() = default;
+
+void Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg::ctor(Vrecorders_top__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg::__Vconf
     (void)first;  // Prevent unused variable warning
 }
 
-Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg::~Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg() {
+void Vrecorders_top_uvm_pkg__03a__03auvm_registry_common__pi188__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

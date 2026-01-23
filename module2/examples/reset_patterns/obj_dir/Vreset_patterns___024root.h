@@ -11,7 +11,7 @@
 
 class Vreset_patterns__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vreset_patterns___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vreset_patterns___024root final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -26,13 +26,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vreset_patterns___024root final : public Veri
     VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
     VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerScheduler __VtrigSched_h8fe6e2e1__0;
+    VlTriggerScheduler __VtrigSched_h7aaa51b2__0;
 
     // INTERNAL VARIABLES
-    Vreset_patterns__Syms* const vlSymsp;
+    Vreset_patterns__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vreset_patterns___024root(Vreset_patterns__Syms* symsp, const char* v__name);
+    Vreset_patterns___024root(Vreset_patterns__Syms* symsp, const char* namep);
     ~Vreset_patterns___024root();
     VL_UNCOPYABLE(Vreset_patterns___024root);
 

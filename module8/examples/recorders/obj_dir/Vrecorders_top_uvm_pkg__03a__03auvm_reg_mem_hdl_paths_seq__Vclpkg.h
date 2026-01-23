@@ -11,7 +11,6 @@
 #include "Vrecorders_top_uvm_pkg.h"
 class Vrecorders_top_uvm_pkg__03a__03auvm_comparer;
 class Vrecorders_top_uvm_pkg__03a__03auvm_copier;
-class Vrecorders_top_uvm_pkg__03a__03auvm_coreservice_t;
 class Vrecorders_top_uvm_pkg__03a__03auvm_field_op;
 class Vrecorders_top_uvm_pkg__03a__03auvm_hdl_path_concat;
 class Vrecorders_top_uvm_pkg__03a__03auvm_mem;
@@ -32,20 +31,22 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_resource__Tz21;
 class Vrecorders_top_uvm_pkg__03a__03auvm_resource__Tz22;
 class Vrecorders_top_uvm_pkg__03a__03auvm_resource__Tz48;
 class Vrecorders_top_uvm_pkg__03a__03auvm_resource_base;
-class Vrecorders_top_uvm_pkg__03a__03auvm_root;
 
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -63,8 +64,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq : public Vrecord
 
     // DESIGN SPECIFIC STATE
     VlQueue<std::string> __PVT__abstractions;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc____05Fm_uvm_execute_field_op(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_field_op> ___05Flocal_op___05F);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_check_mem(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_mem> m, std::string kind);
@@ -82,7 +83,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq : public Vrecord
     Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq>& obj);

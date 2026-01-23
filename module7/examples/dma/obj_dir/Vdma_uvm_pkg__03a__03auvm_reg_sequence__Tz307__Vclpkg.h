@@ -8,7 +8,6 @@
 #include "verilated.h"
 #include "verilated_timing.h"
 #include "verilated_random.h"
-class Vdma_uvm_pkg__03a__03auvm_coreservice_t;
 class Vdma_uvm_pkg__03a__03auvm_mem;
 class Vdma_uvm_pkg__03a__03auvm_object;
 class Vdma_uvm_pkg__03a__03auvm_object_registry__Tz350;
@@ -19,7 +18,6 @@ class Vdma_uvm_pkg__03a__03auvm_reg_block;
 class Vdma_uvm_pkg__03a__03auvm_reg_item;
 class Vdma_uvm_pkg__03a__03auvm_reg_map;
 class Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307;
-class Vdma_uvm_pkg__03a__03auvm_root;
 class Vdma_uvm_pkg__03a__03auvm_sequence__Tz199_TBz199;
 class Vdma_uvm_pkg__03a__03auvm_sequence_base;
 class Vdma_uvm_pkg__03a__03auvm_sequence_item;
@@ -29,15 +27,18 @@ class Vdma_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +59,8 @@ class Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307 : public Vdma_uvm_pkg__03a__
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_adapter> __PVT__adapter;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequencer__Tz199_TBz199> __PVT__reg_seqr;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequence_base> __PVT__upstream_parent;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual VlCoroutine __VnoInFunc_do_reg_item(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -82,7 +83,7 @@ class Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307 : public Vdma_uvm_pkg__03a__
     Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_sequence__Tz307>& obj);

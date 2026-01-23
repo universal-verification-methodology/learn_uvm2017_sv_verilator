@@ -13,15 +13,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_frontdoor;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map_info__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map_info__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map_info__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map_info__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map_info__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map_info__Vclpkg);
 
     // INTERNAL METHODS

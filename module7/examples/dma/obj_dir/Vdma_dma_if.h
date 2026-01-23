@@ -12,7 +12,7 @@
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_dma_if final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_dma_if final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -26,11 +26,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_dma_if final : public VerilatedModule {
     IData/*31:0*/ dma_dst_addr;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_dma_if(Vdma__Syms* symsp, const char* v__name);
+    Vdma_dma_if();
     ~Vdma_dma_if();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_dma_if);
 
     // INTERNAL METHODS

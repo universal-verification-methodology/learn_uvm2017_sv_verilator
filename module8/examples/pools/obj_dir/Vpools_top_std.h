@@ -12,15 +12,18 @@
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_std final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_std final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_std(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_std();
     ~Vpools_top_std();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_std);
 
     // INTERNAL METHODS

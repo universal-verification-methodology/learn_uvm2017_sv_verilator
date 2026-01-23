@@ -16,6 +16,7 @@ Vinterface_example__ALL.o: Vinterface_example__ALL.cpp \
  Vinterface_example__Trace__0.cpp Vinterface_example___024root__Slow.cpp \
  Vinterface_example___024root__0__Slow.cpp \
  Vinterface_example_apb_if__Slow.cpp \
- Vinterface_example_apb_if__0__Slow.cpp Vinterface_example__Syms.cpp \
+ Vinterface_example_apb_if__0__Slow.cpp \
+ Vinterface_example__Syms__Slow.cpp \
  Vinterface_example__Trace__0__Slow.cpp \
  Vinterface_example__TraceDecls__0__Slow.cpp

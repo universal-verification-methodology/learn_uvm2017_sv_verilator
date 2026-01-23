@@ -22,7 +22,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_check_phase__Vclpkg::__VnoInFunc_get(VlP
 void Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc_exec_func(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> comp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc_exec_func\n"); );
     // Body
-    VL_NULL_CHECK(comp, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_common_phases.svh", 263)->__VnoInFunc_check_phase(vlSymsp, phase);
+    VL_NULL_CHECK(comp, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_common_phases.svh", 263)->__VnoInFunc_check_phase(vlSymsp, phase);
 }
 
 void Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc_get_type_name(Varchitecture__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn) {
@@ -42,27 +42,35 @@ Varchitecture_uvm_pkg__03a__03auvm_check_phase::Varchitecture_uvm_pkg__03a__03au
 void Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__3__Vfuncout;
-    __Vfunc___Vbasic_randomize__3__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__3__Vfuncout;
+    __Vfunc___VBasicRand__3__Vfuncout = 0;
     // Body
-    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__3__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__3__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__3__Vfuncout);
+            }(), __Vfunc___VBasicRand__3__Vfuncout));
 }
 
-void Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc___Vbasic_randomize\n"); );
+void Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_check_phase::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Varchitecture_uvm_pkg__03a__03auvm_check_phase::_ctor_var_reset(Varchitecture__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_check_phase::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Varchitecture_uvm_pkg__03a__03auvm_check_phase::~Varchitecture_uvm_pkg__03a__03auvm_check_phase() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_check_phase::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_check_phase>& obj) {

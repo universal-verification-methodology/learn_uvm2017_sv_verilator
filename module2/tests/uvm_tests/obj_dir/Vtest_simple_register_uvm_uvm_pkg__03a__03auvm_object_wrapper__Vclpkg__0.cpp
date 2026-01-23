@@ -20,6 +20,10 @@ void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_get_type_name\n"); );
 }
 
+void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_initialize(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_initialize\n"); );
+}
+
 Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::new\n"); );
     // Body
@@ -30,6 +34,10 @@ void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::_ctor_var_re
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper>& obj) {

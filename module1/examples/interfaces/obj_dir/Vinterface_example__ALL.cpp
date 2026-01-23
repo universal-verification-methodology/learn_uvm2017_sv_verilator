@@ -8,6 +8,6 @@
 #include "Vinterface_example___024root__0__Slow.cpp"
 #include "Vinterface_example_apb_if__Slow.cpp"
 #include "Vinterface_example_apb_if__0__Slow.cpp"
-#include "Vinterface_example__Syms.cpp"
+#include "Vinterface_example__Syms__Slow.cpp"
 #include "Vinterface_example__Trace__0__Slow.cpp"
 #include "Vinterface_example__TraceDecls__0__Slow.cpp"

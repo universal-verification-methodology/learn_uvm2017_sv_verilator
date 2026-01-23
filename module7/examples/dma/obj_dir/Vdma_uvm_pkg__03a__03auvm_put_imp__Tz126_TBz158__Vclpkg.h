@@ -15,15 +15,18 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz126;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,7 +52,7 @@ class Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158 : public Vdma_uvm_pkg__03a
     Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz126> imp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_put_imp__Tz126_TBz158>& obj);

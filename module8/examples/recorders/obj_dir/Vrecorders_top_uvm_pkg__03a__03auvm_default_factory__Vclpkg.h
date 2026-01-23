@@ -43,18 +43,21 @@ struct Vrecorders_top_m_inst_typename_alias_t__struct__0 {
 template <>
 struct VlIsCustomStruct<Vrecorders_top_m_inst_typename_alias_t__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_default_factory__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_default_factory__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_debug_pass;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_default_factory__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_default_factory__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_default_factory__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_default_factory__Vclpkg);
 
     // INTERNAL METHODS
@@ -73,10 +76,6 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_default_factory : public Vrecorders_to
     VlAssocArray<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object_wrapper>, CData/*0:0*/> __PVT__m_types;
     VlAssocArray<std::string, CData/*0:0*/> __PVT__m_lookup_strs;
     VlQueue<Vrecorders_top_m_inst_typename_alias_t__struct__0> __PVT__m_inst_aliases;
-    std::string __Vtask_get_type_name__50__Vfuncout;
-    std::string __Vtask_get_type_name__51__Vfuncout;
-    std::string __Vtask_get_type_name__76__Vfuncout;
-    std::string __Vtask_get_type_name__77__Vfuncout;
     VlAssocArray<std::string, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object_wrapper>> __PVT__m_type_names;
     VlQueue<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_factory_override>> __PVT__m_type_overrides;
     VlQueue<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_factory_override>> __PVT__m_inst_overrides;
@@ -114,7 +113,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_default_factory : public Vrecorders_to
     Vrecorders_top_uvm_pkg__03a__03auvm_default_factory(Vrecorders_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_default_factory() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_default_factory();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_default_factory>& obj);

@@ -56,13 +56,13 @@ void Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc_end_of_elaboration_
     __Vfunc_uvm_report_enabled__5__Vfuncout = 0;
     // Body
     if (VL_GTS_III(32, 1U, ([&]() {
-                    VL_NULL_CHECK(this->__PVT__seq_item_port, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/comps/uvm_driver.svh", 89)
+                    VL_NULL_CHECK(this->__PVT__seq_item_port, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/comps/uvm_driver.svh", 89)
                             ->__VnoInFunc_size(vlSymsp, __Vtask_size__4__Vfuncout);
                 }(), __Vtask_size__4__Vfuncout))) {
         if ((0U != ([&]() {
                         this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0U, 1U, "DRVCONNECT"s, __Vfunc_uvm_report_enabled__5__Vfuncout);
                     }(), __Vfunc_uvm_report_enabled__5__Vfuncout))) {
-            this->__VnoInFunc_uvm_report_warning(vlProcess, vlSymsp, "DRVCONNECT"s, "the driver is not connected to a sequencer via the standard mechanisms enabled by connect()"s, 0U, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/comps/uvm_driver.svh"s, 0x0000005aU, ""s, 1U);
+            this->__VnoInFunc_uvm_report_warning(vlProcess, vlSymsp, "DRVCONNECT"s, "the driver is not connected to a sequencer via the standard mechanisms enabled by connect()"s, 0U, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/comps/uvm_driver.svh"s, 0x0000005aU, ""s, 1U);
         }
     }
 }
@@ -70,27 +70,35 @@ void Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc_end_of_elaboration_
 void Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__8__Vfuncout;
-    __Vfunc___Vbasic_randomize__8__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__8__Vfuncout;
+    __Vfunc___VBasicRand__8__Vfuncout = 0;
     // Body
-    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__8__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__8__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__8__Vfuncout);
+            }(), __Vfunc___VBasicRand__8__Vfuncout));
 }
 
-void Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc___Vbasic_randomize\n"); );
+void Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_driver_::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Varchitecture_uvm_pkg__03a__03auvm_driver_::_ctor_var_reset(Varchitecture__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_driver_::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Varchitecture_uvm_pkg__03a__03auvm_driver_::~Varchitecture_uvm_pkg__03a__03auvm_driver_() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_driver_::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_driver_>& obj) {

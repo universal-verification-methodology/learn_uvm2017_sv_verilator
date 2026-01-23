@@ -21,18 +21,21 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219> __PVT__m_global_pool;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +52,8 @@ class Vtest_simple_register_uvm__Syms;
 
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219 : public Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_pool__Tz2_TBz219 {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_delete(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string key);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer> printer);
@@ -64,7 +67,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219 :
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219>& obj);

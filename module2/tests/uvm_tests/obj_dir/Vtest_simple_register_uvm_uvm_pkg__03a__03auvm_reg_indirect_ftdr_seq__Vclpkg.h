@@ -16,15 +16,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_item;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -42,8 +45,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq : pub
     IData/*31:0*/ __PVT__m_idx;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg> __PVT__m_addr_reg;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg> __PVT__m_data_reg;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
@@ -52,7 +55,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq : pub
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg> addr_reg, IData/*31:0*/ idx, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg> data_reg);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq>& obj);

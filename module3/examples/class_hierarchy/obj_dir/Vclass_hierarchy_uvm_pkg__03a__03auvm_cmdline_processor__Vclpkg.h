@@ -14,18 +14,21 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_report_object;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor : public Vclass_hi
     VlQueue<std::string> __PVT__m_argv;
     VlQueue<std::string> __PVT__m_plus_argv;
     VlQueue<std::string> __PVT__m_uvm_argv;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_get_arg_matches(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &args, IData/*31:0*/ &get_arg_matches__Vfuncrtn);
     void __VnoInFunc_get_arg_value(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string match, std::string &value, IData/*31:0*/ &get_arg_value__Vfuncrtn);
     void __VnoInFunc_get_arg_values(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &values, IData/*31:0*/ &get_arg_values__Vfuncrtn);
@@ -62,7 +65,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor : public Vclass_hi
     Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor>& obj);

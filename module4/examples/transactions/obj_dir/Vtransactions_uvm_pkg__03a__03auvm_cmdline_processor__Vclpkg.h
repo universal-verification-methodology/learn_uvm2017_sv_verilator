@@ -14,18 +14,21 @@ class Vtransactions_uvm_pkg__03a__03auvm_report_object;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor : public Vtransaction
     VlQueue<std::string> __PVT__m_argv;
     VlQueue<std::string> __PVT__m_plus_argv;
     VlQueue<std::string> __PVT__m_uvm_argv;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_get_arg_matches(Vtransactions__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &args, IData/*31:0*/ &get_arg_matches__Vfuncrtn);
     void __VnoInFunc_get_arg_value(Vtransactions__Syms* __restrict vlSymsp, std::string match, std::string &value, IData/*31:0*/ &get_arg_value__Vfuncrtn);
     void __VnoInFunc_get_arg_values(Vtransactions__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &values, IData/*31:0*/ &get_arg_values__Vfuncrtn);
@@ -62,7 +65,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor : public Vtransaction
     Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor>& obj);

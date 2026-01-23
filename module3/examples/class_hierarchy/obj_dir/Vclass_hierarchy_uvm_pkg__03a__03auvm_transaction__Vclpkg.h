@@ -22,15 +22,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,16 +56,16 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction : public Vclass_hierarch
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> __PVT__initiator;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream> __PVT__stream_handle;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_recorder> __PVT__tr_recorder;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_accept_tr(Vclass_hierarchy__Syms* __restrict vlSymsp, QData/*63:0*/ accept_time);
     void __VnoInFunc_begin_child_tr(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ parent_handle, IData/*31:0*/ &begin_child_tr__Vfuncrtn);
     void __VnoInFunc_begin_tr(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     void __VnoInFunc_disable_recording(Vclass_hierarchy__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_accept_tr(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_begin_tr(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_accept_tr(Vclass_hierarchy__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_begin_tr(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> rhs);
-    virtual void __VnoInFunc_do_end_tr(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_end_tr(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_printer> printer);
     virtual void __VnoInFunc_do_record(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_recorder> recorder);
     void __VnoInFunc_enable_recording(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream> stream);
@@ -86,7 +89,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction : public Vclass_hierarch
     Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> initiator);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction>& obj);

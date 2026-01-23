@@ -272,7 +272,11 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::_ctor_var_reset(Vtest_and_gat
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
-    __Vrandmode.atDefault() = VL_SCOPED_RAND_RESET_I(1, 3560521879462371086ULL, 14368739129856475828ull);
+    __Vrandmode.atDefault() = 0;
+}
+
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void>& obj) {

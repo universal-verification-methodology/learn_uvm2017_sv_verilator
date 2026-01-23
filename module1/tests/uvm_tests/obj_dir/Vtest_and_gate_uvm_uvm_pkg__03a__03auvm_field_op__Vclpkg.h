@@ -19,18 +19,21 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlQueue<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op>> __PVT__m_recycled_op;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,8 +56,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op : public Vtest_and_gate_u
     IData/*27:0*/ __PVT__m_op_type;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy> __PVT__m_policy;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> __PVT__m_object;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     void __VnoInFunc_disable_user_hook(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_flush(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
@@ -74,7 +77,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op : public Vtest_and_gate_u
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_field_op>& obj);

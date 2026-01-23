@@ -13,6 +13,6 @@
 #include "Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__0__Slow.cpp"
 #include "Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__Slow.cpp"
 #include "Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__0__Slow.cpp"
-#include "Verror_handling_example__Syms.cpp"
+#include "Verror_handling_example__Syms__Slow.cpp"
 #include "Verror_handling_example__Trace__0__Slow.cpp"
 #include "Verror_handling_example__TraceDecls__0__Slow.cpp"

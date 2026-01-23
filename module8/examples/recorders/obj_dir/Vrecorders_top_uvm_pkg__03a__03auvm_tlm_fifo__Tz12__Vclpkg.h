@@ -12,24 +12,25 @@ class Vrecorders_top_std__03a__03amailbox__Tz12;
 class Vrecorders_top_uvm_pkg__03a__03auvm_analysis_port__Tz12;
 class Vrecorders_top_uvm_pkg__03a__03auvm_component;
 class Vrecorders_top_uvm_pkg__03a__03auvm_component_registry__Tz200;
-class Vrecorders_top_uvm_pkg__03a__03auvm_coreservice_t;
 class Vrecorders_top_uvm_pkg__03a__03auvm_object_wrapper;
-class Vrecorders_top_uvm_pkg__03a__03auvm_root;
 class Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item;
 class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12;
 
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12 : public Vrecorders_top
     IData/*31:0*/ __PVT__m_size;
     IData/*31:0*/ __PVT__m_pending_blocked_gets;
     VlClassRef<Vrecorders_top_std__03a__03amailbox__Tz12> __PVT__m;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vrecorders_top__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vrecorders_top__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vrecorders_top__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -74,7 +75,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12 : public Vrecorders_top
     Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12>& obj);

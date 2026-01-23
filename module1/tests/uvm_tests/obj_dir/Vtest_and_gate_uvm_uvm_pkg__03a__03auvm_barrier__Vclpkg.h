@@ -18,15 +18,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_printer;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier__Vclpkg);
 
     // INTERNAL METHODS
@@ -48,8 +51,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier : public Vtest_and_gate_uv
     IData/*31:0*/ __PVT__threshold;
     IData/*31:0*/ __PVT__num_waiters;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_event_> __PVT__m_event;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_cancel(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> rhs);
@@ -70,7 +73,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier : public Vtest_and_gate_uv
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ threshold);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_barrier>& obj);

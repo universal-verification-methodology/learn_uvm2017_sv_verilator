@@ -16,15 +16,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_tlm_if_base__Tz216_TBz216;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,7 +48,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216 : public Varchit
     Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_analysis_export__Tz216>& obj);

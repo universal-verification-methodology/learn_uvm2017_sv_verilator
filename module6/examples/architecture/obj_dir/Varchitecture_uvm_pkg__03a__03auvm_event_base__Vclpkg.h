@@ -17,15 +17,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_printer;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_event_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_event_base__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_event_base__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_event_base__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_event_base__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_event_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -43,13 +46,11 @@ class Varchitecture_uvm_pkg__03a__03auvm_event_base : public Varchitecture_uvm_p
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__on;
-    CData/*0:0*/ __Vtrigprevexpr___TOP__uvm_pkg__03a__03auvm_event_base____PVT__on__0;
-    CData/*0:0*/ __Vtrigprevexpr___TOP__uvm_pkg__03a__03auvm_event_base____PVT__on__1;
     IData/*31:0*/ __PVT__num_waiters;
     QData/*63:0*/ __PVT__trigger_time;
     VlAssignableEvent __PVT__m_event;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_cancel(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> rhs);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer> printer);
@@ -71,7 +72,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_event_base : public Varchitecture_uvm_p
     Varchitecture_uvm_pkg__03a__03auvm_event_base(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_event_base() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_event_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_event_base>& obj);

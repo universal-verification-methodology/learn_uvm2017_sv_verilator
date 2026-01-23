@@ -19,15 +19,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_root;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base : public Vvirtual_se
     CData/*0:0*/ __PVT__modified;
     CData/*0:0*/ __PVT__read_only;
     VlAssocArray<std::string, Vvirtual_sequences_access_t__struct__0> __PVT__access;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_printer> printer);
     virtual void __VnoInFunc_get_type_handle(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base> &get_type_handle__Vfuncrtn);
@@ -67,7 +70,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base : public Vvirtual_se
     Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_base>& obj);

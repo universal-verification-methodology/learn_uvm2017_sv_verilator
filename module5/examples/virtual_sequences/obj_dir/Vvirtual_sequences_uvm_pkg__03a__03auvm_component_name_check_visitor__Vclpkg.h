@@ -16,15 +16,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_visitor_;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg);
 
     // INTERNAL METHODS
@@ -40,8 +43,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor : pub
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_root> __PVT___root;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_v(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_name_constraint(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string &get_name_constraint__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
@@ -52,7 +55,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor : pub
     Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_component_name_check_visitor>& obj);

@@ -68,7 +68,7 @@ void Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148::__VnoInFunc_get_typ
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_registry_common__pi175> common;
     vlSymsp->TOP__uvm_pkg__03a__03auvm_registry_common__pi175__Vclpkg.__VnoInFunc_get(vlSymsp, __Vfunc_get__2__Vfuncout);
     common = __Vfunc_get__2__Vfuncout;
-    VL_NULL_CHECK(common, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 200)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__3__Vfuncout);
+    VL_NULL_CHECK(common, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 200)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__3__Vfuncout);
     get_type_name__Vfuncrtn = __Vtask_get_type_name__3__Vfuncout;
 }
 
@@ -80,7 +80,7 @@ void Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148::__VnoInFunc_initial
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_registry_common__pi175> common;
     vlSymsp->TOP__uvm_pkg__03a__03auvm_registry_common__pi175__Vclpkg.__VnoInFunc_get(vlSymsp, __Vfunc_get__4__Vfuncout);
     common = __Vfunc_get__4__Vfuncout;
-    VL_NULL_CHECK(common, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 281)->__VnoInFunc_initialize(vlProcess, vlSymsp);
+    VL_NULL_CHECK(common, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 281)->__VnoInFunc_initialize(vlProcess, vlSymsp);
 }
 
 Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148::Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148(Vpools_top__Syms* __restrict vlSymsp)
@@ -95,6 +95,10 @@ void Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148::_ctor_var_reset(Vpo
     VL_DEBUG_IF(VL_DBG_MSGF("+              Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148::~Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi148>& obj) {

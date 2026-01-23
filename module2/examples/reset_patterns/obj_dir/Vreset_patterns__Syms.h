@@ -34,7 +34,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vreset_patterns__Syms final : public Verilate
     ~Vreset_patterns__Syms();
 
     // METHODS
-    const char* name() { return TOP.name(); }
+    const char* name() const { return TOP.vlNamep; }
 };
 
 #endif  // guard

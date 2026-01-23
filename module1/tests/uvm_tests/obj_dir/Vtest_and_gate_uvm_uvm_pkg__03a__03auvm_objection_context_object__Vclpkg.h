@@ -14,15 +14,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object__Vclpkg);
 
     // INTERNAL METHODS

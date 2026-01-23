@@ -16,6 +16,10 @@ void Vpools_top_uvm_pkg__03a__03auvm_typeid_base::_ctor_var_reset(Vpools_top__Sy
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vpools_top_uvm_pkg__03a__03auvm_typeid_base::~Vpools_top_uvm_pkg__03a__03auvm_typeid_base() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_typeid_base::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_typeid_base>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_typeid_base::VL_TO_STRING\n"); );
     // Body

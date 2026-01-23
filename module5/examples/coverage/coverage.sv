@@ -42,6 +42,11 @@ class CoverageModel extends uvm_subscriber #(CoverageTransaction);
     int command_coverage[logic [7:0]];  // Track unique command values
     int cross_coverage[logic [7:0]][logic [7:0]];  // (data, command) pairs
     
+    // Temporary variables for reporting
+    int report_data_count;
+    int report_cmd_count;
+    int report_cross_count;
+    
     `uvm_component_utils(CoverageModel)
     
     function new(string name, uvm_component parent);
@@ -84,25 +89,23 @@ class CoverageModel extends uvm_subscriber #(CoverageTransaction);
     
     function void report_phase(uvm_phase phase);
         super.report_phase(phase);
-        int unique_data, unique_commands, unique_cross;
-        
-        unique_data = data_coverage.num();
-        unique_commands = command_coverage.num();
+        report_data_count = data_coverage.num();
+        report_cmd_count = command_coverage.num();
         
         // Count unique cross coverage pairs
-        unique_cross = 0;
+        report_cross_count = 0;
         foreach (cross_coverage[data]) begin
-            unique_cross += cross_coverage[data].num();
+            report_cross_count += cross_coverage[data].num();
         end
         
         `uvm_info("COVERAGE", "============================================================", UVM_MEDIUM)
         `uvm_info("COVERAGE", "Coverage Report", UVM_MEDIUM)
         `uvm_info("COVERAGE", "============================================================", UVM_MEDIUM)
-        `uvm_info("COVERAGE", $sformatf("Data Coverage: %0d unique values", unique_data), UVM_MEDIUM)
+        `uvm_info("COVERAGE", $sformatf("Data Coverage: %0d unique values", report_data_count), UVM_MEDIUM)
         `uvm_info("COVERAGE", $sformatf("Address Ranges - Low: %0d, Mid: %0d, High: %0d", 
                   address_ranges[0], address_ranges[1], address_ranges[2]), UVM_MEDIUM)
-        `uvm_info("COVERAGE", $sformatf("Command Coverage: %0d unique values", unique_commands), UVM_MEDIUM)
-        `uvm_info("COVERAGE", $sformatf("Cross Coverage: %0d unique pairs", unique_cross), UVM_MEDIUM)
+        `uvm_info("COVERAGE", $sformatf("Command Coverage: %0d unique values", report_cmd_count), UVM_MEDIUM)
+        `uvm_info("COVERAGE", $sformatf("Cross Coverage: %0d unique pairs", report_cross_count), UVM_MEDIUM)
     endfunction
 endclass
 

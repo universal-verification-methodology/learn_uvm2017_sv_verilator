@@ -23,15 +23,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer__Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer : public Vtest_simp
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03am_uvm_printer_knobs> __PVT__knobs;
     VlQueue<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_element_stack;
     VlQueue<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_recycled_elements;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_emit(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string &emit__Vfuncrtn);
     virtual void __VnoInFunc_flush(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_begin_elements(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &get_begin_elements__Vfuncrtn);
@@ -119,7 +122,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer : public Vtest_simp
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer>& obj);

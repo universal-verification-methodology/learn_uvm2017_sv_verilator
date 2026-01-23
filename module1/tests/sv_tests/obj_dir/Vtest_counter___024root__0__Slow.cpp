@@ -53,7 +53,7 @@ VL_ATTR_COLD void Vtest_counter___024root___ctor_var_reset(Vtest_counter___024ro
     Vtest_counter__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->test_counter__DOT__clk = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 12420031768787571501ull);
     vlSelf->test_counter__DOT__rst_n = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 7753636639822217101ull);
     vlSelf->test_counter__DOT__enable = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 13530964856758481912ull);
@@ -61,8 +61,8 @@ VL_ATTR_COLD void Vtest_counter___024root___ctor_var_reset(Vtest_counter___024ro
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr___TOP__test_counter__DOT__clk__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 15530420578990949250ull);
-    vlSelf->__Vtrigprevexpr___TOP__test_counter__DOT__rst_n__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 18393655057309378258ull);
+    vlSelf->__Vtrigprevexpr___TOP__test_counter__DOT__clk__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__test_counter__DOT__rst_n__0 = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;
     }

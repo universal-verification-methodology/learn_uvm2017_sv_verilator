@@ -32,18 +32,21 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_vreg_field_cbs;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_vreg__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_vreg__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_register_cb_uvm_vreg_cbs;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_vreg__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_vreg__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_vreg__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_vreg__Vclpkg);
 
     // INTERNAL METHODS
@@ -76,8 +79,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_vreg : public Vrecorders_top_uvm_pkg__
     VlClassRef<Vrecorders_top_std__03a__03asemaphore> __PVT__atomic;
     VlCoroutine __VnoInFunc_XatomicX(Vrecorders_top__Syms* __restrict vlSymsp, CData/*0:0*/ on);
     void __VnoInFunc_Xlock_modelX(Vrecorders_top__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_field(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_vreg_field> field);
     virtual void __VnoInFunc_allocate(Vrecorders_top__Syms* __restrict vlSymsp, QData/*63:0*/ n, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_mem_mam> mam, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_mem_mam_policy> alloc, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_mem_region> &allocate__Vfuncrtn);
     virtual void __VnoInFunc_clone(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> &clone__Vfuncrtn);
@@ -125,7 +128,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_vreg : public Vrecorders_top_uvm_pkg__
     Vrecorders_top_uvm_pkg__03a__03auvm_vreg(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ n_bits);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_vreg() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_vreg();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_vreg>& obj);

@@ -11,7 +11,6 @@
 #include "Vtransactions_uvm_pkg.h"
 class Vtransactions_uvm_pkg__03a__03auvm_comparer;
 class Vtransactions_uvm_pkg__03a__03auvm_copier;
-class Vtransactions_uvm_pkg__03a__03auvm_coreservice_t;
 class Vtransactions_uvm_pkg__03a__03auvm_field_op;
 class Vtransactions_uvm_pkg__03a__03auvm_hdl_path_concat;
 class Vtransactions_uvm_pkg__03a__03auvm_mem;
@@ -32,20 +31,22 @@ class Vtransactions_uvm_pkg__03a__03auvm_resource__Tz23;
 class Vtransactions_uvm_pkg__03a__03auvm_resource__Tz24;
 class Vtransactions_uvm_pkg__03a__03auvm_resource__Tz50;
 class Vtransactions_uvm_pkg__03a__03auvm_resource_base;
-class Vtransactions_uvm_pkg__03a__03auvm_root;
 
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -63,8 +64,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq : public Vtransac
 
     // DESIGN SPECIFIC STATE
     VlQueue<std::string> __PVT__abstractions;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc____05Fm_uvm_execute_field_op(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_field_op> ___05Flocal_op___05F);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_check_mem(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_mem> m, std::string kind);
@@ -82,7 +83,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq : public Vtransac
     Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq>& obj);

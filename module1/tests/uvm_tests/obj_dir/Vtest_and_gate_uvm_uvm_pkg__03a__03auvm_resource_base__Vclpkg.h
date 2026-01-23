@@ -19,15 +19,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base : public Vtest_and_g
     CData/*0:0*/ __PVT__modified;
     CData/*0:0*/ __PVT__read_only;
     VlAssocArray<std::string, Vtest_and_gate_uvm_access_t__struct__0> __PVT__access;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_printer> printer);
     virtual void __VnoInFunc_get_type_handle(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base> &get_type_handle__Vfuncrtn);
@@ -67,7 +70,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base : public Vtest_and_g
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_base>& obj);

@@ -5,6 +5,6 @@
 #include "Vsignal_access__Trace__0.cpp"
 #include "Vsignal_access___024root__Slow.cpp"
 #include "Vsignal_access___024root__0__Slow.cpp"
-#include "Vsignal_access__Syms.cpp"
+#include "Vsignal_access__Syms__Slow.cpp"
 #include "Vsignal_access__Trace__0__Slow.cpp"
 #include "Vsignal_access__TraceDecls__0__Slow.cpp"

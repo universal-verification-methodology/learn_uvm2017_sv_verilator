@@ -27,15 +27,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_resource_pool;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_agent__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_agent__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_agent__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_agent__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_agent__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_agent__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,8 +56,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_agent : public Vtransactions_uvm_pkg__0
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__is_active;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_get_is_active(Vtransactions__Syms* __restrict vlSymsp, CData/*0:0*/ &get_is_active__Vfuncrtn);
     virtual void __VnoInFunc_get_object_type(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
@@ -66,7 +69,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_agent : public Vtransactions_uvm_pkg__0
     Vtransactions_uvm_pkg__03a__03auvm_agent(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_agent() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_agent();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_agent>& obj);

@@ -23,15 +23,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_root;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_printer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_printer__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_printer__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_printer__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_printer__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_printer__Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_printer : public Vvirtual_sequence
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03am_uvm_printer_knobs> __PVT__knobs;
     VlQueue<VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_element_stack;
     VlQueue<VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_recycled_elements;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_emit(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string &emit__Vfuncrtn);
     virtual void __VnoInFunc_flush(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_begin_elements(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &get_begin_elements__Vfuncrtn);
@@ -119,7 +122,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_printer : public Vvirtual_sequence
     Vvirtual_sequences_uvm_pkg__03a__03auvm_printer(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_printer() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_printer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_printer>& obj);

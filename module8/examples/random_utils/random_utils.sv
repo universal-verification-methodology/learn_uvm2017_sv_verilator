@@ -111,6 +111,7 @@ class RandomUtilsTest extends uvm_test;
     task run_phase(uvm_phase phase);
         RandomTransaction txn;
         int weights[];
+        logic [31:0] rand_bits;  // Moved declaration to top of task
         phase.raise_objection(this);
         
         `uvm_info("RANDOM", "Testing random utilities", UVM_LOW)
@@ -122,7 +123,7 @@ class RandomUtilsTest extends uvm_test;
         end
         
         // Test random bits
-        logic [31:0] rand_bits = rand_utils.random_bits(32);
+        rand_bits = rand_utils.random_bits(32);
         `uvm_info("RANDOM", $sformatf("random_bits(32) = 0x%08h", rand_bits), UVM_MEDIUM)
         
         // Test weighted random

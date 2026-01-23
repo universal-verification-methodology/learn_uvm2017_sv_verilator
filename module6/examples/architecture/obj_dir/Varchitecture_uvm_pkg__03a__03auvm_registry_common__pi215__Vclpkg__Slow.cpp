@@ -6,10 +6,12 @@
 
 void Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg___ctor_var_reset(Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg* vlSelf);
 
-Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg::Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg(Varchitecture__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg::Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg() = default;
+Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg::~Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg() = default;
+
+void Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg::ctor(Varchitecture__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg::__Vconfi
     (void)first;  // Prevent unused variable warning
 }
 
-Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg::~Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg() {
+void Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi215__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

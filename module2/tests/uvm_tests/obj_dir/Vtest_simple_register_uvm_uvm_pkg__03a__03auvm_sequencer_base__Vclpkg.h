@@ -9,9 +9,9 @@
 #include "verilated_timing.h"
 #include "verilated_random.h"
 class Vtest_simple_register_uvm_std__03a__03aprocess;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_30;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_36;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_37;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_40;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_47;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_48;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_5;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03am_uvm_sqr_seq_base;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component;
@@ -37,7 +37,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -47,11 +47,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auv
     VlAssocArray<IData/*31:0*/, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base>> __PVT__all_sequencer_insts;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -67,11 +70,6 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base : public Vte
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_auto_item_recording;
-    CData/*0:0*/ __Vtrigprevexpr_h857445f4__0;
-    CData/*0:0*/ __Vtrigprevexpr_hdebb06a6__0;
-    CData/*0:0*/ __Vtrigprevexpr_h67e7b5e9__0;
-    CData/*0:0*/ __Vtrigprevexpr_ha37570c4__0;
-    CData/*0:0*/ __Vtrigprevexpr_ha9927b17__0;
     IData/*31:0*/ __PVT__m_sequencer_id;
     IData/*31:0*/ __PVT__m_lock_arb_size;
     IData/*31:0*/ __PVT__m_arb_size;
@@ -89,12 +87,13 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base : public Vte
     VlQueue<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_base>> __PVT__lock_list;
     VlAssocArray<IData/*31:0*/, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_base>> __PVT__reg_sequences;
     VlAssocArray<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase>, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_process_wrapper>> __PVT__m_default_sequences;
-    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_30> __Vtask___VforkTask_2__57____VDynScope_m_wait_for_available_sequence_0;
-    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_36> __Vtask___VforkTask_1__58___Vwrapped_unnamedblk238_6__DOT____VDynScope_unnamedblk238_6;
-    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_5> __Vtask_uvm_wait_for_nba_region__147____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_5> __Vtask___VforkTask_0__149____VDynScope_uvm_wait_for_nba_region_0;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_40> __Vtask___VforkTask_2__57____VDynScope_m_wait_for_available_sequence_0;
+    VlClassRef<Vtest_simple_register_uvm_std__03a__03aprocess> __Vtask___VforkTask_1__58__unnamedblk242__DOT____VforkParent;
+    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_47> __Vtask___VforkTask_1__58__unnamedblk242__DOT___Vwrapped_unnamedblk243_7__DOT____VDynScope_unnamedblk243_7;
+    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_5> __Vtask_uvm_wait_for_nba_region__149____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_5> __Vtask___VforkTask_0__151____VDynScope_uvm_wait_for_nba_region_0;
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_analysis_write(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_item> t);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     virtual void __VnoInFunc_current_grabber(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_base> &current_grabber__Vfuncrtn);
@@ -129,8 +128,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base : public Vte
     VlCoroutine __VnoInFunc_m_wait_for_arbitration_completed(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ request_id);
     VlCoroutine __VnoInFunc_m_wait_for_available_sequence(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_wait_for_available_sequence____Vfork_1__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlQueue<IData/*31:0*/> &is_relevant_entries, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_30> &__VDynScope_m_wait_for_available_sequence_0, VlForkSync __Vfork_1__sync);
-    VlCoroutine __VnoInFunc_m_wait_for_available_sequence____Vfork_1__0____Vfork_2__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlQueue<IData/*31:0*/> is_relevant_entries, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_30> __VDynScope_m_wait_for_available_sequence_0, VlForkSync __Vfork_2__sync);
+    VlCoroutine __VnoInFunc_m_wait_for_available_sequence____Vfork_1__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlQueue<IData/*31:0*/> &is_relevant_entries, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_40> &__VDynScope_m_wait_for_available_sequence_0, VlForkSync __Vfork_1__sync);
+    VlCoroutine __VnoInFunc_m_wait_for_available_sequence____Vfork_1__0____Vfork_2__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlQueue<IData/*31:0*/> is_relevant_entries, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_40> __VDynScope_m_wait_for_available_sequence_0, VlForkSync __Vfork_2__sync);
     VlCoroutine __VnoInFunc_m_wait_for_available_sequence____Vfork_1__0____Vfork_2__0____Vfork_3__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlForkSync __Vfork_3__sync);
     VlCoroutine __VnoInFunc_m_wait_for_available_sequence____Vfork_1__0____Vfork_2__0____Vfork_3__0____Vfork_4__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_m_wait_for_available_sequence____Vfork_1__0____Vfork_2__0____Vfork_3__1(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlForkSync __Vfork_3__sync);
@@ -142,7 +141,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base : public Vte
     virtual void __VnoInFunc_set_max_zero_time_wait_relevant_count(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ new_val);
     virtual void __VnoInFunc_start_phase_sequence(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase> phase);
   private:
-    VlCoroutine __VnoInFunc_start_phase_sequence____Vfork_7__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_37> __VDynScope_start_phase_sequence_7);
+    VlCoroutine __VnoInFunc_start_phase_sequence____Vfork_7__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_48> __VDynScope_start_phase_sequence_8, VlClassRef<Vtest_simple_register_uvm_std__03a__03aprocess> unnamedblk251__DOT____VforkParent);
   public:
     virtual void __VnoInFunc_stop_phase_sequence(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_stop_sequences(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
@@ -154,13 +153,13 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base : public Vte
     virtual VlCoroutine __VnoInFunc_wait_for_sequences(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
   private:
     VlCoroutine __VnoInFunc_wait_for_sequences____Vfork_5__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
-    VlCoroutine __VnoInFunc_wait_for_sequences____Vfork_5__0____Vfork_6__0(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_hbec9ebaf__0);
+    VlCoroutine __VnoInFunc_wait_for_sequences____Vfork_5__0____Vfork_6__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h33ae643b__0);
     void _ctor_var_reset(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
   public:
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequencer_base>& obj);

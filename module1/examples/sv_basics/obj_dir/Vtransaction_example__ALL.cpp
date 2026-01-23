@@ -16,6 +16,6 @@
 #include "Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg__0__Slow.cpp"
 #include "Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg__Slow.cpp"
 #include "Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg__0__Slow.cpp"
-#include "Vtransaction_example__Syms.cpp"
+#include "Vtransaction_example__Syms__Slow.cpp"
 #include "Vtransaction_example__Trace__0__Slow.cpp"
 #include "Vtransaction_example__TraceDecls__0__Slow.cpp"

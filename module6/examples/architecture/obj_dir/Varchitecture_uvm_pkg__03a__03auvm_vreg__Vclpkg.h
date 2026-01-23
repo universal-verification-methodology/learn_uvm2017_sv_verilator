@@ -32,18 +32,21 @@ class Varchitecture_uvm_pkg__03a__03auvm_vreg_field_cbs;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_vreg__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_vreg__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_register_cb_uvm_vreg_cbs;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_vreg__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_vreg__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_vreg__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_vreg__Vclpkg);
 
     // INTERNAL METHODS
@@ -76,8 +79,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_vreg : public Varchitecture_uvm_pkg__03
     VlClassRef<Varchitecture_std__03a__03asemaphore> __PVT__atomic;
     VlCoroutine __VnoInFunc_XatomicX(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ on);
     void __VnoInFunc_Xlock_modelX(Varchitecture__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_field(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_vreg_field> field);
     virtual void __VnoInFunc_allocate(Varchitecture__Syms* __restrict vlSymsp, QData/*63:0*/ n, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_mem_mam> mam, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_mem_mam_policy> alloc, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_mem_region> &allocate__Vfuncrtn);
     virtual void __VnoInFunc_clone(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> &clone__Vfuncrtn);
@@ -125,7 +128,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_vreg : public Varchitecture_uvm_pkg__03
     Varchitecture_uvm_pkg__03a__03auvm_vreg(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ n_bits);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_vreg() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_vreg();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_vreg>& obj);

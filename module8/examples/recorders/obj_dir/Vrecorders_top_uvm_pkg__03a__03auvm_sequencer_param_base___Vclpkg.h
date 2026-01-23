@@ -23,15 +23,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base_ : public Vrecord
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_> __PVT__sqr_rsp_analysis_fifo;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_analysis_export__Tz12> __PVT__rsp_export;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz12> __PVT__m_req_fifo;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_analysis_write(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item> t);
     virtual void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_connect_phase(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> phase);
@@ -82,7 +85,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base_ : public Vrecord
     Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base_(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base_() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base_>& obj);

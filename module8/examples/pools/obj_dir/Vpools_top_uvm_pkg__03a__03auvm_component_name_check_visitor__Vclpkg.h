@@ -16,15 +16,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_visitor_;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg);
 
     // INTERNAL METHODS
@@ -40,8 +43,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor : public Vpoo
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_root> __PVT___root;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_v(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_name_constraint(Vpools_top__Syms* __restrict vlSymsp, std::string &get_name_constraint__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
@@ -52,7 +55,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor : public Vpoo
     Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component_name_check_visitor>& obj);

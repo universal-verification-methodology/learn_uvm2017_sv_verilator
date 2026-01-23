@@ -13,15 +13,18 @@ class Vclass_hierarchy___024unit__03a__03aMyTransaction;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg();
     ~Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,9 +38,6 @@ class Vclass_hierarchy_std__03a__03amailbox__Tz1 : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h3cdc5a4c__0;
-    CData/*0:0*/ __Vtrigprevexpr_h1a56d3cd__0;
-    CData/*0:0*/ __Vtrigprevexpr_h1a56d3cd__1;
     IData/*31:0*/ __PVT__m_bound;
     VlQueue<VlClassRef<Vclass_hierarchy___024unit__03a__03aMyTransaction>> __PVT__m_queue;
     VlCoroutine __VnoInFunc_get(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy___024unit__03a__03aMyTransaction> &message);

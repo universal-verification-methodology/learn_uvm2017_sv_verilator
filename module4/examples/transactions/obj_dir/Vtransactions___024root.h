@@ -21,16 +21,16 @@ class Vtransactions_std__03a__03aprocess__Vclpkg;
 class Vtransactions_std__03a__03asemaphore__Vclpkg;
 class Vtransactions_uvm_pkg;
 class Vtransactions_uvm_pkg__03a__03a__VDynScope_0__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_10__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_17__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_20__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_21__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_24__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_25__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_31__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_32__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_33__Vclpkg;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_4__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_13__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_23__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_27__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_29__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_34__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_35__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_42__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_43__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_45__Vclpkg;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_5__Vclpkg;
 class Vtransactions_uvm_pkg__03a__03aget_t__Vclpkg;
 class Vtransactions_uvm_pkg__03a__03am_uvm_printer_knobs__Vclpkg;
 class Vtransactions_uvm_pkg__03a__03am_uvm_sqr_seq_base__Vclpkg;
@@ -614,7 +614,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024root final {
   public:
     // CELLS
     Vtransactions___024unit* __PVT____024unit;
@@ -1206,20 +1206,20 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024root final : public Verila
     Vtransactions_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg* uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg;
     Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg* uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg;
     Vtransactions_uvm_pkg__03a__03a__VDynScope_0__Vclpkg* uvm_pkg__03a__03a__VDynScope_0__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_4__Vclpkg* uvm_pkg__03a__03a__VDynScope_4__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_10__Vclpkg* uvm_pkg__03a__03a__VDynScope_10__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_17__Vclpkg* uvm_pkg__03a__03a__VDynScope_17__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_20__Vclpkg* uvm_pkg__03a__03a__VDynScope_20__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_21__Vclpkg* uvm_pkg__03a__03a__VDynScope_21__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_24__Vclpkg* uvm_pkg__03a__03a__VDynScope_24__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_25__Vclpkg* uvm_pkg__03a__03a__VDynScope_25__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_31__Vclpkg* uvm_pkg__03a__03a__VDynScope_31__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_32__Vclpkg* uvm_pkg__03a__03a__VDynScope_32__Vclpkg;
-    Vtransactions_uvm_pkg__03a__03a__VDynScope_33__Vclpkg* uvm_pkg__03a__03a__VDynScope_33__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_5__Vclpkg* uvm_pkg__03a__03a__VDynScope_5__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_13__Vclpkg* uvm_pkg__03a__03a__VDynScope_13__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_23__Vclpkg* uvm_pkg__03a__03a__VDynScope_23__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_27__Vclpkg* uvm_pkg__03a__03a__VDynScope_27__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_29__Vclpkg* uvm_pkg__03a__03a__VDynScope_29__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_34__Vclpkg* uvm_pkg__03a__03a__VDynScope_34__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_35__Vclpkg* uvm_pkg__03a__03a__VDynScope_35__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_42__Vclpkg* uvm_pkg__03a__03a__VDynScope_42__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_43__Vclpkg* uvm_pkg__03a__03a__VDynScope_43__Vclpkg;
+    Vtransactions_uvm_pkg__03a__03a__VDynScope_45__Vclpkg* uvm_pkg__03a__03a__VDynScope_45__Vclpkg;
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __VnbaEventTrigger;
-    CData/*0:0*/ __Vtrigprevexpr_h69246a8d__1;
+    CData/*0:0*/ __Vtrigprevexpr_h5a1c11cb__1;
     CData/*0:0*/ __VactDidInit;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
@@ -1228,13 +1228,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024root final : public Verila
     VlDelayScheduler __VdlySched;
     VlDynamicTriggerScheduler __VdynSched;
     VlAssignableEvent __VnbaEvent;
-    VlTriggerScheduler __VtrigSched_hbd132277__0;
+    VlTriggerScheduler __VtrigSched_hce2bd7cc__0;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions___024root(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions___024root(Vtransactions__Syms* symsp, const char* namep);
     ~Vtransactions___024root();
     VL_UNCOPYABLE(Vtransactions___024root);
 

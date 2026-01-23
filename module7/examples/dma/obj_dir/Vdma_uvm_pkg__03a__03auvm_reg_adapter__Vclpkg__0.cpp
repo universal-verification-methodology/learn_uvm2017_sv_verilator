@@ -65,21 +65,25 @@ void Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc_m_set_item(Vdma__Syms* _
 void Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__3__Vfuncout;
-    __Vfunc___Vbasic_randomize__3__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__3__Vfuncout;
+    __Vfunc___VBasicRand__3__Vfuncout = 0;
     // Body
-    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__3__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__3__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__3__Vfuncout);
+            }(), __Vfunc___VBasicRand__3__Vfuncout));
 }
 
-void Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc___Vbasic_randomize\n"); );
+void Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_reg_adapter::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vdma_uvm_pkg__03a__03auvm_reg_adapter::_ctor_var_reset(Vdma__Syms* __restrict vlSymsp) {
@@ -88,6 +92,10 @@ void Vdma_uvm_pkg__03a__03auvm_reg_adapter::_ctor_var_reset(Vdma__Syms* __restri
     (void)vlSymsp;  // Prevent unused variable warning
     __PVT__supports_byte_enable = 0;
     __PVT__provides_responses = 0;
+}
+
+Vdma_uvm_pkg__03a__03auvm_reg_adapter::~Vdma_uvm_pkg__03a__03auvm_reg_adapter() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_reg_adapter::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_adapter>& obj) {

@@ -16,15 +16,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65__Vclpkg);
 
     // INTERNAL METHODS
@@ -37,8 +40,8 @@ class Vtest_and_gate_uvm__Syms;
 
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65 : public Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_accept(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component> s, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_> v, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_structure_proxy_> p, CData/*0:0*/ invoke_begin_end);
     virtual void __VnoInFunc_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
@@ -47,7 +50,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65 : public Vt
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_visitor_adapter__TBz65>& obj);

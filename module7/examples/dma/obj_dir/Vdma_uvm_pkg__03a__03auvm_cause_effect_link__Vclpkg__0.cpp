@@ -31,14 +31,14 @@ void Vdma_uvm_pkg__03a__03auvm_cause_effect_link__Vclpkg::__VnoInFunc_get_link(V
     vlSymsp->TOP__std__03a__03aprocess__Vclpkg.__VnoInFunc_self(vlProcess, vlSymsp, __Vfunc_self__1__Vfuncout);
     p_ = __Vfunc_self__1__Vfuncout;
     if ((VlNull{} != p_)) {
-        VL_NULL_CHECK(p_, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_links.svh", 206)->__VnoInFunc_get_randstate(vlSymsp, __Vtask_get_randstate__2__Vfuncout);
+        VL_NULL_CHECK(p_, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_links.svh", 206)->__VnoInFunc_get_randstate(vlSymsp, __Vtask_get_randstate__2__Vfuncout);
         s_ = __Vtask_get_randstate__2__Vfuncout;
     }
     get_link__Vfuncrtn = VL_NEW(Vdma_uvm_pkg__03a__03auvm_cause_effect_link, vlProcess, vlSymsp, name);
     if ((VlNull{} != p_)) {
-        VL_NULL_CHECK(p_, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_links.svh", 211)->__VnoInFunc_set_randstate(vlSymsp, s_);
+        VL_NULL_CHECK(p_, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_links.svh", 211)->__VnoInFunc_set_randstate(vlSymsp, s_);
     }
-    VL_NULL_CHECK(get_link__Vfuncrtn, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_links.svh", 213)->__VnoInFunc_set(vlSymsp, lhs, rhs);
+    VL_NULL_CHECK(get_link__Vfuncrtn, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_links.svh", 213)->__VnoInFunc_set(vlSymsp, lhs, rhs);
 }
 
 void Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc_get_object_type(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn) {
@@ -100,27 +100,35 @@ void Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc_do_get_rhs(Vdma__S
 void Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__5__Vfuncout;
-    __Vfunc___Vbasic_randomize__5__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__5__Vfuncout;
+    __Vfunc___VBasicRand__5__Vfuncout = 0;
     // Body
-    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__5__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__5__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__5__Vfuncout);
+            }(), __Vfunc___VBasicRand__5__Vfuncout));
 }
 
-void Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc___Vbasic_randomize\n"); );
+void Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_cause_effect_link::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vdma_uvm_pkg__03a__03auvm_cause_effect_link::_ctor_var_reset(Vdma__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_cause_effect_link::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vdma_uvm_pkg__03a__03auvm_cause_effect_link::~Vdma_uvm_pkg__03a__03auvm_cause_effect_link() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_cause_effect_link::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_cause_effect_link>& obj) {

@@ -12,15 +12,18 @@
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_void__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_void__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_void__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_void__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_void__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_void__Vclpkg);
 
     // INTERNAL METHODS
@@ -46,7 +49,7 @@ class Vdma_uvm_pkg__03a__03auvm_void : public virtual VlClass {
     Vdma_uvm_pkg__03a__03auvm_void(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_void() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_void();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_void>& obj);

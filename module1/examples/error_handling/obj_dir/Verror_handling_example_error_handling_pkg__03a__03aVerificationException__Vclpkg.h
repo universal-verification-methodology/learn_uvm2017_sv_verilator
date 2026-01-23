@@ -11,15 +11,18 @@
 
 class Verror_handling_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Verror_handling_example__Syms* const vlSymsp;
+    Verror_handling_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg(Verror_handling_example__Syms* symsp, const char* v__name);
+    Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg();
     ~Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg();
+    void ctor(Verror_handling_example__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg);
 
     // INTERNAL METHODS

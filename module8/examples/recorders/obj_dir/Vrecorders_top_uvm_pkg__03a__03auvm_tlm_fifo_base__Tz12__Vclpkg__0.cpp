@@ -75,8 +75,7 @@ VlCoroutine Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc
     VlProcessRef vlProcess = std::make_shared<VlProcess>();
     VL_KEEP_THIS;
     this->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, "put"s, "fifo channel task not implemented"s, 0U, ""s, 0U, ""s, 0U);
-    co_return;
-}
+    co_return;}
 
 VlCoroutine Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_get(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item> &t) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_get\n"); );
@@ -84,8 +83,7 @@ VlCoroutine Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc
     VlProcessRef vlProcess = std::make_shared<VlProcess>();
     VL_KEEP_THIS;
     this->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, "get"s, "fifo channel task not implemented"s, 0U, ""s, 0U, ""s, 0U);
-    co_return;
-}
+    co_return;}
 
 VlCoroutine Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_peek(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item> &t) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_peek\n"); );
@@ -93,8 +91,7 @@ VlCoroutine Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc
     VlProcessRef vlProcess = std::make_shared<VlProcess>();
     VL_KEEP_THIS;
     this->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, "peek"s, "fifo channel task not implemented"s, 0U, ""s, 0U, ""s, 0U);
-    co_return;
-}
+    co_return;}
 
 void Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_try_put(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item> t, CData/*0:0*/ &try_put__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_try_put\n"); );
@@ -194,27 +191,35 @@ void Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_used(V
 void Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__24__Vfuncout;
-    __Vfunc___Vbasic_randomize__24__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__24__Vfuncout;
+    __Vfunc___VBasicRand__24__Vfuncout = 0;
     // Body
-    Vrecorders_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vrecorders_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vrecorders_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__24__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__24__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__24__Vfuncout);
+            }(), __Vfunc___VBasicRand__24__Vfuncout));
 }
 
-void Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc___Vbasic_randomize\n"); );
+void Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::_ctor_var_reset(Vrecorders_top__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz12>& obj) {

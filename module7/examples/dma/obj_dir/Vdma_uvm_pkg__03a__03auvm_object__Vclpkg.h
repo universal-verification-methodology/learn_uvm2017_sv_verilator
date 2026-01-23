@@ -26,18 +26,21 @@ class Vdma_uvm_pkg__03a__03auvm_void;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_object__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_object__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     IData/*31:0*/ __PVT__m_inst_count;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_object__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_object__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_object__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_object__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +61,8 @@ class Vdma_uvm_pkg__03a__03auvm_object : public Vdma_uvm_pkg__03a__03auvm_void {
     // DESIGN SPECIFIC STATE
     IData/*31:0*/ __PVT__m_inst_id;
     std::string __PVT__m_leaf_name;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc____05Fm_uvm_field_automation(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> tmp_data___05F, IData/*27:0*/ what___05F, std::string str___05F);
     virtual void __VnoInFunc_clone(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> &clone__Vfuncrtn);
     void __VnoInFunc_compare(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> rhs, VlClassRef<Vdma_uvm_pkg__03a__03auvm_comparer> comparer, CData/*0:0*/ &compare__Vfuncrtn);
@@ -104,7 +107,7 @@ class Vdma_uvm_pkg__03a__03auvm_object : public Vdma_uvm_pkg__03a__03auvm_void {
     Vdma_uvm_pkg__03a__03auvm_object(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_object() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_object();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_object>& obj);

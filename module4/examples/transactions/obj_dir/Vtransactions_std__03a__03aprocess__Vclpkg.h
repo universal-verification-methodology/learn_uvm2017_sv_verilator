@@ -13,15 +13,18 @@ class Vtransactions_std__03a__03aprocess;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_std__03a__03aprocess__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_std__03a__03aprocess__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_std__03a__03aprocess__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_std__03a__03aprocess__Vclpkg();
     ~Vtransactions_std__03a__03aprocess__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_std__03a__03aprocess__Vclpkg);
 
     // INTERNAL METHODS
@@ -37,7 +40,6 @@ class Vtransactions_std__03a__03aprocess : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h1426c6b2__0;
     VlProcessRef __PVT__m_process;
 
     // INTERNAL VARIABLES
@@ -64,7 +66,7 @@ std::string VL_TO_STRING(const VlClassRef<Vtransactions_std__03a__03aprocess>& o
 
 
 //*** Below code from `systemc in Verilog file
-// From `systemc at /usr/local/share/verilator/include/verilated_std.sv:193:21
+// From `systemc at /usr/local/share/verilator/include/verilated_std.sv:196:21
 
 template<> template<>
 inline bool VlClassRef<Vtransactions_std__03a__03aprocess>::operator==(const VlClassRef<Vtransactions_std__03a__03aprocess>& rhs) const {

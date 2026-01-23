@@ -39,23 +39,23 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_set_extension(V
         vlSymsp->TOP__uvm_pkg.__VnoInFunc_uvm_report_fatal_TOP__uvm_pkg(vlProcess, vlSymsp, "NULLEXT"s, "Attempting to set  null extension "s, 0U, ""s, 0U, ""s, 0U);
     }
     if (this->__PVT__m_extensions.exists(([&]() {
-                    VL_NULL_CHECK(extension, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 96)
+                    VL_NULL_CHECK(extension, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 96)
                                           ->__VnoInFunc_get_object_type(vlSymsp, __Vtask_get_object_type__2__Vfuncout);
                 }(), __Vtask_get_object_type__2__Vfuncout))) {
         m_set_extension = this->__PVT__m_extensions
             .at(([&]() {
-                    VL_NULL_CHECK(extension, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 97)
+                    VL_NULL_CHECK(extension, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 97)
                  ->__VnoInFunc_get_object_type(vlSymsp, __Vtask_get_object_type__3__Vfuncout);
                 }(), __Vtask_get_object_type__3__Vfuncout));
         this->__PVT__m_extensions.at(([&]() {
-                    VL_NULL_CHECK(extension, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 98)
+                    VL_NULL_CHECK(extension, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 98)
                                       ->__VnoInFunc_get_object_type(vlSymsp, __Vtask_get_object_type__4__Vfuncout);
                 }(), __Vtask_get_object_type__4__Vfuncout)) 
             = extension;
         set_extension__Vfuncrtn = m_set_extension;
     } else {
         this->__PVT__m_extensions.at(([&]() {
-                    VL_NULL_CHECK(extension, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 103)
+                    VL_NULL_CHECK(extension, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh", 103)
                                       ->__VnoInFunc_get_object_type(vlSymsp, __Vtask_get_object_type__5__Vfuncout);
                 }(), __Vtask_get_object_type__5__Vfuncout)) 
             = extension;
@@ -122,11 +122,11 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_push_active_obj
                     vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__7__Vfuncout);
                     vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs 
                         = __Vfunc_get__7__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
+                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
                        ->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__8__Vfuncout);
                     vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top 
                         = __Vtask_get_root__8__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
+                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
                        ->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, __Vfunc_uvm_report_enabled__6__verbosity, (IData)(__Vfunc_uvm_report_enabled__6__severity), __Vfunc_uvm_report_enabled__6__id, __Vtask_uvm_report_enabled__9__Vfuncout);
                     __Vfunc_uvm_report_enabled__6__Vfuncout 
                         = __Vtask_uvm_report_enabled__9__Vfuncout;
@@ -134,17 +134,17 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_push_active_obj
         __Vtask_uvm_report_error__10__report_enabled_checked = 1U;
         __Vtask_uvm_report_error__10__context_name = ""s;
         __Vtask_uvm_report_error__10__line = 0x00000097U;
-        __Vtask_uvm_report_error__10__filename = "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh"s;
+        __Vtask_uvm_report_error__10__filename = "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh"s;
         __Vtask_uvm_report_error__10__verbosity = 0U;
         __Vtask_uvm_report_error__10__message = "Attempting to push an null object push_active_object onto the policy stack"s;
         __Vtask_uvm_report_error__10__id = "UVM_POLICY_PUSHNULL"s;
         vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__11__Vfuncout);
         vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__cs 
             = __Vfunc_get__11__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 174)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__12__Vfuncout);
+        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__cs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 174)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__12__Vfuncout);
         vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__top 
             = __Vtask_get_root__12__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 175)->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, __Vtask_uvm_report_error__10__id, __Vtask_uvm_report_error__10__message, __Vtask_uvm_report_error__10__verbosity, __Vtask_uvm_report_error__10__filename, __Vtask_uvm_report_error__10__line, __Vtask_uvm_report_error__10__context_name, (IData)(__Vtask_uvm_report_error__10__report_enabled_checked));
+        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__top, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 175)->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, __Vtask_uvm_report_error__10__id, __Vtask_uvm_report_error__10__message, __Vtask_uvm_report_error__10__verbosity, __Vtask_uvm_report_error__10__filename, __Vtask_uvm_report_error__10__line, __Vtask_uvm_report_error__10__context_name, (IData)(__Vtask_uvm_report_error__10__report_enabled_checked));
     }
 }
 
@@ -186,11 +186,11 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_pop_active_obje
                     vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__15__Vfuncout);
                     vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs 
                         = __Vfunc_get__15__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
+                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
                        ->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__16__Vfuncout);
                     vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top 
                         = __Vtask_get_root__16__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
+                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
                        ->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, __Vfunc_uvm_report_enabled__14__verbosity, (IData)(__Vfunc_uvm_report_enabled__14__severity), __Vfunc_uvm_report_enabled__14__id, __Vtask_uvm_report_enabled__17__Vfuncout);
                     __Vfunc_uvm_report_enabled__14__Vfuncout 
                         = __Vtask_uvm_report_enabled__17__Vfuncout;
@@ -198,17 +198,17 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_pop_active_obje
         __Vtask_uvm_report_info__18__report_enabled_checked = 1U;
         __Vtask_uvm_report_info__18__context_name = ""s;
         __Vtask_uvm_report_info__18__line = 0x000000a7U;
-        __Vtask_uvm_report_info__18__filename = "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh"s;
+        __Vtask_uvm_report_info__18__filename = "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_policy.svh"s;
         __Vtask_uvm_report_info__18__verbosity = 0x000001f4U;
         __Vtask_uvm_report_info__18__message = "Attempting to pop an empty policy stack"s;
         __Vtask_uvm_report_info__18__id = "UVM_POLICY_EMPTY_POPACTIVE_OBJECT"s;
         vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__19__Vfuncout);
         vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs 
             = __Vfunc_get__19__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 136)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__20__Vfuncout);
+        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 136)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__20__Vfuncout);
         vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top 
             = __Vtask_get_root__20__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 137)->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, __Vtask_uvm_report_info__18__id, __Vtask_uvm_report_info__18__message, __Vtask_uvm_report_info__18__verbosity, __Vtask_uvm_report_info__18__filename, __Vtask_uvm_report_info__18__line, __Vtask_uvm_report_info__18__context_name, (IData)(__Vtask_uvm_report_info__18__report_enabled_checked));
+        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 137)->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, __Vtask_uvm_report_info__18__id, __Vtask_uvm_report_info__18__message, __Vtask_uvm_report_info__18__verbosity, __Vtask_uvm_report_info__18__filename, __Vtask_uvm_report_info__18__line, __Vtask_uvm_report_info__18__context_name, (IData)(__Vtask_uvm_report_info__18__report_enabled_checked));
     }
 }
 
@@ -229,27 +229,35 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_get_active_obje
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__23__Vfuncout;
-    __Vfunc___Vbasic_randomize__23__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__23__Vfuncout;
+    __Vfunc___VBasicRand__23__Vfuncout = 0;
     // Body
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__23__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__23__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__23__Vfuncout);
+            }(), __Vfunc___VBasicRand__23__Vfuncout));
 }
 
-void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::_ctor_var_reset(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_policy>& obj) {

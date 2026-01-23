@@ -16,15 +16,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_visitor_adapter__TBz113;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter___Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter___Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter___Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter___Vclpkg);
 
     // INTERNAL METHODS
@@ -37,8 +40,8 @@ class Vvirtual_sequences__Syms;
 
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter_ : public Vvirtual_sequences_uvm_pkg__03a__03auvm_visitor_adapter__TBz113 {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_accept(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_component> s, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_visitor_> v, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_structure_proxy_> p, CData/*0:0*/ invoke_begin_end);
     virtual void __VnoInFunc_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
@@ -47,7 +50,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter_ : public
     Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter_(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter_() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_top_down_visitor_adapter_>& obj);

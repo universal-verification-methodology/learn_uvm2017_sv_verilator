@@ -6,11 +6,11 @@
 
 void Varchitecture___024root___ctor_var_reset(Varchitecture___024root* vlSelf);
 
-Varchitecture___024root::Varchitecture___024root(Varchitecture__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , __VdlySched{*symsp->_vm_contextp__}
-    , vlSymsp{symsp}
+Varchitecture___024root::Varchitecture___024root(Varchitecture__Syms* symsp, const char* namep)
+    : __VdlySched{*symsp->_vm_contextp__}
  {
+    vlSymsp = symsp;
+    vlNamep = strdup(namep);
     // Reset structure values
     Varchitecture___024root___ctor_var_reset(this);
 }
@@ -20,4 +20,5 @@ void Varchitecture___024root::__Vconfigure(bool first) {
 }
 
 Varchitecture___024root::~Varchitecture___024root() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

@@ -25,7 +25,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_base;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -33,11 +33,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auv
     VlAssocArray<std::string, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_queue__Tz4>> __PVT__m_waiters;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28__Vclpkg);
 
     // INTERNAL METHODS
@@ -60,7 +63,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28 : public Vt
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_config_db__Tz28>& obj);

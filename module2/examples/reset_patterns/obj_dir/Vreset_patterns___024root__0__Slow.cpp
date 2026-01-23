@@ -53,7 +53,7 @@ VL_ATTR_COLD void Vreset_patterns___024root___ctor_var_reset(Vreset_patterns___0
     Vreset_patterns__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->reset_patterns__DOT__clk = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 3703627502664421551ull);
     vlSelf->reset_patterns__DOT__rst_n = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 17915148930751984820ull);
     vlSelf->reset_patterns__DOT__rst_sync = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 10507700028114209189ull);
@@ -62,8 +62,8 @@ VL_ATTR_COLD void Vreset_patterns___024root___ctor_var_reset(Vreset_patterns___0
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr___TOP__reset_patterns__DOT__clk__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 6500311909403398582ull);
-    vlSelf->__Vtrigprevexpr___TOP__reset_patterns__DOT__rst_n__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 10127086229144389389ull);
+    vlSelf->__Vtrigprevexpr___TOP__reset_patterns__DOT__clk__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__reset_patterns__DOT__rst_n__0 = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;
     }

@@ -14,18 +14,21 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101> __PVT__m_b_inst;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,7 +48,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101 : public Vtes
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz101>& obj);

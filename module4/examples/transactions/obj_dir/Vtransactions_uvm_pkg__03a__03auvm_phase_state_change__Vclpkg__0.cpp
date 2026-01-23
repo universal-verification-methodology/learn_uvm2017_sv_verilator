@@ -57,7 +57,7 @@ void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc_get_stat
     IData/*31:0*/ __Vtask_get_state__4__Vfuncout;
     __Vtask_get_state__4__Vfuncout = 0;
     // Body
-    VL_NULL_CHECK(this->__PVT__m_phase, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_phase.svh", 626)->__VnoInFunc_get_state(vlSymsp, __Vtask_get_state__4__Vfuncout);
+    VL_NULL_CHECK(this->__PVT__m_phase, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_phase.svh", 626)->__VnoInFunc_get_state(vlSymsp, __Vtask_get_state__4__Vfuncout);
     get_state__Vfuncrtn = __Vtask_get_state__4__Vfuncout;
 }
 
@@ -76,21 +76,25 @@ void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc_jump_to(
 void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__6__Vfuncout;
-    __Vfunc___Vbasic_randomize__6__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__6__Vfuncout;
+    __Vfunc___VBasicRand__6__Vfuncout = 0;
     // Body
-    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__6__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__6__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__6__Vfuncout);
+            }(), __Vfunc___VBasicRand__6__Vfuncout));
 }
 
-void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::_ctor_var_reset(Vtransactions__Syms* __restrict vlSymsp) {
@@ -98,6 +102,10 @@ void Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::_ctor_var_reset(Vtra
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
     __PVT__m_prev_state = 0;
+}
+
+Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::~Vtransactions_uvm_pkg__03a__03auvm_phase_state_change() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtransactions_uvm_pkg__03a__03auvm_phase_state_change::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_phase_state_change>& obj) {

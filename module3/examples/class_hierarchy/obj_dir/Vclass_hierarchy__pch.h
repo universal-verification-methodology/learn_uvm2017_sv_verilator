@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vclass_hierarchy.h instead.
 
-
 #ifndef VERILATED_VCLASS_HIERARCHY__PCH_H_
 #define VERILATED_VCLASS_HIERARCHY__PCH_H_  // guard
 

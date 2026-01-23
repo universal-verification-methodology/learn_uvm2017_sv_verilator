@@ -40,15 +40,18 @@ struct Vtest_simple_register_uvm_state_info_t__struct__0 {
 template <>
 struct VlIsCustomStruct<Vtest_simple_register_uvm_state_info_t__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer__Vclpkg);
 
     // INTERNAL METHODS
@@ -80,8 +83,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer : public Vtest_sim
     VlAssocArray<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object>, VlAssocArray<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object>, CData/*0:0*/>> __PVT__compare_map;
     VlQueue<std::string> __PVT__m_object_names;
     std::string __PVT__miscompares;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_compare_field(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ lhs, VlWide<128>/*4095:0*/ rhs, IData/*31:0*/ size, IData/*27:0*/ radix, CData/*0:0*/ &compare_field__Vfuncrtn);
     virtual void __VnoInFunc_compare_field_int(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ lhs, QData/*63:0*/ rhs, IData/*31:0*/ size, IData/*27:0*/ radix, CData/*0:0*/ &compare_field_int__Vfuncrtn);
     virtual void __VnoInFunc_compare_field_real(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, double lhs, double rhs, CData/*0:0*/ &compare_field_real__Vfuncrtn);
@@ -117,7 +120,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer : public Vtest_sim
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_comparer>& obj);

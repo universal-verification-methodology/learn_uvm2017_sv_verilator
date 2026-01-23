@@ -21,15 +21,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder__Vclpkg);
 
     // INTERNAL METHODS
@@ -51,8 +54,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder : public Vclass_hierar
     VlQueue<std::string> __PVT__m_object_names;
     std::string __PVT__filename;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_text_tr_database> __PVT__m_text_db;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_tr(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string txtype, IData/*31:0*/ stream, std::string nm, std::string label, std::string desc, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     virtual void __VnoInFunc_check_handle_kind(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string htype, IData/*31:0*/ handle, IData/*31:0*/ &check_handle_kind__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
@@ -85,7 +88,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder : public Vclass_hierar
     Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_text_recorder>& obj);

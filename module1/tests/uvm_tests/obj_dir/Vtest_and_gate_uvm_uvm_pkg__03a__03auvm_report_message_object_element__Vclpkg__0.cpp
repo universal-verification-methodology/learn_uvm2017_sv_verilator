@@ -19,13 +19,13 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__Vn
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__VnoInFunc_do_print(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_printer> printer) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__VnoInFunc_do_print\n"); );
     // Body
-    VL_NULL_CHECK(printer, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 258)->__VnoInFunc_print_object(vlProcess, vlSymsp, Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base::__PVT___name, this->__PVT___val, 0x2eU);
+    VL_NULL_CHECK(printer, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 258)->__VnoInFunc_print_object(vlProcess, vlSymsp, Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base::__PVT___name, this->__PVT___val, 0x2eU);
 }
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__VnoInFunc_do_record(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_recorder> recorder) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__VnoInFunc_do_record\n"); );
     // Body
-    VL_NULL_CHECK(recorder, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 262)->__VnoInFunc_record_object(vlProcess, vlSymsp, Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base::__PVT___name, this->__PVT___val);
+    VL_NULL_CHECK(recorder, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 262)->__VnoInFunc_record_object(vlProcess, vlSymsp, Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base::__PVT___name, this->__PVT___val);
 }
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__VnoInFunc_do_copy(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base> rhs) {
@@ -33,17 +33,17 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__Vn
     // Body
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element> _rhs;
     if (VL_UNLIKELY(((! VL_CAST_DYNAMIC(rhs, _rhs))))) {
-        VL_WRITEF_NX("[%0t] %%Error: uvm_report_message.svh:267: Assertion failed in %Nuvm_pkg.uvm_report_message_object_element.do_copy: 'assert' failed.\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: uvm_report_message.svh:267: Assertion failed in %Nuvm_pkg.uvm_report_message_object_element.do_copy: '$cast' failed.\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        VL_STOP_MT("/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 267, "");
+        VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 267, "");
     }
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base::__PVT___name 
-        = VL_NULL_CHECK(_rhs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 268)
+        = VL_NULL_CHECK(_rhs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 268)
         ->__PVT___name;
-    this->__PVT___val = VL_NULL_CHECK(_rhs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 269)
+    this->__PVT___val = VL_NULL_CHECK(_rhs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 269)
         ->__PVT___val;
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base::__PVT___action 
-        = VL_NULL_CHECK(rhs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 270)
+        = VL_NULL_CHECK(rhs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 270)
         ->__PVT___action;
 }
 
@@ -52,7 +52,7 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::__Vn
     // Body
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element> tmp;
     tmp = VL_NEW(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element, vlSymsp);
-    VL_NULL_CHECK(tmp, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 275)->__VnoInFunc_copy(vlSymsp, 
+    VL_NULL_CHECK(tmp, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 275)->__VnoInFunc_copy(vlSymsp, 
                                                                                 VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element>{this});
     do_clone__Vfuncrtn = tmp;
 }
@@ -69,6 +69,10 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::_cto
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_object_element>& obj) {

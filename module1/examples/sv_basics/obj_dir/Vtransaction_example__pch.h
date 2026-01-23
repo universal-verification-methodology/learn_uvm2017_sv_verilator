@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vtransaction_example.h instead.
 
-
 #ifndef VERILATED_VTRANSACTION_EXAMPLE__PCH_H_
 #define VERILATED_VTRANSACTION_EXAMPLE__PCH_H_  // guard
 

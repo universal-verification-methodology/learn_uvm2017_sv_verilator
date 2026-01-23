@@ -20,6 +20,10 @@ void Vdma_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_get_type_name(Vdma__S
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_get_type_name\n"); );
 }
 
+void Vdma_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_initialize(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_initialize\n"); );
+}
+
 Vdma_uvm_pkg__03a__03auvm_object_wrapper::Vdma_uvm_pkg__03a__03auvm_object_wrapper(Vdma__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_object_wrapper::new\n"); );
     // Body
@@ -30,6 +34,10 @@ void Vdma_uvm_pkg__03a__03auvm_object_wrapper::_ctor_var_reset(Vdma__Syms* __res
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_object_wrapper::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vdma_uvm_pkg__03a__03auvm_object_wrapper::~Vdma_uvm_pkg__03a__03auvm_object_wrapper() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_object_wrapper::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_object_wrapper>& obj) {

@@ -72,6 +72,8 @@ void Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc_b
 VlCoroutine Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc_run_phase(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase> phase) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc_run_phase\n"); );
     // Locals
+    CData/*0:0*/ __Vtrigprevexpr_h38b683d7__0;
+    __Vtrigprevexpr_h38b683d7__0 = 0;
     VlClassRef<Vtest_simple_register_uvm___024unit__03a__03aRegisterTransaction> __Vfunc_create__7__Vfuncout;
     IData/*31:0*/ __Vfunc_uvm_report_enabled__8__Vfuncout;
     __Vfunc_uvm_report_enabled__8__Vfuncout = 0;
@@ -79,21 +81,21 @@ VlCoroutine Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoI
     VL_KEEP_THIS;
     VlClassRef<Vtest_simple_register_uvm___024unit__03a__03aRegisterTransaction> txn;
     while (true) {
-        CData/*0:0*/ __VdynTrigger_h8a8c6577__0;
-        __VdynTrigger_h8a8c6577__0 = 0;
-        __VdynTrigger_h8a8c6577__0 = 0U;
-        this->__Vtrigprevexpr_h7c62d22a__0 = VL_NULL_CHECK(this->__PVT__vif, "test_simple_register_uvm.sv", 127)
+        CData/*0:0*/ __VdynTrigger_h4ab926b0__0;
+        __VdynTrigger_h4ab926b0__0 = 0;
+        __VdynTrigger_h4ab926b0__0 = 0U;
+        __Vtrigprevexpr_h38b683d7__0 = VL_NULL_CHECK(this->__PVT__vif, "test_simple_register_uvm.sv", 127)
             ->clk;
-        while ((1U & (~ (IData)(__VdynTrigger_h8a8c6577__0)))) {
+        while ((1U & (~ (IData)(__VdynTrigger_h4ab926b0__0)))) {
             co_await vlSymsp->TOP.__VdynSched.evaluation(
                                                          vlProcess, 
                                                          "@(posedge $unit::RegisterMonitor.vif.clk)", 
                                                          "test_simple_register_uvm.sv", 
                                                          127);
-            __VdynTrigger_h8a8c6577__0 = (VL_NULL_CHECK(this->__PVT__vif, "test_simple_register_uvm.sv", 127)
-                                          ->clk & (~ (IData)(this->__Vtrigprevexpr_h7c62d22a__0)));
-            vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_h8a8c6577__0);
-            this->__Vtrigprevexpr_h7c62d22a__0 = VL_NULL_CHECK(this->__PVT__vif, "test_simple_register_uvm.sv", 127)
+            __VdynTrigger_h4ab926b0__0 = (VL_NULL_CHECK(this->__PVT__vif, "test_simple_register_uvm.sv", 127)
+                                          ->clk & (~ (IData)(__Vtrigprevexpr_h38b683d7__0)));
+            vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_h4ab926b0__0);
+            __Vtrigprevexpr_h38b683d7__0 = VL_NULL_CHECK(this->__PVT__vif, "test_simple_register_uvm.sv", 127)
                 ->clk;
         }
         co_await vlSymsp->TOP.__VdynSched.resumption(
@@ -123,26 +125,30 @@ VlCoroutine Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoI
         }
         VL_NULL_CHECK(this->__PVT__ap, "test_simple_register_uvm.sv", 136)->__VnoInFunc_write(vlProcess, vlSymsp, txn);
     }
-}
+    co_return;}
 
 void Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__12__Vfuncout;
-    __Vfunc___Vbasic_randomize__12__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__12__Vfuncout;
+    __Vfunc___VBasicRand__12__Vfuncout = 0;
     // Body
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__12__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__12__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__12__Vfuncout);
+            }(), __Vfunc___VBasicRand__12__Vfuncout));
 }
 
-void Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::_ctor_var_reset(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {
@@ -150,7 +156,10 @@ void Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::_ctor_var_res
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
     __PVT__vif = nullptr;
-    __Vtrigprevexpr_h7c62d22a__0 = VL_SCOPED_RAND_RESET_I(1, 8126698935361081869ULL, 3742412969918159096ull);
+}
+
+Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::~Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor>& obj) {

@@ -24,15 +24,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,8 +60,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14 : public 
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi41> __PVT__sqr_rsp_analysis_fifo;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_analysis_export__Tz1> __PVT__rsp_export;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1> __PVT__m_req_fifo;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_analysis_write(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item> t);
     virtual void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_connect_phase(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
@@ -83,7 +86,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14 : public 
     Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_param_base__pi14>& obj);

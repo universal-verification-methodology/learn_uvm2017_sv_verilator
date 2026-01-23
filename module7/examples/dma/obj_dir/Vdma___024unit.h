@@ -12,35 +12,38 @@
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma___024unit final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma___024unit final {
   public:
 
     // DESIGN SPECIFIC STATE
-    static VlAssocArray<IData/*31:0*/, CData/*0:0*/> __Venumtab_enum_valid13;
+    static VlAssocArray<IData/*31:0*/, CData/*0:0*/> __Venumtab_enum_valid25;
+    static VlAssocArray<IData/*31:0*/, std::string> __Venumtab_enum_name37;
+    static VlAssocArray<IData/*27:0*/, std::string> __Venumtab_enum_name15;
     static VlAssocArray<IData/*31:0*/, std::string> __Venumtab_enum_name25;
-    static VlAssocArray<IData/*27:0*/, std::string> __Venumtab_enum_name3;
-    static VlAssocArray<IData/*31:0*/, std::string> __Venumtab_enum_name13;
-    static VlAssocArray<IData/*31:0*/, std::string> __Venumtab_enum_name63;
-    static VlUnpacked<CData/*1:0*/, 4> __Venumtab_enum_next9;
-    static VlUnpacked<std::string, 8> __Venumtab_enum_name23;
-    static VlUnpacked<std::string, 4> __Venumtab_enum_name9;
-    static VlUnpacked<std::string, 2> __Venumtab_enum_name59;
-    static VlUnpacked<std::string, 4> __Venumtab_enum_name61;
-    static VlUnpacked<std::string, 4> __Venumtab_enum_name81;
-    static VlUnpacked<std::string, 4> __Venumtab_enum_name79;
+    static VlAssocArray<IData/*31:0*/, std::string> __Venumtab_enum_name75;
+    static VlUnpacked<CData/*1:0*/, 4> __Venumtab_enum_next21;
+    static VlUnpacked<std::string, 8> __Venumtab_enum_name35;
+    static VlUnpacked<std::string, 4> __Venumtab_enum_name21;
+    static VlUnpacked<std::string, 2> __Venumtab_enum_name71;
     static VlUnpacked<std::string, 4> __Venumtab_enum_name73;
-    static VlUnpacked<std::string, 4> __Venumtab_enum_name71;
-    static VlUnpacked<std::string, 8> __Venumtab_enum_name77;
+    static VlUnpacked<std::string, 4> __Venumtab_enum_name93;
+    static VlUnpacked<std::string, 4> __Venumtab_enum_name91;
+    static VlUnpacked<std::string, 4> __Venumtab_enum_name85;
+    static VlUnpacked<std::string, 4> __Venumtab_enum_name83;
+    static VlUnpacked<std::string, 8> __Venumtab_enum_name89;
     static VlUnpacked<IData/*31:0*/, 4> __Venumvaltab_0;
     static VlUnpacked<IData/*31:0*/, 8> __Venumvaltab_1;
     static VlUnpacked<IData/*31:0*/, 5> __Venumvaltab_2;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma___024unit(Vdma__Syms* symsp, const char* v__name);
+    Vdma___024unit();
     ~Vdma___024unit();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma___024unit);
 
     // INTERNAL METHODS

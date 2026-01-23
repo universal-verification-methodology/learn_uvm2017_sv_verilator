@@ -86,7 +86,7 @@ struct Vclass_hierarchy_uvm_reg_bus_op__struct__0 {
 template <>
 struct VlIsCustomStruct<Vclass_hierarchy_uvm_reg_bus_op__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -127,11 +127,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg final : public Veril
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> __PVT__end_of_elaboration_ph;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg();
     ~Vclass_hierarchy_uvm_pkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg);
 
     // INTERNAL METHODS

@@ -8,7 +8,6 @@
 #include "verilated.h"
 #include "verilated_timing.h"
 #include "verilated_random.h"
-class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_coreservice_t;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz268;
@@ -19,7 +18,6 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_block;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228;
-class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_root;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence_;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence_base;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence_item;
@@ -29,15 +27,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +59,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228 : public Vtest
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_adapter> __PVT__adapter;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer__Tz224_TBz224> __PVT__reg_seqr;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence_base> __PVT__upstream_parent;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual VlCoroutine __VnoInFunc_do_reg_item(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -82,7 +83,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228 : public Vtest
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz228>& obj);

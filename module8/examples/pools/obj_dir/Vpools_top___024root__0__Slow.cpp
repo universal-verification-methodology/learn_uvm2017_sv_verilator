@@ -311,7 +311,7 @@ VL_ATTR_COLD void Vpools_top___024root___eval_static(Vpools_top___024root* vlSel
     Vpools_top_uvm_pkg__03a__03auvm_reg__Vclpkg___eval_static__TOP__uvm_pkg__03a__03auvm_reg__Vclpkg((&vlSymsp->TOP__uvm_pkg__03a__03auvm_reg__Vclpkg), vlProcess);
     Vpools_top_uvm_pkg__03a__03auvm_vreg__Vclpkg___eval_static__TOP__uvm_pkg__03a__03auvm_vreg__Vclpkg((&vlSymsp->TOP__uvm_pkg__03a__03auvm_vreg__Vclpkg), vlProcess);
     Vpools_top_uvm_pkg__03a__03auvm_mem__Vclpkg___eval_static__TOP__uvm_pkg__03a__03auvm_mem__Vclpkg((&vlSymsp->TOP__uvm_pkg__03a__03auvm_mem__Vclpkg), vlProcess);
-    vlSelfRef.__Vtrigprevexpr_h69246a8d__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
+    vlSelfRef.__Vtrigprevexpr_h5a1c11cb__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
 }
 
 VL_ATTR_COLD void Vpools_top___024root___eval_final(Vpools_top___024root* vlSelf) {
@@ -365,8 +365,7 @@ VL_ATTR_COLD void Vpools_top___024root___ctor_var_reset(Vpools_top___024root* vl
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
-    vlSelf->__Vtrigprevexpr_h69246a8d__1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11094835894275956180ull);
+    vlSelf->__Vtrigprevexpr_h5a1c11cb__1 = 0;
     vlSelf->__VactDidInit = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;

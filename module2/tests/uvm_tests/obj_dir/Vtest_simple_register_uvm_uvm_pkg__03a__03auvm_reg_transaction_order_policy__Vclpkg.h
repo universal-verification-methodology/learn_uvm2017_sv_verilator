@@ -14,15 +14,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,8 +38,8 @@ class Vtest_simple_register_uvm__Syms;
 
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy : public Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_order(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlQueue<Vtest_simple_register_uvm_uvm_reg_bus_op__struct__0> &q);
     virtual void __VnoInFunc_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
@@ -45,7 +48,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_polic
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_transaction_order_policy>& obj);

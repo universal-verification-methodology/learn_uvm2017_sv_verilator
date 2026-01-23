@@ -18,7 +18,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -27,11 +27,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_callbacks
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz79_TBz80> __PVT__m_pool;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -50,8 +53,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base : public Vrecorders_top
     VlQueue<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base>> __PVT__m_this_type;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_typeid_base> __PVT__m_super_type;
     VlQueue<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_typeid_base>> __PVT__m_derived_types;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_check_registration(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &check_registration__Vfuncrtn);
     virtual void __VnoInFunc_m_add_tw_cbs(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_callback> cb, IData/*31:0*/ ordering);
     virtual void __VnoInFunc_m_am_i_a(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> obj, CData/*0:0*/ &m_am_i_a__Vfuncrtn);
@@ -66,7 +69,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base : public Vrecorders_top
     Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_callbacks_base>& obj);

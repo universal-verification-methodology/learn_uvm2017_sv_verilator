@@ -120,8 +120,7 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_b
                 }(), __Vfunc_uvm_report_enabled__20__Vfuncout))) {
         this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "VIRTUAL_SEQ"s, "Sequential sequences completed"s, 0x000000c8U, "virtual_sequences.sv"s, 0x0000007bU, ""s, 1U);
     }
-    co_return;
-}
+    co_return;}
 
 VlCoroutine Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_body____Vfork_1__1(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences___024unit__03a__03aChannelSequence> &slave_seq, VlForkSync __Vfork_1__sync) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_body____Vfork_1__1\n"); );
@@ -136,7 +135,7 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_b
     co_await VL_NULL_CHECK(slave_seq, "virtual_sequences.sv", 99)->__VnoInFunc_start(vlProcess, vlSymsp, this->__PVT__slave_seqr, VlNull{}, 0xffffffffU, 1U);
     __Vfork_1__sync.done("virtual_sequences.sv", 95);
     vlProcess->state(VlProcess::FINISHED);
-}
+    co_return;}
 
 VlCoroutine Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_body____Vfork_1__0(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences___024unit__03a__03aChannelSequence> &master_seq, VlForkSync __Vfork_1__sync) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_body____Vfork_1__0\n"); );
@@ -151,32 +150,40 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_b
     co_await VL_NULL_CHECK(master_seq, "virtual_sequences.sv", 93)->__VnoInFunc_start(vlProcess, vlSymsp, this->__PVT__master_seqr, VlNull{}, 0xffffffffU, 1U);
     __Vfork_1__sync.done("virtual_sequences.sv", 89);
     vlProcess->state(VlProcess::FINISHED);
-}
+    co_return;}
 
 void Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__23__Vfuncout;
-    __Vfunc___Vbasic_randomize__23__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__23__Vfuncout;
+    __Vfunc___VBasicRand__23__Vfuncout = 0;
     // Body
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vvirtual_sequences_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__23__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__23__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__23__Vfuncout);
+            }(), __Vfunc___VBasicRand__23__Vfuncout));
 }
 
-void Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc___Vbasic_randomize\n"); );
+void Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vvirtual_sequences___024unit__03a__03aVirtualSequence::_ctor_var_reset(Vvirtual_sequences__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vvirtual_sequences___024unit__03a__03aVirtualSequence::~Vvirtual_sequences___024unit__03a__03aVirtualSequence() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequence::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences___024unit__03a__03aVirtualSequence>& obj) {

@@ -18,15 +18,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_resource_db___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_resource_db___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_resource_db___Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_resource_db___Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_resource_db___Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_resource_db___Vclpkg);
 
     // INTERNAL METHODS
@@ -58,7 +61,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_resource_db_ : public virtual VlClass {
     Vpools_top_uvm_pkg__03a__03auvm_resource_db_(Vpools_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_resource_db_() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_resource_db_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_resource_db_>& obj);

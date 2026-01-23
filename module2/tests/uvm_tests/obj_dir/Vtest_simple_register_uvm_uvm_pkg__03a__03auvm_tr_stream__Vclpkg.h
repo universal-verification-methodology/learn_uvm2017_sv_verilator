@@ -21,7 +21,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -29,11 +29,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auv
     VlAssocArray<IData/*31:0*/, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream>> __PVT__m_streams_by_id;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream__Vclpkg);
 
     // INTERNAL METHODS
@@ -55,11 +58,11 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream : public Vtest_si
     CData/*0:0*/ __PVT__m_is_closed;
     VlAssocArray<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder>, CData/*0:0*/> __PVT__m_records;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_set_before_get_dap__Tz18> __PVT__m_cfg_dap;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_close(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_close(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_free(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_close(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_free(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_open(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_database> db, std::string scope, std::string stream_type_name);
     virtual void __VnoInFunc_do_open_recorder(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ open_time, std::string type_name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder> &do_open_recorder__Vfuncrtn);
     void __VnoInFunc_free(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
@@ -80,7 +83,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream : public Vtest_si
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream>& obj);

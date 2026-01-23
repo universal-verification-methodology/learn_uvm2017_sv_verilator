@@ -86,7 +86,7 @@ struct Vrecorders_top_uvm_reg_bus_op__struct__0 {
 template <>
 struct VlIsCustomStruct<Vrecorders_top_uvm_reg_bus_op__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -127,11 +127,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg final : public Verilat
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> __PVT__end_of_elaboration_ph;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg();
     ~Vrecorders_top_uvm_pkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg);
 
     // INTERNAL METHODS

@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Varchitecture.h instead.
 
-
 #ifndef VERILATED_VARCHITECTURE__PCH_H_
 #define VERILATED_VARCHITECTURE__PCH_H_  // guard
 

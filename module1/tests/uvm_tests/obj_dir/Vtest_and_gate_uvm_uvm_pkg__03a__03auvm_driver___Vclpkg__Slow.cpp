@@ -6,10 +6,12 @@
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg___ctor_var_reset(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg* vlSelf);
 
-Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg::Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg::Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg() = default;
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg() = default;
+
+void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg::ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg::__Vconfigure(bool 
     (void)first;  // Prevent unused variable warning
 }
 
-Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg() {
+void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_driver___Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

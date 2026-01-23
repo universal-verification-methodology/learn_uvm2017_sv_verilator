@@ -18,18 +18,21 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_root;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38> __PVT__m_global_queue;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38__Vclpkg);
 
     // INTERNAL METHODS
@@ -48,10 +51,9 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38 : public Vclass_hierarch
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_ha678ddd2__0;
     VlQueue<std::string> __PVT__queue;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_delete(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ index);
@@ -73,7 +75,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38 : public Vclass_hierarch
     Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_queue__Tz38>& obj);

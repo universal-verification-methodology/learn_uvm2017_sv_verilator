@@ -22,7 +22,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -31,11 +31,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_typed
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90> __PVT__m_t_inst;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,8 +55,8 @@ class Vvirtual_sequences__Syms;
 
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90 : public Vvirtual_sequences_uvm_pkg__03a__03auvm_callbacks_base {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_m_add_tw_cbs(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_callback> cb, IData/*31:0*/ ordering);
     virtual void __VnoInFunc_m_am_i_a(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> obj, CData/*0:0*/ &m_am_i_a__Vfuncrtn);
     virtual void __VnoInFunc_m_delete_tw_cbs(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &m_delete_tw_cbs__Vfuncrtn);
@@ -65,7 +68,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90 : public Vvi
     Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_typed_callbacks__Tz90>& obj);

@@ -19,15 +19,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_param_base__pi162;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224 : public Vt
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_param_base__pi162> __PVT__param_sequencer;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> __PVT__req;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> __PVT__rsp;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_printer> printer);
     void __VnoInFunc_get_current_item(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> &get_current_item__Vfuncrtn);
     virtual VlCoroutine __VnoInFunc_get_response(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> &response, IData/*31:0*/ transaction_id);
@@ -59,7 +62,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224 : public Vt
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence__Tz224_TBz224>& obj);

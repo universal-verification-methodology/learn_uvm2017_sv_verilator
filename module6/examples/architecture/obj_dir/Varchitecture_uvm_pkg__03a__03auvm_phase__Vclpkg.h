@@ -11,7 +11,7 @@
 class Varchitecture_std__03a__03amailbox__Tz32;
 class Varchitecture_std__03a__03aprocess;
 class Varchitecture_uvm_pkg__03a__03a__VDynScope_0;
-class Varchitecture_uvm_pkg__03a__03a__VDynScope_4;
+class Varchitecture_uvm_pkg__03a__03a__VDynScope_5;
 class Varchitecture_uvm_pkg__03a__03auvm_callback_iter__Tz32_TBz33;
 class Varchitecture_uvm_pkg__03a__03auvm_cmdline_processor;
 class Varchitecture_uvm_pkg__03a__03auvm_component;
@@ -28,7 +28,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_task_phase;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_phase__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_phase__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -42,11 +42,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_phase__Vcl
     VlClassRef<Varchitecture_std__03a__03amailbox__Tz32> __PVT__m_phase_hopper;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_phase__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_phase__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_phase__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_phase__Vclpkg);
 
     // INTERNAL METHODS
@@ -55,7 +58,7 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_phase__Vcl
     void __VnoInFunc_jump_all(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase);
     VlCoroutine __VnoInFunc_m_run_phases(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_run_phases____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> unnamedblk157__DOT__phase);
+    VlCoroutine __VnoInFunc_m_run_phases____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> unnamedblk157__DOT__phase, VlClassRef<Varchitecture_std__03a__03aprocess> unnamedblk157__DOT__unnamedblk158__DOT____VforkParent);
   public:
     void __VnoInFunc_set_default_max_ready_to_end_iterations(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ max);
 };
@@ -71,27 +74,14 @@ class Varchitecture_uvm_pkg__03a__03auvm_phase : public Varchitecture_uvm_pkg__0
     CData/*0:0*/ __PVT__m_jump_bkwd;
     CData/*0:0*/ __PVT__m_jump_fwd;
     CData/*0:0*/ __PVT__m_premature_end;
-    CData/*0:0*/ __Vtrigprevexpr_hf177dfba__0;
-    CData/*0:0*/ __Vtrigprevexpr_hc7ed5d52__0;
-    CData/*0:0*/ __Vtrigprevexpr_h26d75689__0;
-    CData/*0:0*/ __Vtrigprevexpr_h7ae7f53e__0;
-    CData/*0:0*/ __Vtrigprevexpr_h7aedf16b__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d86bfde__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d73a8bb__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d0e4411__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d7fb647__0;
     IData/*31:0*/ __PVT__m_phase_type;
     IData/*31:0*/ __PVT__m_state;
     IData/*31:0*/ __PVT__m_run_count;
     IData/*31:0*/ __PVT__max_ready_to_end_iters;
     IData/*31:0*/ __PVT__m_num_procs_not_yet_returned;
     IData/*31:0*/ __PVT__m_ready_to_end_count;
-    IData/*31:0*/ __Vtrigprevexpr_h402ae9b5__0;
-    IData/*31:0*/ __Vtrigprevexpr_h0e3a6865__0;
-    IData/*31:0*/ __Vtrigprevexpr_ha08115e3__0;
     VlAssocArray<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase>, CData/*0:0*/> __PVT__m_predecessors;
     VlAssocArray<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase>, CData/*0:0*/> __PVT__m_successors;
-    std::string __Vtask_get_name__107__Vfuncout;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> __PVT__m_parent;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> __PVT__m_imp;
     VlClassRef<Varchitecture_std__03a__03aprocess> __PVT__m_phase_proc;
@@ -99,14 +89,14 @@ class Varchitecture_uvm_pkg__03a__03auvm_phase : public Varchitecture_uvm_pkg__0
     VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase>> __PVT__m_sync;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_objection> __PVT__phase_done;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> __PVT__m_jump_phase;
-    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__232____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__234____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__271____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__273____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__299____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__301____VDynScope_uvm_wait_for_nba_region_0;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__234____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__236____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__273____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__275____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__301____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__303____VDynScope_uvm_wait_for_nba_region_0;
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_add(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> with_phase, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> after_phase, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> before_phase, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> start_with_phase, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> end_with_phase);
     void __VnoInFunc_clear(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ state);
     void __VnoInFunc_clear_successors(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ state, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> end_state);
@@ -118,17 +108,17 @@ class Varchitecture_uvm_pkg__03a__03auvm_phase : public Varchitecture_uvm_pkg__0
     virtual void __VnoInFunc_execute(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> comp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase);
     VlCoroutine __VnoInFunc_execute_phase(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_1__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_4> __VDynScope_execute_phase_0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_1__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_5> __VDynScope_execute_phase_0, VlClassRef<Varchitecture_std__03a__03aprocess> master_phase_process__VgetForkParent__DOT____VforkParent);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_2__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_2__0____Vfork_3__0(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h31e198a7__0);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_4> &__VDynScope_execute_phase_0, VlForkSync __Vfork_4__sync);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_2__0____Vfork_3__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h4e2b0559__0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_5> &__VDynScope_execute_phase_0, VlForkSync __Vfork_4__sync);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlForkSync __Vfork_5__sync);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_4> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_5> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_6__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_6__0____Vfork_7__0(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_hb2282d82__0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_6__0____Vfork_7__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_hf2954cf8__0);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_8__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_8__0____Vfork_9__0(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h0d47314e__0);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__2(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_4> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_8__0____Vfork_9__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h9a449d1f__0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__2(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_5> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
   public:
     void __VnoInFunc_find(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase, CData/*0:0*/ stay_in_scope, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> &find__Vfuncrtn);
     void __VnoInFunc_find_by_name(Varchitecture__Syms* __restrict vlSymsp, std::string name, CData/*0:0*/ stay_in_scope, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> &find_by_name__Vfuncrtn);
@@ -185,7 +175,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_phase : public Varchitecture_uvm_pkg__0
     Varchitecture_uvm_pkg__03a__03auvm_phase(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ phase_type, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_phase() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_phase();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase>& obj);

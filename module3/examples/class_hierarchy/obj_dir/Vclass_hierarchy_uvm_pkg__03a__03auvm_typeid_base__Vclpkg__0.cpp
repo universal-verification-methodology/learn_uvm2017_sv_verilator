@@ -16,6 +16,10 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid_base::_ctor_var_reset(Vclass_h
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid_base::~Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid_base() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid_base::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid_base>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid_base::VL_TO_STRING\n"); );
     // Body

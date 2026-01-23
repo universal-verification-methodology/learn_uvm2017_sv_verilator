@@ -23,7 +23,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -32,11 +32,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auv
     VlAssocArray<IData/*31:0*/, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder>> __PVT__m_recorders_by_id;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder__Vclpkg);
 
     // INTERNAL METHODS
@@ -65,14 +68,14 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder : public Vtest_sim
     QData/*63:0*/ __PVT__m_open_time;
     QData/*63:0*/ __PVT__m_close_time;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_set_before_get_dap__Tz21> __PVT__m_stream_dap;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string txtype, IData/*31:0*/ stream, std::string nm, std::string label, std::string desc, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     virtual void __VnoInFunc_check_handle_kind(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string htype, IData/*31:0*/ handle, IData/*31:0*/ &check_handle_kind__Vfuncrtn);
     void __VnoInFunc_close(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, QData/*63:0*/ close_time);
     virtual void __VnoInFunc_create_stream(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, std::string t, std::string scope, IData/*31:0*/ &create_stream__Vfuncrtn);
     virtual void __VnoInFunc_do_close(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, QData/*63:0*/ close_time);
-    virtual void __VnoInFunc_do_free(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_free(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_open(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream> stream, QData/*63:0*/ open_time, std::string type_name);
     virtual void __VnoInFunc_do_record_field(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix);
     virtual void __VnoInFunc_do_record_field_int(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix);
@@ -116,7 +119,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder : public Vtest_sim
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder>& obj);

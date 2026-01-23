@@ -13,15 +13,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_std__03a__03amailbox__Tz26__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_std__03a__03amailbox__Tz26__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_std__03a__03amailbox__Tz26__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_std__03a__03amailbox__Tz26__Vclpkg();
     ~Vtest_simple_register_uvm_std__03a__03amailbox__Tz26__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_std__03a__03amailbox__Tz26__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,9 +38,6 @@ class Vtest_simple_register_uvm_std__03a__03amailbox__Tz26 : public virtual VlCl
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_ha22f9f64__0;
-    CData/*0:0*/ __Vtrigprevexpr_ha1815869__0;
-    CData/*0:0*/ __Vtrigprevexpr_ha1815869__1;
     IData/*31:0*/ __PVT__m_bound;
     VlQueue<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_item>> __PVT__m_queue;
     VlCoroutine __VnoInFunc_get(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_sequence_item> &message);

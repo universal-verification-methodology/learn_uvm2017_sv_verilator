@@ -22,15 +22,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +61,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload : public Vrecorder
     VlQueue<CData/*7:0*/> __PVT__m_byte_enable;
     VlAssocArray<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_extension_base>, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_extension_base>> __PVT__m_extensions;
     VlQueue<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_extension_base>> __PVT__m_rand_exts;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_clear_extension(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_extension_base> ext_handle);
     void __VnoInFunc_clear_extensions(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
@@ -109,7 +112,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload : public Vrecorder
     Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_generic_payload>& obj);

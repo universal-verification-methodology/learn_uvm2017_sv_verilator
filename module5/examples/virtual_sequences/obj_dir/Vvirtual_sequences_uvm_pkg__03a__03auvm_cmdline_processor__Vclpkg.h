@@ -14,18 +14,21 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_report_object;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor : public Vvirtua
     VlQueue<std::string> __PVT__m_argv;
     VlQueue<std::string> __PVT__m_plus_argv;
     VlQueue<std::string> __PVT__m_uvm_argv;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_get_arg_matches(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &args, IData/*31:0*/ &get_arg_matches__Vfuncrtn);
     void __VnoInFunc_get_arg_value(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string match, std::string &value, IData/*31:0*/ &get_arg_value__Vfuncrtn);
     void __VnoInFunc_get_arg_values(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &values, IData/*31:0*/ &get_arg_values__Vfuncrtn);
@@ -62,7 +65,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor : public Vvirtua
     Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor>& obj);

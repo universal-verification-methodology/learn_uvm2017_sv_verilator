@@ -69,7 +69,7 @@ VL_ATTR_COLD void Vsignal_access___024root___ctor_var_reset(Vsignal_access___024
     Vsignal_access__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->signal_access__DOT__clk = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 15593770162267594570ull);
     vlSelf->signal_access__DOT__rst_n = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 7046074131027383033ull);
     vlSelf->signal_access__DOT__enable = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 280100379555711244ull);
@@ -82,9 +82,9 @@ VL_ATTR_COLD void Vsignal_access___024root___ctor_var_reset(Vsignal_access___024
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr___TOP__signal_access__DOT__clk__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 4669825282338256898ull);
-    vlSelf->__Vtrigprevexpr___TOP__signal_access__DOT__rst_n__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 3039543094224596897ull);
-    vlSelf->__Vtrigprevexpr___TOP__signal_access__DOT__q__0 = VL_SCOPED_RAND_RESET_I(8, __VscopeHash, 17227462688315021727ull);
+    vlSelf->__Vtrigprevexpr___TOP__signal_access__DOT__clk__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__signal_access__DOT__rst_n__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__signal_access__DOT__q__0 = 0;
     vlSelf->__VactDidInit = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;

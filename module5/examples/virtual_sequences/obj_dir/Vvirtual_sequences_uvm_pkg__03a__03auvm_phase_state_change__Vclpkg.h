@@ -17,15 +17,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change : public Vvirtu
     IData/*31:0*/ __PVT__m_prev_state;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase> __PVT__m_phase;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase> __PVT__m_jump_to;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_get_object_type(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_prev_state(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &get_prev_state__Vfuncrtn);
@@ -60,7 +63,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change : public Vvirtu
     Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase_state_change>& obj);

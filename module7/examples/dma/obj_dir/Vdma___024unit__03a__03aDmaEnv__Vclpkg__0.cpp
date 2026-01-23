@@ -61,35 +61,43 @@ void Vdma___024unit__03a__03aDmaEnv::__VnoInFunc_connect_phase(VlProcessRef vlPr
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::__VnoInFunc_connect_phase\n"); );
     // Body
     Vdma_uvm_pkg__03a__03auvm_component::__VnoInFunc_connect_phase(vlProcess, vlSymsp, phase);
-    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__drv, "dma.sv", 81)
-                  ->__PVT__seq_item_port, "dma.sv", 81)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__seqr, "dma.sv", 81)
+    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__drv, "dma.sv", 83)
+                  ->__PVT__seq_item_port, "dma.sv", 83)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__seqr, "dma.sv", 83)
                                                                              ->__PVT__seq_item_export);
 }
 
 void Vdma___024unit__03a__03aDmaEnv::__VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__8__Vfuncout;
-    __Vfunc___Vbasic_randomize__8__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__8__Vfuncout;
+    __Vfunc___VBasicRand__8__Vfuncout = 0;
     // Body
-    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__8__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__8__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__8__Vfuncout);
+            }(), __Vfunc___VBasicRand__8__Vfuncout));
 }
 
-void Vdma___024unit__03a__03aDmaEnv::__VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::__VnoInFunc___Vbasic_randomize\n"); );
+void Vdma___024unit__03a__03aDmaEnv::__VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vdma___024unit__03a__03aDmaEnv::__VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vdma___024unit__03a__03aDmaEnv::_ctor_var_reset(Vdma__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vdma___024unit__03a__03aDmaEnv::~Vdma___024unit__03a__03aDmaEnv() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vdma___024unit__03a__03aDmaEnv>& obj) {

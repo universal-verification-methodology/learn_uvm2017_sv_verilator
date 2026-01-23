@@ -32,18 +32,21 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg_field_cbs;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_register_cb_uvm_vreg_cbs;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg__Vclpkg);
 
     // INTERNAL METHODS
@@ -76,8 +79,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg : public Vvirtual_sequences_u
     VlClassRef<Vvirtual_sequences_std__03a__03asemaphore> __PVT__atomic;
     VlCoroutine __VnoInFunc_XatomicX(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ on);
     void __VnoInFunc_Xlock_modelX(Vvirtual_sequences__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_field(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg_field> field);
     virtual void __VnoInFunc_allocate(Vvirtual_sequences__Syms* __restrict vlSymsp, QData/*63:0*/ n, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_mem_mam> mam, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_mem_mam_policy> alloc, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_mem_region> &allocate__Vfuncrtn);
     virtual void __VnoInFunc_clone(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> &clone__Vfuncrtn);
@@ -125,7 +128,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg : public Vvirtual_sequences_u
     Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ n_bits);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg>& obj);

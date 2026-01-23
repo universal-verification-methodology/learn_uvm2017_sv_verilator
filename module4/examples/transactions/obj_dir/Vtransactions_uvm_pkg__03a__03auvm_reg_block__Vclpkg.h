@@ -31,7 +31,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_vreg_field;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_reg_block__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_reg_block__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -40,11 +40,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_reg_block_
     VlAssocArray<std::string, IData/*31:0*/> __PVT__m_root_names;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_reg_block__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_reg_block__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_reg_block__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_reg_block__Vclpkg);
 
     // INTERNAL METHODS
@@ -85,8 +88,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_reg_block : public Vtransactions_uvm_pk
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_map> __PVT__default_map;
     void __VnoInFunc_Xinit_address_mapsX(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_XsampleX(Vtransactions__Syms* __restrict vlSymsp, QData/*63:0*/ addr, CData/*0:0*/ is_read, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_map> map);
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_block(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_block> blk);
     virtual void __VnoInFunc_add_coverage(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ models);
     void __VnoInFunc_add_hdl_path(Vtransactions__Syms* __restrict vlSymsp, std::string path, std::string kind);
@@ -166,7 +169,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_reg_block : public Vtransactions_uvm_pk
     Vtransactions_uvm_pkg__03a__03auvm_reg_block(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ has_coverage);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_reg_block() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_reg_block();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_block>& obj);

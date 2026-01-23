@@ -18,7 +18,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -27,11 +27,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callb
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_pool__Tz68_TBz69> __PVT__m_pool;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -50,8 +53,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base : public Vtest_and_
     VlQueue<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base>> __PVT__m_this_type;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid_base> __PVT__m_super_type;
     VlQueue<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid_base>> __PVT__m_derived_types;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_check_registration(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &check_registration__Vfuncrtn);
     virtual void __VnoInFunc_m_add_tw_cbs(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callback> cb, IData/*31:0*/ ordering);
     virtual void __VnoInFunc_m_am_i_a(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> obj, CData/*0:0*/ &m_am_i_a__Vfuncrtn);
@@ -66,7 +69,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base : public Vtest_and_
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks_base>& obj);

@@ -8,7 +8,8 @@
 #include "verilated.h"
 #include "verilated_timing.h"
 #include "verilated_random.h"
-class Vpools_top_uvm_pkg__03a__03a__VDynScope_24;
+class Vpools_top_std__03a__03aprocess;
+class Vpools_top_uvm_pkg__03a__03a__VDynScope_34;
 class Vpools_top_uvm_pkg__03a__03auvm_component;
 class Vpools_top_uvm_pkg__03a__03auvm_coreservice_t;
 class Vpools_top_uvm_pkg__03a__03auvm_event_;
@@ -20,15 +21,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_heartbeat__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_heartbeat__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_heartbeat__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_heartbeat__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_heartbeat__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_heartbeat__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,19 +56,19 @@ class Vpools_top_uvm_pkg__03a__03auvm_heartbeat : public Vpools_top_uvm_pkg__03a
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> __PVT__m_cntxt;
     VlQueue<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component>> __PVT__m_hblist;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_event_> __PVT__m_event;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_add(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> comp);
     void __VnoInFunc_m_disable_cb(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_m_enable_cb(Vpools_top__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_m_hb_process(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_hb_process____Vfork_2__0(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03a__VDynScope_24> __VDynScope_m_hb_process_1, VlForkSync __Vfork_2__sync);
+    VlCoroutine __VnoInFunc_m_hb_process____Vfork_2__0(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03a__VDynScope_34> __VDynScope_m_hb_process_2, VlForkSync __Vfork_2__sync);
     VlCoroutine __VnoInFunc_m_hb_process____Vfork_2__1(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlForkSync __Vfork_2__sync);
   public:
     void __VnoInFunc_m_start_hb_process(Vpools_top__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_start_hb_process____Vfork_1__0(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
+    VlCoroutine __VnoInFunc_m_start_hb_process____Vfork_1__0(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_std__03a__03aprocess> unnamedblk2__DOT____VforkParent);
   public:
     virtual void __VnoInFunc_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     void __VnoInFunc_remove(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> comp);
@@ -78,7 +82,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_heartbeat : public Vpools_top_uvm_pkg__03a
     Vpools_top_uvm_pkg__03a__03auvm_heartbeat(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> cntxt, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_objection> objection);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_heartbeat() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_heartbeat();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_heartbeat>& obj);

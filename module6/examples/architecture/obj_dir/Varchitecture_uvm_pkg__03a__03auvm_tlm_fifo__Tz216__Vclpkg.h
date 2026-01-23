@@ -12,24 +12,25 @@ class Varchitecture_std__03a__03amailbox__Tz216;
 class Varchitecture_uvm_pkg__03a__03auvm_analysis_port__Tz216;
 class Varchitecture_uvm_pkg__03a__03auvm_component;
 class Varchitecture_uvm_pkg__03a__03auvm_component_registry__Tz291;
-class Varchitecture_uvm_pkg__03a__03auvm_coreservice_t;
 class Varchitecture_uvm_pkg__03a__03auvm_object_wrapper;
 class Varchitecture_uvm_pkg__03a__03auvm_reg_item;
-class Varchitecture_uvm_pkg__03a__03auvm_root;
 class Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz216;
 
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216 : public Varchitecture_
     IData/*31:0*/ __PVT__m_size;
     IData/*31:0*/ __PVT__m_pending_blocked_gets;
     VlClassRef<Varchitecture_std__03a__03amailbox__Tz216> __PVT__m;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -74,7 +75,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216 : public Varchitecture_
     Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz216>& obj);

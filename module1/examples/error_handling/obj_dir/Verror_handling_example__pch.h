@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Verror_handling_example.h instead.
 
-
 #ifndef VERILATED_VERROR_HANDLING_EXAMPLE__PCH_H_
 #define VERILATED_VERROR_HANDLING_EXAMPLE__PCH_H_  // guard
 

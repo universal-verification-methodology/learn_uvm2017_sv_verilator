@@ -86,7 +86,7 @@ struct Vtransactions_uvm_reg_bus_op__struct__0 {
 template <>
 struct VlIsCustomStruct<Vtransactions_uvm_reg_bus_op__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -127,11 +127,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg final : public Verilate
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_phase> __PVT__end_of_elaboration_ph;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg();
     ~Vtransactions_uvm_pkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg);
 
     // INTERNAL METHODS

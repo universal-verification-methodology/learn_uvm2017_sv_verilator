@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vtest_and_gate_uvm.h instead.
 
-
 #ifndef VERILATED_VTEST_AND_GATE_UVM__PCH_H_
 #define VERILATED_VTEST_AND_GATE_UVM__PCH_H_  // guard
 

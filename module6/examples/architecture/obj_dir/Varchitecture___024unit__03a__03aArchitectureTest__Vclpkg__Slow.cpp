@@ -6,10 +6,12 @@
 
 void Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg___ctor_var_reset(Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg* vlSelf);
 
-Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg::Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg(Varchitecture__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg::Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg() = default;
+Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg::~Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg() = default;
+
+void Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg::ctor(Varchitecture__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg::__Vconfigure(boo
     (void)first;  // Prevent unused variable warning
 }
 
-Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg::~Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg() {
+void Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

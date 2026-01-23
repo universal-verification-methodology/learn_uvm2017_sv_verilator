@@ -6,10 +6,12 @@
 
 void Varchitecture_std__03a__03amailbox__Tz1__Vclpkg___ctor_var_reset(Varchitecture_std__03a__03amailbox__Tz1__Vclpkg* vlSelf);
 
-Varchitecture_std__03a__03amailbox__Tz1__Vclpkg::Varchitecture_std__03a__03amailbox__Tz1__Vclpkg(Varchitecture__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Varchitecture_std__03a__03amailbox__Tz1__Vclpkg::Varchitecture_std__03a__03amailbox__Tz1__Vclpkg() = default;
+Varchitecture_std__03a__03amailbox__Tz1__Vclpkg::~Varchitecture_std__03a__03amailbox__Tz1__Vclpkg() = default;
+
+void Varchitecture_std__03a__03amailbox__Tz1__Vclpkg::ctor(Varchitecture__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Varchitecture_std__03a__03amailbox__Tz1__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Varchitecture_std__03a__03amailbox__Tz1__Vclpkg::__Vconfigure(bool first) {
     (void)first;  // Prevent unused variable warning
 }
 
-Varchitecture_std__03a__03amailbox__Tz1__Vclpkg::~Varchitecture_std__03a__03amailbox__Tz1__Vclpkg() {
+void Varchitecture_std__03a__03amailbox__Tz1__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

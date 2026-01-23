@@ -19,18 +19,21 @@ class Vdma_uvm_pkg__03a__03auvm_root;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22> __PVT__m_global_pool;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22__Vclpkg);
 
     // INTERNAL METHODS
@@ -50,8 +53,8 @@ class Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22 : public Vdma_uvm_pkg__03a__03au
 
     // DESIGN SPECIFIC STATE
     VlAssocArray<std::string, IData/*31:0*/> __PVT__pool;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add(Vdma__Syms* __restrict vlSymsp, std::string key, IData/*31:0*/ item);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_delete(Vdma__Syms* __restrict vlSymsp, std::string key);
@@ -73,7 +76,7 @@ class Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22 : public Vdma_uvm_pkg__03a__03au
     Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz22>& obj);

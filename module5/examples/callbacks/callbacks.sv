@@ -12,6 +12,10 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
+// Forward typedef declarations for classes that use callbacks
+typedef class DriverWithCallbacks;
+typedef class MonitorWithCallbacks;
+
 /**
  * Transaction for callback example
  */
@@ -81,7 +85,6 @@ endclass
  */
 class DriverWithCallbacks extends uvm_driver #(CallbackTransaction);
     `uvm_component_utils(DriverWithCallbacks)
-    `uvm_set_super_type(DriverWithCallbacks, uvm_driver #(CallbackTransaction))
     
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -157,7 +160,6 @@ class MonitorWithCallbacks extends uvm_monitor;
     uvm_analysis_port #(CallbackTransaction) ap;
     
     `uvm_component_utils(MonitorWithCallbacks)
-    `uvm_set_super_type(MonitorWithCallbacks, uvm_monitor)
     
     function new(string name, uvm_component parent);
         super.new(name, parent);

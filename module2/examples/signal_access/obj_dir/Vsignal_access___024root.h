@@ -11,7 +11,7 @@
 
 class Vsignal_access__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vsignal_access___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vsignal_access___024root final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -35,10 +35,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vsignal_access___024root final : public Veril
     VlDelayScheduler __VdlySched;
 
     // INTERNAL VARIABLES
-    Vsignal_access__Syms* const vlSymsp;
+    Vsignal_access__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vsignal_access___024root(Vsignal_access__Syms* symsp, const char* v__name);
+    Vsignal_access___024root(Vsignal_access__Syms* symsp, const char* namep);
     ~Vsignal_access___024root();
     VL_UNCOPYABLE(Vsignal_access___024root);
 

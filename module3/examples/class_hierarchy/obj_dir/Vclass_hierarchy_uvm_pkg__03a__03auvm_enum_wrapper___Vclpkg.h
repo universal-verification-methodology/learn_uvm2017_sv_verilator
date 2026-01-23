@@ -12,18 +12,21 @@
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlAssocArray<std::string, CData/*0:0*/> __PVT__map;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg);
 
     // INTERNAL METHODS

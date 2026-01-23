@@ -333,7 +333,7 @@ VL_ATTR_COLD void Vdma___024root___eval_static(Vdma___024root* vlSelf) {
         = vlSelfRef.dma__DOT__clk;
     vlSelfRef.__Vtrigprevexpr___TOP__dma__DOT__vif__rst_n__0 
         = vlSymsp->TOP__dma__DOT__vif.rst_n;
-    vlSelfRef.__Vtrigprevexpr_h69246a8d__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
+    vlSelfRef.__Vtrigprevexpr_h5a1c11cb__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
 }
 
 VL_ATTR_COLD void Vdma___024root___eval_final(Vdma___024root* vlSelf) {
@@ -361,7 +361,7 @@ VL_ATTR_COLD void Vdma___024root___eval_settle(Vdma___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vdma___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
 #endif
-            VL_FATAL_MT("dma.sv", 103, "", "Settle region did not converge after 100 tries");
+            VL_FATAL_MT("dma.sv", 105, "", "DIDNOTCONVERGE: Settle region did not converge after 100 tries");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
     } while (Vdma___024root___eval_phase__stl(vlSelf));
@@ -418,10 +418,13 @@ VL_ATTR_COLD void Vdma___024root___stl_sequent__TOP__0(Vdma___024root* vlSelf) {
     Vdma__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSymsp->TOP__dma__DOT__vif.clk = vlSelfRef.dma__DOT__clk;
-    vlSelfRef.__VvifTrigger_hd309e00d__0_Vtrigm_clk = 1U;
-    vlSymsp->TOP__dma__DOT__vif.dma_done = vlSelfRef.dma__DOT____Vcellout__dut__dma_done;
-    vlSelfRef.__VvifTrigger_hd309e00d__1_Vtrigm_dma_done = 1U;
+    ([&]() {
+            vlSelfRef.__VvifTrigger_hd309e34a__0_Vtrigm_clk = 1U;
+        }(), vlSymsp->TOP__dma__DOT__vif.clk) = vlSelfRef.dma__DOT__clk;
+    ([&]() {
+            vlSelfRef.__VvifTrigger_hd309e34a__1_Vtrigm_dma_done = 1U;
+        }(), vlSymsp->TOP__dma__DOT__vif.dma_done) 
+        = vlSelfRef.dma__DOT____Vcellout__dut__dma_done;
 }
 
 VL_ATTR_COLD void Vdma___024root___eval_stl(Vdma___024root* vlSelf) {
@@ -513,31 +516,31 @@ VL_ATTR_COLD void Vdma___024root___ctor_var_reset(Vdma___024root* vlSelf) {
     Vdma__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->dma__DOT__clk = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 2489637605080282854ull);
-    vlSelf->dma__DOT____Vcellout__dut__dma_done = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 10944031891123370872ull);
+    vlSelf->dma__DOT____Vcellout__dut__dma_done = 0;
     vlSelf->dma__DOT__dut__DOT__src_addr_reg = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 3445315488418633530ull);
     vlSelf->dma__DOT__dut__DOT__dst_addr_reg = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 15835956560461193510ull);
     vlSelf->dma__DOT__dut__DOT__length_reg = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 4231421307818058853ull);
     vlSelf->dma__DOT__dut__DOT__channel_reg = VL_SCOPED_RAND_RESET_I(3, __VscopeHash, 12040732859882947424ull);
     vlSelf->dma__DOT__dut__DOT__count = VL_SCOPED_RAND_RESET_I(16, __VscopeHash, 8368066853804747688ull);
     vlSelf->__VnbaEventTrigger = 0;
-    vlSelf->__VvifTrigger_hd309e00d__0_Vtrigm_clk = 0;
-    vlSelf->__VvifTrigger_hd309e00d__1_Vtrigm_dma_done = 0;
-    vlSelf->__VvifTrigger_hd309e00d__2_Vtrigm_dma_start = 0;
-    vlSelf->__VvifTrigger_hd309e00d__3_Vtrigm_dma_src_addr = 0;
-    vlSelf->__VvifTrigger_hd309e00d__4_Vtrigm_dma_dst_addr = 0;
-    vlSelf->__VvifTrigger_hd309e00d__5_Vtrigm_dma_length = 0;
-    vlSelf->__VvifTrigger_hd309e00d__6_Vtrigm_dma_channel = 0;
+    vlSelf->__VvifTrigger_hd309e34a__0_Vtrigm_clk = 0;
+    vlSelf->__VvifTrigger_hd309e34a__1_Vtrigm_dma_done = 0;
+    vlSelf->__VvifTrigger_hd309e34a__2_Vtrigm_dma_start = 0;
+    vlSelf->__VvifTrigger_hd309e34a__3_Vtrigm_dma_src_addr = 0;
+    vlSelf->__VvifTrigger_hd309e34a__4_Vtrigm_dma_dst_addr = 0;
+    vlSelf->__VvifTrigger_hd309e34a__5_Vtrigm_dma_length = 0;
+    vlSelf->__VvifTrigger_hd309e34a__6_Vtrigm_dma_channel = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VstlTriggered[__Vi0] = 0;
     }
     for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr___TOP__dma__DOT__clk__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 6286193396888898673ull);
-    vlSelf->__Vtrigprevexpr___TOP__dma__DOT__vif__rst_n__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 14607577785701817392ull);
-    vlSelf->__Vtrigprevexpr_h69246a8d__1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11094835894275956180ull);
+    vlSelf->__Vtrigprevexpr___TOP__dma__DOT__clk__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__dma__DOT__vif__rst_n__0 = 0;
+    vlSelf->__Vtrigprevexpr_h5a1c11cb__1 = 0;
     vlSelf->__VactDidInit = 0;
     for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;

@@ -13,15 +13,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_mem_region;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_mem_mam_policy__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_mem_mam_policy__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_mem_mam_policy__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_mem_mam_policy__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_mem_mam_policy__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_mem_mam_policy__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,7 +47,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_mem_mam_policy : public virtual VlClass {
 
     // INTERNAL VARIABLES
     VlRNG __Vm_rng;
-    void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
+    void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
     virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     void __VnoInFunc_uvm_mem_mam_policy_no_overlap_setup_constraint(Vpools_top__Syms* __restrict vlSymsp);

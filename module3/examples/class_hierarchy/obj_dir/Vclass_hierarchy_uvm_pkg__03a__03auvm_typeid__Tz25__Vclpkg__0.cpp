@@ -27,6 +27,10 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid__Tz25::_ctor_var_reset(Vclass_
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid__Tz25::~Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid__Tz25() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid__Tz25::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid__Tz25>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid__Tz25::VL_TO_STRING\n"); );
     // Body

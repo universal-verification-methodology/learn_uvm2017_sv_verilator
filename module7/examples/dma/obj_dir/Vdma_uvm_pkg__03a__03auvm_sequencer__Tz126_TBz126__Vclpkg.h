@@ -11,10 +11,8 @@
 class Vdma___024unit__03a__03aDmaTxn;
 class Vdma_uvm_pkg__03a__03auvm_component;
 class Vdma_uvm_pkg__03a__03auvm_component_registry__Tz140;
-class Vdma_uvm_pkg__03a__03auvm_coreservice_t;
 class Vdma_uvm_pkg__03a__03auvm_object_wrapper;
 class Vdma_uvm_pkg__03a__03auvm_port_base__Tz141;
-class Vdma_uvm_pkg__03a__03auvm_root;
 class Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi70;
 class Vdma_uvm_pkg__03a__03auvm_sequence_base;
 class Vdma_uvm_pkg__03a__03auvm_sequence_request;
@@ -25,15 +23,18 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz126;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,8 +53,8 @@ class Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126 : public Vdma_uvm_pkg__0
     CData/*0:0*/ __PVT__sequence_item_requested;
     CData/*0:0*/ __PVT__get_next_item_called;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi70> __PVT__seq_item_export;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_get(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma___024unit__03a__03aDmaTxn> &t);
     virtual VlCoroutine __VnoInFunc_get_next_item(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma___024unit__03a__03aDmaTxn> &t);
     virtual void __VnoInFunc_get_object_type(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
@@ -73,7 +74,7 @@ class Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126 : public Vdma_uvm_pkg__0
     Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequencer__Tz126_TBz126>& obj);

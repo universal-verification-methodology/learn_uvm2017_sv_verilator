@@ -94,6 +94,7 @@ class MathUtilsTest extends uvm_test;
         int values[];
         real avg, std_dev;
         int max_val, min_val;
+        int clamped;  // Moved declaration to top of task
         phase.raise_objection(this);
         
         `uvm_info("MATH", "Testing math utilities", UVM_LOW)
@@ -121,7 +122,7 @@ class MathUtilsTest extends uvm_test;
         `uvm_info("MATH", $sformatf("Standard deviation: %0.2f", std_dev), UVM_MEDIUM)
         
         // Test clamp function
-        int clamped = math_utils.clamp(150, 0, 100);
+        clamped = math_utils.clamp(150, 0, 100);
         `uvm_info("MATH", $sformatf("clamp(150, 0, 100) = %0d", clamped), UVM_MEDIUM)
         
         #100;

@@ -55,8 +55,8 @@ VlCoroutine Vdma___024unit__03a__03aDmaSeq::__VnoInFunc_body(VlProcessRef vlProc
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vdma___024unit__03a__03aDmaSeq::__VnoInFunc_body\n"); );
     // Locals
     VlClassRef<Vdma___024unit__03a__03aDmaTxn> __Vfunc_create__4__Vfuncout;
-    IData/*31:0*/ __Vtask___Vrandwith_hc6e33871__0__5__Vfuncout;
-    __Vtask___Vrandwith_hc6e33871__0__5__Vfuncout = 0;
+    IData/*31:0*/ __Vtask___Vrandwith_h7091dc69__0__5__Vfuncout;
+    __Vtask___Vrandwith_h7091dc69__0__5__Vfuncout = 0;
     // Body
     VL_KEEP_THIS;
     IData/*31:0*/ unnamedblk1_1__DOT____Vrepeat0;
@@ -66,38 +66,46 @@ VlCoroutine Vdma___024unit__03a__03aDmaSeq::__VnoInFunc_body(VlProcessRef vlProc
     while (VL_LTS_III(32, 0U, unnamedblk1_1__DOT____Vrepeat0)) {
         vlSymsp->TOP__uvm_pkg__03a__03auvm_object_registry__pi60__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "t"s, VlNull{}, ""s, __Vfunc_create__4__Vfuncout);
         t = __Vfunc_create__4__Vfuncout;
-        VL_NULL_CHECK(t, "dma.sv", 34)->__VnoInFunc___Vrandwith_hc6e33871__0(vlSymsp, __Vtask___Vrandwith_hc6e33871__0__5__Vfuncout);
+        VL_NULL_CHECK(t, "dma.sv", 35)->__VnoInFunc___Vrandwith_h7091dc69__0(vlSymsp, __Vtask___Vrandwith_h7091dc69__0__5__Vfuncout);
         co_await this->__VnoInFunc_start_item(vlProcess, vlSymsp, t, 0xffffffffU, VlNull{});
         co_await this->__VnoInFunc_finish_item(vlProcess, vlSymsp, t, 0xffffffffU);
         unnamedblk1_1__DOT____Vrepeat0 = (unnamedblk1_1__DOT____Vrepeat0 
                                           - (IData)(1U));
     }
-}
+    co_return;}
 
 void Vdma___024unit__03a__03aDmaSeq::__VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vdma___024unit__03a__03aDmaSeq::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__9__Vfuncout;
-    __Vfunc___Vbasic_randomize__9__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__9__Vfuncout;
+    __Vfunc___VBasicRand__9__Vfuncout = 0;
     // Body
-    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__9__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__9__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__9__Vfuncout);
+            }(), __Vfunc___VBasicRand__9__Vfuncout));
 }
 
-void Vdma___024unit__03a__03aDmaSeq::__VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Vdma___024unit__03a__03aDmaSeq::__VnoInFunc___Vbasic_randomize\n"); );
+void Vdma___024unit__03a__03aDmaSeq::__VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vdma___024unit__03a__03aDmaSeq::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vdma___024unit__03a__03aDmaSeq::__VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vdma___024unit__03a__03aDmaSeq::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vdma___024unit__03a__03aDmaSeq::_ctor_var_reset(Vdma__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vdma___024unit__03a__03aDmaSeq::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vdma___024unit__03a__03aDmaSeq::~Vdma___024unit__03a__03aDmaSeq() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vdma___024unit__03a__03aDmaSeq::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vdma___024unit__03a__03aDmaSeq>& obj) {

@@ -31,7 +31,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_vreg_field;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_reg_block__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_reg_block__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -40,11 +40,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_reg_block_
     VlAssocArray<std::string, IData/*31:0*/> __PVT__m_root_names;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_reg_block__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_reg_block__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_reg_block__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_reg_block__Vclpkg);
 
     // INTERNAL METHODS
@@ -85,8 +88,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_reg_block : public Varchitecture_uvm_pk
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg_map> __PVT__default_map;
     void __VnoInFunc_Xinit_address_mapsX(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_XsampleX(Varchitecture__Syms* __restrict vlSymsp, QData/*63:0*/ addr, CData/*0:0*/ is_read, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg_map> map);
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_block(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg_block> blk);
     virtual void __VnoInFunc_add_coverage(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ models);
     void __VnoInFunc_add_hdl_path(Varchitecture__Syms* __restrict vlSymsp, std::string path, std::string kind);
@@ -166,7 +169,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_reg_block : public Varchitecture_uvm_pk
     Varchitecture_uvm_pkg__03a__03auvm_reg_block(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ has_coverage);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_reg_block() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_reg_block();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg_block>& obj);

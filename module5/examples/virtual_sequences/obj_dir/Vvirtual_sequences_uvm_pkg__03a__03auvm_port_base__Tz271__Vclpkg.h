@@ -20,7 +20,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_if_base__Tz203_TBz203;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_port_
     std::string __PVT__debug_provided_to__Vstatic__save;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271__Vclpkg);
 
     // INTERNAL METHODS
@@ -90,7 +93,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271 : public Vvirtual
     Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ port_type, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271>& obj);

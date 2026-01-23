@@ -40,13 +40,9 @@ class ReportingComponent extends uvm_component;
     task run_phase(uvm_phase phase);
         phase.raise_objection(this);
         
-        // Demonstrate formatted messages
-        logic [7:0] data = 8'hAA;
-        logic [15:0] address = 16'h1234;
-        int count = 42;
-        
+        // Demonstrate formatted messages with inline values
         `uvm_info("REPORTING", $sformatf("Formatted message: data=0x%02h, address=0x%04h, count=%0d", 
-                  data, address, count), UVM_MEDIUM)
+                  8'hAA, 16'h1234, 42), UVM_MEDIUM)
         
         // Demonstrate different verbosity levels
         `uvm_info("REPORTING", "Message at UVM_LOW verbosity", UVM_LOW)

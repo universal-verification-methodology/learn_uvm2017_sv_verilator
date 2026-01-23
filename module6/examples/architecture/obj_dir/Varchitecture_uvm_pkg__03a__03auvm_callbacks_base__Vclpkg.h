@@ -18,7 +18,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_typeid_base;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -27,11 +27,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_callbacks_
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_pool__Tz104_TBz105> __PVT__m_pool;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_callbacks_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -50,8 +53,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_callbacks_base : public Varchitecture_u
     VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_callbacks_base>> __PVT__m_this_type;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_typeid_base> __PVT__m_super_type;
     VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_typeid_base>> __PVT__m_derived_types;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_check_registration(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &check_registration__Vfuncrtn);
     virtual void __VnoInFunc_m_add_tw_cbs(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_callback> cb, IData/*31:0*/ ordering);
     virtual void __VnoInFunc_m_am_i_a(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> obj, CData/*0:0*/ &m_am_i_a__Vfuncrtn);
@@ -66,7 +69,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_callbacks_base : public Varchitecture_u
     Varchitecture_uvm_pkg__03a__03auvm_callbacks_base(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_callbacks_base() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_callbacks_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_callbacks_base>& obj);

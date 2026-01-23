@@ -9,7 +9,7 @@
 #include "verilated_timing.h"
 #include "verilated_random.h"
 class Vtest_and_gate_uvm_std__03a__03aprocess;
-class Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_35;
+class Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_47;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_abstract_object_registry__pi109;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callback_iter__pi99;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_coreservice_t;
@@ -25,18 +25,21 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_register_cb_uvm_reg_cbs;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor : public Vtest_and_ga
     IData/*31:0*/ __PVT__lineno;
     std::string __PVT__fname;
     VlAssocArray<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object>, VlClassRef<Vtest_and_gate_uvm_std__03a__03aprocess>> __PVT__m_update_thread;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_post_read(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_do_post_write(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_do_pre_read(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -76,7 +79,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor : public Vtest_and_ga
     virtual void __VnoInFunc_read_func(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_start_update_thread(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> element);
   private:
-    VlCoroutine __VnoInFunc_start_update_thread____Vfork_1__0(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_35> __VDynScope_start_update_thread_0);
+    VlCoroutine __VnoInFunc_start_update_thread____Vfork_1__0(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_47> __VDynScope_start_update_thread_0, VlClassRef<Vtest_and_gate_uvm_std__03a__03aprocess> unnamedblk274__DOT____VforkParent);
   public:
     virtual void __VnoInFunc_wait_for_change(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> element);
     virtual void __VnoInFunc_write(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -86,7 +89,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor : public Vtest_and_ga
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_backdoor>& obj);

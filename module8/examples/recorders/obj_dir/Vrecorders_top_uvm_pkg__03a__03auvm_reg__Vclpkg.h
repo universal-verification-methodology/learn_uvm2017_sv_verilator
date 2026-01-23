@@ -38,7 +38,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_reg__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_reg__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -46,11 +46,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_reg__Vclp
     IData/*31:0*/ __PVT__m_max_size;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_reg__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_reg__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_reg__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_reg__Vclpkg);
 
     // INTERNAL METHODS
@@ -95,8 +98,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_reg : public Vrecorders_top_uvm_pkg__0
     VlCoroutine __VnoInFunc_XreadX(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &status, QData/*63:0*/ &value, IData/*31:0*/ path, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_map> map, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_base> parent, IData/*31:0*/ prior, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> extension, std::string fname, IData/*31:0*/ lineno);
     void __VnoInFunc_XsampleX(Vrecorders_top__Syms* __restrict vlSymsp, QData/*63:0*/ data, QData/*63:0*/ byte_en, CData/*0:0*/ is_read, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_map> map);
     void __VnoInFunc_Xset_busyX(Vrecorders_top__Syms* __restrict vlSymsp, CData/*0:0*/ busy);
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_coverage(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ models);
     virtual void __VnoInFunc_add_field(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_field> field);
     void __VnoInFunc_add_hdl_path(Vrecorders_top__Syms* __restrict vlSymsp, VlQueue<Vrecorders_top_uvm_hdl_path_slice__struct__0> slices, std::string kind);
@@ -104,7 +107,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_reg : public Vrecorders_top_uvm_pkg__0
     virtual void __VnoInFunc_add_map(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_map> map);
     virtual void __VnoInFunc_backdoor_read(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> rw);
     virtual void __VnoInFunc_backdoor_read_func(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> rw, IData/*31:0*/ &backdoor_read_func__Vfuncrtn);
-    virtual void __VnoInFunc_backdoor_watch(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_backdoor_watch(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_backdoor_write(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_build_coverage(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ models, IData/*31:0*/ &build_coverage__Vfuncrtn);
     void __VnoInFunc_clear_hdl_path(Vrecorders_top__Syms* __restrict vlSymsp, std::string kind);
@@ -163,7 +166,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_reg : public Vrecorders_top_uvm_pkg__0
     virtual VlCoroutine __VnoInFunc_read(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &status, QData/*63:0*/ &value, IData/*31:0*/ path, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_map> map, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_base> parent, IData/*31:0*/ prior, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> extension, std::string fname, IData/*31:0*/ lineno);
     virtual void __VnoInFunc_reset(Vrecorders_top__Syms* __restrict vlSymsp, std::string kind);
     virtual void __VnoInFunc_sample(Vrecorders_top__Syms* __restrict vlSymsp, QData/*63:0*/ data, QData/*63:0*/ byte_en, CData/*0:0*/ is_read, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_map> map);
-    virtual void __VnoInFunc_sample_values(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_sample_values(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_set(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, QData/*63:0*/ value, std::string fname, IData/*31:0*/ lineno);
     void __VnoInFunc_set_backdoor(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_backdoor> bkdr, std::string fname, IData/*31:0*/ lineno);
     virtual void __VnoInFunc_set_coverage(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ is_on, IData/*31:0*/ &set_coverage__Vfuncrtn);
@@ -180,7 +183,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_reg : public Vrecorders_top_uvm_pkg__0
     Vrecorders_top_uvm_pkg__03a__03auvm_reg(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ n_bits, IData/*31:0*/ has_coverage);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_reg() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_reg();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg>& obj);

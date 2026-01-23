@@ -13,15 +13,18 @@ class Vtest_and_gate_uvm_std__03a__03aprocess;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_std__03a__03aprocess__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_std__03a__03aprocess__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_std__03a__03aprocess__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_std__03a__03aprocess__Vclpkg();
     ~Vtest_and_gate_uvm_std__03a__03aprocess__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_std__03a__03aprocess__Vclpkg);
 
     // INTERNAL METHODS
@@ -37,7 +40,6 @@ class Vtest_and_gate_uvm_std__03a__03aprocess : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h1426c6b2__0;
     VlProcessRef __PVT__m_process;
 
     // INTERNAL VARIABLES
@@ -64,7 +66,7 @@ std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_std__03a__03aproces
 
 
 //*** Below code from `systemc in Verilog file
-// From `systemc at /usr/local/share/verilator/include/verilated_std.sv:193:21
+// From `systemc at /usr/local/share/verilator/include/verilated_std.sv:196:21
 
 template<> template<>
 inline bool VlClassRef<Vtest_and_gate_uvm_std__03a__03aprocess>::operator==(const VlClassRef<Vtest_and_gate_uvm_std__03a__03aprocess>& rhs) const {

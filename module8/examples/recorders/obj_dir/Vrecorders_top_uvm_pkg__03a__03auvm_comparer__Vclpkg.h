@@ -40,15 +40,18 @@ struct Vrecorders_top_state_info_t__struct__0 {
 template <>
 struct VlIsCustomStruct<Vrecorders_top_state_info_t__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg);
 
     // INTERNAL METHODS
@@ -80,8 +83,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_comparer : public Vrecorders_top_uvm_p
     VlAssocArray<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object>, VlAssocArray<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object>, CData/*0:0*/>> __PVT__compare_map;
     VlQueue<std::string> __PVT__m_object_names;
     std::string __PVT__miscompares;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_compare_field(Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ lhs, VlWide<128>/*4095:0*/ rhs, IData/*31:0*/ size, IData/*27:0*/ radix, CData/*0:0*/ &compare_field__Vfuncrtn);
     virtual void __VnoInFunc_compare_field_int(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ lhs, QData/*63:0*/ rhs, IData/*31:0*/ size, IData/*27:0*/ radix, CData/*0:0*/ &compare_field_int__Vfuncrtn);
     virtual void __VnoInFunc_compare_field_real(Vrecorders_top__Syms* __restrict vlSymsp, std::string name, double lhs, double rhs, CData/*0:0*/ &compare_field_real__Vfuncrtn);
@@ -117,7 +120,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_comparer : public Vrecorders_top_uvm_p
     Vrecorders_top_uvm_pkg__03a__03auvm_comparer(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_comparer() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_comparer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_comparer>& obj);

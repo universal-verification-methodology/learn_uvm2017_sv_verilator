@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vtest_simple_register_uvm.h instead.
 
-
 #ifndef VERILATED_VTEST_SIMPLE_REGISTER_UVM__PCH_H_
 #define VERILATED_VTEST_SIMPLE_REGISTER_UVM__PCH_H_  // guard
 

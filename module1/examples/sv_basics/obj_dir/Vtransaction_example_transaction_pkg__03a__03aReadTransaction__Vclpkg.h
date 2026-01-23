@@ -12,15 +12,18 @@ class Vtransaction_example_transaction_pkg__03a__03aTransaction;
 
 class Vtransaction_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransaction_example__Syms* const vlSymsp;
+    Vtransaction_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg(Vtransaction_example__Syms* symsp, const char* v__name);
+    Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg();
     ~Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg();
+    void ctor(Vtransaction_example__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,7 +48,7 @@ class Vtransaction_example_transaction_pkg__03a__03aReadTransaction : public Vtr
     Vtransaction_example_transaction_pkg__03a__03aReadTransaction(Vtransaction_example__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransaction_example_transaction_pkg__03a__03aReadTransaction() {}
+    virtual ~Vtransaction_example_transaction_pkg__03a__03aReadTransaction();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransaction_example_transaction_pkg__03a__03aReadTransaction>& obj);

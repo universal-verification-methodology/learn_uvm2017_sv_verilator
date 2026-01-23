@@ -27,6 +27,10 @@ void Vtransactions_uvm_pkg__03a__03auvm_typeid__Tz145::_ctor_var_reset(Vtransact
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vtransactions_uvm_pkg__03a__03auvm_typeid__Tz145::~Vtransactions_uvm_pkg__03a__03auvm_typeid__Tz145() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtransactions_uvm_pkg__03a__03auvm_typeid__Tz145::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_typeid__Tz145>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+              Vtransactions_uvm_pkg__03a__03auvm_typeid__Tz145::VL_TO_STRING\n"); );
     // Body

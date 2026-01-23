@@ -17,15 +17,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_root;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback : public Vvirtu
     VlAssocArray<VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object>, QData/*63:0*/> __PVT__last_trigger;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> __PVT__target;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_coreservice_t> __PVT__cs;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_dropped(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_objection> objection, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> source_obj, std::string description, IData/*31:0*/ count);
     void __VnoInFunc_objects_triggered(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &objects_triggered__Vfuncrtn);
     virtual void __VnoInFunc_raised(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_objection> objection, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> source_obj, std::string description, IData/*31:0*/ count);
@@ -57,7 +60,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback : public Vvirtu
     Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> target);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_heartbeat_callback>& obj);

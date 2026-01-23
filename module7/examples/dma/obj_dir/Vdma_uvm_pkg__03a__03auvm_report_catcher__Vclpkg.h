@@ -24,7 +24,7 @@ class Vdma_uvm_pkg__03a__03auvm_root;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -46,11 +46,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_report_catcher__Vcl
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_callback_iter__Tz67_TBz161> __PVT__print_catcher__Vstatic__iter;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_report_catcher__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_report_catcher__Vclpkg);
 
     // INTERNAL METHODS
@@ -67,8 +70,8 @@ class Vdma__Syms;
 
 class Vdma_uvm_pkg__03a__03auvm_report_catcher : public Vdma_uvm_pkg__03a__03auvm_callback {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_int(Vdma__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix, IData/*31:0*/ action);
     void __VnoInFunc_add_object(Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> obj, IData/*31:0*/ action);
     void __VnoInFunc_add_string(Vdma__Syms* __restrict vlSymsp, std::string name, std::string value, IData/*31:0*/ action);
@@ -104,7 +107,7 @@ class Vdma_uvm_pkg__03a__03auvm_report_catcher : public Vdma_uvm_pkg__03a__03auv
     Vdma_uvm_pkg__03a__03auvm_report_catcher(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_report_catcher() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_report_catcher();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_report_catcher>& obj);

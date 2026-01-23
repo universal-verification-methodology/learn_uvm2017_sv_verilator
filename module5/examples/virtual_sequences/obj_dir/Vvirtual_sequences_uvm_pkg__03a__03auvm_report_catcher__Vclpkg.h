@@ -24,7 +24,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_root;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -46,11 +46,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_repor
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_callback_iter__Tz90_TBz167> __PVT__print_catcher__Vstatic__iter;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher__Vclpkg);
 
     // INTERNAL METHODS
@@ -67,8 +70,8 @@ class Vvirtual_sequences__Syms;
 
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher : public Vvirtual_sequences_uvm_pkg__03a__03auvm_callback {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_int(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix, IData/*31:0*/ action);
     void __VnoInFunc_add_object(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> obj, IData/*31:0*/ action);
     void __VnoInFunc_add_string(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, std::string value, IData/*31:0*/ action);
@@ -104,7 +107,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher : public Vvirtual_s
     Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_report_catcher>& obj);

@@ -6,10 +6,12 @@
 
 void Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg___ctor_var_reset(Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg* vlSelf);
 
-Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg::Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg(Vtransactions__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg::Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg() = default;
+Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg::~Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg() = default;
+
+void Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg::ctor(Vtransactions__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg::__Vconfigure(bool firs
     (void)first;  // Prevent unused variable warning
 }
 
-Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg::~Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg() {
+void Vtransactions_uvm_pkg__03a__03auvm_obj_rsrc__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

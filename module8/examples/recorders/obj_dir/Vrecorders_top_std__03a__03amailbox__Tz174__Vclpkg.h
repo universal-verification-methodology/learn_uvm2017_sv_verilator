@@ -13,15 +13,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_reg_item;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std__03a__03amailbox__Tz174__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std__03a__03amailbox__Tz174__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_std__03a__03amailbox__Tz174__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_std__03a__03amailbox__Tz174__Vclpkg();
     ~Vrecorders_top_std__03a__03amailbox__Tz174__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_std__03a__03amailbox__Tz174__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,9 +38,6 @@ class Vrecorders_top_std__03a__03amailbox__Tz174 : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_hc3330b6f__0;
-    CData/*0:0*/ __Vtrigprevexpr_hc4080484__0;
-    CData/*0:0*/ __Vtrigprevexpr_hc4080484__1;
     IData/*31:0*/ __PVT__m_bound;
     VlQueue<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item>> __PVT__m_queue;
     VlCoroutine __VnoInFunc_get(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> &message);

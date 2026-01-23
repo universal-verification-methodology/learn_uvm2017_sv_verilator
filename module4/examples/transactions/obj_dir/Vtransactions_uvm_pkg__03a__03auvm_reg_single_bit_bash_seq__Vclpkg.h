@@ -8,7 +8,6 @@
 #include "verilated.h"
 #include "verilated_timing.h"
 #include "verilated_random.h"
-class Vtransactions_uvm_pkg__03a__03auvm_coreservice_t;
 class Vtransactions_uvm_pkg__03a__03auvm_object;
 class Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi152;
 class Vtransactions_uvm_pkg__03a__03auvm_object_wrapper;
@@ -18,20 +17,22 @@ class Vtransactions_uvm_pkg__03a__03auvm_reg_map;
 class Vtransactions_uvm_pkg__03a__03auvm_reg_sequence__Tz285;
 class Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq;
 class Vtransactions_uvm_pkg__03a__03auvm_resource__Tz43;
-class Vtransactions_uvm_pkg__03a__03auvm_root;
 
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq : public Vtrans
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg> __PVT__rg;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_bash_kth_bit(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg> rg, IData/*31:0*/ k, std::string mode, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_map> map, QData/*63:0*/ dc_mask);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
@@ -63,7 +64,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq : public Vtrans
     Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_single_bit_bash_seq>& obj);

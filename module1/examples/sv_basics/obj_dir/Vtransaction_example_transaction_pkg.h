@@ -11,15 +11,18 @@
 
 class Vtransaction_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example_transaction_pkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example_transaction_pkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransaction_example__Syms* const vlSymsp;
+    Vtransaction_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransaction_example_transaction_pkg(Vtransaction_example__Syms* symsp, const char* v__name);
+    Vtransaction_example_transaction_pkg();
     ~Vtransaction_example_transaction_pkg();
+    void ctor(Vtransaction_example__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransaction_example_transaction_pkg);
 
     // INTERNAL METHODS

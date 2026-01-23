@@ -6,11 +6,11 @@
 
 void Vreset_patterns___024root___ctor_var_reset(Vreset_patterns___024root* vlSelf);
 
-Vreset_patterns___024root::Vreset_patterns___024root(Vreset_patterns__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , __VdlySched{*symsp->_vm_contextp__}
-    , vlSymsp{symsp}
+Vreset_patterns___024root::Vreset_patterns___024root(Vreset_patterns__Syms* symsp, const char* namep)
+    : __VdlySched{*symsp->_vm_contextp__}
  {
+    vlSymsp = symsp;
+    vlNamep = strdup(namep);
     // Reset structure values
     Vreset_patterns___024root___ctor_var_reset(this);
 }
@@ -20,4 +20,5 @@ void Vreset_patterns___024root::__Vconfigure(bool first) {
 }
 
 Vreset_patterns___024root::~Vreset_patterns___024root() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

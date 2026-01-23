@@ -7,6 +7,6 @@
 #include "Vpackage_example___024root__0__Slow.cpp"
 #include "Vpackage_example___024unit__Slow.cpp"
 #include "Vpackage_example___024unit__0__Slow.cpp"
-#include "Vpackage_example__Syms.cpp"
+#include "Vpackage_example__Syms__Slow.cpp"
 #include "Vpackage_example__Trace__0__Slow.cpp"
 #include "Vpackage_example__TraceDecls__0__Slow.cpp"

@@ -6,10 +6,12 @@
 
 void Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg___ctor_var_reset(Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg* vlSelf);
 
-Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg::Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg(Vdma__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg::Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg() = default;
+Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg::~Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg() = default;
+
+void Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg::ctor(Vdma__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg::__Vconfigure(
     (void)first;  // Prevent unused variable warning
 }
 
-Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg::~Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg() {
+void Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz126_TBz154__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

@@ -37,18 +37,21 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_vreg_field;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map> __PVT__m_backdoor;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map__Vclpkg);
 
     // INTERNAL METHODS
@@ -89,8 +92,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map : public Vtest_and_gate_uv
     void __VnoInFunc_Xget_bus_infoX(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> rw, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map_info> &map_info, IData/*31:0*/ &size, IData/*31:0*/ &lsb, IData/*31:0*/ &addr_skip);
     void __VnoInFunc_Xinit_address_mapX(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_Xverify_map_configX(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_mem(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem> mem, QData/*63:0*/ offset, std::string rights, CData/*0:0*/ unmapped, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_frontdoor> frontdoor);
     virtual void __VnoInFunc_add_parent_map(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map> parent_map, QData/*63:0*/ offset);
     virtual void __VnoInFunc_add_reg(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg> rg, QData/*63:0*/ offset, std::string rights, CData/*0:0*/ unmapped, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_frontdoor> frontdoor);
@@ -155,7 +158,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map : public Vtest_and_gate_uv
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_map>& obj);

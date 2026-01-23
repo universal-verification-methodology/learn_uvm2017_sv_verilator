@@ -11,7 +11,7 @@
 class Vrecorders_top_std__03a__03amailbox__Tz23;
 class Vrecorders_top_std__03a__03aprocess;
 class Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0;
-class Vrecorders_top_uvm_pkg__03a__03a__VDynScope_4;
+class Vrecorders_top_uvm_pkg__03a__03a__VDynScope_5;
 class Vrecorders_top_uvm_pkg__03a__03auvm_callback_iter__Tz23_TBz24;
 class Vrecorders_top_uvm_pkg__03a__03auvm_cmdline_processor;
 class Vrecorders_top_uvm_pkg__03a__03auvm_component;
@@ -28,7 +28,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_task_phase;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -42,11 +42,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vc
     VlClassRef<Vrecorders_top_std__03a__03amailbox__Tz23> __PVT__m_phase_hopper;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vclpkg);
 
     // INTERNAL METHODS
@@ -55,7 +58,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_phase__Vc
     void __VnoInFunc_jump_all(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> phase);
     VlCoroutine __VnoInFunc_m_run_phases(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_run_phases____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> unnamedblk157__DOT__phase);
+    VlCoroutine __VnoInFunc_m_run_phases____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> unnamedblk157__DOT__phase, VlClassRef<Vrecorders_top_std__03a__03aprocess> unnamedblk157__DOT__unnamedblk158__DOT____VforkParent);
   public:
     void __VnoInFunc_set_default_max_ready_to_end_iterations(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ max);
 };
@@ -71,27 +74,14 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_phase : public Vrecorders_top_uvm_pkg_
     CData/*0:0*/ __PVT__m_jump_bkwd;
     CData/*0:0*/ __PVT__m_jump_fwd;
     CData/*0:0*/ __PVT__m_premature_end;
-    CData/*0:0*/ __Vtrigprevexpr_hf177dfba__0;
-    CData/*0:0*/ __Vtrigprevexpr_hc7ed5d52__0;
-    CData/*0:0*/ __Vtrigprevexpr_h26d75689__0;
-    CData/*0:0*/ __Vtrigprevexpr_h7ae7f53e__0;
-    CData/*0:0*/ __Vtrigprevexpr_h7aedf16b__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d86bfde__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d73a8bb__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d0e4411__0;
-    CData/*0:0*/ __Vtrigprevexpr_h0d7fb647__0;
     IData/*31:0*/ __PVT__m_phase_type;
     IData/*31:0*/ __PVT__m_state;
     IData/*31:0*/ __PVT__m_run_count;
     IData/*31:0*/ __PVT__max_ready_to_end_iters;
     IData/*31:0*/ __PVT__m_num_procs_not_yet_returned;
     IData/*31:0*/ __PVT__m_ready_to_end_count;
-    IData/*31:0*/ __Vtrigprevexpr_h402ae9b5__0;
-    IData/*31:0*/ __Vtrigprevexpr_h0e3a6865__0;
-    IData/*31:0*/ __Vtrigprevexpr_ha08115e3__0;
     VlAssocArray<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase>, CData/*0:0*/> __PVT__m_predecessors;
     VlAssocArray<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase>, CData/*0:0*/> __PVT__m_successors;
-    std::string __Vtask_get_name__107__Vfuncout;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> __PVT__m_parent;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> __PVT__m_imp;
     VlClassRef<Vrecorders_top_std__03a__03aprocess> __PVT__m_phase_proc;
@@ -99,14 +89,14 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_phase : public Vrecorders_top_uvm_pkg_
     VlQueue<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase>> __PVT__m_sync;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_objection> __PVT__phase_done;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> __PVT__m_jump_phase;
-    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__232____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__234____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__271____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__273____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__299____VDynScope_uvm_wait_for_nba_region_0;
-    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__301____VDynScope_uvm_wait_for_nba_region_0;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__234____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__236____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__273____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__275____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask_uvm_wait_for_nba_region__301____VDynScope_uvm_wait_for_nba_region_0;
+    VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_0> __Vtask___VforkTask_0__303____VDynScope_uvm_wait_for_nba_region_0;
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_add(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> phase, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> with_phase, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> after_phase, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> before_phase, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> start_with_phase, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> end_with_phase);
     void __VnoInFunc_clear(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ state);
     void __VnoInFunc_clear_successors(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ state, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> end_state);
@@ -118,17 +108,17 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_phase : public Vrecorders_top_uvm_pkg_
     virtual void __VnoInFunc_execute(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_component> comp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> phase);
     VlCoroutine __VnoInFunc_execute_phase(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_1__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_4> __VDynScope_execute_phase_0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_1__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_5> __VDynScope_execute_phase_0, VlClassRef<Vrecorders_top_std__03a__03aprocess> master_phase_process__VgetForkParent__DOT____VforkParent);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_2__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_2__0____Vfork_3__0(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h31e198a7__0);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_4> &__VDynScope_execute_phase_0, VlForkSync __Vfork_4__sync);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_2__0____Vfork_3__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h4e2b0559__0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_5> &__VDynScope_execute_phase_0, VlForkSync __Vfork_4__sync);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlForkSync __Vfork_5__sync);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_4> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_5> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_6__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_6__0____Vfork_7__0(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_hb2282d82__0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_6__0____Vfork_7__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_hf2954cf8__0);
     VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_8__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_8__0____Vfork_9__0(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h0d47314e__0);
-    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__2(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_4> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__1____Vfork_8__0____Vfork_9__0(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ __Vintraval_h9a449d1f__0);
+    VlCoroutine __VnoInFunc_execute_phase____Vfork_4__0____Vfork_5__2(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03a__VDynScope_5> __VDynScope_execute_phase_0, VlForkSync __Vfork_5__sync);
   public:
     void __VnoInFunc_find(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> phase, CData/*0:0*/ stay_in_scope, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> &find__Vfuncrtn);
     void __VnoInFunc_find_by_name(Vrecorders_top__Syms* __restrict vlSymsp, std::string name, CData/*0:0*/ stay_in_scope, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> &find_by_name__Vfuncrtn);
@@ -185,7 +175,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_phase : public Vrecorders_top_uvm_pkg_
     Vrecorders_top_uvm_pkg__03a__03auvm_phase(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ phase_type, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_phase() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_phase();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_phase>& obj);

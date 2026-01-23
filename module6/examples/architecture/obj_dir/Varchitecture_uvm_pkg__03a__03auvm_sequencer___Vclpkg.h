@@ -10,10 +10,8 @@
 #include "verilated_random.h"
 class Varchitecture_uvm_pkg__03a__03auvm_component;
 class Varchitecture_uvm_pkg__03a__03auvm_component_registry__Tz194;
-class Varchitecture_uvm_pkg__03a__03auvm_coreservice_t;
 class Varchitecture_uvm_pkg__03a__03auvm_object_wrapper;
 class Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz195;
-class Varchitecture_uvm_pkg__03a__03auvm_root;
 class Varchitecture_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi101;
 class Varchitecture_uvm_pkg__03a__03auvm_sequence_base;
 class Varchitecture_uvm_pkg__03a__03auvm_sequence_item;
@@ -25,15 +23,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_tlm_fifo__Tz19;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_sequencer___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_sequencer___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_sequencer___Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_sequencer___Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_sequencer___Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_sequencer___Vclpkg);
 
     // INTERNAL METHODS
@@ -52,8 +53,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_sequencer_ : public Varchitecture_uvm_p
     CData/*0:0*/ __PVT__sequence_item_requested;
     CData/*0:0*/ __PVT__get_next_item_called;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi101> __PVT__seq_item_export;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_get(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_sequence_item> &t);
     virtual VlCoroutine __VnoInFunc_get_next_item(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_sequence_item> &t);
     virtual void __VnoInFunc_get_object_type(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
@@ -73,7 +74,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_sequencer_ : public Varchitecture_uvm_p
     Varchitecture_uvm_pkg__03a__03auvm_sequencer_(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_sequencer_() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_sequencer_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_sequencer_>& obj);

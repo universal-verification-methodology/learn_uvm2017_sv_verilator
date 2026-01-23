@@ -27,6 +27,10 @@ void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz197::_ctor_var_res
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz197::~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz197() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz197::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz197>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+              Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_typeid__Tz197::VL_TO_STRING\n"); );
     // Body

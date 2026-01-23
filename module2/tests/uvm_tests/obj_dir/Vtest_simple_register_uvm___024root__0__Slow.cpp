@@ -339,7 +339,7 @@ VL_ATTR_COLD void Vtest_simple_register_uvm___024root___eval_static(Vtest_simple
         = vlSymsp->TOP__test_simple_register_uvm__DOT__reg_if.clk;
     vlSelfRef.__Vtrigprevexpr___TOP__test_simple_register_uvm__DOT__rst_n__0 
         = vlSelfRef.test_simple_register_uvm__DOT__rst_n;
-    vlSelfRef.__Vtrigprevexpr_h69246a8d__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
+    vlSelfRef.__Vtrigprevexpr_h5a1c11cb__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
 }
 
 VL_ATTR_COLD void Vtest_simple_register_uvm___024root___eval_final(Vtest_simple_register_uvm___024root* vlSelf) {
@@ -367,7 +367,7 @@ VL_ATTR_COLD void Vtest_simple_register_uvm___024root___eval_settle(Vtest_simple
 #ifdef VL_DEBUG
             Vtest_simple_register_uvm___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
 #endif
-            VL_FATAL_MT("test_simple_register_uvm.sv", 276, "", "Settle region did not converge after 100 tries");
+            VL_FATAL_MT("test_simple_register_uvm.sv", 276, "", "DIDNOTCONVERGE: Settle region did not converge after 100 tries");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
     } while (Vtest_simple_register_uvm___024root___eval_phase__stl(vlSelf));
@@ -424,12 +424,14 @@ VL_ATTR_COLD void Vtest_simple_register_uvm___024root___stl_sequent__TOP__0(Vtes
     Vtest_simple_register_uvm__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSymsp->TOP__test_simple_register_uvm__DOT__reg_if.clk 
+    ([&]() {
+            vlSelfRef.__VvifTrigger_he8f5051c__0_Vtrigm_clk = 1U;
+        }(), vlSymsp->TOP__test_simple_register_uvm__DOT__reg_if.clk) 
         = vlSelfRef.test_simple_register_uvm__DOT__clk;
-    vlSelfRef.__VvifTrigger_he8f502e3__0_Vtrigm_clk = 1U;
-    vlSymsp->TOP__test_simple_register_uvm__DOT__reg_if.q 
+    ([&]() {
+            vlSelfRef.__VvifTrigger_he8f5051c__1_Vtrigm_q = 1U;
+        }(), vlSymsp->TOP__test_simple_register_uvm__DOT__reg_if.q) 
         = vlSelfRef.test_simple_register_uvm__DOT____Vcellout__dut__q;
-    vlSelfRef.__VvifTrigger_he8f502e3__1_Vtrigm_q = 1U;
 }
 
 VL_ATTR_COLD void Vtest_simple_register_uvm___024root___eval_stl(Vtest_simple_register_uvm___024root* vlSelf) {
@@ -510,24 +512,24 @@ VL_ATTR_COLD void Vtest_simple_register_uvm___024root___ctor_var_reset(Vtest_sim
     Vtest_simple_register_uvm__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->test_simple_register_uvm__DOT__clk = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11420586750213230163ull);
     vlSelf->test_simple_register_uvm__DOT__rst_n = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 16107729238351029203ull);
-    vlSelf->test_simple_register_uvm__DOT____Vcellout__dut__q = VL_SCOPED_RAND_RESET_I(8, __VscopeHash, 4477240812046282055ull);
+    vlSelf->test_simple_register_uvm__DOT____Vcellout__dut__q = 0;
     vlSelf->__VnbaEventTrigger = 0;
-    vlSelf->__VvifTrigger_he8f502e3__0_Vtrigm_clk = 0;
-    vlSelf->__VvifTrigger_he8f502e3__1_Vtrigm_q = 0;
-    vlSelf->__VvifTrigger_he8f502e3__2_Vtrigm_enable = 0;
-    vlSelf->__VvifTrigger_he8f502e3__3_Vtrigm_d = 0;
+    vlSelf->__VvifTrigger_he8f5051c__0_Vtrigm_clk = 0;
+    vlSelf->__VvifTrigger_he8f5051c__1_Vtrigm_q = 0;
+    vlSelf->__VvifTrigger_he8f5051c__2_Vtrigm_enable = 0;
+    vlSelf->__VvifTrigger_he8f5051c__3_Vtrigm_d = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VstlTriggered[__Vi0] = 0;
     }
     for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr___TOP__test_simple_register_uvm__DOT__reg_if__clk__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 6963537167689693998ull);
-    vlSelf->__Vtrigprevexpr___TOP__test_simple_register_uvm__DOT__rst_n__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 13789374732210757279ull);
-    vlSelf->__Vtrigprevexpr_h69246a8d__1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11094835894275956180ull);
+    vlSelf->__Vtrigprevexpr___TOP__test_simple_register_uvm__DOT__reg_if__clk__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__test_simple_register_uvm__DOT__rst_n__0 = 0;
+    vlSelf->__Vtrigprevexpr_h5a1c11cb__1 = 0;
     vlSelf->__VactDidInit = 0;
     for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;

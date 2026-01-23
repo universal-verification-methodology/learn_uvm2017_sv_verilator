@@ -67,7 +67,7 @@ void Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153::__VnoInFunc_g
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi94> common;
     vlSymsp->TOP__uvm_pkg__03a__03auvm_registry_common__pi94__Vclpkg.__VnoInFunc_get(vlSymsp, __Vfunc_get__1__Vfuncout);
     common = __Vfunc_get__1__Vfuncout;
-    VL_NULL_CHECK(common, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 80)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__2__Vfuncout);
+    VL_NULL_CHECK(common, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 80)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__2__Vfuncout);
     get_type_name__Vfuncrtn = __Vtask_get_type_name__2__Vfuncout;
 }
 
@@ -79,7 +79,7 @@ void Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153::__VnoInFunc_i
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi94> common;
     vlSymsp->TOP__uvm_pkg__03a__03auvm_registry_common__pi94__Vclpkg.__VnoInFunc_get(vlSymsp, __Vfunc_get__3__Vfuncout);
     common = __Vfunc_get__3__Vfuncout;
-    VL_NULL_CHECK(common, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 94)->__VnoInFunc_initialize(vlProcess, vlSymsp);
+    VL_NULL_CHECK(common, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 94)->__VnoInFunc_initialize(vlProcess, vlSymsp);
 }
 
 Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153::Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153(Vtransactions__Syms* __restrict vlSymsp)
@@ -94,6 +94,10 @@ void Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153::_ctor_var_res
     VL_DEBUG_IF(VL_DBG_MSGF("+              Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153::~Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_component_registry__Tz153>& obj) {

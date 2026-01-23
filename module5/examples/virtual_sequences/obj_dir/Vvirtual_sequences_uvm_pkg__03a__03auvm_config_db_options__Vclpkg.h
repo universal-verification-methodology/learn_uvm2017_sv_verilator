@@ -13,7 +13,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_config_db_options__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_config_db_options__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -21,11 +21,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_confi
     CData/*0:0*/ __PVT__tracing;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_config_db_options__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_config_db_options__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_config_db_options__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_config_db_options__Vclpkg);
 
     // INTERNAL METHODS

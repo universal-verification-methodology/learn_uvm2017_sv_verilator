@@ -6,10 +6,12 @@
 
 void Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg___ctor_var_reset(Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg* vlSelf);
 
-Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg::Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg(Vtransactions__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg::Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg() = default;
+Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg::~Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg() = default;
+
+void Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg::ctor(Vtransactions__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg::__Vconfigure(b
     (void)first;  // Prevent unused variable warning
 }
 
-Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg::~Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg() {
+void Vtransactions_uvm_pkg__03a__03auvm_pool__Tz50_TBz73__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

@@ -17,15 +17,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_printer;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_event_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_event_base__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_event_base__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_event_base__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_event_base__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_event_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -43,13 +46,11 @@ class Vpools_top_uvm_pkg__03a__03auvm_event_base : public Vpools_top_uvm_pkg__03
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__on;
-    CData/*0:0*/ __Vtrigprevexpr___TOP__uvm_pkg__03a__03auvm_event_base____PVT__on__0;
-    CData/*0:0*/ __Vtrigprevexpr___TOP__uvm_pkg__03a__03auvm_event_base____PVT__on__1;
     IData/*31:0*/ __PVT__num_waiters;
     QData/*63:0*/ __PVT__trigger_time;
     VlAssignableEvent __PVT__m_event;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_cancel(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> rhs);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_printer> printer);
@@ -71,7 +72,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_event_base : public Vpools_top_uvm_pkg__03
     Vpools_top_uvm_pkg__03a__03auvm_event_base(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_event_base() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_event_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_event_base>& obj);

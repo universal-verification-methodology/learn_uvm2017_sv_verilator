@@ -269,7 +269,11 @@ void Vdma_uvm_pkg__03a__03auvm_void::_ctor_var_reset(Vdma__Syms* __restrict vlSy
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_void::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
-    __Vrandmode.atDefault() = VL_SCOPED_RAND_RESET_I(1, 3560521879462371086ULL, 14368739129856475828ull);
+    __Vrandmode.atDefault() = 0;
+}
+
+Vdma_uvm_pkg__03a__03auvm_void::~Vdma_uvm_pkg__03a__03auvm_void() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vdma_uvm_pkg__03a__03auvm_void::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_void>& obj) {

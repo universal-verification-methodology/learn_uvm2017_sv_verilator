@@ -8,7 +8,6 @@
 #include "verilated.h"
 #include "verilated_timing.h"
 #include "verilated_random.h"
-class Vpools_top_uvm_pkg__03a__03auvm_coreservice_t;
 class Vpools_top_uvm_pkg__03a__03auvm_object;
 class Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi149;
 class Vpools_top_uvm_pkg__03a__03auvm_object_wrapper;
@@ -19,20 +18,22 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq;
 class Vpools_top_uvm_pkg__03a__03auvm_reg_map;
 class Vpools_top_uvm_pkg__03a__03auvm_reg_sequence__Tz282;
 class Vpools_top_uvm_pkg__03a__03auvm_resource__Tz40;
-class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -47,8 +48,8 @@ class Vpools_top__Syms;
 
 class Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq : public Vpools_top_uvm_pkg__03a__03auvm_reg_sequence__Tz282 {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual VlCoroutine __VnoInFunc_do_block(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_block> blk);
@@ -62,7 +63,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq : public Vpools_top_uvm_p
     Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_hw_reset_seq>& obj);

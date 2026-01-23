@@ -21,7 +21,7 @@ class Vdma_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -29,11 +29,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tr_stream__Vclpkg f
     VlAssocArray<IData/*31:0*/, VlClassRef<Vdma_uvm_pkg__03a__03auvm_tr_stream>> __PVT__m_streams_by_id;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_tr_stream__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_tr_stream__Vclpkg);
 
     // INTERNAL METHODS
@@ -55,11 +58,11 @@ class Vdma_uvm_pkg__03a__03auvm_tr_stream : public Vdma_uvm_pkg__03a__03auvm_obj
     CData/*0:0*/ __PVT__m_is_closed;
     VlAssocArray<VlClassRef<Vdma_uvm_pkg__03a__03auvm_recorder>, CData/*0:0*/> __PVT__m_records;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_set_before_get_dap__Tz18> __PVT__m_cfg_dap;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_close(Vdma__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_close(Vdma__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_free(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_close(Vdma__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_free(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_open(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_tr_database> db, std::string scope, std::string stream_type_name);
     virtual void __VnoInFunc_do_open_recorder(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ open_time, std::string type_name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_recorder> &do_open_recorder__Vfuncrtn);
     void __VnoInFunc_free(Vdma__Syms* __restrict vlSymsp);
@@ -80,7 +83,7 @@ class Vdma_uvm_pkg__03a__03auvm_tr_stream : public Vdma_uvm_pkg__03a__03auvm_obj
     Vdma_uvm_pkg__03a__03auvm_tr_stream(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_tr_stream() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_tr_stream();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_tr_stream>& obj);

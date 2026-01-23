@@ -13,7 +13,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_cmdline_processor;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db_options__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db_options__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -21,11 +21,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_resourc
     CData/*0:0*/ __PVT__tracing;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db_options__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db_options__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db_options__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db_options__Vclpkg);
 
     // INTERNAL METHODS

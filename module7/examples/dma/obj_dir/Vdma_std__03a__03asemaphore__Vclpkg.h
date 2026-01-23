@@ -12,15 +12,18 @@
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_std__03a__03asemaphore__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_std__03a__03asemaphore__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_std__03a__03asemaphore__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_std__03a__03asemaphore__Vclpkg();
     ~Vdma_std__03a__03asemaphore__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_std__03a__03asemaphore__Vclpkg);
 
     // INTERNAL METHODS
@@ -34,7 +37,6 @@ class Vdma_std__03a__03asemaphore : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h6f8f1d71__0;
     IData/*31:0*/ __PVT__m_keyCount;
     VlCoroutine __VnoInFunc_get(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount);
     void __VnoInFunc_put(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount);

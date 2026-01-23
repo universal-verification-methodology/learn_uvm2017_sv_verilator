@@ -18,15 +18,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167__Vclpkg);
 
     // INTERNAL METHODS
@@ -43,8 +46,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167 : p
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298> __PVT__analysis_export;
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_base> __PVT__sequencer_ptr;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     void __VnoInFunc_write(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item> t);
   private:
@@ -53,7 +56,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167 : p
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167>& obj);

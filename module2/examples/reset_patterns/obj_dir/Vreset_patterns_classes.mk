@@ -39,7 +39,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vreset_patterns__Syms \
+  Vreset_patterns__Syms__Slow \
   Vreset_patterns__Trace__0__Slow \
   Vreset_patterns__TraceDecls__0__Slow \
 

@@ -11,5 +11,5 @@ Vtest_counter__ALL.o: Vtest_counter__ALL.cpp Vtest_counter.cpp \
  /usr/local/share/verilator/include/verilated_trace.h \
  Vtest_counter___024root__0.cpp Vtest_counter__Trace__0.cpp \
  Vtest_counter___024root__Slow.cpp Vtest_counter___024root__0__Slow.cpp \
- Vtest_counter__Syms.cpp Vtest_counter__Trace__0__Slow.cpp \
+ Vtest_counter__Syms__Slow.cpp Vtest_counter__Trace__0__Slow.cpp \
  Vtest_counter__TraceDecls__0__Slow.cpp

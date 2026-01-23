@@ -6,11 +6,11 @@
 
 void Vclass_hierarchy___024root___ctor_var_reset(Vclass_hierarchy___024root* vlSelf);
 
-Vclass_hierarchy___024root::Vclass_hierarchy___024root(Vclass_hierarchy__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , __VdlySched{*symsp->_vm_contextp__}
-    , vlSymsp{symsp}
+Vclass_hierarchy___024root::Vclass_hierarchy___024root(Vclass_hierarchy__Syms* symsp, const char* namep)
+    : __VdlySched{*symsp->_vm_contextp__}
  {
+    vlSymsp = symsp;
+    vlNamep = strdup(namep);
     // Reset structure values
     Vclass_hierarchy___024root___ctor_var_reset(this);
 }
@@ -20,4 +20,5 @@ void Vclass_hierarchy___024root::__Vconfigure(bool first) {
 }
 
 Vclass_hierarchy___024root::~Vclass_hierarchy___024root() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

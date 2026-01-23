@@ -88,6 +88,10 @@ void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_message_element_base:
     __PVT___action = 0;
 }
 
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_message_element_base::~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_message_element_base() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_message_element_base::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_message_element_base>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_message_element_base::VL_TO_STRING\n"); );
     // Body

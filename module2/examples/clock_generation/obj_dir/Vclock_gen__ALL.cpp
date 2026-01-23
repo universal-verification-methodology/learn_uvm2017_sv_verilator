@@ -5,6 +5,6 @@
 #include "Vclock_gen__Trace__0.cpp"
 #include "Vclock_gen___024root__Slow.cpp"
 #include "Vclock_gen___024root__0__Slow.cpp"
-#include "Vclock_gen__Syms.cpp"
+#include "Vclock_gen__Syms__Slow.cpp"
 #include "Vclock_gen__Trace__0__Slow.cpp"
 #include "Vclock_gen__TraceDecls__0__Slow.cpp"

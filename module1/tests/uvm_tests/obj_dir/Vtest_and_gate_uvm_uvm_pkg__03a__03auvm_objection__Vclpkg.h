@@ -9,8 +9,8 @@
 #include "verilated_timing.h"
 #include "verilated_random.h"
 class Vtest_and_gate_uvm_std__03a__03aprocess;
-class Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_22;
-class Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_23;
+class Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_29;
+class Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_31;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callback_iter__Tz15_TBz16;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_cmdline_processor;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component;
@@ -29,7 +29,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -40,11 +40,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objec
     VlQueue<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_scheduled_list;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,11 +55,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objec
     void __VnoInFunc_get_type(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__pi2> &get_type__Vfuncrtn);
     VlCoroutine __VnoInFunc_m_execute_scheduled_forks(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_execute_scheduled_forks____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_23> unnamedblk5__DOT___Vwrapped_guard_3__DOT____VDynScope_guard_3);
+    VlCoroutine __VnoInFunc_m_execute_scheduled_forks____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_31> unnamedblk5__DOT__guard__VgetForkParent__DOT___Vwrapped_guard_4__DOT____VDynScope_guard_4, VlClassRef<Vtest_and_gate_uvm_std__03a__03aprocess> unnamedblk5__DOT__guard__VgetForkParent__DOT____VforkParent);
   public:
     void __VnoInFunc_m_init_objections(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_init_objections____Vfork_2__0(VlProcessRef vlProcess);
+    VlCoroutine __VnoInFunc_m_init_objections____Vfork_2__0(VlProcessRef vlProcess, VlClassRef<Vtest_and_gate_uvm_std__03a__03aprocess> unnamedblk7__DOT____VforkParent);
 };
 
 #include "Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_object__Vclpkg.h"
@@ -71,9 +74,6 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection : public Vtest_and_gate_
     CData/*0:0*/ __PVT__m_top_all_dropped;
     CData/*0:0*/ __PVT__m_prop_mode;
     CData/*0:0*/ __PVT__m_cleared;
-    CData/*0:0*/ __Vtrigprevexpr_h116ba8f5__0;
-    CData/*0:0*/ __Vtrigprevexpr_h4043bb54__0;
-    CData/*0:0*/ __Vtrigprevexpr_h105da858__0;
     VlAssocArray<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object>, IData/*31:0*/> __PVT__m_source_count;
     VlAssocArray<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object>, IData/*31:0*/> __PVT__m_total_count;
     VlAssocArray<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object>, QData/*63:0*/> __PVT__m_drain_time;
@@ -83,8 +83,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection : public Vtest_and_gate_
     VlAssocArray<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object>, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_scheduled_contexts;
     VlQueue<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_forked_list;
     VlAssocArray<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object>, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_forked_contexts;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_all_dropped(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> source_obj, std::string description, IData/*31:0*/ count);
     virtual void __VnoInFunc_clear(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> obj);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
@@ -120,7 +120,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection : public Vtest_and_gate_
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_objection>& obj);

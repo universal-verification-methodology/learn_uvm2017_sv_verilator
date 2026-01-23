@@ -21,15 +21,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_test;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024unit__03a__03aTransactionsTest__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024unit__03a__03aTransactionsTest__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions___024unit__03a__03aTransactionsTest__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions___024unit__03a__03aTransactionsTest__Vclpkg();
     ~Vtransactions___024unit__03a__03aTransactionsTest__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions___024unit__03a__03aTransactionsTest__Vclpkg);
 
     // INTERNAL METHODS
@@ -50,8 +53,8 @@ class Vtransactions___024unit__03a__03aTransactionsTest : public Vtransactions_u
     VlClassRef<Vtransactions___024unit__03a__03aBaseTransaction> __PVT__base_txn2;
     VlClassRef<Vtransactions___024unit__03a__03aExtendedTransaction> __PVT__ext_txn;
     VlClassRef<Vtransactions___024unit__03a__03aConstrainedTransaction> __PVT__constr_txn;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_get_object_type(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vtransactions__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -64,7 +67,7 @@ class Vtransactions___024unit__03a__03aTransactionsTest : public Vtransactions_u
     Vtransactions___024unit__03a__03aTransactionsTest(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions___024unit__03a__03aTransactionsTest() {}
+    virtual ~Vtransactions___024unit__03a__03aTransactionsTest();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions___024unit__03a__03aTransactionsTest>& obj);

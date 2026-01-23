@@ -17,15 +17,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor__Vclpkg);
 
     // INTERNAL METHODS
@@ -46,8 +49,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor : public Vclass_hierar
     std::string __PVT__fname;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> __PVT__rw_info;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_base> __PVT__sequencer;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_object_type(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
@@ -57,7 +60,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor : public Vclass_hierar
     Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_frontdoor>& obj);

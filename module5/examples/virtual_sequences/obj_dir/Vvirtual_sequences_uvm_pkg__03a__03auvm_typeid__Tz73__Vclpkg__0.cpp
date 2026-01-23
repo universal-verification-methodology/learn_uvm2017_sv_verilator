@@ -27,6 +27,10 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz73::_ctor_var_reset(Vvirt
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz73::~Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz73() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz73::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz73>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz73::VL_TO_STRING\n"); );
     // Body

@@ -1,3 +1,0 @@
-Vuart_example_uvm_pkg__03a__03auvm_object_string_pool__Tz7__Vclpkg__0.o: \
- Vuart_example_uvm_pkg__03a__03auvm_object_string_pool__Tz7__Vclpkg__0.cpp \
- Vuart_example__pch.h

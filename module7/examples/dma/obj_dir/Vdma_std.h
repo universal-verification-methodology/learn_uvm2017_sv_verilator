@@ -12,15 +12,18 @@
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_std final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_std final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_std(Vdma__Syms* symsp, const char* v__name);
+    Vdma_std();
     ~Vdma_std();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_std);
 
     // INTERNAL METHODS

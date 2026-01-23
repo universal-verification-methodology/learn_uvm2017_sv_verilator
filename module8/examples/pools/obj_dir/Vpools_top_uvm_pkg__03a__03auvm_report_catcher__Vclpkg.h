@@ -24,7 +24,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -46,11 +46,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_report_catche
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_callback_iter__Tz63_TBz134> __PVT__print_catcher__Vstatic__iter;
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_report_catcher__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_report_catcher__Vclpkg);
 
     // INTERNAL METHODS
@@ -67,8 +70,8 @@ class Vpools_top__Syms;
 
 class Vpools_top_uvm_pkg__03a__03auvm_report_catcher : public Vpools_top_uvm_pkg__03a__03auvm_callback {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_int(Vpools_top__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix, IData/*31:0*/ action);
     void __VnoInFunc_add_object(Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> obj, IData/*31:0*/ action);
     void __VnoInFunc_add_string(Vpools_top__Syms* __restrict vlSymsp, std::string name, std::string value, IData/*31:0*/ action);
@@ -104,7 +107,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_report_catcher : public Vpools_top_uvm_pkg
     Vpools_top_uvm_pkg__03a__03auvm_report_catcher(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_report_catcher() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_report_catcher();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_report_catcher>& obj);

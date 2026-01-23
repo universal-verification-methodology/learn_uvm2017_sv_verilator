@@ -6,10 +6,12 @@
 
 void Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg___ctor_var_reset(Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg* vlSelf);
 
-Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg::Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg(Vdma__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg::Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg() = default;
+Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg::~Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg() = default;
+
+void Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg::ctor(Vdma__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg::__Vconfigure(bo
     (void)first;  // Prevent unused variable warning
 }
 
-Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg::~Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg() {
+void Vdma_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi147__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

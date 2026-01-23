@@ -18,15 +18,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_phase;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture___024unit__03a__03aArchEnv__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture___024unit__03a__03aArchEnv__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture___024unit__03a__03aArchEnv__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture___024unit__03a__03aArchEnv__Vclpkg();
     ~Varchitecture___024unit__03a__03aArchEnv__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture___024unit__03a__03aArchEnv__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Varchitecture___024unit__03a__03aArchEnv : public Varchitecture_uvm_pkg__0
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Varchitecture___024unit__03a__03aArchAgent> __PVT__agent;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_get_object_type(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Varchitecture__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -56,7 +59,7 @@ class Varchitecture___024unit__03a__03aArchEnv : public Varchitecture_uvm_pkg__0
     Varchitecture___024unit__03a__03aArchEnv(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture___024unit__03a__03aArchEnv() {}
+    virtual ~Varchitecture___024unit__03a__03aArchEnv();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture___024unit__03a__03aArchEnv>& obj);

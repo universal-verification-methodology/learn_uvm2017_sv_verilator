@@ -22,7 +22,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_tree_printer;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_tree_printer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_tree_printer__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_tree_print
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy> __PVT__m_emit_element__Vstatic__proxy;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_tree_printer__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_tree_printer__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_tree_printer__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_tree_printer__Vclpkg);
 
     // INTERNAL METHODS
@@ -55,8 +58,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_tree_printer : public Varchitecture_uvm
     // DESIGN SPECIFIC STATE
     std::string __PVT__m_newline;
     std::string __PVT__m_linefeed;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_emit(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string &emit__Vfuncrtn);
     virtual void __VnoInFunc_flush(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
@@ -74,7 +77,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_tree_printer : public Varchitecture_uvm
     Varchitecture_uvm_pkg__03a__03auvm_tree_printer(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_tree_printer() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_tree_printer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_tree_printer>& obj);

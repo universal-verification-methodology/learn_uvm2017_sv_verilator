@@ -37,7 +37,7 @@ class Vdma_uvm_pkg__03a__03auvm_vreg_field;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_mem__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_mem__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -45,11 +45,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_mem__Vclpkg final :
     IData/*31:0*/ __PVT__m_max_size;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_mem__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_mem__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_mem__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_mem__Vclpkg);
 
     // INTERNAL METHODS
@@ -78,7 +81,6 @@ class Vdma_uvm_pkg__03a__03auvm_mem : public Vdma_uvm_pkg__03a__03auvm_object {
     VlAssocArray<VlClassRef<Vdma_uvm_pkg__03a__03auvm_vreg>, CData/*0:0*/> __PVT__m_vregs;
     std::string __PVT__m_access;
     std::string __PVT__m_fname;
-    std::string __Vfunc_get_full_name__28__Vfuncout;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_block> __PVT__m_parent;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_backdoor> __PVT__m_backdoor;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_object_string_pool__Tz183> __PVT__m_hdl_paths_pool;
@@ -88,8 +90,8 @@ class Vdma_uvm_pkg__03a__03auvm_mem : public Vdma_uvm_pkg__03a__03auvm_object {
     void __VnoInFunc_Xdelete_vregX(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_vreg> vreg);
     void __VnoInFunc_Xlock_modelX(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_XsampleX(Vdma__Syms* __restrict vlSymsp, QData/*63:0*/ addr, CData/*0:0*/ is_read, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_map> map);
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_coverage(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ models);
     void __VnoInFunc_add_hdl_path(Vdma__Syms* __restrict vlSymsp, VlQueue<Vdma_uvm_hdl_path_slice__struct__0> slices, std::string kind);
     void __VnoInFunc_add_hdl_path_slice(Vdma__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ offset, IData/*31:0*/ size, CData/*0:0*/ first, std::string kind);
@@ -161,7 +163,7 @@ class Vdma_uvm_pkg__03a__03auvm_mem : public Vdma_uvm_pkg__03a__03auvm_object {
     Vdma_uvm_pkg__03a__03auvm_mem(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ size, IData/*31:0*/ n_bits, std::string access, IData/*31:0*/ has_coverage);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_mem() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_mem();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_mem>& obj);

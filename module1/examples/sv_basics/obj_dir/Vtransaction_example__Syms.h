@@ -42,7 +42,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example__Syms final : public Ver
     ~Vtransaction_example__Syms();
 
     // METHODS
-    const char* name() { return TOP.name(); }
+    const char* name() const { return TOP.vlNamep; }
 };
 
 #endif  // guard

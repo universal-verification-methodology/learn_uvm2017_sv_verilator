@@ -12,15 +12,18 @@
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_std__03a__03asemaphore__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_std__03a__03asemaphore__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_std__03a__03asemaphore__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_std__03a__03asemaphore__Vclpkg();
     ~Vclass_hierarchy_std__03a__03asemaphore__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_std__03a__03asemaphore__Vclpkg);
 
     // INTERNAL METHODS
@@ -34,7 +37,6 @@ class Vclass_hierarchy_std__03a__03asemaphore : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h6f8f1d71__0;
     IData/*31:0*/ __PVT__m_keyCount;
     VlCoroutine __VnoInFunc_get(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount);
     void __VnoInFunc_put(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount);

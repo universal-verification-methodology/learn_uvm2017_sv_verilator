@@ -92,7 +92,7 @@ struct Vclass_hierarchy_uvm_cmdline_parsed_arg_t__struct__0 {
 template <>
 struct VlIsCustomStruct<Vclass_hierarchy_uvm_cmdline_parsed_arg_t__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_component__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_component__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -106,11 +106,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_compone
     VlQueue<std::string> __PVT__m_set_cl_verb__Vstatic__values;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_component__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_component__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_component__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_component__Vclpkg);
 
     // INTERNAL METHODS
@@ -148,8 +151,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_component : public Vclass_hierarchy_
     VlAssocArray<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction>, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_recorder>> __PVT__m_tr_h;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object_string_pool__Tz20> __PVT__event_pool;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_base> __PVT__m_unsupported_resource_base;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_accept_tr(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction> tr, QData/*63:0*/ accept_time);
     virtual void __VnoInFunc_all_dropped(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_objection> objection, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> source_obj, std::string description, IData/*31:0*/ count);
     virtual void __VnoInFunc_apply_config_settings(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, CData/*0:0*/ verbose);
@@ -174,7 +177,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_component : public Vclass_hierarchy_
     void __VnoInFunc_end_tr(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction> tr, QData/*63:0*/ end_time, CData/*0:0*/ free_handle);
     virtual void __VnoInFunc_extract_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_final_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
-    virtual void __VnoInFunc_flush(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_flush(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_free_tr_stream(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream> stream);
     void __VnoInFunc_get_child(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> &get_child__Vfuncrtn);
     void __VnoInFunc_get_children(Vclass_hierarchy__Syms* __restrict vlSymsp, VlQueue<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component>> &children);
@@ -193,7 +196,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_component : public Vclass_hierarchy_
     virtual void __VnoInFunc_m_add_child(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> child, CData/*0:0*/ &m_add_child__Vfuncrtn);
     void __VnoInFunc_m_apply_verbosity_settings(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
   private:
-    VlCoroutine __VnoInFunc_m_apply_verbosity_settings____Vfork_2__0(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ i);
+    VlCoroutine __VnoInFunc_m_apply_verbosity_settings____Vfork_2__0(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ i, VlClassRef<Vclass_hierarchy_std__03a__03aprocess> unnamedblk230__DOT__unnamedblk231__DOT____VforkParent);
   public:
     void __VnoInFunc_m_begin_tr(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction> tr, IData/*31:0*/ parent_handle, std::string stream_name, std::string label, std::string desc, QData/*63:0*/ begin_time, IData/*31:0*/ &m_begin_tr__Vfuncrtn);
     void __VnoInFunc_m_do_pre_abort(Vclass_hierarchy__Syms* __restrict vlSymsp);
@@ -203,7 +206,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_component : public Vclass_hierarchy_
     void __VnoInFunc_m_set_cl_sev(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_m_set_cl_verb(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_set_cl_verb____Vfork_1__0(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> top);
+    VlCoroutine __VnoInFunc_m_set_cl_verb____Vfork_1__0(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> top, VlClassRef<Vclass_hierarchy_std__03a__03aprocess> unnamedblk214__DOT____VforkParent);
   public:
     virtual void __VnoInFunc_m_set_full_name(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_m_unsupported_set_local(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_base> rsrc);
@@ -216,7 +219,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_component : public Vclass_hierarchy_
     virtual void __VnoInFunc_post_main_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_post_reset_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_post_shutdown_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
-    virtual void __VnoInFunc_pre_abort(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_pre_abort(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_pre_configure_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_pre_main_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_pre_reset_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
@@ -230,7 +233,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_component : public Vclass_hierarchy_
     void __VnoInFunc_record_event_tr(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string stream_name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> info, std::string label, std::string desc, QData/*63:0*/ event_time, CData/*0:0*/ keep_active, IData/*31:0*/ &record_event_tr__Vfuncrtn);
     virtual void __VnoInFunc_report_phase(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_reset_phase(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
-    virtual void __VnoInFunc_resolve_bindings(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_resolve_bindings(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_resume(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual VlCoroutine __VnoInFunc_run_phase(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase);
     void __VnoInFunc_set_domain(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_domain> domain, IData/*31:0*/ hier);
@@ -259,7 +262,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_component : public Vclass_hierarchy_
     Vclass_hierarchy_uvm_pkg__03a__03auvm_component(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_component() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_component();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component>& obj);

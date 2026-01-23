@@ -107,7 +107,7 @@ VlCoroutine Vdata_structures_example___024root___eval_initial__TOP__Vtiming__0(V
                                          nullptr, "data_structures_example.sv", 
                                          198);
     VL_FINISH_MT("data_structures_example.sv", 199, "");
-}
+    co_return;}
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Vdata_structures_example___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
@@ -218,7 +218,7 @@ void Vdata_structures_example___024root___eval(Vdata_structures_example___024roo
 #ifdef VL_DEBUG
             Vdata_structures_example___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("data_structures_example.sv", 140, "", "NBA region did not converge after 100 tries");
+            VL_FATAL_MT("data_structures_example.sv", 140, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -227,7 +227,7 @@ void Vdata_structures_example___024root___eval(Vdata_structures_example___024roo
 #ifdef VL_DEBUG
                 Vdata_structures_example___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("data_structures_example.sv", 140, "", "Active region did not converge after 100 tries");
+                VL_FATAL_MT("data_structures_example.sv", 140, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

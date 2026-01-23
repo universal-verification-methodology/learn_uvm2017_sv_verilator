@@ -75,8 +75,7 @@ VlCoroutine Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_put(Vdma
     VlProcessRef vlProcess = std::make_shared<VlProcess>();
     VL_KEEP_THIS;
     this->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, "put"s, "fifo channel task not implemented"s, 0U, ""s, 0U, ""s, 0U);
-    co_return;
-}
+    co_return;}
 
 VlCoroutine Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_get(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_item> &t) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_get\n"); );
@@ -84,16 +83,14 @@ VlCoroutine Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_get(Vdma
     VlProcessRef vlProcess = std::make_shared<VlProcess>();
     VL_KEEP_THIS;
     this->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, "get"s, "fifo channel task not implemented"s, 0U, ""s, 0U, ""s, 0U);
-    co_return;
-}
+    co_return;}
 
 VlCoroutine Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_peek(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_item> &t) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_peek\n"); );
     // Body
     VL_KEEP_THIS;
     this->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, "peek"s, "fifo channel task not implemented"s, 0U, ""s, 0U, ""s, 0U);
-    co_return;
-}
+    co_return;}
 
 void Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_try_put(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_item> t, CData/*0:0*/ &try_put__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_try_put\n"); );
@@ -192,27 +189,35 @@ void Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_used(Vdma__Syms
 void Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__24__Vfuncout;
-    __Vfunc___Vbasic_randomize__24__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__24__Vfuncout;
+    __Vfunc___VBasicRand__24__Vfuncout = 0;
     // Body
-    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vdma_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__24__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__24__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__24__Vfuncout);
+            }(), __Vfunc___VBasicRand__24__Vfuncout));
 }
 
-void Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc___Vbasic_randomize\n"); );
+void Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::_ctor_var_reset(Vdma__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::~Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199>& obj) {

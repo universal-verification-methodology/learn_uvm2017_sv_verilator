@@ -18,7 +18,7 @@ Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::Vpools_top_uvm_pkg__03a__03a
     this->__PVT__target = ((VlNull{} != target) ? target
                             : (VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object>)(
                                                                                 ([&]() {
-                    VL_NULL_CHECK(this->__PVT__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 312)
+                    VL_NULL_CHECK(this->__PVT__cs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 312)
                                                                                 ->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__2__Vfuncout);
                 }(), __Vtask_get_root__2__Vfuncout)));
 }
@@ -85,21 +85,25 @@ void Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc_objects_tri
 void Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__5__Vfuncout;
-    __Vfunc___Vbasic_randomize__5__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__5__Vfuncout;
+    __Vfunc___VBasicRand__5__Vfuncout = 0;
     // Body
-    Vpools_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vpools_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vpools_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__5__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__5__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__5__Vfuncout);
+            }(), __Vfunc___VBasicRand__5__Vfuncout));
 }
 
-void Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc___Vbasic_randomize\n"); );
+void Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::_ctor_var_reset(Vpools_top__Syms* __restrict vlSymsp) {
@@ -108,6 +112,10 @@ void Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::_ctor_var_reset(Vpools_
     (void)vlSymsp;  // Prevent unused variable warning
     __PVT__cnt.atDefault() = 0;
     __PVT__last_trigger.atDefault() = VL_SCOPED_RAND_RESET_Q(64, 6832164394050517435ULL, 14228963972983550624ull);
+}
+
+Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::~Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_heartbeat_callback>& obj) {

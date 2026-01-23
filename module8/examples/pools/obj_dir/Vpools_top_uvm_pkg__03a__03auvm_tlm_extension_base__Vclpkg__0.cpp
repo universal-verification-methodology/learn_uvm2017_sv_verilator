@@ -35,27 +35,35 @@ void Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc_create(VlPr
 void Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__3__Vfuncout;
-    __Vfunc___Vbasic_randomize__3__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__3__Vfuncout;
+    __Vfunc___VBasicRand__3__Vfuncout = 0;
     // Body
-    Vpools_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vpools_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vpools_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__3__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__3__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__3__Vfuncout);
+            }(), __Vfunc___VBasicRand__3__Vfuncout));
 }
 
-void Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc___Vbasic_randomize\n"); );
+void Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::_ctor_var_reset(Vpools_top__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::~Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_tlm_extension_base>& obj) {

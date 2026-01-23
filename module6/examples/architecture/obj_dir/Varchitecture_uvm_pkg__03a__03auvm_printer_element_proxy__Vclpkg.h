@@ -14,15 +14,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_structure_proxy__Tz88;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,8 +38,8 @@ class Varchitecture__Syms;
 
 class Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy : public Varchitecture_uvm_pkg__03a__03auvm_structure_proxy__Tz88 {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_immediate_children(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element> s, VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element>> &children);
     virtual void __VnoInFunc_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
@@ -45,7 +48,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy : public Varchite
     Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element_proxy>& obj);

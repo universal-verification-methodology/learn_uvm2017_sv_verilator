@@ -16,15 +16,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_report_object;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_report_object__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_report_object__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_report_object__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_report_object__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_report_object__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_report_object__Vclpkg);
 
     // INTERNAL METHODS
@@ -41,8 +44,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_report_object : public Vpools_top_uvm_pkg_
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_rh_set;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_report_handler> __PVT__m_rh;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_get_report_action(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, CData/*1:0*/ severity, std::string id, IData/*31:0*/ &get_report_action__Vfuncrtn);
     void __VnoInFunc_get_report_file_handle(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, CData/*1:0*/ severity, std::string id, IData/*31:0*/ &get_report_file_handle__Vfuncrtn);
     void __VnoInFunc_get_report_handler(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_report_handler> &get_report_handler__Vfuncrtn);
@@ -78,7 +81,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_report_object : public Vpools_top_uvm_pkg_
     Vpools_top_uvm_pkg__03a__03auvm_report_object(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_report_object() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_report_object();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_report_object>& obj);

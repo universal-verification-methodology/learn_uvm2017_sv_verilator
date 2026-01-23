@@ -15,15 +15,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_root;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,7 +56,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1 : public virtual
     Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1>& obj);

@@ -20,6 +20,10 @@ void Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_get_type_name(V
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_get_type_name\n"); );
 }
 
+void Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_initialize(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::__VnoInFunc_initialize\n"); );
+}
+
 Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::Vpools_top_uvm_pkg__03a__03auvm_object_wrapper(Vpools_top__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::new\n"); );
     // Body
@@ -30,6 +34,10 @@ void Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::_ctor_var_reset(Vpools_top_
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::~Vpools_top_uvm_pkg__03a__03auvm_object_wrapper() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vpools_top_uvm_pkg__03a__03auvm_object_wrapper::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object_wrapper>& obj) {

@@ -5,6 +5,6 @@
 #include "Vtest_counter__Trace__0.cpp"
 #include "Vtest_counter___024root__Slow.cpp"
 #include "Vtest_counter___024root__0__Slow.cpp"
-#include "Vtest_counter__Syms.cpp"
+#include "Vtest_counter__Syms__Slow.cpp"
 #include "Vtest_counter__Trace__0__Slow.cpp"
 #include "Vtest_counter__TraceDecls__0__Slow.cpp"

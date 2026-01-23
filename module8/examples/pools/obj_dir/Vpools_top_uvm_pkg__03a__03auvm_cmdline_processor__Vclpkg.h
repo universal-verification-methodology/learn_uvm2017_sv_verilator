@@ -14,18 +14,21 @@ class Vpools_top_uvm_pkg__03a__03auvm_report_object;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor : public Vpools_top_uvm_
     VlQueue<std::string> __PVT__m_argv;
     VlQueue<std::string> __PVT__m_plus_argv;
     VlQueue<std::string> __PVT__m_uvm_argv;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_get_arg_matches(Vpools_top__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &args, IData/*31:0*/ &get_arg_matches__Vfuncrtn);
     void __VnoInFunc_get_arg_value(Vpools_top__Syms* __restrict vlSymsp, std::string match, std::string &value, IData/*31:0*/ &get_arg_value__Vfuncrtn);
     void __VnoInFunc_get_arg_values(Vpools_top__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &values, IData/*31:0*/ &get_arg_values__Vfuncrtn);
@@ -62,7 +65,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor : public Vpools_top_uvm_
     Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor>& obj);

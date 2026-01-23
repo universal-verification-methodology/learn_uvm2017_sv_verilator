@@ -42,7 +42,7 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs__Vclpkg::__VnoInFu
                                                                                 ([&]() {
                 this->__VnoInFunc_get(vlSymsp, __Vfunc_get__3__Vfuncout);
             }(), __Vfunc_get__3__Vfuncout), 0U);
-    VL_NULL_CHECK(rg, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 334)->__VnoInFunc_get_fields(vlSymsp, flds);
+    VL_NULL_CHECK(rg, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 334)->__VnoInFunc_get_fields(vlSymsp, flds);
     unnamedblk2__DOT__i = 0U;
     while (VL_LTS_III(32, unnamedblk2__DOT__i, flds.size())) {
         vlSymsp->TOP__uvm_pkg__03a__03auvm_callbacks__Tz180_TBz177__Vclpkg.__VnoInFunc_add(vlSymsp, flds.at(unnamedblk2__DOT__i), 
@@ -71,27 +71,27 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs__Vclpkg::__VnoInFu
     VlQueue<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_field>> flds;
     {
         cbs = VL_NEW(Vclass_hierarchy_uvm_pkg__03a__03auvm_callback_iter__pi89, vlSymsp, rg);
-        VL_NULL_CHECK(cbs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 347)->__VnoInFunc_first(vlProcess, vlSymsp, __Vtask_first__8__Vfuncout);
+        VL_NULL_CHECK(cbs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 347)->__VnoInFunc_first(vlProcess, vlSymsp, __Vtask_first__8__Vfuncout);
         while ((([&]() {
-                        VL_NULL_CHECK(cbs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 348)
+                        VL_NULL_CHECK(cbs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 348)
                  ->__VnoInFunc_get_cb(vlSymsp, __Vtask_get_cb__9__Vfuncout);
                     }(), __Vtask_get_cb__9__Vfuncout) 
                 != ([&]() {
                         this->__VnoInFunc_get(vlSymsp, __Vfunc_get__10__Vfuncout);
                     }(), __Vfunc_get__10__Vfuncout))) {
             if ((VlNull{} == ([&]() {
-                            VL_NULL_CHECK(cbs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 349)
+                            VL_NULL_CHECK(cbs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 349)
                               ->__VnoInFunc_get_cb(vlSymsp, __Vtask_get_cb__11__Vfuncout);
                         }(), __Vtask_get_cb__11__Vfuncout))) {
                 goto __Vlabel0;
             }
-            VL_NULL_CHECK(cbs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 351)->__VnoInFunc_next(vlProcess, vlSymsp, __Vtask_next__12__Vfuncout);
+            VL_NULL_CHECK(cbs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 351)->__VnoInFunc_next(vlProcess, vlSymsp, __Vtask_next__12__Vfuncout);
         }
         vlSymsp->TOP__uvm_pkg__03a__03auvm_callbacks__Tz176_TBz177__Vclpkg.__VnoInFunc_delete(vlSymsp, rg, 
                                                                                 ([&]() {
                     this->__VnoInFunc_get(vlSymsp, __Vfunc_get__14__Vfuncout);
                 }(), __Vfunc_get__14__Vfuncout));
-        VL_NULL_CHECK(rg, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 354)->__VnoInFunc_get_fields(vlSymsp, flds);
+        VL_NULL_CHECK(rg, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 354)->__VnoInFunc_get_fields(vlSymsp, flds);
         unnamedblk3__DOT__i = 0U;
         while (VL_LTS_III(32, unnamedblk3__DOT__i, flds.size())) {
             vlSymsp->TOP__uvm_pkg__03a__03auvm_callbacks__Tz180_TBz177__Vclpkg.__VnoInFunc_delete(vlSymsp, flds.at(unnamedblk3__DOT__i), 
@@ -170,25 +170,25 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc_pre_r
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg> unnamedblk1__DOT__rg;
     std::string name;
     {
-        VL_NULL_CHECK(VL_NULL_CHECK(rw, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 302)
-                      ->__PVT__element, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 302)->__VnoInFunc_get_full_name(vlProcess, vlSymsp, __Vtask_get_full_name__4__Vfuncout);
+        VL_NULL_CHECK(VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 302)
+                      ->__PVT__element, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 302)->__VnoInFunc_get_full_name(vlProcess, vlSymsp, __Vtask_get_full_name__4__Vfuncout);
         name = __Vtask_get_full_name__4__Vfuncout;
-        if ((0U != VL_NULL_CHECK(rw, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 304)
+        if ((0U != VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 304)
              ->__PVT__status)) {
             goto __Vlabel0;
         }
-        if ((1U == VL_NULL_CHECK(rw, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 307)
+        if ((1U == VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 307)
              ->__PVT__element_kind)) {
-            if (VL_UNLIKELY(((! VL_CAST_DYNAMIC(VL_NULL_CHECK(rw, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 310)
+            if (VL_UNLIKELY(((! VL_CAST_DYNAMIC(VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 310)
                                                 ->__PVT__element, unnamedblk1__DOT__fld))))) {
-                VL_WRITEF_NX("[%0t] %%Error: uvm_reg_cbs.svh:310: Assertion failed in %Nuvm_pkg.uvm_reg_write_only_cbs.pre_read.unnamedblk1: 'assert' failed.\n",0,
+                VL_WRITEF_NX("[%0t] %%Error: uvm_reg_cbs.svh:310: Assertion failed in %Nuvm_pkg.uvm_reg_write_only_cbs.pre_read.unnamedblk1: '$cast' failed.\n",0,
                              64,VL_TIME_UNITED_Q(1),
                              -12,vlSymsp->name());
-                VL_STOP_MT("/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 310, "");
+                VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 310, "");
             }
-            VL_NULL_CHECK(unnamedblk1__DOT__fld, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 311)->__VnoInFunc_get_parent(vlSymsp, __Vtask_get_parent__5__Vfuncout);
+            VL_NULL_CHECK(unnamedblk1__DOT__fld, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 311)->__VnoInFunc_get_parent(vlSymsp, __Vtask_get_parent__5__Vfuncout);
             unnamedblk1__DOT__rg = __Vtask_get_parent__5__Vfuncout;
-            VL_NULL_CHECK(unnamedblk1__DOT__rg, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 312)->__VnoInFunc_get_full_name(vlProcess, vlSymsp, __Vtask_get_full_name__6__Vfuncout);
+            VL_NULL_CHECK(unnamedblk1__DOT__rg, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 312)->__VnoInFunc_get_full_name(vlProcess, vlSymsp, __Vtask_get_full_name__6__Vfuncout);
             name = __Vtask_get_full_name__6__Vfuncout;
         }
         if ((0U != ([&]() {
@@ -198,11 +198,11 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc_pre_r
                         vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__8__Vfuncout);
                         vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs 
                             = __Vfunc_get__8__Vfuncout;
-                        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
+                        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
                     ->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__9__Vfuncout);
                         vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top 
                             = __Vtask_get_root__9__Vfuncout;
-                        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
+                        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
                     ->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, __Vfunc_uvm_report_enabled__7__verbosity, (IData)(__Vfunc_uvm_report_enabled__7__severity), __Vfunc_uvm_report_enabled__7__id, __Vtask_uvm_report_enabled__10__Vfuncout);
                         __Vfunc_uvm_report_enabled__7__Vfuncout 
                             = __Vtask_uvm_report_enabled__10__Vfuncout;
@@ -210,7 +210,7 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc_pre_r
             __Vtask_uvm_report_error__11__report_enabled_checked = 1U;
             __Vtask_uvm_report_error__11__context_name = ""s;
             __Vtask_uvm_report_error__11__line = 0x0000013cU;
-            __Vtask_uvm_report_error__11__filename = "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh"s;
+            __Vtask_uvm_report_error__11__filename = "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh"s;
             __Vtask_uvm_report_error__11__verbosity = 0U;
             __Vtask_uvm_report_error__11__message = 
                 VL_CVT_PACK_STR_NN(VL_CONCATN_NNN(name, " is write-only. Cannot call read() method."s));
@@ -218,12 +218,12 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc_pre_r
             vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__12__Vfuncout);
             vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__cs 
                 = __Vfunc_get__12__Vfuncout;
-            VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 174)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__13__Vfuncout);
+            VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__cs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 174)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__13__Vfuncout);
             vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__top 
                 = __Vtask_get_root__13__Vfuncout;
-            VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 175)->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, __Vtask_uvm_report_error__11__id, __Vtask_uvm_report_error__11__message, __Vtask_uvm_report_error__11__verbosity, __Vtask_uvm_report_error__11__filename, __Vtask_uvm_report_error__11__line, __Vtask_uvm_report_error__11__context_name, (IData)(__Vtask_uvm_report_error__11__report_enabled_checked));
+            VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_error__Vstatic__top, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 175)->__VnoInFunc_uvm_report_error(vlProcess, vlSymsp, __Vtask_uvm_report_error__11__id, __Vtask_uvm_report_error__11__message, __Vtask_uvm_report_error__11__verbosity, __Vtask_uvm_report_error__11__filename, __Vtask_uvm_report_error__11__line, __Vtask_uvm_report_error__11__context_name, (IData)(__Vtask_uvm_report_error__11__report_enabled_checked));
         }
-        VL_NULL_CHECK(rw, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 318)->__PVT__status = 1U;
+        VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 318)->__PVT__status = 1U;
         __Vlabel0: ;
     }
 }
@@ -231,27 +231,35 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc_pre_r
 void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__16__Vfuncout;
-    __Vfunc___Vbasic_randomize__16__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__16__Vfuncout;
+    __Vfunc___VBasicRand__16__Vfuncout = 0;
     // Body
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vclass_hierarchy_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__16__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__16__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__16__Vfuncout);
+            }(), __Vfunc___VBasicRand__16__Vfuncout));
 }
 
-void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc___Vbasic_randomize\n"); );
+void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::_ctor_var_reset(Vclass_hierarchy__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_write_only_cbs>& obj) {

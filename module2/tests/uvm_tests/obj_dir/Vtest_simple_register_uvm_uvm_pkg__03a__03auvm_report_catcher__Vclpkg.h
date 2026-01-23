@@ -24,7 +24,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -46,11 +46,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auv
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_callback_iter__Tz67_TBz187> __PVT__print_catcher__Vstatic__iter;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher__Vclpkg);
 
     // INTERNAL METHODS
@@ -67,8 +70,8 @@ class Vtest_simple_register_uvm__Syms;
 
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher : public Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_callback {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_int(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix, IData/*31:0*/ action);
     void __VnoInFunc_add_object(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object> obj, IData/*31:0*/ action);
     void __VnoInFunc_add_string(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, std::string value, IData/*31:0*/ action);
@@ -104,7 +107,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher : public Vte
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_report_catcher>& obj);

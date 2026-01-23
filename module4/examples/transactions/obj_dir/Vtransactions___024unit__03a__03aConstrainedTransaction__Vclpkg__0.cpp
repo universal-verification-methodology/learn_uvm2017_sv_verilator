@@ -67,21 +67,23 @@ void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc_conver
 void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__5__Vfuncout;
-    __Vfunc___Vbasic_randomize__5__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__5__Vfuncout;
+    __Vfunc___VBasicRand__5__Vfuncout = 0;
     // Body
-    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__5__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__5__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__5__Vfuncout);
+            }(), __Vfunc___VBasicRand__5__Vfuncout));
 }
 
 void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc_address_aligned_setup_constraint(Vtransactions__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc_address_aligned_setup_constraint\n"); );
     // Body
-    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.hard("(__Vbv (= ((_ extract 1 0) address) #b00))"s);
+    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.hard("(__Vbv (= ((_ extract 1 0) address) #b00))"s, "transactions.sv", 
+                                                                    99, 
+                                                                    "        address[1:0] == 2'b00;   ");
 }
 
 void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {
@@ -94,13 +96,15 @@ void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc___Vset
 void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc_data_nonzero_setup_constraint(Vtransactions__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc_data_nonzero_setup_constraint\n"); );
     // Body
-    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.hard("(__Vbv (not (= data #x00)))"s);
+    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.hard("(__Vbv (not (= data #x00)))"s, "transactions.sv", 
+                                                                    103, 
+                                                                    "        data != 8'h00;");
 }
 
-void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aConstrainedTransaction::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vtransactions___024unit__03a__03aConstrainedTransaction::_ctor_var_reset(Vtransactions__Syms* __restrict vlSymsp) {
@@ -109,6 +113,10 @@ void Vtransactions___024unit__03a__03aConstrainedTransaction::_ctor_var_reset(Vt
     (void)vlSymsp;  // Prevent unused variable warning
     __PVT__data = VL_SCOPED_RAND_RESET_I(8, 7042654601604259502ULL, 10363016170300574568ull);
     __PVT__address = VL_SCOPED_RAND_RESET_I(16, 7042654601604259502ULL, 12021632533271657083ull);
+}
+
+Vtransactions___024unit__03a__03aConstrainedTransaction::~Vtransactions___024unit__03a__03aConstrainedTransaction() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aConstrainedTransaction::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions___024unit__03a__03aConstrainedTransaction>& obj) {

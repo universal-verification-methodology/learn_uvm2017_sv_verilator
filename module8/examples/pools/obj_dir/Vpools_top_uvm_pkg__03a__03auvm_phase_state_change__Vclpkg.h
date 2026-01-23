@@ -17,15 +17,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_phase_state_change;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_phase_state_change : public Vpools_top_uvm
     IData/*31:0*/ __PVT__m_prev_state;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_phase> __PVT__m_phase;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_phase> __PVT__m_jump_to;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_get_object_type(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_prev_state(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &get_prev_state__Vfuncrtn);
@@ -60,7 +63,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_phase_state_change : public Vpools_top_uvm
     Vpools_top_uvm_pkg__03a__03auvm_phase_state_change(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_phase_state_change() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_phase_state_change();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_phase_state_change>& obj);

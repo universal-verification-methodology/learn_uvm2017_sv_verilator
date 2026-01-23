@@ -12,7 +12,7 @@ class Vinterface_example_apb_if;
 
 class Vinterface_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vinterface_example___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vinterface_example___024root final {
   public:
     // CELLS
     Vinterface_example_apb_if* __PVT__interface_example__DOT__bus;
@@ -28,13 +28,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vinterface_example___024root final : public V
     VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
-    VlTriggerScheduler __VtrigSched_hbcbb09e7__0;
+    VlTriggerScheduler __VtrigSched_h85849ca4__0;
 
     // INTERNAL VARIABLES
-    Vinterface_example__Syms* const vlSymsp;
+    Vinterface_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vinterface_example___024root(Vinterface_example__Syms* symsp, const char* v__name);
+    Vinterface_example___024root(Vinterface_example__Syms* symsp, const char* namep);
     ~Vinterface_example___024root();
     VL_UNCOPYABLE(Vinterface_example___024root);
 

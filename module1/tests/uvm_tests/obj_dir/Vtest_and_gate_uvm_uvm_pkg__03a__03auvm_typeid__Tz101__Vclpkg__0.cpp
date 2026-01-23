@@ -27,6 +27,10 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz101::_ctor_var_reset(Vtes
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz101::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz101() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz101::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz101>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz101::VL_TO_STRING\n"); );
     // Body

@@ -34,6 +34,6 @@ Vdata_structures_example__ALL.o: Vdata_structures_example__ALL.cpp \
  Vdata_structures_example_data_structures_pkg__03a__03aScoreboard__Vclpkg__0__Slow.cpp \
  Vdata_structures_example_data_structures_pkg__03a__03aCoverageCollector__Vclpkg__Slow.cpp \
  Vdata_structures_example_data_structures_pkg__03a__03aCoverageCollector__Vclpkg__0__Slow.cpp \
- Vdata_structures_example__Syms.cpp \
+ Vdata_structures_example__Syms__Slow.cpp \
  Vdata_structures_example__Trace__0__Slow.cpp \
  Vdata_structures_example__TraceDecls__0__Slow.cpp

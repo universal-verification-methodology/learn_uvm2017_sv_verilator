@@ -13,23 +13,24 @@ class Vclass_hierarchy_std__03a__03amailbox__Tz1;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_analysis_port__Tz1;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_component;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_component_registry__Tz148;
-class Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_object_wrapper;
-class Vclass_hierarchy_uvm_pkg__03a__03auvm_root;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz1;
 
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1 : public Vclass_hierar
     IData/*31:0*/ __PVT__m_size;
     IData/*31:0*/ __PVT__m_pending_blocked_gets;
     VlClassRef<Vclass_hierarchy_std__03a__03amailbox__Tz1> __PVT__m;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vclass_hierarchy__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vclass_hierarchy__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vclass_hierarchy__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -74,7 +75,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1 : public Vclass_hierar
     Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz1>& obj);

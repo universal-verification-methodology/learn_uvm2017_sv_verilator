@@ -15,15 +15,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,7 +60,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base : publ
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base>& obj);

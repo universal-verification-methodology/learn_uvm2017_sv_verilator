@@ -39,7 +39,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vsignal_access__Syms \
+  Vsignal_access__Syms__Slow \
   Vsignal_access__Trace__0__Slow \
   Vsignal_access__TraceDecls__0__Slow \
 

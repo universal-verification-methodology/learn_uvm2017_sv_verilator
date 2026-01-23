@@ -32,18 +32,21 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_register_cb_uvm_vreg_cbs;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg__Vclpkg);
 
     // INTERNAL METHODS
@@ -76,8 +79,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg : public Vclass_hierarchy_uvm_p
     VlClassRef<Vclass_hierarchy_std__03a__03asemaphore> __PVT__atomic;
     VlCoroutine __VnoInFunc_XatomicX(Vclass_hierarchy__Syms* __restrict vlSymsp, CData/*0:0*/ on);
     void __VnoInFunc_Xlock_modelX(Vclass_hierarchy__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_field(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field> field);
     virtual void __VnoInFunc_allocate(Vclass_hierarchy__Syms* __restrict vlSymsp, QData/*63:0*/ n, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_mem_mam> mam, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_mem_mam_policy> alloc, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_mem_region> &allocate__Vfuncrtn);
     virtual void __VnoInFunc_clone(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> &clone__Vfuncrtn);
@@ -125,7 +128,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg : public Vclass_hierarchy_uvm_p
     Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ n_bits);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg>& obj);

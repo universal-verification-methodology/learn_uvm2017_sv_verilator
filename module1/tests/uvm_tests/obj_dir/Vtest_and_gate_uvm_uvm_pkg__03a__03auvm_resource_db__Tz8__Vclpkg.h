@@ -18,15 +18,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,7 +61,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8 : public virtual 
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_db__Tz8>& obj);

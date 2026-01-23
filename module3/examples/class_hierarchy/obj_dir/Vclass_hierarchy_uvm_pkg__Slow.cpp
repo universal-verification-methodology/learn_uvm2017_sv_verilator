@@ -6,10 +6,12 @@
 
 void Vclass_hierarchy_uvm_pkg___ctor_var_reset(Vclass_hierarchy_uvm_pkg* vlSelf);
 
-Vclass_hierarchy_uvm_pkg::Vclass_hierarchy_uvm_pkg(Vclass_hierarchy__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vclass_hierarchy_uvm_pkg::Vclass_hierarchy_uvm_pkg() = default;
+Vclass_hierarchy_uvm_pkg::~Vclass_hierarchy_uvm_pkg() = default;
+
+void Vclass_hierarchy_uvm_pkg::ctor(Vclass_hierarchy__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vclass_hierarchy_uvm_pkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vclass_hierarchy_uvm_pkg::__Vconfigure(bool first) {
     (void)first;  // Prevent unused variable warning
 }
 
-Vclass_hierarchy_uvm_pkg::~Vclass_hierarchy_uvm_pkg() {
+void Vclass_hierarchy_uvm_pkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

@@ -16,15 +16,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_visitor_;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg);
 
     // INTERNAL METHODS
@@ -40,8 +43,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visito
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root> __PVT___root;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_v(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_name_constraint(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string &get_name_constraint__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
@@ -52,7 +55,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visito
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor>& obj);

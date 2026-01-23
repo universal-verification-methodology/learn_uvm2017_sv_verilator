@@ -22,15 +22,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39__Vclpkg);
 
     // INTERNAL METHODS
@@ -48,8 +51,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39 : public Vtran
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_set;
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tr_stream> __PVT__m_value;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object> rhs);
@@ -68,7 +71,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39 : public Vtran
     Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz39>& obj);

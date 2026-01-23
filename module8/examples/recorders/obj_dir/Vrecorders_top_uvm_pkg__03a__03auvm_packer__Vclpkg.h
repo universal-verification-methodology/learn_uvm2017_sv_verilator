@@ -22,7 +22,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_root;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_packer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_packer__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_packer__V
     VlQueue<CData/*0:0*/> __PVT__fabitstream;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_packer__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_packer__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_packer__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_packer__Vclpkg);
 
     // INTERNAL METHODS
@@ -62,8 +65,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_packer : public Vrecorders_top_uvm_pkg
     VlWide<1024>/*32767:0*/ __PVT__m_bits;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_factory> __PVT__m_factory;
     VlAssocArray<IData/*31:0*/, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object>> __PVT__m_object_references;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     void __VnoInFunc_enough_bits(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ needed, std::string id, CData/*0:0*/ &enough_bits__Vfuncrtn);
     virtual void __VnoInFunc_flush(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp);
@@ -110,7 +113,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_packer : public Vrecorders_top_uvm_pkg
     Vrecorders_top_uvm_pkg__03a__03auvm_packer(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_packer() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_packer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_packer>& obj);

@@ -41,7 +41,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vpackage_example__Syms \
+  Vpackage_example__Syms__Slow \
   Vpackage_example__Trace__0__Slow \
   Vpackage_example__TraceDecls__0__Slow \
 

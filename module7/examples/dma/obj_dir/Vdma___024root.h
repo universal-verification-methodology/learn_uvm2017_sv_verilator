@@ -24,16 +24,16 @@ class Vdma_std__03a__03aprocess__Vclpkg;
 class Vdma_std__03a__03asemaphore__Vclpkg;
 class Vdma_uvm_pkg;
 class Vdma_uvm_pkg__03a__03a__VDynScope_10__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_14__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_20__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_27__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_30__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_31__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_34__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_35__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_41__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_42__Vclpkg;
-class Vdma_uvm_pkg__03a__03a__VDynScope_43__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_15__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_23__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_33__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_37__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_39__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_44__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_45__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_52__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_53__Vclpkg;
+class Vdma_uvm_pkg__03a__03a__VDynScope_55__Vclpkg;
 class Vdma_uvm_pkg__03a__03aget_t__Vclpkg;
 class Vdma_uvm_pkg__03a__03am_uvm_printer_knobs__Vclpkg;
 class Vdma_uvm_pkg__03a__03am_uvm_sqr_seq_base__Vclpkg;
@@ -655,7 +655,7 @@ class Vdma_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma___024root final {
   public:
     // CELLS
     Vdma___024unit* __PVT____024unit;
@@ -1288,33 +1288,33 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma___024root final : public VerilatedModule
     Vdma_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg* uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg;
     Vdma_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg* uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg;
     Vdma_uvm_pkg__03a__03a__VDynScope_10__Vclpkg* uvm_pkg__03a__03a__VDynScope_10__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_14__Vclpkg* uvm_pkg__03a__03a__VDynScope_14__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_20__Vclpkg* uvm_pkg__03a__03a__VDynScope_20__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_27__Vclpkg* uvm_pkg__03a__03a__VDynScope_27__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_30__Vclpkg* uvm_pkg__03a__03a__VDynScope_30__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_31__Vclpkg* uvm_pkg__03a__03a__VDynScope_31__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_34__Vclpkg* uvm_pkg__03a__03a__VDynScope_34__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_35__Vclpkg* uvm_pkg__03a__03a__VDynScope_35__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_41__Vclpkg* uvm_pkg__03a__03a__VDynScope_41__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_42__Vclpkg* uvm_pkg__03a__03a__VDynScope_42__Vclpkg;
-    Vdma_uvm_pkg__03a__03a__VDynScope_43__Vclpkg* uvm_pkg__03a__03a__VDynScope_43__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_15__Vclpkg* uvm_pkg__03a__03a__VDynScope_15__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_23__Vclpkg* uvm_pkg__03a__03a__VDynScope_23__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_33__Vclpkg* uvm_pkg__03a__03a__VDynScope_33__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_37__Vclpkg* uvm_pkg__03a__03a__VDynScope_37__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_39__Vclpkg* uvm_pkg__03a__03a__VDynScope_39__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_44__Vclpkg* uvm_pkg__03a__03a__VDynScope_44__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_45__Vclpkg* uvm_pkg__03a__03a__VDynScope_45__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_52__Vclpkg* uvm_pkg__03a__03a__VDynScope_52__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_53__Vclpkg* uvm_pkg__03a__03a__VDynScope_53__Vclpkg;
+    Vdma_uvm_pkg__03a__03a__VDynScope_55__Vclpkg* uvm_pkg__03a__03a__VDynScope_55__Vclpkg;
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ dma__DOT__clk;
     CData/*0:0*/ dma__DOT____Vcellout__dut__dma_done;
     CData/*2:0*/ dma__DOT__dut__DOT__channel_reg;
     CData/*0:0*/ __VnbaEventTrigger;
-    CData/*0:0*/ __VvifTrigger_hd309e00d__0_Vtrigm_clk;
-    CData/*0:0*/ __VvifTrigger_hd309e00d__1_Vtrigm_dma_done;
-    CData/*0:0*/ __VvifTrigger_hd309e00d__2_Vtrigm_dma_start;
-    CData/*0:0*/ __VvifTrigger_hd309e00d__3_Vtrigm_dma_src_addr;
-    CData/*0:0*/ __VvifTrigger_hd309e00d__4_Vtrigm_dma_dst_addr;
-    CData/*0:0*/ __VvifTrigger_hd309e00d__5_Vtrigm_dma_length;
-    CData/*0:0*/ __VvifTrigger_hd309e00d__6_Vtrigm_dma_channel;
+    CData/*0:0*/ __VvifTrigger_hd309e34a__0_Vtrigm_clk;
+    CData/*0:0*/ __VvifTrigger_hd309e34a__1_Vtrigm_dma_done;
+    CData/*0:0*/ __VvifTrigger_hd309e34a__2_Vtrigm_dma_start;
+    CData/*0:0*/ __VvifTrigger_hd309e34a__3_Vtrigm_dma_src_addr;
+    CData/*0:0*/ __VvifTrigger_hd309e34a__4_Vtrigm_dma_dst_addr;
+    CData/*0:0*/ __VvifTrigger_hd309e34a__5_Vtrigm_dma_length;
+    CData/*0:0*/ __VvifTrigger_hd309e34a__6_Vtrigm_dma_channel;
     CData/*0:0*/ __VstlFirstIteration;
     CData/*0:0*/ __Vtrigprevexpr___TOP__dma__DOT__clk__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__dma__DOT__vif__rst_n__0;
-    CData/*0:0*/ __Vtrigprevexpr_h69246a8d__1;
+    CData/*0:0*/ __Vtrigprevexpr_h5a1c11cb__1;
     CData/*0:0*/ __VactDidInit;
     SData/*15:0*/ dma__DOT__dut__DOT__length_reg;
     SData/*15:0*/ dma__DOT__dut__DOT__count;
@@ -1326,16 +1326,17 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma___024root final : public VerilatedModule
     VlUnpacked<QData/*63:0*/, 2> __VnbaTriggered;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
-    VlTriggerScheduler __VtrigSched_h73c6bdab__0;
+    VlTriggerScheduler __VtrigSched_he4942e77__0;
     VlAssignableEvent __VnbaEvent;
     VlDynamicTriggerScheduler __VdynSched;
-    VlTriggerScheduler __VtrigSched_hbd132277__0;
+    VlTriggerScheduler __VtrigSched_hce2bd7cc__0;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma___024root(Vdma__Syms* symsp, const char* v__name);
+    Vdma___024root(Vdma__Syms* symsp, const char* namep);
     ~Vdma___024root();
     VL_UNCOPYABLE(Vdma___024root);
 

@@ -6,10 +6,12 @@
 
 void Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg___ctor_var_reset(Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg* vlSelf);
 
-Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg::Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg::Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg() = default;
+Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg::~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg() = default;
+
+void Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg::ctor(Vclass_hierarchy__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg::__V
     (void)first;  // Prevent unused variable warning
 }
 
-Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg::~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg() {
+void Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

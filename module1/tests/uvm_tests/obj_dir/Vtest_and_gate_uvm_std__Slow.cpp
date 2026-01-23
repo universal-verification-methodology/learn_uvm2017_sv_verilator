@@ -6,10 +6,12 @@
 
 void Vtest_and_gate_uvm_std___ctor_var_reset(Vtest_and_gate_uvm_std* vlSelf);
 
-Vtest_and_gate_uvm_std::Vtest_and_gate_uvm_std(Vtest_and_gate_uvm__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtest_and_gate_uvm_std::Vtest_and_gate_uvm_std() = default;
+Vtest_and_gate_uvm_std::~Vtest_and_gate_uvm_std() = default;
+
+void Vtest_and_gate_uvm_std::ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtest_and_gate_uvm_std___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtest_and_gate_uvm_std::__Vconfigure(bool first) {
     (void)first;  // Prevent unused variable warning
 }
 
-Vtest_and_gate_uvm_std::~Vtest_and_gate_uvm_std() {
+void Vtest_and_gate_uvm_std::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

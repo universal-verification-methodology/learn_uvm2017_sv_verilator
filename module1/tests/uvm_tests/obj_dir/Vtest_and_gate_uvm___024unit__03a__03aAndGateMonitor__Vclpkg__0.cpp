@@ -72,6 +72,8 @@ void Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc_build_pha
 VlCoroutine Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc_run_phase(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_phase> phase) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc_run_phase\n"); );
     // Locals
+    CData/*0:0*/ __Vtrigprevexpr_hc931fc47__0;
+    __Vtrigprevexpr_hc931fc47__0 = 0;
     VlClassRef<Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction> __Vfunc_create__7__Vfuncout;
     IData/*31:0*/ __Vfunc_uvm_report_enabled__8__Vfuncout;
     __Vfunc_uvm_report_enabled__8__Vfuncout = 0;
@@ -81,21 +83,21 @@ VlCoroutine Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc_ru
     VL_KEEP_THIS;
     VlClassRef<Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction> txn;
     while (true) {
-        CData/*0:0*/ __VdynTrigger_he0033555__0;
-        __VdynTrigger_he0033555__0 = 0;
-        __VdynTrigger_he0033555__0 = 0U;
-        this->__Vtrigprevexpr_he5fca228__0 = VL_NULL_CHECK(this->__PVT__vif, "test_and_gate_uvm.sv", 136)
+        CData/*0:0*/ __VdynTrigger_hbb3d9e00__0;
+        __VdynTrigger_hbb3d9e00__0 = 0;
+        __VdynTrigger_hbb3d9e00__0 = 0U;
+        __Vtrigprevexpr_hc931fc47__0 = VL_NULL_CHECK(this->__PVT__vif, "test_and_gate_uvm.sv", 136)
             ->clk;
-        while ((1U & (~ (IData)(__VdynTrigger_he0033555__0)))) {
+        while ((1U & (~ (IData)(__VdynTrigger_hbb3d9e00__0)))) {
             co_await vlSymsp->TOP.__VdynSched.evaluation(
                                                          vlProcess, 
                                                          "@(posedge $unit::AndGateMonitor.vif.clk)", 
                                                          "test_and_gate_uvm.sv", 
                                                          136);
-            __VdynTrigger_he0033555__0 = (VL_NULL_CHECK(this->__PVT__vif, "test_and_gate_uvm.sv", 136)
-                                          ->clk & (~ (IData)(this->__Vtrigprevexpr_he5fca228__0)));
-            vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_he0033555__0);
-            this->__Vtrigprevexpr_he5fca228__0 = VL_NULL_CHECK(this->__PVT__vif, "test_and_gate_uvm.sv", 136)
+            __VdynTrigger_hbb3d9e00__0 = (VL_NULL_CHECK(this->__PVT__vif, "test_and_gate_uvm.sv", 136)
+                                          ->clk & (~ (IData)(__Vtrigprevexpr_hc931fc47__0)));
+            vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_hbb3d9e00__0);
+            __Vtrigprevexpr_hc931fc47__0 = VL_NULL_CHECK(this->__PVT__vif, "test_and_gate_uvm.sv", 136)
                 ->clk;
         }
         co_await vlSymsp->TOP.__VdynSched.resumption(
@@ -131,26 +133,30 @@ VlCoroutine Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc_ru
         }
         VL_NULL_CHECK(this->__PVT__ap, "test_and_gate_uvm.sv", 146)->__VnoInFunc_write(vlProcess, vlSymsp, txn);
     }
-}
+    co_return;}
 
 void Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__13__Vfuncout;
-    __Vfunc___Vbasic_randomize__13__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__13__Vfuncout;
+    __Vfunc___VBasicRand__13__Vfuncout = 0;
     // Body
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__13__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__13__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__13__Vfuncout);
+            }(), __Vfunc___VBasicRand__13__Vfuncout));
 }
 
-void Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::_ctor_var_reset(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {
@@ -158,7 +164,10 @@ void Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::_ctor_var_reset(Vtest
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
     __PVT__vif = nullptr;
-    __Vtrigprevexpr_he5fca228__0 = VL_SCOPED_RAND_RESET_I(1, 11678224445879578159ULL, 5793272275530312449ull);
+}
+
+Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::~Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                          Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm___024unit__03a__03aAndGateMonitor>& obj) {

@@ -10,8 +10,8 @@ void Vtest_simple_register_uvm_std__03a__03aprocess__Vclpkg::__VnoInFunc_self(Vl
     VlClassRef<Vtest_simple_register_uvm_std__03a__03aprocess> p;
     p = VL_NEW(Vtest_simple_register_uvm_std__03a__03aprocess, vlSymsp);
 
-// $c statement at /usr/local/share/verilator/include/verilated_std.sv:141:7
-    VL_NULL_CHECK(p, "/usr/local/share/verilator/include/verilated_std.sv", 141)->__PVT__m_process = vlProcess;
+// $c statement at /usr/local/share/verilator/include/verilated_std.sv:144:7
+    VL_NULL_CHECK(p, "/usr/local/share/verilator/include/verilated_std.sv", 144)->__PVT__m_process = vlProcess;
     self__Vfuncrtn = p;
 }
 
@@ -19,7 +19,7 @@ void Vtest_simple_register_uvm_std__03a__03aprocess__Vclpkg::__VnoInFunc_killQue
     VL_DEBUG_IF(VL_DBG_MSGF("+  Vtest_simple_register_uvm_std__03a__03aprocess__Vclpkg::__VnoInFunc_killQueue\n"); );
     // Body
     while (VL_LTS_III(32, 0U, processQueue.size())) {
-        VL_NULL_CHECK(processQueue.pop_back(), "/usr/local/share/verilator/include/verilated_std.sv", 181)->__VnoInFunc_kill(vlSymsp);
+        VL_NULL_CHECK(processQueue.pop_back(), "/usr/local/share/verilator/include/verilated_std.sv", 184)->__VnoInFunc_kill(vlSymsp);
     }
 }
 
@@ -27,7 +27,7 @@ void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_set_status(Vtes
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_set_status\n"); );
     // Body
 
-// $c statement at /usr/local/share/verilator/include/verilated_std.sv:148:7
+// $c statement at /usr/local/share/verilator/include/verilated_std.sv:151:7
     this->__PVT__m_process->state(s);
 }
 
@@ -35,7 +35,7 @@ void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_status(Vtest_si
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_status\n"); );
     // Body
     status__Vfuncrtn = 
-// $cpure expression at /usr/local/share/verilator/include/verilated_std.sv:154:21
+// $cpure expression at /usr/local/share/verilator/include/verilated_std.sv:157:21
 this->__PVT__m_process->state()
     ;
 }
@@ -49,9 +49,9 @@ void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_kill(Vtest_simp
 void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_suspend(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_suspend\n"); );
     // Body
-    VL_WRITEF_NX("[%0t] %%Error: verilated_std.sv:165: Assertion failed in %Nstd.process.suspend: std::process::suspend() not supported\n",0,
+    VL_WRITEF_NX("[%0t] %%Error: verilated_std.sv:168: Assertion failed in %Nstd.process.suspend: std::process::suspend() not supported\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-    VL_STOP_MT("/usr/local/share/verilator/include/verilated_std.sv", 165, "");
+    VL_STOP_MT("/usr/local/share/verilator/include/verilated_std.sv", 168, "");
 }
 
 void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_resume(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {
@@ -63,6 +63,8 @@ void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_resume(Vtest_si
 VlCoroutine Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_await(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_await\n"); );
     // Locals
+    CData/*0:0*/ __Vtrigprevexpr_hd56de7d7__0;
+    __Vtrigprevexpr_hd56de7d7__0 = 0;
     IData/*31:0*/ __Vfunc_status__2__Vfuncout;
     __Vfunc_status__2__Vfuncout = 0;
     IData/*31:0*/ __Vfunc_status__3__Vfuncout;
@@ -75,46 +77,44 @@ VlCoroutine Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_await(Vt
                   | (4U == ([&]() {
                                 this->__VnoInFunc_status(vlSymsp, __Vfunc_status__3__Vfuncout);
                             }(), __Vfunc_status__3__Vfuncout)))))) {
-        CData/*0:0*/ __VdynTrigger_h32485e37__0;
-        __VdynTrigger_h32485e37__0 = 0;
-        __VdynTrigger_h32485e37__0 = 0U;
-        while ((1U & (~ (IData)(__VdynTrigger_h32485e37__0)))) {
+        CData/*0:0*/ __VdynTrigger_hef9194f2__0;
+        __VdynTrigger_hef9194f2__0 = 0;
+        __VdynTrigger_hef9194f2__0 = 0U;
+        while ((1U & (~ (IData)(__VdynTrigger_hef9194f2__0)))) {
             co_await vlSymsp->TOP.__VdynSched.evaluation(
                                                          nullptr, 
                                                          "@([true] ((32'h0 == $_EXPRSTMT( // Function: status __VnoInFunc_status(std::process.__Vfunc_status__2__Vfuncout); , ); ) | (32'h4 == $_EXPRSTMT( // Function: status __VnoInFunc_status(std::process.__Vfunc_status__3__Vfuncout); , ); )))", 
                                                          "/usr/local/share/verilator/include/verilated_std.sv", 
-                                                         174);
-            this->__Vtrigprevexpr_h1426c6b2__0 = ((0U 
-                                                   == 
-                                                   ([&]() {
+                                                         177);
+            __Vtrigprevexpr_hd56de7d7__0 = ((0U == 
+                                             ([&]() {
                             this->__VnoInFunc_status(vlSymsp, __Vfunc_status__2__Vfuncout);
                         }(), __Vfunc_status__2__Vfuncout)) 
-                                                  | (4U 
-                                                     == 
-                                                     ([&]() {
+                                            | (4U == 
+                                               ([&]() {
                             this->__VnoInFunc_status(vlSymsp, __Vfunc_status__3__Vfuncout);
                         }(), __Vfunc_status__3__Vfuncout)));
-            __VdynTrigger_h32485e37__0 = this->__Vtrigprevexpr_h1426c6b2__0;
-            vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_h32485e37__0);
+            __VdynTrigger_hef9194f2__0 = __Vtrigprevexpr_hd56de7d7__0;
+            vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_hef9194f2__0);
         }
         co_await vlSymsp->TOP.__VdynSched.resumption(
                                                      nullptr, 
                                                      "@([true] ((32'h0 == $_EXPRSTMT( // Function: status __VnoInFunc_status(std::process.__Vfunc_status__2__Vfuncout); , ); ) | (32'h4 == $_EXPRSTMT( // Function: status __VnoInFunc_status(std::process.__Vfunc_status__3__Vfuncout); , ); )))", 
                                                      "/usr/local/share/verilator/include/verilated_std.sv", 
-                                                     174);
+                                                     177);
     }
-}
+    co_return;}
 
 void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_get_randstate(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string &get_randstate__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_get_randstate\n"); );
     // Body
     std::string s;
     s = VL_CVT_PACK_STR_NI(
-// $c expression at /usr/local/share/verilator/include/verilated_std.sv:227:26
+// $c expression at /usr/local/share/verilator/include/verilated_std.sv:230:26
 0
     );
 
-// $c statement at /usr/local/share/verilator/include/verilated_std.sv:229:7
+// $c statement at /usr/local/share/verilator/include/verilated_std.sv:232:7
     s = this->__PVT__m_process->randstate();
     get_randstate__Vfuncrtn = s;
 }
@@ -123,7 +123,7 @@ void Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_set_randstate(V
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_std__03a__03aprocess::__VnoInFunc_set_randstate\n"); );
     // Body
 
-// $c statement at /usr/local/share/verilator/include/verilated_std.sv:234:7
+// $c statement at /usr/local/share/verilator/include/verilated_std.sv:237:7
     this->__PVT__m_process->randstate(s);
 }
 
@@ -143,7 +143,6 @@ void Vtest_simple_register_uvm_std__03a__03aprocess::_ctor_var_reset(Vtest_simpl
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_simple_register_uvm_std__03a__03aprocess::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
-    __Vtrigprevexpr_h1426c6b2__0 = VL_SCOPED_RAND_RESET_I(1, 1632604199446231211ULL, 14495397076183301666ull);
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_std__03a__03aprocess>& obj) {

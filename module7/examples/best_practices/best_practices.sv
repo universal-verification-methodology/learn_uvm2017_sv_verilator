@@ -17,7 +17,7 @@ class BestPracticesTest extends uvm_test;
   function void end_of_elaboration_phase(uvm_phase phase);
     super.end_of_elaboration_phase(phase);
     `uvm_info("BP", "end_of_elaboration: print topology", UVM_MEDIUM)
-    this.print_topology();
+    uvm_root::get().print_topology();
   endfunction
 
   task run_phase(uvm_phase phase);

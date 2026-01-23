@@ -15,15 +15,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,7 +60,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71 : public Vpools_t
     Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi71>& obj);

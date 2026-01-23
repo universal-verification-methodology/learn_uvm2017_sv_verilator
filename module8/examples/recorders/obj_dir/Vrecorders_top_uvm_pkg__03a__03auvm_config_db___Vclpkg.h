@@ -24,7 +24,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_root;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_config_db___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_config_db___Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -32,11 +32,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_config_db
     VlAssocArray<std::string, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_queue__Tz74>> __PVT__m_waiters;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_config_db___Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_config_db___Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_config_db___Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_config_db___Vclpkg);
 
     // INTERNAL METHODS
@@ -59,7 +62,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_config_db_ : public Vrecorders_top_uvm
     Vrecorders_top_uvm_pkg__03a__03auvm_config_db_(Vrecorders_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_config_db_() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_config_db_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_config_db_>& obj);

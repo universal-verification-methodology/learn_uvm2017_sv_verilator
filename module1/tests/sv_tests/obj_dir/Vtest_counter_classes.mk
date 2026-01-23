@@ -39,7 +39,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vtest_counter__Syms \
+  Vtest_counter__Syms__Slow \
   Vtest_counter__Trace__0__Slow \
   Vtest_counter__TraceDecls__0__Slow \
 

@@ -6,10 +6,12 @@
 
 void Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg___ctor_var_reset(Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg* vlSelf);
 
-Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg::Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg(Varchitecture__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg::Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg() = default;
+Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg::~Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg() = default;
+
+void Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg::ctor(Varchitecture__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg::__Vconfigure(bool fi
     (void)first;  // Prevent unused variable warning
 }
 
-Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg::~Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg() {
+void Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

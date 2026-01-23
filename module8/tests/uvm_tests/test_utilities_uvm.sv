@@ -20,19 +20,19 @@ class UtilitiesTransaction extends uvm_sequence_item;
     rand logic [7:0] data;
     rand logic [15:0] address;
     int timestamp;
-    int priority;
+    int priority_level;  // Renamed from 'priority' (reserved keyword)
     
     `uvm_object_utils(UtilitiesTransaction)
     
     function new(string name = "UtilitiesTransaction");
         super.new(name);
         timestamp = 0;
-        priority = 0;
+        priority_level = 0;
     endfunction
     
     function string convert2string();
         return $sformatf("data=0x%02h, addr=0x%04h, ts=%0d, prio=%0d", 
-            data, address, timestamp, priority);
+            data, address, timestamp, priority_level);
     endfunction
     
     function bit compare(UtilitiesTransaction rhs);
@@ -59,7 +59,7 @@ class UtilitiesSequence extends uvm_sequence #(UtilitiesTransaction);
             txn.data = i * 8'h10;
             txn.address = i * 16'h100;
             txn.timestamp = i * 10;
-            txn.priority = $urandom_range(0, 9);
+            txn.priority_level = $urandom_range(0, 9);
         end
     endtask
 endclass
@@ -113,17 +113,21 @@ class UtilitiesMonitor extends uvm_monitor;
     endtask
 endclass
 
+// Declare different analysis imp types for expected and actual
+`uvm_analysis_imp_decl(_expected)
+`uvm_analysis_imp_decl(_actual)
+
 /**
  * Scoreboard using comparator
  */
 class UtilitiesScoreboard extends uvm_scoreboard;
     UtilitiesTransaction expected_queue[$];
     UtilitiesTransaction actual_queue[$];
-    int matches;
+    int match_count;  // Renamed from 'matches' (reserved keyword)
     int mismatches;
     
-    uvm_analysis_imp #(UtilitiesTransaction, UtilitiesScoreboard) expected_imp;
-    uvm_analysis_imp #(UtilitiesTransaction, UtilitiesScoreboard) actual_imp;
+    uvm_analysis_imp_expected #(UtilitiesTransaction, UtilitiesScoreboard) expected_imp;
+    uvm_analysis_imp_actual #(UtilitiesTransaction, UtilitiesScoreboard) actual_imp;
     
     `uvm_component_utils(UtilitiesScoreboard)
     
@@ -131,7 +135,7 @@ class UtilitiesScoreboard extends uvm_scoreboard;
         super.new(name, parent);
         expected_imp = new("expected_imp", this);
         actual_imp = new("actual_imp", this);
-        matches = 0;
+        match_count = 0;
         mismatches = 0;
     endfunction
     
@@ -151,7 +155,7 @@ class UtilitiesScoreboard extends uvm_scoreboard;
             UtilitiesTransaction act_txn = actual_queue.pop_front();
             
             if (exp_txn.compare(act_txn)) begin
-                matches++;
+                match_count++;
                 `uvm_info("SCOREBOARD", $sformatf("MATCH: %s", exp_txn.convert2string()), UVM_MEDIUM)
             end else begin
                 mismatches++;
@@ -163,7 +167,7 @@ class UtilitiesScoreboard extends uvm_scoreboard;
     
     function void report_phase(uvm_phase phase);
         `uvm_info("SCOREBOARD", $sformatf("Scoreboard Statistics:"), UVM_LOW)
-        `uvm_info("SCOREBOARD", $sformatf("  Matches: %0d", matches), UVM_LOW)
+        `uvm_info("SCOREBOARD", $sformatf("  Matches: %0d", match_count), UVM_LOW)
         `uvm_info("SCOREBOARD", $sformatf("  Mismatches: %0d", mismatches), UVM_LOW)
     endfunction
 endclass

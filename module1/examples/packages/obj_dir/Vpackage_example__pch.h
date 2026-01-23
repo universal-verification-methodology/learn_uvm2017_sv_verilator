@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vpackage_example.h instead.
 
-
 #ifndef VERILATED_VPACKAGE_EXAMPLE__PCH_H_
 #define VERILATED_VPACKAGE_EXAMPLE__PCH_H_  // guard
 

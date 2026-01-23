@@ -21,7 +21,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -29,11 +29,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream
     VlAssocArray<IData/*31:0*/, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream>> __PVT__m_streams_by_id;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream__Vclpkg);
 
     // INTERNAL METHODS
@@ -55,11 +58,11 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream : public Vrecorders_top_uvm_
     CData/*0:0*/ __PVT__m_is_closed;
     VlAssocArray<VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_recorder>, CData/*0:0*/> __PVT__m_records;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38> __PVT__m_cfg_dap;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_close(Vrecorders_top__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_close(Vrecorders_top__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_free(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_close(Vrecorders_top__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_free(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_open(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tr_database> db, std::string scope, std::string stream_type_name);
     virtual void __VnoInFunc_do_open_recorder(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ open_time, std::string type_name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_recorder> &do_open_recorder__Vfuncrtn);
     void __VnoInFunc_free(Vrecorders_top__Syms* __restrict vlSymsp);
@@ -80,7 +83,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream : public Vrecorders_top_uvm_
     Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream>& obj);

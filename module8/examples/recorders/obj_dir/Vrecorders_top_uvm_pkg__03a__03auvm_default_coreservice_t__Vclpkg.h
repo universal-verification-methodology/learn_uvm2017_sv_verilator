@@ -29,15 +29,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_visitor_;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg);
 
     // INTERNAL METHODS
@@ -97,7 +100,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t : public Vrecord
     Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t(Vrecorders_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_default_coreservice_t>& obj);

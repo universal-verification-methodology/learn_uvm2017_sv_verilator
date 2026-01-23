@@ -19,18 +19,21 @@ class Varchitecture_uvm_pkg__03a__03auvm_root;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_field_op__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_field_op__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_field_op>> __PVT__m_recycled_op;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_field_op__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_field_op__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_field_op__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_field_op__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,8 +56,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_field_op : public Varchitecture_uvm_pkg
     IData/*27:0*/ __PVT__m_op_type;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_policy> __PVT__m_policy;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> __PVT__m_object;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     void __VnoInFunc_disable_user_hook(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_flush(Varchitecture__Syms* __restrict vlSymsp);
@@ -74,7 +77,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_field_op : public Varchitecture_uvm_pkg
     Varchitecture_uvm_pkg__03a__03auvm_field_op(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_field_op() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_field_op();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_field_op>& obj);

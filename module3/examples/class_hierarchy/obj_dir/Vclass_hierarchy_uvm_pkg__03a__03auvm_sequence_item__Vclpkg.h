@@ -24,7 +24,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_transaction;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -32,11 +32,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_sequenc
     CData/*0:0*/ __PVT__issued2;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +61,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item : public Vclass_hierar
     IData/*31:0*/ __PVT__m_depth;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer_base> __PVT__m_sequencer;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_base> __PVT__m_parent_sequence;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_printer> printer);
     void __VnoInFunc_get_depth(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &get_depth__Vfuncrtn);
     void __VnoInFunc_get_full_name(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string &get_full_name__Vfuncrtn);
@@ -73,7 +76,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item : public Vclass_hierar
     void __VnoInFunc_get_type_name(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
     void __VnoInFunc_get_use_sequence_info(Vclass_hierarchy__Syms* __restrict vlSymsp, CData/*0:0*/ &get_use_sequence_info__Vfuncrtn);
     virtual void __VnoInFunc_is_item(Vclass_hierarchy__Syms* __restrict vlSymsp, CData/*0:0*/ &is_item__Vfuncrtn);
-    virtual void __VnoInFunc_m_set_p_sequencer(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_m_set_p_sequencer(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     void __VnoInFunc_set_depth(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ value);
     void __VnoInFunc_set_id_info(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item> item);
@@ -88,7 +91,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item : public Vclass_hierar
     void __VnoInFunc_uvm_report_enabled(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ verbosity, CData/*1:0*/ severity, std::string id, IData/*31:0*/ &uvm_report_enabled__Vfuncrtn);
     virtual void __VnoInFunc_uvm_report_error(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
     virtual void __VnoInFunc_uvm_report_fatal(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
-    virtual void __VnoInFunc_uvm_report_info(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
+    virtual void __VnoInFunc_uvm_report_info(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
     virtual void __VnoInFunc_uvm_report_warning(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
   private:
     void _ctor_var_reset(Vclass_hierarchy__Syms* __restrict vlSymsp);
@@ -96,7 +99,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item : public Vclass_hierar
     Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item>& obj);

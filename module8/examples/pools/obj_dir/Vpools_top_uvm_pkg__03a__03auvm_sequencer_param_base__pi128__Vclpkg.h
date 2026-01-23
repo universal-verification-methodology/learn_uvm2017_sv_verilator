@@ -24,15 +24,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz172;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,8 +60,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128 : public Vpool
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi133> __PVT__sqr_rsp_analysis_fifo;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz172> __PVT__rsp_export;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz172> __PVT__m_req_fifo;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_analysis_write(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_sequence_item> t);
     virtual void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_connect_phase(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_phase> phase);
@@ -83,7 +86,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128 : public Vpool
     Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi128>& obj);

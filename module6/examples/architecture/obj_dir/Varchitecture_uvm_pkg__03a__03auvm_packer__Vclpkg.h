@@ -22,7 +22,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_root;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_packer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_packer__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_packer__Vc
     VlQueue<CData/*0:0*/> __PVT__fabitstream;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_packer__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_packer__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_packer__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_packer__Vclpkg);
 
     // INTERNAL METHODS
@@ -62,8 +65,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_packer : public Varchitecture_uvm_pkg__
     VlWide<1024>/*32767:0*/ __PVT__m_bits;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_factory> __PVT__m_factory;
     VlAssocArray<IData/*31:0*/, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object>> __PVT__m_object_references;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     void __VnoInFunc_enough_bits(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ needed, std::string id, CData/*0:0*/ &enough_bits__Vfuncrtn);
     virtual void __VnoInFunc_flush(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
@@ -110,7 +113,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_packer : public Varchitecture_uvm_pkg__
     Varchitecture_uvm_pkg__03a__03auvm_packer(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_packer() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_packer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_packer>& obj);

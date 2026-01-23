@@ -6,10 +6,12 @@
 
 void Vtransactions_std__03a__03amailbox__Tz25__Vclpkg___ctor_var_reset(Vtransactions_std__03a__03amailbox__Tz25__Vclpkg* vlSelf);
 
-Vtransactions_std__03a__03amailbox__Tz25__Vclpkg::Vtransactions_std__03a__03amailbox__Tz25__Vclpkg(Vtransactions__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtransactions_std__03a__03amailbox__Tz25__Vclpkg::Vtransactions_std__03a__03amailbox__Tz25__Vclpkg() = default;
+Vtransactions_std__03a__03amailbox__Tz25__Vclpkg::~Vtransactions_std__03a__03amailbox__Tz25__Vclpkg() = default;
+
+void Vtransactions_std__03a__03amailbox__Tz25__Vclpkg::ctor(Vtransactions__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtransactions_std__03a__03amailbox__Tz25__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtransactions_std__03a__03amailbox__Tz25__Vclpkg::__Vconfigure(bool first) 
     (void)first;  // Prevent unused variable warning
 }
 
-Vtransactions_std__03a__03amailbox__Tz25__Vclpkg::~Vtransactions_std__03a__03amailbox__Tz25__Vclpkg() {
+void Vtransactions_std__03a__03amailbox__Tz25__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

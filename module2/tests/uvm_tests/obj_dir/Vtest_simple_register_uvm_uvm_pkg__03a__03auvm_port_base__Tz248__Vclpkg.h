@@ -20,7 +20,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_if_base__Tz26_TBz26;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auv
     std::string __PVT__debug_provided_to__Vstatic__save;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248__Vclpkg);
 
     // INTERNAL METHODS
@@ -90,7 +93,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248 : public V
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ port_type, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_port_base__Tz248>& obj);

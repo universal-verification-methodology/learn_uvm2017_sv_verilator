@@ -27,6 +27,10 @@ void Vpools_top_uvm_pkg__03a__03auvm_typeid__Tz144::_ctor_var_reset(Vpools_top__
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vpools_top_uvm_pkg__03a__03auvm_typeid__Tz144::~Vpools_top_uvm_pkg__03a__03auvm_typeid__Tz144() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vpools_top_uvm_pkg__03a__03auvm_typeid__Tz144::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_typeid__Tz144>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+              Vpools_top_uvm_pkg__03a__03auvm_typeid__Tz144::VL_TO_STRING\n"); );
     // Body

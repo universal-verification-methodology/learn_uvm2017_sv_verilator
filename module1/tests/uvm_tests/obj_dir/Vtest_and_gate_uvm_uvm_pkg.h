@@ -86,7 +86,7 @@ struct Vtest_and_gate_uvm_uvm_reg_bus_op__struct__0 {
 template <>
 struct VlIsCustomStruct<Vtest_and_gate_uvm_uvm_reg_bus_op__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -127,11 +127,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg final : public Ver
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_phase> __PVT__end_of_elaboration_ph;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg();
     ~Vtest_and_gate_uvm_uvm_pkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg);
 
     // INTERNAL METHODS

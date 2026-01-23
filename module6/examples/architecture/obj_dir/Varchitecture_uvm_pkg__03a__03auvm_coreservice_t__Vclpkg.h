@@ -25,18 +25,21 @@ class Varchitecture_uvm_pkg__03a__03auvm_visitor_;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_coreservice_t__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_coreservice_t__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_coreservice_t> __PVT__inst;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_coreservice_t__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_coreservice_t__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_coreservice_t__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_coreservice_t__Vclpkg);
 
     // INTERNAL METHODS
@@ -82,7 +85,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_coreservice_t : public virtual VlClass 
     Varchitecture_uvm_pkg__03a__03auvm_coreservice_t(Varchitecture__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_coreservice_t() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_coreservice_t();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_coreservice_t>& obj);

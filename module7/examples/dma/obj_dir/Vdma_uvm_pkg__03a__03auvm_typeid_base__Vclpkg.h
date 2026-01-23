@@ -14,7 +14,7 @@ class Vdma_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_typeid_base__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_typeid_base__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -23,11 +23,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_typeid_base__Vclpkg
     VlAssocArray<VlClassRef<Vdma_uvm_pkg__03a__03auvm_callbacks_base>, VlClassRef<Vdma_uvm_pkg__03a__03auvm_typeid_base>> __PVT__type_map;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_typeid_base__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_typeid_base__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_typeid_base__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_typeid_base__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,7 +48,7 @@ class Vdma_uvm_pkg__03a__03auvm_typeid_base : public virtual VlClass {
     Vdma_uvm_pkg__03a__03auvm_typeid_base(Vdma__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_typeid_base() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_typeid_base();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_typeid_base>& obj);

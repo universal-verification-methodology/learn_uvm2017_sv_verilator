@@ -6,10 +6,12 @@
 
 void Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg___ctor_var_reset(Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg* vlSelf);
 
-Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg::Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg::Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg() = default;
+Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg::~Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg() = default;
+
+void Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg::ctor(Vrecorders_top__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpk
     (void)first;  // Prevent unused variable warning
 }
 
-Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg::~Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg() {
+void Vrecorders_top_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

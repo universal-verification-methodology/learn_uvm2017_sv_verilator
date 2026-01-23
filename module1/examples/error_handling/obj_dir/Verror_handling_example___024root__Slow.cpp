@@ -6,11 +6,11 @@
 
 void Verror_handling_example___024root___ctor_var_reset(Verror_handling_example___024root* vlSelf);
 
-Verror_handling_example___024root::Verror_handling_example___024root(Verror_handling_example__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , __VdlySched{*symsp->_vm_contextp__}
-    , vlSymsp{symsp}
+Verror_handling_example___024root::Verror_handling_example___024root(Verror_handling_example__Syms* symsp, const char* namep)
+    : __VdlySched{*symsp->_vm_contextp__}
  {
+    vlSymsp = symsp;
+    vlNamep = strdup(namep);
     // Reset structure values
     Verror_handling_example___024root___ctor_var_reset(this);
 }
@@ -20,4 +20,5 @@ void Verror_handling_example___024root::__Vconfigure(bool first) {
 }
 
 Verror_handling_example___024root::~Verror_handling_example___024root() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

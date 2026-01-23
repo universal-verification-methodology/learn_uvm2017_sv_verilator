@@ -24,15 +24,18 @@ class Vdma_uvm_pkg__03a__03auvm_report_server;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_report_message__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_report_message__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_report_message__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_report_message__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_report_message__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_report_message__Vclpkg);
 
     // INTERNAL METHODS
@@ -63,8 +66,8 @@ class Vdma_uvm_pkg__03a__03auvm_report_message : public Vdma_uvm_pkg__03a__03auv
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_report_handler> __PVT___report_handler;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_report_server> __PVT___report_server;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_report_message_element_container> __PVT___report_message_element_container;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_int(Vdma__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix, IData/*31:0*/ action);
     virtual void __VnoInFunc_add_object(Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> obj, IData/*31:0*/ action);
     virtual void __VnoInFunc_add_string(Vdma__Syms* __restrict vlSymsp, std::string name, std::string value, IData/*31:0*/ action);
@@ -109,7 +112,7 @@ class Vdma_uvm_pkg__03a__03auvm_report_message : public Vdma_uvm_pkg__03a__03auv
     Vdma_uvm_pkg__03a__03auvm_report_message(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_report_message() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_report_message();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_report_message>& obj);

@@ -15,15 +15,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,7 +60,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73 : public Vrec
     Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73>& obj);

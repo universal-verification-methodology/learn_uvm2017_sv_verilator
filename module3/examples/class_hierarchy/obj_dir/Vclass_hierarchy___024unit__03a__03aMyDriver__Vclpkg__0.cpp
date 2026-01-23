@@ -47,181 +47,40 @@ void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_build_phase(VlPro
     // Locals
     IData/*31:0*/ __Vfunc_uvm_report_enabled__3__Vfuncout;
     __Vfunc_uvm_report_enabled__3__Vfuncout = 0;
-    IData/*31:0*/ __Vfunc_uvm_report_enabled__3__verbosity;
-    __Vfunc_uvm_report_enabled__3__verbosity = 0;
-    CData/*1:0*/ __Vfunc_uvm_report_enabled__3__severity;
-    __Vfunc_uvm_report_enabled__3__severity = 0;
-    std::string __Vfunc_uvm_report_enabled__3__id;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t> __Vfunc_get__4__Vfuncout;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> __Vtask_get_root__5__Vfuncout;
-    IData/*31:0*/ __Vtask_uvm_report_enabled__6__Vfuncout;
-    __Vtask_uvm_report_enabled__6__Vfuncout = 0;
-    std::string __Vtask_uvm_report_info__7__id;
-    std::string __Vtask_uvm_report_info__7__message;
-    IData/*31:0*/ __Vtask_uvm_report_info__7__verbosity;
-    __Vtask_uvm_report_info__7__verbosity = 0;
-    std::string __Vtask_uvm_report_info__7__filename;
-    IData/*31:0*/ __Vtask_uvm_report_info__7__line;
-    __Vtask_uvm_report_info__7__line = 0;
-    std::string __Vtask_uvm_report_info__7__context_name;
-    CData/*0:0*/ __Vtask_uvm_report_info__7__report_enabled_checked;
-    __Vtask_uvm_report_info__7__report_enabled_checked = 0;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t> __Vfunc_get__8__Vfuncout;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> __Vtask_get_root__9__Vfuncout;
     // Body
     Vclass_hierarchy_uvm_pkg__03a__03auvm_component::__VnoInFunc_build_phase(vlProcess, vlSymsp, phase);
     if ((0U != ([&]() {
-                    __Vfunc_uvm_report_enabled__3__id = "DRIVER"s;
-                    __Vfunc_uvm_report_enabled__3__severity = 0U;
-                    __Vfunc_uvm_report_enabled__3__verbosity = 0x000000c8U;
-                    vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__4__Vfuncout);
-                    vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs 
-                        = __Vfunc_get__4__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
-                ->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__5__Vfuncout);
-                    vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top 
-                        = __Vtask_get_root__5__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
-                ->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, __Vfunc_uvm_report_enabled__3__verbosity, (IData)(__Vfunc_uvm_report_enabled__3__severity), __Vfunc_uvm_report_enabled__3__id, __Vtask_uvm_report_enabled__6__Vfuncout);
-                    __Vfunc_uvm_report_enabled__3__Vfuncout 
-                        = __Vtask_uvm_report_enabled__6__Vfuncout;
+                    this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "DRIVER"s, __Vfunc_uvm_report_enabled__3__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__3__Vfuncout))) {
-        __Vtask_uvm_report_info__7__report_enabled_checked = 1U;
-        __Vtask_uvm_report_info__7__context_name = ""s;
-        __Vtask_uvm_report_info__7__line = 0x0000002dU;
-        __Vtask_uvm_report_info__7__filename = "class_hierarchy.sv"s;
-        __Vtask_uvm_report_info__7__verbosity = 0x000000c8U;
-        __Vtask_uvm_report_info__7__message = "Building driver component"s;
-        __Vtask_uvm_report_info__7__id = "DRIVER"s;
-        vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__8__Vfuncout);
-        vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs 
-            = __Vfunc_get__8__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 136)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__9__Vfuncout);
-        vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top 
-            = __Vtask_get_root__9__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 137)->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, __Vtask_uvm_report_info__7__id, __Vtask_uvm_report_info__7__message, __Vtask_uvm_report_info__7__verbosity, __Vtask_uvm_report_info__7__filename, __Vtask_uvm_report_info__7__line, __Vtask_uvm_report_info__7__context_name, (IData)(__Vtask_uvm_report_info__7__report_enabled_checked));
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Building driver component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x0000002dU, ""s, 1U);
     }
 }
 
 void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_connect_phase(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_connect_phase\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc_uvm_report_enabled__12__Vfuncout;
-    __Vfunc_uvm_report_enabled__12__Vfuncout = 0;
-    IData/*31:0*/ __Vfunc_uvm_report_enabled__12__verbosity;
-    __Vfunc_uvm_report_enabled__12__verbosity = 0;
-    CData/*1:0*/ __Vfunc_uvm_report_enabled__12__severity;
-    __Vfunc_uvm_report_enabled__12__severity = 0;
-    std::string __Vfunc_uvm_report_enabled__12__id;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t> __Vfunc_get__13__Vfuncout;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> __Vtask_get_root__14__Vfuncout;
-    IData/*31:0*/ __Vtask_uvm_report_enabled__15__Vfuncout;
-    __Vtask_uvm_report_enabled__15__Vfuncout = 0;
-    std::string __Vtask_uvm_report_info__16__id;
-    std::string __Vtask_uvm_report_info__16__message;
-    IData/*31:0*/ __Vtask_uvm_report_info__16__verbosity;
-    __Vtask_uvm_report_info__16__verbosity = 0;
-    std::string __Vtask_uvm_report_info__16__filename;
-    IData/*31:0*/ __Vtask_uvm_report_info__16__line;
-    __Vtask_uvm_report_info__16__line = 0;
-    std::string __Vtask_uvm_report_info__16__context_name;
-    CData/*0:0*/ __Vtask_uvm_report_info__16__report_enabled_checked;
-    __Vtask_uvm_report_info__16__report_enabled_checked = 0;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t> __Vfunc_get__17__Vfuncout;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> __Vtask_get_root__18__Vfuncout;
+    IData/*31:0*/ __Vfunc_uvm_report_enabled__6__Vfuncout;
+    __Vfunc_uvm_report_enabled__6__Vfuncout = 0;
     // Body
     Vclass_hierarchy_uvm_pkg__03a__03auvm_component::__VnoInFunc_connect_phase(vlProcess, vlSymsp, phase);
     if ((0U != ([&]() {
-                    __Vfunc_uvm_report_enabled__12__id = "DRIVER"s;
-                    __Vfunc_uvm_report_enabled__12__severity = 0U;
-                    __Vfunc_uvm_report_enabled__12__verbosity = 0x000000c8U;
-                    vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__13__Vfuncout);
-                    vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs 
-                        = __Vfunc_get__13__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
-                ->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__14__Vfuncout);
-                    vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top 
-                        = __Vtask_get_root__14__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
-                ->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, __Vfunc_uvm_report_enabled__12__verbosity, (IData)(__Vfunc_uvm_report_enabled__12__severity), __Vfunc_uvm_report_enabled__12__id, __Vtask_uvm_report_enabled__15__Vfuncout);
-                    __Vfunc_uvm_report_enabled__12__Vfuncout 
-                        = __Vtask_uvm_report_enabled__15__Vfuncout;
-                }(), __Vfunc_uvm_report_enabled__12__Vfuncout))) {
-        __Vtask_uvm_report_info__16__report_enabled_checked = 1U;
-        __Vtask_uvm_report_info__16__context_name = ""s;
-        __Vtask_uvm_report_info__16__line = 0x00000032U;
-        __Vtask_uvm_report_info__16__filename = "class_hierarchy.sv"s;
-        __Vtask_uvm_report_info__16__verbosity = 0x000000c8U;
-        __Vtask_uvm_report_info__16__message = "Connecting driver component"s;
-        __Vtask_uvm_report_info__16__id = "DRIVER"s;
-        vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__17__Vfuncout);
-        vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs 
-            = __Vfunc_get__17__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 136)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__18__Vfuncout);
-        vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top 
-            = __Vtask_get_root__18__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 137)->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, __Vtask_uvm_report_info__16__id, __Vtask_uvm_report_info__16__message, __Vtask_uvm_report_info__16__verbosity, __Vtask_uvm_report_info__16__filename, __Vtask_uvm_report_info__16__line, __Vtask_uvm_report_info__16__context_name, (IData)(__Vtask_uvm_report_info__16__report_enabled_checked));
+                    this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "DRIVER"s, __Vfunc_uvm_report_enabled__6__Vfuncout);
+                }(), __Vfunc_uvm_report_enabled__6__Vfuncout))) {
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Connecting driver component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000032U, ""s, 1U);
     }
 }
 
 VlCoroutine Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_run_phase(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_run_phase\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc_uvm_report_enabled__20__Vfuncout;
-    __Vfunc_uvm_report_enabled__20__Vfuncout = 0;
-    IData/*31:0*/ __Vfunc_uvm_report_enabled__20__verbosity;
-    __Vfunc_uvm_report_enabled__20__verbosity = 0;
-    CData/*1:0*/ __Vfunc_uvm_report_enabled__20__severity;
-    __Vfunc_uvm_report_enabled__20__severity = 0;
-    std::string __Vfunc_uvm_report_enabled__20__id;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t> __Vfunc_get__21__Vfuncout;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> __Vtask_get_root__22__Vfuncout;
-    IData/*31:0*/ __Vtask_uvm_report_enabled__23__Vfuncout;
-    __Vtask_uvm_report_enabled__23__Vfuncout = 0;
-    std::string __Vtask_uvm_report_info__24__id;
-    std::string __Vtask_uvm_report_info__24__message;
-    IData/*31:0*/ __Vtask_uvm_report_info__24__verbosity;
-    __Vtask_uvm_report_info__24__verbosity = 0;
-    std::string __Vtask_uvm_report_info__24__filename;
-    IData/*31:0*/ __Vtask_uvm_report_info__24__line;
-    __Vtask_uvm_report_info__24__line = 0;
-    std::string __Vtask_uvm_report_info__24__context_name;
-    CData/*0:0*/ __Vtask_uvm_report_info__24__report_enabled_checked;
-    __Vtask_uvm_report_info__24__report_enabled_checked = 0;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t> __Vfunc_get__25__Vfuncout;
-    VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_root> __Vtask_get_root__26__Vfuncout;
+    IData/*31:0*/ __Vfunc_uvm_report_enabled__8__Vfuncout;
+    __Vfunc_uvm_report_enabled__8__Vfuncout = 0;
     // Body
     VL_KEEP_THIS;
     if ((0U != ([&]() {
-                    __Vfunc_uvm_report_enabled__20__id = "DRIVER"s;
-                    __Vfunc_uvm_report_enabled__20__severity = 0U;
-                    __Vfunc_uvm_report_enabled__20__verbosity = 0x000000c8U;
-                    vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__21__Vfuncout);
-                    vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs 
-                        = __Vfunc_get__21__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 89)
-                ->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__22__Vfuncout);
-                    vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top 
-                        = __Vtask_get_root__22__Vfuncout;
-                    VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_enabled__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 90)
-                ->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, __Vfunc_uvm_report_enabled__20__verbosity, (IData)(__Vfunc_uvm_report_enabled__20__severity), __Vfunc_uvm_report_enabled__20__id, __Vtask_uvm_report_enabled__23__Vfuncout);
-                    __Vfunc_uvm_report_enabled__20__Vfuncout 
-                        = __Vtask_uvm_report_enabled__23__Vfuncout;
-                }(), __Vfunc_uvm_report_enabled__20__Vfuncout))) {
-        __Vtask_uvm_report_info__24__report_enabled_checked = 1U;
-        __Vtask_uvm_report_info__24__context_name = ""s;
-        __Vtask_uvm_report_info__24__line = 0x00000036U;
-        __Vtask_uvm_report_info__24__filename = "class_hierarchy.sv"s;
-        __Vtask_uvm_report_info__24__verbosity = 0x000000c8U;
-        __Vtask_uvm_report_info__24__message = "Driver run_phase executing"s;
-        __Vtask_uvm_report_info__24__id = "DRIVER"s;
-        vlSymsp->TOP__uvm_pkg__03a__03auvm_coreservice_t__Vclpkg.__VnoInFunc_get(vlProcess, vlSymsp, __Vfunc_get__25__Vfuncout);
-        vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs 
-            = __Vfunc_get__25__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__cs, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 136)->__VnoInFunc_get_root(vlProcess, vlSymsp, __Vtask_get_root__26__Vfuncout);
-        vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top 
-            = __Vtask_get_root__26__Vfuncout;
-        VL_NULL_CHECK(vlSymsp->TOP__uvm_pkg.__PVT__uvm_report_info__Vstatic__top, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh", 137)->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, __Vtask_uvm_report_info__24__id, __Vtask_uvm_report_info__24__message, __Vtask_uvm_report_info__24__verbosity, __Vtask_uvm_report_info__24__filename, __Vtask_uvm_report_info__24__line, __Vtask_uvm_report_info__24__context_name, (IData)(__Vtask_uvm_report_info__24__report_enabled_checked));
+                    this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "DRIVER"s, __Vfunc_uvm_report_enabled__8__Vfuncout);
+                }(), __Vfunc_uvm_report_enabled__8__Vfuncout))) {
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Driver run_phase executing"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000036U, ""s, 1U);
     }
     VL_NULL_CHECK(phase, "class_hierarchy.sv", 55)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
                                                                                 VlClassRef<Vclass_hierarchy___024unit__03a__03aMyDriver>{this}, ""s, 1U);
@@ -231,32 +90,40 @@ VlCoroutine Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_run_phase(
                                             56);
     VL_NULL_CHECK(phase, "class_hierarchy.sv", 57)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                                VlClassRef<Vclass_hierarchy___024unit__03a__03aMyDriver>{this}, ""s, 1U);
-}
+    co_return;}
 
 void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__31__Vfuncout;
-    __Vfunc___Vbasic_randomize__31__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__13__Vfuncout;
+    __Vfunc___VBasicRand__13__Vfuncout = 0;
     // Body
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vclass_hierarchy_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__31__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__31__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__13__Vfuncout);
+            }(), __Vfunc___VBasicRand__13__Vfuncout));
 }
 
-void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc___Vbasic_randomize\n"); );
+void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vclass_hierarchy___024unit__03a__03aMyDriver::_ctor_var_reset(Vclass_hierarchy__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vclass_hierarchy___024unit__03a__03aMyDriver::~Vclass_hierarchy___024unit__03a__03aMyDriver() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vclass_hierarchy___024unit__03a__03aMyDriver::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy___024unit__03a__03aMyDriver>& obj) {

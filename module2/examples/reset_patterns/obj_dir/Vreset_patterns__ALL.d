@@ -11,6 +11,6 @@ Vreset_patterns__ALL.o: Vreset_patterns__ALL.cpp Vreset_patterns.cpp \
  /usr/local/share/verilator/include/verilated_trace.h \
  Vreset_patterns___024root__0.cpp Vreset_patterns__Trace__0.cpp \
  Vreset_patterns___024root__Slow.cpp \
- Vreset_patterns___024root__0__Slow.cpp Vreset_patterns__Syms.cpp \
+ Vreset_patterns___024root__0__Slow.cpp Vreset_patterns__Syms__Slow.cpp \
  Vreset_patterns__Trace__0__Slow.cpp \
  Vreset_patterns__TraceDecls__0__Slow.cpp

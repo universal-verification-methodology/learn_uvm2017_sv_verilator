@@ -14,15 +14,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_printer_element;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_printer_element__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_printer_element__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_printer_element__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_printer_element__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_printer_element__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_printer_element__Vclpkg);
 
     // INTERNAL METHODS
@@ -42,8 +45,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_printer_element : public Vtransactions_
     std::string __PVT__m_size;
     std::string __PVT__m_value;
     VlQueue<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_children;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_child(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_printer_element> child);
     void __VnoInFunc_clear_children(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_get_children(Vtransactions__Syms* __restrict vlSymsp, VlQueue<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_printer_element>> &children, CData/*0:0*/ recurse);
@@ -63,7 +66,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_printer_element : public Vtransactions_
     Vtransactions_uvm_pkg__03a__03auvm_printer_element(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_printer_element() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_printer_element();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_printer_element>& obj);

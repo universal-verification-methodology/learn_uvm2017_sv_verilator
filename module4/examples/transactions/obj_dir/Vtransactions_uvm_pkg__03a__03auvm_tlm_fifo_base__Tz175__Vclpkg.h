@@ -21,15 +21,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg);
 
     // INTERNAL METHODS
@@ -59,8 +62,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175 : public Vtransact
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz175_TBz254> __PVT__peek_export;
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz175_TBz254> __PVT__blocking_get_peek_export;
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz175_TBz254> __PVT__nonblocking_get_peek_export;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vtransactions__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vtransactions__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vtransactions__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -87,7 +90,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175 : public Vtransact
     Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175>& obj);

@@ -180,14 +180,11 @@ module common_patterns;
      * Stimulus generation component
      */
     task test_driver_pattern();
+        Driver driver;
+        Transaction txn;
         $display();
         $display("Example 2: Driver Pattern");
         
-        // Declare without initialization to avoid issues with declaration-time
-        // construction in some Verilator versions.
-        Driver driver;
-        Transaction txn;
-
         driver = new();
         
         for (int i = 0; i < 3; i++) begin
@@ -204,12 +201,10 @@ module common_patterns;
      * Response monitoring component
      */
     task test_monitor_pattern();
+        Monitor monitor;
         $display();
         $display("Example 3: Monitor Pattern");
         
-        // Separate declaration and construction for better tool compatibility.
-        Monitor monitor;
-
         monitor = new();
         
         // Simulate monitoring
@@ -226,14 +221,12 @@ module common_patterns;
      * Response checking component
      */
     task test_scoreboard_pattern();
-        $display();
-        $display("Example 4: Scoreboard Pattern");
-        
-        // Avoid declaration-time construction and multi-variable declarations.
         Scoreboard scoreboard;
         Transaction expected_txn;
         Transaction actual_txn;
-
+        $display();
+        $display("Example 4: Scoreboard Pattern");
+        
         scoreboard = new();
         
         // Add expected transactions
@@ -264,15 +257,14 @@ module common_patterns;
      * Demonstrates component reuse
      */
     task test_reusable_components();
-        $display();
-        $display("Example 5: Reusable Components");
-        
-        // Declare first, then construct to keep syntax simple for Verilator.
         Driver driver;
         Monitor monitor;
         Scoreboard scoreboard;
         Transaction txn;
-
+        bit check_result;
+        $display();
+        $display("Example 5: Reusable Components");
+        
         driver = new();
         monitor = new();
         scoreboard = new();
@@ -292,7 +284,10 @@ module common_patterns;
             scoreboard.add_actual(txn);
         end
         
-        scoreboard.check();
+        check_result = scoreboard.check();
+        if (!check_result) begin
+            $error("Scoreboard check failed in reusable components test");
+        end
         scoreboard.print_stats();
         
         $display("  Reusable components PASSED");

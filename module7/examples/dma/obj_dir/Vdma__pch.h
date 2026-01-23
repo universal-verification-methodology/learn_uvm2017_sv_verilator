@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vdma.h instead.
 
-
 #ifndef VERILATED_VDMA__PCH_H_
 #define VERILATED_VDMA__PCH_H_  // guard
 

@@ -1,5 +1,5 @@
 // Verilated -*- C++ -*-
-// DESCRIPTION: main() calling loop, created with Verilator --main
+// DESCRIPTION: Verilator output: main() simulation loop, created with --main
 
 #include "verilated.h"
 #include "Vrecorders_top.h"
@@ -11,6 +11,7 @@ int main(int argc, char** argv, char**) {
     Verilated::debug(0);
     const std::unique_ptr<VerilatedContext> contextp{new VerilatedContext};
     contextp->traceEverOn(true);
+    contextp->threads(1);
     contextp->commandArgs(argc, argv);
 
     // Construct the Verilated model, from Vtop.h generated from Verilating

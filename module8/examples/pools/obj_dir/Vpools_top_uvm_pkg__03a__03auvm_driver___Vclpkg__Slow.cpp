@@ -6,10 +6,12 @@
 
 void Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg___ctor_var_reset(Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg* vlSelf);
 
-Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg::Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg(Vpools_top__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg::Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg() = default;
+Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg::~Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg() = default;
+
+void Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg::ctor(Vpools_top__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg::__Vconfigure(bool first) {
     (void)first;  // Prevent unused variable warning
 }
 
-Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg::~Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg() {
+void Vpools_top_uvm_pkg__03a__03auvm_driver___Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

@@ -16,15 +16,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_reg_item;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -42,8 +45,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq : public Varchite
     IData/*31:0*/ __PVT__m_idx;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg> __PVT__m_addr_reg;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg> __PVT__m_data_reg;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
@@ -52,7 +55,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq : public Varchite
     Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg> addr_reg, IData/*31:0*/ idx, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg> data_reg);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq>& obj);

@@ -297,7 +297,7 @@ module test_advanced_uvm;
     end
     
     // Connect interface signals
-    assign multi_channel_if_inst.clk = clk;
+    // Note: clk is already connected via interface instantiation (input port)
     assign multi_channel_if_inst.rst_n = rst_n;
     
     // Run test

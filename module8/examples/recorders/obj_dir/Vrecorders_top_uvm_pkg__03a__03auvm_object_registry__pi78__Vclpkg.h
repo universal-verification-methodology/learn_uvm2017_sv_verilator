@@ -18,18 +18,21 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_vreg_field;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,7 +60,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78 : public Vrecord
     Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78(Vrecorders_top__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi78>& obj);

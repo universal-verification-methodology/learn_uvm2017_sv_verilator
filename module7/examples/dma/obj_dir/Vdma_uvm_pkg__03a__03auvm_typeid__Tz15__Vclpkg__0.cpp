@@ -27,6 +27,10 @@ void Vdma_uvm_pkg__03a__03auvm_typeid__Tz15::_ctor_var_reset(Vdma__Syms* __restr
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vdma_uvm_pkg__03a__03auvm_typeid__Tz15::~Vdma_uvm_pkg__03a__03auvm_typeid__Tz15() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Vdma_uvm_pkg__03a__03auvm_typeid__Tz15::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_typeid__Tz15>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vdma_uvm_pkg__03a__03auvm_typeid__Tz15::VL_TO_STRING\n"); );
     // Body

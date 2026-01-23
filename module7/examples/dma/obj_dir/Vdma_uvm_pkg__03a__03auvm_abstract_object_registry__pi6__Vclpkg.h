@@ -20,18 +20,21 @@ class Vdma_uvm_pkg__03a__03auvm_sequence_base;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6__Vclpkg);
 
     // INTERNAL METHODS
@@ -59,7 +62,7 @@ class Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6 : public Vdma_uvm_
     Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6(Vdma__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi6>& obj);

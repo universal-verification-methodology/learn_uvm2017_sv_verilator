@@ -34,7 +34,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_counter__Syms final : public VerilatedS
     ~Vtest_counter__Syms();
 
     // METHODS
-    const char* name() { return TOP.name(); }
+    const char* name() const { return TOP.vlNamep; }
 };
 
 #endif  // guard

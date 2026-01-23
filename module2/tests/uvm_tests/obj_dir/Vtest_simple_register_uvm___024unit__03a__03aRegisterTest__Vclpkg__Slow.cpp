@@ -6,10 +6,12 @@
 
 void Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg___ctor_var_reset(Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg* vlSelf);
 
-Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg::Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg::Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg() = default;
+Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg::~Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg() = default;
+
+void Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg::ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg::__Vconfi
     (void)first;  // Prevent unused variable warning
 }
 
-Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg::~Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg() {
+void Vtest_simple_register_uvm___024unit__03a__03aRegisterTest__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

@@ -47,7 +47,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Verror_handling_example__Syms \
+  Verror_handling_example__Syms__Slow \
   Verror_handling_example__Trace__0__Slow \
   Verror_handling_example__TraceDecls__0__Slow \
 

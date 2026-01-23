@@ -18,7 +18,7 @@ class Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg;
 
 class Vtransaction_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example___024root final {
   public:
     // CELLS
     Vtransaction_example_transaction_pkg* __PVT__transaction_pkg;
@@ -33,10 +33,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example___024root final : public
     VlDelayScheduler __VdlySched;
 
     // INTERNAL VARIABLES
-    Vtransaction_example__Syms* const vlSymsp;
+    Vtransaction_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransaction_example___024root(Vtransaction_example__Syms* symsp, const char* v__name);
+    Vtransaction_example___024root(Vtransaction_example__Syms* symsp, const char* namep);
     ~Vtransaction_example___024root();
     VL_UNCOPYABLE(Vtransaction_example___024root);
 

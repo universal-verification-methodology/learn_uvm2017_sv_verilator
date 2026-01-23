@@ -120,7 +120,7 @@ VlCoroutine Vtransaction_example___024root___eval_initial__TOP__Vtiming__0(Vtran
                                          nullptr, "transaction.sv", 
                                          210);
     VL_FINISH_MT("transaction.sv", 211, "");
-}
+    co_return;}
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Vtransaction_example___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
@@ -231,7 +231,7 @@ void Vtransaction_example___024root___eval(Vtransaction_example___024root* vlSel
 #ifdef VL_DEBUG
             Vtransaction_example___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("transaction.sv", 149, "", "NBA region did not converge after 100 tries");
+            VL_FATAL_MT("transaction.sv", 149, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -240,7 +240,7 @@ void Vtransaction_example___024root___eval(Vtransaction_example___024root* vlSel
 #ifdef VL_DEBUG
                 Vtransaction_example___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("transaction.sv", 149, "", "Active region did not converge after 100 tries");
+                VL_FATAL_MT("transaction.sv", 149, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

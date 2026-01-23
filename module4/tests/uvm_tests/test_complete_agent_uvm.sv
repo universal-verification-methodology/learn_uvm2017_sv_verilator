@@ -339,7 +339,7 @@ module test_complete_agent_uvm;
     end
     
     // Connect interface signals
-    assign simple_if_inst.clk = clk;
+    // Note: clk is already connected via interface instantiation (input port)
     assign simple_if_inst.rst_n = rst_n;
     
     // Run test

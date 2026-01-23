@@ -18,15 +18,18 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz26;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg);
 
     // INTERNAL METHODS
@@ -43,8 +46,8 @@ class Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_ : public Vdma_uvm_pkg__
     // DESIGN SPECIFIC STATE
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_analysis_imp__Tz26_TBz224> __PVT__analysis_export;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequencer_base> __PVT__sequencer_ptr;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     void __VnoInFunc_write(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequence_item> t);
   private:
@@ -53,7 +56,7 @@ class Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_ : public Vdma_uvm_pkg__
     Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_>& obj);

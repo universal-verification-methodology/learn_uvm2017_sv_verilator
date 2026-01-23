@@ -11,15 +11,18 @@
 
 class Vdata_structures_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdata_structures_example__Syms* const vlSymsp;
+    Vdata_structures_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction__Vclpkg(Vdata_structures_example__Syms* symsp, const char* v__name);
+    Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction__Vclpkg();
     ~Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction__Vclpkg();
+    void ctor(Vdata_structures_example__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction__Vclpkg);
 
     // INTERNAL METHODS

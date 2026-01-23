@@ -21,15 +21,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_text_recorder__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_text_recorder__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_text_recorder__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_text_recorder__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_text_recorder__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_text_recorder__Vclpkg);
 
     // INTERNAL METHODS
@@ -51,8 +54,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_text_recorder : public Vpools_top_uvm_pkg_
     VlQueue<std::string> __PVT__m_object_names;
     std::string __PVT__filename;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_text_tr_database> __PVT__m_text_db;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_tr(Vpools_top__Syms* __restrict vlSymsp, std::string txtype, IData/*31:0*/ stream, std::string nm, std::string label, std::string desc, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     virtual void __VnoInFunc_check_handle_kind(Vpools_top__Syms* __restrict vlSymsp, std::string htype, IData/*31:0*/ handle, IData/*31:0*/ &check_handle_kind__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
@@ -85,7 +88,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_text_recorder : public Vpools_top_uvm_pkg_
     Vpools_top_uvm_pkg__03a__03auvm_text_recorder(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_text_recorder() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_text_recorder();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_text_recorder>& obj);

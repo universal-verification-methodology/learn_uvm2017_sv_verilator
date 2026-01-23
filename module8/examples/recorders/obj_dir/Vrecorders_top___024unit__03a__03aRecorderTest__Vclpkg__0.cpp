@@ -101,32 +101,40 @@ VlCoroutine Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc_run_phas
                                             126);
     VL_NULL_CHECK(phase, "recorders.sv", 127)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                           VlClassRef<Vrecorders_top___024unit__03a__03aRecorderTest>{this}, ""s, 1U);
-}
+    co_return;}
 
 void Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__14__Vfuncout;
-    __Vfunc___Vbasic_randomize__14__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__14__Vfuncout;
+    __Vfunc___VBasicRand__14__Vfuncout = 0;
     // Body
-    Vrecorders_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vrecorders_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vrecorders_top_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__14__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__14__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__14__Vfuncout);
+            }(), __Vfunc___VBasicRand__14__Vfuncout));
 }
 
-void Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc___Vbasic_randomize\n"); );
+void Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vrecorders_top___024unit__03a__03aRecorderTest::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vrecorders_top___024unit__03a__03aRecorderTest::_ctor_var_reset(Vrecorders_top__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vrecorders_top___024unit__03a__03aRecorderTest::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vrecorders_top___024unit__03a__03aRecorderTest::~Vrecorders_top___024unit__03a__03aRecorderTest() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vrecorders_top___024unit__03a__03aRecorderTest::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top___024unit__03a__03aRecorderTest>& obj) {

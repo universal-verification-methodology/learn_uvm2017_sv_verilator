@@ -13,15 +13,18 @@ class Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg();
     ~Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,9 +38,6 @@ class Vtest_and_gate_uvm_std__03a__03amailbox__Tz126 : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h5648adee__0;
-    CData/*0:0*/ __Vtrigprevexpr_hab449330__0;
-    CData/*0:0*/ __Vtrigprevexpr_hab449330__1;
     IData/*31:0*/ __PVT__m_bound;
     VlQueue<VlClassRef<Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction>> __PVT__m_queue;
     VlCoroutine __VnoInFunc_get(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction> &message);

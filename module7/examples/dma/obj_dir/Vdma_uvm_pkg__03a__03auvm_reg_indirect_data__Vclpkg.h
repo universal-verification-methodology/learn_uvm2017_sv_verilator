@@ -24,15 +24,18 @@ class Vdma_uvm_pkg__03a__03auvm_sequence_base;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_reg_indirect_data__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_reg_indirect_data__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_reg_indirect_data__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_reg_indirect_data__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_reg_indirect_data__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_reg_indirect_data__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,12 +52,12 @@ class Vdma_uvm_pkg__03a__03auvm_reg_indirect_data : public Vdma_uvm_pkg__03a__03
     // DESIGN SPECIFIC STATE
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg> __PVT__m_idx;
     VlQueue<VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg>> __PVT__m_tbl;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_field(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_field> field);
     void __VnoInFunc_add_frontdoors(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_map> map);
     virtual void __VnoInFunc_add_map(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_map> map);
-    virtual void __VnoInFunc_build(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_build(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_configure(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg> idx, VlQueue<VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg>> reg_a, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_block> blk_parent, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_file> regfile_parent);
     virtual void __VnoInFunc_do_predict(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_item> rw, IData/*31:0*/ kind, CData/*7:0*/ be);
     virtual void __VnoInFunc_get(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string fname, IData/*31:0*/ lineno, QData/*63:0*/ &get__Vfuncrtn);
@@ -75,7 +78,7 @@ class Vdma_uvm_pkg__03a__03auvm_reg_indirect_data : public Vdma_uvm_pkg__03a__03
     Vdma_uvm_pkg__03a__03auvm_reg_indirect_data(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ n_bits, IData/*31:0*/ has_cover);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_reg_indirect_data() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_reg_indirect_data();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_reg_indirect_data>& obj);

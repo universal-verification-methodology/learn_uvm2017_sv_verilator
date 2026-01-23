@@ -23,15 +23,18 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz26;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_sequencer_param_base___Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vdma_uvm_pkg__03a__03auvm_sequencer_param_base_ : public Vdma_uvm_pkg__03a
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo_> __PVT__sqr_rsp_analysis_fifo;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_analysis_export__Tz26> __PVT__rsp_export;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz26> __PVT__m_req_fifo;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_analysis_write(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequence_item> t);
     virtual void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_connect_phase(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> phase);
@@ -82,7 +85,7 @@ class Vdma_uvm_pkg__03a__03auvm_sequencer_param_base_ : public Vdma_uvm_pkg__03a
     Vdma_uvm_pkg__03a__03auvm_sequencer_param_base_(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_sequencer_param_base_() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_sequencer_param_base_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_sequencer_param_base_>& obj);

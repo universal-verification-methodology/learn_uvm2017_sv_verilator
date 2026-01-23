@@ -86,7 +86,7 @@ struct Vdma_uvm_reg_bus_op__struct__0 {
 template <>
 struct VlIsCustomStruct<Vdma_uvm_reg_bus_op__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -127,11 +127,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg final : public VerilatedModule {
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> __PVT__end_of_elaboration_ph;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg();
     ~Vdma_uvm_pkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg);
 
     // INTERNAL METHODS

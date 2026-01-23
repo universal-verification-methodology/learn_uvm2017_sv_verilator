@@ -24,7 +24,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_transaction;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -32,11 +32,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_sequence_
     CData/*0:0*/ __PVT__issued2;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +61,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item : public Vrecorders_top_
     IData/*31:0*/ __PVT__m_depth;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_base> __PVT__m_sequencer;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_base> __PVT__m_parent_sequence;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_printer> printer);
     void __VnoInFunc_get_depth(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &get_depth__Vfuncrtn);
     void __VnoInFunc_get_full_name(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string &get_full_name__Vfuncrtn);
@@ -73,7 +76,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item : public Vrecorders_top_
     void __VnoInFunc_get_type_name(Vrecorders_top__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
     void __VnoInFunc_get_use_sequence_info(Vrecorders_top__Syms* __restrict vlSymsp, CData/*0:0*/ &get_use_sequence_info__Vfuncrtn);
     virtual void __VnoInFunc_is_item(Vrecorders_top__Syms* __restrict vlSymsp, CData/*0:0*/ &is_item__Vfuncrtn);
-    virtual void __VnoInFunc_m_set_p_sequencer(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_m_set_p_sequencer(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     void __VnoInFunc_set_depth(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ value);
     void __VnoInFunc_set_id_info(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item> item);
@@ -88,7 +91,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item : public Vrecorders_top_
     void __VnoInFunc_uvm_report_enabled(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ verbosity, CData/*1:0*/ severity, std::string id, IData/*31:0*/ &uvm_report_enabled__Vfuncrtn);
     virtual void __VnoInFunc_uvm_report_error(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
     virtual void __VnoInFunc_uvm_report_fatal(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
-    virtual void __VnoInFunc_uvm_report_info(Vrecorders_top__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
+    virtual void __VnoInFunc_uvm_report_info(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
     virtual void __VnoInFunc_uvm_report_warning(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line, std::string context_name, CData/*0:0*/ report_enabled_checked);
   private:
     void _ctor_var_reset(Vrecorders_top__Syms* __restrict vlSymsp);
@@ -96,7 +99,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item : public Vrecorders_top_
     Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence_item>& obj);

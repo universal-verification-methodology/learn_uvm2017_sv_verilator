@@ -223,7 +223,7 @@ VlCoroutine Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc_run_p
                                             180);
     VL_NULL_CHECK(phase, "transactions.sv", 181)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                              VlClassRef<Vtransactions___024unit__03a__03aTransactionsTest>{this}, ""s, 1U);
-}
+    co_return;}
 
 void Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc_report_phase(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_phase> phase) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc_report_phase\n"); );
@@ -242,27 +242,35 @@ void Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc_report_phase
 void Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__46__Vfuncout;
-    __Vfunc___Vbasic_randomize__46__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__46__Vfuncout;
+    __Vfunc___VBasicRand__46__Vfuncout = 0;
     // Body
-    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vtransactions_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__46__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__46__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__46__Vfuncout);
+            }(), __Vfunc___VBasicRand__46__Vfuncout));
 }
 
-void Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aTransactionsTest::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vtransactions___024unit__03a__03aTransactionsTest::_ctor_var_reset(Vtransactions__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aTransactionsTest::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vtransactions___024unit__03a__03aTransactionsTest::~Vtransactions___024unit__03a__03aTransactionsTest() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransactions___024unit__03a__03aTransactionsTest::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions___024unit__03a__03aTransactionsTest>& obj) {

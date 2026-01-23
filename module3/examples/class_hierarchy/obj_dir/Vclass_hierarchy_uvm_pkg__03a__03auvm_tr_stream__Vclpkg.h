@@ -21,7 +21,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -29,11 +29,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stre
     VlAssocArray<IData/*31:0*/, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream>> __PVT__m_streams_by_id;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream__Vclpkg);
 
     // INTERNAL METHODS
@@ -55,11 +58,11 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream : public Vclass_hierarchy_
     CData/*0:0*/ __PVT__m_is_closed;
     VlAssocArray<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_recorder>, CData/*0:0*/> __PVT__m_records;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_set_before_get_dap__Tz68> __PVT__m_cfg_dap;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_close(Vclass_hierarchy__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_close(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_free(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_close(Vclass_hierarchy__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_free(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_open(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_database> db, std::string scope, std::string stream_type_name);
     virtual void __VnoInFunc_do_open_recorder(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ open_time, std::string type_name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_recorder> &do_open_recorder__Vfuncrtn);
     void __VnoInFunc_free(Vclass_hierarchy__Syms* __restrict vlSymsp);
@@ -80,7 +83,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream : public Vclass_hierarchy_
     Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_tr_stream>& obj);

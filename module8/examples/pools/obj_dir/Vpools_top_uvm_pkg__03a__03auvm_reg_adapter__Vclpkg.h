@@ -19,15 +19,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_adapter__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_adapter__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_reg_adapter__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_reg_adapter__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_reg_adapter__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_reg_adapter__Vclpkg);
 
     // INTERNAL METHODS
@@ -48,8 +51,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_adapter : public Vpools_top_uvm_pkg__0
     CData/*0:0*/ __PVT__provides_responses;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_sequence_base> __PVT__parent_sequence;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> __PVT__m_item;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_bus2reg(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_sequence_item> bus_item, Vpools_top_uvm_reg_bus_op__struct__0 &rw);
     virtual void __VnoInFunc_get_item(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> &get_item__Vfuncrtn);
     virtual void __VnoInFunc_get_object_type(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
@@ -63,7 +66,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_adapter : public Vpools_top_uvm_pkg__0
     Vpools_top_uvm_pkg__03a__03auvm_reg_adapter(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_adapter() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_adapter();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_adapter>& obj);

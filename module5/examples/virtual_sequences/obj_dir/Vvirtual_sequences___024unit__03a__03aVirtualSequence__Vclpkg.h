@@ -19,15 +19,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer__Tz1_TBz1;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences___024unit__03a__03aVirtualSequence__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences___024unit__03a__03aVirtualSequence__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences___024unit__03a__03aVirtualSequence__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences___024unit__03a__03aVirtualSequence__Vclpkg();
     ~Vvirtual_sequences___024unit__03a__03aVirtualSequence__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences___024unit__03a__03aVirtualSequence__Vclpkg);
 
     // INTERNAL METHODS
@@ -46,8 +49,8 @@ class Vvirtual_sequences___024unit__03a__03aVirtualSequence : public Vvirtual_se
     // DESIGN SPECIFIC STATE
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer__Tz1_TBz1> __PVT__master_seqr;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer__Tz1_TBz1> __PVT__slave_seqr;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp);
   private:
     VlCoroutine __VnoInFunc_body____Vfork_1__0(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences___024unit__03a__03aChannelSequence> &master_seq, VlForkSync __Vfork_1__sync);
@@ -63,7 +66,7 @@ class Vvirtual_sequences___024unit__03a__03aVirtualSequence : public Vvirtual_se
     Vvirtual_sequences___024unit__03a__03aVirtualSequence(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences___024unit__03a__03aVirtualSequence() {}
+    virtual ~Vvirtual_sequences___024unit__03a__03aVirtualSequence();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences___024unit__03a__03aVirtualSequence>& obj);

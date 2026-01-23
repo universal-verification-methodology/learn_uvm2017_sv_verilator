@@ -26,7 +26,7 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_
             get_type_name__Vfuncrtn = "uvm_port_component"s;
             goto __Vlabel0;
         }
-        VL_NULL_CHECK(this->__PVT__m_port, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 130)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__2__Vfuncout);
+        VL_NULL_CHECK(this->__PVT__m_port, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 130)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__2__Vfuncout);
         get_type_name__Vfuncrtn = __Vtask_get_type_name__2__Vfuncout;
         __Vlabel0: ;
     }
@@ -35,7 +35,7 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_
 void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_resolve_bindings(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                        Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_resolve_bindings\n"); );
     // Body
-    VL_NULL_CHECK(this->__PVT__m_port, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 134)->__VnoInFunc_resolve_bindings(vlProcess, vlSymsp);
+    VL_NULL_CHECK(this->__PVT__m_port, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 134)->__VnoInFunc_resolve_bindings(vlProcess, vlSymsp);
 }
 
 void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_get_port(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271> &get_port__Vfuncrtn) {
@@ -53,14 +53,14 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_
     CData/*0:0*/ unnamedblk1__DOT__name__Vfirst;
     unnamedblk1__DOT__name__Vfirst = 0;
     VlAssocArray<std::string, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_port_base__Tz271>> list1;
-    VL_NULL_CHECK(this->__PVT__m_port, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 153)->__VnoInFunc_get_connected_to(vlSymsp, list1);
+    VL_NULL_CHECK(this->__PVT__m_port, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 153)->__VnoInFunc_get_connected_to(vlSymsp, list1);
     list.clear();
     if ((0U != list1.first(unnamedblk1__DOT__name))) {
         unnamedblk1__DOT__name__Vfirst = 1U;
         while (((IData)(unnamedblk1__DOT__name__Vfirst) 
                 || (0U != list1.next(unnamedblk1__DOT__name)))) {
             unnamedblk1__DOT__name__Vfirst = 0U;
-            VL_NULL_CHECK(list1.at(unnamedblk1__DOT__name), "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 156)->__VnoInFunc_get_comp(vlSymsp, __Vtask_get_comp__5__Vfuncout);
+            VL_NULL_CHECK(list1.at(unnamedblk1__DOT__name), "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 156)->__VnoInFunc_get_comp(vlSymsp, __Vtask_get_comp__5__Vfuncout);
             list.at(unnamedblk1__DOT__name) = __Vtask_get_comp__5__Vfuncout;
         }
     }
@@ -72,7 +72,7 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_
     CData/*0:0*/ __Vtask_is_port__6__Vfuncout;
     __Vtask_is_port__6__Vfuncout = 0;
     // Body
-    VL_NULL_CHECK(this->__PVT__m_port, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 161)->__VnoInFunc_is_port(vlSymsp, __Vtask_is_port__6__Vfuncout);
+    VL_NULL_CHECK(this->__PVT__m_port, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 161)->__VnoInFunc_is_port(vlSymsp, __Vtask_is_port__6__Vfuncout);
     is_port__Vfuncrtn = __Vtask_is_port__6__Vfuncout;
 }
 
@@ -82,7 +82,7 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_
     CData/*0:0*/ __Vtask_is_export__7__Vfuncout;
     __Vtask_is_export__7__Vfuncout = 0;
     // Body
-    VL_NULL_CHECK(this->__PVT__m_port, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 165)->__VnoInFunc_is_export(vlSymsp, __Vtask_is_export__7__Vfuncout);
+    VL_NULL_CHECK(this->__PVT__m_port, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 165)->__VnoInFunc_is_export(vlSymsp, __Vtask_is_export__7__Vfuncout);
     is_export__Vfuncrtn = __Vtask_is_export__7__Vfuncout;
 }
 
@@ -92,34 +92,42 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_
     CData/*0:0*/ __Vtask_is_imp__8__Vfuncout;
     __Vtask_is_imp__8__Vfuncout = 0;
     // Body
-    VL_NULL_CHECK(this->__PVT__m_port, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 169)->__VnoInFunc_is_imp(vlSymsp, __Vtask_is_imp__8__Vfuncout);
+    VL_NULL_CHECK(this->__PVT__m_port, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_port_base.svh", 169)->__VnoInFunc_is_imp(vlSymsp, __Vtask_is_imp__8__Vfuncout);
     is_imp__Vfuncrtn = __Vtask_is_imp__8__Vfuncout;
 }
 
 void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                        Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__10__Vfuncout;
-    __Vfunc___Vbasic_randomize__10__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__10__Vfuncout;
+    __Vfunc___VBasicRand__10__Vfuncout = 0;
     // Body
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vvirtual_sequences_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__10__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__10__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__10__Vfuncout);
+            }(), __Vfunc___VBasicRand__10__Vfuncout));
 }
 
-void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+                        Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc___Vbasic_randomize\n"); );
+void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                        Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                        Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::_ctor_var_reset(Vvirtual_sequences__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                        Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::~Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                        Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_port_component__Tz274>& obj) {

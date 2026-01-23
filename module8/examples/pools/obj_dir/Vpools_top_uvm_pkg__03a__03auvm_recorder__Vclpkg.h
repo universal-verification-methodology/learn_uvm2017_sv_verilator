@@ -23,7 +23,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_recorder__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_recorder__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -32,11 +32,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_recorder__Vcl
     VlAssocArray<IData/*31:0*/, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_recorder>> __PVT__m_recorders_by_id;
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_recorder__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_recorder__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_recorder__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_recorder__Vclpkg);
 
     // INTERNAL METHODS
@@ -65,14 +68,14 @@ class Vpools_top_uvm_pkg__03a__03auvm_recorder : public Vpools_top_uvm_pkg__03a_
     QData/*63:0*/ __PVT__m_open_time;
     QData/*63:0*/ __PVT__m_close_time;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz36> __PVT__m_stream_dap;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_begin_tr(Vpools_top__Syms* __restrict vlSymsp, std::string txtype, IData/*31:0*/ stream, std::string nm, std::string label, std::string desc, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     virtual void __VnoInFunc_check_handle_kind(Vpools_top__Syms* __restrict vlSymsp, std::string htype, IData/*31:0*/ handle, IData/*31:0*/ &check_handle_kind__Vfuncrtn);
     void __VnoInFunc_close(Vpools_top__Syms* __restrict vlSymsp, QData/*63:0*/ close_time);
     virtual void __VnoInFunc_create_stream(Vpools_top__Syms* __restrict vlSymsp, std::string name, std::string t, std::string scope, IData/*31:0*/ &create_stream__Vfuncrtn);
     virtual void __VnoInFunc_do_close(Vpools_top__Syms* __restrict vlSymsp, QData/*63:0*/ close_time);
-    virtual void __VnoInFunc_do_free(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_free(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_open(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_tr_stream> stream, QData/*63:0*/ open_time, std::string type_name);
     virtual void __VnoInFunc_do_record_field(Vpools_top__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix);
     virtual void __VnoInFunc_do_record_field_int(Vpools_top__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix);
@@ -116,7 +119,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_recorder : public Vpools_top_uvm_pkg__03a_
     Vpools_top_uvm_pkg__03a__03auvm_recorder(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_recorder() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_recorder();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_recorder>& obj);

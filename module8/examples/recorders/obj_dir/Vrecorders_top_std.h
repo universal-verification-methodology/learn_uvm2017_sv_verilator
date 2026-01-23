@@ -12,15 +12,18 @@
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_std(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_std();
     ~Vrecorders_top_std();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_std);
 
     // INTERNAL METHODS

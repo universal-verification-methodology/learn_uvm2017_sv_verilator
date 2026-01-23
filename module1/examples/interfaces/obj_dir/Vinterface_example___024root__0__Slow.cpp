@@ -48,17 +48,17 @@ VL_ATTR_COLD void Vinterface_example___024root___ctor_var_reset(Vinterface_examp
     Vinterface_example__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->interface_example__DOT__clk = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11269898690005624096ull);
-    vlSelf->interface_example__DOT____Vcellout__dut__pready = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 4920487099265293102ull);
-    vlSelf->interface_example__DOT____Vcellout__dut__prdata = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 7882242872633948309ull);
+    vlSelf->interface_example__DOT____Vcellout__dut__pready = 0;
+    vlSelf->interface_example__DOT____Vcellout__dut__prdata = 0;
     for (int __Vi0 = 0; __Vi0 < 1024; ++__Vi0) {
         vlSelf->interface_example__DOT__dut__DOT__mem[__Vi0] = VL_SCOPED_RAND_RESET_I(32, __VscopeHash, 1894743866496076150ull);
     }
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr___TOP__interface_example__DOT__clk__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 12627995549691535496ull);
+    vlSelf->__Vtrigprevexpr___TOP__interface_example__DOT__clk__0 = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;
     }

@@ -650,16 +650,16 @@ Vtest_and_gate_uvm::Vtest_and_gate_uvm(VerilatedContext* _vcontextp__, const cha
     , uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg}
     , uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg}
     , uvm_pkg__03a__03a__VDynScope_2__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_2__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_6__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_6__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_12__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_12__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_19__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_19__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_22__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_22__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_23__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_23__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_26__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_26__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_27__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_27__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_33__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_33__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_34__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_34__Vclpkg}
-    , uvm_pkg__03a__03a__VDynScope_35__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_35__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_7__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_7__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_15__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_15__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_25__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_25__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_29__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_29__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_31__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_31__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_36__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_36__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_37__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_37__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_44__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_44__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_45__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_45__Vclpkg}
+    , uvm_pkg__03a__03a__VDynScope_47__Vclpkg{vlSymsp->TOP.uvm_pkg__03a__03a__VDynScope_47__Vclpkg}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context
@@ -765,7 +765,7 @@ VL_ATTR_COLD static void trace_init(void* voidSelf, VerilatedVcd* tracep, uint32
             "Turning on wave traces requires Verilated::traceEverOn(true) call before time 0.");
     }
     vlSymsp->__Vm_baseCode = code;
-    tracep->pushPrefix(std::string{vlSymsp->name()}, VerilatedTracePrefixType::SCOPE_MODULE);
+    tracep->pushPrefix(vlSymsp->name(), VerilatedTracePrefixType::SCOPE_MODULE);
     Vtest_and_gate_uvm___024root__trace_decl_types(tracep);
     Vtest_and_gate_uvm___024root__trace_init_top(vlSelf, tracep);
     tracep->popPrefix();

@@ -14,18 +14,21 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlQueue<VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback>> __PVT__m_registered_cbs;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg);
 
     // INTERNAL METHODS
@@ -43,11 +46,11 @@ class Vtest_simple_register_uvm__Syms;
 
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback : public Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_callback {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_post_run_test(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_pre_abort(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_pre_run_test(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_post_run_test(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_pre_abort(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_pre_run_test(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
     void _ctor_var_reset(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
@@ -55,7 +58,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback : public 
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_run_test_callback>& obj);

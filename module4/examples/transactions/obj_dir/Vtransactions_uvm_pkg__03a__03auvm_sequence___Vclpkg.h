@@ -18,15 +18,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_sequencer_param_base_;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_sequence___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_sequence___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_sequence___Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_sequence___Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_sequence___Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_sequence___Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_sequence_ : public Vtransactions_uvm_pk
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_sequencer_param_base_> __PVT__param_sequencer;
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_sequence_item> __PVT__req;
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_sequence_item> __PVT__rsp;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_printer> printer);
     void __VnoInFunc_get_current_item(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_sequence_item> &get_current_item__Vfuncrtn);
     virtual VlCoroutine __VnoInFunc_get_response(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_sequence_item> &response, IData/*31:0*/ transaction_id);
@@ -58,7 +61,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_sequence_ : public Vtransactions_uvm_pk
     Vtransactions_uvm_pkg__03a__03auvm_sequence_(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_sequence_() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_sequence_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_sequence_>& obj);

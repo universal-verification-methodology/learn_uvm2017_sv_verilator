@@ -27,6 +27,10 @@ void Varchitecture_uvm_pkg__03a__03auvm_typeid__Tz86::_ctor_var_reset(Varchitect
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Varchitecture_uvm_pkg__03a__03auvm_typeid__Tz86::~Varchitecture_uvm_pkg__03a__03auvm_typeid__Tz86() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Varchitecture_uvm_pkg__03a__03auvm_typeid__Tz86::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_typeid__Tz86>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+                Varchitecture_uvm_pkg__03a__03auvm_typeid__Tz86::VL_TO_STRING\n"); );
     // Body

@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vclock_gen.h instead.
 
-
 #ifndef VERILATED_VCLOCK_GEN__PCH_H_
 #define VERILATED_VCLOCK_GEN__PCH_H_  // guard
 

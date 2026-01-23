@@ -18,19 +18,19 @@ class IntegrationTransaction extends uvm_sequence_item;
     rand logic [7:0] data;
     rand logic [15:0] address;
     int timestamp;
-    int priority;
+    int prio;
     
     `uvm_object_utils(IntegrationTransaction)
     
     function new(string name = "IntegrationTransaction");
         super.new(name);
         timestamp = 0;
-        priority = 0;
+        prio = 0;
     endfunction
     
     function string convert2string();
         return $sformatf("data=0x%02h, addr=0x%04h, ts=%0d, prio=%0d", 
-            data, address, timestamp, priority);
+            data, address, timestamp, prio);
     endfunction
 endclass
 
@@ -122,7 +122,7 @@ class IntegrationTest extends uvm_test;
             void'(txn.randomize());
             txn.data = i * 8'h10;
             txn.address = i * 16'h100;
-            txn.priority = $urandom_range(0, 9);
+            txn.prio = $urandom_range(0, 9);
             
             utility_mgr.record_transaction(txn);
             utility_mgr.enqueue_transaction(txn);

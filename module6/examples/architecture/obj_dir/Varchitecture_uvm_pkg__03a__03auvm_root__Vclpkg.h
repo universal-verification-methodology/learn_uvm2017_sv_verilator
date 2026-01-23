@@ -10,7 +10,7 @@
 #include "verilated_random.h"
 #include "Varchitecture_uvm_pkg__03a__03auvm_component__Vclpkg.h"
 class Varchitecture_std__03a__03aprocess;
-class Varchitecture_uvm_pkg__03a__03a__VDynScope_17;
+class Varchitecture_uvm_pkg__03a__03a__VDynScope_23;
 class Varchitecture_uvm_pkg__03a__03auvm_cmdline_processor;
 class Varchitecture_uvm_pkg__03a__03auvm_component;
 class Varchitecture_uvm_pkg__03a__03auvm_component_proxy;
@@ -29,7 +29,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_visitor_;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_root__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_root__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -38,11 +38,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_root__Vclp
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_root> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_root__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_root__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_root__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_root__Vclpkg);
 
     // INTERNAL METHODS
@@ -64,8 +67,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_root : public Varchitecture_uvm_pkg__03
     CData/*0:0*/ __PVT__m_phase_all_done;
     QData/*63:0*/ __PVT__phase_timeout;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__clp;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_die(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_end_of_elaboration_phase(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase);
@@ -95,7 +98,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_root : public Varchitecture_uvm_pkg__03
     virtual VlCoroutine __VnoInFunc_run_phase(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase);
     virtual VlCoroutine __VnoInFunc_run_test(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string test_name);
   private:
-    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_17> __VDynScope_run_test_0);
+    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03a__VDynScope_23> __VDynScope_run_test_0, VlClassRef<Varchitecture_std__03a__03aprocess> unnamedblk164__DOT____VforkParent);
   public:
     void __VnoInFunc_set_enable_print_topology(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ enable);
     virtual void __VnoInFunc_set_finish_on_completion(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ f);
@@ -106,7 +109,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_root : public Varchitecture_uvm_pkg__03
     Varchitecture_uvm_pkg__03a__03auvm_root(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_root() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_root();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_root>& obj);

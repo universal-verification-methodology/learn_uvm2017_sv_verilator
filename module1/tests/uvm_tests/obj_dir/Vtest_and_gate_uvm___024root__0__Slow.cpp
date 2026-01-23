@@ -335,7 +335,7 @@ VL_ATTR_COLD void Vtest_and_gate_uvm___024root___eval_static(Vtest_and_gate_uvm_
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg__Vclpkg___eval_static__TOP__uvm_pkg__03a__03auvm_reg__Vclpkg((&vlSymsp->TOP__uvm_pkg__03a__03auvm_reg__Vclpkg), vlProcess);
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_vreg__Vclpkg___eval_static__TOP__uvm_pkg__03a__03auvm_vreg__Vclpkg((&vlSymsp->TOP__uvm_pkg__03a__03auvm_vreg__Vclpkg), vlProcess);
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem__Vclpkg___eval_static__TOP__uvm_pkg__03a__03auvm_mem__Vclpkg((&vlSymsp->TOP__uvm_pkg__03a__03auvm_mem__Vclpkg), vlProcess);
-    vlSelfRef.__Vtrigprevexpr_h69246a8d__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
+    vlSelfRef.__Vtrigprevexpr_h5a1c11cb__1 = (0U != vlSymsp->TOP__uvm_pkg__03a__03auvm_objection__Vclpkg.__PVT__m_scheduled_list.size());
 }
 
 VL_ATTR_COLD void Vtest_and_gate_uvm___024root___eval_final(Vtest_and_gate_uvm___024root* vlSelf) {
@@ -363,7 +363,7 @@ VL_ATTR_COLD void Vtest_and_gate_uvm___024root___eval_settle(Vtest_and_gate_uvm_
 #ifdef VL_DEBUG
             Vtest_and_gate_uvm___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
 #endif
-            VL_FATAL_MT("test_and_gate_uvm.sv", 283, "", "Settle region did not converge after 100 tries");
+            VL_FATAL_MT("test_and_gate_uvm.sv", 283, "", "DIDNOTCONVERGE: Settle region did not converge after 100 tries");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
     } while (Vtest_and_gate_uvm___024root___eval_phase__stl(vlSelf));
@@ -420,11 +420,15 @@ VL_ATTR_COLD void Vtest_and_gate_uvm___024root___stl_sequent__TOP__0(Vtest_and_g
     Vtest_and_gate_uvm__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSymsp->TOP__test_and_gate_uvm__DOT__bus.clk = vlSelfRef.test_and_gate_uvm__DOT__clk;
-    vlSelfRef.__VvifTrigger_h6d5a11d7__0_Vtrigm_clk = 1U;
-    vlSymsp->TOP__test_and_gate_uvm__DOT__bus.y = ((IData)(vlSymsp->TOP__test_and_gate_uvm__DOT__bus.a) 
-                                                   & (IData)(vlSymsp->TOP__test_and_gate_uvm__DOT__bus.b));
-    vlSelfRef.__VvifTrigger_h6d5a11d7__1_Vtrigm_y = 1U;
+    ([&]() {
+            vlSelfRef.__VvifTrigger_h6d5a1410__0_Vtrigm_clk = 1U;
+        }(), vlSymsp->TOP__test_and_gate_uvm__DOT__bus.clk) 
+        = vlSelfRef.test_and_gate_uvm__DOT__clk;
+    ([&]() {
+            vlSelfRef.__VvifTrigger_h6d5a1410__1_Vtrigm_y = 1U;
+        }(), vlSymsp->TOP__test_and_gate_uvm__DOT__bus.y) 
+        = ((IData)(vlSymsp->TOP__test_and_gate_uvm__DOT__bus.a) 
+           & (IData)(vlSymsp->TOP__test_and_gate_uvm__DOT__bus.b));
 }
 
 VL_ATTR_COLD void Vtest_and_gate_uvm___024root___eval_stl(Vtest_and_gate_uvm___024root* vlSelf) {
@@ -526,13 +530,13 @@ VL_ATTR_COLD void Vtest_and_gate_uvm___024root___ctor_var_reset(Vtest_and_gate_u
     Vtest_and_gate_uvm__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->test_and_gate_uvm__DOT__clk = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 335445673445708472ull);
     vlSelf->__VnbaEventTrigger = 0;
-    vlSelf->__VvifTrigger_h6d5a11d7__0_Vtrigm_clk = 0;
-    vlSelf->__VvifTrigger_h6d5a11d7__1_Vtrigm_y = 0;
-    vlSelf->__VvifTrigger_h6d5a11d7__2_Vtrigm_a = 0;
-    vlSelf->__VvifTrigger_h6d5a11d7__3_Vtrigm_b = 0;
+    vlSelf->__VvifTrigger_h6d5a1410__0_Vtrigm_clk = 0;
+    vlSelf->__VvifTrigger_h6d5a1410__1_Vtrigm_y = 0;
+    vlSelf->__VvifTrigger_h6d5a1410__2_Vtrigm_a = 0;
+    vlSelf->__VvifTrigger_h6d5a1410__3_Vtrigm_b = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VstlTriggered[__Vi0] = 0;
     }
@@ -542,7 +546,7 @@ VL_ATTR_COLD void Vtest_and_gate_uvm___024root___ctor_var_reset(Vtest_and_gate_u
     for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr_h69246a8d__1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11094835894275956180ull);
+    vlSelf->__Vtrigprevexpr_h5a1c11cb__1 = 0;
     vlSelf->__VactDidInit = 0;
     for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;

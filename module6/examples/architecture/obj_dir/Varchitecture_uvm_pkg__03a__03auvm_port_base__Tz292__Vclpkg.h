@@ -20,7 +20,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_tlm_if_base__Tz216_TBz216;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_port_base_
     std::string __PVT__debug_provided_to__Vstatic__save;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292__Vclpkg);
 
     // INTERNAL METHODS
@@ -90,7 +93,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292 : public Varchitecture
     Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ port_type, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_port_base__Tz292>& obj);

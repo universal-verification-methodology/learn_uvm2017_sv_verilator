@@ -12,15 +12,18 @@
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_std final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_std final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_std(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_std();
     ~Vtransactions_std();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_std);
 
     // INTERNAL METHODS

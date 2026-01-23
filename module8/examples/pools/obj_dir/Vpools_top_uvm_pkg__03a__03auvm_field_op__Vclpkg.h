@@ -19,18 +19,21 @@ class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_field_op__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_field_op__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlQueue<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_field_op>> __PVT__m_recycled_op;
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_field_op__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_field_op__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_field_op__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_field_op__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,8 +56,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_field_op : public Vpools_top_uvm_pkg__03a_
     IData/*27:0*/ __PVT__m_op_type;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_policy> __PVT__m_policy;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> __PVT__m_object;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     void __VnoInFunc_disable_user_hook(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_flush(Vpools_top__Syms* __restrict vlSymsp);
@@ -74,7 +77,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_field_op : public Vpools_top_uvm_pkg__03a_
     Vpools_top_uvm_pkg__03a__03auvm_field_op(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_field_op() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_field_op();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_field_op>& obj);

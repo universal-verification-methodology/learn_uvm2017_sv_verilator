@@ -34,7 +34,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vsignal_access__Syms final : public Verilated
     ~Vsignal_access__Syms();
 
     // METHODS
-    const char* name() { return TOP.name(); }
+    const char* name() const { return TOP.vlNamep; }
 };
 
 #endif  // guard

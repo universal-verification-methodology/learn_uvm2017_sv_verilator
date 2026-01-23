@@ -20,15 +20,18 @@ class Vdma_uvm_pkg__03a__03auvm_seq_item_pull_port__pi69;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126__Vclpkg);
 
     // INTERNAL METHODS
@@ -50,8 +53,8 @@ class Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126 : public Vdma_uvm_pkg__03a_
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_analysis_port__Tz126> __PVT__rsp_port;
     VlClassRef<Vdma___024unit__03a__03aDmaTxn> __PVT__req;
     VlClassRef<Vdma___024unit__03a__03aDmaTxn> __PVT__rsp;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_end_of_elaboration_phase(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_get_object_type(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vdma__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -62,7 +65,7 @@ class Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126 : public Vdma_uvm_pkg__03a_
     Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_driver__Tz126_TBz126>& obj);

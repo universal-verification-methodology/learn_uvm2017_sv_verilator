@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vpools_top.h instead.
 
-
 #ifndef VERILATED_VPOOLS_TOP__PCH_H_
 #define VERILATED_VPOOLS_TOP__PCH_H_  // guard
 

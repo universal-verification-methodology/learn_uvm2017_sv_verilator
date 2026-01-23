@@ -1,6 +1,6 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Implementation of DPI export functions.
-//
+
 #include "Vvirtual_sequences.h"
 #include "Vvirtual_sequences__Syms.h"
 #include "verilated_dpi.h"

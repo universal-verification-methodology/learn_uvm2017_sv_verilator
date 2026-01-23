@@ -14,15 +14,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_object;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper__Vclpkg);
 
     // INTERNAL METHODS
@@ -37,14 +40,14 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper : public virtual Vl
     virtual void __VnoInFunc_create_component(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_component> parent, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_component> &create_component__Vfuncrtn);
     virtual void __VnoInFunc_create_object(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object> &create_object__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
-    virtual void __VnoInFunc_initialize(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_initialize(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset(Vvirtual_sequences__Syms* __restrict vlSymsp);
   public:
     Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper(Vvirtual_sequences__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper>& obj);

@@ -15,15 +15,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz13;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,7 +55,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233 : public Vtra
     Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz13> imp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_get_peek_imp__Tz13_TBz233>& obj);

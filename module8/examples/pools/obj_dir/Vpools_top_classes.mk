@@ -613,21 +613,21 @@ VM_CLASSES_FAST += \
   Vpools_top_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg__0 \
   Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg__0 \
   Vpools_top_uvm_pkg__03a__03a__VDynScope_0__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_4__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_10__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_17__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_20__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_21__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_24__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_25__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_32__Vclpkg__0 \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_5__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_13__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_29__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_42__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_43__Vclpkg__0 \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__0 \
   Vpools_top__main \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-  Vpools_top__ConstPool_0 \
+  Vpools_top__ConstPool__0__Slow \
   Vpools_top___024root__Slow \
   Vpools_top___024root__0__Slow \
   Vpools_top___024unit__Slow \
@@ -1802,26 +1802,26 @@ VM_CLASSES_SLOW += \
   Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg__0__Slow \
   Vpools_top_uvm_pkg__03a__03a__VDynScope_0__Vclpkg__Slow \
   Vpools_top_uvm_pkg__03a__03a__VDynScope_0__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_4__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_4__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_10__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_10__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_17__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_17__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_20__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_20__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_21__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_21__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_24__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_24__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_25__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_25__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_32__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_32__Vclpkg__0__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__Slow \
-  Vpools_top_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_5__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_5__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_13__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_13__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_29__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_29__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_42__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_42__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_43__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_43__Vclpkg__0__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__Slow \
+  Vpools_top_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
@@ -1830,7 +1830,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vpools_top__Syms \
+  Vpools_top__Syms__Slow \
   Vpools_top__Trace__0__Slow \
   Vpools_top__TraceDecls__0__Slow \
 

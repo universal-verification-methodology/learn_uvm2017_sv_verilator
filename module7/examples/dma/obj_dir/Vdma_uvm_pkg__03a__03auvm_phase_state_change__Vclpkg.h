@@ -17,15 +17,18 @@ class Vdma_uvm_pkg__03a__03auvm_phase_state_change;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_phase_state_change__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vdma_uvm_pkg__03a__03auvm_phase_state_change : public Vdma_uvm_pkg__03a__0
     IData/*31:0*/ __PVT__m_prev_state;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> __PVT__m_phase;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> __PVT__m_jump_to;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_get_object_type(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_prev_state(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &get_prev_state__Vfuncrtn);
@@ -60,7 +63,7 @@ class Vdma_uvm_pkg__03a__03auvm_phase_state_change : public Vdma_uvm_pkg__03a__0
     Vdma_uvm_pkg__03a__03auvm_phase_state_change(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_phase_state_change() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_phase_state_change();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase_state_change>& obj);

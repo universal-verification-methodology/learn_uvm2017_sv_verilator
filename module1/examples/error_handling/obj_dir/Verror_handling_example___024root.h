@@ -16,7 +16,7 @@ class Verror_handling_example_error_handling_pkg__03a__03aVerificationException_
 
 class Verror_handling_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Verror_handling_example___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Verror_handling_example___024root final {
   public:
     // CELLS
     Verror_handling_example_error_handling_pkg* __PVT__error_handling_pkg;
@@ -30,10 +30,11 @@ class alignas(VL_CACHE_LINE_BYTES) Verror_handling_example___024root final : pub
     VlDelayScheduler __VdlySched;
 
     // INTERNAL VARIABLES
-    Verror_handling_example__Syms* const vlSymsp;
+    Verror_handling_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Verror_handling_example___024root(Verror_handling_example__Syms* symsp, const char* v__name);
+    Verror_handling_example___024root(Verror_handling_example__Syms* symsp, const char* namep);
     ~Verror_handling_example___024root();
     VL_UNCOPYABLE(Verror_handling_example___024root);
 

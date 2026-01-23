@@ -40,15 +40,18 @@ struct Vdma_state_info_t__struct__0 {
 template <>
 struct VlIsCustomStruct<Vdma_state_info_t__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg);
 
     // INTERNAL METHODS
@@ -80,8 +83,8 @@ class Vdma_uvm_pkg__03a__03auvm_comparer : public Vdma_uvm_pkg__03a__03auvm_poli
     VlAssocArray<VlClassRef<Vdma_uvm_pkg__03a__03auvm_object>, VlAssocArray<VlClassRef<Vdma_uvm_pkg__03a__03auvm_object>, CData/*0:0*/>> __PVT__compare_map;
     VlQueue<std::string> __PVT__m_object_names;
     std::string __PVT__miscompares;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_compare_field(Vdma__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ lhs, VlWide<128>/*4095:0*/ rhs, IData/*31:0*/ size, IData/*27:0*/ radix, CData/*0:0*/ &compare_field__Vfuncrtn);
     virtual void __VnoInFunc_compare_field_int(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ lhs, QData/*63:0*/ rhs, IData/*31:0*/ size, IData/*27:0*/ radix, CData/*0:0*/ &compare_field_int__Vfuncrtn);
     virtual void __VnoInFunc_compare_field_real(Vdma__Syms* __restrict vlSymsp, std::string name, double lhs, double rhs, CData/*0:0*/ &compare_field_real__Vfuncrtn);
@@ -117,7 +120,7 @@ class Vdma_uvm_pkg__03a__03auvm_comparer : public Vdma_uvm_pkg__03a__03auvm_poli
     Vdma_uvm_pkg__03a__03auvm_comparer(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_comparer() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_comparer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_comparer>& obj);

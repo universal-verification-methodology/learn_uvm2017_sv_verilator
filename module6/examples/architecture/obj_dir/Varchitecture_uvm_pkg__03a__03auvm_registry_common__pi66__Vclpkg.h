@@ -19,7 +19,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -28,11 +28,14 @@ class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_registry_c
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_registry_common__pi66__Vclpkg);
 
     // INTERNAL METHODS

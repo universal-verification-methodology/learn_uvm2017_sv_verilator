@@ -15,15 +15,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component_base;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279__Vclpkg);
 
     // INTERNAL METHODS
@@ -39,8 +42,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279 : public Vte
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_base__Tz248> __PVT__m_port;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_connected_to(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlAssocArray<std::string, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component_base>> &list);
     void __VnoInFunc_get_port(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_base__Tz248> &get_port__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -55,7 +58,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279 : public Vte
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component> parent, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_base__Tz248> port);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_port_component__Tz279>& obj);

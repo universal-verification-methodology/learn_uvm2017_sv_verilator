@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vsignal_access.h instead.
 
-
 #ifndef VERILATED_VSIGNAL_ACCESS__PCH_H_
 #define VERILATED_VSIGNAL_ACCESS__PCH_H_  // guard
 

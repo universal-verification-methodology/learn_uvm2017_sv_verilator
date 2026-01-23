@@ -9,8 +9,8 @@
 #include "verilated_timing.h"
 #include "verilated_random.h"
 class Vtransactions_std__03a__03aprocess;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_20;
-class Vtransactions_uvm_pkg__03a__03a__VDynScope_21;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_27;
+class Vtransactions_uvm_pkg__03a__03a__VDynScope_29;
 class Vtransactions_uvm_pkg__03a__03auvm_callback_iter__Tz46_TBz47;
 class Vtransactions_uvm_pkg__03a__03auvm_cmdline_processor;
 class Vtransactions_uvm_pkg__03a__03auvm_component;
@@ -29,7 +29,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_objection__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_objection__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -40,11 +40,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_objection_
     VlQueue<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_scheduled_list;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_objection__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_objection__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_objection__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_objection__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,11 +55,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_objection_
     void __VnoInFunc_get_type(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi17> &get_type__Vfuncrtn);
     VlCoroutine __VnoInFunc_m_execute_scheduled_forks(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_execute_scheduled_forks____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vtransactions_uvm_pkg__03a__03a__VDynScope_21> unnamedblk5__DOT___Vwrapped_guard_3__DOT____VDynScope_guard_3);
+    VlCoroutine __VnoInFunc_m_execute_scheduled_forks____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vtransactions_uvm_pkg__03a__03a__VDynScope_29> unnamedblk5__DOT__guard__VgetForkParent__DOT___Vwrapped_guard_4__DOT____VDynScope_guard_4, VlClassRef<Vtransactions_std__03a__03aprocess> unnamedblk5__DOT__guard__VgetForkParent__DOT____VforkParent);
   public:
     void __VnoInFunc_m_init_objections(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_init_objections____Vfork_2__0(VlProcessRef vlProcess);
+    VlCoroutine __VnoInFunc_m_init_objections____Vfork_2__0(VlProcessRef vlProcess, VlClassRef<Vtransactions_std__03a__03aprocess> unnamedblk7__DOT____VforkParent);
 };
 
 #include "Vtransactions_uvm_pkg__03a__03auvm_report_object__Vclpkg.h"
@@ -71,9 +74,6 @@ class Vtransactions_uvm_pkg__03a__03auvm_objection : public Vtransactions_uvm_pk
     CData/*0:0*/ __PVT__m_top_all_dropped;
     CData/*0:0*/ __PVT__m_prop_mode;
     CData/*0:0*/ __PVT__m_cleared;
-    CData/*0:0*/ __Vtrigprevexpr_h116ba8f5__0;
-    CData/*0:0*/ __Vtrigprevexpr_h4043bb54__0;
-    CData/*0:0*/ __Vtrigprevexpr_h105da858__0;
     VlAssocArray<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object>, IData/*31:0*/> __PVT__m_source_count;
     VlAssocArray<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object>, IData/*31:0*/> __PVT__m_total_count;
     VlAssocArray<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object>, QData/*63:0*/> __PVT__m_drain_time;
@@ -83,8 +83,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_objection : public Vtransactions_uvm_pk
     VlAssocArray<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object>, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_scheduled_contexts;
     VlQueue<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_forked_list;
     VlAssocArray<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object>, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_forked_contexts;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_all_dropped(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object> source_obj, std::string description, IData/*31:0*/ count);
     virtual void __VnoInFunc_clear(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object> obj);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
@@ -120,7 +120,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_objection : public Vtransactions_uvm_pk
     Vtransactions_uvm_pkg__03a__03auvm_objection(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_objection() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_objection();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_objection>& obj);

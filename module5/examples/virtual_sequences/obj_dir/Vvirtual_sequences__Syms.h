@@ -639,16 +639,16 @@
 #include "Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg.h"
 #include "Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg.h"
 #include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_0__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_4__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_10__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_17__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_20__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_21__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_24__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_25__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_31__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_32__Vclpkg.h"
-#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_33__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_5__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_13__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_23__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_27__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_29__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_34__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_35__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_42__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_43__Vclpkg.h"
+#include "Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_45__Vclpkg.h"
 
 // DPI TYPES for DPI Export callbacks (Internal use)
 using Vvirtual_sequences__Vcb_m___05Fuvm_report_dpi_t = void (*) (Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ severity, std::string id, std::string message, IData/*31:0*/ verbosity, std::string filename, IData/*31:0*/ line);
@@ -682,16 +682,16 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences__Syms final : public Veril
     Vvirtual_sequences_std__03a__03aprocess__Vclpkg TOP__std__03a__03aprocess__Vclpkg;
     Vvirtual_sequences_std__03a__03asemaphore__Vclpkg TOP__std__03a__03asemaphore__Vclpkg;
     Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_0__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_0__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_10__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_10__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_17__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_17__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_20__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_20__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_21__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_21__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_24__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_24__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_25__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_25__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_31__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_31__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_32__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_32__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_33__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_33__Vclpkg;
-    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_4__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_4__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_13__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_13__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_23__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_23__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_27__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_27__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_29__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_29__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_34__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_34__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_35__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_35__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_42__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_42__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_43__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_43__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_45__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_45__Vclpkg;
+    Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_5__Vclpkg TOP__uvm_pkg__03a__03a__VDynScope_5__Vclpkg;
     Vvirtual_sequences_uvm_pkg__03a__03aget_t__Vclpkg TOP__uvm_pkg__03a__03aget_t__Vclpkg;
     Vvirtual_sequences_uvm_pkg__03a__03am_uvm_printer_knobs__Vclpkg TOP__uvm_pkg__03a__03am_uvm_printer_knobs__Vclpkg;
     Vvirtual_sequences_uvm_pkg__03a__03am_uvm_sqr_seq_base__Vclpkg TOP__uvm_pkg__03a__03am_uvm_sqr_seq_base__Vclpkg;
@@ -1302,111 +1302,109 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences__Syms final : public Veril
     Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg TOP__uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg;
 
     // SCOPE NAMES
-    VerilatedScope __Vscope_std__process;
-    VerilatedScope __Vscope_std__process__suspend;
-    VerilatedScope __Vscope_uvm_pkg;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz129;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz129_TBz130;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz129_TBz130__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz129__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz170;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz170_TBz171;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz170_TBz171__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz170__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz172;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz172_TBz171;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz172_TBz171__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz172__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz173;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz173_TBz171;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz173_TBz171__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz173__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz174;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz174_TBz171;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz174_TBz171__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz174__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz175;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz175_TBz176;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz175_TBz176__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz175__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz177;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz177_TBz178;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz177_TBz178__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz177__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz24;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz24_TBz81;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz24_TBz81__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz24__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz29;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz29_TBz30;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz29_TBz30__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz29__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz57;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz57_TBz168;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz57_TBz168__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz57_TBz58;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz57_TBz58__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz57__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz90;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz90_TBz167;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz90_TBz167__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_callbacks__Tz90__get__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_instance_scope;
-    VerilatedScope __Vscope_uvm_pkg__uvm_objection;
-    VerilatedScope __Vscope_uvm_pkg__uvm_objection__do_copy;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_indirect_ftdr_seq;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_indirect_ftdr_seq__body;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_map;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk565;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk566;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk567;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk568__unnamedblk587;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_mem_hdl_paths_seq;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_mem_hdl_paths_seq_____05Fm_uvm_execute_field_op;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_read_only_cbs;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_read_only_cbs__pre_write__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_write_only_cbs;
-    VerilatedScope __Vscope_uvm_pkg__uvm_reg_write_only_cbs__pre_read__unnamedblk1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_catcher;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_catcher__process_all_report_catchers__unnamedblk3;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_message_int_element;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_message_int_element__do_copy;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_message_object_element;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_message_object_element__do_copy;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_message_string_element;
-    VerilatedScope __Vscope_uvm_pkg__uvm_report_message_string_element__do_copy;
-    VerilatedScope __Vscope_uvm_pkg__uvm_root;
-    VerilatedScope __Vscope_uvm_pkg__uvm_root__run_test;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence_;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence__Tz1_TBz1;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence__Tz1_TBz1__get_response;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence__Tz203_TBz203;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence__Tz203_TBz203__get_response;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence___get_response;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence_base;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence_base__create_item;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence_base__get_base_response;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence_item;
-    VerilatedScope __Vscope_uvm_pkg__uvm_sequence_item__get_root_sequence;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_recorder;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_recorder__create_stream;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_recorder__do_open;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_tr_database;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_tr_database__do_establish_link;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_tr_stream;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_tr_stream_____05Fm_uvm_execute_field_op;
-    VerilatedScope __Vscope_uvm_pkg__uvm_text_tr_stream__do_open;
-    VerilatedScope __Vscope_uvm_pkg__uvm_tlm_generic_payload;
-    VerilatedScope __Vscope_uvm_pkg__uvm_tlm_generic_payload__do_compare;
-    VerilatedScope __Vscope_uvm_pkg__uvm_tlm_generic_payload__do_copy;
-    VerilatedScope __Vscope_uvm_pkg__uvm_tlm_generic_payload__do_copy__unnamedblk5;
+    VerilatedScope* __Vscopep_std__process;
+    VerilatedScope* __Vscopep_std__process__suspend;
+    VerilatedScope* __Vscopep_uvm_pkg;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz129;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz129_TBz130;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz129_TBz130__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz129__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz170;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz170_TBz171;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz170_TBz171__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz170__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz172;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz172_TBz171;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz172_TBz171__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz172__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz173;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz173_TBz171;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz173_TBz171__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz173__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz174;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz174_TBz171;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz174_TBz171__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz174__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz175;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz175_TBz176;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz175_TBz176__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz175__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz177;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz177_TBz178;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz177_TBz178__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz177__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz24;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz24_TBz81;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz24_TBz81__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz24__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz29;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz29_TBz30;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz29_TBz30__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz29__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz57;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz57_TBz168;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz57_TBz168__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz57_TBz58;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz57_TBz58__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz57__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz90;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz90_TBz167;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz90_TBz167__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_callbacks__Tz90__get__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_instance_scope;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_objection;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_objection__do_copy;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_indirect_ftdr_seq;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_indirect_ftdr_seq__body;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_map;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk572;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk573;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk574;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_map__do_bus_access__unnamedblk575__unnamedblk594;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_mem_hdl_paths_seq;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_mem_hdl_paths_seq_____05Fm_uvm_execute_field_op;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_read_only_cbs;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_read_only_cbs__pre_write__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_write_only_cbs;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_reg_write_only_cbs__pre_read__unnamedblk1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_catcher;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_catcher__process_all_report_catchers__unnamedblk3;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_message_int_element;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_message_int_element__do_copy;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_message_object_element;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_message_object_element__do_copy;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_message_string_element;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_report_message_string_element__do_copy;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_root;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_root__run_test;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence_;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence__Tz1_TBz1;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence__Tz1_TBz1__get_response;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence__Tz203_TBz203;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence__Tz203_TBz203__get_response;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence___get_response;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence_base;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence_base__create_item;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence_base__get_base_response;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence_item;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_sequence_item__get_root_sequence;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_text_recorder;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_text_recorder__create_stream;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_text_recorder__do_open;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_text_tr_stream;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_text_tr_stream_____05Fm_uvm_execute_field_op;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_text_tr_stream__do_open;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_tlm_generic_payload;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_tlm_generic_payload__do_compare;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_tlm_generic_payload__do_copy;
+    VerilatedScope* __Vscopep_uvm_pkg__uvm_tlm_generic_payload__do_copy__unnamedblk5;
 
     // CONSTRUCTORS
     Vvirtual_sequences__Syms(VerilatedContext* contextp, const char* namep, Vvirtual_sequences* modelp);
     ~Vvirtual_sequences__Syms();
 
     // METHODS
-    const char* name() { return TOP.name(); }
+    const char* name() const { return TOP.vlNamep; }
     void fireEvent(VlAssignableEvent& event) {
         if (VL_LIKELY(!event.isTriggered())) {
             __Vm_triggeredEvents.push_back(event);

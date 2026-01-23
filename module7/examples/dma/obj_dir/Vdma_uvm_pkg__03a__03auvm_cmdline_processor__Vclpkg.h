@@ -14,18 +14,21 @@ class Vdma_uvm_pkg__03a__03auvm_report_object;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_cmdline_processor__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vdma_uvm_pkg__03a__03auvm_cmdline_processor : public Vdma_uvm_pkg__03a__03
     VlQueue<std::string> __PVT__m_argv;
     VlQueue<std::string> __PVT__m_plus_argv;
     VlQueue<std::string> __PVT__m_uvm_argv;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_get_arg_matches(Vdma__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &args, IData/*31:0*/ &get_arg_matches__Vfuncrtn);
     void __VnoInFunc_get_arg_value(Vdma__Syms* __restrict vlSymsp, std::string match, std::string &value, IData/*31:0*/ &get_arg_value__Vfuncrtn);
     void __VnoInFunc_get_arg_values(Vdma__Syms* __restrict vlSymsp, std::string match, VlQueue<std::string> &values, IData/*31:0*/ &get_arg_values__Vfuncrtn);
@@ -62,7 +65,7 @@ class Vdma_uvm_pkg__03a__03auvm_cmdline_processor : public Vdma_uvm_pkg__03a__03
     Vdma_uvm_pkg__03a__03auvm_cmdline_processor(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_cmdline_processor() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_cmdline_processor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_cmdline_processor>& obj);

@@ -667,21 +667,21 @@ VM_CLASSES_FAST += \
   Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg__0 \
   Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg__0 \
   Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_2__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_6__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_12__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_19__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_22__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_26__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__0 \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_7__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_15__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_25__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_29__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_36__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_37__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_44__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__0 \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_47__Vclpkg__0 \
   Vtest_and_gate_uvm__main \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-  Vtest_and_gate_uvm__ConstPool_0 \
+  Vtest_and_gate_uvm__ConstPool__0__Slow \
   Vtest_and_gate_uvm___024root__Slow \
   Vtest_and_gate_uvm___024root__0__Slow \
   Vtest_and_gate_uvm___024unit__Slow \
@@ -1964,26 +1964,26 @@ VM_CLASSES_SLOW += \
   Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg__0__Slow \
   Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_2__Vclpkg__Slow \
   Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_2__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_6__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_6__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_12__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_12__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_19__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_19__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_22__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_22__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_23__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_26__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_26__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_27__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_33__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_34__Vclpkg__0__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__Slow \
-  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_35__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_7__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_7__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_15__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_15__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_25__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_25__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_29__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_29__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_31__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_36__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_36__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_37__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_37__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_44__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_44__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_45__Vclpkg__0__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_47__Vclpkg__Slow \
+  Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_47__Vclpkg__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
@@ -1992,7 +1992,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vtest_and_gate_uvm__Syms \
+  Vtest_and_gate_uvm__Syms__Slow \
   Vtest_and_gate_uvm__Trace__0__Slow \
   Vtest_and_gate_uvm__TraceDecls__0__Slow \
 

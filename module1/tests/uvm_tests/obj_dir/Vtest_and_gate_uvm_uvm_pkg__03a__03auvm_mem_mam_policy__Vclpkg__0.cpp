@@ -15,15 +15,15 @@ Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::Vtest_and_gate_uvm_uvm_p
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__1__Vfuncout;
-    __Vfunc___Vbasic_randomize__1__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__1__Vfuncout;
+    __Vfunc___VBasicRand__1__Vfuncout = 0;
     // Body
-    this->__PVT__constraint.clear();
+    this->__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = this->__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__1__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__1__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__1__Vfuncout);
+            }(), __Vfunc___VBasicRand__1__Vfuncout));
 }
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc_uvm_mem_mam_policy_valid_setup_constraint(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {
@@ -35,13 +35,15 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc_uvm_mem
     __Vtemp_1 = VL_SFORMATF_N_NX("#x%x",0,64,this->__PVT__min_offset) ;
     this->__PVT__constraint.hard(VL_SFORMATF_N_NX("(__Vbv (bvuge start_offset %@))",0,
                                                   -1,
-                                                  &(__Vtemp_1)) );
+                                                  &(__Vtemp_1)) , "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_mem_mam.svh", 
+                                 480, "      start_offset >= min_offset;");
     __Vtemp_2 = VL_SFORMATF_N_NX("#x%x",0,64,(1ULL 
                                               + (this->__PVT__max_offset 
                                                  - (QData)((IData)(this->__PVT__len))))) ;
     this->__PVT__constraint.hard(VL_SFORMATF_N_NX("(__Vbv (bvule start_offset %@))",0,
                                                   -1,
-                                                  &(__Vtemp_2)) );
+                                                  &(__Vtemp_2)) , "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_mem_mam.svh", 
+                                 481, "      start_offset <= max_offset - len + 1;");
 }
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {
@@ -67,14 +69,14 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc_uvm_mem
     unnamedblk2_1__DOT__i = 0;
     unnamedblk2_1__DOT__i = 0U;
     while ((unnamedblk2_1__DOT__i < this->__PVT__in_use.size())) {
-        __Vtemp_1 = VL_SFORMATF_N_NX("#x%x",0,64,VL_NULL_CHECK(this->__PVT__in_use.at(unnamedblk2_1__DOT__i), "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_mem_mam.svh", 486)
+        __Vtemp_1 = VL_SFORMATF_N_NX("#x%x",0,64,VL_NULL_CHECK(this->__PVT__in_use.at(unnamedblk2_1__DOT__i), "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_mem_mam.svh", 486)
                                      ->__PVT__Xend_offsetX) ;
         __Vtemp_2 = VL_SFORMATF_N_NX("#x%x",0,64,(QData)((IData)(this->__PVT__len))) ;
         __Vtemp_3 = VL_SFORMATF_N_NX("(bvadd start_offset %@)",0,
                                      -1,&(__Vtemp_2)) ;
         __Vtemp_4 = VL_SFORMATF_N_NX("(bvsub %@ #x0000000000000001)",0,
                                      -1,&(__Vtemp_3)) ;
-        __Vtemp_5 = VL_SFORMATF_N_NX("#x%x",0,64,VL_NULL_CHECK(this->__PVT__in_use.at(unnamedblk2_1__DOT__i), "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_mem_mam.svh", 487)
+        __Vtemp_5 = VL_SFORMATF_N_NX("#x%x",0,64,VL_NULL_CHECK(this->__PVT__in_use.at(unnamedblk2_1__DOT__i), "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_mem_mam.svh", 487)
                                      ->__PVT__Xstart_offsetX) ;
         __Vtemp_6 = VL_SFORMATF_N_NX("(__Vbv (bvule start_offset %@))",0,
                                      -1,&(__Vtemp_1)) ;
@@ -86,15 +88,16 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc_uvm_mem
                                      -1,&(__Vtemp_7)) ;
         this->__PVT__constraint.hard(VL_SFORMATF_N_NX("(__Vbv (not (__Vbool %@)))",0,
                                                       -1,
-                                                      &(__Vtemp_8)) );
+                                                      &(__Vtemp_8)) , "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_mem_mam.svh", 
+                                     486, "         !(start_offset <= in_use[i].Xend_offsetX &&");
         unnamedblk2_1__DOT__i = ((IData)(1U) + unnamedblk2_1__DOT__i);
     }
 }
 
-void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_mem_mam_policy::_ctor_var_reset(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {

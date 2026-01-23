@@ -27,6 +27,10 @@ void Vrecorders_top_uvm_pkg__03a__03auvm_typeid__Tz137::_ctor_var_reset(Vrecorde
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vrecorders_top_uvm_pkg__03a__03auvm_typeid__Tz137::~Vrecorders_top_uvm_pkg__03a__03auvm_typeid__Tz137() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vrecorders_top_uvm_pkg__03a__03auvm_typeid__Tz137::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_typeid__Tz137>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+              Vrecorders_top_uvm_pkg__03a__03auvm_typeid__Tz137::VL_TO_STRING\n"); );
     // Body

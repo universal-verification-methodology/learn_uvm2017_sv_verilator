@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vrecorders_top.h instead.
 
-
 #ifndef VERILATED_VRECORDERS_TOP__PCH_H_
 #define VERILATED_VRECORDERS_TOP__PCH_H_  // guard
 

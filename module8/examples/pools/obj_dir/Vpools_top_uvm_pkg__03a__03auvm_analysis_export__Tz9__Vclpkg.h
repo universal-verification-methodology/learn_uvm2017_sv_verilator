@@ -16,15 +16,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_tlm_if_base__Tz9_TBz9;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,7 +48,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9 : public Vpools_top_u
     Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_analysis_export__Tz9>& obj);

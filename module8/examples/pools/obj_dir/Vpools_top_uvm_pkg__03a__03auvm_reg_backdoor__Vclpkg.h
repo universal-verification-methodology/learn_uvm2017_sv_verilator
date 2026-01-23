@@ -9,7 +9,7 @@
 #include "verilated_timing.h"
 #include "verilated_random.h"
 class Vpools_top_std__03a__03aprocess;
-class Vpools_top_uvm_pkg__03a__03a__VDynScope_33;
+class Vpools_top_uvm_pkg__03a__03a__VDynScope_45;
 class Vpools_top_uvm_pkg__03a__03auvm_abstract_object_registry__pi74;
 class Vpools_top_uvm_pkg__03a__03auvm_callback_iter__pi64;
 class Vpools_top_uvm_pkg__03a__03auvm_coreservice_t;
@@ -25,18 +25,21 @@ class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_register_cb_uvm_reg_cbs;
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor : public Vpools_top_uvm_pkg__
     IData/*31:0*/ __PVT__lineno;
     std::string __PVT__fname;
     VlAssocArray<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object>, VlClassRef<Vpools_top_std__03a__03aprocess>> __PVT__m_update_thread;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_post_read(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_do_post_write(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_do_pre_read(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -76,7 +79,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor : public Vpools_top_uvm_pkg__
     virtual void __VnoInFunc_read_func(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_start_update_thread(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> element);
   private:
-    VlCoroutine __VnoInFunc_start_update_thread____Vfork_1__0(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03a__VDynScope_33> __VDynScope_start_update_thread_0);
+    VlCoroutine __VnoInFunc_start_update_thread____Vfork_1__0(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03a__VDynScope_45> __VDynScope_start_update_thread_0, VlClassRef<Vpools_top_std__03a__03aprocess> unnamedblk274__DOT____VforkParent);
   public:
     virtual void __VnoInFunc_wait_for_change(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> element);
     virtual void __VnoInFunc_write(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -86,7 +89,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor : public Vpools_top_uvm_pkg__
     Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_backdoor>& obj);

@@ -1,5 +1,6 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Tracing implementation internals
+
 #include "verilated_vcd_c.h"
 #include "Vreset_patterns__Syms.h"
 

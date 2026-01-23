@@ -6,10 +6,12 @@
 
 void Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg___ctor_var_reset(Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg* vlSelf);
 
-Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg::Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg::Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg() = default;
+Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg::~Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg() = default;
+
+void Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg::ctor(Vvirtual_sequences__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg::__Vconf
     (void)first;  // Prevent unused variable warning
 }
 
-Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg::~Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg() {
+void Vvirtual_sequences_uvm_pkg__03a__03auvm_resource_db__Tz169__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

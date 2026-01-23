@@ -17,15 +17,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,8 +47,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs : public Vclass_hiera
     // DESIGN SPECIFIC STATE
     IData/*31:0*/ __PVT__lineno;
     std::string __PVT__fname;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_object_type(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
     virtual void __VnoInFunc_post_read(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field> field, QData/*63:0*/ idx, QData/*63:0*/ &rdat, IData/*31:0*/ &path, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_map> &map, IData/*31:0*/ &status);
@@ -59,7 +62,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs : public Vclass_hiera
     Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field_cbs>& obj);

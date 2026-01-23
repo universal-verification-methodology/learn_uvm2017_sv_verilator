@@ -12,6 +12,9 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
+// DPI function for string-to-integer conversion (Verilator-compatible replacement for $atoi)
+import "DPI-C" function int sv_atoi(input string str);
+
 /**
  * Transaction for CLP example
  */
@@ -45,9 +48,11 @@ class CLPSequence extends uvm_sequence #(CLPTransaction);
     task body();
         for (int i = 0; i < num_transactions; i++) begin
             CLPTransaction txn;
-            `uvm_do(txn)
+            txn = CLPTransaction::type_id::create("txn");
+            void'(txn.randomize());
             txn.data = i * 8'h10;
             txn.address = i * 16'h100;
+            `uvm_send(txn)
         end
     endtask
 endclass
@@ -107,6 +112,7 @@ class CLPEnv extends uvm_env;
     int debug_level = 0;
     int num_transactions = 10;
     int seed = 0;
+    string str_val;
     
     `uvm_component_utils(CLPEnv)
     
@@ -117,15 +123,21 @@ class CLPEnv extends uvm_env;
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
         
-        `uvm_info("CLP", "=" * 60, UVM_LOW)
+        `uvm_info("CLP", "============================================================", UVM_LOW)
         `uvm_info("CLP", "Building CLP Environment", UVM_LOW)
-        `uvm_info("CLP", "=" * 60, UVM_LOW)
+        `uvm_info("CLP", "============================================================", UVM_LOW)
         
         // Get command-line arguments using UVM CLP
         void'(uvm_cmdline_proc.get_arg_value("+test_mode", test_mode));
-        void'(uvm_cmdline_proc.get_arg_value("+debug_level", debug_level));
-        void'(uvm_cmdline_proc.get_arg_value("+num_transactions", num_transactions));
-        void'(uvm_cmdline_proc.get_arg_value("+seed", seed));
+        if (uvm_cmdline_proc.get_arg_value("+debug_level", str_val)) begin
+            debug_level = sv_atoi(str_val);
+        end
+        if (uvm_cmdline_proc.get_arg_value("+num_transactions", str_val)) begin
+            num_transactions = sv_atoi(str_val);
+        end
+        if (uvm_cmdline_proc.get_arg_value("+seed", str_val)) begin
+            seed = sv_atoi(str_val);
+        end
         
         `uvm_info("CLP", $sformatf("CLP Configuration:"), UVM_LOW)
         `uvm_info("CLP", $sformatf("  test_mode: %s", test_mode), UVM_LOW)

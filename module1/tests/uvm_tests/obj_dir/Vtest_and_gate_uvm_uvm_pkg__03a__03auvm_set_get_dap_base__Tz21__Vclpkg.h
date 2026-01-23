@@ -14,15 +14,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,8 +38,8 @@ class Vtest_and_gate_uvm__Syms;
 
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21 : public Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tr_stream> &get__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     virtual void __VnoInFunc_set(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tr_stream> value);
@@ -48,7 +51,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21 : public Vt
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz21>& obj);

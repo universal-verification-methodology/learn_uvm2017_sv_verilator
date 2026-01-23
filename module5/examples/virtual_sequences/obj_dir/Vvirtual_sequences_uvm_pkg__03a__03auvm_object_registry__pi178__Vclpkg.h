@@ -18,18 +18,21 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_registry_common__pi205;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,7 +60,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178 : public Vv
     Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178(Vvirtual_sequences__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object_registry__pi178>& obj);

@@ -12,7 +12,7 @@
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_and_gate_if final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_and_gate_if final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -22,11 +22,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_and_gate_if final : public
     CData/*0:0*/ y;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_and_gate_if(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_and_gate_if();
     ~Vtest_and_gate_uvm_and_gate_if();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_and_gate_if);
 
     // INTERNAL METHODS

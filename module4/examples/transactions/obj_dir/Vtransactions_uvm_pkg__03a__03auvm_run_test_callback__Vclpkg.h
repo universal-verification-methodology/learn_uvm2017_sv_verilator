@@ -14,18 +14,21 @@ class Vtransactions_uvm_pkg__03a__03auvm_run_test_callback;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlQueue<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_run_test_callback>> __PVT__m_registered_cbs;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_run_test_callback__Vclpkg);
 
     // INTERNAL METHODS
@@ -43,11 +46,11 @@ class Vtransactions__Syms;
 
 class Vtransactions_uvm_pkg__03a__03auvm_run_test_callback : public Vtransactions_uvm_pkg__03a__03auvm_callback {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_post_run_test(Vtransactions__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_pre_abort(Vtransactions__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_pre_run_test(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_post_run_test(Vtransactions__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_pre_abort(Vtransactions__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_pre_run_test(Vtransactions__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
     void _ctor_var_reset(Vtransactions__Syms* __restrict vlSymsp);
@@ -55,7 +58,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_run_test_callback : public Vtransaction
     Vtransactions_uvm_pkg__03a__03auvm_run_test_callback(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_run_test_callback() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_run_test_callback();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_run_test_callback>& obj);

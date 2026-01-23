@@ -22,7 +22,7 @@ class Vdma_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -31,11 +31,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167> __PVT__m_t_inst;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,8 +55,8 @@ class Vdma__Syms;
 
 class Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167 : public Vdma_uvm_pkg__03a__03auvm_callbacks_base {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_m_add_tw_cbs(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_callback> cb, IData/*31:0*/ ordering);
     virtual void __VnoInFunc_m_am_i_a(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> obj, CData/*0:0*/ &m_am_i_a__Vfuncrtn);
     virtual void __VnoInFunc_m_delete_tw_cbs(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &m_delete_tw_cbs__Vfuncrtn);
@@ -65,7 +68,7 @@ class Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167 : public Vdma_uvm_pkg__03
     Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_typed_callbacks__Tz167>& obj);

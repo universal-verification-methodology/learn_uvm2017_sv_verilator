@@ -50,7 +50,7 @@ class TlmProducer extends uvm_component;
         
         for (int i = 0; i < 5; i++) begin
             txn = TlmTransaction::type_id::create("txn");
-            txn.data = 8'h10 + i;
+            txn.data = 8'h10 + 8'(i);
             
             `uvm_info("PRODUCER", $sformatf("Putting transaction: %s", 
                       txn.convert2string()), UVM_MEDIUM)
@@ -121,7 +121,7 @@ class AnalysisProducer extends uvm_component;
         
         for (int i = 0; i < 5; i++) begin
             txn = TlmTransaction::type_id::create("txn");
-            txn.data = 8'h20 + i;
+            txn.data = 8'h20 + 8'(i);
             
             `uvm_info("ANALYSIS_PRODUCER", $sformatf("Broadcasting: %s", 
                       txn.convert2string()), UVM_MEDIUM)

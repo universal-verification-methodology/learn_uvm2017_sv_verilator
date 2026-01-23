@@ -11,5 +11,5 @@ Vsignal_access__ALL.o: Vsignal_access__ALL.cpp Vsignal_access.cpp \
  /usr/local/share/verilator/include/verilated_trace.h \
  Vsignal_access___024root__0.cpp Vsignal_access__Trace__0.cpp \
  Vsignal_access___024root__Slow.cpp Vsignal_access___024root__0__Slow.cpp \
- Vsignal_access__Syms.cpp Vsignal_access__Trace__0__Slow.cpp \
+ Vsignal_access__Syms__Slow.cpp Vsignal_access__Trace__0__Slow.cpp \
  Vsignal_access__TraceDecls__0__Slow.cpp

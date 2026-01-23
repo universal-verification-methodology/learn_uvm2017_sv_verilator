@@ -15,15 +15,18 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,7 +55,7 @@ class Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257 : public Vdma_uvm_pkg_
     Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26> imp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257>& obj);

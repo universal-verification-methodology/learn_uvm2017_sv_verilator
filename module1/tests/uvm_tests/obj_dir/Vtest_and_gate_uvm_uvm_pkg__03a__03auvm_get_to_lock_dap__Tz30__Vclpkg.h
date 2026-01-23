@@ -21,15 +21,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_get_dap_base__Tz30;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg);
 
     // INTERNAL METHODS
@@ -47,8 +50,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30 : public Vte
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_value;
     CData/*0:0*/ __PVT__m_locked;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> rhs);
@@ -67,7 +70,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30 : public Vte
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30>& obj);

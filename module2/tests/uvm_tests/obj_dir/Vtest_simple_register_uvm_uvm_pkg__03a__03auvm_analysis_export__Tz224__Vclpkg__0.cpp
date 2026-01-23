@@ -45,7 +45,7 @@ void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_export__Tz224::__Vn
                                     this->__VnoInFunc_get_full_name(vlProcess, vlSymsp, __Vfunc_get_full_name__4__Vfuncout);
                                 }(), __Vfunc_get_full_name__4__Vfuncout)), " for executing write()"s)), 0U, ""s, 0U, ""s, 0U);
         }
-        VL_NULL_CHECK(tif, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/tlm1/uvm_analysis_port.svh", 153)->__VnoInFunc_write(vlProcess, vlSymsp, t);
+        VL_NULL_CHECK(tif, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/tlm1/uvm_analysis_port.svh", 153)->__VnoInFunc_write(vlProcess, vlSymsp, t);
         unnamedblk1__DOT__i = ((IData)(1U) + unnamedblk1__DOT__i);
     }
 }
@@ -54,6 +54,10 @@ void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_export__Tz224::_cto
     VL_DEBUG_IF(VL_DBG_MSGF("+                    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_export__Tz224::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_export__Tz224::~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_export__Tz224() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_export__Tz224::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_export__Tz224>& obj) {

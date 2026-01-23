@@ -25,15 +25,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_default_report_server__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_default_report_server__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_default_report_server__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_default_report_server__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_default_report_server__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_default_report_server__Vclpkg);
 
     // INTERNAL METHODS
@@ -59,8 +62,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_default_report_server : public Vpools_top_
     VlAssocArray<std::string, IData/*31:0*/> __PVT__m_id_count;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_tr_database> __PVT__m_message_db;
     VlAssocArray<std::string, VlAssocArray<std::string, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_tr_stream>>> __PVT__m_streams;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_compose_report_message(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_report_message> report_message, std::string report_object_name, std::string &compose_report_message__Vfuncrtn);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_printer> printer);
     virtual void __VnoInFunc_execute_report_message(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_report_message> report_message, std::string composed_message);
@@ -93,7 +96,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_default_report_server : public Vpools_top_
     Vpools_top_uvm_pkg__03a__03auvm_default_report_server(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_default_report_server() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_default_report_server();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_default_report_server>& obj);

@@ -20,15 +20,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_tr_stream;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_tr_database__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_tr_database__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_tr_database__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_tr_database__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_tr_database__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_tr_database__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vtransactions_uvm_pkg__03a__03auvm_tr_database : public Vtransactions_uvm_
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_is_opened;
     VlAssocArray<VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tr_stream>, CData/*0:0*/> __PVT__m_streams;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_close_db(Vtransactions__Syms* __restrict vlSymsp, CData/*0:0*/ &close_db__Vfuncrtn);
     virtual void __VnoInFunc_do_close_db(Vtransactions__Syms* __restrict vlSymsp, CData/*0:0*/ &do_close_db__Vfuncrtn);
     virtual void __VnoInFunc_do_establish_link(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_link_base> link);
@@ -65,7 +68,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_tr_database : public Vtransactions_uvm_
     Vtransactions_uvm_pkg__03a__03auvm_tr_database(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_tr_database() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_tr_database();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tr_database>& obj);

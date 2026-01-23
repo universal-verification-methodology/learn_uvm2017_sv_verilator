@@ -10,7 +10,7 @@
 #include "verilated_random.h"
 #include "Vvirtual_sequences_uvm_pkg__03a__03auvm_component__Vclpkg.h"
 class Vvirtual_sequences_std__03a__03aprocess;
-class Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_17;
+class Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_23;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_component;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_component_proxy;
@@ -29,7 +29,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_visitor_;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_root__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_root__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -38,11 +38,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_root_
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_root> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_root__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_root__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_root__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_root__Vclpkg);
 
     // INTERNAL METHODS
@@ -64,8 +67,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_root : public Vvirtual_sequences_u
     CData/*0:0*/ __PVT__m_phase_all_done;
     QData/*63:0*/ __PVT__phase_timeout;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__clp;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_die(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_end_of_elaboration_phase(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase> phase);
@@ -95,7 +98,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_root : public Vvirtual_sequences_u
     virtual VlCoroutine __VnoInFunc_run_phase(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase> phase);
     virtual VlCoroutine __VnoInFunc_run_test(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string test_name);
   private:
-    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_17> __VDynScope_run_test_0);
+    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03a__VDynScope_23> __VDynScope_run_test_0, VlClassRef<Vvirtual_sequences_std__03a__03aprocess> unnamedblk164__DOT____VforkParent);
   public:
     void __VnoInFunc_set_enable_print_topology(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ enable);
     virtual void __VnoInFunc_set_finish_on_completion(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ f);
@@ -106,7 +109,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_root : public Vvirtual_sequences_u
     Vvirtual_sequences_uvm_pkg__03a__03auvm_root(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_root() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_root();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_root>& obj);

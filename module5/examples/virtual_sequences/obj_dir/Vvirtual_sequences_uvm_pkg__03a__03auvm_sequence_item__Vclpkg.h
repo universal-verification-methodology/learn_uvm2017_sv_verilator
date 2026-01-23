@@ -24,7 +24,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_transaction;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -32,11 +32,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_seque
     CData/*0:0*/ __PVT__issued2;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +61,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item : public Vvirtual_se
     IData/*31:0*/ __PVT__m_depth;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_base> __PVT__m_sequencer;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_base> __PVT__m_parent_sequence;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_printer> printer);
     void __VnoInFunc_get_depth(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &get_depth__Vfuncrtn);
     void __VnoInFunc_get_full_name(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string &get_full_name__Vfuncrtn);
@@ -73,7 +76,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item : public Vvirtual_se
     void __VnoInFunc_get_type_name(Vvirtual_sequences__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
     void __VnoInFunc_get_use_sequence_info(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ &get_use_sequence_info__Vfuncrtn);
     virtual void __VnoInFunc_is_item(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ &is_item__Vfuncrtn);
-    virtual void __VnoInFunc_m_set_p_sequencer(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_m_set_p_sequencer(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     void __VnoInFunc_set_depth(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ value);
     void __VnoInFunc_set_id_info(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item> item);
@@ -96,7 +99,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item : public Vvirtual_se
     Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item>& obj);

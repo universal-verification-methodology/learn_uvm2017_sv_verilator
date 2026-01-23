@@ -11,7 +11,7 @@
 
 class Vtest_counter__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_counter___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_counter___024root final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -25,13 +25,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_counter___024root final : public Verila
     VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
     VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerScheduler __VtrigSched_h1263e6a3__0;
+    VlTriggerScheduler __VtrigSched_hd07b63f9__0;
 
     // INTERNAL VARIABLES
-    Vtest_counter__Syms* const vlSymsp;
+    Vtest_counter__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_counter___024root(Vtest_counter__Syms* symsp, const char* v__name);
+    Vtest_counter___024root(Vtest_counter__Syms* symsp, const char* namep);
     ~Vtest_counter___024root();
     VL_UNCOPYABLE(Vtest_counter___024root);
 

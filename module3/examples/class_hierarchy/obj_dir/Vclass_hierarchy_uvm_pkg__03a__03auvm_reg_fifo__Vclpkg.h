@@ -21,15 +21,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_base;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,7 +52,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo : public Vclass_hierarchy_u
     IData/*31:0*/ __Vfifo_size;
     VlQueue<QData/*63:0*/> __PVT__fifo;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_field> __PVT__value;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
     virtual void __VnoInFunc___Vresize_constrained_arrays(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_build(Vclass_hierarchy__Syms* __restrict vlSymsp);
@@ -72,7 +75,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo : public Vclass_hierarchy_u
     Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ size, IData/*31:0*/ n_bits, IData/*31:0*/ has_cover);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_fifo>& obj);

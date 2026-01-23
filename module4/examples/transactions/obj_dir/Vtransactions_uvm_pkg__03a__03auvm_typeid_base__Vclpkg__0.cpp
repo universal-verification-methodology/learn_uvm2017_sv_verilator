@@ -16,6 +16,10 @@ void Vtransactions_uvm_pkg__03a__03auvm_typeid_base::_ctor_var_reset(Vtransactio
     (void)vlSymsp;  // Prevent unused variable warning
 }
 
+Vtransactions_uvm_pkg__03a__03auvm_typeid_base::~Vtransactions_uvm_pkg__03a__03auvm_typeid_base() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Vtransactions_uvm_pkg__03a__03auvm_typeid_base::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_typeid_base>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtransactions_uvm_pkg__03a__03auvm_typeid_base::VL_TO_STRING\n"); );
     // Body

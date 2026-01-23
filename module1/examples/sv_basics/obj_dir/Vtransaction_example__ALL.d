@@ -30,5 +30,6 @@ Vtransaction_example__ALL.o: Vtransaction_example__ALL.cpp \
  Vtransaction_example_transaction_pkg__03a__03aReadTransaction__Vclpkg__0__Slow.cpp \
  Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg__Slow.cpp \
  Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg__0__Slow.cpp \
- Vtransaction_example__Syms.cpp Vtransaction_example__Trace__0__Slow.cpp \
+ Vtransaction_example__Syms__Slow.cpp \
+ Vtransaction_example__Trace__0__Slow.cpp \
  Vtransaction_example__TraceDecls__0__Slow.cpp

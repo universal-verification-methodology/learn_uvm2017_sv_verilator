@@ -19,18 +19,21 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_root;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,7 +61,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16 : 
     Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16(Vclass_hierarchy__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_component_registry__pi16>& obj);

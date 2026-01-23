@@ -18,18 +18,21 @@ class Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi56;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,7 +60,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98 : public Vtransac
     Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98(Vtransactions__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_registry__Tz98>& obj);

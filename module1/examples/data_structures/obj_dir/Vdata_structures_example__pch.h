@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vdata_structures_example.h instead.
 
-
 #ifndef VERILATED_VDATA_STRUCTURES_EXAMPLE__PCH_H_
 #define VERILATED_VDATA_STRUCTURES_EXAMPLE__PCH_H_  // guard
 

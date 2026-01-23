@@ -1,0 +1,5 @@
+%Error: random_utils.sv:125:22: syntax error, unexpected IDENTIFIER, expecting "'{"
+  125 |         logic [31:0] rand_bits;
+      |                      ^~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.045 for more assistance.
+%Error: Exiting due to 1 error(s)

@@ -11,7 +11,7 @@
 
 class Vpackage_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpackage_example___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpackage_example___024root final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -25,10 +25,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vpackage_example___024root final : public Ver
     VlDelayScheduler __VdlySched;
 
     // INTERNAL VARIABLES
-    Vpackage_example__Syms* const vlSymsp;
+    Vpackage_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpackage_example___024root(Vpackage_example__Syms* symsp, const char* v__name);
+    Vpackage_example___024root(Vpackage_example__Syms* symsp, const char* namep);
     ~Vpackage_example___024root();
     VL_UNCOPYABLE(Vpackage_example___024root);
 

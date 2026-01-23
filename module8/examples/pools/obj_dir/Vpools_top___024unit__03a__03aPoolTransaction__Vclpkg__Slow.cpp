@@ -6,10 +6,12 @@
 
 void Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg___ctor_var_reset(Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg* vlSelf);
 
-Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg::Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg(Vpools_top__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg::Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg() = default;
+Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg::~Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg() = default;
+
+void Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg::ctor(Vpools_top__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg::__Vconfigure(bool fi
     (void)first;  // Prevent unused variable warning
 }
 
-Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg::~Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg() {
+void Vpools_top___024unit__03a__03aPoolTransaction__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

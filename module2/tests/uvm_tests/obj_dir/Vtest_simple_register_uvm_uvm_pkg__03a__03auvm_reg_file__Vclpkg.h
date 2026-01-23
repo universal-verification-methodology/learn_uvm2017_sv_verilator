@@ -24,15 +24,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,8 +56,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file : public Vtest_sim
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_block> __PVT__parent;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file> __PVT__m_rf;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_string_pool__Tz219> __PVT__hdl_paths_pool;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_add_hdl_path(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string path, std::string kind);
     void __VnoInFunc_clear_hdl_path(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string kind);
     virtual void __VnoInFunc_clone(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object> &clone__Vfuncrtn);
@@ -84,7 +87,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file : public Vtest_sim
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_file>& obj);

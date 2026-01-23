@@ -1,3 +1,0 @@
-Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_26__Vclpkg__Slow.o: \
- Vtest_and_gate_uvm_uvm_pkg__03a__03a__VDynScope_26__Vclpkg__Slow.cpp \
- Vtest_and_gate_uvm__pch.h

@@ -10,7 +10,7 @@
 #include "verilated_random.h"
 #include "Vdma_uvm_pkg__03a__03auvm_component__Vclpkg.h"
 class Vdma_std__03a__03aprocess;
-class Vdma_uvm_pkg__03a__03a__VDynScope_27;
+class Vdma_uvm_pkg__03a__03a__VDynScope_33;
 class Vdma_uvm_pkg__03a__03auvm_cmdline_processor;
 class Vdma_uvm_pkg__03a__03auvm_component;
 class Vdma_uvm_pkg__03a__03auvm_component_proxy;
@@ -29,7 +29,7 @@ class Vdma_uvm_pkg__03a__03auvm_visitor_;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_root__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_root__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -38,11 +38,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_root__Vclpkg final 
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_root> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_root__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_root__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_root__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_root__Vclpkg);
 
     // INTERNAL METHODS
@@ -64,8 +67,8 @@ class Vdma_uvm_pkg__03a__03auvm_root : public Vdma_uvm_pkg__03a__03auvm_componen
     CData/*0:0*/ __PVT__m_phase_all_done;
     QData/*63:0*/ __PVT__phase_timeout;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__clp;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_die(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_end_of_elaboration_phase(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> phase);
@@ -95,7 +98,7 @@ class Vdma_uvm_pkg__03a__03auvm_root : public Vdma_uvm_pkg__03a__03auvm_componen
     virtual VlCoroutine __VnoInFunc_run_phase(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_phase> phase);
     virtual VlCoroutine __VnoInFunc_run_test(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string test_name);
   private:
-    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03a__VDynScope_27> __VDynScope_run_test_0);
+    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03a__VDynScope_33> __VDynScope_run_test_0, VlClassRef<Vdma_std__03a__03aprocess> unnamedblk164__DOT____VforkParent);
   public:
     void __VnoInFunc_set_enable_print_topology(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ enable);
     virtual void __VnoInFunc_set_finish_on_completion(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ f);
@@ -106,7 +109,7 @@ class Vdma_uvm_pkg__03a__03auvm_root : public Vdma_uvm_pkg__03a__03auvm_componen
     Vdma_uvm_pkg__03a__03auvm_root(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_root() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_root();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_root>& obj);

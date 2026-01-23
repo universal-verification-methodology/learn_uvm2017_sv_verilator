@@ -26,17 +26,17 @@ class Vtest_simple_register_uvm_std__03a__03amailbox__Tz26__Vclpkg;
 class Vtest_simple_register_uvm_std__03a__03aprocess__Vclpkg;
 class Vtest_simple_register_uvm_std__03a__03asemaphore__Vclpkg;
 class Vtest_simple_register_uvm_uvm_pkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_15__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_22__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_25__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_26__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_29__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_30__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_36__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_37__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_38__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_10__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_18__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_28__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_32__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_34__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_39__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_40__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_47__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_48__Vclpkg;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_50__Vclpkg;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_5__Vclpkg;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_9__Vclpkg;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03aget_t__Vclpkg;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03am_uvm_printer_knobs__Vclpkg;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03am_uvm_sqr_seq_base__Vclpkg;
@@ -665,7 +665,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_vreg_field_cbs__Vclpkg;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm___024root final {
   public:
     // CELLS
     Vtest_simple_register_uvm___024unit* __PVT____024unit;
@@ -1308,30 +1308,30 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm___024root final : p
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg* uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg;
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg* uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg;
     Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_5__Vclpkg* uvm_pkg__03a__03a__VDynScope_5__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_9__Vclpkg* uvm_pkg__03a__03a__VDynScope_9__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_15__Vclpkg* uvm_pkg__03a__03a__VDynScope_15__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_22__Vclpkg* uvm_pkg__03a__03a__VDynScope_22__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_25__Vclpkg* uvm_pkg__03a__03a__VDynScope_25__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_26__Vclpkg* uvm_pkg__03a__03a__VDynScope_26__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_29__Vclpkg* uvm_pkg__03a__03a__VDynScope_29__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_30__Vclpkg* uvm_pkg__03a__03a__VDynScope_30__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_36__Vclpkg* uvm_pkg__03a__03a__VDynScope_36__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_37__Vclpkg* uvm_pkg__03a__03a__VDynScope_37__Vclpkg;
-    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_38__Vclpkg* uvm_pkg__03a__03a__VDynScope_38__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_10__Vclpkg* uvm_pkg__03a__03a__VDynScope_10__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_18__Vclpkg* uvm_pkg__03a__03a__VDynScope_18__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_28__Vclpkg* uvm_pkg__03a__03a__VDynScope_28__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_32__Vclpkg* uvm_pkg__03a__03a__VDynScope_32__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_34__Vclpkg* uvm_pkg__03a__03a__VDynScope_34__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_39__Vclpkg* uvm_pkg__03a__03a__VDynScope_39__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_40__Vclpkg* uvm_pkg__03a__03a__VDynScope_40__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_47__Vclpkg* uvm_pkg__03a__03a__VDynScope_47__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_48__Vclpkg* uvm_pkg__03a__03a__VDynScope_48__Vclpkg;
+    Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_50__Vclpkg* uvm_pkg__03a__03a__VDynScope_50__Vclpkg;
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ test_simple_register_uvm__DOT__clk;
     CData/*0:0*/ test_simple_register_uvm__DOT__rst_n;
     CData/*7:0*/ test_simple_register_uvm__DOT____Vcellout__dut__q;
     CData/*0:0*/ __VnbaEventTrigger;
-    CData/*0:0*/ __VvifTrigger_he8f502e3__0_Vtrigm_clk;
-    CData/*0:0*/ __VvifTrigger_he8f502e3__1_Vtrigm_q;
-    CData/*0:0*/ __VvifTrigger_he8f502e3__2_Vtrigm_enable;
-    CData/*0:0*/ __VvifTrigger_he8f502e3__3_Vtrigm_d;
+    CData/*0:0*/ __VvifTrigger_he8f5051c__0_Vtrigm_clk;
+    CData/*0:0*/ __VvifTrigger_he8f5051c__1_Vtrigm_q;
+    CData/*0:0*/ __VvifTrigger_he8f5051c__2_Vtrigm_enable;
+    CData/*0:0*/ __VvifTrigger_he8f5051c__3_Vtrigm_d;
     CData/*0:0*/ __VstlFirstIteration;
     CData/*0:0*/ __Vtrigprevexpr___TOP__test_simple_register_uvm__DOT__reg_if__clk__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__test_simple_register_uvm__DOT__rst_n__0;
-    CData/*0:0*/ __Vtrigprevexpr_h69246a8d__1;
+    CData/*0:0*/ __Vtrigprevexpr_h5a1c11cb__1;
     CData/*0:0*/ __VactDidInit;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<QData/*63:0*/, 1> __VstlTriggered;
@@ -1341,13 +1341,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm___024root final : p
     VlDelayScheduler __VdlySched;
     VlAssignableEvent __VnbaEvent;
     VlDynamicTriggerScheduler __VdynSched;
-    VlTriggerScheduler __VtrigSched_hbd132277__0;
+    VlTriggerScheduler __VtrigSched_hce2bd7cc__0;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm___024root(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm___024root(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
     ~Vtest_simple_register_uvm___024root();
     VL_UNCOPYABLE(Vtest_simple_register_uvm___024root);
 

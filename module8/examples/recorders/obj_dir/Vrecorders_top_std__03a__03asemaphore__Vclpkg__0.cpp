@@ -20,34 +20,36 @@ void Vrecorders_top_std__03a__03asemaphore::__VnoInFunc_put(Vrecorders_top__Syms
 
 VlCoroutine Vrecorders_top_std__03a__03asemaphore::__VnoInFunc_get(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vrecorders_top_std__03a__03asemaphore::__VnoInFunc_get\n"); );
+    // Locals
+    CData/*0:0*/ __Vtrigprevexpr_h66ff69e1__0;
+    __Vtrigprevexpr_h66ff69e1__0 = 0;
     // Body
     VL_KEEP_THIS;
     while (VL_LTS_III(32, this->__PVT__m_keyCount, keyCount)) {
         if (VL_LTS_III(32, this->__PVT__m_keyCount, keyCount)) {
-            CData/*0:0*/ __VdynTrigger_h9570b878__0;
-            __VdynTrigger_h9570b878__0 = 0;
-            __VdynTrigger_h9570b878__0 = 0U;
-            while ((1U & (~ (IData)(__VdynTrigger_h9570b878__0)))) {
+            CData/*0:0*/ __VdynTrigger_h5d000ecc__0;
+            __VdynTrigger_h5d000ecc__0 = 0;
+            __VdynTrigger_h5d000ecc__0 = 0U;
+            while ((1U & (~ (IData)(__VdynTrigger_h5d000ecc__0)))) {
                 co_await vlSymsp->TOP.__VdynSched.evaluation(
                                                              vlProcess, 
                                                              "@([true] (std::semaphore.m_keyCount >= std::semaphore.keyCount))", 
                                                              "/usr/local/share/verilator/include/verilated_std.sv", 
-                                                             111);
-                this->__Vtrigprevexpr_h6f8f1d71__0 
-                    = VL_GTES_III(32, this->__PVT__m_keyCount, keyCount);
-                __VdynTrigger_h9570b878__0 = this->__Vtrigprevexpr_h6f8f1d71__0;
-                vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_h9570b878__0);
+                                                             113);
+                __Vtrigprevexpr_h66ff69e1__0 = VL_GTES_III(32, this->__PVT__m_keyCount, keyCount);
+                __VdynTrigger_h5d000ecc__0 = __Vtrigprevexpr_h66ff69e1__0;
+                vlSymsp->TOP.__VdynSched.anyTriggered(__VdynTrigger_h5d000ecc__0);
             }
             co_await vlSymsp->TOP.__VdynSched.resumption(
                                                          vlProcess, 
                                                          "@([true] (std::semaphore.m_keyCount >= std::semaphore.keyCount))", 
                                                          "/usr/local/share/verilator/include/verilated_std.sv", 
-                                                         111);
+                                                         113);
         }
     }
     this->__PVT__m_keyCount = (this->__PVT__m_keyCount 
                                - keyCount);
-}
+    co_return;}
 
 void Vrecorders_top_std__03a__03asemaphore::__VnoInFunc_try_get(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount, IData/*31:0*/ &try_get__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vrecorders_top_std__03a__03asemaphore::__VnoInFunc_try_get\n"); );
@@ -69,7 +71,6 @@ void Vrecorders_top_std__03a__03asemaphore::_ctor_var_reset(Vrecorders_top__Syms
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
     __PVT__m_keyCount = 0;
-    __Vtrigprevexpr_h6f8f1d71__0 = VL_SCOPED_RAND_RESET_I(1, 1600107786752578335ULL, 15807588567804424866ull);
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_std__03a__03asemaphore>& obj) {

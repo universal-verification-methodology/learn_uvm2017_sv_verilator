@@ -36,16 +36,20 @@ class ComparatorTransaction extends uvm_sequence_item;
     endfunction
 endclass
 
+// Declare different analysis imp types for expected and actual
+`uvm_analysis_imp_decl(_expected)
+`uvm_analysis_imp_decl(_actual)
+
 /**
  * In-order comparator for transactions
  */
 class InOrderComparator extends uvm_component;
-    uvm_analysis_imp #(ComparatorTransaction, InOrderComparator) expected_imp;
-    uvm_analysis_imp #(ComparatorTransaction, InOrderComparator) actual_imp;
+    uvm_analysis_imp_expected #(ComparatorTransaction, InOrderComparator) expected_imp;
+    uvm_analysis_imp_actual #(ComparatorTransaction, InOrderComparator) actual_imp;
     
     ComparatorTransaction expected_queue[$];
     ComparatorTransaction actual_queue[$];
-    int matches;
+    int match_count;
     int mismatches;
     
     `uvm_component_utils(InOrderComparator)
@@ -54,7 +58,7 @@ class InOrderComparator extends uvm_component;
         super.new(name, parent);
         expected_imp = new("expected_imp", this);
         actual_imp = new("actual_imp", this);
-        matches = 0;
+        match_count = 0;
         mismatches = 0;
     endfunction
     
@@ -76,7 +80,7 @@ class InOrderComparator extends uvm_component;
             ComparatorTransaction act_txn = actual_queue.pop_front();
             
             if (exp_txn.compare(act_txn)) begin
-                matches++;
+                match_count++;
                 `uvm_info("COMPARATOR", $sformatf("MATCH: %s", exp_txn.convert2string()), UVM_MEDIUM)
             end else begin
                 mismatches++;
@@ -88,7 +92,7 @@ class InOrderComparator extends uvm_component;
     
     function void report_phase(uvm_phase phase);
         `uvm_info("COMPARATOR", $sformatf("Comparator Statistics:"), UVM_LOW)
-        `uvm_info("COMPARATOR", $sformatf("  Matches: %0d", matches), UVM_LOW)
+        `uvm_info("COMPARATOR", $sformatf("  Matches: %0d", match_count), UVM_LOW)
         `uvm_info("COMPARATOR", $sformatf("  Mismatches: %0d", mismatches), UVM_LOW)
         `uvm_info("COMPARATOR", $sformatf("  Pending Expected: %0d", expected_queue.size()), UVM_LOW)
         `uvm_info("COMPARATOR", $sformatf("  Pending Actual: %0d", actual_queue.size()), UVM_LOW)
@@ -99,12 +103,12 @@ endclass
  * Out-of-order comparator using address matching
  */
 class OutOfOrderComparator extends uvm_component;
-    uvm_analysis_imp #(ComparatorTransaction, OutOfOrderComparator) expected_imp;
-    uvm_analysis_imp #(ComparatorTransaction, OutOfOrderComparator) actual_imp;
+    uvm_analysis_imp_expected #(ComparatorTransaction, OutOfOrderComparator) expected_imp;
+    uvm_analysis_imp_actual #(ComparatorTransaction, OutOfOrderComparator) actual_imp;
     
     ComparatorTransaction expected_map[logic [15:0]];
     ComparatorTransaction actual_map[logic [15:0]];
-    int matches;
+    int match_count;
     int mismatches;
     
     `uvm_component_utils(OutOfOrderComparator)
@@ -113,7 +117,7 @@ class OutOfOrderComparator extends uvm_component;
         super.new(name, parent);
         expected_imp = new("expected_imp", this);
         actual_imp = new("actual_imp", this);
-        matches = 0;
+        match_count = 0;
         mismatches = 0;
     endfunction
     
@@ -139,7 +143,7 @@ class OutOfOrderComparator extends uvm_component;
                 ComparatorTransaction act_txn = actual_map[addr];
                 
                 if (exp_txn.compare(act_txn)) begin
-                    matches++;
+                    match_count++;
                     `uvm_info("COMPARATOR", $sformatf("MATCH (addr=0x%04h): %s", addr, exp_txn.convert2string()), UVM_MEDIUM)
                 end else begin
                     mismatches++;
@@ -155,7 +159,7 @@ class OutOfOrderComparator extends uvm_component;
     
     function void report_phase(uvm_phase phase);
         `uvm_info("COMPARATOR", $sformatf("Out-of-Order Comparator Statistics:"), UVM_LOW)
-        `uvm_info("COMPARATOR", $sformatf("  Matches: %0d", matches), UVM_LOW)
+        `uvm_info("COMPARATOR", $sformatf("  Matches: %0d", match_count), UVM_LOW)
         `uvm_info("COMPARATOR", $sformatf("  Mismatches: %0d", mismatches), UVM_LOW)
         `uvm_info("COMPARATOR", $sformatf("  Pending Expected: %0d", expected_map.size()), UVM_LOW)
         `uvm_info("COMPARATOR", $sformatf("  Pending Actual: %0d", actual_map.size()), UVM_LOW)

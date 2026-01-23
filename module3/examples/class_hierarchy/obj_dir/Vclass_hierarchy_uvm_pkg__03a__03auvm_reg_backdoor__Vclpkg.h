@@ -9,7 +9,7 @@
 #include "verilated_timing.h"
 #include "verilated_random.h"
 class Vclass_hierarchy_std__03a__03aprocess;
-class Vclass_hierarchy_uvm_pkg__03a__03a__VDynScope_33;
+class Vclass_hierarchy_uvm_pkg__03a__03a__VDynScope_45;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_abstract_object_registry__pi100;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_callback_iter__pi90;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t;
@@ -25,18 +25,21 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_root;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_register_cb_uvm_reg_cbs;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor__Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor : public Vclass_hierarc
     IData/*31:0*/ __PVT__lineno;
     std::string __PVT__fname;
     VlAssocArray<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object>, VlClassRef<Vclass_hierarchy_std__03a__03aprocess>> __PVT__m_update_thread;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_post_read(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_do_post_write(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_do_pre_read(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -76,7 +79,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor : public Vclass_hierarc
     virtual void __VnoInFunc_read_func(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> rw);
     void __VnoInFunc_start_update_thread(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> element);
   private:
-    VlCoroutine __VnoInFunc_start_update_thread____Vfork_1__0(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03a__VDynScope_33> __VDynScope_start_update_thread_0);
+    VlCoroutine __VnoInFunc_start_update_thread____Vfork_1__0(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03a__VDynScope_45> __VDynScope_start_update_thread_0, VlClassRef<Vclass_hierarchy_std__03a__03aprocess> unnamedblk274__DOT____VforkParent);
   public:
     virtual void __VnoInFunc_wait_for_change(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> element);
     virtual void __VnoInFunc_write(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> rw);
@@ -86,7 +89,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor : public Vclass_hierarc
     Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor>& obj);

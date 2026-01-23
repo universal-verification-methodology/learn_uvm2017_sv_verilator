@@ -11,7 +11,7 @@
 
 class Vclock_gen__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclock_gen___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclock_gen___024root final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -25,7 +25,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vclock_gen___024root final : public Verilated
     CData/*0:0*/ __Vtrigprevexpr___TOP__clock_gen__DOT__clk1__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__clock_gen__DOT__clk2__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__clock_gen__DOT__clk3__0;
-    CData/*0:0*/ __Vtrigprevexpr_ha0475fda__1;
+    CData/*0:0*/ __Vtrigprevexpr_h588af64e__1;
     CData/*0:0*/ __VactDidInit;
     IData/*31:0*/ clock_gen__DOT__clk1_edges;
     IData/*31:0*/ clock_gen__DOT__clk2_edges;
@@ -34,13 +34,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclock_gen___024root final : public Verilated
     VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
     VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerScheduler __VtrigSched_h07f01e06__0;
+    VlTriggerScheduler __VtrigSched_hd03cc761__0;
 
     // INTERNAL VARIABLES
-    Vclock_gen__Syms* const vlSymsp;
+    Vclock_gen__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclock_gen___024root(Vclock_gen__Syms* symsp, const char* v__name);
+    Vclock_gen___024root(Vclock_gen__Syms* symsp, const char* namep);
     ~Vclock_gen___024root();
     VL_UNCOPYABLE(Vclock_gen___024root);
 

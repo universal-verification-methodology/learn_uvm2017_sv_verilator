@@ -63,7 +63,9 @@ class MA_VirtualSeq extends uvm_sequence;
       begin
         repeat (5) begin
           t0 = MA_Txn::type_id::create("t0");
+          /* verilator lint_off IGNOREDRETURN */
           void'(t0.randomize() with { agent_id == 0; });
+          /* verilator lint_on IGNOREDRETURN */
           t0.agent_id = 0;
           seqr0.execute_item(t0);
         end
@@ -71,7 +73,9 @@ class MA_VirtualSeq extends uvm_sequence;
       begin
         repeat (5) begin
           t1 = MA_Txn::type_id::create("t1");
+          /* verilator lint_off IGNOREDRETURN */
           void'(t1.randomize() with { agent_id == 1; });
+          /* verilator lint_on IGNOREDRETURN */
           t1.agent_id = 1;
           seqr1.execute_item(t1);
         end

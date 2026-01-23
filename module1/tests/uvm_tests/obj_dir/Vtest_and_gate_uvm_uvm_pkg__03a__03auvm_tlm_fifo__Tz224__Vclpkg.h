@@ -12,24 +12,25 @@ class Vtest_and_gate_uvm_std__03a__03amailbox__Tz224;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_port__Tz224;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component_registry__Tz299;
-class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_coreservice_t;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_wrapper;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_reg_item;
-class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_root;
 class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz224;
 
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224 : public Vtest_and
     IData/*31:0*/ __PVT__m_size;
     IData/*31:0*/ __PVT__m_pending_blocked_gets;
     VlClassRef<Vtest_and_gate_uvm_std__03a__03amailbox__Tz224> __PVT__m;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -74,7 +75,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224 : public Vtest_and
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz224>& obj);

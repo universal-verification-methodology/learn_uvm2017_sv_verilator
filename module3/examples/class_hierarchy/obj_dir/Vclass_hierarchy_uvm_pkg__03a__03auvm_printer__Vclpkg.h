@@ -23,15 +23,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_root;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_printer__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_printer__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_printer__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_printer__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_printer__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_printer__Vclpkg);
 
     // INTERNAL METHODS
@@ -56,8 +59,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_printer : public Vclass_hierarchy_uv
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03am_uvm_printer_knobs> __PVT__knobs;
     VlQueue<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_element_stack;
     VlQueue<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_recycled_elements;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_emit(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string &emit__Vfuncrtn);
     virtual void __VnoInFunc_flush(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_get_begin_elements(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &get_begin_elements__Vfuncrtn);
@@ -119,7 +122,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_printer : public Vclass_hierarchy_uv
     Vclass_hierarchy_uvm_pkg__03a__03auvm_printer(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_printer() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_printer();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_printer>& obj);

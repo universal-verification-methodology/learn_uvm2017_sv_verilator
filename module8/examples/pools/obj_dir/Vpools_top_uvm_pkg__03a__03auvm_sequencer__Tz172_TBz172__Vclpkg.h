@@ -10,11 +10,9 @@
 #include "verilated_random.h"
 class Vpools_top_uvm_pkg__03a__03auvm_component;
 class Vpools_top_uvm_pkg__03a__03auvm_component_registry__Tz240;
-class Vpools_top_uvm_pkg__03a__03auvm_coreservice_t;
 class Vpools_top_uvm_pkg__03a__03auvm_object_wrapper;
 class Vpools_top_uvm_pkg__03a__03auvm_port_base__Tz241;
 class Vpools_top_uvm_pkg__03a__03auvm_reg_item;
-class Vpools_top_uvm_pkg__03a__03auvm_root;
 class Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi127;
 class Vpools_top_uvm_pkg__03a__03auvm_sequence_base;
 class Vpools_top_uvm_pkg__03a__03auvm_sequence_request;
@@ -25,15 +23,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_tlm_fifo__Tz172;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,8 +53,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172 : public Vpools_to
     CData/*0:0*/ __PVT__sequence_item_requested;
     CData/*0:0*/ __PVT__get_next_item_called;
     VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi127> __PVT__seq_item_export;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_get(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> &t);
     virtual VlCoroutine __VnoInFunc_get_next_item(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_item> &t);
     virtual void __VnoInFunc_get_object_type(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
@@ -73,7 +74,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172 : public Vpools_to
     Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_sequencer__Tz172_TBz172>& obj);

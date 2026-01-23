@@ -20,18 +20,21 @@ class Varchitecture_uvm_pkg__03a__03auvm_root;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24> __PVT__m_global_pool;
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24__Vclpkg);
 
     // INTERNAL METHODS
@@ -51,8 +54,8 @@ class Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24 : public Varchitecture
 
     // DESIGN SPECIFIC STATE
     VlAssocArray<std::string, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_event_>> __PVT__pool;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add(Varchitecture__Syms* __restrict vlSymsp, std::string key, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_event_> item);
     void __VnoInFunc_create(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_delete(Varchitecture__Syms* __restrict vlSymsp, std::string key);
@@ -74,7 +77,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24 : public Varchitecture
     Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_pool__Tz43_TBz24>& obj);

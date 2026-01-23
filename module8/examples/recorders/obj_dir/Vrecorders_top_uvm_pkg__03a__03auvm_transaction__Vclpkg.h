@@ -22,15 +22,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_transaction;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_transaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_transaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_transaction__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_transaction__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_transaction__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_transaction__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,16 +56,16 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_transaction : public Vrecorders_top_uv
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_component> __PVT__initiator;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream> __PVT__stream_handle;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_recorder> __PVT__tr_recorder;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_accept_tr(Vrecorders_top__Syms* __restrict vlSymsp, QData/*63:0*/ accept_time);
     void __VnoInFunc_begin_child_tr(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ parent_handle, IData/*31:0*/ &begin_child_tr__Vfuncrtn);
     void __VnoInFunc_begin_tr(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     void __VnoInFunc_disable_recording(Vrecorders_top__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_accept_tr(Vrecorders_top__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_begin_tr(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_accept_tr(Vrecorders_top__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_begin_tr(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> rhs);
-    virtual void __VnoInFunc_do_end_tr(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_end_tr(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_printer> printer);
     virtual void __VnoInFunc_do_record(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_recorder> recorder);
     void __VnoInFunc_enable_recording(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_tr_stream> stream);
@@ -86,7 +89,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_transaction : public Vrecorders_top_uv
     Vrecorders_top_uvm_pkg__03a__03auvm_transaction(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_component> initiator);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_transaction() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_transaction();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_transaction>& obj);

@@ -17,15 +17,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction__Vclpkg();
     ~Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,7 +48,7 @@ class Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction : public Vtest_an
     CData/*0:0*/ __PVT__a;
     CData/*0:0*/ __PVT__b;
     CData/*0:0*/ __PVT__expected_y;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
     virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
@@ -59,7 +62,7 @@ class Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction : public Vtest_an
     Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction() {}
+    virtual ~Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction>& obj);

@@ -43,7 +43,9 @@ class AxiSeq extends uvm_sequence #(AxiTxn);
     AxiTxn t;
     repeat (5) begin
       t = AxiTxn::type_id::create("t");
+      /* verilator lint_off IGNOREDRETURN */
       void'(t.randomize() with { is_write inside {0,1}; addr[11:2] == addr[11:2]; });
+      /* verilator lint_on IGNOREDRETURN */
       start_item(t); finish_item(t);
     end
   endtask

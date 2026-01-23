@@ -11,7 +11,7 @@
 
 class Vinterface_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vinterface_example_apb_if final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vinterface_example_apb_if final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -23,11 +23,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vinterface_example_apb_if final : public Veri
     IData/*31:0*/ pwdata;
 
     // INTERNAL VARIABLES
-    Vinterface_example__Syms* const vlSymsp;
+    Vinterface_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vinterface_example_apb_if(Vinterface_example__Syms* symsp, const char* v__name);
+    Vinterface_example_apb_if();
     ~Vinterface_example_apb_if();
+    void ctor(Vinterface_example__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vinterface_example_apb_if);
 
     // INTERNAL METHODS

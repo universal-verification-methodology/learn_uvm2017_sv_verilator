@@ -53,7 +53,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vdata_structures_example__Syms \
+  Vdata_structures_example__Syms__Slow \
   Vdata_structures_example__Trace__0__Slow \
   Vdata_structures_example__TraceDecls__0__Slow \
 

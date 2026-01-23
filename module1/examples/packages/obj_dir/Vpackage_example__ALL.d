@@ -14,6 +14,6 @@ Vpackage_example__ALL.o: Vpackage_example__ALL.cpp Vpackage_example.cpp \
  Vpackage_example___024root__Slow.cpp \
  Vpackage_example___024root__0__Slow.cpp \
  Vpackage_example___024unit__Slow.cpp \
- Vpackage_example___024unit__0__Slow.cpp Vpackage_example__Syms.cpp \
+ Vpackage_example___024unit__0__Slow.cpp Vpackage_example__Syms__Slow.cpp \
  Vpackage_example__Trace__0__Slow.cpp \
  Vpackage_example__TraceDecls__0__Slow.cpp

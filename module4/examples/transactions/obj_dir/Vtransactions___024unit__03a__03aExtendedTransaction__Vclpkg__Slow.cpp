@@ -6,10 +6,12 @@
 
 void Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg___ctor_var_reset(Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg* vlSelf);
 
-Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg::Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg(Vtransactions__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg::Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg() = default;
+Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg::~Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg() = default;
+
+void Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg::ctor(Vtransactions__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg::__Vconfigure(
     (void)first;  // Prevent unused variable warning
 }
 
-Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg::~Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg() {
+void Vtransactions___024unit__03a__03aExtendedTransaction__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

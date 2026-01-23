@@ -68,7 +68,7 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62::__VnoInFunc_
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_registry_common__pi43> common;
     vlSymsp->TOP__uvm_pkg__03a__03auvm_registry_common__pi43__Vclpkg.__VnoInFunc_get(vlSymsp, __Vfunc_get__2__Vfuncout);
     common = __Vfunc_get__2__Vfuncout;
-    VL_NULL_CHECK(common, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 200)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__3__Vfuncout);
+    VL_NULL_CHECK(common, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 200)->__VnoInFunc_get_type_name(vlSymsp, __Vtask_get_type_name__3__Vfuncout);
     get_type_name__Vfuncrtn = __Vtask_get_type_name__3__Vfuncout;
 }
 
@@ -80,7 +80,7 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62::__VnoInFunc_
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_registry_common__pi43> common;
     vlSymsp->TOP__uvm_pkg__03a__03auvm_registry_common__pi43__Vclpkg.__VnoInFunc_get(vlSymsp, __Vfunc_get__4__Vfuncout);
     common = __Vfunc_get__4__Vfuncout;
-    VL_NULL_CHECK(common, "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 281)->__VnoInFunc_initialize(vlProcess, vlSymsp);
+    VL_NULL_CHECK(common, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_registry.svh", 281)->__VnoInFunc_initialize(vlProcess, vlSymsp);
 }
 
 Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62::Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62(Vtest_and_gate_uvm__Syms* __restrict vlSymsp)
@@ -95,6 +95,10 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62::_ctor_var_re
     VL_DEBUG_IF(VL_DBG_MSGF("+                Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+                Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object_registry__Tz62>& obj) {

@@ -31,7 +31,9 @@ class DmaSeq extends uvm_sequence #(DmaTxn);
     DmaTxn t;
     repeat (3) begin
       t = DmaTxn::type_id::create("t");
+      /* verilator lint_off IGNOREDRETURN */
       void'(t.randomize() with { len inside {[1:20]}; });
+      /* verilator lint_on IGNOREDRETURN */
       start_item(t); finish_item(t);
     end
   endtask

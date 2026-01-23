@@ -43,18 +43,21 @@ struct Vvirtual_sequences_m_inst_typename_alias_t__struct__0 {
 template <>
 struct VlIsCustomStruct<Vvirtual_sequences_m_inst_typename_alias_t__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_debug_pass;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory__Vclpkg);
 
     // INTERNAL METHODS
@@ -73,10 +76,6 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory : public Vvirtual_
     VlAssocArray<VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper>, CData/*0:0*/> __PVT__m_types;
     VlAssocArray<std::string, CData/*0:0*/> __PVT__m_lookup_strs;
     VlQueue<Vvirtual_sequences_m_inst_typename_alias_t__struct__0> __PVT__m_inst_aliases;
-    std::string __Vtask_get_type_name__50__Vfuncout;
-    std::string __Vtask_get_type_name__51__Vfuncout;
-    std::string __Vtask_get_type_name__76__Vfuncout;
-    std::string __Vtask_get_type_name__77__Vfuncout;
     VlAssocArray<std::string, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper>> __PVT__m_type_names;
     VlQueue<VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_factory_override>> __PVT__m_type_overrides;
     VlQueue<VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_factory_override>> __PVT__m_inst_overrides;
@@ -114,7 +113,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory : public Vvirtual_
     Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory(Vvirtual_sequences__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_default_factory>& obj);

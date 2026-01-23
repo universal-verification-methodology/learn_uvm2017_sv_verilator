@@ -13,23 +13,24 @@ class Vtest_simple_register_uvm_std__03a__03amailbox__Tz126;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_port__Tz126;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_registry__Tz179;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_coreservice_t;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz126;
 
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126 : public Vt
     IData/*31:0*/ __PVT__m_size;
     IData/*31:0*/ __PVT__m_pending_blocked_gets;
     VlClassRef<Vtest_simple_register_uvm_std__03a__03amailbox__Tz126> __PVT__m;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -74,7 +75,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126 : public Vt
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tlm_fifo__Tz126>& obj);

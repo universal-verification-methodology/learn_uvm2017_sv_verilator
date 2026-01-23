@@ -20,7 +20,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_sqr_if_base__Tz175_TBz175;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_port_base_
     std::string __PVT__debug_provided_to__Vstatic__save;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244__Vclpkg);
 
     // INTERNAL METHODS
@@ -90,7 +93,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244 : public Vtransactions
     Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ port_type, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244() {}
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_port_base__Tz244>& obj);

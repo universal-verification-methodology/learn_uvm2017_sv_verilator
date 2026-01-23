@@ -8,7 +8,6 @@
 #include "verilated.h"
 #include "verilated_timing.h"
 #include "verilated_random.h"
-class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_coreservice_t;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_mem_access_seq;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_mem_walk_seq;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object;
@@ -22,20 +21,22 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_shared_access_seq;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_sequence__Tz323;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_resource__Tz30;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root;
 
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,8 +54,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq : publ
 
     // DESIGN SPECIFIC STATE
     QData/*63:0*/ __PVT__tests;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_get_object_type(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
@@ -66,7 +67,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq : publ
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_reg_mem_built_in_seq>& obj);

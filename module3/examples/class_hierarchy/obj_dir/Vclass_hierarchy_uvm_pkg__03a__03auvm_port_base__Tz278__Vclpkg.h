@@ -20,7 +20,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sqr_if_base__Tz210_TBz210;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -30,11 +30,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_port_ba
     std::string __PVT__debug_provided_to__Vstatic__save;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278__Vclpkg);
 
     // INTERNAL METHODS
@@ -90,7 +93,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278 : public Vclass_hie
     Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ port_type, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278>& obj);

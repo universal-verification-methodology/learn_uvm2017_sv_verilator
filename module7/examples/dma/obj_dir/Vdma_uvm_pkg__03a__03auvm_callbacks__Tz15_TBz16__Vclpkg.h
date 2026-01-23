@@ -30,7 +30,7 @@ class Vdma_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -42,11 +42,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15> __PVT__m_base_inst;
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16__Vclpkg);
 
     // INTERNAL METHODS
@@ -75,8 +78,8 @@ class Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16 : public Vdma_uvm_pkg__03a
 
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_registered;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_m_is_for_me(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &m_is_for_me__Vfuncrtn);
     virtual void __VnoInFunc_m_is_registered(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vdma_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &m_is_registered__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
@@ -86,7 +89,7 @@ class Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16 : public Vdma_uvm_pkg__03a
     Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_callbacks__Tz15_TBz16>& obj);

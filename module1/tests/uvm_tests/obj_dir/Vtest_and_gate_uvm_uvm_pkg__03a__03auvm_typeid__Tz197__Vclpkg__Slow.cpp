@@ -6,10 +6,12 @@
 
 void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg___ctor_var_reset(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg* vlSelf);
 
-Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg::Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg::Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg() = default;
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg() = default;
+
+void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg::ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg::__Vconfigure
     (void)first;  // Prevent unused variable warning
 }
 
-Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg::~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg() {
+void Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_typeid__Tz197__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

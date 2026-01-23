@@ -45,8 +45,8 @@ class AgentSequence extends uvm_sequence #(AgentTransaction);
         
         for (int i = 0; i < 5; i++) begin
             item = AgentTransaction::type_id::create("item");
-            item.data = 8'h20 + i;
-            item.address = 16'h1000 + (i * 4);
+            item.data = 8'h20 + 8'(i);
+            item.address = 16'h1000 + 16'(i * 4);
             
             start_item(item);
             finish_item(item);

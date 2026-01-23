@@ -37,18 +37,21 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_vreg_field;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map> __PVT__m_backdoor;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map__Vclpkg);
 
     // INTERNAL METHODS
@@ -89,8 +92,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map : public Vvirtual_sequence
     void __VnoInFunc_Xget_bus_infoX(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_item> rw, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map_info> &map_info, IData/*31:0*/ &size, IData/*31:0*/ &lsb, IData/*31:0*/ &addr_skip);
     void __VnoInFunc_Xinit_address_mapX(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_Xverify_map_configX(Vvirtual_sequences__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_mem(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_mem> mem, QData/*63:0*/ offset, std::string rights, CData/*0:0*/ unmapped, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_frontdoor> frontdoor);
     virtual void __VnoInFunc_add_parent_map(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map> parent_map, QData/*63:0*/ offset);
     virtual void __VnoInFunc_add_reg(Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg> rg, QData/*63:0*/ offset, std::string rights, CData/*0:0*/ unmapped, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_frontdoor> frontdoor);
@@ -155,7 +158,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map : public Vvirtual_sequence
     Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_reg_map>& obj);

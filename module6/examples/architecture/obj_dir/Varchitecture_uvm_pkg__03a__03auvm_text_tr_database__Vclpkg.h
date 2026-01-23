@@ -8,6 +8,7 @@
 #include "verilated.h"
 #include "verilated_timing.h"
 #include "verilated_random.h"
+class Varchitecture_std__03a__03aprocess;
 class Varchitecture_uvm_pkg__03a__03auvm_coreservice_t;
 class Varchitecture_uvm_pkg__03a__03auvm_link_base;
 class Varchitecture_uvm_pkg__03a__03auvm_object;
@@ -26,15 +27,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_tr_stream;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_text_tr_database__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_text_tr_database__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_text_tr_database__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_text_tr_database__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_text_tr_database__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_text_tr_database__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,10 +57,13 @@ class Varchitecture_uvm_pkg__03a__03auvm_text_tr_database : public Varchitecture
     // DESIGN SPECIFIC STATE
     IData/*31:0*/ __PVT__m_file;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_simple_lock_dap__Tz43> __PVT__m_filename_dap;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_close_db(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ &do_close_db__Vfuncrtn);
+  private:
+    VlCoroutine __VnoInFunc_do_close_db____Vfork_1__0(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_std__03a__03aprocess> unnamedblk1__DOT____VforkParent);
+  public:
     virtual void __VnoInFunc_do_establish_link(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_link_base> link);
     virtual void __VnoInFunc_do_open_db(Varchitecture__Syms* __restrict vlSymsp, CData/*0:0*/ &do_open_db__Vfuncrtn);
     virtual void __VnoInFunc_do_open_stream(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, std::string scope, std::string type_name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_tr_stream> &do_open_stream__Vfuncrtn);
@@ -70,7 +77,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_text_tr_database : public Varchitecture
     Varchitecture_uvm_pkg__03a__03auvm_text_tr_database(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_text_tr_database() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_text_tr_database();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_text_tr_database>& obj);

@@ -12,18 +12,21 @@
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlAssocArray<std::string, CData/*0:0*/> __PVT__map;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg);
 
     // INTERNAL METHODS

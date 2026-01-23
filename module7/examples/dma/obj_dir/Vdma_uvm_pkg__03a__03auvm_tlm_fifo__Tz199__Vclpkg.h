@@ -12,24 +12,25 @@ class Vdma_std__03a__03amailbox__Tz199;
 class Vdma_uvm_pkg__03a__03auvm_analysis_port__Tz199;
 class Vdma_uvm_pkg__03a__03auvm_component;
 class Vdma_uvm_pkg__03a__03auvm_component_registry__Tz275;
-class Vdma_uvm_pkg__03a__03auvm_coreservice_t;
 class Vdma_uvm_pkg__03a__03auvm_object_wrapper;
 class Vdma_uvm_pkg__03a__03auvm_reg_item;
-class Vdma_uvm_pkg__03a__03auvm_root;
 class Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz199;
 
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199 : public Vdma_uvm_pkg__03a__03au
     IData/*31:0*/ __PVT__m_size;
     IData/*31:0*/ __PVT__m_pending_blocked_gets;
     VlClassRef<Vdma_std__03a__03amailbox__Tz199> __PVT__m;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -74,7 +75,7 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199 : public Vdma_uvm_pkg__03a__03au
     Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_fifo__Tz199>& obj);

@@ -22,15 +22,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_set_get_dap_base__Tz38;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38__Vclpkg);
 
     // INTERNAL METHODS
@@ -48,8 +51,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38 : public Vrec
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_set;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03am_uvm_tr_stream_cfg> __PVT__m_value;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> rhs);
@@ -68,7 +71,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38 : public Vrec
     Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz38>& obj);

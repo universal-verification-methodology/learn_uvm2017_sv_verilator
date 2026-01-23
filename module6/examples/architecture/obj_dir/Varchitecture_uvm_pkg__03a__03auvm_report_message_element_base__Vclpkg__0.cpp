@@ -88,6 +88,10 @@ void Varchitecture_uvm_pkg__03a__03auvm_report_message_element_base::_ctor_var_r
     __PVT___action = 0;
 }
 
+Varchitecture_uvm_pkg__03a__03auvm_report_message_element_base::~Varchitecture_uvm_pkg__03a__03auvm_report_message_element_base() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_report_message_element_base::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_report_message_element_base>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_report_message_element_base::VL_TO_STRING\n"); );
     // Body

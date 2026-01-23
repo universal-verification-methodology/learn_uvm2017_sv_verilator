@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vvirtual_sequences.h instead.
 
-
 #ifndef VERILATED_VVIRTUAL_SEQUENCES__PCH_H_
 #define VERILATED_VVIRTUAL_SEQUENCES__PCH_H_  // guard
 

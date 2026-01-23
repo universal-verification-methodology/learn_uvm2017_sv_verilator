@@ -14,18 +14,21 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81> __PVT__m_b_inst;
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,7 +48,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81 : public Vvirtual_seq
     Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81(Vvirtual_sequences__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_typeid__Tz81>& obj);

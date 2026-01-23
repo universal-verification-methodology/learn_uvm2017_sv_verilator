@@ -52,9 +52,9 @@ class StringUtils extends uvm_object;
         int pos = formatted_str.find(field_name);
         if (pos >= 0) begin
             int start = formatted_str.find("=", pos) + 1;
-            int end = formatted_str.find(",", start);
-            if (end < 0) end = formatted_str.len();
-            return formatted_str.substr(start, end - 1);
+            int end_pos = formatted_str.find(",", start);
+            if (end_pos < 0) end_pos = formatted_str.len();
+            return formatted_str.substr(start, end_pos - 1);
         end
         return "";
     endfunction
@@ -100,7 +100,8 @@ class StringUtilsTest extends uvm_test;
         `uvm_info("STRING", $sformatf("format_transaction() = %s", formatted_str), UVM_MEDIUM)
         
         // Test field extraction
-        string data_field = str_utils.extract_field(formatted_str, "data");
+        string data_field;
+        data_field = str_utils.extract_field(formatted_str, "data");
         `uvm_info("STRING", $sformatf("extract_field('data') = %s", data_field), UVM_MEDIUM)
         
         #100;

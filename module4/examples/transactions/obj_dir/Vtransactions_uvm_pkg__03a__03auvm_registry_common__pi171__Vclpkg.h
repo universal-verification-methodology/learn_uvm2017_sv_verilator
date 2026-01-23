@@ -19,7 +19,7 @@ class Vtransactions_uvm_pkg__03a__03auvm_scoreboard;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi171__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi171__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -28,11 +28,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_registry_c
     VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi171> __PVT__get__Vstatic__m_inst;
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi171__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi171__Vclpkg();
     ~Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi171__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi171__Vclpkg);
 
     // INTERNAL METHODS

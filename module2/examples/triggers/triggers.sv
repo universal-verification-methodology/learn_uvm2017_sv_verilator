@@ -61,12 +61,11 @@ module triggers;
      * Using # for time-based delays
      */
     task test_delay_control();
+        int start_time;
         $display();
         $display("Example 2: Delay Control (#)");
         
-        // Track when this example starts (avoid declaration-time initialization
-        // to keep Verilator's parser happy).
-        int start_time;
+        // Track when this example starts
         start_time = $time;
         
         #10;
@@ -112,14 +111,15 @@ module triggers;
      * Parallel execution with synchronization
      */
     task test_fork_join();
-        $display();
-        $display("Example 4: Fork-Join");
-        
-        // Separate declarations to avoid multi-variable declaration issues in
-        // some Verilator configurations.
         int task1_time;
         int task2_time;
         int task3_time;
+        $display();
+        $display("Example 4: Fork-Join");
+        
+        task1_time = 0;
+        task2_time = 0;
+        task3_time = 0;
         
         fork
             begin
@@ -226,13 +226,12 @@ module triggers;
      * Using wait with timeout
      */
     task test_timeout();
+        int timeout;
+        int start_time;
         $display();
         $display("Example 8: Timeout Handling");
         
         condition_met = 0;
-        // Avoid declaration-time initialization for Verilator compatibility.
-        int timeout;
-        int start_time;
         timeout = 100;
         start_time = $time;
         

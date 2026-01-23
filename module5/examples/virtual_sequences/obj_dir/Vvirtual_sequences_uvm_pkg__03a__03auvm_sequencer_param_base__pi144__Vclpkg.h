@@ -24,15 +24,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz203;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,8 +60,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144 : publ
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi148> __PVT__sqr_rsp_analysis_fifo;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_analysis_export__Tz203> __PVT__rsp_export;
     VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz203> __PVT__m_req_fifo;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_analysis_write(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item> t);
     virtual void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_connect_phase(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_phase> phase);
@@ -83,7 +86,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144 : publ
     Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_sequencer_param_base__pi144>& obj);

@@ -97,9 +97,9 @@ class RegisterBlock extends uvm_object;
         base_address = 32'h0000_0000;
     endfunction
     
-    function void add_register(Register reg);
-        registers[reg.name] = reg;
-        reg.address = base_address + (registers.num() * 4);
+    function void add_register(Register reg_item);
+        registers[reg_item.name] = reg_item;
+        reg_item.address = base_address + (registers.num() * 4);
     endfunction
     
     function Register get_register(string name);
@@ -112,23 +112,27 @@ class RegisterBlock extends uvm_object;
     endfunction
     
     function void write_register(string name, logic [31:0] data);
-        Register reg = get_register(name);
-        if (reg != null) begin
-            reg.write(data);
+        Register reg_item;
+        reg_item = get_register(name);
+        if (reg_item != null) begin
+            reg_item.write(data);
         end
     endfunction
     
     function logic [31:0] read_register(string name);
-        Register reg = get_register(name);
-        if (reg != null) begin
-            return reg.read();
+        Register reg_item;
+        reg_item = get_register(name);
+        if (reg_item != null) begin
+            return reg_item.read();
         end else begin
             return 32'h0;
         end
     endfunction
     
     function string convert2string();
-        string s = $sformatf("Register Block: %s @ 0x%08h", name, base_address);
+        string s;
+        string reg_name;
+        s = $sformatf("Register Block: %s @ 0x%08h", name, base_address);
         foreach (registers[reg_name]) begin
             s = {s, $sformatf("\n  %s", registers[reg_name].convert2string())};
         end

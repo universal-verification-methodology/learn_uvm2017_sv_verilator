@@ -43,7 +43,7 @@ VlCoroutine Verror_handling_example___024root___eval_initial__TOP__Vtiming__0(Ve
                                          nullptr, "error_handling_example.sv", 
                                          118);
     VL_FINISH_MT("error_handling_example.sv", 119, "");
-}
+    co_return;}
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Verror_handling_example___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
@@ -154,7 +154,7 @@ void Verror_handling_example___024root___eval(Verror_handling_example___024root*
 #ifdef VL_DEBUG
             Verror_handling_example___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("error_handling_example.sv", 81, "", "NBA region did not converge after 100 tries");
+            VL_FATAL_MT("error_handling_example.sv", 81, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -163,7 +163,7 @@ void Verror_handling_example___024root___eval(Verror_handling_example___024root*
 #ifdef VL_DEBUG
                 Verror_handling_example___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("error_handling_example.sv", 81, "", "Active region did not converge after 100 tries");
+                VL_FATAL_MT("error_handling_example.sv", 81, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

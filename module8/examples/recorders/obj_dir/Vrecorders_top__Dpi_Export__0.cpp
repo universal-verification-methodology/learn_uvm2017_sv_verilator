@@ -1,6 +1,6 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Implementation of DPI export functions.
-//
+
 #include "Vrecorders_top.h"
 #include "Vrecorders_top__Syms.h"
 #include "verilated_dpi.h"

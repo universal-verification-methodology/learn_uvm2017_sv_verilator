@@ -16,15 +16,18 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element;
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,7 +55,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element : pu
     Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element(Vvirtual_sequences__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message_string_element>& obj);

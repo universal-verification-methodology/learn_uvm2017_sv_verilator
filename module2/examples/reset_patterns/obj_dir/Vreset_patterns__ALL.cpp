@@ -5,6 +5,6 @@
 #include "Vreset_patterns__Trace__0.cpp"
 #include "Vreset_patterns___024root__Slow.cpp"
 #include "Vreset_patterns___024root__0__Slow.cpp"
-#include "Vreset_patterns__Syms.cpp"
+#include "Vreset_patterns__Syms__Slow.cpp"
 #include "Vreset_patterns__Trace__0__Slow.cpp"
 #include "Vreset_patterns__TraceDecls__0__Slow.cpp"

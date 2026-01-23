@@ -6,11 +6,11 @@
 
 void Vvirtual_sequences___024root___ctor_var_reset(Vvirtual_sequences___024root* vlSelf);
 
-Vvirtual_sequences___024root::Vvirtual_sequences___024root(Vvirtual_sequences__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , __VdlySched{*symsp->_vm_contextp__}
-    , vlSymsp{symsp}
+Vvirtual_sequences___024root::Vvirtual_sequences___024root(Vvirtual_sequences__Syms* symsp, const char* namep)
+    : __VdlySched{*symsp->_vm_contextp__}
  {
+    vlSymsp = symsp;
+    vlNamep = strdup(namep);
     // Reset structure values
     Vvirtual_sequences___024root___ctor_var_reset(this);
 }
@@ -20,4 +20,5 @@ void Vvirtual_sequences___024root::__Vconfigure(bool first) {
 }
 
 Vvirtual_sequences___024root::~Vvirtual_sequences___024root() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

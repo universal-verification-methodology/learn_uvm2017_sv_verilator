@@ -12,15 +12,18 @@
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_std final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_std final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_std(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_std();
     ~Varchitecture_std();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_std);
 
     // INTERNAL METHODS

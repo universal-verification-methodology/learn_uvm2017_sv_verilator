@@ -84,7 +84,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc_get_childre
     while (VL_LTS_III(32, unnamedblk43__DOT__i, this->__PVT__m_children.size())) {
         children.push_back(this->__PVT__m_children.at(unnamedblk43__DOT__i));
         if (recurse) {
-            VL_NULL_CHECK(this->__PVT__m_children.at(unnamedblk43__DOT__i), "/mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_printer.svh", 1457)->__VnoInFunc_get_children(vlSymsp, children, 1U);
+            VL_NULL_CHECK(this->__PVT__m_children.at(unnamedblk43__DOT__i), "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_printer.svh", 1457)->__VnoInFunc_get_children(vlSymsp, children, 1U);
         }
         unnamedblk43__DOT__i = ((IData)(1U) + unnamedblk43__DOT__i);
     }
@@ -99,27 +99,35 @@ void Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc_clear_child
 void Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__3__Vfuncout;
-    __Vfunc___Vbasic_randomize__3__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__3__Vfuncout;
+    __Vfunc___VBasicRand__3__Vfuncout = 0;
     // Body
-    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__3__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__3__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__3__Vfuncout);
+            }(), __Vfunc___VBasicRand__3__Vfuncout));
 }
 
-void Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc___Vbasic_randomize\n"); );
+void Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_printer_element::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Varchitecture_uvm_pkg__03a__03auvm_printer_element::_ctor_var_reset(Varchitecture__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_printer_element::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Varchitecture_uvm_pkg__03a__03auvm_printer_element::~Varchitecture_uvm_pkg__03a__03auvm_printer_element() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_uvm_pkg__03a__03auvm_printer_element::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element>& obj) {

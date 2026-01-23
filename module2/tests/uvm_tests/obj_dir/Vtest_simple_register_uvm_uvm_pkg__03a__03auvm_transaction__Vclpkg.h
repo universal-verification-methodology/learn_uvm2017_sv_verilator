@@ -22,15 +22,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,16 +56,16 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction : public Vtest_
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component> __PVT__initiator;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream> __PVT__stream_handle;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder> __PVT__tr_recorder;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_accept_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, QData/*63:0*/ accept_time);
     void __VnoInFunc_begin_child_tr(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ parent_handle, IData/*31:0*/ &begin_child_tr__Vfuncrtn);
     void __VnoInFunc_begin_tr(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     void __VnoInFunc_disable_recording(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_accept_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_begin_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_accept_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_begin_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object> rhs);
-    virtual void __VnoInFunc_do_end_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_end_tr(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_printer> printer);
     virtual void __VnoInFunc_do_record(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_recorder> recorder);
     void __VnoInFunc_enable_recording(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_tr_stream> stream);
@@ -86,7 +89,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction : public Vtest_
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component> initiator);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_transaction>& obj);

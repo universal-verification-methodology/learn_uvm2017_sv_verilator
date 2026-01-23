@@ -1,6 +1,6 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Implementation of DPI export functions.
-//
+
 #include "Vtest_and_gate_uvm.h"
 #include "Vtest_and_gate_uvm__Syms.h"
 #include "verilated_dpi.h"

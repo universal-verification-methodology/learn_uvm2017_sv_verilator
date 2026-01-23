@@ -21,15 +21,18 @@ class Vdma_uvm_pkg__03a__03auvm_set_get_dap_base__Tz30;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30__Vclpkg);
 
     // INTERNAL METHODS
@@ -47,8 +50,8 @@ class Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30 : public Vdma_uvm_pkg__03a
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ __PVT__m_value;
     CData/*0:0*/ __PVT__m_locked;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> rhs);
@@ -67,7 +70,7 @@ class Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30 : public Vdma_uvm_pkg__03a
     Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz30>& obj);

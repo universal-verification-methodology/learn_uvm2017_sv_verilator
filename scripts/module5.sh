@@ -43,6 +43,34 @@ PARALLEL_JOBS=8
 # Clean builds by default (set to false to skip cleaning for faster rebuilds)
 CLEAN_BUILDS=true
 
+# Log file setup - will be initialized in main()
+LOG_FILE=""
+
+# Function to setup logging (redirects stdout and stderr to both console and log file)
+setup_logging() {
+    # Initialize log file path
+    LOG_FILE="$MODULE5_DIR/module5.log"
+    mkdir -p "$MODULE5_DIR"
+    
+    # Create log file with timestamp header
+    {
+        echo "=========================================="
+        echo "Module 5 Execution Log"
+        echo "Started: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "Command: $0 $*"
+        echo "Working directory: $(pwd)"
+        echo "UVM_HOME: ${UVM_HOME:-not set}"
+        echo "Simulator: $SIMULATOR"
+        echo "Parallel jobs: $PARALLEL_JOBS"
+        echo "=========================================="
+        echo ""
+    } > "$LOG_FILE"
+    
+    # Redirect stdout and stderr to both console and log file
+    exec > >(tee -a "$LOG_FILE")
+    exec 2>&1
+}
+
 # Function to print colored output
 print_status() {
     local color=$1
@@ -433,10 +461,14 @@ parse_args() {
 
 # Main function
 main() {
-    print_header "Module 5: Advanced UVM Concepts"
-    
-    # Parse arguments
+    # Parse arguments first (so help can be shown without logging)
     parse_args "$@"
+    
+    # Setup logging after argument parsing (before actual work)
+    setup_logging "$@"
+    
+    print_header "Module 5: Advanced UVM Concepts"
+    print_status $BLUE "Log file: $LOG_FILE"
     
     # Check prerequisites
     check_prerequisites
@@ -498,10 +530,24 @@ main() {
         echo "  1. Review the examples in module5/examples/"
         echo "  2. Try modifying the examples"
         echo "  3. Proceed to Module 6: Complex Testbenches"
+        echo ""
+        print_status $BLUE "Full log saved to: $LOG_FILE"
     else
         print_status $RED "✗ Completed with $errors error(s)"
+        echo ""
+        print_status $YELLOW "Check log file for details: $LOG_FILE"
         exit 1
     fi
+    
+    # Add footer to log file
+    {
+        echo ""
+        echo "=========================================="
+        echo "Module 5 Execution Log - Completed"
+        echo "Finished: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "Exit code: $errors"
+        echo "=========================================="
+    } >> "$LOG_FILE"
 }
 
 # Run main function with all arguments

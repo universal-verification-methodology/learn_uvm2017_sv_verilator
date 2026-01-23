@@ -23,15 +23,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_string_element;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +52,8 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container :
 
     // DESIGN SPECIFIC STATE
     VlQueue<VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_base>> __PVT__elements;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_int(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix, IData/*31:0*/ action);
     virtual void __VnoInFunc_add_object(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_object> obj, IData/*31:0*/ action);
     virtual void __VnoInFunc_add_string(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, std::string value, IData/*31:0*/ action);
@@ -71,7 +74,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container :
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_report_message_element_container>& obj);

@@ -10,11 +10,9 @@
 #include "verilated_random.h"
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_component;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_component_registry__Tz277;
-class Vclass_hierarchy_uvm_pkg__03a__03auvm_coreservice_t;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_object_wrapper;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_port_base__Tz278;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item;
-class Vclass_hierarchy_uvm_pkg__03a__03auvm_root;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi152;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_base;
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_request;
@@ -25,15 +23,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_fifo__Tz210;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,8 +53,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210 : public Vcl
     CData/*0:0*/ __PVT__sequence_item_requested;
     CData/*0:0*/ __PVT__get_next_item_called;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi152> __PVT__seq_item_export;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     VlCoroutine __VnoInFunc_get(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> &t);
     virtual VlCoroutine __VnoInFunc_get_next_item(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_item> &t);
     virtual void __VnoInFunc_get_object_type(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
@@ -73,7 +74,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210 : public Vcl
     Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_sequencer__Tz210_TBz210>& obj);

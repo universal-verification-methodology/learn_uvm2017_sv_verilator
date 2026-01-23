@@ -17,15 +17,18 @@ class Vdma_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma___024unit__03a__03aDmaTxn__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma___024unit__03a__03aDmaTxn__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma___024unit__03a__03aDmaTxn__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma___024unit__03a__03aDmaTxn__Vclpkg();
     ~Vdma___024unit__03a__03aDmaTxn__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma___024unit__03a__03aDmaTxn__Vclpkg);
 
     // INTERNAL METHODS
@@ -46,9 +49,9 @@ class Vdma___024unit__03a__03aDmaTxn : public Vdma_uvm_pkg__03a__03auvm_sequence
     SData/*15:0*/ __PVT__len;
     IData/*31:0*/ __PVT__src;
     IData/*31:0*/ __PVT__dst;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    void __VnoInFunc___Vrandwith_hc6e33871__0(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vrandwith_hc6e33871__0__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    void __VnoInFunc___Vrandwith_h7091dc69__0(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vrandwith_h7091dc69__0__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_get_object_type(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vdma__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -59,7 +62,7 @@ class Vdma___024unit__03a__03aDmaTxn : public Vdma_uvm_pkg__03a__03auvm_sequence
     Vdma___024unit__03a__03aDmaTxn(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string n);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma___024unit__03a__03aDmaTxn() {}
+    virtual ~Vdma___024unit__03a__03aDmaTxn();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma___024unit__03a__03aDmaTxn>& obj);

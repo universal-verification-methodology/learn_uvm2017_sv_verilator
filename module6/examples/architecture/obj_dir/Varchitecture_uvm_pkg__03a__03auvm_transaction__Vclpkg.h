@@ -22,15 +22,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_transaction;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_transaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_transaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_uvm_pkg__03a__03auvm_transaction__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_uvm_pkg__03a__03auvm_transaction__Vclpkg();
     ~Varchitecture_uvm_pkg__03a__03auvm_transaction__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_transaction__Vclpkg);
 
     // INTERNAL METHODS
@@ -53,16 +56,16 @@ class Varchitecture_uvm_pkg__03a__03auvm_transaction : public Varchitecture_uvm_
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> __PVT__initiator;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_tr_stream> __PVT__stream_handle;
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_recorder> __PVT__tr_recorder;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_accept_tr(Varchitecture__Syms* __restrict vlSymsp, QData/*63:0*/ accept_time);
     void __VnoInFunc_begin_child_tr(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ parent_handle, IData/*31:0*/ &begin_child_tr__Vfuncrtn);
     void __VnoInFunc_begin_tr(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, QData/*63:0*/ begin_time, IData/*31:0*/ &begin_tr__Vfuncrtn);
     void __VnoInFunc_disable_recording(Varchitecture__Syms* __restrict vlSymsp);
-    virtual void __VnoInFunc_do_accept_tr(Varchitecture__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_do_begin_tr(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_accept_tr(Varchitecture__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_do_begin_tr(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_copy(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object> rhs);
-    virtual void __VnoInFunc_do_end_tr(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_do_end_tr(Varchitecture__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_do_print(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer> printer);
     virtual void __VnoInFunc_do_record(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_recorder> recorder);
     void __VnoInFunc_enable_recording(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_tr_stream> stream);
@@ -86,7 +89,7 @@ class Varchitecture_uvm_pkg__03a__03auvm_transaction : public Varchitecture_uvm_
     Varchitecture_uvm_pkg__03a__03auvm_transaction(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> initiator);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture_uvm_pkg__03a__03auvm_transaction() {}
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_transaction();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_transaction>& obj);

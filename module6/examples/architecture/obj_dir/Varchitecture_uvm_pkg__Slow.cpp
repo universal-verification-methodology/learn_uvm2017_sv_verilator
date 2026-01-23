@@ -6,10 +6,12 @@
 
 void Varchitecture_uvm_pkg___ctor_var_reset(Varchitecture_uvm_pkg* vlSelf);
 
-Varchitecture_uvm_pkg::Varchitecture_uvm_pkg(Varchitecture__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Varchitecture_uvm_pkg::Varchitecture_uvm_pkg() = default;
+Varchitecture_uvm_pkg::~Varchitecture_uvm_pkg() = default;
+
+void Varchitecture_uvm_pkg::ctor(Varchitecture__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Varchitecture_uvm_pkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Varchitecture_uvm_pkg::__Vconfigure(bool first) {
     (void)first;  // Prevent unused variable warning
 }
 
-Varchitecture_uvm_pkg::~Varchitecture_uvm_pkg() {
+void Varchitecture_uvm_pkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

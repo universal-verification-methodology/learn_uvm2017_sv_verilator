@@ -14,15 +14,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_object;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_visitor___Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_visitor___Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_visitor___Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_visitor___Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_visitor___Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_visitor___Vclpkg);
 
     // INTERNAL METHODS
@@ -35,10 +38,10 @@ class Vpools_top__Syms;
 
 class Vpools_top_uvm_pkg__03a__03auvm_visitor_ : public Vpools_top_uvm_pkg__03a__03auvm_object {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_begin_v(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp) {}
-    virtual void __VnoInFunc_end_v(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_begin_v(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
+    virtual void __VnoInFunc_end_v(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
     virtual void __VnoInFunc_visit(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_component> node);
   private:
@@ -47,7 +50,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_visitor_ : public Vpools_top_uvm_pkg__03a_
     Vpools_top_uvm_pkg__03a__03auvm_visitor_(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_visitor_() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_visitor_();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_visitor_>& obj);

@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vinterface_example.h instead.
 
-
 #ifndef VERILATED_VINTERFACE_EXAMPLE__PCH_H_
 #define VERILATED_VINTERFACE_EXAMPLE__PCH_H_  // guard
 

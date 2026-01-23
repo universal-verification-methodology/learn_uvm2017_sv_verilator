@@ -16,7 +16,7 @@ extern "C" {
 
 
     // DPI EXPORTS
-    // DPI export at /mnt/d/proj/designs/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh:114:15
+    // DPI export at /home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_globals.svh:114:15
     extern void m__uvm_report_dpi(int severity, const char* id, const char* message, int verbosity, const char* filename, int line);
 
 #ifdef __cplusplus

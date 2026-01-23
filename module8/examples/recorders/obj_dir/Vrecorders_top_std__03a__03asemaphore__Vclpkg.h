@@ -12,15 +12,18 @@
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std__03a__03asemaphore__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std__03a__03asemaphore__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_std__03a__03asemaphore__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_std__03a__03asemaphore__Vclpkg();
     ~Vrecorders_top_std__03a__03asemaphore__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_std__03a__03asemaphore__Vclpkg);
 
     // INTERNAL METHODS
@@ -34,7 +37,6 @@ class Vrecorders_top_std__03a__03asemaphore : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h6f8f1d71__0;
     IData/*31:0*/ __PVT__m_keyCount;
     VlCoroutine __VnoInFunc_get(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount);
     void __VnoInFunc_put(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ keyCount);

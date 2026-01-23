@@ -34,7 +34,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vclock_gen__Syms final : public VerilatedSyms
     ~Vclock_gen__Syms();
 
     // METHODS
-    const char* name() { return TOP.name(); }
+    const char* name() const { return TOP.vlNamep; }
 };
 
 #endif  // guard

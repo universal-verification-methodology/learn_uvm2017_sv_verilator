@@ -18,22 +18,22 @@ import uvm_pkg::*;
 class QueueTransaction extends uvm_sequence_item;
     rand logic [7:0] data;
     rand logic [15:0] address;
-    int priority;
+    int prio;
     
     `uvm_object_utils(QueueTransaction)
     
     function new(string name = "QueueTransaction");
         super.new(name);
-        priority = 0;
+        prio = 0;
     endfunction
     
     function string convert2string();
-        return $sformatf("data=0x%02h, addr=0x%04h, priority=%0d", data, address, priority);
+        return $sformatf("data=0x%02h, addr=0x%04h, priority=%0d", data, address, prio);
     endfunction
     
     function int compare(QueueTransaction rhs);
-        if (priority > rhs.priority) return 1;
-        if (priority < rhs.priority) return -1;
+        if (prio > rhs.prio) return 1;
+        if (prio < rhs.prio) return -1;
         return 0;
     endfunction
 endclass
@@ -165,7 +165,7 @@ class QueueTest extends uvm_test;
             void'(txn.randomize());
             txn.data = i * 8'h10;
             txn.address = i * 16'h100;
-            txn.priority = $urandom_range(0, 9);
+            txn.prio = $urandom_range(0, 9);
             queue_mgr.enqueue_priority(txn);
             #10;
         end

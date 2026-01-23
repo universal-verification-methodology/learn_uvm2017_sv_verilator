@@ -15,15 +15,18 @@ class Vpools_top_uvm_pkg__03a__03auvm_resource_pool;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_int_rsrc__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_int_rsrc__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_int_rsrc__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_int_rsrc__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_int_rsrc__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_int_rsrc__Vclpkg);
 
     // INTERNAL METHODS
@@ -36,8 +39,8 @@ class Vpools_top__Syms;
 
 class Vpools_top_uvm_pkg__03a__03auvm_int_rsrc : public Vpools_top_uvm_pkg__03a__03auvm_resource_ {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
     virtual void __VnoInFunc_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
   private:
@@ -46,7 +49,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_int_rsrc : public Vpools_top_uvm_pkg__03a_
     Vpools_top_uvm_pkg__03a__03auvm_int_rsrc(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name, std::string s);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_int_rsrc() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_int_rsrc();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_int_rsrc>& obj);

@@ -12,24 +12,25 @@ class Vvirtual_sequences_std__03a__03amailbox__Tz15;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_analysis_port__Tz15;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_component;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_component_registry__Tz126;
-class Vvirtual_sequences_uvm_pkg__03a__03auvm_coreservice_t;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_object_wrapper;
-class Vvirtual_sequences_uvm_pkg__03a__03auvm_root;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_sequence_item;
 class Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz15;
 
 
 class Vvirtual_sequences__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vvirtual_sequences__Syms* const vlSymsp;
+    Vvirtual_sequences__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15__Vclpkg(Vvirtual_sequences__Syms* symsp, const char* v__name);
+    Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15__Vclpkg();
     ~Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15__Vclpkg();
+    void ctor(Vvirtual_sequences__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15__Vclpkg);
 
     // INTERNAL METHODS
@@ -49,8 +50,8 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15 : public Vvirtual_s
     IData/*31:0*/ __PVT__m_size;
     IData/*31:0*/ __PVT__m_pending_blocked_gets;
     VlClassRef<Vvirtual_sequences_std__03a__03amailbox__Tz15> __PVT__m;
-    virtual void __VnoInFunc___Vbasic_randomize(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vvirtual_sequences__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vvirtual_sequences__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vvirtual_sequences__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -74,7 +75,7 @@ class Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15 : public Vvirtual_s
     Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15(VlProcessRef vlProcess, Vvirtual_sequences__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15() {}
+    virtual ~Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vvirtual_sequences_uvm_pkg__03a__03auvm_tlm_fifo__Tz15>& obj);

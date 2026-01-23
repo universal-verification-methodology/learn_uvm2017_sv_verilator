@@ -13,15 +13,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_phase;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture_std__03a__03amailbox__Tz32__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_std__03a__03amailbox__Tz32__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture_std__03a__03amailbox__Tz32__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture_std__03a__03amailbox__Tz32__Vclpkg();
     ~Varchitecture_std__03a__03amailbox__Tz32__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture_std__03a__03amailbox__Tz32__Vclpkg);
 
     // INTERNAL METHODS
@@ -35,9 +38,6 @@ class Varchitecture_std__03a__03amailbox__Tz32 : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_hf4cf889a__0;
-    CData/*0:0*/ __Vtrigprevexpr_h46d7caf2__0;
-    CData/*0:0*/ __Vtrigprevexpr_h46d7caf2__1;
     IData/*31:0*/ __PVT__m_bound;
     VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase>> __PVT__m_queue;
     VlCoroutine __VnoInFunc_get(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> &message);

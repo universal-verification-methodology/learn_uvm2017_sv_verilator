@@ -42,7 +42,7 @@ VM_SUPPORT_FAST += \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-  Vinterface_example__Syms \
+  Vinterface_example__Syms__Slow \
   Vinterface_example__Trace__0__Slow \
   Vinterface_example__TraceDecls__0__Slow \
 

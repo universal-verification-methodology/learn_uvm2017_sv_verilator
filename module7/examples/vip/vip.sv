@@ -18,7 +18,9 @@ class VipSeq extends uvm_sequence #(VipTxn);
     VipTxn t;
     repeat (5) begin
       t = VipTxn::type_id::create("t");
+      /* verilator lint_off IGNOREDRETURN */
       void'(t.randomize());
+      /* verilator lint_on IGNOREDRETURN */
       start_item(t); finish_item(t);
     end
   endtask

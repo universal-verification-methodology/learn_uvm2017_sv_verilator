@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vreset_patterns.h instead.
 
-
 #ifndef VERILATED_VRESET_PATTERNS__PCH_H_
 #define VERILATED_VRESET_PATTERNS__PCH_H_  // guard
 

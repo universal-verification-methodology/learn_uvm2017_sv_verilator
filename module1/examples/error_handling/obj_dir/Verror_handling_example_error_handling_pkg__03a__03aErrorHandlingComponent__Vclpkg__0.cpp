@@ -40,7 +40,7 @@ VlCoroutine Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingCom
     if (VL_UNLIKELY(((1U & (~ (IData)(success)))))) {
         VL_WRITEF_NX("[RETRY] ERROR: Operation failed after all retries\n",0);
     }
-}
+    co_return;}
 
 void Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent::__VnoInFunc_demonstrate_reporting(Verror_handling_example__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent::__VnoInFunc_demonstrate_reporting\n"); );

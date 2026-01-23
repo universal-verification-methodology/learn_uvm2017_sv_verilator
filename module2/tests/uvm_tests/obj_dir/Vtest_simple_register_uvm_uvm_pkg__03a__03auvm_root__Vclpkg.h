@@ -10,7 +10,7 @@
 #include "verilated_random.h"
 #include "Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component__Vclpkg.h"
 class Vtest_simple_register_uvm_std__03a__03aprocess;
-class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_22;
+class Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_28;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_cmdline_processor;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component;
 class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_proxy;
@@ -29,7 +29,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_visitor_;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -38,11 +38,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm_uvm_pkg__03a__03auv
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root> __PVT__m_inst;
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root__Vclpkg();
     ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root__Vclpkg);
 
     // INTERNAL METHODS
@@ -64,8 +67,8 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root : public Vtest_simple_
     CData/*0:0*/ __PVT__m_phase_all_done;
     QData/*63:0*/ __PVT__phase_timeout;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_cmdline_processor> __PVT__clp;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_die(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_end_of_elaboration_phase(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase> phase);
@@ -95,7 +98,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root : public Vtest_simple_
     virtual VlCoroutine __VnoInFunc_run_phase(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase> phase);
     virtual VlCoroutine __VnoInFunc_run_test(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string test_name);
   private:
-    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_22> __VDynScope_run_test_0);
+    VlCoroutine __VnoInFunc_run_test____Vfork_1__0(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03a__VDynScope_28> __VDynScope_run_test_0, VlClassRef<Vtest_simple_register_uvm_std__03a__03aprocess> unnamedblk164__DOT____VforkParent);
   public:
     void __VnoInFunc_set_enable_print_topology(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ enable);
     virtual void __VnoInFunc_set_finish_on_completion(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, CData/*0:0*/ f);
@@ -106,7 +109,7 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root : public Vtest_simple_
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root() {}
+    virtual ~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_root>& obj);

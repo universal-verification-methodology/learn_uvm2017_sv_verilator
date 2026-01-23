@@ -39,6 +39,10 @@ void Vtransaction_example_transaction_pkg__03a__03aWriteTransaction::_ctor_var_r
     __PVT__address = 0;
 }
 
+Vtransaction_example_transaction_pkg__03a__03aWriteTransaction::~Vtransaction_example_transaction_pkg__03a__03aWriteTransaction() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransaction_example_transaction_pkg__03a__03aWriteTransaction::~\n"); );
+}
+
 std::string VL_TO_STRING(const VlClassRef<Vtransaction_example_transaction_pkg__03a__03aWriteTransaction>& obj) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtransaction_example_transaction_pkg__03a__03aWriteTransaction::VL_TO_STRING\n"); );
     // Body

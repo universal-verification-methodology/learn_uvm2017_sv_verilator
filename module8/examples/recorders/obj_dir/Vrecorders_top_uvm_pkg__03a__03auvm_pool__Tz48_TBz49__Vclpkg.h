@@ -19,18 +19,21 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_root;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49> __PVT__m_global_pool;
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49__Vclpkg);
 
     // INTERNAL METHODS
@@ -50,8 +53,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49 : public Vrecorders_t
 
     // DESIGN SPECIFIC STATE
     VlAssocArray<std::string, IData/*31:0*/> __PVT__pool;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add(Vrecorders_top__Syms* __restrict vlSymsp, std::string key, IData/*31:0*/ item);
     void __VnoInFunc_create(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_object> &create__Vfuncrtn);
     virtual void __VnoInFunc_delete(Vrecorders_top__Syms* __restrict vlSymsp, std::string key);
@@ -73,7 +76,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49 : public Vrecorders_t
     Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_pool__Tz48_TBz49>& obj);

@@ -5,7 +5,6 @@
 // unless using verilator public meta comments.
 // Suggest use Vtest_counter.h instead.
 
-
 #ifndef VERILATED_VTEST_COUNTER__PCH_H_
 #define VERILATED_VTEST_COUNTER__PCH_H_  // guard
 

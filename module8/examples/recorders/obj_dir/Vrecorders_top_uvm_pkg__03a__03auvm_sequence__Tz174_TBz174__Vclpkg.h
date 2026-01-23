@@ -19,15 +19,18 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi130;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174__Vclpkg();
     ~Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,8 +48,8 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174 : public Vrecor
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequencer_param_base__pi130> __PVT__param_sequencer;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> __PVT__req;
     VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> __PVT__rsp;
-    virtual void __VnoInFunc___Vbasic_randomize(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vrecorders_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vrecorders_top__Syms* __restrict vlSymsp);
     void __VnoInFunc_do_print(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_printer> printer);
     void __VnoInFunc_get_current_item(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> &get_current_item__Vfuncrtn);
     virtual VlCoroutine __VnoInFunc_get_response(Vrecorders_top__Syms* __restrict vlSymsp, VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_reg_item> &response, IData/*31:0*/ transaction_id);
@@ -59,7 +62,7 @@ class Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174 : public Vrecor
     Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174(VlProcessRef vlProcess, Vrecorders_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174() {}
+    virtual ~Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_uvm_pkg__03a__03auvm_sequence__Tz174_TBz174>& obj);

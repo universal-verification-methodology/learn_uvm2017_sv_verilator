@@ -20,15 +20,18 @@ class Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase;
 
 class Vtest_simple_register_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_simple_register_uvm__Syms* const vlSymsp;
+    Vtest_simple_register_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name);
+    Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor__Vclpkg();
     ~Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor__Vclpkg();
+    void ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor__Vclpkg);
 
     // INTERNAL METHODS
@@ -45,11 +48,10 @@ class Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor : public Vtes
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h7c62d22a__0;
     Vtest_simple_register_uvm_register_if* __PVT__vif;
     VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_analysis_port__Tz126> __PVT__ap;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtest_simple_register_uvm__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_get_object_type(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -61,7 +63,7 @@ class Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor : public Vtes
     Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor(VlProcessRef vlProcess, Vtest_simple_register_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor() {}
+    virtual ~Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_simple_register_uvm___024unit__03a__03aRegisterMonitor>& obj);

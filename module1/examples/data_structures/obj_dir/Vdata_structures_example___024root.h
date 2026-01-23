@@ -20,7 +20,7 @@ class Vdata_structures_example_data_structures_pkg__03a__03aTransactionQueue__Vc
 
 class Vdata_structures_example__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example___024root final {
   public:
     // CELLS
     Vdata_structures_example_data_structures_pkg* __PVT__data_structures_pkg;
@@ -39,10 +39,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example___024root final : pu
     VlClassRef<Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction> data_structures_example__DOT__txn;
 
     // INTERNAL VARIABLES
-    Vdata_structures_example__Syms* const vlSymsp;
+    Vdata_structures_example__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdata_structures_example___024root(Vdata_structures_example__Syms* symsp, const char* v__name);
+    Vdata_structures_example___024root(Vdata_structures_example__Syms* symsp, const char* namep);
     ~Vdata_structures_example___024root();
     VL_UNCOPYABLE(Vdata_structures_example___024root);
 

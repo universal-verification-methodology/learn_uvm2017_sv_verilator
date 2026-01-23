@@ -43,7 +43,7 @@ struct Vtest_and_gate_uvm_rsrc_info_t__struct__0 {
 template <>
 struct VlIsCustomStruct<Vtest_and_gate_uvm_rsrc_info_t__struct__0> : public std::true_type {};
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_pool__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_pool__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -52,11 +52,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resou
     VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_tree_printer> __PVT__dump__Vstatic__m_printer;
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_pool__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_pool__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_pool__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_resource_pool__Vclpkg);
 
     // INTERNAL METHODS

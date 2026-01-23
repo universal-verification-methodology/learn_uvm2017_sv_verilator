@@ -11,7 +11,6 @@
 #include "Vpools_top_uvm_pkg.h"
 class Vpools_top_uvm_pkg__03a__03auvm_comparer;
 class Vpools_top_uvm_pkg__03a__03auvm_copier;
-class Vpools_top_uvm_pkg__03a__03auvm_coreservice_t;
 class Vpools_top_uvm_pkg__03a__03auvm_field_op;
 class Vpools_top_uvm_pkg__03a__03auvm_hdl_path_concat;
 class Vpools_top_uvm_pkg__03a__03auvm_mem;
@@ -32,20 +31,22 @@ class Vpools_top_uvm_pkg__03a__03auvm_resource__Tz20;
 class Vpools_top_uvm_pkg__03a__03auvm_resource__Tz21;
 class Vpools_top_uvm_pkg__03a__03auvm_resource__Tz49;
 class Vpools_top_uvm_pkg__03a__03auvm_resource_base;
-class Vpools_top_uvm_pkg__03a__03auvm_root;
 
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq__Vclpkg);
 
     // INTERNAL METHODS
@@ -63,8 +64,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq : public Vpools_top_
 
     // DESIGN SPECIFIC STATE
     VlQueue<std::string> __PVT__abstractions;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     void __VnoInFunc____05Fm_uvm_execute_field_op(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_field_op> ___05Flocal_op___05F);
     virtual VlCoroutine __VnoInFunc_body(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_check_mem(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_mem> m, std::string kind);
@@ -82,7 +83,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq : public Vpools_top_
     Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq>& obj);

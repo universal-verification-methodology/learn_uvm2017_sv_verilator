@@ -12,8 +12,8 @@ void Vsignal_access___024root___eval_initial(Vsignal_access___024root* vlSelf) {
     Vsignal_access__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    vlSelfRef.__Vm_traceActivity[1U] = 1U;
     Vsignal_access___024root___eval_initial__TOP__Vtiming__0(vlSelf);
+    vlSelfRef.__Vm_traceActivity[1U] = 1U;
     Vsignal_access___024root___eval_initial__TOP__Vtiming__1(vlSelf);
 }
 
@@ -179,7 +179,7 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_FINISH_MT("signal_access.sv", 213, "");
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
-}
+    co_return;}
 
 VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__1(Vsignal_access___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsignal_access___024root___eval_initial__TOP__Vtiming__1\n"); );
@@ -198,7 +198,7 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__1(Vsignal_acc
                                              "signal_access.sv", 
                                              33);
     }
-}
+    co_return;}
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Vsignal_access___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
@@ -369,7 +369,7 @@ void Vsignal_access___024root___eval(Vsignal_access___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vsignal_access___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("signal_access.sv", 14, "", "NBA region did not converge after 100 tries");
+            VL_FATAL_MT("signal_access.sv", 14, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -378,7 +378,7 @@ void Vsignal_access___024root___eval(Vsignal_access___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vsignal_access___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("signal_access.sv", 14, "", "Active region did not converge after 100 tries");
+                VL_FATAL_MT("signal_access.sv", 14, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

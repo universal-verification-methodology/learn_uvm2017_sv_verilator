@@ -37,7 +37,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg_field;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_mem__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_mem__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -45,11 +45,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_mem__Vc
     IData/*31:0*/ __PVT__m_max_size;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_mem__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_mem__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_mem__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_mem__Vclpkg);
 
     // INTERNAL METHODS
@@ -78,7 +81,6 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_mem : public Vclass_hierarchy_uvm_pk
     VlAssocArray<VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg>, CData/*0:0*/> __PVT__m_vregs;
     std::string __PVT__m_access;
     std::string __PVT__m_fname;
-    std::string __Vfunc_get_full_name__28__Vfuncout;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_block> __PVT__m_parent;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_backdoor> __PVT__m_backdoor;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object_string_pool__Tz194> __PVT__m_hdl_paths_pool;
@@ -88,8 +90,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_mem : public Vclass_hierarchy_uvm_pk
     void __VnoInFunc_Xdelete_vregX(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_vreg> vreg);
     void __VnoInFunc_Xlock_modelX(Vclass_hierarchy__Syms* __restrict vlSymsp);
     void __VnoInFunc_XsampleX(Vclass_hierarchy__Syms* __restrict vlSymsp, QData/*63:0*/ addr, CData/*0:0*/ is_read, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_map> map);
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_coverage(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ models);
     void __VnoInFunc_add_hdl_path(Vclass_hierarchy__Syms* __restrict vlSymsp, VlQueue<Vclass_hierarchy_uvm_hdl_path_slice__struct__0> slices, std::string kind);
     void __VnoInFunc_add_hdl_path_slice(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, IData/*31:0*/ offset, IData/*31:0*/ size, CData/*0:0*/ first, std::string kind);
@@ -161,7 +163,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_mem : public Vclass_hierarchy_uvm_pk
     Vclass_hierarchy_uvm_pkg__03a__03auvm_mem(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, QData/*63:0*/ size, IData/*31:0*/ n_bits, std::string access, IData/*31:0*/ has_coverage);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_mem() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_mem();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_mem>& obj);

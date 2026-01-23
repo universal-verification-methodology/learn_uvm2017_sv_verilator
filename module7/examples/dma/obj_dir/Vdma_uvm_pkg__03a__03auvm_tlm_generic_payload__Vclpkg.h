@@ -22,15 +22,18 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload__Vclpkg);
 
     // INTERNAL METHODS
@@ -58,8 +61,8 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload : public Vdma_uvm_pkg__03a__
     VlQueue<CData/*7:0*/> __PVT__m_byte_enable;
     VlAssocArray<VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_extension_base>, VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_extension_base>> __PVT__m_extensions;
     VlQueue<VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_extension_base>> __PVT__m_rand_exts;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_clear_extension(Vdma__Syms* __restrict vlSymsp, VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_extension_base> ext_handle);
     void __VnoInFunc_clear_extensions(Vdma__Syms* __restrict vlSymsp);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
@@ -109,7 +112,7 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload : public Vdma_uvm_pkg__03a__
     Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_generic_payload>& obj);

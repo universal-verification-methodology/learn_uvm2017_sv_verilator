@@ -15,15 +15,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298__Vclpkg);
 
     // INTERNAL METHODS
@@ -47,7 +50,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298 : publi
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi167> imp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_analysis_imp__Tz224_TBz298>& obj);

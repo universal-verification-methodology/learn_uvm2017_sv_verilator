@@ -63,27 +63,26 @@ void Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc_conve
 void Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__5__Vfuncout;
-    __Vfunc___Vbasic_randomize__5__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__5__Vfuncout;
+    __Vfunc___VBasicRand__5__Vfuncout = 0;
     // Body
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__5__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__5__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__5__Vfuncout);
+            }(), __Vfunc___VBasicRand__5__Vfuncout));
 }
 
 void Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc___Vsetup_constraints(Vtest_and_gate_uvm__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc___Vsetup_constraints\n"); );
     // Body
-    this->__VnoInFunc_valid_combination_setup_constraint(vlSymsp);
 }
 
-void Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc___Vbasic_randomize(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc___Vbasic_randomize\n"); );
+void Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc___VBasicRand(Vtest_and_gate_uvm__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
     this->__PVT__a = (1U & VL_RANDOM_RNG_I(__Vm_rng));
     this->__PVT__b = (1U & VL_RANDOM_RNG_I(__Vm_rng));
 }
@@ -95,6 +94,10 @@ void Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::_ctor_var_reset(V
     __PVT__a = 0;
     __PVT__b = 0;
     __PVT__expected_y = 0;
+}
+
+Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::~Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm___024unit__03a__03aAndGateTransaction>& obj) {

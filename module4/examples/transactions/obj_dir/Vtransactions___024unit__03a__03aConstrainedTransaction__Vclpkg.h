@@ -17,15 +17,18 @@ class Vtransactions_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vtransactions__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtransactions__Syms* const vlSymsp;
+    Vtransactions__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg();
     ~Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg();
+    void ctor(Vtransactions__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg);
 
     // INTERNAL METHODS
@@ -44,7 +47,7 @@ class Vtransactions___024unit__03a__03aConstrainedTransaction : public Vtransact
     // DESIGN SPECIFIC STATE
     CData/*7:0*/ __PVT__data;
     SData/*15:0*/ __PVT__address;
-    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
+    virtual void __VnoInFunc___VBasicRand(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
     virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_address_aligned_setup_constraint(Vtransactions__Syms* __restrict vlSymsp);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
@@ -59,7 +62,7 @@ class Vtransactions___024unit__03a__03aConstrainedTransaction : public Vtransact
     Vtransactions___024unit__03a__03aConstrainedTransaction(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtransactions___024unit__03a__03aConstrainedTransaction() {}
+    virtual ~Vtransactions___024unit__03a__03aConstrainedTransaction();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtransactions___024unit__03a__03aConstrainedTransaction>& obj);

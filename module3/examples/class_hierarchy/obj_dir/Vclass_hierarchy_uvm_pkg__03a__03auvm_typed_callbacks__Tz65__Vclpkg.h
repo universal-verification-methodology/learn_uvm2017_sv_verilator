@@ -22,7 +22,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_typeid_base;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -31,11 +31,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_c
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65> __PVT__m_t_inst;
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,8 +55,8 @@ class Vclass_hierarchy__Syms;
 
 class Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65 : public Vclass_hierarchy_uvm_pkg__03a__03auvm_callbacks_base {
   public:
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_m_add_tw_cbs(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_callback> cb, IData/*31:0*/ ordering);
     virtual void __VnoInFunc_m_am_i_a(Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> obj, CData/*0:0*/ &m_am_i_a__Vfuncrtn);
     virtual void __VnoInFunc_m_delete_tw_cbs(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_callback> cb, CData/*0:0*/ &m_delete_tw_cbs__Vfuncrtn);
@@ -65,7 +68,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65 : public Vclas
     Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_typed_callbacks__Tz65>& obj);

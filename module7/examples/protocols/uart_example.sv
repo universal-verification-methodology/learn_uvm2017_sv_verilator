@@ -29,7 +29,9 @@ class UartSeq extends uvm_sequence #(UartTxn);
     UartTxn t;
     repeat (3) begin
       t = UartTxn::type_id::create("t");
+      /* verilator lint_off IGNOREDRETURN */
       void'(t.randomize());
+      /* verilator lint_on IGNOREDRETURN */
       start_item(t); finish_item(t);
     end
   endtask

@@ -15,15 +15,18 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_sequence_item;
 
 class Vtest_and_gate_uvm__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vtest_and_gate_uvm__Syms* const vlSymsp;
+    Vtest_and_gate_uvm__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106__Vclpkg(Vtest_and_gate_uvm__Syms* symsp, const char* v__name);
+    Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106__Vclpkg();
     ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106__Vclpkg();
+    void ctor(Vtest_and_gate_uvm__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106__Vclpkg);
 
     // INTERNAL METHODS
@@ -57,7 +60,7 @@ class Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106 : public
     Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106(VlProcessRef vlProcess, Vtest_and_gate_uvm__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_component> parent, IData/*31:0*/ min_size, IData/*31:0*/ max_size);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106() {}
+    virtual ~Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_port__pi106>& obj);

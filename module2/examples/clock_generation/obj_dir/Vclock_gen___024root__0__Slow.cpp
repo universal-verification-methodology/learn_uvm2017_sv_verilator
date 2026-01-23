@@ -18,7 +18,7 @@ VL_ATTR_COLD void Vclock_gen___024root___eval_static(Vclock_gen___024root* vlSel
         = vlSelfRef.clock_gen__DOT__clk2;
     vlSelfRef.__Vtrigprevexpr___TOP__clock_gen__DOT__clk3__0 
         = vlSelfRef.clock_gen__DOT__clk3;
-    vlSelfRef.__Vtrigprevexpr_ha0475fda__1 = (1U & 
+    vlSelfRef.__Vtrigprevexpr_h588af64e__1 = (1U & 
                                               (~ (IData)(vlSelfRef.clock_gen__DOT__clk_stop)));
 }
 
@@ -84,7 +84,7 @@ VL_ATTR_COLD void Vclock_gen___024root___ctor_var_reset(Vclock_gen___024root* vl
     Vclock_gen__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->name());
+    const uint64_t __VscopeHash = VL_MURMUR64_HASH(vlSelf->vlNamep);
     vlSelf->clock_gen__DOT__clk1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 17216913142356162270ull);
     vlSelf->clock_gen__DOT__clk2 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 2050085415900215057ull);
     vlSelf->clock_gen__DOT__clk3 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 10118968715771558781ull);
@@ -98,10 +98,10 @@ VL_ATTR_COLD void Vclock_gen___024root___ctor_var_reset(Vclock_gen___024root* vl
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VactTriggered[__Vi0] = 0;
     }
-    vlSelf->__Vtrigprevexpr___TOP__clock_gen__DOT__clk1__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 6091988663345591702ull);
-    vlSelf->__Vtrigprevexpr___TOP__clock_gen__DOT__clk2__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 8295115970009657179ull);
-    vlSelf->__Vtrigprevexpr___TOP__clock_gen__DOT__clk3__0 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 5034466132561568288ull);
-    vlSelf->__Vtrigprevexpr_ha0475fda__1 = VL_SCOPED_RAND_RESET_I(1, __VscopeHash, 11668597217138267766ull);
+    vlSelf->__Vtrigprevexpr___TOP__clock_gen__DOT__clk1__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__clock_gen__DOT__clk2__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__clock_gen__DOT__clk3__0 = 0;
+    vlSelf->__Vtrigprevexpr_h588af64e__1 = 0;
     vlSelf->__VactDidInit = 0;
     for (int __Vi0 = 0; __Vi0 < 1; ++__Vi0) {
         vlSelf->__VnbaTriggered[__Vi0] = 0;

@@ -21,15 +21,18 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg);
 
     // INTERNAL METHODS
@@ -59,8 +62,8 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26 : public Vdma_uvm_pkg__03a__
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257> __PVT__peek_export;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257> __PVT__blocking_get_peek_export;
     VlClassRef<Vdma_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz257> __PVT__nonblocking_get_peek_export;
-    virtual void __VnoInFunc___Vbasic_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vdma__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_can_get(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ &can_get__Vfuncrtn);
     virtual void __VnoInFunc_can_peek(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ &can_peek__Vfuncrtn);
     virtual void __VnoInFunc_can_put(Vdma__Syms* __restrict vlSymsp, CData/*0:0*/ &can_put__Vfuncrtn);
@@ -87,7 +90,7 @@ class Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26 : public Vdma_uvm_pkg__03a__
     Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26(VlProcessRef vlProcess, Vdma__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vdma_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26>& obj);

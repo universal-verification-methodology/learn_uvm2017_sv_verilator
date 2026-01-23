@@ -22,15 +22,18 @@ class Varchitecture_uvm_pkg__03a__03auvm_test;
 
 class Varchitecture__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Varchitecture__Syms* const vlSymsp;
+    Varchitecture__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg();
     ~Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg();
+    void ctor(Varchitecture__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Varchitecture___024unit__03a__03aArchitectureTest__Vclpkg);
 
     // INTERNAL METHODS
@@ -48,8 +51,8 @@ class Varchitecture___024unit__03a__03aArchitectureTest : public Varchitecture_u
 
     // DESIGN SPECIFIC STATE
     VlClassRef<Varchitecture___024unit__03a__03aArchEnv> __PVT__env;
-    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp);
     void __VnoInFunc_build_phase(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_phase> phase);
     virtual void __VnoInFunc_get_object_type(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_object_wrapper> &get_object_type__Vfuncrtn);
     virtual void __VnoInFunc_get_type_name(Varchitecture__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
@@ -61,7 +64,7 @@ class Varchitecture___024unit__03a__03aArchitectureTest : public Varchitecture_u
     Varchitecture___024unit__03a__03aArchitectureTest(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_component> parent);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Varchitecture___024unit__03a__03aArchitectureTest() {}
+    virtual ~Varchitecture___024unit__03a__03aArchitectureTest();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture___024unit__03a__03aArchitectureTest>& obj);

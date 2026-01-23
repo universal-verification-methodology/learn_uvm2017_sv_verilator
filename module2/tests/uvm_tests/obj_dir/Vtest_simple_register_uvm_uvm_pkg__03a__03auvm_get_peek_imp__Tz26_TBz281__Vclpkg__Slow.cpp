@@ -6,10 +6,12 @@
 
 void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg___ctor_var_reset(Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg* vlSelf);
 
-Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg::Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg(Vtest_simple_register_uvm__Syms* symsp, const char* v__name)
-    : VerilatedModule{v__name}
-    , vlSymsp{symsp}
- {
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg::Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg() = default;
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg::~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg() = default;
+
+void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg::ctor(Vtest_simple_register_uvm__Syms* symsp, const char* namep) {
+    vlSymsp = symsp;
+    vlNamep = strdup(Verilated::catName(vlSymsp->name(), namep));
     // Reset structure values
     Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg___ctor_var_reset(this);
 }
@@ -18,5 +20,6 @@ void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__V
     (void)first;  // Prevent unused variable warning
 }
 
-Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg::~Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg() {
+void Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_get_peek_imp__Tz26_TBz281__Vclpkg::dtor() {
+    VL_DO_DANGLING(std::free(const_cast<char*>(vlNamep)), vlNamep);
 }

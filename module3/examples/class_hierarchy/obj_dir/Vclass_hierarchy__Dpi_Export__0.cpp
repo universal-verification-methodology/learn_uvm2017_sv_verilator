@@ -1,6 +1,6 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Implementation of DPI export functions.
-//
+
 #include "Vclass_hierarchy.h"
 #include "Vclass_hierarchy__Syms.h"
 #include "verilated_dpi.h"

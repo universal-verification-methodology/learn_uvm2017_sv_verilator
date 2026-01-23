@@ -24,15 +24,18 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_report_server;
 
 class Vclass_hierarchy__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vclass_hierarchy__Syms* const vlSymsp;
+    Vclass_hierarchy__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message__Vclpkg(Vclass_hierarchy__Syms* symsp, const char* v__name);
+    Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message__Vclpkg();
     ~Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message__Vclpkg();
+    void ctor(Vclass_hierarchy__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message__Vclpkg);
 
     // INTERNAL METHODS
@@ -63,8 +66,8 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message : public Vclass_hiera
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_report_handler> __PVT___report_handler;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_report_server> __PVT___report_server;
     VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message_element_container> __PVT___report_message_element_container;
-    virtual void __VnoInFunc___Vbasic_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vclass_hierarchy__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_add_int(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlWide<128>/*4095:0*/ value, IData/*31:0*/ size, IData/*27:0*/ radix, IData/*31:0*/ action);
     virtual void __VnoInFunc_add_object(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_object> obj, IData/*31:0*/ action);
     virtual void __VnoInFunc_add_string(Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name, std::string value, IData/*31:0*/ action);
@@ -109,7 +112,7 @@ class Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message : public Vclass_hiera
     Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message() {}
+    virtual ~Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_report_message>& obj);

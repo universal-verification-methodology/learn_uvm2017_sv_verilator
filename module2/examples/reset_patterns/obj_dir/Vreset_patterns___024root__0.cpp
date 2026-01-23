@@ -86,7 +86,7 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
     __Vtask_reset_patterns__DOT__sync_reset_sequence__2__reset_patterns__DOT__unnamedblk1_1__DOT____Vrepeat0 
         = __Vtask_reset_patterns__DOT__sync_reset_sequence__2__reset_cycles;
     while (VL_LTS_III(32, 0U, __Vtask_reset_patterns__DOT__sync_reset_sequence__2__reset_patterns__DOT__unnamedblk1_1__DOT____Vrepeat0)) {
-        co_await vlSelfRef.__VtrigSched_h8fe6e2e1__0.trigger(0U, 
+        co_await vlSelfRef.__VtrigSched_h7aaa51b2__0.trigger(0U, 
                                                              nullptr, 
                                                              "@(posedge reset_patterns.clk)", 
                                                              "reset_patterns.sv", 
@@ -98,7 +98,7 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
     VL_WRITEF_NX("[%0t] De-asserting sync reset\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9);
     vlSelfRef.reset_patterns__DOT__rst_sync = 0U;
-    co_await vlSelfRef.__VtrigSched_h8fe6e2e1__0.trigger(0U, 
+    co_await vlSelfRef.__VtrigSched_h7aaa51b2__0.trigger(0U, 
                                                          nullptr, 
                                                          "@(posedge reset_patterns.clk)", 
                                                          "reset_patterns.sv", 
@@ -166,7 +166,7 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
                                          nullptr, "reset_patterns.sv", 
                                          150);
     VL_FINISH_MT("reset_patterns.sv", 151, "");
-}
+    co_return;}
 
 VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__1(Vreset_patterns___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vreset_patterns___024root___eval_initial__TOP__Vtiming__1\n"); );
@@ -185,7 +185,7 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__1(Vreset_pat
                                              "reset_patterns.sv", 
                                              30);
     }
-}
+    co_return;}
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Vreset_patterns___024root___dump_triggers__act(const VlUnpacked<QData/*63:0*/, 1> &triggers, const std::string &tag);
@@ -281,7 +281,7 @@ void Vreset_patterns___024root___timing_commit(Vreset_patterns___024root* vlSelf
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     if ((! (1ULL & vlSelfRef.__VactTriggered[0U]))) {
-        vlSelfRef.__VtrigSched_h8fe6e2e1__0.commit(
+        vlSelfRef.__VtrigSched_h7aaa51b2__0.commit(
                                                    "@(posedge reset_patterns.clk)");
     }
 }
@@ -292,7 +292,7 @@ void Vreset_patterns___024root___timing_resume(Vreset_patterns___024root* vlSelf
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
     if ((1ULL & vlSelfRef.__VactTriggered[0U])) {
-        vlSelfRef.__VtrigSched_h8fe6e2e1__0.resume(
+        vlSelfRef.__VtrigSched_h7aaa51b2__0.resume(
                                                    "@(posedge reset_patterns.clk)");
     }
     if ((4ULL & vlSelfRef.__VactTriggered[0U])) {
@@ -369,7 +369,7 @@ void Vreset_patterns___024root___eval(Vreset_patterns___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vreset_patterns___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("reset_patterns.sv", 14, "", "NBA region did not converge after 100 tries");
+            VL_FATAL_MT("reset_patterns.sv", 14, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -378,7 +378,7 @@ void Vreset_patterns___024root___eval(Vreset_patterns___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vreset_patterns___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("reset_patterns.sv", 14, "", "Active region did not converge after 100 tries");
+                VL_FATAL_MT("reset_patterns.sv", 14, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

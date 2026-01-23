@@ -9,8 +9,8 @@
 #include "verilated_timing.h"
 #include "verilated_random.h"
 class Vpools_top_std__03a__03aprocess;
-class Vpools_top_uvm_pkg__03a__03a__VDynScope_20;
-class Vpools_top_uvm_pkg__03a__03a__VDynScope_21;
+class Vpools_top_uvm_pkg__03a__03a__VDynScope_27;
+class Vpools_top_uvm_pkg__03a__03a__VDynScope_29;
 class Vpools_top_uvm_pkg__03a__03auvm_callback_iter__Tz43_TBz44;
 class Vpools_top_uvm_pkg__03a__03auvm_cmdline_processor;
 class Vpools_top_uvm_pkg__03a__03auvm_component;
@@ -29,7 +29,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_sequencer_base;
 
 class Vpools_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_objection__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_objection__Vclpkg final {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -40,11 +40,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_objection__Vc
     VlQueue<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_scheduled_list;
 
     // INTERNAL VARIABLES
-    Vpools_top__Syms* const vlSymsp;
+    Vpools_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vpools_top_uvm_pkg__03a__03auvm_objection__Vclpkg(Vpools_top__Syms* symsp, const char* v__name);
+    Vpools_top_uvm_pkg__03a__03auvm_objection__Vclpkg();
     ~Vpools_top_uvm_pkg__03a__03auvm_objection__Vclpkg();
+    void ctor(Vpools_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vpools_top_uvm_pkg__03a__03auvm_objection__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,11 +55,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vpools_top_uvm_pkg__03a__03auvm_objection__Vc
     void __VnoInFunc_get_type(Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object_registry__pi15> &get_type__Vfuncrtn);
     VlCoroutine __VnoInFunc_m_execute_scheduled_forks(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_execute_scheduled_forks____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vpools_top_uvm_pkg__03a__03a__VDynScope_21> unnamedblk5__DOT___Vwrapped_guard_3__DOT____VDynScope_guard_3);
+    VlCoroutine __VnoInFunc_m_execute_scheduled_forks____Vfork_1__0(VlProcessRef vlProcess, VlClassRef<Vpools_top_uvm_pkg__03a__03a__VDynScope_29> unnamedblk5__DOT__guard__VgetForkParent__DOT___Vwrapped_guard_4__DOT____VDynScope_guard_4, VlClassRef<Vpools_top_std__03a__03aprocess> unnamedblk5__DOT__guard__VgetForkParent__DOT____VforkParent);
   public:
     void __VnoInFunc_m_init_objections(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp);
   private:
-    VlCoroutine __VnoInFunc_m_init_objections____Vfork_2__0(VlProcessRef vlProcess);
+    VlCoroutine __VnoInFunc_m_init_objections____Vfork_2__0(VlProcessRef vlProcess, VlClassRef<Vpools_top_std__03a__03aprocess> unnamedblk7__DOT____VforkParent);
 };
 
 #include "Vpools_top_uvm_pkg__03a__03auvm_report_object__Vclpkg.h"
@@ -71,9 +74,6 @@ class Vpools_top_uvm_pkg__03a__03auvm_objection : public Vpools_top_uvm_pkg__03a
     CData/*0:0*/ __PVT__m_top_all_dropped;
     CData/*0:0*/ __PVT__m_prop_mode;
     CData/*0:0*/ __PVT__m_cleared;
-    CData/*0:0*/ __Vtrigprevexpr_h116ba8f5__0;
-    CData/*0:0*/ __Vtrigprevexpr_h4043bb54__0;
-    CData/*0:0*/ __Vtrigprevexpr_h105da858__0;
     VlAssocArray<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object>, IData/*31:0*/> __PVT__m_source_count;
     VlAssocArray<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object>, IData/*31:0*/> __PVT__m_total_count;
     VlAssocArray<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object>, QData/*63:0*/> __PVT__m_drain_time;
@@ -83,8 +83,8 @@ class Vpools_top_uvm_pkg__03a__03auvm_objection : public Vpools_top_uvm_pkg__03a
     VlAssocArray<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object>, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_scheduled_contexts;
     VlQueue<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_forked_list;
     VlAssocArray<VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object>, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_objection_context_object>> __PVT__m_forked_contexts;
-    virtual void __VnoInFunc___Vbasic_randomize(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
-    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc___VBasicRand(Vpools_top__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vpools_top__Syms* __restrict vlSymsp);
     virtual void __VnoInFunc_all_dropped(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> obj, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> source_obj, std::string description, IData/*31:0*/ count);
     virtual void __VnoInFunc_clear(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_object> obj);
     void __VnoInFunc_convert2string(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string &convert2string__Vfuncrtn);
@@ -120,7 +120,7 @@ class Vpools_top_uvm_pkg__03a__03auvm_objection : public Vpools_top_uvm_pkg__03a
     Vpools_top_uvm_pkg__03a__03auvm_objection(VlProcessRef vlProcess, Vpools_top__Syms* __restrict vlSymsp, std::string name);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vpools_top_uvm_pkg__03a__03auvm_objection() {}
+    virtual ~Vpools_top_uvm_pkg__03a__03auvm_objection();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vpools_top_uvm_pkg__03a__03auvm_objection>& obj);

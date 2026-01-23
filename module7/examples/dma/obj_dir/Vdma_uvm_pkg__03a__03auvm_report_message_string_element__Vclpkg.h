@@ -16,15 +16,18 @@ class Vdma_uvm_pkg__03a__03auvm_report_message_string_element;
 
 class Vdma__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vdma__Syms* const vlSymsp;
+    Vdma__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vdma_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    Vdma_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg();
     ~Vdma_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg();
+    void ctor(Vdma__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_report_message_string_element__Vclpkg);
 
     // INTERNAL METHODS
@@ -52,7 +55,7 @@ class Vdma_uvm_pkg__03a__03auvm_report_message_string_element : public Vdma_uvm_
     Vdma_uvm_pkg__03a__03auvm_report_message_string_element(Vdma__Syms* __restrict vlSymsp);
     std::string to_string() const;
     std::string to_string_middle() const;
-    virtual ~Vdma_uvm_pkg__03a__03auvm_report_message_string_element() {}
+    virtual ~Vdma_uvm_pkg__03a__03auvm_report_message_string_element();
 };
 
 std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_report_message_string_element>& obj);

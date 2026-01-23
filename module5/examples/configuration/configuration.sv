@@ -79,7 +79,7 @@ endclass
  * Component using configuration
  */
 class ConfigurableComponent extends uvm_component;
-    AgentConfig config;
+    AgentConfig cfg;
     
     `uvm_component_utils(ConfigurableComponent)
     
@@ -91,17 +91,17 @@ class ConfigurableComponent extends uvm_component;
         super.build_phase(phase);
         
         // Get configuration from ConfigDB
-        if (!uvm_config_db#(AgentConfig)::get(this, "", "agent_config", config)) begin
+        if (!uvm_config_db#(AgentConfig)::get(this, "", "agent_config", cfg)) begin
             `uvm_warning("CONFIG", "AgentConfig not found, using defaults")
-            config = AgentConfig::type_id::create("config");
+            cfg = AgentConfig::type_id::create("cfg");
         end else begin
-            `uvm_info("CONFIG", $sformatf("Got config: %s", config.convert2string()), UVM_MEDIUM)
+            `uvm_info("CONFIG", $sformatf("Got config: %s", cfg.convert2string()), UVM_MEDIUM)
         end
     endfunction
     
     task run_phase(uvm_phase phase);
         phase.raise_objection(this);
-        `uvm_info("COMPONENT", $sformatf("Using config: %s", config.convert2string()), UVM_MEDIUM)
+        `uvm_info("COMPONENT", $sformatf("Using config: %s", cfg.convert2string()), UVM_MEDIUM)
         #10;
         phase.drop_objection(this);
     endtask

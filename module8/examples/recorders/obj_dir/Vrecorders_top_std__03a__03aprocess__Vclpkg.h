@@ -13,15 +13,18 @@ class Vrecorders_top_std__03a__03aprocess;
 
 class Vrecorders_top__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std__03a__03aprocess__Vclpkg final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) Vrecorders_top_std__03a__03aprocess__Vclpkg final {
   public:
 
     // INTERNAL VARIABLES
-    Vrecorders_top__Syms* const vlSymsp;
+    Vrecorders_top__Syms* vlSymsp;
+    const char* vlNamep;
 
     // CONSTRUCTORS
-    Vrecorders_top_std__03a__03aprocess__Vclpkg(Vrecorders_top__Syms* symsp, const char* v__name);
+    Vrecorders_top_std__03a__03aprocess__Vclpkg();
     ~Vrecorders_top_std__03a__03aprocess__Vclpkg();
+    void ctor(Vrecorders_top__Syms* symsp, const char* namep);
+    void dtor();
     VL_UNCOPYABLE(Vrecorders_top_std__03a__03aprocess__Vclpkg);
 
     // INTERNAL METHODS
@@ -37,7 +40,6 @@ class Vrecorders_top_std__03a__03aprocess : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __Vtrigprevexpr_h1426c6b2__0;
     VlProcessRef __PVT__m_process;
 
     // INTERNAL VARIABLES
@@ -64,7 +66,7 @@ std::string VL_TO_STRING(const VlClassRef<Vrecorders_top_std__03a__03aprocess>& 
 
 
 //*** Below code from `systemc in Verilog file
-// From `systemc at /usr/local/share/verilator/include/verilated_std.sv:193:21
+// From `systemc at /usr/local/share/verilator/include/verilated_std.sv:196:21
 
 template<> template<>
 inline bool VlClassRef<Vrecorders_top_std__03a__03aprocess>::operator==(const VlClassRef<Vrecorders_top_std__03a__03aprocess>& rhs) const {

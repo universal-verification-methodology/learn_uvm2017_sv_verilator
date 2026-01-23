@@ -60,45 +60,53 @@ VlCoroutine Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc_run_p
     // Body
     VL_KEEP_THIS;
     VlClassRef<Varchitecture___024unit__03a__03aArchSmokeSeq> seq;
-    VL_NULL_CHECK(phase, "architecture.sv", 104)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
+    VL_NULL_CHECK(phase, "architecture.sv", 106)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
                                                                               VlClassRef<Varchitecture___024unit__03a__03aArchitectureTest>{this}, ""s, 1U);
     vlSymsp->TOP__uvm_pkg__03a__03auvm_object_registry__pi6__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "seq"s, VlNull{}, ""s, __Vfunc_create__5__Vfuncout);
     seq = __Vfunc_create__5__Vfuncout;
-    co_await VL_NULL_CHECK(seq, "architecture.sv", 106)->__VnoInFunc_start(vlProcess, vlSymsp, VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__env, "architecture.sv", 106)
-                                                                                ->__PVT__agent, "architecture.sv", 106)
+    co_await VL_NULL_CHECK(seq, "architecture.sv", 108)->__VnoInFunc_start(vlProcess, vlSymsp, VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__env, "architecture.sv", 108)
+                                                                                ->__PVT__agent, "architecture.sv", 108)
                                                                            ->__PVT__seqr, VlNull{}, 0xffffffffU, 1U);
     co_await vlSymsp->TOP.__VdlySched.delay(0x0000000000000064ULL, 
                                             vlProcess, 
                                             "architecture.sv", 
-                                            107);
-    VL_NULL_CHECK(phase, "architecture.sv", 108)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
+                                            109);
+    VL_NULL_CHECK(phase, "architecture.sv", 110)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                              VlClassRef<Varchitecture___024unit__03a__03aArchitectureTest>{this}, ""s, 1U);
-}
+    co_return;}
 
 void Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc_randomize\n"); );
     // Locals
-    IData/*31:0*/ __Vfunc___Vbasic_randomize__9__Vfuncout;
-    __Vfunc___Vbasic_randomize__9__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc___VBasicRand__9__Vfuncout;
+    __Vfunc___VBasicRand__9__Vfuncout = 0;
     // Body
-    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clear();
+    Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.clearConstraints();
     this->__VnoInFunc___Vsetup_constraints(vlSymsp);
     randomize__Vfuncrtn = Varchitecture_uvm_pkg__03a__03auvm_void::__PVT__constraint.next(__Vm_rng);
     randomize__Vfuncrtn = (randomize__Vfuncrtn & ([&]() {
-                this->__VnoInFunc___Vbasic_randomize(vlSymsp, __Vfunc___Vbasic_randomize__9__Vfuncout);
-            }(), __Vfunc___Vbasic_randomize__9__Vfuncout));
+                this->__VnoInFunc___VBasicRand(vlSymsp, __Vfunc___VBasicRand__9__Vfuncout);
+            }(), __Vfunc___VBasicRand__9__Vfuncout));
 }
 
-void Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc___Vbasic_randomize\n"); );
+void Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc___Vsetup_constraints\n"); );
+}
+
+void Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc___VBasicRand(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__VBasicRand__Vfuncrtn) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc___VBasicRand\n"); );
     // Body
-    __Vbasic_randomize__Vfuncrtn = 1U;
+    __VBasicRand__Vfuncrtn = 1U;
 }
 
 void Varchitecture___024unit__03a__03aArchitectureTest::_ctor_var_reset(Varchitecture__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+          Varchitecture___024unit__03a__03aArchitectureTest::_ctor_var_reset\n"); );
     // Body
     (void)vlSymsp;  // Prevent unused variable warning
+}
+
+Varchitecture___024unit__03a__03aArchitectureTest::~Varchitecture___024unit__03a__03aArchitectureTest() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Varchitecture___024unit__03a__03aArchitectureTest::~\n"); );
 }
 
 std::string VL_TO_STRING(const VlClassRef<Varchitecture___024unit__03a__03aArchitectureTest>& obj) {
