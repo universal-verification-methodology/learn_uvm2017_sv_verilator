@@ -1,0 +1,27 @@
+============================================================
+Module 1 Example 1.5: Error Handling and Logging
+============================================================
+
+1. Reporting Levels:
+[DEMO] INFO: This is an INFO message
+[DEMO] INFO: This is a MEDIUM verbosity INFO
+[DEMO] INFO: This is a HIGH verbosity INFO
+[DEMO] WARNING: This is a WARNING message
+[DEMO] ERROR: This is an ERROR message
+
+2. Retry Logic:
+[RETRY] Attempt 1 of 3
+[RETRY] WARNING: Operation failed, retrying...
+[RETRY] Attempt 2 of 3
+[RETRY] WARNING: Operation failed, retrying...
+[RETRY] Attempt 3 of 3
+[RETRY] WARNING: Operation failed, retrying...
+[RETRY] ERROR: Operation failed after all retries
+
+3. Exception Handling:
+   Created exception: VerificationException: Test exception (code=42)
+
+============================================================
+Example completed successfully!
+============================================================
+- error_handling_example.sv:119: Verilog $finish

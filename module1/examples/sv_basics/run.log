@@ -1,0 +1,28 @@
+============================================================
+Module 1 Example 1.1: SystemVerilog Class Basics
+============================================================
+
+1. Creating base transaction:
+   Transaction(id=1, data=0x1234, timestamp=0)
+   Transaction ID: 1
+
+2. Creating read transaction (inheritance):
+   ReadTransaction(id=2, address=0x1000, data=0xdead)
+   Address: 0x1000
+
+3. Creating write transaction (inheritance):
+   WriteTransaction(id=3, address=0x2000, data=0xbeef)
+   Address: 0x2000
+
+4. Testing copy:
+   Original: Transaction(id=1, data=0x1234, timestamp=0)
+   Copy:     Transaction(id=1, data=0x1234, timestamp=0)
+
+5. Testing compare:
+   txn1 == txn2: 1
+   txn1 == read_txn: 0
+
+============================================================
+Example completed successfully!
+============================================================
+- transaction.sv:211: Verilog $finish

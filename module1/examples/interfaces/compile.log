@@ -1,0 +1,11 @@
+%Warning-WIDTHTRUNC: interface_example.sv:58:20: Bit extraction of array[1023:0] requires 10 bit index, not 14 bits.
+                                               : ... note: In instance 'apb_slave'
+   58 |                 mem[paddr[15:2]] <= pwdata;
+      |                    ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.036
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: interface_example.sv:62:30: Bit extraction of array[1023:0] requires 10 bit index, not 14 bits.
+                                               : ... note: In instance 'apb_slave'
+   62 |                 prdata <= mem[paddr[15:2]];
+      |                              ^
+%Error: Exiting due to 2 warning(s)

@@ -1,0 +1,30 @@
+============================================================
+Module 1 Example 1.4: Data Structures for Verification
+============================================================
+
+1. Transaction Queue:
+   Pushed: id=0, data=0x1000
+   Pushed: id=1, data=0x1001
+   Pushed: id=2, data=0x1002
+   Pushed: id=3, data=0x1003
+   Pushed: id=4, data=0x1004
+   Queue size: 5
+
+2. Popping from queue:
+   Popped: id=0, data=0x1000
+   Popped: id=1, data=0x1001
+   Popped: id=2, data=0x1002
+   Popped: id=3, data=0x1003
+   Popped: id=4, data=0x1004
+
+3. Scoreboard:
+   Transaction 1 match: 1
+   Transaction 2 match: 1
+
+4. Coverage Collector:
+   Coverage: 3.91%
+
+============================================================
+Example completed successfully!
+============================================================
+- data_structures_example.sv:199: Verilog $finish
