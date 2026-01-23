@@ -23,7 +23,7 @@ compile:
 		$(UVM_SRC_DIR)/uvm_pkg.sv \
 		$(DUT_SRC) $(TEST_SRC) \
 		--top-module $(TOPLEVEL)
-	make -j$(shell nproc 2>/dev/null || echo 8) -C obj_dir -f V$(TOPLEVEL).mk VM_PARALLEL_BUILDS=1
+	+$(MAKE) -j$(shell nproc 2>/dev/null || echo 8) -C obj_dir -f V$(TOPLEVEL).mk VM_PARALLEL_BUILDS=1
 
 run: compile
 	./obj_dir/V$(TOPLEVEL) +UVM_TESTNAME=$(TOPLEVEL)

@@ -1,13 +1,3 @@
-%Warning-IGNOREDRETURN: multi_agent.sv:66:20: Ignoring return value of non-void function (IEEE 1800-2023 13.4.1)
-                                            : ... note: In instance '$unit.MA_VirtualSeq'
-   66 |           void'(t0.randomize() with { agent_id == 0; });
-      |                    ^~~~~~~~~
-                        ... For warning description see https://verilator.org/warn/IGNOREDRETURN?v=5.045
-                        ... Use "/* verilator lint_off IGNOREDRETURN */" and lint_on around source to disable this message.
-%Warning-IGNOREDRETURN: multi_agent.sv:74:20: Ignoring return value of non-void function (IEEE 1800-2023 13.4.1)
-                                            : ... note: In instance '$unit.MA_VirtualSeq'
-   74 |           void'(t1.randomize() with { agent_id == 1; });
-      |                    ^~~~~~~~~
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/multi_agent/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -DVM_SOLVER_DEFAULT='"z3 --in"' -DVL_TIME_CONTEXT   -fcoroutines -Os  -c -o multi_agent.o ../multi_agent.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -DVM_SOLVER_DEFAULT='"z3 --in"' -DVL_TIME_CONTEXT   -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -1942,7 +1932,7 @@ rm Vmulti_agent__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/multi_agent/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
 - Verilator: Built from 11.455 MB sources in 343 modules, into 20.440 MB in 1919 C++ files needing 13.126 MB
-- Verilator: Walltime 33.413 s (elab=0.700, cvt=6.816, bld=24.963); cpu 8.261 s on 1 threads; allocated 224.098 MB
+- Verilator: Walltime 30.522 s (elab=0.730, cvt=4.856, bld=24.069); cpu 6.434 s on 1 threads; allocated 223.105 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/multi_agent/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/multi_agent/obj_dir'

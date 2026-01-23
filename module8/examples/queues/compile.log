@@ -1812,7 +1812,7 @@ rm Vqueues_top__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/queues/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
 - Verilator: Built from 7.638 MB sources in 338 modules, into 19.508 MB in 1799 C++ files needing 8.475 MB
-- Verilator: Walltime 16.793 s (elab=0.377, cvt=2.737, bld=13.229); cpu 3.563 s on 1 threads; allocated 218.098 MB
+- Verilator: Walltime 17.582 s (elab=0.384, cvt=3.039, bld=13.653); cpu 3.929 s on 1 threads; allocated 218.098 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/queues/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/queues/obj_dir'

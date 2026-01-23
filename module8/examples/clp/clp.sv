@@ -52,7 +52,10 @@ class CLPSequence extends uvm_sequence #(CLPTransaction);
             void'(txn.randomize());
             txn.data = i * 8'h10;
             txn.address = i * 16'h100;
+            // Suppress Verilator's false positive $cast warning from UVM macro expansion
+            /* verilator lint_off CASTCONST */
             `uvm_send(txn)
+            /* verilator lint_on CASTCONST */
         end
     endtask
 endclass

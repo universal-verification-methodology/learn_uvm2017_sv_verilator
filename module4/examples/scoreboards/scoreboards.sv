@@ -104,7 +104,7 @@ class ExpectedProducer extends uvm_component;
         
         for (int i = 0; i < 5; i++) begin
             txn = ScoreboardTransaction::type_id::create("txn");
-            txn.data = 8'h10 + i;
+            txn.data = 8'h10 + 8'(i);
             txn.expected_result = txn.data + 1;  // Expected: data + 1
             txn.actual_result = txn.data + 1;    // Simulate correct result
             
@@ -138,7 +138,7 @@ class ActualProducer extends uvm_component;
         
         for (int i = 0; i < 5; i++) begin
             txn = ScoreboardTransaction::type_id::create("txn");
-            txn.data = 8'h10 + i;
+            txn.data = 8'h10 + 8'(i);
             txn.expected_result = txn.data + 1;
             
             // Simulate: first 3 correct, last 2 incorrect
@@ -197,7 +197,7 @@ class ScoreboardsTest extends uvm_test;
                 ScoreboardTransaction txn;
                 for (int i = 0; i < 5; i++) begin
                     txn = ScoreboardTransaction::type_id::create("txn");
-                    txn.data = 8'h10 + i;
+                    txn.data = 8'h10 + 8'(i);
                     txn.expected_result = txn.data + 1;
                     scoreboard.add_expected(txn);
                 end

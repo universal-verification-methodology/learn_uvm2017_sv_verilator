@@ -35,7 +35,7 @@ class StreamProducer extends uvm_component;
       t = SB_Txn::type_id::create("t");
       t.stream_id = stream_id;
       t.seq = i;
-      t.data = (stream_id==0) ? (8'hA0+i) : (8'hA0+i); // make matchable
+      t.data = (stream_id==0) ? (32'hA0+i) : (32'hA0+i); // make matchable
       ap.write(t);
       #10;
     end

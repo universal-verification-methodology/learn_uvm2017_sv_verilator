@@ -1,9 +1,3 @@
-%Warning-CASTCONST: clp.sv:55:8: $cast will always return zero as 'class{}uvm_sequence_base' is not castable from 'class{}CLPTransaction'
-                               : ... note: In instance 'clp_top'
-   55 |   if (!$cast(__seq,txn)) begin 
-      |        ^~~~~
-                    ... For warning description see https://verilator.org/warn/CASTCONST?v=5.045
-                    ... Use "/* verilator lint_off CASTCONST */" and lint_on around source to disable this message.
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/clp/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -DVM_SOLVER_DEFAULT='"z3 --in"' -DVL_TIME_CONTEXT   -fcoroutines -Os  -c -o clp.o ../clp.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -DVM_SOLVER_DEFAULT='"z3 --in"' -DVL_TIME_CONTEXT   -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -1933,7 +1927,7 @@ rm Vclp_top__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/clp/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
 - Verilator: Built from 7.639 MB sources in 341 modules, into 20.035 MB in 1914 C++ files needing 12.010 MB
-- Verilator: Walltime 18.355 s (elab=0.423, cvt=2.777, bld=14.632); cpu 3.722 s on 1 threads; allocated 223.105 MB
+- Verilator: Walltime 18.757 s (elab=0.415, cvt=3.384, bld=14.410); cpu 4.331 s on 1 threads; allocated 223.098 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/clp/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/clp/obj_dir'

@@ -33,9 +33,12 @@ class RecorderTransaction extends uvm_sequence_item;
     
     function void do_record(uvm_recorder recorder);
         super.do_record(recorder);
+        // Suppress Verilator's WIDTHEXPAND warnings - UVM record_field accepts variable bit widths
+        /* verilator lint_off WIDTHEXPAND */
         recorder.record_field("data", data, $bits(data), UVM_HEX);
         recorder.record_field("address", address, $bits(address), UVM_HEX);
         recorder.record_field("timestamp", timestamp, $bits(timestamp), UVM_DEC);
+        /* verilator lint_on WIDTHEXPAND */
     endfunction
 endclass
 

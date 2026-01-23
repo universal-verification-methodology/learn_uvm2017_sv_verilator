@@ -46,15 +46,61 @@ class StringUtils extends uvm_object;
         return $sformatf("%s: data=0x%02h, addr=0x%04h", name, data, addr);
     endfunction
     
+    // Helper function to find substring position (Verilator-compatible replacement for string.find)
+    function int find_substring(string str, string substr);
+        int len = str.len();
+        int sublen = substr.len();
+        if (sublen == 0 || len < sublen) return -1;
+        for (int i = 0; i <= len - sublen; i++) begin
+            bit match = 1;
+            for (int j = 0; j < sublen; j++) begin
+                if (str.getc(i+j) != substr.getc(j)) begin
+                    match = 0;
+                    break;
+                end
+            end
+            if (match) return i;
+        end
+        return -1;
+    endfunction
+    
     // Extract field from formatted string
     function string extract_field(string formatted_str, string field_name);
         // Simple extraction - in real implementation would use regex
-        int pos = formatted_str.find(field_name);
+        int pos, eq_pos, start, end_pos;
+        byte eq_char, space_char, comma_char, ch;
+        pos = find_substring(formatted_str, field_name);
         if (pos >= 0) begin
-            int start = formatted_str.find("=", pos) + 1;
-            int end_pos = formatted_str.find(",", start);
-            if (end_pos < 0) end_pos = formatted_str.len();
-            return formatted_str.substr(start, end_pos - 1);
+            // Find "=" after the field name
+            eq_pos = -1;
+            eq_char = "=";
+            for (int i = pos + field_name.len(); i < formatted_str.len(); i++) begin
+                if (formatted_str.getc(i) == eq_char) begin
+                    eq_pos = i;
+                    break;
+                end
+            end
+            if (eq_pos >= 0) begin
+                start = eq_pos + 1;
+                // Skip whitespace after "="
+                space_char = " ";
+                while (start < formatted_str.len() && formatted_str.getc(start) == space_char) begin
+                    start++;
+                end
+                // Find "," or end of string
+                end_pos = formatted_str.len();
+                comma_char = ",";
+                for (int i = start; i < formatted_str.len(); i++) begin
+                    ch = formatted_str.getc(i);
+                    if (ch == comma_char || ch == space_char) begin
+                        end_pos = i;
+                        break;
+                    end
+                end
+                if (start < end_pos) begin
+                    return formatted_str.substr(start, end_pos - 1);
+                end
+            end
         end
         return "";
     endfunction
@@ -78,7 +124,7 @@ class StringUtilsTest extends uvm_test;
     endfunction
     
     task run_phase(uvm_phase phase);
-        string hex_str, bin_str, padded_str, formatted_str;
+        string hex_str, bin_str, padded_str, formatted_str, data_field;  // Moved data_field to top
         phase.raise_objection(this);
         
         `uvm_info("STRING", "Testing string utilities", UVM_LOW)
@@ -100,7 +146,6 @@ class StringUtilsTest extends uvm_test;
         `uvm_info("STRING", $sformatf("format_transaction() = %s", formatted_str), UVM_MEDIUM)
         
         // Test field extraction
-        string data_field;
         data_field = str_utils.extract_field(formatted_str, "data");
         `uvm_info("STRING", $sformatf("extract_field('data') = %s", data_field), UVM_MEDIUM)
         

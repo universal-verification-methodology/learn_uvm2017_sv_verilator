@@ -1,17 +1,3 @@
-%Warning-WIDTHEXPAND: recorders.sv:36:18: Operator METHODCALL 'record_field' expects 4096 bits on the Function Argument, but Function Argument's VARREF 'data' generates 8 bits.
-                                        : ... note: In instance 'recorders_top'
-   36 |         recorder.record_field("data", data, $bits(data), UVM_HEX);
-      |                  ^~~~~~~~~~~~
-                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
-                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
-%Warning-WIDTHEXPAND: recorders.sv:37:18: Operator METHODCALL 'record_field' expects 4096 bits on the Function Argument, but Function Argument's VARREF 'address' generates 16 bits.
-                                        : ... note: In instance 'recorders_top'
-   37 |         recorder.record_field("address", address, $bits(address), UVM_HEX);
-      |                  ^~~~~~~~~~~~
-%Warning-WIDTHEXPAND: recorders.sv:38:18: Operator METHODCALL 'record_field' expects 4096 bits on the Function Argument, but Function Argument's VARREF 'timestamp' generates 32 bits.
-                                        : ... note: In instance 'recorders_top'
-   38 |         recorder.record_field("timestamp", timestamp, $bits(timestamp), UVM_DEC);
-      |                  ^~~~~~~~~~~~
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/recorders/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -DVM_SOLVER_DEFAULT='"z3 --in"' -DVL_TIME_CONTEXT   -fcoroutines -Os  -c -o recorders.o ../recorders.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -DVM_SOLVER_DEFAULT='"z3 --in"' -DVL_TIME_CONTEXT   -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -1841,7 +1827,7 @@ rm Vrecorders_top__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/recorders/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
 - Verilator: Built from 7.635 MB sources in 338 modules, into 19.907 MB in 1814 C++ files needing 8.815 MB
-- Verilator: Walltime 16.779 s (elab=0.383, cvt=2.700, bld=13.221); cpu 3.557 s on 1 threads; allocated 219.105 MB
+- Verilator: Walltime 18.154 s (elab=0.436, cvt=3.368, bld=13.832); cpu 4.319 s on 1 threads; allocated 219.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/recorders/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/recorders/obj_dir'
