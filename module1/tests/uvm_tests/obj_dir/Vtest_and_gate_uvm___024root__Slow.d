@@ -1,0 +1,2 @@
+Vtest_and_gate_uvm___024root__Slow.o: \
+ Vtest_and_gate_uvm___024root__Slow.cpp Vtest_and_gate_uvm__pch.h

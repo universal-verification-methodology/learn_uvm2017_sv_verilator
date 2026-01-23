@@ -1,0 +1,3 @@
+Varchitecture___024unit__03a__03aArchSequencer__Vclpkg__0.o: \
+ Varchitecture___024unit__03a__03aArchSequencer__Vclpkg__0.cpp \
+ Varchitecture__pch.h

@@ -22,7 +22,7 @@
 #include "Vdata_structures_example_data_structures_pkg__03a__03aCoverageCollector__Vclpkg.h"
 
 // SYMS CLASS (contains all model state)
-class alignas(VL_CACHE_LINE_BYTES)Vdata_structures_example__Syms final : public VerilatedSyms {
+class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example__Syms final : public VerilatedSyms {
   public:
     // INTERNAL STATE
     Vdata_structures_example* const __Vm_modelp;

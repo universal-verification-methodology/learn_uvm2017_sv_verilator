@@ -1,0 +1,3 @@
+Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message__Vclpkg__0.o: \
+ Vvirtual_sequences_uvm_pkg__03a__03auvm_report_message__Vclpkg__0.cpp \
+ Vvirtual_sequences__pch.h

@@ -1,0 +1,2 @@
+Vtest_and_gate_uvm___024root__0.o: Vtest_and_gate_uvm___024root__0.cpp \
+ Vtest_and_gate_uvm__pch.h

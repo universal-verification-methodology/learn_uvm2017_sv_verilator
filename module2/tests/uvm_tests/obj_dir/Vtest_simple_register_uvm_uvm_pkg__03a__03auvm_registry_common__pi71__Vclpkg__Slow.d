@@ -1,0 +1,3 @@
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_registry_common__pi71__Vclpkg__Slow.o: \
+ Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_registry_common__pi71__Vclpkg__Slow.cpp \
+ Vtest_simple_register_uvm__pch.h

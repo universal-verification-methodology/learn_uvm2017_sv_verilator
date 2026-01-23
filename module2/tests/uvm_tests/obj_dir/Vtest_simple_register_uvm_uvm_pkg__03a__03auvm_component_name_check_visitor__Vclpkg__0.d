@@ -1,0 +1,3 @@
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg__0.o: \
+ Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_component_name_check_visitor__Vclpkg__0.cpp \
+ Vtest_simple_register_uvm__pch.h

@@ -17,13 +17,12 @@ class alignas(VL_CACHE_LINE_BYTES) Vpackage_example___024root final : public Ver
     // DESIGN SPECIFIC STATE
     CData/*1:0*/ package_example__DOT__current_state;
     CData/*0:0*/ package_example__DOT__condition;
-    CData/*0:0*/ __VactContinue;
     IData/*31:0*/ package_example__DOT__unnamedblk1__DOT__timeout_val;
     IData/*31:0*/ __VactIterCount;
     QData/*48:0*/ package_example__DOT__trans;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerVec<1> __VactTriggered;
-    VlTriggerVec<1> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vpackage_example__Syms* const vlSymsp;

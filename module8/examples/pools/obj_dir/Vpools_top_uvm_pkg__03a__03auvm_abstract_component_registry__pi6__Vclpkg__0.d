@@ -1,0 +1,3 @@
+Vpools_top_uvm_pkg__03a__03auvm_abstract_component_registry__pi6__Vclpkg__0.o: \
+ Vpools_top_uvm_pkg__03a__03auvm_abstract_component_registry__pi6__Vclpkg__0.cpp \
+ Vpools_top__pch.h

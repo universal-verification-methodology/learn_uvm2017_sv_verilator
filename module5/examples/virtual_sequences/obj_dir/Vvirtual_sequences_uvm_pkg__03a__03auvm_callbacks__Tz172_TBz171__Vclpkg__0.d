@@ -1,0 +1,3 @@
+Vvirtual_sequences_uvm_pkg__03a__03auvm_callbacks__Tz172_TBz171__Vclpkg__0.o: \
+ Vvirtual_sequences_uvm_pkg__03a__03auvm_callbacks__Tz172_TBz171__Vclpkg__0.cpp \
+ Vvirtual_sequences__pch.h

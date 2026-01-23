@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03a__VDynScope_0__Vclpkg__0.o: \
+ Vtransactions_uvm_pkg__03a__03a__VDynScope_0__Vclpkg__0.cpp \
+ Vtransactions__pch.h

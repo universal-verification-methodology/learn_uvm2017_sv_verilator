@@ -1,0 +1,3 @@
+Vvirtual_sequences_std__03a__03amailbox__Tz203__Vclpkg__Slow.o: \
+ Vvirtual_sequences_std__03a__03amailbox__Tz203__Vclpkg__Slow.cpp \
+ Vvirtual_sequences__pch.h

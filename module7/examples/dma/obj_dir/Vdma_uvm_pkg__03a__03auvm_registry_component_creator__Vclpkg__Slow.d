@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_registry_component_creator__Vclpkg__Slow.o: \
+ Vdma_uvm_pkg__03a__03auvm_registry_component_creator__Vclpkg__Slow.cpp \
+ Vdma__pch.h

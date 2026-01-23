@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_end_of_elaboration_phase__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03auvm_end_of_elaboration_phase__Vclpkg__0.cpp \
+ Vdma__pch.h

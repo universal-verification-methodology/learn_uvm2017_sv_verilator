@@ -1,0 +1,14 @@
+%Error: configuration.sv:82:5: syntax error, unexpected IDENTIFIER
+   82 |     AgentConfig config;
+      |     ^~~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.042 for more assistance.
+%Error: configuration.sv:94:73: syntax error, unexpected config, expecting ')'
+   94 |         if (!uvm_config_db#(AgentConfig)::get(this, "", "agent_config", config)) begin
+      |                                                                         ^~~~~~
+%Error: configuration.sv:104:68: syntax error, unexpected config, expecting ')' or ','
+  104 |        uvm_report_info ("COMPONENT", $sformatf("Using config: %s", config.convert2string()), UVM_MEDIUM, "configuration.sv", 104, "", 1); 
+      |                                                                    ^~~~~~
+%Error: configuration.sv:107:5: syntax error, unexpected endtask, expecting endfunction
+  107 |     endtask
+      |     ^~~~~~~
+%Error: Exiting due to 4 error(s)

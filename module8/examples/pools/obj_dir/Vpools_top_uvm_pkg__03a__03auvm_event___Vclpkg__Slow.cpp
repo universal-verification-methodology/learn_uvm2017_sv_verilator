@@ -1,0 +1,22 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design implementation internals
+// See Vpools_top.h for the primary calling header
+
+#include "Vpools_top__pch.h"
+
+void Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg___ctor_var_reset(Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg* vlSelf);
+
+Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg::Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg(Vpools_top__Syms* symsp, const char* v__name)
+    : VerilatedModule{v__name}
+    , vlSymsp{symsp}
+ {
+    // Reset structure values
+    Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg___ctor_var_reset(this);
+}
+
+void Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg::__Vconfigure(bool first) {
+    (void)first;  // Prevent unused variable warning
+}
+
+Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg::~Vpools_top_uvm_pkg__03a__03auvm_event___Vclpkg() {
+}

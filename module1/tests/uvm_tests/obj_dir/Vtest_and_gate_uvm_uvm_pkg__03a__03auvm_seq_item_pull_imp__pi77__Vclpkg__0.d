@@ -1,0 +1,3 @@
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi77__Vclpkg__0.o: \
+ Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi77__Vclpkg__0.cpp \
+ Vtest_and_gate_uvm__pch.h

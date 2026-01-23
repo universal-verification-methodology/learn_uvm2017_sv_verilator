@@ -8,7 +8,7 @@ VL_ATTR_COLD void Vtransaction_example___024root__trace_init_sub__TOP__0(Vtransa
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtransaction_example___024root__trace_init_sub__TOP__0\n"); );
     Vtransaction_example__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
-    // Init
+    // Body
     const int c = vlSymsp->__Vm_baseCode;
 }
 
@@ -28,13 +28,13 @@ VL_ATTR_COLD void Vtransaction_example___024root__trace_register(Vtransaction_ex
     Vtransaction_example__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     auto& vlSelfRef = std::ref(*vlSelf).get();
     // Body
-    tracep->addConstCb(&Vtransaction_example___024root__trace_const_0, 0U, vlSelf);
+    tracep->addConstCb(&Vtransaction_example___024root__trace_const_0, 0, vlSelf);
     tracep->addCleanupCb(&Vtransaction_example___024root__trace_cleanup, vlSelf);
 }
 
 VL_ATTR_COLD void Vtransaction_example___024root__trace_const_0(void* voidSelf, VerilatedVcd::Buffer* bufp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtransaction_example___024root__trace_const_0\n"); );
-    // Init
+    // Body
     Vtransaction_example___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtransaction_example___024root*>(voidSelf);
     Vtransaction_example__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
 }

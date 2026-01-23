@@ -1,0 +1,3 @@
+Vvirtual_sequences_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi8__Vclpkg__0.o: \
+ Vvirtual_sequences_uvm_pkg__03a__03auvm_seq_item_pull_imp__pi8__Vclpkg__0.cpp \
+ Vvirtual_sequences__pch.h

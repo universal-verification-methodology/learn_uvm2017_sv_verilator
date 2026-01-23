@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg__0.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz175__Vclpkg__0.cpp \
+ Vtransactions__pch.h

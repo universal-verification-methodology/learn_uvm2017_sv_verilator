@@ -37,6 +37,16 @@ RUN_SV_TESTS=true
 RUN_UVM_TESTS=true
 SIMULATOR="verilator"
 
+# Parallel build jobs (default: 8)
+# Can be overridden with --jobs option
+PARALLEL_JOBS=8
+
+# Clean builds by default (set to false to skip cleaning for faster rebuilds)
+CLEAN_BUILDS=true
+
+# Log file setup - will be initialized in main()
+LOG_FILE=""
+
 # Function to print colored output
 print_status() {
     local color=$1
@@ -79,12 +89,14 @@ OPTIONS:
     Environment:
         --sim SIMULATOR       Simulator to use (default: verilator)
         --uvm-home DIR        UVM library directory (default: \$UVM_HOME)
+        --jobs N              Number of parallel build jobs (default: 8)
+        --no-clean            Skip cleaning before build (faster rebuilds)
     
     Other:
         --help, -h            Show this help message
 
 EXAMPLES:
-    # Run all SystemVerilog examples
+    # Run all SystemVerilog examples (with parallel builds)
     $0
     
     # Run only SystemVerilog basics
@@ -95,6 +107,12 @@ EXAMPLES:
     
     # Run everything
     $0 --all-sv --all-tests
+    
+    # Faster rebuilds (skip cleaning, use parallel builds)
+    $0 --no-clean --jobs 8
+    
+    # Use specific number of parallel jobs
+    $0 --jobs 4
 
 EOF
 }
@@ -153,12 +171,12 @@ run_sv_example() {
         return 1
     }
     
-    # Clean previous builds
-    rm -rf obj_dir *.log 2>/dev/null || true
-    
-    # Compile with Verilator
-    print_status $BLUE "Compiling $example_name..."
-    set +e  # Temporarily disable exit on error
+    # Clean previous builds (unless --no-clean is specified)
+    if [[ "$CLEAN_BUILDS" == true ]]; then
+        rm -rf obj_dir *.log 2>/dev/null || true
+    else
+        print_status $YELLOW "Skipping clean (using existing build)"
+    fi
     
     # Add --timing flag for examples that use delays/forks
     # Add --trace flag for examples that use VCD tracing in C++ files
@@ -177,7 +195,38 @@ run_sv_example() {
     
     # Extract top module name from file (Verilator uses lowercase)
     # Get the last module definition (usually the top-level testbench)
-    local top_module=$(grep "^module" "$example_file" | tail -1 | sed 's/module[[:space:]]*\([a-zA-Z0-9_]*\).*/\1/' | tr '[:upper:]' '[:lower:]')
+    local top_module
+    top_module=$(grep "^module" "$example_file" | tail -1 | sed 's/module[[:space:]]*\([a-zA-Z0-9_]*\).*/\1/' | tr '[:upper:]' '[:lower:]')
+    
+    # Executable name is based on top module (lowercase)
+    local exe_name="V${top_module}"
+
+    # If we are not doing a clean build and an existing binary is up-to-date,
+    # skip recompilation and just run it. This can significantly speed up reruns.
+    if [[ "$CLEAN_BUILDS" == false && -x "obj_dir/$exe_name" ]]; then
+        # If none of the local .sv/.cpp sources are newer than the binary, reuse it.
+        if ! find . -maxdepth 1 -type f \( -name "*.sv" -o -name "*.cpp" \) -newer "obj_dir/$exe_name" | grep -q .; then
+            print_status $YELLOW "Reusing existing build for $example_name (no source changes detected)"
+            set +e
+            ./obj_dir/"$exe_name" 2>&1 | tee run.log
+            local cached_run_exit=${PIPESTATUS[0]}
+            set -e
+
+            cd "$PROJECT_ROOT"
+            if [[ $cached_run_exit -eq 0 ]]; then
+                print_status $GREEN "✓ $example_name completed successfully (cached build)"
+                return 0
+            else
+                print_status $RED "✗ $example_name failed when using cached build (exit code: $cached_run_exit)"
+                print_status $YELLOW "Re-run with --no-clean disabled or touch sources if you need a rebuild"
+                return 1
+            fi
+        fi
+    fi
+
+    # Compile with Verilator
+    print_status $BLUE "Compiling $example_name..."
+    set +e  # Temporarily disable exit on error
     
     # Check if C++ main file exists (try multiple naming patterns)
     local cpp_file="${example_file%.sv}.cpp"
@@ -208,11 +257,11 @@ run_sv_example() {
     fi
     
     # Build
-    print_status $BLUE "Building $example_name..."
+    print_status $BLUE "Building $example_name (using $PARALLEL_JOBS parallel jobs)..."
     set +e
     # Verilator creates Makefile based on top module name (lowercase)
     local makefile_name="V${top_module}.mk"
-    make -C obj_dir -f "$makefile_name" 2>&1 | tee -a compile.log
+    make -j"$PARALLEL_JOBS" -C obj_dir -f "$makefile_name" 2>&1 | tee -a compile.log
     local build_exit=${PIPESTATUS[0]}
     set -e
     
@@ -226,9 +275,7 @@ run_sv_example() {
     # Run
     print_status $BLUE "Running $example_name..."
     set +e
-    # Executable name is based on top module (lowercase)
-    local exe_name="V${top_module}"
-    ./obj_dir/$exe_name 2>&1 | tee run.log
+    ./obj_dir/"$exe_name" 2>&1 | tee run.log
     local run_exit=${PIPESTATUS[0]}
     set -e
     
@@ -259,7 +306,7 @@ run_sv_tests() {
     print_status $BLUE "Running AND gate tests..."
     make clean >/dev/null 2>&1 || true
     set +e  # Temporarily disable exit on error to capture exit code
-    make SIM="$SIMULATOR" TEST=test_and_gate 2>&1 | tee /tmp/sv_and_gate.log
+    make -j"$PARALLEL_JOBS" SIM="$SIMULATOR" TEST=test_and_gate 2>&1 | tee /tmp/sv_and_gate.log
     local exit_code=${PIPESTATUS[0]}
     set -e  # Re-enable exit on error
     if [[ $exit_code -eq 0 ]]; then
@@ -274,7 +321,7 @@ run_sv_tests() {
     print_status $BLUE "Running counter tests..."
     make clean >/dev/null 2>&1 || true
     set +e  # Temporarily disable exit on error to capture exit code
-    make SIM="$SIMULATOR" TEST=test_counter 2>&1 | tee /tmp/sv_counter.log
+    make -j"$PARALLEL_JOBS" SIM="$SIMULATOR" TEST=test_counter 2>&1 | tee /tmp/sv_counter.log
     local exit_code=${PIPESTATUS[0]}
     set -e  # Re-enable exit on error
     if [[ $exit_code -eq 0 ]]; then
@@ -330,10 +377,12 @@ run_uvm_tests() {
     
     print_status $BLUE "Running UVM AND gate test..."
     print_status $YELLOW "Note: Verilator has limited UVM support. For full UVM features, use commercial simulators."
+    print_status $YELLOW "Note: UVM compilation generates ~2000 C++ files due to template instantiations."
+    print_status $YELLOW "      This is normal and may take 5-10 minutes even with parallel builds."
     
     make clean >/dev/null 2>&1 || true
     set +e  # Temporarily disable exit on error to capture exit code
-    make SIM="$SIMULATOR" TEST=test_and_gate_uvm 2>&1 | tee /tmp/uvm_and_gate.log
+    make -j"$PARALLEL_JOBS" SIM="$SIMULATOR" TEST=test_and_gate_uvm 2>&1 | tee /tmp/uvm_and_gate.log
     local exit_code=${PIPESTATUS[0]}
     set -e  # Re-enable exit on error
     if [[ $exit_code -eq 0 ]]; then
@@ -433,6 +482,14 @@ parse_args() {
                 export UVM_HOME
                 shift 2
                 ;;
+            --jobs)
+                PARALLEL_JOBS="$2"
+                shift 2
+                ;;
+            --no-clean)
+                CLEAN_BUILDS=false
+                shift
+                ;;
             --help|-h)
                 show_usage
                 exit 0
@@ -446,12 +503,46 @@ parse_args() {
     done
 }
 
+# Function to setup logging (redirects stdout and stderr to both console and log file)
+setup_logging() {
+    # Initialize log file path
+    LOG_FILE="$MODULE1_DIR/module1.log"
+    mkdir -p "$MODULE1_DIR"
+    
+    # Create log file with timestamp header
+    {
+        echo "=========================================="
+        echo "Module 1 Execution Log"
+        echo "Started: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "Command: $0 $*"
+        echo "Working directory: $(pwd)"
+        echo "UVM_HOME: ${UVM_HOME:-not set}"
+        echo "Simulator: $SIMULATOR"
+        echo "Parallel jobs: $PARALLEL_JOBS"
+        echo "=========================================="
+        echo ""
+    } > "$LOG_FILE"
+    
+    # Redirect stdout and stderr to both console and log file
+    # Store the original stdout for the tee process
+    exec 3>&1
+    exec > >(tee -a "$LOG_FILE" >&3)
+    exec 2>&1
+    # Close the duplicate file descriptor on exit to avoid cleanup issues
+    # Set trap globally to ensure it's active when script exits
+    trap 'exec 3>&- 2>/dev/null || true' EXIT INT TERM
+}
+
 # Main function
 main() {
-    print_header "Module 1: SystemVerilog and Verification Basics"
-    
-    # Parse arguments
+    # Parse arguments first (so help can be shown without logging)
     parse_args "$@"
+    
+    # Setup logging after argument parsing (before actual work)
+    setup_logging "$@"
+    
+    print_header "Module 1: SystemVerilog and Verification Basics"
+    print_status $BLUE "Log file: $LOG_FILE"
     
     # Check prerequisites
     check_prerequisites
@@ -519,10 +610,24 @@ main() {
         echo "  1. Review the examples in module1/examples/"
         echo "  2. Try modifying the examples"
         echo "  3. Proceed to Module 2: SystemVerilog Testbench Fundamentals"
+        echo ""
+        print_status $BLUE "Full log saved to: $LOG_FILE"
     else
         print_status $RED "✗ Completed with $errors error(s)"
+        echo ""
+        print_status $YELLOW "Check log file for details: $LOG_FILE"
         exit 1
     fi
+    
+    # Add footer to log file
+    {
+        echo ""
+        echo "=========================================="
+        echo "Module 1 Execution Log - Completed"
+        echo "Finished: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "Exit code: $errors"
+        echo "=========================================="
+    } >> "$LOG_FILE"
 }
 
 # Run main function with all arguments

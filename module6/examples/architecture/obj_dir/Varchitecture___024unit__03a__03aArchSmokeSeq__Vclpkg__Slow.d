@@ -1,0 +1,3 @@
+Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg__Slow.o: \
+ Varchitecture___024unit__03a__03aArchSmokeSeq__Vclpkg__Slow.cpp \
+ Varchitecture__pch.h

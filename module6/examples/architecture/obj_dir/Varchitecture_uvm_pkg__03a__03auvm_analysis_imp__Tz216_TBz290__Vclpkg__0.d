@@ -1,0 +1,3 @@
+Varchitecture_uvm_pkg__03a__03auvm_analysis_imp__Tz216_TBz290__Vclpkg__0.o: \
+ Varchitecture_uvm_pkg__03a__03auvm_analysis_imp__Tz216_TBz290__Vclpkg__0.cpp \
+ Varchitecture__pch.h

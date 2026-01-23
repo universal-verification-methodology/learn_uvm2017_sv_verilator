@@ -1,0 +1,3 @@
+Vtest_and_gate_uvm_std__03a__03amailbox__Tz13__Vclpkg__Slow.o: \
+ Vtest_and_gate_uvm_std__03a__03amailbox__Tz13__Vclpkg__Slow.cpp \
+ Vtest_and_gate_uvm__pch.h

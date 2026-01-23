@@ -1,0 +1,54 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design internal header
+// See Vtransactions.h for the primary calling header
+
+#ifndef VERILATED_VTRANSACTIONS_UVM_PKG__03A__03AUVM_MEM_MAM_CFG__VCLPKG_H_
+#define VERILATED_VTRANSACTIONS_UVM_PKG__03A__03AUVM_MEM_MAM_CFG__VCLPKG_H_  // guard
+
+#include "verilated.h"
+#include "verilated_timing.h"
+#include "verilated_random.h"
+
+
+class Vtransactions__Syms;
+
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg__Vclpkg final : public VerilatedModule {
+  public:
+
+    // INTERNAL VARIABLES
+    Vtransactions__Syms* const vlSymsp;
+
+    // CONSTRUCTORS
+    Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    ~Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg__Vclpkg();
+    VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg__Vclpkg);
+
+    // INTERNAL METHODS
+    void __Vconfigure(bool first);
+};
+
+
+class Vtransactions__Syms;
+
+class Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg : public virtual VlClass {
+  public:
+
+    // DESIGN SPECIFIC STATE
+    IData/*31:0*/ __PVT__n_bytes;
+    IData/*31:0*/ __PVT__mode;
+    IData/*31:0*/ __PVT__locality;
+    QData/*63:0*/ __PVT__start_offset;
+    QData/*63:0*/ __PVT__end_offset;
+    VlRandomizer __PVT__constraint;
+  private:
+    void _ctor_var_reset(Vtransactions__Syms* __restrict vlSymsp);
+  public:
+    Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg(Vtransactions__Syms* __restrict vlSymsp);
+    std::string to_string() const;
+    std::string to_string_middle() const;
+    ~Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg() {}
+};
+
+std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_mem_mam_cfg>& obj);
+
+#endif  // guard

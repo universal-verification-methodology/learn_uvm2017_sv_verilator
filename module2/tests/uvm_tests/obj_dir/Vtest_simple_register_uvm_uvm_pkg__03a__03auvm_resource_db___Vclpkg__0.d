@@ -1,0 +1,3 @@
+Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_resource_db___Vclpkg__0.o: \
+ Vtest_simple_register_uvm_uvm_pkg__03a__03auvm_resource_db___Vclpkg__0.cpp \
+ Vtest_simple_register_uvm__pch.h

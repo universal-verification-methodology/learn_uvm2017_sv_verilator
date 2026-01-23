@@ -1,0 +1,3 @@
+Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg__0__Slow.o: \
+ Vclass_hierarchy_std__03a__03amailbox__Tz1__Vclpkg__0__Slow.cpp \
+ Vclass_hierarchy__pch.h

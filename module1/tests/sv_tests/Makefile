@@ -32,8 +32,8 @@ ifeq ($(SIM),verilator)
 			$(DUT_SRC) $(TEST_SRC) $(TEST_CPP) \
 			--top-module $(TOPLEVEL) \
 			-o $(TOPLEVEL) || exit 1
-		@echo "Building..."
-		make -C obj_dir -f V$(TOPLEVEL).mk
+		@echo "Building with parallel jobs..."
+		make -j$(shell nproc 2>/dev/null || echo 8) -C obj_dir -f V$(TOPLEVEL).mk
 		@echo "Compilation complete!"
     
     run: compile

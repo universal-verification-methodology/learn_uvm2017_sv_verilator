@@ -21,15 +21,14 @@ class alignas(VL_CACHE_LINE_BYTES) Vinterface_example___024root final : public V
     CData/*0:0*/ interface_example__DOT__clk;
     CData/*0:0*/ interface_example__DOT____Vcellout__dut__pready;
     CData/*0:0*/ __Vtrigprevexpr___TOP__interface_example__DOT__clk__0;
-    CData/*0:0*/ __VactContinue;
     IData/*31:0*/ interface_example__DOT____Vcellout__dut__prdata;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<IData/*31:0*/, 1024> interface_example__DOT__dut__DOT__mem;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
-    VlTriggerScheduler __VtrigSched_h58f3d192__0;
-    VlTriggerVec<2> __VactTriggered;
-    VlTriggerVec<2> __VnbaTriggered;
+    VlTriggerScheduler __VtrigSched_hbcbb09e7__0;
 
     // INTERNAL VARIABLES
     Vinterface_example__Syms* const vlSymsp;

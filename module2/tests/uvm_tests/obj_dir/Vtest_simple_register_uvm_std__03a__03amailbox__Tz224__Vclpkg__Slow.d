@@ -1,0 +1,3 @@
+Vtest_simple_register_uvm_std__03a__03amailbox__Tz224__Vclpkg__Slow.o: \
+ Vtest_simple_register_uvm_std__03a__03amailbox__Tz224__Vclpkg__Slow.cpp \
+ Vtest_simple_register_uvm__pch.h

@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi12__Vclpkg__0__Slow.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi12__Vclpkg__0__Slow.cpp \
+ Vtransactions__pch.h

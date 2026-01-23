@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz3__Vclpkg__0__Slow.o: \
+ Vdma_uvm_pkg__03a__03auvm_pool__Tz2_TBz3__Vclpkg__0__Slow.cpp \
+ Vdma__pch.h

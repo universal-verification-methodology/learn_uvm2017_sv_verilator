@@ -1,0 +1,3 @@
+Vtransactions___024unit__03a__03aBaseTransaction__Vclpkg__0.o: \
+ Vtransactions___024unit__03a__03aBaseTransaction__Vclpkg__0.cpp \
+ Vtransactions__pch.h

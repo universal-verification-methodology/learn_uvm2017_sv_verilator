@@ -1,0 +1,3 @@
+Varchitecture_std__03a__03asemaphore__Vclpkg__Slow.o: \
+ Varchitecture_std__03a__03asemaphore__Vclpkg__Slow.cpp \
+ Varchitecture__pch.h

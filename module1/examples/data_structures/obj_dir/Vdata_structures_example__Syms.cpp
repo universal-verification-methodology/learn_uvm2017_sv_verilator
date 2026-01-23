@@ -27,8 +27,8 @@ Vdata_structures_example__Syms::Vdata_structures_example__Syms(VerilatedContext*
     , TOP__data_structures_pkg__03a__03aSimpleTransaction__Vclpkg{this, Verilated::catName(namep, "data_structures_pkg::SimpleTransaction__Vclpkg")}
     , TOP__data_structures_pkg__03a__03aTransactionQueue__Vclpkg{this, Verilated::catName(namep, "data_structures_pkg::TransactionQueue__Vclpkg")}
 {
-        // Check resources
-        Verilated::stackCheck(313);
+    // Check resources
+    Verilated::stackCheck(318);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);

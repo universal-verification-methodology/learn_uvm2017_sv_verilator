@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_object_string_pool__Tz136__Vclpkg__Slow.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_object_string_pool__Tz136__Vclpkg__Slow.cpp \
+ Vtransactions__pch.h

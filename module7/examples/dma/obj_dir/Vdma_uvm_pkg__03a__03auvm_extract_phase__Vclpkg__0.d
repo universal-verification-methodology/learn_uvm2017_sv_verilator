@@ -1,0 +1,2 @@
+Vdma_uvm_pkg__03a__03auvm_extract_phase__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03auvm_extract_phase__Vclpkg__0.cpp Vdma__pch.h

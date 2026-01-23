@@ -1,0 +1,20 @@
+%Warning-CASTCONST: clp.sv:48:13: $cast will always return zero as 'class{}uvm_sequence_base' is not castable from 'class{}CLPTransaction'
+                                : ... note: In instance 'clp_top'
+   48 |   else if ( $cast( __seq, txn ) ) begin 
+      |             ^~~~~
+                    ... For warning description see https://verilator.org/warn/CASTCONST?v=5.042
+                    ... Use "/* verilator lint_off CASTCONST */" and lint_on around source to disable this message.
+%Error: clp.sv:126:62: Function/task ref argument is not of allowed type
+                     : ... note: In instance '$unit.CLPEnv'
+  126 |         void'(uvm_cmdline_proc.get_arg_value("+debug_level", debug_level));
+      |                                                              ^~~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.042 for more assistance.
+%Error: clp.sv:127:67: Function/task ref argument is not of allowed type
+                     : ... note: In instance '$unit.CLPEnv'
+  127 |         void'(uvm_cmdline_proc.get_arg_value("+num_transactions", num_transactions));
+      |                                                                   ^~~~~~~~~~~~~~~~
+%Error: clp.sv:128:55: Function/task ref argument is not of allowed type
+                     : ... note: In instance '$unit.CLPEnv'
+  128 |         void'(uvm_cmdline_proc.get_arg_value("+seed", seed));
+      |                                                       ^~~~
+%Error: Exiting due to 3 error(s)

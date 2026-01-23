@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_resource_options__Vclpkg__Slow.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_resource_options__Vclpkg__Slow.cpp \
+ Vtransactions__pch.h

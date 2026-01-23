@@ -1,0 +1,3 @@
+Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz11__Vclpkg__0.o: \
+ Vrecorders_top_uvm_pkg__03a__03auvm_set_before_get_dap__Tz11__Vclpkg__0.cpp \
+ Vrecorders_top__pch.h

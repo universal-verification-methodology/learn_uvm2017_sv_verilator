@@ -25,34 +25,32 @@ VM_TRACE_VCD = 1
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-	Vtest_counter \
-	Vtest_counter___024root__DepSet_h6cb15b64__0 \
-	Vtest_counter___024root__DepSet_h5571f3d1__0 \
+  Vtest_counter \
+  Vtest_counter___024root__0 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	Vtest_counter___024root__Slow \
-	Vtest_counter___024root__DepSet_h5571f3d1__0__Slow \
+  Vtest_counter___024root__Slow \
+  Vtest_counter___024root__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Vtest_counter__Trace__0 \
+  Vtest_counter__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-	Vtest_counter__Syms \
-	Vtest_counter__Trace__0__Slow \
-	Vtest_counter__TraceDecls__0__Slow \
+  Vtest_counter__Syms \
+  Vtest_counter__Trace__0__Slow \
+  Vtest_counter__TraceDecls__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
-	verilated \
-	verilated_vcd_c \
-	verilated_timing \
-	verilated_threads \
+  verilated \
+  verilated_vcd_c \
+  verilated_timing \
+  verilated_threads \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization
 VM_GLOBAL_SLOW += \
-
 
 # Verilated -*- Makefile -*-

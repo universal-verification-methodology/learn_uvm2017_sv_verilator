@@ -3,8 +3,6 @@
 // See Vtest_counter.h for the primary calling header
 
 #include "Vtest_counter__pch.h"
-#include "Vtest_counter__Syms.h"
-#include "Vtest_counter___024root.h"
 
 void Vtest_counter___024root___ctor_var_reset(Vtest_counter___024root* vlSelf);
 

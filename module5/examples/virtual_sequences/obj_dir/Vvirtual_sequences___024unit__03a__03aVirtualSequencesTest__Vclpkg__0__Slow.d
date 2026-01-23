@@ -1,0 +1,3 @@
+Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest__Vclpkg__0__Slow.o: \
+ Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest__Vclpkg__0__Slow.cpp \
+ Vvirtual_sequences__pch.h

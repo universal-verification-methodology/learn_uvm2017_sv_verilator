@@ -1,0 +1,65 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design internal header
+// See Vdma.h for the primary calling header
+
+#ifndef VERILATED_VDMA_UVM_PKG__03A__03AUVM_TIME__VCLPKG_H_
+#define VERILATED_VDMA_UVM_PKG__03A__03AUVM_TIME__VCLPKG_H_  // guard
+
+#include "verilated.h"
+#include "verilated_timing.h"
+#include "verilated_random.h"
+class Vdma_uvm_pkg__03a__03auvm_coreservice_t;
+class Vdma_uvm_pkg__03a__03auvm_root;
+
+
+class Vdma__Syms;
+
+class alignas(VL_CACHE_LINE_BYTES) Vdma_uvm_pkg__03a__03auvm_time__Vclpkg final : public VerilatedModule {
+  public:
+
+    // DESIGN SPECIFIC STATE
+    double __PVT__m_resolution;
+
+    // INTERNAL VARIABLES
+    Vdma__Syms* const vlSymsp;
+
+    // CONSTRUCTORS
+    Vdma_uvm_pkg__03a__03auvm_time__Vclpkg(Vdma__Syms* symsp, const char* v__name);
+    ~Vdma_uvm_pkg__03a__03auvm_time__Vclpkg();
+    VL_UNCOPYABLE(Vdma_uvm_pkg__03a__03auvm_time__Vclpkg);
+
+    // INTERNAL METHODS
+    void __Vconfigure(bool first);
+    void __VnoInFunc_set_time_resolution(Vdma__Syms* __restrict vlSymsp, double res);
+};
+
+
+class Vdma__Syms;
+
+class Vdma_uvm_pkg__03a__03auvm_time : public virtual VlClass {
+  public:
+
+    // DESIGN SPECIFIC STATE
+    QData/*63:0*/ __PVT__m_time;
+    double __PVT__m_res;
+    std::string __PVT__m_name;
+    void __VnoInFunc_decr(Vdma__Syms* __restrict vlSymsp, double t, QData/*63:0*/ scaled, double secs);
+    void __VnoInFunc_get_abstime(Vdma__Syms* __restrict vlSymsp, double secs, double &get_abstime__Vfuncrtn);
+    void __VnoInFunc_get_name(Vdma__Syms* __restrict vlSymsp, std::string &get_name__Vfuncrtn);
+    void __VnoInFunc_get_realtime(Vdma__Syms* __restrict vlSymsp, QData/*63:0*/ scaled, double secs, double &get_realtime__Vfuncrtn);
+    void __VnoInFunc_incr(Vdma__Syms* __restrict vlSymsp, double t, QData/*63:0*/ scaled, double secs);
+    void __VnoInFunc_reset(Vdma__Syms* __restrict vlSymsp);
+    void __VnoInFunc_set_abstime(Vdma__Syms* __restrict vlSymsp, double t, double secs);
+    void __VnoInFunc_to_m_res(Vdma__Syms* __restrict vlSymsp, double t, QData/*63:0*/ scaled, double secs, double &to_m_res__Vfuncrtn);
+  private:
+    void _ctor_var_reset(Vdma__Syms* __restrict vlSymsp);
+  public:
+    Vdma_uvm_pkg__03a__03auvm_time(Vdma__Syms* __restrict vlSymsp, std::string name, double res);
+    std::string to_string() const;
+    std::string to_string_middle() const;
+    ~Vdma_uvm_pkg__03a__03auvm_time() {}
+};
+
+std::string VL_TO_STRING(const VlClassRef<Vdma_uvm_pkg__03a__03auvm_time>& obj);
+
+#endif  // guard

@@ -18,7 +18,8 @@ endif
 # Verilator flags
 # Note: Using flags recommended for UVM 2017 support in Verilator
 # See: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator
-VERILATOR_FLAGS = -sv --timing --trace -Wno-fatal
+# Suppress common warnings that are expected with UVM
+VERILATOR_FLAGS = -sv --timing --trace -Wno-fatal -Wno-TIMESCALEMOD -Wno-WIDTHTRUNC
 
 # Include paths and defines
 # +define+UVM_NO_DPI disables DPI calls that Verilator doesn't support
@@ -46,8 +47,9 @@ ifeq ($(SIM),verilator)
 			$(UVM_SRC_DIR)/uvm_pkg.sv \
 			$(DUT_SRC) $(TEST_SRC) \
 			--top-module $(TOPLEVEL)
-		@echo "Building..."
-		make -C obj_dir -f V$(TOPLEVEL).mk
+		@echo "Building with parallel jobs (VM_PARALLEL_BUILDS=1)..."
+		@echo "Note: UVM generates many template instantiations, compilation may take several minutes"
+		make -j$(shell nproc 2>/dev/null || echo 8) -C obj_dir -f V$(TOPLEVEL).mk VM_PARALLEL_BUILDS=1
 		@echo "Compilation complete!"
     
     run: compile

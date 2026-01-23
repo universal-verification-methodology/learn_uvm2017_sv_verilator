@@ -1,0 +1,3 @@
+Vvirtual_sequences_std__03a__03asemaphore__Vclpkg__0.o: \
+ Vvirtual_sequences_std__03a__03asemaphore__Vclpkg__0.cpp \
+ Vvirtual_sequences__pch.h

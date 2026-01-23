@@ -29,7 +29,7 @@ class alignas(VL_CACHE_LINE_BYTES) Verror_handling_example_error_handling_pkg__0
 
 class Verror_handling_example__Syms;
 
-class Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent : public VlClass {
+class Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE

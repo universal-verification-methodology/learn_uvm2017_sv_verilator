@@ -25,36 +25,34 @@ VM_TRACE_VCD = 1
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-	Vpackage_example \
-	Vpackage_example___024root__DepSet_h7282da1a__0 \
-	Vpackage_example___024root__DepSet_ha9499248__0 \
+  Vpackage_example \
+  Vpackage_example___024root__0 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	Vpackage_example___024root__Slow \
-	Vpackage_example___024root__DepSet_ha9499248__0__Slow \
-	Vpackage_example___024unit__Slow \
-	Vpackage_example___024unit__DepSet_hf0ee5db3__0__Slow \
+  Vpackage_example___024root__Slow \
+  Vpackage_example___024root__0__Slow \
+  Vpackage_example___024unit__Slow \
+  Vpackage_example___024unit__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Vpackage_example__Trace__0 \
+  Vpackage_example__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-	Vpackage_example__Syms \
-	Vpackage_example__Trace__0__Slow \
-	Vpackage_example__TraceDecls__0__Slow \
+  Vpackage_example__Syms \
+  Vpackage_example__Trace__0__Slow \
+  Vpackage_example__TraceDecls__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
-	verilated \
-	verilated_vcd_c \
-	verilated_timing \
-	verilated_threads \
+  verilated \
+  verilated_vcd_c \
+  verilated_timing \
+  verilated_threads \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization
 VM_GLOBAL_SLOW += \
-
 
 # Verilated -*- Makefile -*-

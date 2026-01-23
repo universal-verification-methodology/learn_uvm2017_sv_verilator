@@ -1,0 +1,3 @@
+Vuart_example___024unit__03a__03aUartDriver__Vclpkg__0.o: \
+ Vuart_example___024unit__03a__03aUartDriver__Vclpkg__0.cpp \
+ Vuart_example__pch.h

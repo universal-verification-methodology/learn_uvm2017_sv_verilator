@@ -1,0 +1,3 @@
+Vclass_hierarchy___024unit__03a__03aClassHierarchyTest__Vclpkg__0.o: \
+ Vclass_hierarchy___024unit__03a__03aClassHierarchyTest__Vclpkg__0.cpp \
+ Vclass_hierarchy__pch.h

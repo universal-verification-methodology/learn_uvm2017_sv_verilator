@@ -3,8 +3,6 @@
 // See Vpackage_example.h for the primary calling header
 
 #include "Vpackage_example__pch.h"
-#include "Vpackage_example__Syms.h"
-#include "Vpackage_example___024unit.h"
 
 void Vpackage_example___024unit___ctor_var_reset(Vpackage_example___024unit* vlSelf);
 

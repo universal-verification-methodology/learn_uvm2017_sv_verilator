@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_sequence_process_wrapper__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03auvm_sequence_process_wrapper__Vclpkg__0.cpp \
+ Vdma__pch.h

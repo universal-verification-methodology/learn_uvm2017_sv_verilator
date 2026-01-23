@@ -23,8 +23,8 @@ Verror_handling_example__Syms::Verror_handling_example__Syms(VerilatedContext* c
     , TOP__error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg{this, Verilated::catName(namep, "error_handling_pkg::ErrorHandlingComponent__Vclpkg")}
     , TOP__error_handling_pkg__03a__03aVerificationException__Vclpkg{this, Verilated::catName(namep, "error_handling_pkg::VerificationException__Vclpkg")}
 {
-        // Check resources
-        Verilated::stackCheck(68);
+    // Check resources
+    Verilated::stackCheck(209);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);

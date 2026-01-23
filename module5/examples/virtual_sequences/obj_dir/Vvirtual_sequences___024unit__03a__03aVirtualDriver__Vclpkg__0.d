@@ -1,0 +1,3 @@
+Vvirtual_sequences___024unit__03a__03aVirtualDriver__Vclpkg__0.o: \
+ Vvirtual_sequences___024unit__03a__03aVirtualDriver__Vclpkg__0.cpp \
+ Vvirtual_sequences__pch.h

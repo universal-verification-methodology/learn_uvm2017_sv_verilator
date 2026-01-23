@@ -1,0 +1,2 @@
+Varchitecture_std__03a__03aprocess__Vclpkg__0.o: \
+ Varchitecture_std__03a__03aprocess__Vclpkg__0.cpp Varchitecture__pch.h

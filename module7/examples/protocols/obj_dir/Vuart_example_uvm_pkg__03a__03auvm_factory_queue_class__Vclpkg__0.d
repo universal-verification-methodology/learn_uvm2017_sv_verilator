@@ -1,0 +1,3 @@
+Vuart_example_uvm_pkg__03a__03auvm_factory_queue_class__Vclpkg__0.o: \
+ Vuart_example_uvm_pkg__03a__03auvm_factory_queue_class__Vclpkg__0.cpp \
+ Vuart_example__pch.h

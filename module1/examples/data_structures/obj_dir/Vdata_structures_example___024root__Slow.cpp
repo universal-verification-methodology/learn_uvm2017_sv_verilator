@@ -3,8 +3,6 @@
 // See Vdata_structures_example.h for the primary calling header
 
 #include "Vdata_structures_example__pch.h"
-#include "Vdata_structures_example__Syms.h"
-#include "Vdata_structures_example___024root.h"
 
 void Vdata_structures_example___024root___ctor_var_reset(Vdata_structures_example___024root* vlSelf);
 

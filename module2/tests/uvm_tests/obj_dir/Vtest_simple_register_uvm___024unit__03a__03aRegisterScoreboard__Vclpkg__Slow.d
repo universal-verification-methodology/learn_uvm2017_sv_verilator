@@ -1,0 +1,3 @@
+Vtest_simple_register_uvm___024unit__03a__03aRegisterScoreboard__Vclpkg__Slow.o: \
+ Vtest_simple_register_uvm___024unit__03a__03aRegisterScoreboard__Vclpkg__Slow.cpp \
+ Vtest_simple_register_uvm__pch.h

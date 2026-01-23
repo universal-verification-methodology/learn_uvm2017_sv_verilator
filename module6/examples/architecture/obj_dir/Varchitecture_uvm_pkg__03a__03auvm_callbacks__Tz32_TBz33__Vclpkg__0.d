@@ -1,0 +1,3 @@
+Varchitecture_uvm_pkg__03a__03auvm_callbacks__Tz32_TBz33__Vclpkg__0.o: \
+ Varchitecture_uvm_pkg__03a__03auvm_callbacks__Tz32_TBz33__Vclpkg__0.cpp \
+ Varchitecture__pch.h

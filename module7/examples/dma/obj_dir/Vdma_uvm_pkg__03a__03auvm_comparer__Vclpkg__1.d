@@ -1,0 +1,2 @@
+Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.o: \
+ Vdma_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.cpp Vdma__pch.h

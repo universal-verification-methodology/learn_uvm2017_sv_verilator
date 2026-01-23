@@ -1,0 +1,3 @@
+Vuart_example_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg__0.o: \
+ Vuart_example_uvm_pkg__03a__03auvm_default_coreservice_t__Vclpkg__0.cpp \
+ Vuart_example__pch.h

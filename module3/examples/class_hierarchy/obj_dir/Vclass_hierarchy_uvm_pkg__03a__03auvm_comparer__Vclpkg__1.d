@@ -1,0 +1,3 @@
+Vclass_hierarchy_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.o: \
+ Vclass_hierarchy_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.cpp \
+ Vclass_hierarchy__pch.h

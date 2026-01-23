@@ -3,8 +3,6 @@
 // See Vinterface_example.h for the primary calling header
 
 #include "Vinterface_example__pch.h"
-#include "Vinterface_example__Syms.h"
-#include "Vinterface_example_apb_if.h"
 
 void Vinterface_example_apb_if___ctor_var_reset(Vinterface_example_apb_if* vlSelf);
 

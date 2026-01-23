@@ -3,8 +3,6 @@
 // See Vtransaction_example.h for the primary calling header
 
 #include "Vtransaction_example__pch.h"
-#include "Vtransaction_example__Syms.h"
-#include "Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg.h"
 
 void Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg___ctor_var_reset(Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg* vlSelf);
 

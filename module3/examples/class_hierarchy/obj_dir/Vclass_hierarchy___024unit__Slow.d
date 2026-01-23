@@ -1,0 +1,2 @@
+Vclass_hierarchy___024unit__Slow.o: Vclass_hierarchy___024unit__Slow.cpp \
+ Vclass_hierarchy__pch.h

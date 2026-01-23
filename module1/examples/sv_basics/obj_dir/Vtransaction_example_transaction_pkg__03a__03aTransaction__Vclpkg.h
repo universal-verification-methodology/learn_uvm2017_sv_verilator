@@ -33,7 +33,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example_transaction_pkg__03a__03
 
 class Vtransaction_example__Syms;
 
-class Vtransaction_example_transaction_pkg__03a__03aTransaction : public VlClass {
+class Vtransaction_example_transaction_pkg__03a__03aTransaction : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE

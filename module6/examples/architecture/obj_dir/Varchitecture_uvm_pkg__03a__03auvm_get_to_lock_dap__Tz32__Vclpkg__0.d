@@ -1,0 +1,3 @@
+Varchitecture_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz32__Vclpkg__0.o: \
+ Varchitecture_uvm_pkg__03a__03auvm_get_to_lock_dap__Tz32__Vclpkg__0.cpp \
+ Varchitecture__pch.h

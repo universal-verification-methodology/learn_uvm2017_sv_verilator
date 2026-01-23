@@ -3,8 +3,6 @@
 // See Verror_handling_example.h for the primary calling header
 
 #include "Verror_handling_example__pch.h"
-#include "Verror_handling_example__Syms.h"
-#include "Verror_handling_example_error_handling_pkg.h"
 
 void Verror_handling_example_error_handling_pkg___ctor_var_reset(Verror_handling_example_error_handling_pkg* vlSelf);
 

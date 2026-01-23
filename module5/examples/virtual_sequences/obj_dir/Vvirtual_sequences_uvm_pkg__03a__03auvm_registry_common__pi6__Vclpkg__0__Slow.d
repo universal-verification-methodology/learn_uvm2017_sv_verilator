@@ -1,0 +1,3 @@
+Vvirtual_sequences_uvm_pkg__03a__03auvm_registry_common__pi6__Vclpkg__0__Slow.o: \
+ Vvirtual_sequences_uvm_pkg__03a__03auvm_registry_common__pi6__Vclpkg__0__Slow.cpp \
+ Vvirtual_sequences__pch.h

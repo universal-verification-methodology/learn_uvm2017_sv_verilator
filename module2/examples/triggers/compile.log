@@ -1,0 +1,11 @@
+%Error: triggers.sv:69:13: syntax error, unexpected IDENTIFIER, expecting "'{"
+   69 |         int start_time;
+      |             ^~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.042 for more assistance.
+%Error: triggers.sv:120:13: syntax error, unexpected IDENTIFIER, expecting "'{"
+  120 |         int task1_time;
+      |             ^~~~~~~~~~
+%Error: triggers.sv:234:13: syntax error, unexpected IDENTIFIER, expecting "'{"
+  234 |         int timeout;
+      |             ^~~~~~~
+%Error: Exiting due to 3 error(s)

@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_sqr_if_base__Tz13_TBz13__Vclpkg__0.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_sqr_if_base__Tz13_TBz13__Vclpkg__0.cpp \
+ Vtransactions__pch.h

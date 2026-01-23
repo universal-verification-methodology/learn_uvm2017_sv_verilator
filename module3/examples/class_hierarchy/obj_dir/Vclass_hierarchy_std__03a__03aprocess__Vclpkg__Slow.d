@@ -1,0 +1,3 @@
+Vclass_hierarchy_std__03a__03aprocess__Vclpkg__Slow.o: \
+ Vclass_hierarchy_std__03a__03aprocess__Vclpkg__Slow.cpp \
+ Vclass_hierarchy__pch.h

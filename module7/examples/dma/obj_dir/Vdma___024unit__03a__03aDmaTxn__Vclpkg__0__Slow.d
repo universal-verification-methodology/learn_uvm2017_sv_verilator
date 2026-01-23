@@ -1,0 +1,2 @@
+Vdma___024unit__03a__03aDmaTxn__Vclpkg__0__Slow.o: \
+ Vdma___024unit__03a__03aDmaTxn__Vclpkg__0__Slow.cpp Vdma__pch.h

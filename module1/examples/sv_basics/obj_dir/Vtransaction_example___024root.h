@@ -27,11 +27,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtransaction_example___024root final : public
     Vtransaction_example_transaction_pkg__03a__03aWriteTransaction__Vclpkg* transaction_pkg__03a__03aWriteTransaction__Vclpkg;
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __VactContinue;
     IData/*31:0*/ __VactIterCount;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerVec<1> __VactTriggered;
-    VlTriggerVec<1> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vtransaction_example__Syms* const vlSymsp;

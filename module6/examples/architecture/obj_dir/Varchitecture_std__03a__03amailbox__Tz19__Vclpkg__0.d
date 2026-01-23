@@ -1,0 +1,3 @@
+Varchitecture_std__03a__03amailbox__Tz19__Vclpkg__0.o: \
+ Varchitecture_std__03a__03amailbox__Tz19__Vclpkg__0.cpp \
+ Varchitecture__pch.h

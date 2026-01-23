@@ -1,0 +1,2 @@
+Vvirtual_sequences_uvm_pkg__Slow.o: Vvirtual_sequences_uvm_pkg__Slow.cpp \
+ Vvirtual_sequences__pch.h

@@ -24,11 +24,10 @@ class alignas(VL_CACHE_LINE_BYTES) Verror_handling_example___024root final : pub
     Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg* error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg;
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __VactContinue;
     IData/*31:0*/ __VactIterCount;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerVec<1> __VactTriggered;
-    VlTriggerVec<1> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Verror_handling_example__Syms* const vlSymsp;

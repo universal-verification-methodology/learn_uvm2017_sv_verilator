@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz49__Vclpkg__0.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_set_before_get_dap__Tz49__Vclpkg__0.cpp \
+ Vtransactions__pch.h

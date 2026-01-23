@@ -25,45 +25,40 @@ VM_TRACE_VCD = 1
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
-	Verror_handling_example \
-	Verror_handling_example___024root__DepSet_h5ac1b686__0 \
-	Verror_handling_example___024root__DepSet_h8d3739b7__0 \
-	Verror_handling_example___024root__DepSet_h7a3ea797__0 \
-	Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__DepSet_h764f3e34__0 \
-	Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__DepSet_h9eb51f09__0 \
-	Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__DepSet_h3b3677ad__0 \
-	Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__DepSet_hd98be882__0 \
+  Verror_handling_example \
+  Verror_handling_example___024root__0 \
+  Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__0 \
+  Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__0 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
-	Verror_handling_example___024root__Slow \
-	Verror_handling_example___024root__DepSet_h7a3ea797__0__Slow \
-	Verror_handling_example_error_handling_pkg__Slow \
-	Verror_handling_example_error_handling_pkg__DepSet_h8f689037__0__Slow \
-	Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__Slow \
-	Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__DepSet_h9eb51f09__0__Slow \
-	Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__Slow \
-	Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__DepSet_hd98be882__0__Slow \
+  Verror_handling_example___024root__Slow \
+  Verror_handling_example___024root__0__Slow \
+  Verror_handling_example_error_handling_pkg__Slow \
+  Verror_handling_example_error_handling_pkg__0__Slow \
+  Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__Slow \
+  Verror_handling_example_error_handling_pkg__03a__03aVerificationException__Vclpkg__0__Slow \
+  Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__Slow \
+  Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingComponent__Vclpkg__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Verror_handling_example__Trace__0 \
+  Verror_handling_example__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
-	Verror_handling_example__Syms \
-	Verror_handling_example__Trace__0__Slow \
-	Verror_handling_example__TraceDecls__0__Slow \
+  Verror_handling_example__Syms \
+  Verror_handling_example__Trace__0__Slow \
+  Verror_handling_example__TraceDecls__0__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
-	verilated \
-	verilated_vcd_c \
-	verilated_timing \
-	verilated_threads \
+  verilated \
+  verilated_vcd_c \
+  verilated_timing \
+  verilated_threads \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization
 VM_GLOBAL_SLOW += \
-
 
 # Verilated -*- Makefile -*-

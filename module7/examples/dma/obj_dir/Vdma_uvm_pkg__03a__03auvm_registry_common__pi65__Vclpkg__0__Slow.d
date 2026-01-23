@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_registry_common__pi65__Vclpkg__0__Slow.o: \
+ Vdma_uvm_pkg__03a__03auvm_registry_common__pi65__Vclpkg__0__Slow.cpp \
+ Vdma__pch.h

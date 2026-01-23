@@ -19,8 +19,8 @@ Vinterface_example__Syms::Vinterface_example__Syms(VerilatedContext* contextp, c
     , TOP{this, namep}
     , TOP__interface_example__DOT__bus{this, Verilated::catName(namep, "interface_example.bus")}
 {
-        // Check resources
-        Verilated::stackCheck(25);
+    // Check resources
+    Verilated::stackCheck(166);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);

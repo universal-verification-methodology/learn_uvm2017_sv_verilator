@@ -1,0 +1,56 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design internal header
+// See Vtransactions.h for the primary calling header
+
+#ifndef VERILATED_VTRANSACTIONS_UVM_PKG__03A__03AUVM_SET_GET_DAP_BASE__TZ39__VCLPKG_H_
+#define VERILATED_VTRANSACTIONS_UVM_PKG__03A__03AUVM_SET_GET_DAP_BASE__TZ39__VCLPKG_H_  // guard
+
+#include "verilated.h"
+#include "verilated_timing.h"
+#include "verilated_random.h"
+class Vtransactions_uvm_pkg__03a__03auvm_object;
+class Vtransactions_uvm_pkg__03a__03auvm_tr_stream;
+
+
+class Vtransactions__Syms;
+
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39__Vclpkg final : public VerilatedModule {
+  public:
+
+    // INTERNAL VARIABLES
+    Vtransactions__Syms* const vlSymsp;
+
+    // CONSTRUCTORS
+    Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    ~Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39__Vclpkg();
+    VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39__Vclpkg);
+
+    // INTERNAL METHODS
+    void __Vconfigure(bool first);
+};
+
+#include "Vtransactions_uvm_pkg__03a__03auvm_object__Vclpkg.h"
+
+class Vtransactions__Syms;
+
+class Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39 : public Vtransactions_uvm_pkg__03a__03auvm_object {
+  public:
+    virtual void __VnoInFunc___Vbasic_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Vtransactions__Syms* __restrict vlSymsp) {}
+    virtual void __VnoInFunc_get(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tr_stream> &get__Vfuncrtn);
+    virtual void __VnoInFunc_randomize(Vtransactions__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
+    virtual void __VnoInFunc_set(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tr_stream> value);
+    virtual void __VnoInFunc_try_get(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tr_stream> &value, CData/*0:0*/ &try_get__Vfuncrtn);
+    virtual void __VnoInFunc_try_set(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_tr_stream> value, CData/*0:0*/ &try_set__Vfuncrtn);
+  private:
+    void _ctor_var_reset(Vtransactions__Syms* __restrict vlSymsp);
+  public:
+    Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name);
+    std::string to_string() const;
+    std::string to_string_middle() const;
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39() {}
+};
+
+std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_set_get_dap_base__Tz39>& obj);
+
+#endif  // guard

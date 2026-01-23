@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_seq_item_pull_port__pi91__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03auvm_seq_item_pull_port__pi91__Vclpkg__0.cpp \
+ Vdma__pch.h

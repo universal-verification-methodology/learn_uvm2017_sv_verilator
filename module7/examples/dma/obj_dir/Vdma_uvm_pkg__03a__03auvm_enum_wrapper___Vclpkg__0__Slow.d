@@ -1,0 +1,2 @@
+Vdma_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg__0__Slow.o: \
+ Vdma_uvm_pkg__03a__03auvm_enum_wrapper___Vclpkg__0__Slow.cpp Vdma__pch.h

@@ -1,0 +1,3 @@
+Varchitecture_uvm_pkg__03a__03auvm_callback_iter__pi99__Vclpkg__0.o: \
+ Varchitecture_uvm_pkg__03a__03auvm_callback_iter__pi99__Vclpkg__0.cpp \
+ Varchitecture__pch.h

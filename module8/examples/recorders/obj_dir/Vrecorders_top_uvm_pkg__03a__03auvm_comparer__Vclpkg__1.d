@@ -1,0 +1,3 @@
+Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.o: \
+ Vrecorders_top_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.cpp \
+ Vrecorders_top__pch.h

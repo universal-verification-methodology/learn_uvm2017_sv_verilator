@@ -25,8 +25,8 @@ Vtransaction_example__Syms::Vtransaction_example__Syms(VerilatedContext* context
     , TOP__transaction_pkg__03a__03aTransaction__Vclpkg{this, Verilated::catName(namep, "transaction_pkg::Transaction__Vclpkg")}
     , TOP__transaction_pkg__03a__03aWriteTransaction__Vclpkg{this, Verilated::catName(namep, "transaction_pkg::WriteTransaction__Vclpkg")}
 {
-        // Check resources
-        Verilated::stackCheck(234);
+    // Check resources
+    Verilated::stackCheck(375);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);

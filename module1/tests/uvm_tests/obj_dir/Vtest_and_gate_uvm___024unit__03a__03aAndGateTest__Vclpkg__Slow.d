@@ -1,0 +1,3 @@
+Vtest_and_gate_uvm___024unit__03a__03aAndGateTest__Vclpkg__Slow.o: \
+ Vtest_and_gate_uvm___024unit__03a__03aAndGateTest__Vclpkg__Slow.cpp \
+ Vtest_and_gate_uvm__pch.h

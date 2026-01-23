@@ -1,0 +1,3 @@
+Vvirtual_sequences_uvm_pkg__03a__03auvm_put_imp__Tz1_TBz153__Vclpkg__0.o: \
+ Vvirtual_sequences_uvm_pkg__03a__03auvm_put_imp__Tz1_TBz153__Vclpkg__0.cpp \
+ Vvirtual_sequences__pch.h

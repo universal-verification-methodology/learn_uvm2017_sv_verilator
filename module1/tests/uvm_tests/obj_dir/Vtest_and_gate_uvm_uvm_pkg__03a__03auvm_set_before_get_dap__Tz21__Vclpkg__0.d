@@ -1,0 +1,3 @@
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_before_get_dap__Tz21__Vclpkg__0.o: \
+ Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_set_before_get_dap__Tz21__Vclpkg__0.cpp \
+ Vtest_and_gate_uvm__pch.h

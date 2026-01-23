@@ -1,0 +1,3 @@
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_put_imp__Tz224_TBz302__Vclpkg__0.o: \
+ Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_put_imp__Tz224_TBz302__Vclpkg__0.cpp \
+ Vtest_and_gate_uvm__pch.h

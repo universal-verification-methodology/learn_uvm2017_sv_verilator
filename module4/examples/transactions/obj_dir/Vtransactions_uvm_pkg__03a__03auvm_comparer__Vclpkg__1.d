@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.cpp \
+ Vtransactions__pch.h

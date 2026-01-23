@@ -1,0 +1,5 @@
+%Error: callbacks.sv:84:20: syntax error, unexpected IDENTIFIER-for-type
+   84 |   static local bit m_register_DriverWithCallbacksuvm_driver #(CallbackTransaction) = uvm_derived_callbacks#(DriverWithCallbacks,uvm_driver #(CallbackTransaction))::register_super_type("DriverWithCallbacks","uvm_driver #(CallbackTransaction)");
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.042 for more assistance.
+%Error: Exiting due to 1 error(s)

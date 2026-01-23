@@ -1,0 +1,3 @@
+Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi81__Vclpkg__Slow.o: \
+ Vrecorders_top_uvm_pkg__03a__03auvm_object_registry__pi81__Vclpkg__Slow.cpp \
+ Vrecorders_top__pch.h

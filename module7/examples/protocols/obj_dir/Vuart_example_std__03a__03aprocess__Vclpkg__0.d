@@ -1,0 +1,2 @@
+Vuart_example_std__03a__03aprocess__Vclpkg__0.o: \
+ Vuart_example_std__03a__03aprocess__Vclpkg__0.cpp Vuart_example__pch.h

@@ -1,0 +1,2 @@
+Vdma_std__03a__03amailbox__Tz26__Vclpkg__0.o: \
+ Vdma_std__03a__03amailbox__Tz26__Vclpkg__0.cpp Vdma__pch.h

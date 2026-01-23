@@ -1,0 +1,2 @@
+Vdma_uvm_pkg__03a__03am_uvm_sqr_seq_base__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03am_uvm_sqr_seq_base__Vclpkg__0.cpp Vdma__pch.h

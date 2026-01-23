@@ -30,13 +30,13 @@ class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example___024root final : pu
     Vdata_structures_example_data_structures_pkg__03a__03aCoverageCollector__Vclpkg* data_structures_pkg__03a__03aCoverageCollector__Vclpkg;
 
     // DESIGN SPECIFIC STATE
-    CData/*0:0*/ __VactContinue;
     IData/*31:0*/ data_structures_example__DOT__unnamedblk1__DOT__i;
     IData/*31:0*/ data_structures_example__DOT__unnamedblk2__DOT__i;
     IData/*31:0*/ __VactIterCount;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerVec<1> __VactTriggered;
-    VlTriggerVec<1> __VnbaTriggered;
+    VlClassRef<Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction> data_structures_example__DOT__txn;
 
     // INTERNAL VARIABLES
     Vdata_structures_example__Syms* const vlSymsp;

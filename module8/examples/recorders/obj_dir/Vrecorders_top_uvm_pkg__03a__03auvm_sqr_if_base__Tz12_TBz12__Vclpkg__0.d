@@ -1,0 +1,3 @@
+Vrecorders_top_uvm_pkg__03a__03auvm_sqr_if_base__Tz12_TBz12__Vclpkg__0.o: \
+ Vrecorders_top_uvm_pkg__03a__03auvm_sqr_if_base__Tz12_TBz12__Vclpkg__0.cpp \
+ Vrecorders_top__pch.h

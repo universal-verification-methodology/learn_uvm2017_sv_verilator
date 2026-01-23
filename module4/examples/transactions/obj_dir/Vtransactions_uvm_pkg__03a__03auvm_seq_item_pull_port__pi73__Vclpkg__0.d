@@ -1,0 +1,3 @@
+Vtransactions_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg__0.o: \
+ Vtransactions_uvm_pkg__03a__03auvm_seq_item_pull_port__pi73__Vclpkg__0.cpp \
+ Vtransactions__pch.h

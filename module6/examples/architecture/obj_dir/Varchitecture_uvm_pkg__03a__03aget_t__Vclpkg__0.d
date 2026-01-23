@@ -1,0 +1,2 @@
+Varchitecture_uvm_pkg__03a__03aget_t__Vclpkg__0.o: \
+ Varchitecture_uvm_pkg__03a__03aget_t__Vclpkg__0.cpp Varchitecture__pch.h

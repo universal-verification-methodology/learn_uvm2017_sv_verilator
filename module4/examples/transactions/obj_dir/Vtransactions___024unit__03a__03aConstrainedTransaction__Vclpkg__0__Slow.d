@@ -1,0 +1,3 @@
+Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg__0__Slow.o: \
+ Vtransactions___024unit__03a__03aConstrainedTransaction__Vclpkg__0__Slow.cpp \
+ Vtransactions__pch.h

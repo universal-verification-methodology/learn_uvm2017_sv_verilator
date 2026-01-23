@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi153__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03auvm_sequencer_analysis_fifo__pi153__Vclpkg__0.cpp \
+ Vdma__pch.h

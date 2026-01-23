@@ -1,0 +1,3 @@
+Varchitecture_std__03a__03amailbox__Tz216__Vclpkg__0__Slow.o: \
+ Varchitecture_std__03a__03amailbox__Tz216__Vclpkg__0__Slow.cpp \
+ Varchitecture__pch.h

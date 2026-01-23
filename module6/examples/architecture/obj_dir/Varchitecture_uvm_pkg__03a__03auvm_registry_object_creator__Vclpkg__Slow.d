@@ -1,0 +1,3 @@
+Varchitecture_uvm_pkg__03a__03auvm_registry_object_creator__Vclpkg__Slow.o: \
+ Varchitecture_uvm_pkg__03a__03auvm_registry_object_creator__Vclpkg__Slow.cpp \
+ Varchitecture__pch.h

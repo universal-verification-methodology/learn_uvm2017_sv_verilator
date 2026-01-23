@@ -1,0 +1,3 @@
+Vtest_simple_register_uvm_std__03a__03amailbox__Tz13__Vclpkg__0.o: \
+ Vtest_simple_register_uvm_std__03a__03amailbox__Tz13__Vclpkg__0.cpp \
+ Vtest_simple_register_uvm__pch.h

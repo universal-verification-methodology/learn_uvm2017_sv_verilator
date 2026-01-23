@@ -18,8 +18,8 @@ Vpackage_example__Syms::Vpackage_example__Syms(VerilatedContext* contextp, const
     // Setup module instances
     , TOP{this, namep}
 {
-        // Check resources
-        Verilated::stackCheck(18);
+    // Check resources
+    Verilated::stackCheck(159);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);

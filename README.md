@@ -2,13 +2,13 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![SystemVerilog](https://img.shields.io/badge/SystemVerilog-2017-blue.svg)](https://ieeexplore.ieee.org/document/8299595)
-[![UVM](https://img.shields.io/badge/UVM-1.2-orange.svg)](https://www.accellera.org/)
-[![Verilator](https://img.shields.io/badge/Verilator-Latest-red.svg)](https://www.veripool.org/verilator/)
+[![UVM](https://img.shields.io/badge/UVM-2017--1.0-orange.svg)](https://www.accellera.org/)
+[![Verilator](https://img.shields.io/badge/Verilator-5.042+-red.svg)](https://www.veripool.org/verilator/)
 
 A comprehensive, modular learning path for mastering **UVM (Universal Verification Methodology)** using **SystemVerilog** (IEEE 1800.2-2017) with progressive complexity levels. This project provides a complete educational resource with examples, testbenches, and documentation covering all aspects of UVM verification using SystemVerilog.
 
 ## 📋 Table of Contents
-
+\
 - [Overview](#overview)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
@@ -48,11 +48,12 @@ This project is a complete educational resource for learning UVM verification me
 
 ### Verilator and SystemVerilog UVM
 
-**Important Note**: Verilator has limited SystemVerilog support and does not fully support all UVM features. This project:
+**Important Note**: Verilator 5.042+ now supports UVM 2017-1.0! (See [Antmicro blog post](https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator)). This project:
 
+- ✅ Uses Verilator 5.042+ as the default (with full UVM 2017-1.0 support)
 - ✅ Covers complete UVM methodology and concepts
-- ✅ Provides examples that work with Verilator where possible
-- ✅ Documents Verilator limitations and workarounds
+- ✅ Provides examples that work with Verilator
+- ✅ Documents Verilator-specific flags and configurations
 - ✅ Includes notes for commercial simulator compatibility
 - ✅ Prepares you for both open-source and commercial tool environments
 
@@ -82,7 +83,8 @@ This project is a complete educational resource for learning UVM verification me
 ### System Requirements
 
 - **Operating System**: Linux, macOS, or Windows (WSL2 recommended)
-- **SystemVerilog Simulator**: Verilator (open-source) or commercial simulator (VCS, Questa, Xcelium)
+- **SystemVerilog Simulator**: Verilator 5.042+ (default, with UVM 2017-1.0 support) or commercial simulator (VCS, Questa, Xcelium)
+- **UVM Library**: Accellera UVM 2017-1.0 (IEEE 1800.2-2017)
 - **Memory**: Minimum 8GB RAM (16GB+ recommended for complex testbenches)
 - **Disk Space**: ~3GB for tools and dependencies
 - **Build Tools**: C++ compiler (GCC, Clang), Make or Ninja
@@ -162,8 +164,8 @@ learn_uvm_sv/
 │   └── uninstall_*.sh        # Tool uninstallers
 │
 ├── tools/                     # Git submodules for tools
-│   ├── verilator/            # Verilator simulator
-│   └── uvm-1.2/              # UVM library (Accellera)
+│   ├── verilator/            # Verilator simulator (default: 5.042)
+│   └── uvm-2017/             # UVM library (Accellera UVM 2017-1.0)
 │
 └── README.md                  # This file
 ```
@@ -240,8 +242,8 @@ Each module has a dedicated guide with examples, exercises, and detailed explana
 **Complexity**: Beginner
 
 Set up your verification environment with all required tools:
-- Verilator (simulator) or commercial simulator setup
-- UVM library (Accellera UVM 1.2)
+- Verilator 5.042+ (simulator with UVM 2017-1.0 support) or commercial simulator setup
+- UVM library (Accellera UVM 2017-1.0, IEEE 1800.2-2017)
 - Build system configuration
 
 **Quick Start**: `./scripts/module0.sh`
@@ -358,10 +360,14 @@ Master UVM utility classes:
 ### Individual Tool Installation
 
 ```bash
-# Verilator
-./scripts/install_verilator.sh [--from-submodule|--system|--source]
+# Verilator (default: version 5.042)
+./scripts/install_verilator.sh --source
+# Or install specific version
+./scripts/install_verilator.sh --version 5.044 --source
+# Or install locally (no sudo required)
+./scripts/install_verilator.sh --source --local
 
-# UVM Library
+# UVM Library (Accellera UVM 2017-1.0)
 ./scripts/install_uvm.sh [--from-submodule|--system]
 ```
 
@@ -414,28 +420,37 @@ make SIM=questa TEST=test_and_gate_uvm
 make SIM=xcelium TEST=test_and_gate_uvm
 ```
 
-## ⚠️ Verilator Limitations and Workarounds
+## ⚠️ Verilator and UVM 2017 Support
 
-Verilator has limited SystemVerilog support. This section documents known limitations and workarounds:
+**Great News**: Verilator 5.042+ supports UVM 2017-1.0! This project uses Verilator 5.042 as the default version, which includes full UVM 2017-1.0 support (see [Antmicro blog post](https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator)).
 
-### Supported Features
+### Supported Features (Verilator 5.042+)
+- ✅ UVM 2017-1.0 library (upstream, no patches required)
 - ✅ Basic SystemVerilog syntax
 - ✅ Classes and inheritance
-- ✅ Interfaces (limited)
+- ✅ Interfaces (with some limitations)
 - ✅ Packages
-- ✅ Basic UVM structure
+- ✅ UVM class hierarchy
+- ✅ UVM phases, reporting, ConfigDB
+- ✅ TLM connections
+- ✅ Sequences and sequencers
 
-### Limited/Unsupported Features
-- ❌ Full UVM library support (some classes may not work)
-- ❌ Complex TLM connections
-- ❌ Some advanced UVM features
-- ❌ Full SystemVerilog assertion support
+### Recommended Configuration
+- **Verilator Version**: 5.042 or later (default: 5.042)
+- **UVM Library**: Accellera UVM 2017-1.0
+- **Compilation Flags**: `--binary`, `+define+UVM_NO_DPI`, `-Wno-fatal`
+- **UVM_HOME**: Should point to UVM `src` directory
 
-### Workarounds
-- Use simplified UVM patterns where possible
-- Document commercial simulator alternatives
-- Provide both Verilator and commercial simulator examples
-- Focus on concepts over tool-specific features
+### Known Limitations
+- Some advanced UVM features may have limited support
+- Full SystemVerilog assertion support is limited
+- Complex interface features may require workarounds
+
+### Installation
+The installation script automatically installs Verilator 5.042 by default:
+```bash
+./scripts/install_verilator.sh --source
+```
 
 See [SYSTEMVERILOG_VERILATOR_INTERACTION.md](docs/SYSTEMVERILOG_VERILATOR_INTERACTION.md) for detailed information.
 
@@ -488,19 +503,22 @@ This project is built on the excellent work of:
 
 - **UVM**: Universal Verification Methodology
   - Standard: IEEE 1800.2-2017
+  - Version: Accellera UVM 2017-1.0
   - Accellera Systems Initiative
   - Website: https://www.accellera.org/
 
 - **Verilator**: Fast Verilog/SystemVerilog simulator
   - Website: https://www.veripool.org/verilator/
   - GitHub: https://github.com/verilator/verilator
+  - UVM 2017 Support: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator
+  - Default Version: 5.042+ (with UVM 2017-1.0 support)
 
 - **SystemVerilog**: IEEE 1800-2017 Standard
   - Standard: IEEE 1800-2017
 
 ### Educational Resources
 
-- UVM 1.2 User's Guide (Accellera Systems Initiative)
+- UVM 2017-1.0 User's Guide (Accellera Systems Initiative)
 - Verification Academy: https://verificationacademy.com/
 - IEEE Design & Test publications
 - DVCon proceedings

@@ -1,0 +1,3 @@
+Varchitecture_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg__0.o: \
+ Varchitecture_uvm_pkg__03a__03auvm_sequencer_analysis_fifo___Vclpkg__0.cpp \
+ Varchitecture__pch.h

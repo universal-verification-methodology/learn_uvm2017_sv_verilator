@@ -1,0 +1,3 @@
+Vvirtual_sequences_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.o: \
+ Vvirtual_sequences_uvm_pkg__03a__03auvm_comparer__Vclpkg__1.cpp \
+ Vvirtual_sequences__pch.h

@@ -1,0 +1,3 @@
+Vtransactions_std__03a__03amailbox__Tz25__Vclpkg__Slow.o: \
+ Vtransactions_std__03a__03amailbox__Tz25__Vclpkg__Slow.cpp \
+ Vtransactions__pch.h

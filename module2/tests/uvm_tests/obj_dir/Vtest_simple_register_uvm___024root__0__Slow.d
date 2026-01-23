@@ -1,0 +1,3 @@
+Vtest_simple_register_uvm___024root__0__Slow.o: \
+ Vtest_simple_register_uvm___024root__0__Slow.cpp \
+ Vtest_simple_register_uvm__pch.h

@@ -1,0 +1,3 @@
+Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg__0.o: \
+ Vclass_hierarchy_uvm_pkg__03a__03auvm_reg_mem_built_in_seq__Vclpkg__0.cpp \
+ Vclass_hierarchy__pch.h

@@ -1,0 +1,3 @@
+Vvirtual_sequences_uvm_pkg__03a__03auvm_set_before_get_dap__Tz50__Vclpkg__0.o: \
+ Vvirtual_sequences_uvm_pkg__03a__03auvm_set_before_get_dap__Tz50__Vclpkg__0.cpp \
+ Vvirtual_sequences__pch.h

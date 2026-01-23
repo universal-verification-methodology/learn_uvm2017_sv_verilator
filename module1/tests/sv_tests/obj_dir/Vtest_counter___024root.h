@@ -21,12 +21,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vtest_counter___024root final : public Verila
     CData/*7:0*/ test_counter__DOT__count;
     CData/*0:0*/ __Vtrigprevexpr___TOP__test_counter__DOT__clk__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__test_counter__DOT__rst_n__0;
-    CData/*0:0*/ __VactContinue;
     IData/*31:0*/ __VactIterCount;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
     VlDelayScheduler __VdlySched;
-    VlTriggerScheduler __VtrigSched_h8ca4d732__0;
-    VlTriggerVec<3> __VactTriggered;
-    VlTriggerVec<3> __VnbaTriggered;
+    VlTriggerScheduler __VtrigSched_h1263e6a3__0;
 
     // INTERNAL VARIABLES
     Vtest_counter__Syms* const vlSymsp;

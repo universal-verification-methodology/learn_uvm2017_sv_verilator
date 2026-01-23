@@ -3,8 +3,6 @@
 // See Vinterface_example.h for the primary calling header
 
 #include "Vinterface_example__pch.h"
-#include "Vinterface_example__Syms.h"
-#include "Vinterface_example___024root.h"
 
 void Vinterface_example___024root___ctor_var_reset(Vinterface_example___024root* vlSelf);
 

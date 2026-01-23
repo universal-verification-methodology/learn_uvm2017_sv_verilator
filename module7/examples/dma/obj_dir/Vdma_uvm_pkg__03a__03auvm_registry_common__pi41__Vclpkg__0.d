@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_registry_common__pi41__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03auvm_registry_common__pi41__Vclpkg__0.cpp \
+ Vdma__pch.h

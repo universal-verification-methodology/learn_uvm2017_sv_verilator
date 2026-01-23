@@ -1,0 +1,2 @@
+Vdma_std__03a__03aprocess__Vclpkg__0__Slow.o: \
+ Vdma_std__03a__03aprocess__Vclpkg__0__Slow.cpp Vdma__pch.h

@@ -1,0 +1,3 @@
+Vclass_hierarchy___024unit__03a__03aMyAgent__Vclpkg__Slow.o: \
+ Vclass_hierarchy___024unit__03a__03aMyAgent__Vclpkg__Slow.cpp \
+ Vclass_hierarchy__pch.h

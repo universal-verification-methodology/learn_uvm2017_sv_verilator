@@ -1,0 +1,3 @@
+Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi98__Vclpkg__0__Slow.o: \
+ Vdma_uvm_pkg__03a__03auvm_abstract_object_registry__pi98__Vclpkg__0__Slow.cpp \
+ Vdma__pch.h

@@ -1,0 +1,3 @@
+Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg__0.o: \
+ Vclass_hierarchy_uvm_pkg__03a__03auvm_tlm_if_base__Tz1_TBz1__Vclpkg__0.cpp \
+ Vclass_hierarchy__pch.h

@@ -1,0 +1,71 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design internal header
+// See Varchitecture.h for the primary calling header
+
+#ifndef VERILATED_VARCHITECTURE_UVM_PKG__03A__03AUVM_PRINTER_ELEMENT__VCLPKG_H_
+#define VERILATED_VARCHITECTURE_UVM_PKG__03A__03AUVM_PRINTER_ELEMENT__VCLPKG_H_  // guard
+
+#include "verilated.h"
+#include "verilated_timing.h"
+#include "verilated_random.h"
+class Varchitecture_uvm_pkg__03a__03auvm_object;
+class Varchitecture_uvm_pkg__03a__03auvm_printer_element;
+
+
+class Varchitecture__Syms;
+
+class alignas(VL_CACHE_LINE_BYTES) Varchitecture_uvm_pkg__03a__03auvm_printer_element__Vclpkg final : public VerilatedModule {
+  public:
+
+    // INTERNAL VARIABLES
+    Varchitecture__Syms* const vlSymsp;
+
+    // CONSTRUCTORS
+    Varchitecture_uvm_pkg__03a__03auvm_printer_element__Vclpkg(Varchitecture__Syms* symsp, const char* v__name);
+    ~Varchitecture_uvm_pkg__03a__03auvm_printer_element__Vclpkg();
+    VL_UNCOPYABLE(Varchitecture_uvm_pkg__03a__03auvm_printer_element__Vclpkg);
+
+    // INTERNAL METHODS
+    void __Vconfigure(bool first);
+};
+
+#include "Varchitecture_uvm_pkg__03a__03auvm_object__Vclpkg.h"
+
+class Varchitecture__Syms;
+
+class Varchitecture_uvm_pkg__03a__03auvm_printer_element : public Varchitecture_uvm_pkg__03a__03auvm_object {
+  public:
+
+    // DESIGN SPECIFIC STATE
+    std::string __PVT__m_name;
+    std::string __PVT__m_type_name;
+    std::string __PVT__m_size;
+    std::string __PVT__m_value;
+    VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element>> __PVT__m_children;
+    virtual void __VnoInFunc___Vbasic_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &__Vbasic_randomize__Vfuncrtn);
+    virtual void __VnoInFunc___Vsetup_constraints(Varchitecture__Syms* __restrict vlSymsp) {}
+    void __VnoInFunc_add_child(Varchitecture__Syms* __restrict vlSymsp, VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element> child);
+    void __VnoInFunc_clear_children(Varchitecture__Syms* __restrict vlSymsp);
+    void __VnoInFunc_get_children(Varchitecture__Syms* __restrict vlSymsp, VlQueue<VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element>> &children, CData/*0:0*/ recurse);
+    virtual void __VnoInFunc_get_element_name(Varchitecture__Syms* __restrict vlSymsp, std::string &get_element_name__Vfuncrtn);
+    virtual void __VnoInFunc_get_element_size(Varchitecture__Syms* __restrict vlSymsp, std::string &get_element_size__Vfuncrtn);
+    virtual void __VnoInFunc_get_element_type_name(Varchitecture__Syms* __restrict vlSymsp, std::string &get_element_type_name__Vfuncrtn);
+    virtual void __VnoInFunc_get_element_value(Varchitecture__Syms* __restrict vlSymsp, std::string &get_element_value__Vfuncrtn);
+    virtual void __VnoInFunc_randomize(Varchitecture__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn);
+    virtual void __VnoInFunc_set(Varchitecture__Syms* __restrict vlSymsp, std::string element_name, std::string element_type_name, std::string element_size, std::string element_value);
+    virtual void __VnoInFunc_set_element_name(Varchitecture__Syms* __restrict vlSymsp, std::string element_name);
+    virtual void __VnoInFunc_set_element_size(Varchitecture__Syms* __restrict vlSymsp, std::string element_size);
+    virtual void __VnoInFunc_set_element_type_name(Varchitecture__Syms* __restrict vlSymsp, std::string element_type_name);
+    virtual void __VnoInFunc_set_element_value(Varchitecture__Syms* __restrict vlSymsp, std::string element_value);
+  private:
+    void _ctor_var_reset(Varchitecture__Syms* __restrict vlSymsp);
+  public:
+    Varchitecture_uvm_pkg__03a__03auvm_printer_element(VlProcessRef vlProcess, Varchitecture__Syms* __restrict vlSymsp, std::string name);
+    std::string to_string() const;
+    std::string to_string_middle() const;
+    virtual ~Varchitecture_uvm_pkg__03a__03auvm_printer_element() {}
+};
+
+std::string VL_TO_STRING(const VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_printer_element>& obj);
+
+#endif  // guard

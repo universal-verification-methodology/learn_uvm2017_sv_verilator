@@ -1,0 +1,3 @@
+Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg__0.o: \
+ Vtest_and_gate_uvm_std__03a__03amailbox__Tz126__Vclpkg__0.cpp \
+ Vtest_and_gate_uvm__pch.h

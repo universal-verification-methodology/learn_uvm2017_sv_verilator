@@ -1,0 +1,2 @@
+Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg__0.o: \
+ Vdma_uvm_pkg__03a__03auvm_tlm_fifo_base__Tz26__Vclpkg__0.cpp Vdma__pch.h

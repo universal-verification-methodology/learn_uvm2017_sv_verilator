@@ -1,0 +1,3 @@
+Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks__Tz100_TBz101__Vclpkg__Slow.o: \
+ Vtest_and_gate_uvm_uvm_pkg__03a__03auvm_callbacks__Tz100_TBz101__Vclpkg__Slow.cpp \
+ Vtest_and_gate_uvm__pch.h

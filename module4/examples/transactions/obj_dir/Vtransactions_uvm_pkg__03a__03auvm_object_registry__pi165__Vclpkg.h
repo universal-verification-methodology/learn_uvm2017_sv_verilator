@@ -1,0 +1,65 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design internal header
+// See Vtransactions.h for the primary calling header
+
+#ifndef VERILATED_VTRANSACTIONS_UVM_PKG__03A__03AUVM_OBJECT_REGISTRY__PI165__VCLPKG_H_
+#define VERILATED_VTRANSACTIONS_UVM_PKG__03A__03AUVM_OBJECT_REGISTRY__PI165__VCLPKG_H_  // guard
+
+#include "verilated.h"
+#include "verilated_timing.h"
+#include "verilated_random.h"
+class Vtransactions_uvm_pkg__03a__03auvm_component;
+class Vtransactions_uvm_pkg__03a__03auvm_object;
+class Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165;
+class Vtransactions_uvm_pkg__03a__03auvm_object_wrapper;
+class Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq;
+class Vtransactions_uvm_pkg__03a__03auvm_registry_common__pi192;
+
+
+class Vtransactions__Syms;
+
+class alignas(VL_CACHE_LINE_BYTES) Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165__Vclpkg final : public VerilatedModule {
+  public:
+
+    // DESIGN SPECIFIC STATE
+    VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165> __PVT__get__Vstatic__m_inst;
+
+    // INTERNAL VARIABLES
+    Vtransactions__Syms* const vlSymsp;
+
+    // CONSTRUCTORS
+    Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165__Vclpkg(Vtransactions__Syms* symsp, const char* v__name);
+    ~Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165__Vclpkg();
+    VL_UNCOPYABLE(Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165__Vclpkg);
+
+    // INTERNAL METHODS
+    void __Vconfigure(bool first);
+    void __VnoInFunc_create(Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_component> parent, std::string contxt, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_reg_mem_hdl_paths_seq> &create__Vfuncrtn);
+    void __VnoInFunc_get(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165> &get__Vfuncrtn);
+    void __VnoInFunc_set_inst_override(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_wrapper> override_type, std::string inst_path, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_component> parent);
+    void __VnoInFunc_set_type_alias(Vtransactions__Syms* __restrict vlSymsp, std::string alias_name, CData/*0:0*/ &set_type_alias__Vfuncrtn);
+    void __VnoInFunc_set_type_override(Vtransactions__Syms* __restrict vlSymsp, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_wrapper> override_type, CData/*0:0*/ replace);
+    void __VnoInFunc_type_name(Vtransactions__Syms* __restrict vlSymsp, std::string &type_name__Vfuncrtn);
+};
+
+#include "Vtransactions_uvm_pkg__03a__03auvm_object_wrapper__Vclpkg.h"
+
+class Vtransactions__Syms;
+
+class Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165 : public Vtransactions_uvm_pkg__03a__03auvm_object_wrapper {
+  public:
+    virtual void __VnoInFunc_create_object(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp, std::string name, VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object> &create_object__Vfuncrtn);
+    virtual void __VnoInFunc_get_type_name(Vtransactions__Syms* __restrict vlSymsp, std::string &get_type_name__Vfuncrtn);
+    virtual void __VnoInFunc_initialize(VlProcessRef vlProcess, Vtransactions__Syms* __restrict vlSymsp);
+  private:
+    void _ctor_var_reset(Vtransactions__Syms* __restrict vlSymsp);
+  public:
+    Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165(Vtransactions__Syms* __restrict vlSymsp);
+    std::string to_string() const;
+    std::string to_string_middle() const;
+    virtual ~Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165() {}
+};
+
+std::string VL_TO_STRING(const VlClassRef<Vtransactions_uvm_pkg__03a__03auvm_object_registry__pi165>& obj);
+
+#endif  // guard

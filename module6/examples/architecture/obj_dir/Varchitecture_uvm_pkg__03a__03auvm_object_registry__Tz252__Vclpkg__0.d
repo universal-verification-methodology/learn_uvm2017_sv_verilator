@@ -1,0 +1,3 @@
+Varchitecture_uvm_pkg__03a__03auvm_object_registry__Tz252__Vclpkg__0.o: \
+ Varchitecture_uvm_pkg__03a__03auvm_object_registry__Tz252__Vclpkg__0.cpp \
+ Varchitecture__pch.h

@@ -1,0 +1,2 @@
+Vdma_std__03a__03amailbox__Tz199__Vclpkg__0__Slow.o: \
+ Vdma_std__03a__03amailbox__Tz199__Vclpkg__0__Slow.cpp Vdma__pch.h

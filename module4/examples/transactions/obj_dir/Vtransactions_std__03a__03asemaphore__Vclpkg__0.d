@@ -1,0 +1,2 @@
+Vtransactions_std__03a__03asemaphore__Vclpkg__0.o: \
+ Vtransactions_std__03a__03asemaphore__Vclpkg__0.cpp Vtransactions__pch.h

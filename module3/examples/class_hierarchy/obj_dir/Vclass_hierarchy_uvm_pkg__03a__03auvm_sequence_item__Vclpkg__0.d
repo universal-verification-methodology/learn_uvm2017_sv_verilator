@@ -1,0 +1,3 @@
+Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg__0.o: \
+ Vclass_hierarchy_uvm_pkg__03a__03auvm_sequence_item__Vclpkg__0.cpp \
+ Vclass_hierarchy__pch.h

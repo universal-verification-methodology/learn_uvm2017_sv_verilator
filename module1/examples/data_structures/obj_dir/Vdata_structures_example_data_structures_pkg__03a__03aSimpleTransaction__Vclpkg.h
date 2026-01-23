@@ -29,7 +29,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vdata_structures_example_data_structures_pkg_
 
 class Vdata_structures_example__Syms;
 
-class Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction : public VlClass {
+class Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction : public virtual VlClass {
   public:
 
     // DESIGN SPECIFIC STATE

@@ -1,0 +1,26 @@
+%Error: comparators.sv:48:9: syntax error, unexpected matches
+   48 |     int matches;
+      |         ^~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.042 for more assistance.
+%Error: comparators.sv:57:9: syntax error, unexpected matches
+   57 |         matches = 0;
+      |         ^~~~~~~
+%Error: comparators.sv:79:17: syntax error, unexpected matches
+   79 |                 matches++;
+      |                 ^~~~~~~
+%Error: comparators.sv:91:67: syntax error, unexpected matches, expecting ')' or ','
+   91 |        uvm_report_info ("COMPARATOR", $sformatf("  Matches: %0d", matches), UVM_LOW, "comparators.sv", 91, "", 1); 
+      |                                                                   ^~~~~~~
+%Error: comparators.sv:107:9: syntax error, unexpected matches
+  107 |     int matches;
+      |         ^~~~~~~
+%Error: comparators.sv:116:9: syntax error, unexpected matches
+  116 |         matches = 0;
+      |         ^~~~~~~
+%Error: comparators.sv:142:21: syntax error, unexpected matches
+  142 |                     matches++;
+      |                     ^~~~~~~
+%Error: comparators.sv:158:67: syntax error, unexpected matches, expecting ')' or ','
+  158 |        uvm_report_info ("COMPARATOR", $sformatf("  Matches: %0d", matches), UVM_LOW, "comparators.sv", 158, "", 1); 
+      |                                                                   ^~~~~~~
+%Error: Exiting due to 8 error(s)

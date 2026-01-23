@@ -17,8 +17,8 @@ Vtest_counter__Syms::Vtest_counter__Syms(VerilatedContext* contextp, const char*
     // Setup module instances
     , TOP{this, namep}
 {
-        // Check resources
-        Verilated::stackCheck(19);
+    // Check resources
+    Verilated::stackCheck(160);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-12);
