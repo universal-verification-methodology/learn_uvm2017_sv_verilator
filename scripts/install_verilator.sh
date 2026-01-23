@@ -25,6 +25,7 @@ LOCAL_INSTALL=false  # If true, install to project-local directory
 # Installation mode
 INSTALL_MODE="submodule"  # submodule, system, or source
 FORCE_REINSTALL=false
+VERILATOR_VERSION="5.042"  # Default version (can be overridden with --version flag)
 
 # Function to print colored output
 print_status() {
@@ -44,6 +45,7 @@ show_usage() {
     echo "  --force             Force reinstall even if Verilator is already installed"
     echo "  --local             Install to project-local directory (no sudo required)"
     echo "  --prefix PREFIX     Installation prefix (default: /usr/local)"
+    echo "  --version VERSION   Install specific version (default: 5.042, e.g., 5.044 or v5.044)"
     echo "  --help, -h          Show this help message"
     echo ""
     echo "Examples:"
@@ -232,21 +234,34 @@ build_from_source() {
         exit 1
     }
     
-    # Get latest stable version (if not already on a tag)
-    print_status $BLUE "Checking out latest stable version..."
+    # Get specific version (default is 5.042, can be overridden with --version)
     if ! git fetch --tags; then
         print_status $YELLOW "Warning: Failed to fetch tags, continuing with current branch"
     fi
     
-    LATEST_TAG=$(git tag | grep -E '^v[0-9]+\.[0-9]+' | sort -V | tail -1 || echo "")
-    if [[ -n "$LATEST_TAG" ]]; then
-        if ! git checkout "$LATEST_TAG"; then
-            print_status $YELLOW "Warning: Could not checkout tag $LATEST_TAG, using current branch"
+    # Normalize version format (accept both "5.042" and "v5.042")
+    local version_tag="$VERILATOR_VERSION"
+    if [[ ! "$version_tag" =~ ^v ]]; then
+        version_tag="v$version_tag"
+    fi
+    
+    print_status $BLUE "Checking out Verilator version: $version_tag"
+    if git show-ref --verify --quiet "refs/tags/$version_tag"; then
+        if ! git checkout "$version_tag"; then
+            print_status $RED "Error: Could not checkout tag $version_tag"
+            cd "$PROJECT_ROOT"
+            exit 1
         else
-            print_status $GREEN "Checked out tag: $LATEST_TAG"
+            print_status $GREEN "Checked out tag: $version_tag"
         fi
     else
-        print_status $YELLOW "Warning: No version tags found, using current branch"
+        print_status $RED "Error: Version tag $version_tag not found"
+        print_status $YELLOW "Available versions:"
+        git tag | grep -E '^v[0-9]+\.[0-9]+' | sort -V | tail -10
+        print_status $YELLOW ""
+        print_status $YELLOW "You can specify a different version with: --version VERSION"
+        cd "$PROJECT_ROOT"
+        exit 1
     fi
     
     # Uninstall previous installation if exists
@@ -388,6 +403,10 @@ parse_args() {
                 VERILATOR_INSTALL_PREFIX="$2"
                 shift 2
                 ;;
+            --version)
+                VERILATOR_VERSION="$2"
+                shift 2
+                ;;
             --help|-h)
                 show_usage
                 exit 0
@@ -404,6 +423,7 @@ parse_args() {
 # Main function
 main() {
     print_status $BLUE "Starting Verilator installation..."
+    print_status $BLUE "Default version: $VERILATOR_VERSION (use --version to override)"
     
     # Parse arguments
     parse_args "$@"

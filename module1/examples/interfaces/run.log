@@ -1,0 +1,14 @@
+============================================================
+Module 1 Example 1.2: Interfaces and Modports
+============================================================
+
+1. Performing write operation:
+   Write: addr=0x100, data=0xdeadbeef
+
+2. Performing read operation:
+   Read: addr=0x100, data=0xdeadbeef
+
+============================================================
+Example completed successfully!
+============================================================
+- interface_example.sv:158: Verilog $finish

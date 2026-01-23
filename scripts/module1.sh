@@ -18,7 +18,14 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 MODULE1_DIR="$PROJECT_ROOT/module1"
-UVM_HOME="${UVM_HOME:-}"
+
+# Set UVM_HOME if not already set
+# Following Antmicro example: https://github.com/antmicro/verilator-uvm-example
+# UVM_HOME should point to the src directory (as in their example)
+if [[ -z "${UVM_HOME:-}" ]]; then
+    UVM_HOME="$PROJECT_ROOT/tools/uvm-2017/1800.2-2017-1.0/src"
+    export UVM_HOME
+fi
 
 # Options
 RUN_SV_BASICS=true
@@ -107,15 +114,20 @@ check_prerequisites() {
     
     # Check UVM library (if running UVM tests)
     if [[ "$RUN_UVM_TESTS" == true ]]; then
-        if [[ -z "$UVM_HOME" ]]; then
-            print_status $YELLOW "Warning: UVM_HOME not set. UVM tests may fail."
-            print_status $YELLOW "Set UVM_HOME environment variable or use --uvm-home option"
-        elif [[ ! -f "$UVM_HOME/src/uvm_pkg.sv" ]]; then
-            print_status $RED "Error: UVM library not found at $UVM_HOME"
-            print_status $RED "Expected file: $UVM_HOME/src/uvm_pkg.sv"
-            exit 1
+        local uvm_pkg_file=""
+        if [[ -f "$UVM_HOME/uvm_pkg.sv" ]]; then
+            uvm_pkg_file="$UVM_HOME/uvm_pkg.sv"
+        elif [[ -f "$UVM_HOME/src/uvm_pkg.sv" ]]; then
+            uvm_pkg_file="$UVM_HOME/src/uvm_pkg.sv"
+        fi
+        
+        if [[ -z "$uvm_pkg_file" ]]; then
+            print_status $YELLOW "Warning: UVM library not found"
+            print_status $YELLOW "Expected file: $UVM_HOME/uvm_pkg.sv or $UVM_HOME/src/uvm_pkg.sv"
+            print_status $YELLOW "Install UVM using: ./scripts/install_uvm.sh"
+            print_status $YELLOW "Or set UVM_HOME to your UVM src directory (as in Antmicro example)"
         else
-            print_status $GREEN "Found UVM library at: $UVM_HOME"
+            print_status $GREEN "Found UVM library at: $uvm_pkg_file"
         fi
     fi
     
@@ -152,7 +164,7 @@ run_sv_example() {
     # Add --trace flag for examples that use VCD tracing in C++ files
     # Add warning suppressions for known Verilator limitations
     local verilator_flags="-sv --cc --exe"
-    if [[ "$example_dir" == "sv_basics" ]] || [[ "$example_dir" == "packages" ]] || [[ "$example_dir" == "data_structures" ]] || [[ "$example_dir" == "error_handling" ]]; then
+    if [[ "$example_dir" == "sv_basics" ]] || [[ "$example_dir" == "interfaces" ]] || [[ "$example_dir" == "packages" ]] || [[ "$example_dir" == "data_structures" ]] || [[ "$example_dir" == "error_handling" ]]; then
         verilator_flags="$verilator_flags --timing"
     fi
     # All examples with C++ files use VCD tracing, so add --trace flag
@@ -160,10 +172,12 @@ run_sv_example() {
         verilator_flags="$verilator_flags --trace"
     fi
     # Suppress width truncation warnings (common in SystemVerilog)
-    verilator_flags="$verilator_flags -Wno-WIDTHTRUNC"
+    # Suppress INITIALDLY warnings (non-blocking in initial blocks - acceptable in testbenches)
+    verilator_flags="$verilator_flags -Wno-WIDTHTRUNC -Wno-INITIALDLY"
     
     # Extract top module name from file (Verilator uses lowercase)
-    local top_module=$(grep "^module" "$example_file" | head -1 | sed 's/module[[:space:]]*\([a-zA-Z0-9_]*\).*/\1/' | tr '[:upper:]' '[:lower:]')
+    # Get the last module definition (usually the top-level testbench)
+    local top_module=$(grep "^module" "$example_file" | tail -1 | sed 's/module[[:space:]]*\([a-zA-Z0-9_]*\).*/\1/' | tr '[:upper:]' '[:lower:]')
     
     # Check if C++ main file exists (try multiple naming patterns)
     local cpp_file="${example_file%.sv}.cpp"
@@ -286,10 +300,27 @@ run_sv_tests() {
 run_uvm_tests() {
     print_header "Running UVM Tests"
     
-    if [[ -z "$UVM_HOME" ]]; then
-        print_status $RED "Error: UVM_HOME not set. Cannot run UVM tests."
-        print_status $YELLOW "Set UVM_HOME environment variable or use --uvm-home option"
+    # Check if UVM_HOME points to src directory or root directory (following Antmicro example)
+    local uvm_pkg_file=""
+    if [[ -f "$UVM_HOME/uvm_pkg.sv" ]]; then
+        uvm_pkg_file="$UVM_HOME/uvm_pkg.sv"
+    elif [[ -f "$UVM_HOME/src/uvm_pkg.sv" ]]; then
+        uvm_pkg_file="$UVM_HOME/src/uvm_pkg.sv"
+    else
+        print_status $RED "Error: UVM library not found"
+        print_status $RED "Expected file: $UVM_HOME/uvm_pkg.sv or $UVM_HOME/src/uvm_pkg.sv"
+        print_status $YELLOW "Install UVM using: ./scripts/install_uvm.sh"
+        print_status $YELLOW "Or set UVM_HOME to your UVM src directory (as in Antmicro example)"
+        print_status $YELLOW "See: https://github.com/antmicro/verilator-uvm-example"
         return 1
+    fi
+    
+    # Note about Verilator's UVM support
+    if [[ "$SIMULATOR" == "verilator" ]]; then
+        print_status $GREEN "ℹ️  Note: Verilator now supports UVM 2017-1.0 (as of Oct 2025)"
+        print_status $GREEN "   See: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator"
+        print_status $GREEN "   Using recommended flags: --binary, +define+UVM_NO_DPI, -Wno-fatal"
+        echo ""
     fi
     
     cd "$MODULE1_DIR/tests/uvm_tests" || {
@@ -312,8 +343,29 @@ run_uvm_tests() {
     else
         print_status $RED "✗ UVM AND gate test failed (exit code: $exit_code)"
         print_status $YELLOW "Check /tmp/uvm_and_gate.log for details"
-        print_status $YELLOW "Note: Some UVM features may not work with Verilator"
-        print_status $YELLOW "Consider using commercial simulators (VCS, Questa, Xcelium) for full UVM support"
+        if [[ "$SIMULATOR" == "verilator" ]]; then
+            print_status $YELLOW ""
+            print_status $YELLOW "⚠️  UVM test failed with Verilator."
+            print_status $YELLOW ""
+            print_status $YELLOW "   According to Antmicro (Oct 2025), Verilator supports UVM 2017-1.0,"
+            print_status $YELLOW "   but this requires the latest Verilator with recent UVM fixes."
+            print_status $YELLOW ""
+            print_status $YELLOW "   Your Verilator version: $(verilator --version 2>/dev/null || echo 'unknown')"
+            print_status $YELLOW ""
+            print_status $YELLOW "   To get full UVM support, you may need to:"
+            print_status $YELLOW "   1. Build Verilator from latest source:"
+            print_status $YELLOW "      git clone https://github.com/verilator/verilator"
+            print_status $YELLOW "      cd verilator && autoconf && ./configure && make"
+            print_status $YELLOW ""
+            print_status $YELLOW "   2. Or use a commercial simulator:"
+            print_status $YELLOW "      cd module1/tests/uvm_tests"
+            print_status $YELLOW "      make SIM=vcs TEST=test_and_gate_uvm      # For VCS"
+            print_status $YELLOW "      make SIM=questa TEST=test_and_gate_uvm    # For QuestaSim"
+            print_status $YELLOW "      make SIM=xcelium TEST=test_and_gate_uvm   # For Xcelium"
+        else
+            print_status $YELLOW "Note: Some UVM features may not work with Verilator"
+            print_status $YELLOW "Consider using commercial simulators (VCS, Questa, Xcelium) for full UVM support"
+        fi
         cd "$PROJECT_ROOT"
         return 1
     fi

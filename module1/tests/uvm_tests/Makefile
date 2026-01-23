@@ -10,11 +10,22 @@ TEST ?= test_and_gate_uvm
 # UVM home (set via environment or default)
 UVM_HOME ?= $(shell echo $$UVM_HOME)
 
-# Verilator flags
-VERILATOR_FLAGS = -sv --timing --trace
+# Verify UVM_HOME is set
+ifeq ($(UVM_HOME),)
+    $(error UVM_HOME is not set. Please set it or use --uvm-home option)
+endif
 
-# Include paths
-INCLUDES = -I$(UVM_HOME)/src
+# Verilator flags
+# Note: Using flags recommended for UVM 2017 support in Verilator
+# See: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator
+VERILATOR_FLAGS = -sv --timing --trace -Wno-fatal
+
+# Include paths and defines
+# +define+UVM_NO_DPI disables DPI calls that Verilator doesn't support
+# Note: Following Antmicro example pattern: https://github.com/antmicro/verilator-uvm-example
+# If UVM_HOME points to root, use /src; if it points to src, use directly
+UVM_SRC_DIR = $(if $(wildcard $(UVM_HOME)/src/uvm_pkg.sv),$(UVM_HOME)/src,$(UVM_HOME))
+INCLUDES = -I$(UVM_SRC_DIR) +incdir+$(UVM_SRC_DIR) +define+UVM_NO_DPI
 
 # Source files
 DUT_SRC = ../../dut/simple_gates/*.v
@@ -26,19 +37,22 @@ ifeq ($(SIM),verilator)
     
     compile:
 		@echo "Compiling with Verilator..."
-		@echo "Note: Verilator has limited UVM support"
+		@echo "Note: Using Verilator with UVM 2017 support"
+		@echo "See: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator"
+		@echo "Note: Full UVM support requires Verilator 5.036+ with recent commits"
+		@echo "      If compilation fails, you may need to build Verilator from latest source"
 		verilator $(VERILATOR_FLAGS) $(INCLUDES) \
-			--cc --exe \
+			--binary \
+			$(UVM_SRC_DIR)/uvm_pkg.sv \
 			$(DUT_SRC) $(TEST_SRC) \
-			--top-module $(TOPLEVEL) \
-			-o $(TOPLEVEL)
+			--top-module $(TOPLEVEL)
 		@echo "Building..."
 		make -C obj_dir -f V$(TOPLEVEL).mk
 		@echo "Compilation complete!"
     
     run: compile
 		@echo "Running $(TEST)..."
-		./obj_dir/V$(TOPLEVEL)
+		./obj_dir/V$(TOPLEVEL) +UVM_TESTNAME=$(TOPLEVEL)
     
     clean:
 		rm -rf obj_dir
