@@ -1,7 +1,5 @@
 # Module 6: Complex Testbenches
 
-**Duration**: 3 weeks  
-**Complexity**: Advanced  
 **Goal**: Build production-quality multi-agent testbenches
 
 ## Overview

@@ -1,7 +1,5 @@
 # Module 2: SystemVerilog Testbench Fundamentals
 
-**Duration**: 2 weeks  
-**Complexity**: Beginner-Intermediate  
 **Goal**: Master SystemVerilog testbench construction
 
 ## Overview

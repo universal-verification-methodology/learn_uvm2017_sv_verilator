@@ -1,7 +1,5 @@
 # Module 1: SystemVerilog and Verification Basics
 
-**Duration**: 2 weeks  
-**Complexity**: Beginner  
 **Goal**: Understand SystemVerilog for verification and verification fundamentals
 
 ## Overview
