@@ -54,7 +54,7 @@ void Vclass_hierarchy___024unit__03a__03aMyMonitor::__VnoInFunc_build_phase(VlPr
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "MONITOR"s, __Vfunc_uvm_report_enabled__4__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__4__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "MONITOR"s, "Building monitor component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x0000004cU, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "MONITOR"s, "Building monitor component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000155U, ""s, 1U);
     }
 }
 
@@ -68,16 +68,16 @@ VlCoroutine Vclass_hierarchy___024unit__03a__03aMyMonitor::__VnoInFunc_run_phase
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "MONITOR"s, __Vfunc_uvm_report_enabled__6__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__6__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "MONITOR"s, "Monitor run_phase executing"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000050U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "MONITOR"s, "Monitor run_phase executing"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000159U, ""s, 1U);
     }
-    VL_NULL_CHECK(phase, "class_hierarchy.sv", 81)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
+    VL_NULL_CHECK(phase, "class_hierarchy.sv", 348)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
                                                                                 VlClassRef<Vclass_hierarchy___024unit__03a__03aMyMonitor>{this}, ""s, 1U);
     co_await vlSymsp->TOP.__VdlySched.delay(0x0000000000000064ULL, 
                                             vlProcess, 
                                             "class_hierarchy.sv", 
-                                            82);
-    VL_NULL_CHECK(phase, "class_hierarchy.sv", 83)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
-                                                                               VlClassRef<Vclass_hierarchy___024unit__03a__03aMyMonitor>{this}, ""s, 1U);
+                                            352);
+    VL_NULL_CHECK(phase, "class_hierarchy.sv", 355)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
+                                                                                VlClassRef<Vclass_hierarchy___024unit__03a__03aMyMonitor>{this}, ""s, 1U);
     co_return;}
 
 void Vclass_hierarchy___024unit__03a__03aMyMonitor::__VnoInFunc_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {

@@ -1,3 +1,0 @@
-Vclass_hierarchy_uvm_pkg__03a__03auvm_post_main_phase__Vclpkg__0.o: \
- Vclass_hierarchy_uvm_pkg__03a__03auvm_post_main_phase__Vclpkg__0.cpp \
- Vclass_hierarchy__pch.h

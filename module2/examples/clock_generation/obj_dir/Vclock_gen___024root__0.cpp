@@ -41,7 +41,7 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__0(Vclock_gen___02
     // Body
     co_await vlSelfRef.__VdlySched.delay(0x000000000000c350ULL, 
                                          nullptr, "clock_gen.sv", 
-                                         54);
+                                         74);
     VL_WRITEF_NX("Example 2: Parameterized Clock\n  Clock period: 20 ns\n",0);
     co_return;}
 
@@ -52,7 +52,7 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__1(Vclock_gen___02
     // Body
     co_await vlSelfRef.__VdlySched.delay(0x00000000000186a0ULL, 
                                          nullptr, "clock_gen.sv", 
-                                         71);
+                                         91);
     VL_WRITEF_NX("Example 3: Multiple Clocks\n  Clock 1 period: 10 ns\n  Clock 2 period: 20 ns\n  Clock 3 period: 5 ns\n",0);
     co_return;}
 
@@ -65,16 +65,16 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__2(Vclock_gen___02
     vlSelfRef.clock_gen__DOT__clk_enable = 1U;
     co_await vlSelfRef.__VdlySched.delay(0x00000000000249f0ULL, 
                                          nullptr, "clock_gen.sv", 
-                                         93);
+                                         113);
     VL_WRITEF_NX("Example 4: Clock Gating\n  Clock enabled initially\n",0);
     co_await vlSelfRef.__VdlySched.delay(0x000000000000c350ULL, 
                                          nullptr, "clock_gen.sv", 
-                                         97);
+                                         117);
     vlSelfRef.clock_gen__DOT__clk_enable = 0U;
     VL_WRITEF_NX("  Clock disabled at 200ns\n",0);
     co_await vlSelfRef.__VdlySched.delay(0x000000000000c350ULL, 
                                          nullptr, "clock_gen.sv", 
-                                         101);
+                                         121);
     vlSelfRef.clock_gen__DOT__clk_enable = 1U;
     VL_WRITEF_NX("  Clock re-enabled at 250ns\n",0);
     co_return;}
@@ -88,7 +88,7 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__3(Vclock_gen___02
     vlSelfRef.clock_gen__DOT__clk_stopped = 0U;
     co_await vlSelfRef.__VdlySched.delay(0x00000000000493e0ULL, 
                                          nullptr, "clock_gen.sv", 
-                                         130);
+                                         150);
     VL_WRITEF_NX("Example 5: Clock Stopping\n  Stopping clock at 300ns\n",0);
     vlSelfRef.clock_gen__DOT__clk_stop = 1U;
     co_return;}
@@ -100,9 +100,9 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__4(Vclock_gen___02
     // Body
     co_await vlSelfRef.__VdlySched.delay(0x0000000000055730ULL, 
                                          nullptr, "clock_gen.sv", 
-                                         152);
+                                         172);
     VL_WRITEF_NX("\n============================================================\nClock Generation Examples Complete\n============================================================\n\nKey Concepts:\n  - Clocks are fundamental to synchronous designs\n  - Parameterized clocks enable flexibility\n  - Multiple clocks require careful synchronization\n  - Clock gating is common in low-power designs\n  - Clock stopping enables controlled simulation\n",0);
-    VL_FINISH_MT("clock_gen.sv", 164, "");
+    VL_FINISH_MT("clock_gen.sv", 184, "");
     co_return;}
 
 VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__5(Vclock_gen___024root* vlSelf) {
@@ -117,12 +117,12 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__5(Vclock_gen___02
             co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                                  nullptr, 
                                                  "clock_gen.sv", 
-                                                 139);
+                                                 159);
             vlSelfRef.clock_gen__DOT__clk_stopped = 1U;
             co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                                  nullptr, 
                                                  "clock_gen.sv", 
-                                                 141);
+                                                 161);
         } else {
             vlSelfRef.clock_gen__DOT__clk_stopped = 0U;
             while (vlSelfRef.clock_gen__DOT__clk_stop) {
@@ -130,7 +130,7 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__5(Vclock_gen___02
                                                                      nullptr, 
                                                                      "@( (~ clock_gen.clk_stop))", 
                                                                      "clock_gen.sv", 
-                                                                     144);
+                                                                     164);
             }
         }
     }
@@ -147,18 +147,18 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__6(Vclock_gen___02
             co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                                  nullptr, 
                                                  "clock_gen.sv", 
-                                                 110);
+                                                 130);
             vlSelfRef.clock_gen__DOT__clk_gated = 1U;
             co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                                  nullptr, 
                                                  "clock_gen.sv", 
-                                                 112);
+                                                 132);
         } else {
             vlSelfRef.clock_gen__DOT__clk_gated = 0U;
             co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                                  nullptr, 
                                                  "clock_gen.sv", 
-                                                 115);
+                                                 135);
         }
     }
     co_return;}
@@ -173,12 +173,12 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__7(Vclock_gen___02
         co_await vlSelfRef.__VdlySched.delay(0x00000000000007d0ULL, 
                                              nullptr, 
                                              "clock_gen.sv", 
-                                             80);
+                                             100);
         vlSelfRef.clock_gen__DOT__clk3 = 1U;
         co_await vlSelfRef.__VdlySched.delay(0x00000000000007d0ULL, 
                                              nullptr, 
                                              "clock_gen.sv", 
-                                             82);
+                                             102);
     }
     co_return;}
 
@@ -192,12 +192,12 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__8(Vclock_gen___02
         co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                              nullptr, 
                                              "clock_gen.sv", 
-                                             61);
+                                             81);
         vlSelfRef.clock_gen__DOT__clk2 = 1U;
         co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                              nullptr, 
                                              "clock_gen.sv", 
-                                             63);
+                                             83);
     }
     co_return;}
 
@@ -211,12 +211,12 @@ VlCoroutine Vclock_gen___024root___eval_initial__TOP__Vtiming__9(Vclock_gen___02
         co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                              nullptr, 
                                              "clock_gen.sv", 
-                                             44);
+                                             64);
         vlSelfRef.clock_gen__DOT__clk1 = 1U;
         co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                              nullptr, 
                                              "clock_gen.sv", 
-                                             46);
+                                             66);
     }
     co_return;}
 
@@ -436,7 +436,7 @@ void Vclock_gen___024root___eval(Vclock_gen___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vclock_gen___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("clock_gen.sv", 15, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
+            VL_FATAL_MT("clock_gen.sv", 35, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -445,7 +445,7 @@ void Vclock_gen___024root___eval(Vclock_gen___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vclock_gen___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("clock_gen.sv", 15, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
+                VL_FATAL_MT("clock_gen.sv", 35, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

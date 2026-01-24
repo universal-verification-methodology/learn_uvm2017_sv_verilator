@@ -1,3 +1,0 @@
-Vclass_hierarchy___024unit__03a__03aMyTransaction__Vclpkg__0__Slow.o: \
- Vclass_hierarchy___024unit__03a__03aMyTransaction__Vclpkg__0__Slow.cpp \
- Vclass_hierarchy__pch.h

@@ -1,3 +1,0 @@
-Vclass_hierarchy_uvm_pkg__03a__03auvm_callbacks__Tz20_TBz86__Vclpkg__0.o: \
- Vclass_hierarchy_uvm_pkg__03a__03auvm_callbacks__Tz20_TBz86__Vclpkg__0.cpp \
- Vclass_hierarchy__pch.h

@@ -1,3 +1,0 @@
-Vclass_hierarchy_std__03a__03asemaphore__Vclpkg__Slow.o: \
- Vclass_hierarchy_std__03a__03asemaphore__Vclpkg__Slow.cpp \
- Vclass_hierarchy__pch.h

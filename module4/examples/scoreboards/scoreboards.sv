@@ -2,6 +2,30 @@
  * Module 4 Example 4.6: UVM Scoreboard
  * Demonstrates scoreboard implementation for result checking.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand UVM scoreboard purpose and structure
+ *   2. Learn transaction comparison (expected vs actual)
+ *   3. Master result checking and pass/fail tracking
+ *   4. Understand analysis imp for receiving transactions
+ *   5. Apply scoreboard patterns for verification
+ * 
+ * SCOREBOARD PURPOSE:
+ *   - Compares expected vs actual results
+ *   - Tracks pass/fail statistics
+ *   - Reports test results
+ *   - Centralized result checking
+ * 
+ * SCOREBOARD OPERATION:
+ *   - Receives expected transactions (from reference model)
+ *   - Receives actual transactions (from monitor)
+ *   - Compares transactions
+ *   - Tracks pass/fail counts
+ * 
+ * ANALYSIS IMP:
+ *   - Receives transactions from analysis ports
+ *   - write() method called for each transaction
+ *   - Can receive from multiple sources
+ * 
  * This example shows:
  * - Scoreboard purpose and structure
  * - Transaction comparison

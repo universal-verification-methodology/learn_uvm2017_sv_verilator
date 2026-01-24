@@ -2,6 +2,31 @@
  * Module 3 Example 3.6: UVM Objections
  * Demonstrates UVM objection mechanism for controlling test execution.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand UVM objection mechanism
+ *   2. Learn raising objections (phase.raise_objection)
+ *   3. Master dropping objections (phase.drop_objection)
+ *   4. Understand multiple objections per component
+ *   5. Apply phase completion control
+ * 
+ * OBJECTION PURPOSE:
+ *   - Controls when phases can complete
+ *   - Prevents premature phase termination
+ *   - Coordinates component completion
+ *   - Ensures all work completes before phase ends
+ * 
+ * OBJECTION MECHANISM:
+ *   - Raise objection: Keeps phase running
+ *   - Drop objection: Signals work complete
+ *   - Phase completes: When all objections dropped
+ *   - Multiple objections: Component can have multiple named objections
+ * 
+ * OBJECTION RULES:
+ *   - Must raise before phase can run
+ *   - Must drop when work complete
+ *   - Unmatched raise/drop causes warnings
+ *   - Phase waits for all objections
+ * 
  * This example shows:
  * - Raising objections
  * - Dropping objections
@@ -56,7 +81,28 @@ class MultiObjectionComponent extends uvm_component;
     endfunction
     
     task run_phase(uvm_phase phase);
-        // Raise multiple objections for different tasks
+        // ========================================================================
+        // MULTIPLE OBJECTIONS PER COMPONENT
+        // ========================================================================
+        // 
+        // NAMED OBJECTIONS:
+        //   - Component can have multiple objections with different names
+        //   - Each objection tracked separately
+        //   - Useful for tracking multiple concurrent tasks
+        // 
+        // OBJECTION SYNTAX:
+        //   phase.raise_objection(this, "objection_name")
+        //   phase.drop_objection(this, "objection_name")
+        // 
+        // MULTIPLE OBJECTIONS:
+        //   - Task 1 and Task 2 are independent
+        //   - Each has its own objection
+        //   - Phase completes when ALL objections dropped
+        // 
+        // USAGE:
+        //   - Multiple concurrent sequences
+        //   - Multiple independent tasks
+        //   - Fine-grained phase control
         phase.raise_objection(this, "Task 1");
         `uvm_info("OBJECTIONS", "MultiObjectionComponent: Started Task 1", UVM_MEDIUM)
         #50;

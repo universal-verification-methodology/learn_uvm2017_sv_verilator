@@ -2,6 +2,28 @@
  * Module 4 Example 4.7: Complete UVM Agent
  * Demonstrates building a complete UVM agent with driver, monitor, and sequencer.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand UVM agent structure and purpose
+ *   2. Learn component integration (driver, monitor, sequencer)
+ *   3. Master agent configuration (active vs passive)
+ *   4. Understand agent build and connect phases
+ *   5. Apply complete agent patterns
+ * 
+ * AGENT PURPOSE:
+ *   - Groups related components (driver, monitor, sequencer)
+ *   - Provides reusable verification IP (VIP)
+ *   - Encapsulates protocol-specific components
+ *   - Supports active and passive modes
+ * 
+ * AGENT COMPONENTS:
+ *   - Driver: Drives transactions to DUT (active mode only)
+ *   - Sequencer: Provides transactions to driver (active mode only)
+ *   - Monitor: Observes DUT behavior (always present)
+ * 
+ * AGENT MODES:
+ *   - Active agent: driver + sequencer + monitor (drives DUT)
+ *   - Passive agent: monitor only (observes DUT)
+ * 
  * This example shows:
  * - Agent structure
  * - Component integration
@@ -126,6 +148,24 @@ class CompleteAgent extends uvm_agent;
         
         monitor = AgentMonitor::type_id::create("monitor", this);
         
+        // ========================================================================
+        // CONDITIONAL COMPONENT CREATION (ACTIVE/PASSIVE MODE)
+        // ========================================================================
+        // 
+        // ACTIVE MODE:
+        //   - is_active = 1: Create driver and sequencer
+        //   - Agent can drive DUT
+        //   - Used for active verification
+        // 
+        // PASSIVE MODE:
+        //   - is_active = 0: Only monitor created
+        //   - Agent only observes DUT
+        //   - Used for passive monitoring
+        // 
+        // CONFIGURATION:
+        //   - Can be set via ConfigDB
+        //   - Allows same agent for different scenarios
+        //   - Reduces code duplication
         if (is_active) begin
             driver = AgentDriver::type_id::create("driver", this);
             sequencer = uvm_sequencer#(AgentTransaction)::type_id::create("sequencer", this);

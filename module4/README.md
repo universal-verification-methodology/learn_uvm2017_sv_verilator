@@ -61,29 +61,54 @@ make --version          # Should be available
 
 Demonstrates transaction-level modeling and transaction operations:
 
+**Transaction Methods:**
+
+1. **String Conversion:**
+   ```systemverilog
+   function string convert2string();
+       return $sformatf("data=0x%02h, addr=0x%04h", data, address);
+   endfunction
+   ```
+
+2. **Deep Copy:**
+   ```systemverilog
+   function void do_copy(uvm_object rhs);
+       BaseTransaction txn;
+       if (!$cast(txn, rhs)) return;
+       super.do_copy(rhs);
+       data = txn.data;
+       address = txn.address;
+   endfunction
+   ```
+
+3. **Comparison:**
+   ```systemverilog
+   function bit do_compare(uvm_object rhs, uvm_comparer comparer);
+       BaseTransaction txn;
+       if (!$cast(txn, rhs)) return 0;
+       return (data == txn.data) && (address == txn.address);
+   endfunction
+   ```
+
+4. **Randomization:**
+   ```systemverilog
+   rand logic [7:0] data;
+   constraint data_nonzero { data != 8'h00; }
+   if (txn.randomize()) begin
+       // Valid random values
+   end
+   ```
+
 **Key Concepts:**
 - Transaction class design extending `uvm_sequence_item`
 - Transaction fields and data members
 - Transaction copy and comparison operations
 - Extended transactions with inheritance
 - Constrained random transactions
-
-**Transaction Classes:**
-
-1. **BaseTransaction**
-   - Basic transaction with `data` and `address` fields
-   - Implements `convert2string()`, `do_copy()`, and `do_compare()` methods
-   - Demonstrates transaction equality comparison
-
-2. **ExtendedTransaction**
-   - Extends `BaseTransaction` with `control` and `status` fields
-   - Shows transaction inheritance patterns
-   - Demonstrates extended comparison logic
-
-3. **ConstrainedTransaction**
-   - Transaction with randomization constraints
-   - Address alignment constraint (4-byte boundary)
-   - Non-zero data constraint
+- **`convert2string()`** - String representation
+- **`do_copy()`** - Deep copy implementation
+- **`do_compare()`** - Comparison implementation
+- **`randomize()`** - Constrained random generation
 
 **Running the example:**
 
@@ -112,34 +137,48 @@ make -C obj_dir -f Vtransactions.mk
 
 Demonstrates UVM driver implementation:
 
+**Driver Methods:**
+
+1. **Get Transaction:**
+   ```systemverilog
+   seq_item_port.get_next_item(txn);  // Blocking call
+   ```
+
+2. **Signal Completion:**
+   ```systemverilog
+   seq_item_port.item_done();
+   ```
+
+3. **Drive Transaction:**
+   ```systemverilog
+   task drive_transaction(Transaction txn);
+       vif.data <= txn.data;
+       vif.address <= txn.address;
+       @(posedge vif.clk);
+   endtask
+   ```
+
+4. **Driver Loop:**
+   ```systemverilog
+   task run_phase(uvm_phase phase);
+       forever begin
+           seq_item_port.get_next_item(txn);
+           drive_transaction(txn);
+           seq_item_port.item_done();
+       end
+   endtask
+   ```
+
 **Key Concepts:**
 - Driver class structure extending `uvm_driver`
 - Transaction reception from sequencer via `seq_item_port`
 - Signal driving to DUT
 - Driver-sequencer communication
 - Protocol-specific driving patterns
-
-**Driver Classes:**
-
-1. **SimpleDriver**
-   - Basic driver implementation
-   - Receives transactions from sequencer
-   - Drives DUT signals (pattern shown)
-   - Signals transaction completion
-
-2. **ProtocolDriver**
-   - Protocol-aware driver
-   - Implements handshaking (request/grant)
-   - Protocol timing control
-   - Demonstrates protocol-specific patterns
-
-**Driver Flow:**
-1. `build_phase()` - Create `seq_item_port`
-2. `connect_phase()` - Connect to sequencer
-3. `run_phase()` - Main driver loop:
-   - `get_next_item()` - Get transaction from sequencer
-   - `drive_transaction()` - Drive signals to DUT
-   - `item_done()` - Signal completion
+- **`get_next_item()`** - Get transaction (blocking)
+- **`item_done()`** - Signal completion
+- **`drive_transaction()`** - Drive to DUT
+- **Forever loop** - Continuous transaction processing
 
 **Running the example:**
 
@@ -158,25 +197,46 @@ Demonstrates UVM driver implementation:
 
 Demonstrates UVM monitor implementation:
 
+**Monitor Methods:**
+
+1. **Analysis Port Write:**
+   ```systemverilog
+   ap.write(txn);  // Broadcast to subscribers
+   ```
+
+2. **Signal Sampling:**
+   ```systemverilog
+   task run_phase(uvm_phase phase);
+       forever begin
+           @(posedge vif.clk);
+           if (vif.valid && vif.ready) begin
+               txn = Transaction::type_id::create("txn");
+               txn.data = vif.data;
+               ap.write(txn);
+           end
+       end
+   endtask
+   ```
+
+3. **Subscriber Write:**
+   ```systemverilog
+   class Subscriber extends uvm_subscriber #(Transaction);
+       function void write(Transaction t);
+           // Process transaction
+       endfunction
+   endclass
+   ```
+
 **Key Concepts:**
 - Monitor class structure extending `uvm_monitor`
 - Signal sampling from DUT
 - Transaction creation from sampled signals
 - Analysis port usage
 - Protocol-specific monitoring
-
-**Monitor Classes:**
-
-1. **SimpleMonitor**
-   - Basic monitor implementation
-   - Samples DUT signals
-   - Creates transactions
-   - Forwards via analysis port
-
-2. **ProtocolMonitor**
-   - Protocol-aware monitor
-   - Monitors handshake signals
-   - Protocol-specific sampling
+- **`ap.write(txn)`** - Broadcast transaction
+- **Analysis port creation** - In constructor
+- **Signal sampling** - Wait for protocol events
+- **Subscriber pattern** - Receive via `write()`
 
 **Running the example:**
 
@@ -195,23 +255,46 @@ Demonstrates UVM monitor implementation:
 
 Demonstrates UVM sequencer and sequence implementation:
 
+**Sequence Methods:**
+
+1. **Sequence Body:**
+   ```systemverilog
+   task body();
+       SeqItem item;
+       for (int i = 0; i < 5; i++) begin
+           item = SeqItem::type_id::create("item");
+           item.randomize();
+           start_item(item);
+           finish_item(item);
+       end
+   endtask
+   ```
+
+2. **Start Item:**
+   ```systemverilog
+   start_item(item);  // Request from sequencer
+   ```
+
+3. **Finish Item:**
+   ```systemverilog
+   finish_item(item);  // Send to driver
+   ```
+
+4. **Start Sequence:**
+   ```systemverilog
+   seq.start(sequencer);  // Start execution
+   ```
+
 **Key Concepts:**
 - Sequencer implementation
 - Sequence items (`uvm_sequence_item`)
 - Sequences (`uvm_sequence`)
 - Sequence execution
 - Sequence libraries
-
-**Sequence Classes:**
-
-1. **SimpleSequence**
-   - Basic sequence implementation
-   - Generates multiple sequence items
-   - Sends items to sequencer
-
-2. **ExtendedSequence**
-   - Extended sequence with configurable item count
-   - Demonstrates sequence flexibility
+- **`body()`** - Main sequence logic
+- **`start_item()`** - Request item
+- **`finish_item()`** - Send item
+- **`seq.start()`** - Start sequence
 
 **Running the example:**
 
@@ -230,30 +313,46 @@ Demonstrates UVM sequencer and sequence implementation:
 
 Demonstrates TLM (Transaction-Level Modeling) communication:
 
+**TLM Methods:**
+
+1. **Put Port:**
+   ```systemverilog
+   put_port.put(txn);  // Blocking send
+   ```
+
+2. **Get Export:**
+   ```systemverilog
+   get_export.get(txn);  // Blocking receive
+   ```
+
+3. **Analysis Port:**
+   ```systemverilog
+   ap.write(txn);  // Non-blocking broadcast
+   ```
+
+4. **Subscriber Write:**
+   ```systemverilog
+   function void write(Transaction t);
+       // Receive transaction
+   endfunction
+   ```
+
+5. **TLM FIFO:**
+   ```systemverilog
+   producer.put_port.connect(fifo.put_export);
+   consumer.get_export.connect(fifo.get_export);
+   ```
+
 **Key Concepts:**
 - TLM interfaces (put, get, peek, transport)
 - TLM ports and exports
 - TLM FIFOs
 - Analysis ports and exports
 - TLM connections
-
-**TLM Components:**
-
-1. **TlmProducer**
-   - Uses `uvm_blocking_put_port`
-   - Produces transactions
-
-2. **TlmConsumer**
-   - Uses `uvm_blocking_get_export`
-   - Consumes transactions
-
-3. **AnalysisProducer**
-   - Uses `uvm_analysis_port`
-   - Broadcasts transactions to multiple subscribers
-
-4. **AnalysisSubscriber**
-   - Uses `uvm_subscriber`
-   - Receives transactions from analysis port
+- **`put_port.put()`** - Send (blocking)
+- **`get_export.get()`** - Receive (blocking)
+- **`ap.write()`** - Broadcast (non-blocking)
+- **TLM FIFO** - Decouples producer/consumer
 
 **Running the example:**
 
@@ -272,19 +371,46 @@ Demonstrates TLM (Transaction-Level Modeling) communication:
 
 Demonstrates UVM scoreboard implementation:
 
+**Scoreboard Methods:**
+
+1. **Write Method:**
+   ```systemverilog
+   function void write(Transaction txn);
+       Transaction expected;
+       if (expected_queue.size() > 0) begin
+           expected = expected_queue.pop_front();
+           if (txn.compare(expected)) begin
+               pass_count++;
+           end else begin
+               fail_count++;
+           end
+       end
+   endfunction
+   ```
+
+2. **Add Expected:**
+   ```systemverilog
+   function void add_expected(Transaction txn);
+       expected_queue.push_back(txn);
+   endfunction
+   ```
+
+3. **Queue Operations:**
+   ```systemverilog
+   queue.push_back(txn);      // Add
+   queue.pop_front();          // Remove
+   queue.size()                // Check size
+   ```
+
 **Key Concepts:**
 - Scoreboard purpose and structure
 - Transaction comparison
 - Result checking
 - Pass/fail tracking
-
-**Scoreboard Features:**
-
-1. **SimpleScoreboard**
-   - Receives transactions via analysis port
-   - Compares expected vs actual results
-   - Tracks pass/fail counts
-   - Reports results in `report_phase()`
+- **`write(txn)`** - Receive transaction
+- **`add_expected(txn)`** - Store expected
+- **Queue operations** - FIFO management
+- **Comparison logic** - Actual vs expected
 
 **Running the example:**
 
@@ -303,18 +429,51 @@ Demonstrates UVM scoreboard implementation:
 
 Demonstrates building complete UVM agents:
 
+**Agent Methods:**
+
+1. **Agent Build Phase:**
+   ```systemverilog
+   function void build_phase(uvm_phase phase);
+       super.build_phase(phase);
+       // Get configuration
+       if (!uvm_config_db#(bit)::get(this, "", "is_active", is_active)) begin
+           is_active = 1;  // Default active
+       end
+       // Monitor always created
+       monitor = AgentMonitor::type_id::create("monitor", this);
+       // Driver/sequencer only if active
+       if (is_active) begin
+           driver = AgentDriver::type_id::create("driver", this);
+           sequencer = uvm_sequencer#(AgentTransaction)::type_id::create("sequencer", this);
+       end
+   endfunction
+   ```
+
+2. **Agent Connect Phase:**
+   ```systemverilog
+   function void connect_phase(uvm_phase phase);
+       super.connect_phase(phase);
+       if (is_active) begin
+           driver.seq_item_port.connect(sequencer.seq_item_export);
+       end
+   endfunction
+   ```
+
+3. **Agent Configuration:**
+   ```systemverilog
+   // In test's build_phase
+   uvm_config_db#(bit)::set(this, "env.agent", "is_active", 1);  // Active
+   ```
+
 **Key Concepts:**
 - Agent structure
 - Component integration
 - Agent configuration
 - Active vs passive agents
-
-**Agent Components:**
-
-1. **CompleteAgent**
-   - Contains driver, monitor, and sequencer
-   - Configurable as active or passive
-   - Demonstrates complete agent structure
+- **Active agent**: Driver + Sequencer + Monitor
+- **Passive agent**: Monitor only
+- **Configuration**: Via ConfigDB before creation
+- **Conditional creation**: Based on is_active flag
 
 **Running the example:**
 
@@ -578,6 +737,73 @@ export UVM_HOME=/path/to/uvm-1.2
 - Check transaction comparison logic
 - Verify transaction fields match
 
+## UVM Component Methods in Module 4
+
+### Quick Reference: Component Methods
+
+| Component | Method | Purpose |
+|-----------|--------|---------|
+| **Transaction** | `convert2string()` | String representation |
+| **Transaction** | `do_copy(rhs)` | Deep copy |
+| **Transaction** | `do_compare(rhs, ...)` | Comparison |
+| **Transaction** | `randomize()` | Random generation |
+| **Driver** | `get_next_item(txn)` | Get transaction |
+| **Driver** | `item_done()` | Signal complete |
+| **Monitor** | `ap.write(txn)` | Broadcast |
+| **Sequence** | `body()` | Main logic |
+| **Sequence** | `start_item(item)` | Request item |
+| **Sequence** | `finish_item(item)` | Send item |
+| **TLM** | `put_port.put(txn)` | Send |
+| **TLM** | `get_export.get(txn)` | Receive |
+| **Scoreboard** | `write(txn)` | Receive |
+| **Scoreboard** | `add_expected(txn)` | Store expected |
+
+### Common Patterns
+
+**1. Transaction Copy:**
+```systemverilog
+function void do_copy(uvm_object rhs);
+    Transaction txn;
+    if (!$cast(txn, rhs)) return;
+    super.do_copy(rhs);
+    data = txn.data;
+endfunction
+```
+
+**2. Driver Loop:**
+```systemverilog
+task run_phase(uvm_phase phase);
+    forever begin
+        seq_item_port.get_next_item(txn);
+        drive_transaction(txn);
+        seq_item_port.item_done();
+    end
+endtask
+```
+
+**3. Monitor Loop:**
+```systemverilog
+task run_phase(uvm_phase phase);
+    forever begin
+        @(posedge vif.clk);
+        txn = Transaction::type_id::create("txn");
+        ap.write(txn);
+    end
+endtask
+```
+
+**4. Sequence Body:**
+```systemverilog
+task body();
+    repeat(num_items) begin
+        item = SeqItem::type_id::create("item");
+        item.randomize();
+        start_item(item);
+        finish_item(item);
+    end
+endtask
+```
+
 ## Topics Covered
 
 1. **Transaction Modeling** - Designing and implementing transactions
@@ -587,6 +813,7 @@ export UVM_HOME=/path/to/uvm-1.2
 5. **TLM Communication** - Transaction-level modeling for component communication
 6. **Scoreboards** - Result checking and verification
 7. **Complete Agents** - Building integrated agent components
+8. **UVM Component Methods** - Comprehensive reference for component methods
 
 ## Next Steps
 

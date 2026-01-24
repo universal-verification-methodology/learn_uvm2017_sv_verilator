@@ -2,6 +2,24 @@
  * Module 2 Example 2.3: Signal Access
  * Demonstrates signal reading, writing, and monitoring in SystemVerilog testbenches.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand signal access mechanisms in SystemVerilog
+ *   2. Learn signal reading and writing techniques
+ *   3. Master signal monitoring for debugging
+ *   4. Understand different signal types and their handling
+ *   5. Apply signal access patterns in testbenches
+ * 
+ * SIGNAL ACCESS OPERATIONS:
+ *   - Reading: Accessing signal values for checking
+ *   - Writing: Driving signal values to DUT
+ *   - Monitoring: Observing signal changes automatically
+ *   - Timing: Proper timing for signal access
+ * 
+ * SIGNAL TYPES:
+ *   - Single-bit: logic (1 bit)
+ *   - Multi-bit: logic [N:0] (N+1 bits)
+ *   - Arrays: logic [M:0][N:0] (multi-dimensional)
+ * 
  * This example shows:
  * - Signal reading
  * - Signal driving

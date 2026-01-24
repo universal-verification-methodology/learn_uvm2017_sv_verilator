@@ -1,3 +1,0 @@
-Vclass_hierarchy_uvm_pkg__03a__03auvm_callbacks__Tz179_TBz177__Vclpkg__0.o: \
- Vclass_hierarchy_uvm_pkg__03a__03auvm_callbacks__Tz179_TBz177__Vclpkg__0.cpp \
- Vclass_hierarchy__pch.h

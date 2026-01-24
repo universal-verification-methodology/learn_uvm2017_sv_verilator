@@ -1820,8 +1820,8 @@ g++    transactions.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_ti
 rm Vtransactions__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module4/examples/transactions/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.640 MB sources in 339 modules, into 19.739 MB in 1808 C++ files needing 8.399 MB
-- Verilator: Walltime 20.674 s (elab=0.402, cvt=3.113, bld=16.660); cpu 4.013 s on 1 threads; allocated 219.102 MB
+- Verilator: Built from 7.643 MB sources in 339 modules, into 19.739 MB in 1808 C++ files needing 8.399 MB
+- Verilator: Walltime 22.295 s (elab=0.426, cvt=3.320, bld=17.981); cpu 4.307 s on 1 threads; allocated 219.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module4/examples/transactions/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module4/examples/transactions/obj_dir'

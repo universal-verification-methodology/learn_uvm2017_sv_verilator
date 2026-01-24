@@ -78,9 +78,9 @@ void Vtransactions___024unit__03a__03aExtendedTransaction::__VnoInFunc_do_copy(V
         if ((! VL_CAST_DYNAMIC(rhs, txn))) {
             goto __Vlabel0;
         }
-        this->__PVT__control = VL_NULL_CHECK(txn, "transactions.sv", 77)
+        this->__PVT__control = VL_NULL_CHECK(txn, "transactions.sv", 154)
             ->__PVT__control;
-        this->__PVT__status = VL_NULL_CHECK(txn, "transactions.sv", 78)
+        this->__PVT__status = VL_NULL_CHECK(txn, "transactions.sv", 155)
             ->__PVT__status;
         __Vlabel0: ;
     }
@@ -102,10 +102,10 @@ void Vtransactions___024unit__03a__03aExtendedTransaction::__VnoInFunc_do_compar
                         Vtransactions___024unit__03a__03aBaseTransaction::__VnoInFunc_do_compare(vlProcess, vlSymsp, rhs, comparer, __Vfunc_do_compare__6__Vfuncout);
                     }(), (IData)(__Vfunc_do_compare__6__Vfuncout)) 
                                  && ((IData)(this->__PVT__control) 
-                                     == VL_NULL_CHECK(txn, "transactions.sv", 85)
+                                     == VL_NULL_CHECK(txn, "transactions.sv", 162)
                                      ->__PVT__control)) 
                                 && ((IData)(this->__PVT__status) 
-                                    == VL_NULL_CHECK(txn, "transactions.sv", 85)
+                                    == VL_NULL_CHECK(txn, "transactions.sv", 162)
                                     ->__PVT__status));
         __Vlabel0: ;
     }

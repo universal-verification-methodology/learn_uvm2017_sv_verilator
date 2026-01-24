@@ -1,3 +1,0 @@
-Vclass_hierarchy_uvm_pkg__03a__03auvm_object_registry__Tz105__Vclpkg__Slow.o: \
- Vclass_hierarchy_uvm_pkg__03a__03auvm_object_registry__Tz105__Vclpkg__Slow.cpp \
- Vclass_hierarchy__pch.h

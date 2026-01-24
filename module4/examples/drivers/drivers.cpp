@@ -1,3 +1,7 @@
+/**
+ * Module 4 Example 4.2: UVM Driver Implementation - C++ Testbench
+ */
+
 #include "Vdrivers.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -29,7 +33,6 @@ int main(int argc, char** argv) {
     
     top->final();
     tfp->close();
-    
     delete top;
     delete tfp;
     

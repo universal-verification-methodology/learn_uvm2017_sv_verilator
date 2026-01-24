@@ -74,14 +74,14 @@ void Vtransactions___024unit__03a__03aBaseTransaction::__VnoInFunc_do_copy(VlPro
             if ((0U != ([&]() {
                             this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0U, 3U, "COPY"s, __Vfunc_uvm_report_enabled__4__Vfuncout);
                         }(), __Vfunc_uvm_report_enabled__4__Vfuncout))) {
-                this->__VnoInFunc_uvm_report_fatal(vlProcess, vlSymsp, "COPY"s, "Copy failed: wrong type"s, 0U, "transactions.sv"s, 0x00000026U, ""s, 1U);
+                this->__VnoInFunc_uvm_report_fatal(vlProcess, vlSymsp, "COPY"s, "Copy failed: wrong type"s, 0U, "transactions.sv"s, 0x00000054U, ""s, 1U);
             }
             goto __Vlabel0;
         }
         Vtransactions_uvm_pkg__03a__03auvm_transaction::__VnoInFunc_do_copy(vlProcess, vlSymsp, rhs);
-        this->__PVT__data = VL_NULL_CHECK(txn, "transactions.sv", 42)
+        this->__PVT__data = VL_NULL_CHECK(txn, "transactions.sv", 94)
             ->__PVT__data;
-        this->__PVT__address = VL_NULL_CHECK(txn, "transactions.sv", 43)
+        this->__PVT__address = VL_NULL_CHECK(txn, "transactions.sv", 95)
             ->__PVT__address;
         __Vlabel0: ;
     }
@@ -97,10 +97,10 @@ void Vtransactions___024unit__03a__03aBaseTransaction::__VnoInFunc_do_compare(Vl
             goto __Vlabel0;
         }
         do_compare__Vfuncrtn = (((IData)(this->__PVT__data) 
-                                 == VL_NULL_CHECK(txn, "transactions.sv", 49)
+                                 == VL_NULL_CHECK(txn, "transactions.sv", 126)
                                  ->__PVT__data) && 
                                 ((IData)(this->__PVT__address) 
-                                 == VL_NULL_CHECK(txn, "transactions.sv", 49)
+                                 == VL_NULL_CHECK(txn, "transactions.sv", 126)
                                  ->__PVT__address));
         __Vlabel0: ;
     }

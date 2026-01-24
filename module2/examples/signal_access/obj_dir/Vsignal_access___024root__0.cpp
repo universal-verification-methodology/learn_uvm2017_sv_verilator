@@ -33,7 +33,7 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     vlSelfRef.signal_access__DOT__multi_bit = 0U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000004e20ULL, 
                                          nullptr, "signal_access.sv", 
-                                         191);
+                                         209);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("Example 1: Signal Reading\n",0);
     vlSelfRef.signal_access__DOT__rst_n = 0U;
@@ -41,7 +41,7 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     vlSelfRef.signal_access__DOT__d = 0U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         58);
+                                         76);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("  Initial state:\n    q = 0x%02x (%0#)\n    rst_n = %b\n    enable = %b\n",0,
                  8,vlSelfRef.signal_access__DOT__q,
@@ -51,7 +51,7 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     vlSelfRef.signal_access__DOT__rst_n = 1U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         68);
+                                         86);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("  After reset de-assert:\n    q = 0x%02x (%0#)\n",0,
                  8,vlSelfRef.signal_access__DOT__q,
@@ -60,17 +60,17 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     vlSelfRef.signal_access__DOT__d = 0xaaU;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         75);
+                                         93);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("  After write (d=0xAA):\n    q = 0x%02x (%0#)\n",0,
                  8,vlSelfRef.signal_access__DOT__q,
                  8,(IData)(vlSelfRef.signal_access__DOT__q));
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0xaaU != (IData)(vlSelfRef.signal_access__DOT__q))))) {
-            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:78: Assertion failed in %Nsignal_access.test_signal_reading: Read failed: expected 0xAA, got 0x%02x\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:96: Assertion failed in %Nsignal_access.test_signal_reading: Read failed: expected 0xAA, got 0x%02x\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name(),8,(IData)(vlSelfRef.signal_access__DOT__q));
-            VL_STOP_MT("signal_access.sv", 78, "");
+            VL_STOP_MT("signal_access.sv", 96, "");
         }
     }
     VL_WRITEF_NX("  Signal reading PASSED\n",0);
@@ -79,49 +79,49 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     vlSelfRef.signal_access__DOT__enable = 1U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         94);
+                                         112);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("  Drove d = 0x%02x, q = 0x%02x\n",0,
                  8,vlSelfRef.signal_access__DOT__d,
                  8,(IData)(vlSelfRef.signal_access__DOT__q));
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0x55U != (IData)(vlSelfRef.signal_access__DOT__q))))) {
-            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:96: Assertion failed in %Nsignal_access.test_signal_driving: Drive failed\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:114: Assertion failed in %Nsignal_access.test_signal_driving: Drive failed\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name());
-            VL_STOP_MT("signal_access.sv", 96, "");
+            VL_STOP_MT("signal_access.sv", 114, "");
         }
     }
     vlSelfRef.signal_access__DOT__d = 0xffU;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         99);
+                                         117);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("  Drove d = 0x%02x, q = 0x%02x\n",0,
                  8,vlSelfRef.signal_access__DOT__d,
                  8,(IData)(vlSelfRef.signal_access__DOT__q));
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0xffU != (IData)(vlSelfRef.signal_access__DOT__q))))) {
-            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:101: Assertion failed in %Nsignal_access.test_signal_driving: Drive failed\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:119: Assertion failed in %Nsignal_access.test_signal_driving: Drive failed\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name());
-            VL_STOP_MT("signal_access.sv", 101, "");
+            VL_STOP_MT("signal_access.sv", 119, "");
         }
     }
     vlSelfRef.signal_access__DOT__d = 0U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         104);
+                                         122);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("  Drove d = 0x%02x, q = 0x%02x\n",0,
                  8,vlSelfRef.signal_access__DOT__d,
                  8,(IData)(vlSelfRef.signal_access__DOT__q));
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0U != (IData)(vlSelfRef.signal_access__DOT__q))))) {
-            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:106: Assertion failed in %Nsignal_access.test_signal_driving: Drive failed\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: signal_access.sv:124: Assertion failed in %Nsignal_access.test_signal_driving: Drive failed\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name());
-            VL_STOP_MT("signal_access.sv", 106, "");
+            VL_STOP_MT("signal_access.sv", 124, "");
         }
     }
     VL_WRITEF_NX("  Signal driving PASSED\n",0);
@@ -130,17 +130,17 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     vlSelfRef.signal_access__DOT__d = 0x11U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         126);
+                                         144);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     vlSelfRef.signal_access__DOT__d = 0x22U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         129);
+                                         147);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     vlSelfRef.signal_access__DOT__d = 0x33U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "signal_access.sv", 
-                                         132);
+                                         150);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("  Signal monitoring PASSED (monitored %0d changes)\n",0,
                  32,vlSelfRef.signal_access__DOT__monitor_count);
@@ -175,9 +175,9 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__0(Vsignal_acc
     VL_WRITEF_NX("  Signal types PASSED\n\n============================================================\nSignal Access Examples Complete\n============================================================\n\nKey Concepts:\n  - Signal access is fundamental to testbench operation\n  - Proper timing is essential for signal driving\n  - Signal monitoring enables response checking\n  - Different signal types require different handling\n\n",0);
     co_await vlSelfRef.__VdlySched.delay(0x0000000000004e20ULL, 
                                          nullptr, "signal_access.sv", 
-                                         212);
+                                         230);
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
-    VL_FINISH_MT("signal_access.sv", 213, "");
+    VL_FINISH_MT("signal_access.sv", 231, "");
     vlSelfRef.__Vm_traceActivity[2U] = 1U;
     co_return;}
 
@@ -191,12 +191,12 @@ VlCoroutine Vsignal_access___024root___eval_initial__TOP__Vtiming__1(Vsignal_acc
         co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                              nullptr, 
                                              "signal_access.sv", 
-                                             31);
+                                             49);
         vlSelfRef.signal_access__DOT__clk = 1U;
         co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                              nullptr, 
                                              "signal_access.sv", 
-                                             33);
+                                             51);
     }
     co_return;}
 
@@ -369,7 +369,7 @@ void Vsignal_access___024root___eval(Vsignal_access___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vsignal_access___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("signal_access.sv", 14, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
+            VL_FATAL_MT("signal_access.sv", 32, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -378,7 +378,7 @@ void Vsignal_access___024root___eval(Vsignal_access___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vsignal_access___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("signal_access.sv", 14, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
+                VL_FATAL_MT("signal_access.sv", 32, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

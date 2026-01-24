@@ -2,6 +2,30 @@
  * Module 4 Example 4.5: TLM (Transaction-Level Modeling)
  * Demonstrates TLM communication between UVM components.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand TLM purpose and benefits
+ *   2. Learn TLM ports and exports (put/get)
+ *   3. Master TLM FIFOs for buffering
+ *   4. Understand analysis ports (one-to-many)
+ *   5. Apply TLM patterns for component communication
+ * 
+ * TLM PURPOSE:
+ *   - Transaction-level communication between components
+ *   - Decouples components (no direct references)
+ *   - Supports different communication patterns
+ *   - Enables flexible testbench architecture
+ * 
+ * TLM TYPES:
+ *   - Blocking put/get: Synchronous, blocking
+ *   - Non-blocking put/get: Asynchronous, non-blocking
+ *   - Analysis port: Broadcast (one-to-many)
+ *   - TLM FIFO: Buffering between producer/consumer
+ * 
+ * TLM PATTERNS:
+ *   - Producer -> Consumer: put_port -> get_export
+ *   - Producer -> FIFO -> Consumer: put_port -> fifo -> get_export
+ *   - Broadcast: analysis_port -> multiple subscribers
+ * 
  * This example shows:
  * - TLM ports and exports
  * - TLM FIFOs

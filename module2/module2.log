@@ -1,6 +1,6 @@
 ==========================================
 Module 2 Execution Log
-Started: 2026-01-24 00:39:55
+Started: 2026-01-24 14:56:38
 Command: ./scripts/module2.sh 
 Working directory: /home/yongfu/proj/learn_uvm2017_sv_verilator
 UVM_HOME: /home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src
@@ -13,11 +13,11 @@ Parallel jobs: 8
 [0;36mModule 2: SystemVerilog Testbench Fundamentals[0m
 [0;36m========================================[0m
 
-[0;34m[2026-01-24 00:39:55] Log file: /home/yongfu/proj/learn_uvm2017_sv_verilator/module2/module2.log[0m
-[0;34m[2026-01-24 00:39:55] Checking prerequisites...[0m
-[0;32m[2026-01-24 00:39:55] Found Verilator version: 5.045[0m
-[0;32m[2026-01-24 00:39:55] Found UVM library at: /home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/uvm_pkg.sv[0m
-[0;32m[2026-01-24 00:39:55] Prerequisites check passed[0m
+[0;34m[2026-01-24 14:56:38] Log file: /home/yongfu/proj/learn_uvm2017_sv_verilator/module2/module2.log[0m
+[0;34m[2026-01-24 14:56:38] Checking prerequisites...[0m
+[0;32m[2026-01-24 14:56:38] Found Verilator version: 5.045[0m
+[0;32m[2026-01-24 14:56:38] Found UVM library at: /home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/uvm_pkg.sv[0m
+[0;32m[2026-01-24 14:56:38] Prerequisites check passed[0m
 
 [0;36m========================================[0m
 [0;36mRunning SystemVerilog Examples[0m
@@ -28,11 +28,11 @@ Parallel jobs: 8
 [0;36mRunning: ClockGeneration[0m
 [0;36m========================================[0m
 
-[0;34m[2026-01-24 00:39:55] Compiling ClockGeneration...[0m
+[0;34m[2026-01-24 14:56:38] Compiling ClockGeneration...[0m
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 0.033 MB sources in 2 modules, into 0.050 MB in 8 C++ files needing 0.000 MB
-- Verilator: Walltime 0.007 s (elab=0.000, cvt=0.003, bld=0.000); cpu 0.007 s on 1 threads; allocated 30.242 MB
-[0;34m[2026-01-24 00:39:55] Building ClockGeneration (using 8 parallel jobs)...[0m
+- Verilator: Built from 0.034 MB sources in 2 modules, into 0.050 MB in 8 C++ files needing 0.000 MB
+- Verilator: Walltime 0.006 s (elab=0.000, cvt=0.002, bld=0.000); cpu 0.006 s on 1 threads; allocated 30.242 MB
+[0;34m[2026-01-24 14:56:38] Building ClockGeneration (using 8 parallel jobs)...[0m
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/clock_generation/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -Os  -c -o clock_gen.o ../clock_gen.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -44,24 +44,24 @@ ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/shar
 g++    clock_gen.o verilated.o verilated_vcd_c.o verilated_timing.o verilated_threads.o Vclock_gen__ALL.a    -pthread -lpthread -latomic   -o Vclock_gen
 rm Vclock_gen__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/clock_generation/obj_dir'
-[0;34m[2026-01-24 00:39:55] Running ClockGeneration...[0m
+[0;34m[2026-01-24 14:56:39] Running ClockGeneration...[0m
 ============================================================
 Clock Generation Examples
 ============================================================
 
 Example 1: Simple Clock Generation
   Clock period: 10 ns
-[0;32m[2026-01-24 00:39:55] ✓ ClockGeneration completed successfully[0m
+[0;32m[2026-01-24 14:56:39] ✓ ClockGeneration completed successfully[0m
 
 [0;36m========================================[0m
 [0;36mRunning: ResetPatterns[0m
 [0;36m========================================[0m
 
-[0;34m[2026-01-24 00:39:55] Compiling ResetPatterns...[0m
+[0;34m[2026-01-24 14:56:39] Compiling ResetPatterns...[0m
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
 - Verilator: Built from 0.033 MB sources in 2 modules, into 0.046 MB in 8 C++ files needing 0.000 MB
-- Verilator: Walltime 0.012 s (elab=0.001, cvt=0.005, bld=0.000); cpu 0.012 s on 1 threads; allocated 30.238 MB
-[0;34m[2026-01-24 00:39:55] Building ResetPatterns (using 8 parallel jobs)...[0m
+- Verilator: Walltime 0.006 s (elab=0.000, cvt=0.002, bld=0.000); cpu 0.006 s on 1 threads; allocated 30.238 MB
+[0;34m[2026-01-24 14:56:39] Building ResetPatterns (using 8 parallel jobs)...[0m
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/reset_patterns/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -Os  -c -o reset_patterns.o ../reset_patterns.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -73,22 +73,22 @@ ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/shar
 g++    reset_patterns.o verilated.o verilated_vcd_c.o verilated_timing.o verilated_threads.o Vreset_patterns__ALL.a    -pthread -lpthread -latomic   -o Vreset_patterns
 rm Vreset_patterns__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/reset_patterns/obj_dir'
-[0;34m[2026-01-24 00:39:56] Running ResetPatterns...[0m
+[0;34m[2026-01-24 14:56:40] Running ResetPatterns...[0m
 ============================================================
 Reset Patterns Examples
 ============================================================
 
-[0;32m[2026-01-24 00:39:56] ✓ ResetPatterns completed successfully[0m
+[0;32m[2026-01-24 14:56:40] ✓ ResetPatterns completed successfully[0m
 
 [0;36m========================================[0m
 [0;36mRunning: SignalAccess[0m
 [0;36m========================================[0m
 
-[0;34m[2026-01-24 00:39:56] Compiling SignalAccess...[0m
+[0;34m[2026-01-24 14:56:40] Compiling SignalAccess...[0m
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 0.034 MB sources in 2 modules, into 0.047 MB in 8 C++ files needing 0.000 MB
-- Verilator: Walltime 0.008 s (elab=0.001, cvt=0.003, bld=0.000); cpu 0.008 s on 1 threads; allocated 30.238 MB
-[0;34m[2026-01-24 00:39:56] Building SignalAccess (using 8 parallel jobs)...[0m
+- Verilator: Built from 0.035 MB sources in 2 modules, into 0.047 MB in 8 C++ files needing 0.000 MB
+- Verilator: Walltime 0.007 s (elab=0.000, cvt=0.003, bld=0.000); cpu 0.007 s on 1 threads; allocated 30.242 MB
+[0;34m[2026-01-24 14:56:40] Building SignalAccess (using 8 parallel jobs)...[0m
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/signal_access/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -Os  -c -o signal_access.o ../signal_access.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -100,23 +100,23 @@ ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/shar
 g++    signal_access.o verilated.o verilated_vcd_c.o verilated_timing.o verilated_threads.o Vsignal_access__ALL.a    -pthread -lpthread -latomic   -o Vsignal_access
 rm Vsignal_access__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/signal_access/obj_dir'
-[0;34m[2026-01-24 00:39:56] Running SignalAccess...[0m
+[0;34m[2026-01-24 14:56:41] Running SignalAccess...[0m
 ============================================================
 Signal Access Examples
 ============================================================
 
     [0] q changed to 0x00
-[0;32m[2026-01-24 00:39:56] ✓ SignalAccess completed successfully[0m
+[0;32m[2026-01-24 14:56:41] ✓ SignalAccess completed successfully[0m
 
 [0;36m========================================[0m
 [0;36mRunning: Triggers[0m
 [0;36m========================================[0m
 
-[0;34m[2026-01-24 00:39:56] Compiling Triggers...[0m
+[0;34m[2026-01-24 14:56:41] Compiling Triggers...[0m
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
 - Verilator: Built from 0.036 MB sources in 7 modules, into 0.106 MB in 24 C++ files needing 0.000 MB
-- Verilator: Walltime 0.014 s (elab=0.001, cvt=0.007, bld=0.000); cpu 0.014 s on 1 threads; allocated 30.242 MB
-[0;34m[2026-01-24 00:39:56] Building Triggers (using 8 parallel jobs)...[0m
+- Verilator: Walltime 0.010 s (elab=0.001, cvt=0.005, bld=0.000); cpu 0.010 s on 1 threads; allocated 30.242 MB
+[0;34m[2026-01-24 14:56:41] Building Triggers (using 8 parallel jobs)...[0m
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/triggers/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -Os  -c -o triggers.o ../triggers.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -128,22 +128,22 @@ ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/shar
 g++    triggers.o verilated.o verilated_vcd_c.o verilated_timing.o verilated_threads.o Vtriggers__ALL.a    -pthread -lpthread -latomic   -o Vtriggers
 rm Vtriggers__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/triggers/obj_dir'
-[0;34m[2026-01-24 00:39:56] Running Triggers...[0m
+[0;34m[2026-01-24 14:56:43] Running Triggers...[0m
 ============================================================
 Triggers and Timing Control Examples
 ============================================================
 
-[0;32m[2026-01-24 00:39:56] ✓ Triggers completed successfully[0m
+[0;32m[2026-01-24 14:56:43] ✓ Triggers completed successfully[0m
 
 [0;36m========================================[0m
 [0;36mRunning: CommonPatterns[0m
 [0;36m========================================[0m
 
-[0;34m[2026-01-24 00:39:56] Compiling CommonPatterns...[0m
+[0;34m[2026-01-24 14:56:43] Compiling CommonPatterns...[0m
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 0.037 MB sources in 7 modules, into 0.085 MB in 22 C++ files needing 0.000 MB
-- Verilator: Walltime 0.016 s (elab=0.002, cvt=0.007, bld=0.000); cpu 0.016 s on 1 threads; allocated 30.242 MB
-[0;34m[2026-01-24 00:39:56] Building CommonPatterns (using 8 parallel jobs)...[0m
+- Verilator: Built from 0.038 MB sources in 7 modules, into 0.085 MB in 22 C++ files needing 0.000 MB
+- Verilator: Walltime 0.009 s (elab=0.001, cvt=0.004, bld=0.000); cpu 0.009 s on 1 threads; allocated 30.242 MB
+[0;34m[2026-01-24 14:56:43] Building CommonPatterns (using 8 parallel jobs)...[0m
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/common_patterns/obj_dir'
 ccache g++  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -Os  -c -o common_patterns.o ../common_patterns.cpp
 ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=1 -DVM_TRACE=1 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=1 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -fcoroutines -c -o verilated.o /usr/local/share/verilator/include/verilated.cpp
@@ -155,25 +155,25 @@ ccache g++ -Os  -I.  -MMD -I/usr/local/share/verilator/include -I/usr/local/shar
 g++    common_patterns.o verilated.o verilated_vcd_c.o verilated_timing.o verilated_threads.o Vcommon_patterns__ALL.a    -pthread -lpthread -latomic   -o Vcommon_patterns
 rm Vcommon_patterns__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/examples/common_patterns/obj_dir'
-[0;34m[2026-01-24 00:39:59] Running CommonPatterns...[0m
+[0;34m[2026-01-24 14:56:44] Running CommonPatterns...[0m
 ============================================================
 Common Verification Patterns Examples
 ============================================================
 
-[0;32m[2026-01-24 00:39:59] ✓ CommonPatterns completed successfully[0m
+[0;32m[2026-01-24 14:56:44] ✓ CommonPatterns completed successfully[0m
 
 [0;36m========================================[0m
 [0;36mRunning UVM Tests[0m
 [0;36m========================================[0m
 
-[0;32m[2026-01-24 00:39:59] ℹ️  Note: Verilator now supports UVM 2017-1.0 (as of Oct 2025)[0m
-[0;32m[2026-01-24 00:39:59]    See: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator[0m
-[0;32m[2026-01-24 00:39:59]    Using recommended flags: --binary, +define+UVM_NO_DPI, -Wno-fatal[0m
+[0;32m[2026-01-24 14:56:44] ℹ️  Note: Verilator now supports UVM 2017-1.0 (as of Oct 2025)[0m
+[0;32m[2026-01-24 14:56:44]    See: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator[0m
+[0;32m[2026-01-24 14:56:44]    Using recommended flags: --binary, +define+UVM_NO_DPI, -Wno-fatal[0m
 
-[0;34m[2026-01-24 00:39:59] Running UVM simple register test...[0m
-[1;33m[2026-01-24 00:39:59] Note: Verilator has limited UVM support. For full UVM features, use commercial simulators.[0m
-[1;33m[2026-01-24 00:39:59] Note: UVM compilation generates ~2000 C++ files due to template instantiations.[0m
-[1;33m[2026-01-24 00:39:59]       This is normal and may take 5-10 minutes even with parallel builds.[0m
+[0;34m[2026-01-24 14:56:44] Running UVM simple register test...[0m
+[1;33m[2026-01-24 14:56:44] Note: Verilator has limited UVM support. For full UVM features, use commercial simulators.[0m
+[1;33m[2026-01-24 14:56:44] Note: UVM compilation generates ~2000 C++ files due to template instantiations.[0m
+[1;33m[2026-01-24 14:56:44]       This is normal and may take 5-10 minutes even with parallel builds.[0m
 Compiling with Verilator...
 Note: Using Verilator with UVM 2017 support
 See: https://antmicro.com/blog/2025/10/support-for-upstream-uvm-2017-in-verilator
@@ -2159,8 +2159,8 @@ g++    verilated.o verilated_dpi.o verilated_vcd_c.o verilated_timing.o verilate
 rm Vtest_simple_register_uvm__ALL.verilator_deplist.tmp
 make[1]: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/tests/uvm_tests/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 15.261 MB sources in 346 modules, into 22.016 MB in 1961 C++ files needing 12.420 MB
-- Verilator: Walltime 27.708 s (elab=0.577, cvt=4.430, bld=21.850); cpu 5.852 s on 1 threads; allocated 226.098 MB
+- Verilator: Built from 15.278 MB sources in 346 modules, into 22.016 MB in 1961 C++ files needing 12.420 MB
+- Verilator: Walltime 23.811 s (elab=0.409, cvt=3.142, bld=19.572); cpu 4.230 s on 1 threads; allocated 226.105 MB
 Building with parallel jobs (VM_PARALLEL_BUILDS=1)...
 Note: UVM generates many template instantiations, compilation may take several minutes
 make -j12 -C obj_dir -f Vtest_simple_register_uvm.mk VM_PARALLEL_BUILDS=1
@@ -2169,23 +2169,23 @@ make[1]: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module
 make[1]: Nothing to be done for 'default'.
 make[1]: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module2/tests/uvm_tests/obj_dir'
 Compilation complete!
-[0;32m[2026-01-24 00:40:29] ✓ UVM simple register test passed[0m
+[0;32m[2026-01-24 14:57:09] ✓ UVM simple register test passed[0m
 
 [0;36m========================================[0m
 [0;36mSummary[0m
 [0;36m========================================[0m
 
-[0;32m[2026-01-24 00:40:29] ✓ All examples and tests completed successfully![0m
+[0;32m[2026-01-24 14:57:09] ✓ All examples and tests completed successfully![0m
 
-[0;34m[2026-01-24 00:40:29] Next steps:[0m
+[0;34m[2026-01-24 14:57:09] Next steps:[0m
   1. Review the examples in module2/examples/
   2. Try modifying the examples
   3. Proceed to Module 3: UVM Basics
 
-[0;34m[2026-01-24 00:40:29] Full log saved to: /home/yongfu/proj/learn_uvm2017_sv_verilator/module2/module2.log[0m
 
+[0;34m[2026-01-24 14:57:09] Full log saved to: /home/yongfu/proj/learn_uvm2017_sv_verilator/module2/module2.log[0m
 ==========================================
 Module 2 Execution Log - Completed
-Finished: 2026-01-24 00:40:29
+Finished: 2026-01-24 14:57:09
 Exit code: 0
 ==========================================

@@ -52,7 +52,7 @@ void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_build_phase(VlPro
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "DRIVER"s, __Vfunc_uvm_report_enabled__3__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__3__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Building driver component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x0000002dU, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Building driver component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x000000dbU, ""s, 1U);
     }
 }
 
@@ -66,7 +66,7 @@ void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_connect_phase(VlP
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "DRIVER"s, __Vfunc_uvm_report_enabled__6__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__6__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Connecting driver component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000032U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Connecting driver component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x000000f8U, ""s, 1U);
     }
 }
 
@@ -80,16 +80,16 @@ VlCoroutine Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_run_phase(
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "DRIVER"s, __Vfunc_uvm_report_enabled__8__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__8__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Driver run_phase executing"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000036U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "DRIVER"s, "Driver run_phase executing"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000115U, ""s, 1U);
     }
-    VL_NULL_CHECK(phase, "class_hierarchy.sv", 55)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
+    VL_NULL_CHECK(phase, "class_hierarchy.sv", 282)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
                                                                                 VlClassRef<Vclass_hierarchy___024unit__03a__03aMyDriver>{this}, ""s, 1U);
     co_await vlSymsp->TOP.__VdlySched.delay(0x0000000000000064ULL, 
                                             vlProcess, 
                                             "class_hierarchy.sv", 
-                                            56);
-    VL_NULL_CHECK(phase, "class_hierarchy.sv", 57)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
-                                                                               VlClassRef<Vclass_hierarchy___024unit__03a__03aMyDriver>{this}, ""s, 1U);
+                                            286);
+    VL_NULL_CHECK(phase, "class_hierarchy.sv", 290)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
+                                                                                VlClassRef<Vclass_hierarchy___024unit__03a__03aMyDriver>{this}, ""s, 1U);
     co_return;}
 
 void Vclass_hierarchy___024unit__03a__03aMyDriver::__VnoInFunc_randomize(Vclass_hierarchy__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {

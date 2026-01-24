@@ -1,3 +1,0 @@
-Vclass_hierarchy_uvm_pkg__03a__03am_uvm_tr_stream_cfg__Vclpkg__0.o: \
- Vclass_hierarchy_uvm_pkg__03a__03am_uvm_tr_stream_cfg__Vclpkg__0.cpp \
- Vclass_hierarchy__pch.h

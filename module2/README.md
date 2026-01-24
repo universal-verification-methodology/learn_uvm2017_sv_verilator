@@ -66,11 +66,67 @@ Demonstrates various clock generation patterns:
 - **Clock Gating**: Conditional clock generation
 - **Clock Stopping**: Controlled clock stopping
 
+**Clock Generation Patterns:**
+
+1. **Simple Clock with `always` Block:**
+   ```systemverilog
+   always begin
+       clk1 = 0;
+       #(CLK1_PERIOD/2);  // Half period low
+       clk1 = 1;
+       #(CLK1_PERIOD/2);  // Half period high
+   end
+   ```
+   - Uses `always` block for continuous execution
+   - Delay operator `#` controls timing
+   - Creates 50% duty cycle clock
+
+2. **Clock Gating Pattern:**
+   ```systemverilog
+   always begin
+       if (clk_enable) begin
+           clk_gated = 0;
+           #(CLK1_PERIOD/2);
+           clk_gated = 1;
+           #(CLK1_PERIOD/2);
+       end else begin
+           clk_gated = 0;
+           #(CLK1_PERIOD);
+       end
+   end
+   ```
+   - Conditional clock generation
+   - Uses `if-else` for gating control
+
+3. **Clock Stopping with `wait`:**
+   ```systemverilog
+   always begin
+       if (!clk_stop && !clk_stopped) begin
+           clk_stopped = 0;
+           #(CLK1_PERIOD/2);
+           clk_stopped = 1;
+           #(CLK1_PERIOD/2);
+       end else begin
+           clk_stopped = 0;
+           wait(clk_stop == 0);  // Wait for stop signal to clear
+       end
+   end
+   ```
+   - Uses `wait` statement for condition-based stopping
+
+**Built-in Functions Used:**
+- `$display()` - Print clock information
+- `$time` - Get current simulation time
+- `$finish` - Terminate simulation
+
 **Key Concepts:**
 - Clocks are fundamental to synchronous designs
 - Parameterized clocks enable flexibility
 - Multiple clocks require careful synchronization
 - Clock gating is common in low-power designs
+- `always` blocks create continuous processes
+- Delay operator `#` controls timing
+- `wait` statements enable condition-based control
 
 **Running the example:**
 
@@ -100,11 +156,60 @@ Shows reset sequence implementation:
 - **Reset Sequence**: Controlled reset assertion and de-assertion
 - **Reset Verification**: Checking reset behavior
 
+**Reset Task Patterns:**
+
+1. **Asynchronous Reset Sequence Task:**
+   ```systemverilog
+   task async_reset_sequence(int reset_duration_ns = 100);
+       $display("[%0t] Asserting async reset", $time);
+       rst_n = 0;
+       #(reset_duration_ns);  // Delay for reset duration
+       $display("[%0t] De-asserting async reset", $time);
+       rst_n = 1;
+       #(CLK_PERIOD * 2);  // Wait for propagation
+   endtask
+   ```
+   - Encapsulates async reset sequence
+   - Configurable reset duration
+   - Uses delays and displays timing info
+
+2. **Synchronous Reset Sequence Task:**
+   ```systemverilog
+   task sync_reset_sequence(int reset_cycles = 5);
+       $display("[%0t] Asserting sync reset", $time);
+       rst_sync = 1;
+       repeat (reset_cycles) @(posedge clk);  // Wait for N clock cycles
+       $display("[%0t] De-asserting sync reset", $time);
+       rst_sync = 0;
+       @(posedge clk);  // Wait one cycle for propagation
+   endtask
+   ```
+   - Encapsulates sync reset sequence
+   - Uses `repeat` and `@(posedge clk)` for clock synchronization
+
+3. **Reset Verification Task:**
+   ```systemverilog
+   task verify_reset();
+       $display("[%0t] Verifying reset state", $time);
+       assert (reg_async == 8'h00) else 
+           $error("Async reset failed: reg_async = 0x%02h", reg_async);
+       assert (reg_sync == 8'h00) else 
+           $error("Sync reset failed: reg_sync = 0x%02h", reg_sync);
+       $display("  Reset verification PASSED");
+   endtask
+   ```
+   - Verifies reset properly initializes registers
+   - Uses `assert` statements with `$error()` for verification
+
 **Key Concepts:**
 - Reset is critical for proper design initialization
 - Synchronous vs asynchronous reset have different timing
 - Reset sequences must follow design requirements
 - Reset verification ensures proper operation
+- **Tasks encapsulate reset sequences** for reusability
+- **`repeat` statement** repeats clock cycles
+- **`@(posedge clk)`** synchronizes to clock edges
+- **`assert` statements** verify reset behavior
 
 **Running the example:**
 
@@ -126,11 +231,72 @@ Demonstrates signal reading, writing, and monitoring:
 - **Signal Monitoring**: Monitoring signal changes
 - **Signal Types**: Handling different signal types (single-bit, multi-bit, arrays)
 
+**Signal Access Task Patterns:**
+
+1. **Signal Reading Task:**
+   ```systemverilog
+   task test_signal_reading();
+       $display("Example 1: Signal Reading");
+       rst_n = 0;
+       #(CLK_PERIOD);
+       $display("  Initial state: q = 0x%02h (%0d)", q, q);
+       rst_n = 1;
+       #(CLK_PERIOD);
+       $display("  After reset: q = 0x%02h (%0d)", q, q);
+   endtask
+   ```
+   - Demonstrates reading signal values
+   - Uses `$display()` with format specifiers (`%02h`, `%0d`, `%b`)
+
+2. **Signal Driving Task:**
+   ```systemverilog
+   task test_signal_driving();
+       d = 8'h55;
+       enable = 1;
+       #(CLK_PERIOD);
+       assert (q == 8'h55) else $error("Drive failed");
+   endtask
+   ```
+   - Demonstrates driving signals to DUT
+   - Uses blocking assignment (`=`) for signal driving
+   - Verifies with `assert` statements
+
+3. **Signal Monitoring Pattern:**
+   ```systemverilog
+   always @(q) begin
+       monitor_count++;
+       $display("    [%0t] q changed to 0x%02h", $time, q);
+   end
+   ```
+   - Automatically monitors signal changes
+   - Uses `always @(signal)` for event-driven monitoring
+
+4. **Signal Types Task:**
+   ```systemverilog
+   task test_signal_types();
+       single_bit = 1'b0;
+       multi_bit = 16'hABCD;
+       $display("  Multi-bit width: %0d bits", $bits(multi_bit));
+   endtask
+   ```
+   - Demonstrates different signal types
+   - Uses `$bits()` built-in function for signal width
+
+**Built-in Functions Used:**
+- `$display()` - Print signal values with formatting
+- `$time` - Get current simulation time
+- `$bits()` - Get signal bit width
+- `$error()` - Report errors in assertions
+
 **Key Concepts:**
 - Signal access is fundamental to testbench operation
 - Proper timing is essential for signal driving
 - Signal monitoring enables response checking
 - Different signal types require different handling
+- **Tasks organize signal access operations**
+- **`always @(signal)`** creates event-driven monitors
+- **Blocking assignment (`=`)** for signal driving
+- **Format specifiers** (`%b`, `%h`, `%d`) for display
 
 **Running the example:**
 
@@ -153,11 +319,71 @@ Demonstrates event and timing control:
 - **Fork-Join**: Parallel execution with synchronization
 - **Named Events**: Event-based synchronization
 
+**Timing Control Task Patterns:**
+
+1. **Event Control Task:**
+   ```systemverilog
+   task test_event_control();
+       @(posedge clk);  // Wait for clock edge
+       @(signal_a);     // Wait for signal change
+       @(negedge signal_a);  // Wait for falling edge
+   endtask
+   ```
+   - Uses `@(posedge)`, `@(negedge)`, `@(signal)` for event control
+
+2. **Delay Control Task:**
+   ```systemverilog
+   task test_delay_control();
+       #10;              // Fixed delay
+       #(CLK_PERIOD);    // Parameterized delay
+       #(CLK_PERIOD * 2); // Calculated delay
+   endtask
+   ```
+   - Uses `#` delay operator with fixed and parameterized values
+
+3. **Wait Statement Task:**
+   ```systemverilog
+   task test_wait_statements();
+       condition_met = 0;
+       fork
+           begin #50; condition_met = 1; end
+       join_none
+       wait(condition_met == 1);  // Wait for condition
+   endtask
+   ```
+   - Uses `wait(condition)` statement
+
+4. **Fork-Join Patterns:**
+   ```systemverilog
+   // Fork-Join: Wait for all
+   fork
+       task1();
+       task2();
+   join
+   
+   // Fork-Join_Any: Wait for first
+   fork
+       task1();
+       task2();
+   join_any
+   
+   // Fork-Join_None: Don't wait
+   fork
+       task1();
+       task2();
+   join_none
+   ```
+   - Different join types for different synchronization needs
+
 **Key Concepts:**
 - Events enable synchronization between processes
 - Timing control is essential for proper testbench operation
 - Wait statements enable condition-based synchronization
 - Fork-join enables parallel execution
+- **`@(posedge/negedge)`** waits for signal edges
+- **`#` delay operator** creates time-based delays
+- **`wait(condition)`** waits for condition to become true
+- **`fork-join`** creates parallel execution with synchronization
 
 **Running the example:**
 
@@ -585,6 +811,114 @@ make SIM=verilator TEST=<test_name>
    make SIM=verilator TEST=test_simple_register_uvm V=1
    ```
 
+## Functions and Tasks in Module 2
+
+### Quick Reference: Testbench Task Patterns
+
+| Pattern | Purpose | Key Features |
+|---------|---------|--------------|
+| **Reset Tasks** | Encapsulate reset sequences | Uses delays, `@(posedge clk)`, `repeat` |
+| **Clock Generation** | Generate clock signals | Uses `always` blocks, delay operator `#` |
+| **Signal Access Tasks** | Read/write signals | Uses blocking assignment, `@(posedge clk)` |
+| **Timing Control Tasks** | Control timing | Uses `#`, `@`, `wait`, `fork-join` |
+| **Test Phase Tasks** | Organize test phases | Initialization → Reset → Stimulus → Check |
+
+### Common Task Patterns
+
+**1. Reset Sequence Tasks**
+```systemverilog
+task async_reset(int duration_ns = 100);
+    rst_n = 0;
+    #(duration_ns);
+    rst_n = 1;
+    #(CLK_PERIOD * 2);
+endtask
+
+task sync_reset(int cycles = 5);
+    rst_sync = 1;
+    repeat (cycles) @(posedge clk);
+    rst_sync = 0;
+    @(posedge clk);
+endtask
+```
+
+**2. Clock Generation**
+```systemverilog
+always begin
+    clk = 0;
+    #(PERIOD/2);
+    clk = 1;
+    #(PERIOD/2);
+end
+```
+
+**3. Signal Access Tasks**
+```systemverilog
+task drive_signal(logic [7:0] value);
+    data_in = value;
+    enable = 1;
+    @(posedge clk);
+endtask
+
+task read_signal(output logic [7:0] value);
+    @(posedge clk);
+    value = data_out;
+endtask
+```
+
+**4. Test Phase Tasks**
+```systemverilog
+task test_phase();
+    initialize_signals();
+    async_reset(100);
+    generate_stimulus();
+    verify_response();
+endtask
+```
+
+### Timing Control Constructs
+
+| Construct | Syntax | Purpose |
+|-----------|--------|---------|
+| **Delay** | `#10;` or `#(PERIOD);` | Time-based delay |
+| **Event Control** | `@(posedge clk);` | Wait for event |
+| **Wait** | `wait(condition);` | Wait for condition |
+| **Fork-Join** | `fork ... join` | Parallel execution |
+| **Fork-Join_Any** | `fork ... join_any` | Wait for first |
+| **Fork-Join_None** | `fork ... join_none` | Don't wait |
+
+### Built-in Functions for Testbenches
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `$time` | Get simulation time | `time t = $time;` |
+| `$bits()` | Get signal width | `int w = $bits(signal);` |
+| `$display()` | Print formatted text | `$display("Value: %0d", x);` |
+| `$error()` | Report error | `$error("Failed: %0d", code);` |
+| `$finish` | Terminate simulation | `$finish;` |
+
+### Best Practices
+
+1. **Task Organization**
+   - Each test phase as separate task
+   - Helper tasks for common operations
+   - Clear task naming conventions
+
+2. **Timing Control**
+   - Always synchronize to clock edges
+   - Use appropriate delays
+   - Avoid race conditions
+
+3. **Signal Access**
+   - Use blocking assignment (`=`) for driving
+   - Synchronize reads to clock edges
+   - Monitor signals with `always @(signal)`
+
+4. **Error Handling**
+   - Use assertions for verification
+   - Provide informative error messages
+   - Handle edge cases
+
 ## Topics Covered
 
 1. **SystemVerilog Testbench Architecture** - Testbench structure and components
@@ -593,8 +927,9 @@ make SIM=verilator TEST=<test_name>
 4. **Signal Access** - Reading, writing, and monitoring signals
 5. **Event and Timing Control** - Events, delays, waits, fork-join
 6. **Common Verification Patterns** - Driver, monitor, scoreboard patterns
-7. **Test Structure** - Organizing testbenches effectively
-8. **UVM Basics** - UVM-style testbench architecture
+7. **Functions and Tasks** - Testbench task patterns and best practices
+8. **Test Structure** - Organizing testbenches effectively
+9. **UVM Basics** - UVM-style testbench architecture
 
 ## Next Steps
 
@@ -602,6 +937,84 @@ After completing Module 2, proceed to:
 
 - **Module 3**: UVM Basics - Phases, factory, configuration database
 - **Module 4**: UVM Components - Agents, sequencers, monitors, drivers
+
+## Quick Reference: Testbench Cheat Sheet
+
+### Clock Generation Templates
+
+```systemverilog
+// Simple Clock
+always begin
+    clk = 0;
+    #(PERIOD/2);
+    clk = 1;
+    #(PERIOD/2);
+end
+
+// Gated Clock
+always begin
+    if (clk_enable) begin
+        clk = 0;
+        #(PERIOD/2);
+        clk = 1;
+        #(PERIOD/2);
+    end else begin
+        clk = 0;
+        #(PERIOD);
+    end
+end
+```
+
+### Reset Task Templates
+
+```systemverilog
+// Async Reset
+task async_reset(int duration_ns = 100);
+    rst_n = 0;
+    #(duration_ns);
+    rst_n = 1;
+    #(CLK_PERIOD * 2);
+endtask
+
+// Sync Reset
+task sync_reset(int cycles = 5);
+    rst_sync = 1;
+    repeat (cycles) @(posedge clk);
+    rst_sync = 0;
+    @(posedge clk);
+endtask
+```
+
+### Timing Control Quick Reference
+
+| Construct | Syntax | Purpose |
+|-----------|--------|---------|
+| Delay | `#10;` or `#(PERIOD);` | Time-based delay |
+| Event | `@(posedge clk);` | Wait for edge |
+| Wait | `wait(condition);` | Wait for condition |
+| Fork-Join | `fork ... join` | Parallel, wait all |
+| Fork-Join_Any | `fork ... join_any` | Parallel, wait first |
+| Fork-Join_None | `fork ... join_none` | Parallel, don't wait |
+| Repeat | `repeat(N) @(posedge clk);` | Repeat N times |
+
+### Common Pitfalls
+
+1. **Race Conditions**: Use explicit clock patterns, not `forever #5 clk = ~clk;`
+2. **Missing Sync**: Always use `@(posedge clk)` for synchronization
+3. **Insufficient Reset**: Add propagation delay after reset de-assert
+4. **Wrong Assignment**: Use blocking (`=`) in tasks, non-blocking (`<=`) in sequential logic
+5. **Hanging Wait**: Add timeout mechanism for wait statements
+
+### Troubleshooting Quick Guide
+
+| Problem | Solution |
+|---------|----------|
+| Clock not generating | Check `always` block, verify delay values |
+| Reset not working | Increase duration, add propagation delay |
+| Signal not updating | Use `@(posedge clk)`, check assignment type |
+| Race condition | Use proper synchronization, avoid shared access |
+| Fork-join not waiting | Use `join` instead of `join_none` |
+| Wait hanging | Add timeout, verify condition logic |
 
 ## Additional Resources
 

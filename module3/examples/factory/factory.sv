@@ -2,6 +2,28 @@
  * Module 3 Example 3.5: UVM Factory Pattern
  * Demonstrates UVM factory pattern for object creation and overrides.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand UVM factory purpose and benefits
+ *   2. Learn factory registration (uvm_object_utils, uvm_component_utils)
+ *   3. Master factory-based creation (type_id::create)
+ *   4. Understand type override (affects all instances)
+ *   5. Apply instance override (affects specific instance)
+ * 
+ * FACTORY PURPOSE:
+ *   - Centralized object creation
+ *   - Enables test customization without code changes
+ *   - Supports inheritance and polymorphism
+ *   - Allows runtime type substitution
+ * 
+ * FACTORY OPERATIONS:
+ *   - Registration: `uvm_object_utils, `uvm_component_utils
+ *   - Creation: type_id::create()
+ *   - Override: set_type_override, set_inst_override
+ * 
+ * OVERRIDE TYPES:
+ *   - Type override: BaseDriver -> ExtendedDriver (all instances)
+ *   - Instance override: Specific component instance only
+ * 
  * This example shows:
  * - Factory registration
  * - Factory-based object creation
@@ -12,17 +34,30 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
+// ============================================================================
+// BASE TRANSACTION CLASS
+// ============================================================================
 /**
  * Base transaction class
+ * 
+ * BASE CLASS PURPOSE:
+ *   - Defines base transaction structure
+ *   - Can be extended for specific protocols
+ *   - Used with factory for type substitution
+ * 
+ * INHERITANCE PATTERN:
+ *   - Base class: Common functionality
+ *   - Extended class: Additional fields/functionality
+ *   - Factory can substitute extended for base
  */
 class BaseTransaction extends uvm_sequence_item;
-    logic [7:0] data;
+    logic [7:0] data;  // 8-bit data field
     
     `uvm_object_utils(BaseTransaction)
     
     function new(string name = "BaseTransaction");
         super.new(name);
-        data = 8'h00;
+        data = 8'h00;  // Initialize data to 0
     endfunction
     
     function string convert2string();
@@ -30,20 +65,39 @@ class BaseTransaction extends uvm_sequence_item;
     endfunction
 endclass
 
+// ============================================================================
+// EXTENDED TRANSACTION CLASS
+// ============================================================================
 /**
  * Extended transaction class
+ * 
+ * EXTENDED CLASS PURPOSE:
+ *   - Extends base transaction with additional fields
+ *   - Demonstrates inheritance and polymorphism
+ *   - Can be used as factory override
+ * 
+ * INHERITANCE:
+ *   - Inherits all base class fields and methods
+ *   - Adds new fields (address)
+ *   - Overrides methods (convert2string)
+ * 
+ * FACTORY OVERRIDE:
+ *   - Can replace BaseTransaction with ExtendedTransaction
+ *   - All code using BaseTransaction gets ExtendedTransaction
+ *   - No code changes needed in components
  */
 class ExtendedTransaction extends BaseTransaction;
-    logic [15:0] address;
+    logic [15:0] address;  // 16-bit address field (new field)
     
     `uvm_object_utils(ExtendedTransaction)
     
     function new(string name = "ExtendedTransaction");
-        super.new(name);
-        address = 16'h0000;
+        super.new(name);  // Call base class constructor
+        address = 16'h0000;  // Initialize address to 0
     endfunction
     
     function string convert2string();
+        // Override base class method to include address
         return $sformatf("ExtendedTransaction: data=0x%02h, address=0x%04h", data, address);
     endfunction
 endclass
@@ -175,8 +229,32 @@ class FactoryOverrideTest extends uvm_test;
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
         
-        // Set type override: BaseDriver -> ExtendedDriver
-        // This affects ALL instances of BaseDriver
+        // ========================================================================
+        // SET TYPE OVERRIDE
+        // ========================================================================
+        // 
+        // TYPE OVERRIDE:
+        //   - Replaces ALL instances of base type with derived type
+        //   - Affects all components created with BaseDriver::type_id::create()
+        //   - Useful for test-wide customization
+        // 
+        // OVERRIDE SYNTAX:
+        //   uvm_factory::get().set_type_override_by_type(original_type, override_type)
+        // 
+        // PARAMETERS:
+        //   - original_type: Type to override (BaseDriver::get_type())
+        //   - override_type: Replacement type (ExtendedDriver::get_type())
+        // 
+        // OVERRIDE BEHAVIOR:
+        //   - When BaseDriver::type_id::create() is called
+        //   - Factory creates ExtendedDriver instead
+        //   - All instances of BaseDriver become ExtendedDriver
+        //   - No code changes needed in components
+        // 
+        // USAGE:
+        //   - Test customization: Replace driver with extended driver
+        //   - Debugging: Replace component with debug version
+        //   - Feature testing: Enable/disable features via override
         uvm_factory::get().set_type_override_by_type(BaseDriver::get_type(), 
                                                       ExtendedDriver::get_type());
         `uvm_info("TEST", "Set type override: BaseDriver -> ExtendedDriver", UVM_MEDIUM)

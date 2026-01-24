@@ -2,6 +2,24 @@
  * Module 2 Example 2.4: Triggers and Timing Control
  * Demonstrates event and timing control in SystemVerilog testbenches.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand event control (@) for synchronization
+ *   2. Learn delay control (#) for timing
+ *   3. Master wait statements for condition-based waiting
+ *   4. Understand fork-join constructs for parallel execution
+ *   5. Apply timing control patterns in testbenches
+ * 
+ * TIMING CONTROL MECHANISMS:
+ *   - Event Control (@): Wait for signal/event changes
+ *   - Delay Control (#): Wait for specific time duration
+ *   - Wait Statements: Wait for conditions to become true
+ *   - Fork-Join: Parallel execution with synchronization
+ * 
+ * FORK-JOIN VARIANTS:
+ *   - fork...join: Wait for all tasks to complete
+ *   - fork...join_any: Continue after first task completes
+ *   - fork...join_none: Start tasks and continue immediately
+ * 
  * This example shows:
  * - Event control (@)
  * - Delay control (#)

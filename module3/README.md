@@ -65,11 +65,36 @@ Demonstrates UVM class hierarchy and component structure:
 - **Environment Class**: Extends `uvm_env`, top-level verification environment
 - **Test Class**: Extends `uvm_test`, orchestrates test execution
 
+**UVM Methods and Functions:**
+
+1. **Factory Registration:**
+   ```systemverilog
+   `uvm_object_utils(MyTransaction)      // For uvm_object
+   `uvm_component_utils(MyDriver)        // For uvm_component
+   ```
+
+2. **Factory Creation:**
+   ```systemverilog
+   driver = MyDriver::type_id::create("driver", this);
+   txn = MyTransaction::type_id::create("txn");
+   ```
+
+3. **Phase Functions:**
+   ```systemverilog
+   function void build_phase(uvm_phase phase);
+       super.build_phase(phase);
+       `uvm_info("DRIVER", "Building", UVM_MEDIUM)
+   endfunction
+   ```
+
 **Key Concepts:**
 - `uvm_object` - Base class for all UVM objects (transactions, sequences)
 - `uvm_component` - Base class for all UVM components (drivers, monitors, agents)
 - Component hierarchy: Test → Environment → Agent → Driver/Monitor
 - Component creation using factory pattern
+- **Factory macros** enable registration and overrides
+- **Phase functions/tasks** implement component behavior
+- **Factory creation** enables centralized object creation
 
 **Running the example:**
 
@@ -106,11 +131,40 @@ Demonstrates UVM phase execution and implementation:
 - `report_phase()` - Generate reports
 - `final_phase()` - Final cleanup
 
+**Phase Implementation Patterns:**
+
+1. **Build-Time Phase (Function):**
+   ```systemverilog
+   function void build_phase(uvm_phase phase);
+       super.build_phase(phase);
+       `uvm_info("PHASES", "Building component", UVM_MEDIUM)
+   endfunction
+   ```
+
+2. **Run-Time Phase (Task):**
+   ```systemverilog
+   task main_phase(uvm_phase phase);
+       phase.raise_objection(this);
+       `uvm_info("PHASES", "Main phase", UVM_MEDIUM)
+       #50;
+       phase.drop_objection(this);
+   endtask
+   ```
+
+3. **Component Name Methods:**
+   ```systemverilog
+   string name = get_name();
+   string full_name = get_full_name();
+   ```
+
 **Key Concepts:**
 - Build-time phases execute top-down (parent before child)
 - Run-time phases execute bottom-up (child before parent)
 - Cleanup phases execute bottom-up (child before parent)
 - Phases enable structured testbench execution
+- **Build-time phases are functions** (no delays)
+- **Run-time phases are tasks** (can have delays)
+- **Must call `super.phase_name(phase)`** to maintain hierarchy
 
 **Running the example:**
 
@@ -127,11 +181,34 @@ Demonstrates UVM reporting system:
 - **Message Formatting**: Formatted messages with data values
 - **Hierarchical Reporting**: Component context in messages
 
+**UVM Reporting Macros:**
+
+1. **Reporting Macros:**
+   ```systemverilog
+   `uvm_info("TAG", "Message", UVM_MEDIUM)
+   `uvm_warning("TAG", "Warning")
+   `uvm_error("TAG", "Error")
+   `uvm_fatal("TAG", "Fatal")
+   ```
+
+2. **Formatted Messages:**
+   ```systemverilog
+   `uvm_info("REPORTING", $sformatf("data=0x%02h, addr=0x%04h", data, addr), UVM_MEDIUM)
+   ```
+
+3. **Verbosity Control:**
+   ```systemverilog
+   set_report_verbosity_level(UVM_HIGH);
+   ```
+
 **Key Concepts:**
 - Severity indicates message importance
 - Verbosity controls message visibility
 - Messages include component hierarchy context
 - Reporting enables debugging and monitoring
+- **`uvm_info`** is most common (with verbosity)
+- **Use `$sformatf()`** for formatted messages
+- **Verbosity levels**: UVM_LOW < UVM_MEDIUM < UVM_HIGH < UVM_FULL < UVM_DEBUG
 
 **Running the example:**
 
@@ -148,11 +225,36 @@ Demonstrates UVM configuration database:
 - **Configuration Objects**: Complex configuration data
 - **Scalar Values**: Simple configuration values
 
+**ConfigDB Methods:**
+
+1. **Setting Configuration:**
+   ```systemverilog
+   // Global (all components)
+   uvm_config_db#(AgentConfig)::set(this, "*", "agent_config", config_obj);
+   
+   // Component-specific
+   uvm_config_db#(AgentConfig)::set(this, "child_comp", "agent_config", config_obj);
+   
+   // Scalar values
+   uvm_config_db#(int)::set(this, "*", "timeout", 2000);
+   ```
+
+2. **Getting Configuration:**
+   ```systemverilog
+   if (!uvm_config_db#(AgentConfig)::get(this, "", "agent_config", config_obj)) begin
+       config_obj = AgentConfig::type_id::create("config_obj");
+   end
+   ```
+
 **Key Concepts:**
 - ConfigDB enables flexible test configuration
 - Configuration can be set globally or per-component
 - Components look up configuration in `build_phase()`
 - Hierarchical paths enable component-specific config
+- **Set before create**: Configuration must be set before components are created
+- **Get in build_phase**: Components get configuration in their `build_phase()`
+- **Check return value**: Always check if `get()` succeeded
+- **Provide defaults**: Use default values if configuration not found
 
 **Running the example:**
 
@@ -169,11 +271,35 @@ Demonstrates UVM factory pattern:
 - **Type Override**: Substituting base class with extended class
 - **Instance Override**: Overriding specific instances
 
+**Factory Methods:**
+
+1. **Factory Registration:**
+   ```systemverilog
+   `uvm_object_utils(BaseTransaction)
+   `uvm_component_utils(BaseDriver)
+   ```
+
+2. **Factory Creation:**
+   ```systemverilog
+   driver = BaseDriver::type_id::create("driver", this);
+   ```
+
+3. **Type Override:**
+   ```systemverilog
+   uvm_factory::get().set_type_override_by_type(
+       BaseDriver::get_type(), 
+       ExtendedDriver::get_type()
+   );
+   ```
+
 **Key Concepts:**
 - Factory enables centralized object creation
 - Type override affects all instances
 - Instance override affects specific instances
 - Overrides enable test customization
+- **Factory macros** register classes automatically
+- **Factory creation** applies overrides automatically
+- **Set overrides before create**: Overrides must be set before creating components
 
 **Running the example:**
 
@@ -190,11 +316,37 @@ Demonstrates UVM objection mechanism:
 - **Multiple Objections**: Per-component objection tracking
 - **Coordinated Completion**: Phase completes when all objections dropped
 
+**Objection Methods:**
+
+1. **Raising Objections:**
+   ```systemverilog
+   phase.raise_objection(this);
+   phase.raise_objection(this, "TaskName");  // Named objection
+   ```
+
+2. **Dropping Objections:**
+   ```systemverilog
+   phase.drop_objection(this);
+   phase.drop_objection(this, "TaskName");  // Named objection
+   ```
+
+3. **Objection Pattern:**
+   ```systemverilog
+   task run_phase(uvm_phase phase);
+       phase.raise_objection(this);
+       // Work here
+       phase.drop_objection(this);
+   endtask
+   ```
+
 **Key Concepts:**
 - Raise objection to keep phase running
 - Drop objection when work completes
 - Phase completes when all objections dropped
 - Multiple objections per component supported
+- **Raise at start**: Call `raise_objection()` at beginning of work
+- **Drop when done**: Call `drop_objection()` when work completes
+- **Must match**: Each `raise_objection()` must have matching `drop_objection()`
 
 **Running the example:**
 
@@ -245,34 +397,76 @@ Complete UVM testbench demonstrating all core concepts:
 1. **Transaction (`AdderTransaction`)**
    - Extends `uvm_sequence_item`
    - Contains operands (a, b) and expected results
+   - **Methods**: `convert2string()`, `post_randomize()`
 
 2. **Sequence (`AdderSequence`)**
    - Extends `uvm_sequence`
    - Generates test vectors for the adder
+   - **Methods**: `body()`, `start_item()`, `finish_item()`
+   - **Usage**: `seq.start(sequencer)` to start sequence
 
 3. **Driver (`AdderDriver`)**
    - Extends `uvm_driver`
    - Drives transactions to DUT
+   - **Methods**: `seq_item_port.get_next_item()`, `seq_item_port.item_done()`
+   - **Virtual Interface**: Gets via ConfigDB, drives DUT signals
 
 4. **Monitor (`AdderMonitor`)**
    - Extends `uvm_monitor`
    - Observes DUT outputs
+   - **Methods**: `ap.write(txn)` - broadcasts transactions
+   - **Virtual Interface**: Gets via ConfigDB, samples DUT signals
 
 5. **Scoreboard (`AdderScoreboard`)**
    - Extends `uvm_scoreboard`
    - Checks DUT behavior
+   - **Methods**: `write(txn)` - receives transactions, `add_expected()`, `report_phase()`
+   - **Queue Methods**: `push_back()`, `pop_front()`, `size()`
 
 6. **Agent (`AdderAgent`)**
    - Extends `uvm_agent`
    - Contains driver, monitor, and sequencer
+   - **Connections**: `driver.seq_item_port.connect(sequencer.seq_item_export)`
 
 7. **Environment (`AdderEnv`)**
    - Extends `uvm_env`
    - Contains agent and scoreboard
+   - **Connections**: `monitor.ap.connect(scoreboard.imp)`
 
 8. **Test (`AdderTest`)**
    - Extends `uvm_test`
    - Top-level test class
+   - **Methods**: `run_test()`, `seq.start(sequencer)`
+   - **ConfigDB**: Sets virtual interface before `run_test()`
+
+**Key UVM Methods in Test:**
+
+```systemverilog
+// Sequence methods
+task body();
+    start_item(txn);      // Request transaction
+    finish_item(txn);     // Send to driver
+endtask
+seq.start(sequencer);     // Start sequence
+
+// Driver TLM port methods
+seq_item_port.get_next_item(txn);  // Get transaction
+seq_item_port.item_done();         // Signal complete
+
+// Monitor analysis port
+ap.write(txn);  // Broadcast transaction
+
+// Scoreboard analysis export
+function void write(txn);  // Receive transaction
+endfunction
+
+// Virtual interface
+uvm_config_db#(virtual adder_if)::get(this, "", "vif", vif);
+uvm_config_db#(virtual adder_if)::set(null, "*", "vif", vif_inst);
+
+// Top-level
+run_test("AdderTest");  // Start UVM test
+```
 
 **Running the test:**
 
@@ -498,6 +692,75 @@ export UVM_HOME=/path/to/uvm-1.2
 5. **Inspect Component Hierarchy:**
    - Use `print_topology()` to print component hierarchy
 
+## UVM Functions and Methods in Module 3
+
+### Quick Reference: UVM Methods
+
+| Category | Method/Macro | Purpose |
+|----------|--------------|---------|
+| **Factory** | `` `uvm_object_utils(Class) `` | Register uvm_object |
+| **Factory** | `` `uvm_component_utils(Class) `` | Register uvm_component |
+| **Factory** | `Class::type_id::create("name", this)` | Create via factory |
+| **Phase** | `function void build_phase(uvm_phase phase)` | Build phase |
+| **Phase** | `task run_phase(uvm_phase phase)` | Run phase |
+| **Reporting** | `` `uvm_info("TAG", "msg", verbosity) `` | Info message |
+| **Reporting** | `` `uvm_warning("TAG", "msg") `` | Warning message |
+| **ConfigDB** | `uvm_config_db#(Type)::set(...)` | Set configuration |
+| **ConfigDB** | `uvm_config_db#(Type)::get(...)` | Get configuration |
+| **Objection** | `phase.raise_objection(this)` | Raise objection |
+| **Objection** | `phase.drop_objection(this)` | Drop objection |
+| **Component** | `get_name()` | Get component name |
+| **Component** | `get_full_name()` | Get full path |
+| **Sequence** | `start_item(txn)` | Request transaction |
+| **Sequence** | `finish_item(txn)` | Send transaction |
+| **Sequence** | `seq.start(sequencer)` | Start sequence |
+| **TLM** | `seq_item_port.get_next_item(txn)` | Get transaction (driver) |
+| **TLM** | `seq_item_port.item_done()` | Signal complete (driver) |
+| **Analysis** | `ap.write(txn)` | Broadcast transaction (monitor) |
+| **Analysis** | `write(txn)` | Receive transaction (scoreboard) |
+| **Virtual IF** | `uvm_config_db#(virtual if)::get(...)` | Get virtual interface |
+| **Top-Level** | `run_test("TestName")` | Start UVM test |
+
+### Common Patterns
+
+**1. Component Creation:**
+```systemverilog
+function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    child = ChildClass::type_id::create("child", this);
+endfunction
+```
+
+**2. Configuration:**
+```systemverilog
+// Set in test
+uvm_config_db#(int)::set(this, "*", "timeout", 1000);
+
+// Get in component
+if (!uvm_config_db#(int)::get(this, "", "timeout", timeout)) begin
+    timeout = 500;
+end
+```
+
+**3. Objections:**
+```systemverilog
+task run_phase(uvm_phase phase);
+    phase.raise_objection(this);
+    #100;
+    phase.drop_objection(this);
+endtask
+```
+
+### Best Practices
+
+1. **Always call `super.build_phase(phase)`** etc.
+2. **Set ConfigDB before creating components**
+3. **Check ConfigDB return value**, provide defaults
+4. **Raise objections in run-time phases** if doing work
+5. **Drop objections when work completes**
+6. **Use factory creation** (`type_id::create()`)
+7. **Set factory overrides before creating components**
+
 ## Topics Covered
 
 1. **UVM Introduction** - Understanding UVM methodology and benefits
@@ -507,8 +770,9 @@ export UVM_HOME=/path/to/uvm-1.2
 5. **ConfigDB** - Configuration database for flexible test configuration
 6. **Factory Pattern** - Object creation and type/instance overrides
 7. **Objection Mechanism** - Controlling test execution and phase completion
-8. **Test Structure** - Creating and structuring UVM tests
-9. **Environment Structure** - Building UVM environments with agents
+8. **UVM Functions and Methods** - Comprehensive reference for UVM methods
+9. **Test Structure** - Creating and structuring UVM tests
+10. **Environment Structure** - Building UVM environments with agents
 
 ## Next Steps
 

@@ -2,6 +2,26 @@
  * Module 2 Example 2.1: Clock Generation
  * Demonstrates various clock generation patterns in SystemVerilog testbenches.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand clock generation techniques in SystemVerilog
+ *   2. Learn parameterized clock generation
+ *   3. Master multiple clock domain handling
+ *   4. Understand clock gating for power management
+ *   5. Learn controlled clock stopping patterns
+ * 
+ * CLOCK GENERATION PATTERNS:
+ *   - Simple Clock: Basic always block with delays
+ *   - Parameterized Clock: Configurable period using parameters
+ *   - Multiple Clocks: Independent clock domains
+ *   - Clock Gating: Enable/disable clock for power saving
+ *   - Clock Stopping: Controlled clock halt for debugging
+ * 
+ * VERIFICATION CONSIDERATIONS:
+ *   - Clock frequency and duty cycle accuracy
+ *   - Clock domain crossing (CDC) issues
+ *   - Clock gating timing requirements
+ *   - Clock synchronization between domains
+ * 
  * This example shows:
  * - Simple clock generation
  * - Parameterized clock with configurable period

@@ -2,6 +2,31 @@
  * Module 3 Example 3.2: UVM Phases
  * Demonstrates UVM phase execution and implementation.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand UVM phase system and execution order
+ *   2. Learn build-time phases (top-down execution)
+ *   3. Master run-time phases (bottom-up execution)
+ *   4. Understand cleanup phases (bottom-up execution)
+ *   5. Apply phase implementation patterns
+ * 
+ * UVM PHASE CATEGORIES:
+ *   - Build-time phases: Top-down (parent before child)
+ *     * build_phase, connect_phase, end_of_elaboration_phase, start_of_simulation_phase
+ *   - Run-time phases: Bottom-up (child before parent), async tasks
+ *     * pre_reset, reset, post_reset, pre_configure, configure, post_configure,
+ *       pre_main, main, post_main, pre_shutdown, shutdown, post_shutdown
+ *   - Cleanup phases: Bottom-up (child before parent)
+ *     * extract_phase, check_phase, report_phase, final_phase
+ * 
+ * PHASE EXECUTION ORDER:
+ *   1. Build-time: build -> connect -> end_of_elaboration -> start_of_simulation
+ *   2. Run-time: pre_reset -> reset -> ... -> post_shutdown
+ *   3. Cleanup: extract -> check -> report -> final
+ * 
+ * PHASE TYPES:
+ *   - Function phases: No delays, immediate execution
+ *   - Task phases: Can have delays, async execution
+ * 
  * This example shows:
  * - Build-time phases (top-down)
  * - Run-time phases (bottom-up)

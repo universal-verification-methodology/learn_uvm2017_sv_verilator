@@ -185,7 +185,7 @@ void Vclass_hierarchy___024root___eval(Vclass_hierarchy___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vclass_hierarchy___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("class_hierarchy.sv", 182, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
+            VL_FATAL_MT("class_hierarchy.sv", 582, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -194,7 +194,7 @@ void Vclass_hierarchy___024root___eval(Vclass_hierarchy___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vclass_hierarchy___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("class_hierarchy.sv", 182, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
+                VL_FATAL_MT("class_hierarchy.sv", 582, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

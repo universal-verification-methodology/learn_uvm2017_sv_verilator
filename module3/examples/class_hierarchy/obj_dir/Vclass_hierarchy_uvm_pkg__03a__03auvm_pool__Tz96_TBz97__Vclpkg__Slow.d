@@ -1,3 +1,0 @@
-Vclass_hierarchy_uvm_pkg__03a__03auvm_pool__Tz96_TBz97__Vclpkg__Slow.o: \
- Vclass_hierarchy_uvm_pkg__03a__03auvm_pool__Tz96_TBz97__Vclpkg__Slow.cpp \
- Vclass_hierarchy__pch.h

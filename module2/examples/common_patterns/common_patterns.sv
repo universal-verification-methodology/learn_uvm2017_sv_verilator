@@ -2,6 +2,27 @@
  * Module 2 Example 2.5: Common Verification Patterns
  * Demonstrates common verification patterns in SystemVerilog testbenches.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand testbench structure and organization
+ *   2. Learn driver pattern for stimulus generation
+ *   3. Master monitor pattern for response observation
+ *   4. Understand scoreboard pattern for result checking
+ *   5. Apply reusable component patterns
+ * 
+ * VERIFICATION PATTERNS:
+ *   - Testbench Structure: Organized phases (init, reset, stimulus, check, cleanup)
+ *   - Driver Pattern: Generates and drives stimulus to DUT
+ *   - Monitor Pattern: Observes and captures DUT responses
+ *   - Scoreboard Pattern: Compares expected vs actual results
+ *   - Reusable Components: Modular, reusable verification components
+ * 
+ * UVM RELATIONSHIP:
+ *   - These patterns form the foundation of UVM methodology
+ *   - Driver -> uvm_driver
+ *   - Monitor -> uvm_monitor
+ *   - Scoreboard -> uvm_scoreboard
+ *   - Transaction -> uvm_sequence_item
+ * 
  * This example shows:
  * - Testbench structure
  * - Driver pattern

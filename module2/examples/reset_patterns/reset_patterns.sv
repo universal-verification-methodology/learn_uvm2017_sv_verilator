@@ -2,6 +2,24 @@
  * Module 2 Example 2.2: Reset Patterns
  * Demonstrates reset sequence implementation in SystemVerilog testbenches.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand synchronous vs asynchronous reset
+ *   2. Learn proper reset sequence implementation
+ *   3. Master reset verification techniques
+ *   4. Understand reset timing requirements
+ *   5. Apply reset patterns in testbenches
+ * 
+ * RESET TYPES:
+ *   - Asynchronous Reset: Independent of clock, immediate effect
+ *   - Synchronous Reset: Synchronized to clock, takes effect on clock edge
+ *   - Reset Strategy: Asynchronous assertion, synchronous release (best practice)
+ * 
+ * VERIFICATION CONSIDERATIONS:
+ *   - Reset assertion timing
+ *   - Reset deassertion timing (synchronous release)
+ *   - Reset duration requirements
+ *   - Reset verification (all registers reset correctly)
+ * 
  * This example shows:
  * - Synchronous reset
  * - Asynchronous reset

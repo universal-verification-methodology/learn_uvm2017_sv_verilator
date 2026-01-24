@@ -1,3 +1,0 @@
-Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db__Tz69__Vclpkg__0.o: \
- Vclass_hierarchy_uvm_pkg__03a__03auvm_resource_db__Tz69__Vclpkg__0.cpp \
- Vclass_hierarchy__pch.h

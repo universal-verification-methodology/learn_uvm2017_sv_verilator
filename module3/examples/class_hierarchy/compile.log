@@ -1922,8 +1922,8 @@ g++    class_hierarchy.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated
 rm Vclass_hierarchy__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module3/examples/class_hierarchy/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.641 MB sources in 341 modules, into 20.766 MB in 1910 C++ files needing 12.172 MB
-- Verilator: Walltime 35.017 s (elab=0.777, cvt=6.161, bld=26.786); cpu 7.952 s on 1 threads; allocated 223.102 MB
+- Verilator: Built from 7.650 MB sources in 341 modules, into 20.766 MB in 1910 C++ files needing 12.172 MB
+- Verilator: Walltime 32.789 s (elab=0.449, cvt=3.426, bld=28.378); cpu 4.409 s on 1 threads; allocated 223.105 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module3/examples/class_hierarchy/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module3/examples/class_hierarchy/obj_dir'

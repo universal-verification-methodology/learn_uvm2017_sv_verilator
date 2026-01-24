@@ -37,7 +37,7 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
     vlSelfRef.reset_patterns__DOT__reg_sync = 0xffU;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000002710ULL, 
                                          nullptr, "reset_patterns.sv", 
-                                         107);
+                                         125);
     VL_WRITEF_NX("Example 1: Asynchronous Reset\n  Reset is independent of clock\n",0);
     __Vtask_reset_patterns__DOT__async_reset_sequence__0__reset_duration_ns = 0x00000064U;
     VL_WRITEF_NX("[%0t] Asserting async reset\n",0,
@@ -46,35 +46,35 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
     co_await vlSelfRef.__VdlySched.delay((0x00000000000003e8ULL 
                                           * (QData)((IData)(__Vtask_reset_patterns__DOT__async_reset_sequence__0__reset_duration_ns))), 
                                          nullptr, "reset_patterns.sv", 
-                                         64);
+                                         82);
     VL_WRITEF_NX("[%0t] De-asserting async reset\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9);
     vlSelfRef.reset_patterns__DOT__rst_n = 1U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000004e20ULL, 
                                          nullptr, "reset_patterns.sv", 
-                                         67);
+                                         85);
     VL_WRITEF_NX("[%0t] Verifying reset state\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9);
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0U != (IData)(vlSelfRef.reset_patterns__DOT__reg_async))))) {
-            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:86: Assertion failed in %Nreset_patterns.verify_reset: Async reset failed: reg_async = 0x%02x\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:104: Assertion failed in %Nreset_patterns.verify_reset: Async reset failed: reg_async = 0x%02x\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name(),8,(IData)(vlSelfRef.reset_patterns__DOT__reg_async));
-            VL_STOP_MT("reset_patterns.sv", 86, "");
+            VL_STOP_MT("reset_patterns.sv", 104, "");
         }
     }
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0U != (IData)(vlSelfRef.reset_patterns__DOT__reg_sync))))) {
-            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:88: Assertion failed in %Nreset_patterns.verify_reset: Sync reset failed: reg_sync = 0x%02x\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:106: Assertion failed in %Nreset_patterns.verify_reset: Sync reset failed: reg_sync = 0x%02x\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name(),8,(IData)(vlSelfRef.reset_patterns__DOT__reg_sync));
-            VL_STOP_MT("reset_patterns.sv", 88, "");
+            VL_STOP_MT("reset_patterns.sv", 106, "");
         }
     }
     VL_WRITEF_NX("  Reset verification PASSED\n\n",0);
     co_await vlSelfRef.__VdlySched.delay(0x000000000000c350ULL, 
                                          nullptr, "reset_patterns.sv", 
-                                         117);
+                                         135);
     VL_WRITEF_NX("[%0t] After 5 cycles: reg_async = 0x%02x, reg_sync = 0x%02x\n\nExample 2: Synchronous Reset\n  Reset is synchronized to clock\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9,8,(IData)(vlSelfRef.reset_patterns__DOT__reg_async),
                  8,vlSelfRef.reset_patterns__DOT__reg_sync);
@@ -90,7 +90,7 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
                                                              nullptr, 
                                                              "@(posedge reset_patterns.clk)", 
                                                              "reset_patterns.sv", 
-                                                             73);
+                                                             91);
         __Vtask_reset_patterns__DOT__sync_reset_sequence__2__reset_patterns__DOT__unnamedblk1_1__DOT____Vrepeat0 
             = (__Vtask_reset_patterns__DOT__sync_reset_sequence__2__reset_patterns__DOT__unnamedblk1_1__DOT____Vrepeat0 
                - (IData)(1U));
@@ -102,29 +102,29 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
                                                          nullptr, 
                                                          "@(posedge reset_patterns.clk)", 
                                                          "reset_patterns.sv", 
-                                                         76);
+                                                         94);
     VL_WRITEF_NX("[%0t] Verifying reset state\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9);
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0U != (IData)(vlSelfRef.reset_patterns__DOT__reg_async))))) {
-            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:86: Assertion failed in %Nreset_patterns.verify_reset: Async reset failed: reg_async = 0x%02x\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:104: Assertion failed in %Nreset_patterns.verify_reset: Async reset failed: reg_async = 0x%02x\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name(),8,(IData)(vlSelfRef.reset_patterns__DOT__reg_async));
-            VL_STOP_MT("reset_patterns.sv", 86, "");
+            VL_STOP_MT("reset_patterns.sv", 104, "");
         }
     }
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0U != (IData)(vlSelfRef.reset_patterns__DOT__reg_sync))))) {
-            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:88: Assertion failed in %Nreset_patterns.verify_reset: Sync reset failed: reg_sync = 0x%02x\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:106: Assertion failed in %Nreset_patterns.verify_reset: Sync reset failed: reg_sync = 0x%02x\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name(),8,(IData)(vlSelfRef.reset_patterns__DOT__reg_sync));
-            VL_STOP_MT("reset_patterns.sv", 88, "");
+            VL_STOP_MT("reset_patterns.sv", 106, "");
         }
     }
     VL_WRITEF_NX("  Reset verification PASSED\n\nExample 3: Reset During Operation\n",0);
     co_await vlSelfRef.__VdlySched.delay(0x00000000000186a0ULL, 
                                          nullptr, "reset_patterns.sv", 
-                                         131);
+                                         149);
     VL_WRITEF_NX("[%0t] Before reset: reg_async = 0x%02x\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9,8,(IData)(vlSelfRef.reset_patterns__DOT__reg_async));
     __Vtask_reset_patterns__DOT__async_reset_sequence__4__reset_duration_ns = 0x00000032U;
@@ -134,38 +134,38 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__0(Vreset_pat
     co_await vlSelfRef.__VdlySched.delay((0x00000000000003e8ULL 
                                           * (QData)((IData)(__Vtask_reset_patterns__DOT__async_reset_sequence__4__reset_duration_ns))), 
                                          nullptr, "reset_patterns.sv", 
-                                         64);
+                                         82);
     VL_WRITEF_NX("[%0t] De-asserting async reset\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9);
     vlSelfRef.reset_patterns__DOT__rst_n = 1U;
     co_await vlSelfRef.__VdlySched.delay(0x0000000000004e20ULL, 
                                          nullptr, "reset_patterns.sv", 
-                                         67);
+                                         85);
     VL_WRITEF_NX("[%0t] After reset: reg_async = 0x%02x\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9,8,(IData)(vlSelfRef.reset_patterns__DOT__reg_async));
     VL_WRITEF_NX("[%0t] Verifying reset state\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9);
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0U != (IData)(vlSelfRef.reset_patterns__DOT__reg_async))))) {
-            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:86: Assertion failed in %Nreset_patterns.verify_reset: Async reset failed: reg_async = 0x%02x\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:104: Assertion failed in %Nreset_patterns.verify_reset: Async reset failed: reg_async = 0x%02x\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name(),8,(IData)(vlSelfRef.reset_patterns__DOT__reg_async));
-            VL_STOP_MT("reset_patterns.sv", 86, "");
+            VL_STOP_MT("reset_patterns.sv", 104, "");
         }
     }
     if (vlSymsp->_vm_contextp__->assertOnGet(2, 1)) {
         if (VL_UNLIKELY(((0U != (IData)(vlSelfRef.reset_patterns__DOT__reg_sync))))) {
-            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:88: Assertion failed in %Nreset_patterns.verify_reset: Sync reset failed: reg_sync = 0x%02x\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: reset_patterns.sv:106: Assertion failed in %Nreset_patterns.verify_reset: Sync reset failed: reg_sync = 0x%02x\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name(),8,(IData)(vlSelfRef.reset_patterns__DOT__reg_sync));
-            VL_STOP_MT("reset_patterns.sv", 88, "");
+            VL_STOP_MT("reset_patterns.sv", 106, "");
         }
     }
     VL_WRITEF_NX("  Reset verification PASSED\n\n============================================================\nReset Patterns Examples Complete\n============================================================\n\nKey Concepts:\n  - Reset is critical for proper design initialization\n  - Synchronous vs asynchronous reset have different timing\n  - Reset sequences must follow design requirements\n  - Reset verification ensures proper operation\n\n",0);
     co_await vlSelfRef.__VdlySched.delay(0x000000000000c350ULL, 
                                          nullptr, "reset_patterns.sv", 
-                                         150);
-    VL_FINISH_MT("reset_patterns.sv", 151, "");
+                                         168);
+    VL_FINISH_MT("reset_patterns.sv", 169, "");
     co_return;}
 
 VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__1(Vreset_patterns___024root* vlSelf) {
@@ -178,12 +178,12 @@ VlCoroutine Vreset_patterns___024root___eval_initial__TOP__Vtiming__1(Vreset_pat
         co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                              nullptr, 
                                              "reset_patterns.sv", 
-                                             28);
+                                             46);
         vlSelfRef.reset_patterns__DOT__clk = 1U;
         co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                              nullptr, 
                                              "reset_patterns.sv", 
-                                             30);
+                                             48);
     }
     co_return;}
 
@@ -369,7 +369,7 @@ void Vreset_patterns___024root___eval(Vreset_patterns___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vreset_patterns___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("reset_patterns.sv", 14, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
+            VL_FATAL_MT("reset_patterns.sv", 32, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -378,7 +378,7 @@ void Vreset_patterns___024root___eval(Vreset_patterns___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vreset_patterns___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("reset_patterns.sv", 14, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
+                VL_FATAL_MT("reset_patterns.sv", 32, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

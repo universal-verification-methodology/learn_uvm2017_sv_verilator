@@ -55,7 +55,7 @@ void Vclass_hierarchy___024unit__03a__03aMyAgent::__VnoInFunc_build_phase(VlProc
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "AGENT"s, __Vfunc_uvm_report_enabled__3__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__3__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "AGENT"s, "Building agent component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000067U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "AGENT"s, "Building agent component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x0000018eU, ""s, 1U);
     }
     vlSymsp->TOP__uvm_pkg__03a__03auvm_component_registry__pi1__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "driver"s, 
                                                                                 VlClassRef<Vclass_hierarchy___024unit__03a__03aMyAgent>{this}, ""s, __Vfunc_create__5__Vfuncout);
@@ -78,10 +78,10 @@ void Vclass_hierarchy___024unit__03a__03aMyAgent::__VnoInFunc_connect_phase(VlPr
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "AGENT"s, __Vfunc_uvm_report_enabled__9__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__9__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "AGENT"s, "Connecting agent components"s, 0x000000c8U, "class_hierarchy.sv"s, 0x0000006fU, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "AGENT"s, "Connecting agent components"s, 0x000000c8U, "class_hierarchy.sv"s, 0x000001a4U, ""s, 1U);
     }
-    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__driver, "class_hierarchy.sv", 112)
-                  ->__PVT__seq_item_port, "class_hierarchy.sv", 112)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__sequencer, "class_hierarchy.sv", 112)
+    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__driver, "class_hierarchy.sv", 434)
+                  ->__PVT__seq_item_port, "class_hierarchy.sv", 434)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__sequencer, "class_hierarchy.sv", 434)
                                                                                 ->__PVT__seq_item_export);
 }
 

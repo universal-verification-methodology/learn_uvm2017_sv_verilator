@@ -54,15 +54,15 @@ void Vclass_hierarchy___024unit__03a__03aClassHierarchyTest::__VnoInFunc_build_p
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "TEST"s, __Vfunc_uvm_report_enabled__3__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__3__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Building test component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000096U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Building test component"s, 0x000000c8U, "class_hierarchy.sv"s, 0x000001fdU, ""s, 1U);
     }
     vlSymsp->TOP__uvm_pkg__03a__03auvm_component_registry__pi4__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "env"s, 
                                                                                 VlClassRef<Vclass_hierarchy___024unit__03a__03aClassHierarchyTest>{this}, ""s, __Vfunc_create__5__Vfuncout);
     this->__PVT__env = __Vfunc_create__5__Vfuncout;
     vlSymsp->TOP__uvm_pkg__03a__03auvm_object_registry__Tz1_TBz2__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "txn"s, VlNull{}, ""s, __Vfunc_create__6__Vfuncout);
     this->__PVT__txn = __Vfunc_create__6__Vfuncout;
-    VL_NULL_CHECK(this->__PVT__txn, "class_hierarchy.sv", 155)->__PVT__data = 0xaaU;
-    VL_NULL_CHECK(this->__PVT__txn, "class_hierarchy.sv", 156)->__PVT__address = 0x1234U;
+    VL_NULL_CHECK(this->__PVT__txn, "class_hierarchy.sv", 528)->__PVT__data = 0xaaU;
+    VL_NULL_CHECK(this->__PVT__txn, "class_hierarchy.sv", 529)->__PVT__address = 0x1234U;
 }
 
 void Vclass_hierarchy___024unit__03a__03aClassHierarchyTest::__VnoInFunc_connect_phase(VlProcessRef vlProcess, Vclass_hierarchy__Syms* __restrict vlSymsp, VlClassRef<Vclass_hierarchy_uvm_pkg__03a__03auvm_phase> phase) {
@@ -75,7 +75,7 @@ void Vclass_hierarchy___024unit__03a__03aClassHierarchyTest::__VnoInFunc_connect
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "TEST"s, __Vfunc_uvm_report_enabled__8__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__8__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Connecting test components"s, 0x000000c8U, "class_hierarchy.sv"s, 0x000000a1U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Connecting test components"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000216U, ""s, 1U);
     }
 }
 
@@ -93,26 +93,26 @@ VlCoroutine Vclass_hierarchy___024unit__03a__03aClassHierarchyTest::__VnoInFunc_
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "TEST"s, __Vfunc_uvm_report_enabled__10__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__10__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Test run_phase executing"s, 0x000000c8U, "class_hierarchy.sv"s, 0x000000a5U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Test run_phase executing"s, 0x000000c8U, "class_hierarchy.sv"s, 0x0000021cU, ""s, 1U);
     }
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "TEST"s, __Vfunc_uvm_report_enabled__12__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__12__Vfuncout))) {
         __Vtemp_1 = ([&]() {
-                VL_NULL_CHECK(this->__PVT__txn, "class_hierarchy.sv", 166)
+                VL_NULL_CHECK(this->__PVT__txn, "class_hierarchy.sv", 544)
                      ->__VnoInFunc_convert2string(vlProcess, vlSymsp, __Vtask_convert2string__14__Vfuncout);
             }(), __Vtask_convert2string__14__Vfuncout);
         this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, VL_SFORMATF_N_NX("Transaction: %@",0,
                                                                                 -1,
-                                                                                &(__Vtemp_1)) , 0x000000c8U, "class_hierarchy.sv"s, 0x000000a6U, ""s, 1U);
+                                                                                &(__Vtemp_1)) , 0x000000c8U, "class_hierarchy.sv"s, 0x00000220U, ""s, 1U);
     }
-    VL_NULL_CHECK(phase, "class_hierarchy.sv", 168)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
+    VL_NULL_CHECK(phase, "class_hierarchy.sv", 548)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
                                                                                 VlClassRef<Vclass_hierarchy___024unit__03a__03aClassHierarchyTest>{this}, ""s, 1U);
     co_await vlSymsp->TOP.__VdlySched.delay(0x00000000000000c8ULL, 
                                             vlProcess, 
                                             "class_hierarchy.sv", 
-                                            169);
-    VL_NULL_CHECK(phase, "class_hierarchy.sv", 170)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
+                                            552);
+    VL_NULL_CHECK(phase, "class_hierarchy.sv", 556)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                                 VlClassRef<Vclass_hierarchy___024unit__03a__03aClassHierarchyTest>{this}, ""s, 1U);
     co_return;}
 
@@ -126,7 +126,7 @@ void Vclass_hierarchy___024unit__03a__03aClassHierarchyTest::__VnoInFunc_report_
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "TEST"s, __Vfunc_uvm_report_enabled__18__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__18__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Class hierarchy demonstration complete"s, 0x000000c8U, "class_hierarchy.sv"s, 0x000000afU, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Class hierarchy demonstration complete"s, 0x000000c8U, "class_hierarchy.sv"s, 0x00000231U, ""s, 1U);
     }
 }
 

@@ -2,6 +2,30 @@
  * Module 4 Example 4.4: UVM Sequencer and Sequences
  * Demonstrates sequencer implementation and sequence execution.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand UVM sequencer purpose and operation
+ *   2. Learn sequence item design and constraints
+ *   3. Master sequence implementation (body task)
+ *   4. Understand sequence execution (start_item, finish_item)
+ *   5. Apply sequence patterns for test generation
+ * 
+ * SEQUENCER PURPOSE:
+ *   - Provides transactions to driver
+ *   - Coordinates sequence execution
+ *   - Manages transaction flow
+ *   - Supports multiple sequences (arbitration)
+ * 
+ * SEQUENCE PURPOSE:
+ *   - Generates test scenarios
+ *   - Creates and sends sequence items
+ *   - Implements test patterns
+ *   - Reusable test components
+ * 
+ * SEQUENCE EXECUTION:
+ *   - start_item(): Request transaction from sequencer
+ *   - finish_item(): Send transaction to driver
+ *   - Driver receives via get_next_item()
+ * 
  * This example shows:
  * - Sequencer implementation
  * - Sequence items
@@ -58,6 +82,28 @@ class SimpleSequence extends uvm_sequence #(SeqItem);
             `uvm_info("SEQUENCE", $sformatf("Sending item %0d: %s", 
                       i, item.convert2string()), UVM_MEDIUM)
             
+            // ========================================================================
+            // SEQUENCE ITEM EXECUTION
+            // ========================================================================
+            // 
+            // START_ITEM:
+            //   - Requests transaction slot from sequencer
+            //   - Blocks until sequencer grants access
+            //   - Allows sequence to modify transaction before sending
+            //   - Must be called before finish_item()
+            // 
+            // FINISH_ITEM:
+            //   - Sends transaction to sequencer
+            //   - Sequencer forwards to driver
+            //   - Driver receives via get_next_item()
+            //   - Blocks until driver completes (item_done())
+            // 
+            // EXECUTION FLOW:
+            //   1. Sequence: start_item() -> sequencer grants
+            //   2. Sequence: finish_item() -> sequencer sends to driver
+            //   3. Driver: get_next_item() -> receives transaction
+            //   4. Driver: drives transaction, calls item_done()
+            //   5. Sequence: finish_item() unblocks, continues
             start_item(item);
             finish_item(item);
         end
