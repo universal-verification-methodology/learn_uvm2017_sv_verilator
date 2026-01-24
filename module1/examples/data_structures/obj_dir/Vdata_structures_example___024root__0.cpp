@@ -48,9 +48,9 @@ VlCoroutine Vdata_structures_example___024root___eval_initial__TOP__Vtiming__0(V
         vlSelfRef.data_structures_example__DOT__txn 
             = VL_NEW(Vdata_structures_example_data_structures_pkg__03a__03aSimpleTransaction, vlSymsp, vlSelfRef.data_structures_example__DOT__unnamedblk1__DOT__i, 
                      ((IData)(0x00001000U) + vlSelfRef.data_structures_example__DOT__unnamedblk1__DOT__i));
-        VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 163)->__VnoInFunc_push(vlSymsp, vlSelfRef.data_structures_example__DOT__txn);
+        VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 352)->__VnoInFunc_push(vlSymsp, vlSelfRef.data_structures_example__DOT__txn);
         __Vtemp_1 = ([&]() {
-                VL_NULL_CHECK(vlSelfRef.data_structures_example__DOT__txn, "data_structures_example.sv", 164)
+                VL_NULL_CHECK(vlSelfRef.data_structures_example__DOT__txn, "data_structures_example.sv", 354)
                      ->__VnoInFunc_convert2string(vlSymsp, __Vtask_convert2string__5__Vfuncout);
             }(), __Vtask_convert2string__5__Vfuncout);
         VL_WRITEF_NX("   Pushed: %@\n",0,-1,&(__Vtemp_1));
@@ -58,55 +58,55 @@ VlCoroutine Vdata_structures_example___024root___eval_initial__TOP__Vtiming__0(V
             = ((IData)(1U) + vlSelfRef.data_structures_example__DOT__unnamedblk1__DOT__i);
     }
     VL_WRITEF_NX("   Queue size: %0d\n",0,32,([&]() {
-                    VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 166)
+                    VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 357)
                                               ->__VnoInFunc_size(vlSymsp, __Vtask_size__6__Vfuncout);
                 }(), __Vtask_size__6__Vfuncout));
     VL_WRITEF_NX("\n2. Popping from queue:\n",0);
     while ((1U & (~ ([&]() {
-                        VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 170)
+                        VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 364)
                      ->__VnoInFunc_is_empty(vlSymsp, __Vtask_is_empty__7__Vfuncout);
                     }(), (IData)(__Vtask_is_empty__7__Vfuncout))))) {
-        VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 171)->__VnoInFunc_pop(vlSymsp, __Vtask_pop__8__Vfuncout);
+        VL_NULL_CHECK(data_structures_example__DOT__txn_queue, "data_structures_example.sv", 366)->__VnoInFunc_pop(vlSymsp, __Vtask_pop__8__Vfuncout);
         vlSelfRef.data_structures_example__DOT__txn 
             = __Vtask_pop__8__Vfuncout;
         __Vtemp_2 = ([&]() {
-                VL_NULL_CHECK(vlSelfRef.data_structures_example__DOT__txn, "data_structures_example.sv", 172)
+                VL_NULL_CHECK(vlSelfRef.data_structures_example__DOT__txn, "data_structures_example.sv", 368)
                      ->__VnoInFunc_convert2string(vlSymsp, __Vtask_convert2string__9__Vfuncout);
             }(), __Vtask_convert2string__9__Vfuncout);
         VL_WRITEF_NX("   Popped: %@\n",0,-1,&(__Vtemp_2));
     }
     VL_WRITEF_NX("\n3. Scoreboard:\n",0);
-    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 178)->__VnoInFunc_add_expected(vlSymsp, 1U, 0xdeadbeefU);
-    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 179)->__VnoInFunc_add_expected(vlSymsp, 2U, 0xcafebabeU);
-    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 180)->__VnoInFunc_add_actual(vlSymsp, 1U, 0xdeadbeefU);
-    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 181)->__VnoInFunc_add_actual(vlSymsp, 2U, 0xcafebabeU);
+    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 375)->__VnoInFunc_add_expected(vlSymsp, 1U, 0xdeadbeefU);
+    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 376)->__VnoInFunc_add_expected(vlSymsp, 2U, 0xcafebabeU);
+    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 378)->__VnoInFunc_add_actual(vlSymsp, 1U, 0xdeadbeefU);
+    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 379)->__VnoInFunc_add_actual(vlSymsp, 2U, 0xcafebabeU);
     VL_WRITEF_NX("   Transaction 1 match: %0#\n",0,
                  1,([&]() {
-                    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 182)
+                    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 382)
                     ->__VnoInFunc_check(vlSymsp, 1U, __Vtask_check__14__Vfuncout);
                 }(), (IData)(__Vtask_check__14__Vfuncout)));
     VL_WRITEF_NX("   Transaction 2 match: %0#\n",0,
                  1,([&]() {
-                    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 183)
+                    VL_NULL_CHECK(data_structures_example__DOT__scoreboard, "data_structures_example.sv", 383)
                     ->__VnoInFunc_check(vlSymsp, 2U, __Vtask_check__15__Vfuncout);
                 }(), (IData)(__Vtask_check__15__Vfuncout)));
     VL_WRITEF_NX("\n4. Coverage Collector:\n",0);
     vlSelfRef.data_structures_example__DOT__unnamedblk2__DOT__i = 0U;
     while (VL_GTS_III(32, 0x0000000aU, vlSelfRef.data_structures_example__DOT__unnamedblk2__DOT__i)) {
-        VL_NULL_CHECK(data_structures_example__DOT__coverage, "data_structures_example.sv", 189)->__VnoInFunc_sample_address(vlSymsp, 
+        VL_NULL_CHECK(data_structures_example__DOT__coverage, "data_structures_example.sv", 392)->__VnoInFunc_sample_address(vlSymsp, 
                                                                                 VL_MULS_III(32, (IData)(0x00000010U), vlSelfRef.data_structures_example__DOT__unnamedblk2__DOT__i));
         vlSelfRef.data_structures_example__DOT__unnamedblk2__DOT__i 
             = ((IData)(1U) + vlSelfRef.data_structures_example__DOT__unnamedblk2__DOT__i);
     }
     VL_WRITEF_NX("   Coverage: %0.2f%%\n",0,64,([&]() {
-                    VL_NULL_CHECK(data_structures_example__DOT__coverage, "data_structures_example.sv", 191)
+                    VL_NULL_CHECK(data_structures_example__DOT__coverage, "data_structures_example.sv", 396)
                                                 ->__VnoInFunc_get_coverage(vlSymsp, 0x00000100U, __Vtask_get_coverage__17__Vfuncout);
                 }(), __Vtask_get_coverage__17__Vfuncout));
     VL_WRITEF_NX("\n============================================================\nExample completed successfully!\n============================================================\n",0);
     co_await vlSelfRef.__VdlySched.delay(0x000000000000000aULL, 
                                          nullptr, "data_structures_example.sv", 
-                                         198);
-    VL_FINISH_MT("data_structures_example.sv", 199, "");
+                                         405);
+    VL_FINISH_MT("data_structures_example.sv", 407, "");
     co_return;}
 
 #ifdef VL_DEBUG
@@ -218,7 +218,7 @@ void Vdata_structures_example___024root___eval(Vdata_structures_example___024roo
 #ifdef VL_DEBUG
             Vdata_structures_example___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("data_structures_example.sv", 140, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
+            VL_FATAL_MT("data_structures_example.sv", 317, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -227,7 +227,7 @@ void Vdata_structures_example___024root___eval(Vdata_structures_example___024roo
 #ifdef VL_DEBUG
                 Vdata_structures_example___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("data_structures_example.sv", 140, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
+                VL_FATAL_MT("data_structures_example.sv", 317, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

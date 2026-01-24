@@ -29,7 +29,7 @@ VlCoroutine Verror_handling_example_error_handling_pkg__03a__03aErrorHandlingCom
         co_await vlSymsp->TOP.__VdlySched.delay(0x000000000000000aULL, 
                                                 nullptr, 
                                                 "error_handling_example.sv", 
-                                                51);
+                                                119);
         if ((0U != VL_URANDOM_RANGE_I(0U, 1U))) {
             success = 1U;
             VL_WRITEF_NX("[RETRY] Operation succeeded\n",0);

@@ -11,4 +11,4 @@ Module 1 Example 1.2: Interfaces and Modports
 ============================================================
 Example completed successfully!
 ============================================================
-- interface_example.sv:158: Verilog $finish
+- interface_example.sv:297: Verilog $finish

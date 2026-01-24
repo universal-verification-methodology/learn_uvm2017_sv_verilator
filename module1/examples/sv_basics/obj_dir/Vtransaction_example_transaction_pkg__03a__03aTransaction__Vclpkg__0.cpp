@@ -20,17 +20,17 @@ void Vtransaction_example_transaction_pkg__03a__03aTransaction::__VnoInFunc_copy
     // Body
     {
         if (VL_UNLIKELY(((VlNull{} == rhs)))) {
-            VL_WRITEF_NX("[%0t] %%Error: transaction.sv:43: Assertion failed in %Ntransaction_pkg.Transaction.copy: Copy failed: null pointer\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: transaction.sv:222: Assertion failed in %Ntransaction_pkg.Transaction.copy: Copy failed: null pointer\n",0,
                          64,VL_TIME_UNITED_Q(1),-12,
                          vlSymsp->name());
-            VL_STOP_MT("transaction.sv", 43, "");
+            VL_STOP_MT("transaction.sv", 222, "");
             goto __Vlabel0;
         }
-        this->__PVT__id = VL_NULL_CHECK(rhs, "transaction.sv", 46)
+        this->__PVT__id = VL_NULL_CHECK(rhs, "transaction.sv", 238)
             ->__PVT__id;
-        this->__PVT__data = VL_NULL_CHECK(rhs, "transaction.sv", 47)
+        this->__PVT__data = VL_NULL_CHECK(rhs, "transaction.sv", 239)
             ->__PVT__data;
-        this->__PVT__timestamp = VL_NULL_CHECK(rhs, "transaction.sv", 48)
+        this->__PVT__timestamp = VL_NULL_CHECK(rhs, "transaction.sv", 240)
             ->__PVT__timestamp;
         __Vlabel0: ;
     }
@@ -44,9 +44,9 @@ void Vtransaction_example_transaction_pkg__03a__03aTransaction::__VnoInFunc_comp
             compare__Vfuncrtn = 0U;
             goto __Vlabel0;
         }
-        compare__Vfuncrtn = ((this->__PVT__id == VL_NULL_CHECK(rhs, "transaction.sv", 56)
+        compare__Vfuncrtn = ((this->__PVT__id == VL_NULL_CHECK(rhs, "transaction.sv", 294)
                               ->__PVT__id) && (this->__PVT__data 
-                                               == VL_NULL_CHECK(rhs, "transaction.sv", 56)
+                                               == VL_NULL_CHECK(rhs, "transaction.sv", 294)
                                                ->__PVT__data));
         __Vlabel0: ;
     }

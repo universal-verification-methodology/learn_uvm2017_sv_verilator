@@ -24,4 +24,4 @@ Module 1 Example 1.5: Error Handling and Logging
 ============================================================
 Example completed successfully!
 ============================================================
-- error_handling_example.sv:119: Verilog $finish
+- error_handling_example.sv:220: Verilog $finish
