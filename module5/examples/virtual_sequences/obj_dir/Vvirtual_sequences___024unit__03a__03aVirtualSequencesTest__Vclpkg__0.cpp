@@ -58,7 +58,7 @@ void Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest::__VnoInFunc_bui
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "TEST"s, __Vfunc_uvm_report_enabled__3__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__3__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Building virtual sequence test"s, 0x000000c8U, "virtual_sequences.sv"s, 0x000000c3U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Building virtual sequence test"s, 0x000000c8U, "virtual_sequences.sv"s, 0x00000145U, ""s, 1U);
     }
     vlSymsp->TOP__uvm_pkg__03a__03auvm_component_registry__pi1__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "vseqr"s, 
                                                                                 VlClassRef<Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest>{this}, ""s, __Vfunc_create__5__Vfuncout);
@@ -83,19 +83,19 @@ void Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest::__VnoInFunc_con
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest::__VnoInFunc_connect_phase\n"); );
     // Body
     Vvirtual_sequences_uvm_pkg__03a__03auvm_component::__VnoInFunc_connect_phase(vlProcess, vlSymsp, phase);
-    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__master_driver, "virtual_sequences.sv", 206)
-                  ->__PVT__seq_item_port, "virtual_sequences.sv", 206)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__master_seqr, "virtual_sequences.sv", 206)
+    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__master_driver, "virtual_sequences.sv", 345)
+                  ->__PVT__seq_item_port, "virtual_sequences.sv", 345)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__master_seqr, "virtual_sequences.sv", 345)
                                                                                 ->__PVT__seq_item_export);
-    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__slave_driver, "virtual_sequences.sv", 207)
-                  ->__PVT__seq_item_port, "virtual_sequences.sv", 207)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__slave_seqr, "virtual_sequences.sv", 207)
+    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__slave_driver, "virtual_sequences.sv", 346)
+                  ->__PVT__seq_item_port, "virtual_sequences.sv", 346)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__slave_seqr, "virtual_sequences.sv", 346)
                                                                                 ->__PVT__seq_item_export);
-    VL_NULL_CHECK(this->__PVT__vseqr, "virtual_sequences.sv", 208)->__PVT__master_seqr 
+    VL_NULL_CHECK(this->__PVT__vseqr, "virtual_sequences.sv", 362)->__PVT__master_seqr 
         = this->__PVT__master_seqr;
-    VL_NULL_CHECK(this->__PVT__vseqr, "virtual_sequences.sv", 209)->__PVT__slave_seqr 
+    VL_NULL_CHECK(this->__PVT__vseqr, "virtual_sequences.sv", 363)->__PVT__slave_seqr 
         = this->__PVT__slave_seqr;
-    VL_NULL_CHECK(this->__PVT__vseq, "virtual_sequences.sv", 210)->__PVT__master_seqr 
+    VL_NULL_CHECK(this->__PVT__vseq, "virtual_sequences.sv", 378)->__PVT__master_seqr 
         = this->__PVT__master_seqr;
-    VL_NULL_CHECK(this->__PVT__vseq, "virtual_sequences.sv", 211)->__PVT__slave_seqr 
+    VL_NULL_CHECK(this->__PVT__vseq, "virtual_sequences.sv", 379)->__PVT__slave_seqr 
         = this->__PVT__slave_seqr;
 }
 
@@ -106,19 +106,19 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest::__VnoInF
     __Vfunc_uvm_report_enabled__15__Vfuncout = 0;
     // Body
     VL_KEEP_THIS;
-    VL_NULL_CHECK(phase, "virtual_sequences.sv", 215)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
+    VL_NULL_CHECK(phase, "virtual_sequences.sv", 402)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
                                                                                 VlClassRef<Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest>{this}, ""s, 1U);
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "TEST"s, __Vfunc_uvm_report_enabled__15__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__15__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Starting virtual sequence test"s, 0x000000c8U, "virtual_sequences.sv"s, 0x000000d8U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "TEST"s, "Starting virtual sequence test"s, 0x000000c8U, "virtual_sequences.sv"s, 0x00000193U, ""s, 1U);
     }
-    co_await VL_NULL_CHECK(this->__PVT__vseq, "virtual_sequences.sv", 217)->__VnoInFunc_start(vlProcess, vlSymsp, this->__PVT__vseqr, VlNull{}, 0xffffffffU, 1U);
+    co_await VL_NULL_CHECK(this->__PVT__vseq, "virtual_sequences.sv", 404)->__VnoInFunc_start(vlProcess, vlSymsp, this->__PVT__vseqr, VlNull{}, 0xffffffffU, 1U);
     co_await vlSymsp->TOP.__VdlySched.delay(0x00000000000000c8ULL, 
                                             vlProcess, 
                                             "virtual_sequences.sv", 
-                                            218);
-    VL_NULL_CHECK(phase, "virtual_sequences.sv", 219)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
+                                            405);
+    VL_NULL_CHECK(phase, "virtual_sequences.sv", 406)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                                 VlClassRef<Vvirtual_sequences___024unit__03a__03aVirtualSequencesTest>{this}, ""s, 1U);
     co_return;}
 

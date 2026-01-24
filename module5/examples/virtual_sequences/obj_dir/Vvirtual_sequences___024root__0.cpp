@@ -185,7 +185,7 @@ void Vvirtual_sequences___024root___eval(Vvirtual_sequences___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vvirtual_sequences___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("virtual_sequences.sv", 226, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
+            VL_FATAL_MT("virtual_sequences.sv", 413, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -194,7 +194,7 @@ void Vvirtual_sequences___024root___eval(Vvirtual_sequences___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vvirtual_sequences___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("virtual_sequences.sv", 226, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
+                VL_FATAL_MT("virtual_sequences.sv", 413, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

@@ -1,3 +1,7 @@
+/**
+ * Module 5 Example 5.3: Advanced Configuration - C++ Testbench
+ */
+
 #include "Vconfiguration.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -29,7 +33,6 @@ int main(int argc, char** argv) {
     
     top->final();
     tfp->close();
-    
     delete top;
     delete tfp;
     

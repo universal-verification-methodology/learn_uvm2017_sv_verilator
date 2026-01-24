@@ -1838,8 +1838,8 @@ g++    coverage.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_timing
 rm Vcoverage__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/coverage/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.639 MB sources in 339 modules, into 19.524 MB in 1826 C++ files needing 8.963 MB
-- Verilator: Walltime 27.659 s (elab=0.596, cvt=5.045, bld=20.839); cpu 6.674 s on 1 threads; allocated 220.098 MB
+- Verilator: Built from 7.642 MB sources in 339 modules, into 19.526 MB in 1826 C++ files needing 8.963 MB
+- Verilator: Walltime 27.665 s (elab=0.406, cvt=2.717, bld=24.082); cpu 3.582 s on 1 threads; allocated 220.105 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/coverage/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/coverage/obj_dir'

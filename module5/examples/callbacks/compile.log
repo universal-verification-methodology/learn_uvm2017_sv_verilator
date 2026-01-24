@@ -1976,8 +1976,8 @@ g++    callbacks.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_timin
 rm Vcallbacks__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/callbacks/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.646 MB sources in 343 modules, into 20.845 MB in 1964 C++ files needing 12.047 MB
-- Verilator: Walltime 27.642 s (elab=0.663, cvt=4.400, bld=21.890); cpu 5.746 s on 1 threads; allocated 228.105 MB
+- Verilator: Built from 7.651 MB sources in 343 modules, into 20.845 MB in 1964 C++ files needing 12.047 MB
+- Verilator: Walltime 35.545 s (elab=0.433, cvt=3.465, bld=31.094); cpu 4.449 s on 1 threads; allocated 228.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/callbacks/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/callbacks/obj_dir'

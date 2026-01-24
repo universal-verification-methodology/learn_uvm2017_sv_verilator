@@ -74,7 +74,7 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aChannelSequence::__VnoInFunc_b
                                                                                 32,
                                                                                 this->__PVT__channel,
                                                                                 32,
-                                                                                this->__PVT__num_items) , 0x000000c8U, "virtual_sequences.sv"s, 0x00000032U, ""s, 1U);
+                                                                                this->__PVT__num_items) , 0x000000c8U, "virtual_sequences.sv"s, 0x0000004aU, ""s, 1U);
     }
     unnamedblk1__DOT__i = 0U;
     while (VL_LTS_III(32, unnamedblk1__DOT__i, this->__PVT__num_items)) {
@@ -82,9 +82,9 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aChannelSequence::__VnoInFunc_b
                                                                                 32,
                                                                                 unnamedblk1__DOT__i) , VlNull{}, ""s, __Vfunc_create__6__Vfuncout);
         item = __Vfunc_create__6__Vfuncout;
-        VL_NULL_CHECK(item, "virtual_sequences.sv", 54)->__PVT__data 
+        VL_NULL_CHECK(item, "virtual_sequences.sv", 78)->__PVT__data 
             = (0x000000ffU & VL_SHIFTL_III(8,32,32, unnamedblk1__DOT__i, 4U));
-        VL_NULL_CHECK(item, "virtual_sequences.sv", 55)->__PVT__channel 
+        VL_NULL_CHECK(item, "virtual_sequences.sv", 79)->__PVT__channel 
             = this->__PVT__channel;
         co_await this->__VnoInFunc_start_item(vlProcess, vlSymsp, item, 0xffffffffU, VlNull{});
         co_await this->__VnoInFunc_finish_item(vlProcess, vlSymsp, item, 0xffffffffU);
@@ -92,7 +92,7 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aChannelSequence::__VnoInFunc_b
                         this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "SEQUENCE"s, __Vfunc_uvm_report_enabled__9__Vfuncout);
                     }(), __Vfunc_uvm_report_enabled__9__Vfuncout))) {
             __Vtemp_1 = ([&]() {
-                    VL_NULL_CHECK(item, "virtual_sequences.sv", 61)
+                    VL_NULL_CHECK(item, "virtual_sequences.sv", 85)
                          ->__VnoInFunc_convert2string(vlProcess, vlSymsp, __Vtask_convert2string__11__Vfuncout);
                 }(), __Vtask_convert2string__11__Vfuncout);
             this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "SEQUENCE"s, VL_SFORMATF_N_NX("Generated transaction %0d for channel %0d: %@",0,
@@ -101,7 +101,7 @@ VlCoroutine Vvirtual_sequences___024unit__03a__03aChannelSequence::__VnoInFunc_b
                                                                                 32,
                                                                                 this->__PVT__channel,
                                                                                 -1,
-                                                                                &(__Vtemp_1)) , 0x000000c8U, "virtual_sequences.sv"s, 0x0000003dU, ""s, 1U);
+                                                                                &(__Vtemp_1)) , 0x000000c8U, "virtual_sequences.sv"s, 0x00000055U, ""s, 1U);
         }
         unnamedblk1__DOT__i = ((IData)(1U) + unnamedblk1__DOT__i);
     }

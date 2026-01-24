@@ -55,12 +55,43 @@ make --version          # Should be available
 
 Demonstrates virtual sequencer and virtual sequence coordination:
 
-- **Transaction (`VirtualTransaction`)**: Transaction with data and channel fields
-- **ChannelSequence**: Regular sequence for a single channel generating transactions
-- **VirtualSequencer**: Contains references to multiple sequencers (`master_seqr`, `slave_seqr`)
-- **VirtualSequence**: Coordinates sequences on multiple sequencers
-- **Environment (`VirtualEnv`)**: Contains multiple agents and virtual sequencer
-- **Test (`VirtualSequencesTest`)**: Demonstrates virtual sequence usage
+**Virtual Sequence Methods:**
+
+1. **Virtual Sequencer:**
+   ```systemverilog
+   class VirtualSequencer extends uvm_sequencer;
+       uvm_sequencer #(Transaction) master_seqr;
+       uvm_sequencer #(Transaction) slave_seqr;
+       
+       function void connect_phase(uvm_phase phase);
+           master_seqr = env.master_agent.sequencer;
+           slave_seqr = env.slave_agent.sequencer;
+       endfunction
+   endclass
+   ```
+
+2. **Virtual Sequence:**
+   ```systemverilog
+   class VirtualSequence extends uvm_sequence;
+       uvm_sequencer #(Transaction) master_seqr, slave_seqr;
+       
+       task body();
+           fork
+               seq1.start(master_seqr);  // Parallel
+               seq2.start(slave_seqr);
+           join
+           seq3.start(master_seqr);      // Sequential
+       endtask
+   endclass
+   ```
+
+3. **Setting References:**
+   ```systemverilog
+   function void connect_phase(uvm_phase phase);
+       vseqr.master_seqr = master_seqr;
+       vseq.master_seqr = master_seqr;
+   endfunction
+   ```
 
 **Key Concepts:**
 - Virtual sequencer containing references to multiple sequencers
@@ -68,23 +99,10 @@ Demonstrates virtual sequencer and virtual sequence coordination:
 - Parallel sequence execution using `fork-join`
 - Sequential sequence execution
 - Cross-agent stimulus coordination
-
-**Virtual Sequence Components:**
-
-1. **VirtualSequencer**
-   - Extends `uvm_sequencer`
-   - Contains references to multiple sequencers (`master_seqr`, `slave_seqr`)
-   - References set in `connect_phase()` from environment
-
-2. **VirtualSequence**
-   - Extends `uvm_sequence`
-   - Coordinates sequences on multiple sequencers
-   - Parallel execution using `fork-join`
-   - Sequential execution
-
-3. **ChannelSequence**
-   - Regular sequence for a single channel
-   - Generates transactions for a specific channel
+- **Virtual sequencer** - Holds references, doesn't create sequencers
+- **Virtual sequence** - Coordinates sequences on multiple sequencers
+- **Parallel execution** - `fork-join` for concurrent sequences
+- **Sequential execution** - Sequential `start()` calls
 
 **Running the example:**
 
@@ -113,10 +131,32 @@ make -C obj_dir -f Vvirtual_sequences.mk
 
 Demonstrates functional coverage implementation:
 
-- **Transaction (`CoverageTransaction`)**: Transaction with data, address, and command fields
-- **CoverageModel**: Extends `uvm_subscriber` for coverage collection
-- **Producer**: Component that generates transactions and publishes to analysis port
-- **Test (`CoverageTest`)**: Demonstrates coverage model usage
+**Coverage Methods:**
+
+1. **Write Method:**
+   ```systemverilog
+   function void write(Transaction t);
+       if (!data_coverage.exists(t.data)) begin
+           data_coverage[t.data] = 0;
+       end
+       data_coverage[t.data]++;
+   endfunction
+   ```
+
+2. **Associative Array Methods:**
+   ```systemverilog
+   array.exists(key)      // Check if key exists
+   array.num()            // Count unique keys
+   foreach (array[key])   // Iterate over keys
+   ```
+
+3. **Report Phase:**
+   ```systemverilog
+   function void report_phase(uvm_phase phase);
+       int count = data_coverage.num();
+       `uvm_info("COVERAGE", $sformatf("Unique values: %0d", count), UVM_MEDIUM)
+   endfunction
+   ```
 
 **Key Concepts:**
 - Coverage model class extending `uvm_subscriber`
@@ -124,24 +164,11 @@ Demonstrates functional coverage implementation:
 - Coverpoints and bins
 - Cross coverage between multiple fields
 - Coverage analysis and reporting
-
-**Coverage Types:**
-
-1. **Data Coverage**
-   - Tracks unique data values
-   - Coverage: number of unique values
-
-2. **Address Range Coverage**
-   - Tracks address ranges (low, mid, high)
-   - Coverage: samples in each range
-
-3. **Command Coverage**
-   - Tracks unique command values
-   - Coverage: number of unique commands
-
-4. **Cross Coverage**
-   - Tracks combinations of data and command
-   - Coverage: number of unique combinations
+- **`write(t)`** - Sample coverage from transaction
+- **Associative arrays** - Track unique values
+- **`exists(key)`** - Check key exists
+- **`num()`** - Count unique keys
+- **`foreach`** - Iterate over keys
 
 **Running the example:**
 
@@ -161,30 +188,40 @@ Demonstrates functional coverage implementation:
 
 Demonstrates complex configuration objects:
 
-- **AgentConfig**: Complex configuration object with multiple fields
-- **EnvConfig**: Environment-level configuration containing agent configs
-- **Component**: Component that uses configuration from ConfigDB
-- **Test (`ConfigurationTest`)**: Demonstrates advanced configuration usage
+**Configuration Methods:**
+
+1. **Do Copy:**
+   ```systemverilog
+   function void do_copy(uvm_object rhs);
+       AgentConfig cfg;
+       if (!$cast(cfg, rhs)) return;
+       super.do_copy(rhs);
+       active = cfg.active;
+       timeout = cfg.timeout;
+   endfunction
+   ```
+
+2. **Nested Configuration:**
+   ```systemverilog
+   class EnvConfig extends uvm_object;
+       AgentConfig master_config;
+       AgentConfig slave_config;
+   endclass
+   ```
+
+3. **Component-Specific Config:**
+   ```systemverilog
+   uvm_config_db#(AgentConfig)::set(this, "master_comp", "agent_config", config);
+   ```
 
 **Key Concepts:**
 - Complex configuration objects
 - Configuration hierarchy
 - Resource database usage
 - Configuration inheritance
-
-**Configuration Classes:**
-
-1. **AgentConfig**
-   - Complex configuration object
-   - Contains multiple fields (active, coverage, widths, timeout, mode)
-   - Demonstrates configuration object design
-   - Supports `do_copy()` for configuration copying
-
-2. **EnvConfig**
-   - Environment-level configuration
-   - Contains multiple agent configurations
-   - Demonstrates configuration hierarchy
-   - Supports nested configuration
+- **`do_copy()`** - Copy configuration fields
+- **Nested configs** - Config objects containing other configs
+- **Component-specific paths** - Set config for specific components
 
 **Running the example:**
 
@@ -203,32 +240,34 @@ Demonstrates complex configuration objects:
 
 Demonstrates callback implementation:
 
-- **Transaction (`CallbackTransaction`)**: Transaction with data field
-- **DriverCallbackBase**: Base callback class for driver
-- **DriverCallback**: Driver callback implementation
-- **MonitorCallbackBase**: Base callback class for monitor
-- **MonitorCallback**: Monitor callback implementation
-- **DriverWithCallbacks**: Driver that supports callbacks
-- **MonitorWithCallbacks**: Monitor that supports callbacks
-- **Test (`CallbacksTest`)**: Demonstrates callback usage
+**Callback Methods:**
+
+1. **Callback Registration:**
+   ```systemverilog
+   class Callback extends CallbackBase;
+       `uvm_register_cb(Component, Callback)  // Register type
+   endclass
+   ```
+
+2. **Callback Execution:**
+   ```systemverilog
+   `uvm_do_callbacks(Component, Callback, pre_drive(this, txn))
+   ```
+
+3. **Callback Registration:**
+   ```systemverilog
+   uvm_callbacks#(Component, Callback)::add(component, callback);
+   ```
 
 **Key Concepts:**
 - Callback mechanism
 - Pre/post callbacks
 - Callback registration
 - Callback usage patterns
-
-**Callback Classes:**
-
-1. **DriverCallback**
-   - Pre-drive and post-drive callbacks
-   - Can modify transactions before/after driving
-   - Demonstrates driver callbacks
-
-2. **MonitorCallback**
-   - Pre-sample and post-sample callbacks
-   - Can perform actions before/after sampling
-   - Demonstrates monitor callbacks
+- **`uvm_register_cb`** - Register callback type
+- **`uvm_do_callbacks`** - Execute callbacks
+- **Callback registration** - Add callback to component
+- **Pre/post callbacks** - Hooks before/after operations
 
 **Running the example:**
 
@@ -247,35 +286,47 @@ Demonstrates callback implementation:
 
 Demonstrates register model basics:
 
-- **RegisterField**: Represents a register field with offset, width, and value
-- **Register**: Represents a register with address and fields
-- **RegisterBlock**: Represents a register block with multiple registers
-- **Test (`RegisterModelTest`)**: Demonstrates register model usage
+**Register Methods:**
+
+1. **Register Add Field:**
+   ```systemverilog
+   function void add_field(RegisterField field);
+       fields.push_back(field);
+   endfunction
+   ```
+
+2. **Register Write/Read:**
+   ```systemverilog
+   function void write(logic [31:0] data);
+       value = data;
+       // Update field values
+   endfunction
+   
+   function logic [31:0] read();
+       return value;
+   endfunction
+   ```
+
+3. **Register Block Methods:**
+   ```systemverilog
+   block.add_register(reg);
+   reg = block.get_register("name");
+   block.write_register("name", data);
+   data = block.read_register("name");
+   ```
 
 **Key Concepts:**
 - Register model structure
 - Register blocks, registers, fields
 - Register read/write operations
 - Simplified register model (full implementation requires uvm_reg)
-
-**Register Model Components:**
-
-1. **RegisterField**
-   - Represents a register field
-   - Contains offset, width, and value
-   - Supports field-level operations
-
-2. **Register**
-   - Represents a register
-   - Contains address and fields
-   - Supports read/write operations
-   - Manages field composition
-
-3. **RegisterBlock**
-   - Represents a register block
-   - Contains multiple registers
-   - Manages register addressing
-   - Provides register lookup
+- **`add_field()`** - Add field to register
+- **`write()`** - Write register value
+- **`read()`** - Read register value
+- **`add_register()`** - Add register to block
+- **`get_register()`** - Look up register
+- **`write_register()`** - Write by name
+- **`read_register()`** - Read by name
 
 **Note:** This is a simplified register model. Full UVM register model requires the `uvm_reg` package.
 
@@ -538,6 +589,118 @@ export UVM_HOME=/path/to/uvm-1.2
 - Check that virtual sequencer references point to actual sequencers
 - Ensure sequences are started on correct sequencers
 
+## Advanced UVM Methods in Module 5
+
+### Quick Reference: Advanced Methods
+
+| Category | Method/Macro | Purpose |
+|----------|--------------|---------|
+| **Virtual Seq** | `vseqr.seqr = sequencer` | Set sequencer reference |
+| **Virtual Seq** | `seq.start(sequencer)` | Start sequence |
+| **Coverage** | `write(Transaction t)` | Sample coverage |
+| **Coverage** | `array.exists(key)` | Check key exists |
+| **Coverage** | `array.num()` | Count unique keys |
+| **Config** | `do_copy(rhs)` | Copy config |
+| **Callback** | `` `uvm_register_cb(Comp, Cb) `` | Register type |
+| **Callback** | `` `uvm_do_callbacks(...) `` | Execute callbacks |
+| **Register** | `reg.add_field(field)` | Add field |
+| **Register** | `reg.write(data)` | Write register |
+| **Register** | `reg.read()` | Read register |
+| **Register** | `block.get_register(name)` | Look up register |
+
+### Common Patterns
+
+**1. Virtual Sequence - Parallel:**
+```systemverilog
+task body();
+    fork
+        seq1.start(seqr1);
+        seq2.start(seqr2);
+    join  // Wait for both
+endtask
+```
+
+**2. Virtual Sequence - Sequential:**
+```systemverilog
+task body();
+    seq1.start(seqr1);  // First
+    seq2.start(seqr2);  // Then
+endtask
+```
+
+**3. Coverage - Basic:**
+```systemverilog
+function void write(Transaction t);
+    if (!coverage.exists(t.data)) coverage[t.data] = 0;
+    coverage[t.data]++;
+endfunction
+```
+
+**4. Coverage - Cross Coverage:**
+```systemverilog
+function void write(Transaction t);
+    if (!cross_coverage[t.data].exists(t.command)) begin
+        cross_coverage[t.data][t.command] = 0;
+    end
+    cross_coverage[t.data][t.command]++;
+endfunction
+```
+
+**5. Callbacks:**
+```systemverilog
+// Register callback type
+`uvm_register_cb(Component, Callback)
+
+// Register callback instance
+uvm_callbacks#(Component, Callback)::add(component, callback);
+
+// Execute callbacks
+`uvm_do_callbacks(Component, Callback, method(this, txn))
+```
+
+**6. Configuration:**
+```systemverilog
+function void do_copy(uvm_object rhs);
+    Config cfg;
+    if (!$cast(cfg, rhs)) return;
+    super.do_copy(rhs);
+    active = cfg.active;
+endfunction
+```
+
+**7. Register:**
+```systemverilog
+// Build register
+reg.add_field(field);
+reg_block.add_register(reg);
+
+// Access register
+reg_block.write_register("reg", data);
+data = reg_block.read_register("reg");
+```
+
+### Common Pitfalls
+
+**1. Virtual Sequence:**
+- ❌ Not checking sequencer references for null
+- ❌ Not setting sequencer references before starting
+- ✅ Always check `if (seqr != null)` before use
+
+**2. Coverage:**
+- ❌ Not checking `exists()` before accessing associative array
+- ❌ Not initializing fixed arrays
+- ✅ Always check `exists()` first
+
+**3. Callbacks:**
+- ❌ Missing `uvm_register_cb` macro
+- ❌ Registering in wrong phase (should be `connect_phase`)
+- ✅ Use macro and register in `connect_phase()`
+
+**4. Register:**
+- ❌ Not checking null from `get_register()`
+- ❌ Not updating field values in `write()`
+- ✅ Always check null, update fields
+
 ## Topics Covered
 
 1. **Virtual Sequences** - Coordinating multiple sequencers
@@ -545,6 +708,7 @@ export UVM_HOME=/path/to/uvm-1.2
 3. **Advanced Configuration** - Complex configuration objects
 4. **Callbacks** - Callback mechanism and usage
 5. **Register Model** - Register model basics (simplified)
+6. **Advanced UVM Methods** - Comprehensive reference for advanced methods
 
 ## Next Steps
 

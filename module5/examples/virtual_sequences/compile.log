@@ -1925,8 +1925,8 @@ g++    virtual_sequences.o verilated.o verilated_dpi.o verilated_vcd_c.o verilat
 rm Vvirtual_sequences__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/virtual_sequences/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.644 MB sources in 341 modules, into 20.982 MB in 1913 C++ files needing 12.965 MB
-- Verilator: Walltime 30.448 s (elab=0.713, cvt=5.193, bld=23.449); cpu 6.947 s on 1 threads; allocated 224.102 MB
+- Verilator: Built from 7.647 MB sources in 341 modules, into 20.982 MB in 1913 C++ files needing 12.965 MB
+- Verilator: Walltime 25.894 s (elab=0.416, cvt=3.094, bld=21.868); cpu 4.025 s on 1 threads; allocated 224.105 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/virtual_sequences/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/virtual_sequences/obj_dir'

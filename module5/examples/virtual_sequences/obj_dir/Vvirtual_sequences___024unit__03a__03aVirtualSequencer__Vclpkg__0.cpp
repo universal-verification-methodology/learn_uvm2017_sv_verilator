@@ -52,7 +52,7 @@ void Vvirtual_sequences___024unit__03a__03aVirtualSequencer::__VnoInFunc_build_p
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "VIRTUAL_SEQR"s, __Vfunc_uvm_report_enabled__3__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__3__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "VIRTUAL_SEQR"s, "Building virtual sequencer"s, 0x000000c8U, "virtual_sequences.sv"s, 0x0000008eU, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "VIRTUAL_SEQR"s, "Building virtual sequencer"s, 0x000000c8U, "virtual_sequences.sv"s, 0x00000110U, ""s, 1U);
     }
 }
 
@@ -66,7 +66,7 @@ void Vvirtual_sequences___024unit__03a__03aVirtualSequencer::__VnoInFunc_connect
     if ((0U != ([&]() {
                     this->__VnoInFunc_uvm_report_enabled(vlProcess, vlSymsp, 0x000000c8U, 0U, "VIRTUAL_SEQR"s, __Vfunc_uvm_report_enabled__6__Vfuncout);
                 }(), __Vfunc_uvm_report_enabled__6__Vfuncout))) {
-        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "VIRTUAL_SEQR"s, "Connecting virtual sequencer"s, 0x000000c8U, "virtual_sequences.sv"s, 0x00000093U, ""s, 1U);
+        this->__VnoInFunc_uvm_report_info(vlProcess, vlSymsp, "VIRTUAL_SEQR"s, "Connecting virtual sequencer"s, 0x000000c8U, "virtual_sequences.sv"s, 0x00000115U, ""s, 1U);
     }
 }
 

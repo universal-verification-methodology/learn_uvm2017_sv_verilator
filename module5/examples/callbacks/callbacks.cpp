@@ -1,3 +1,14 @@
+/**
+ * Module 5 Example 5.4: UVM Callbacks - C++ Testbench
+ * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand Verilator C++ testbench structure
+ *   2. Learn Verilator simulation workflow
+ *   3. Master VCD waveform generation
+ *   4. Understand simulation time management
+ *   5. Apply testbench patterns for UVM examples
+ */
+
 #include "Vcallbacks.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -29,7 +40,6 @@ int main(int argc, char** argv) {
     
     top->final();
     tfp->close();
-    
     delete top;
     delete tfp;
     

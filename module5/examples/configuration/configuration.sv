@@ -2,6 +2,24 @@
  * Module 5 Example 5.3: Advanced Configuration
  * Demonstrates complex configuration objects and hierarchy.
  * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand complex configuration object design
+ *   2. Learn configuration hierarchy (nested objects)
+ *   3. Master component-specific configuration
+ *   4. Understand configuration copy operations
+ *   5. Apply advanced configuration patterns
+ * 
+ * ADVANCED CONFIGURATION:
+ *   - Complex objects with nested configurations
+ *   - Hierarchical configuration (env -> agent -> component)
+ *   - Component-specific overrides
+ *   - Configuration inheritance and defaults
+ * 
+ * CONFIGURATION HIERARCHY:
+ *   - EnvConfig: Top-level configuration
+ *   - AgentConfig: Agent-specific configuration
+ *   - Component-specific: Override agent config per component
+ * 
  * This example shows:
  * - Complex configuration objects
  * - Configuration hierarchy
@@ -39,16 +57,62 @@ class AgentConfig extends uvm_object;
                          active, has_coverage, address_width, data_width, timeout, mode);
     endfunction
     
+    // ========================================================================
+    // DO_COPY METHOD (CONFIGURATION COPY)
+    // ========================================================================
+    /**
+     * Deep copy implementation for configuration object
+     * 
+     * CONFIGURATION COPY:
+     *   - Creates independent copy of configuration
+     *   - All fields copied (deep copy)
+     *   - Used for configuration inheritance
+     * 
+     * COPY USAGE:
+     *   - Create configuration variants
+     *   - Base configuration + modifications
+     *   - Configuration templates
+     */
     function void do_copy(uvm_object rhs);
         AgentConfig cfg;
-        if (!$cast(cfg, rhs)) return;
+        
+        // Type cast: Convert uvm_object to AgentConfig
+        if (!$cast(cfg, rhs)) return;  // Exit if type mismatch
+        
+        // Call parent do_copy (copies base class fields)
         super.do_copy(rhs);
-        active = cfg.active;
-        has_coverage = cfg.has_coverage;
-        address_width = cfg.address_width;
-        data_width = cfg.data_width;
-        timeout = cfg.timeout;
-        mode = cfg.mode;
+        
+        // Copy all configuration fields
+        // 
+        // FIELD COPYING:
+        //   - Copy all scalar fields
+        //   - Deep copy: Copy values, not references
+        //   - Ensures independent configuration objects
+        active = cfg.active;              // Copy active flag
+        has_coverage = cfg.has_coverage;  // Copy coverage flag
+        address_width = cfg.address_width; // Copy address width
+        data_width = cfg.data_width;      // Copy data width
+        timeout = cfg.timeout;            // Copy timeout value
+        mode = cfg.mode;                  // Copy mode string
+        
+        // ========================================================================
+        // CONFIGURATION COPY USAGE EXAMPLES
+        // ========================================================================
+        // 
+        // CONFIGURATION TEMPLATE:
+        //   AgentConfig base_cfg, derived_cfg;
+        //   base_cfg = AgentConfig::type_id::create("base");
+        //   base_cfg.active = 1;
+        //   base_cfg.address_width = 32;
+        //   
+        //   derived_cfg = AgentConfig::type_id::create("derived");
+        //   derived_cfg.copy(base_cfg);  // Copy base configuration
+        //   derived_cfg.address_width = 16;  // Override specific field
+        // 
+        // CONFIGURATION INHERITANCE:
+        //   - Start with base configuration
+        //   - Copy and modify for specific use case
+        //   - Reduces configuration code duplication
     endfunction
 endclass
 

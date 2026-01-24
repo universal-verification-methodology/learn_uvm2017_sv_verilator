@@ -1844,8 +1844,8 @@ g++    configuration.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_t
 rm Vconfiguration__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/configuration/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.637 MB sources in 339 modules, into 20.032 MB in 1832 C++ files needing 8.527 MB
-- Verilator: Walltime 26.386 s (elab=0.804, cvt=4.802, bld=19.932); cpu 6.424 s on 1 threads; allocated 220.102 MB
+- Verilator: Built from 7.639 MB sources in 339 modules, into 20.032 MB in 1832 C++ files needing 8.527 MB
+- Verilator: Walltime 28.751 s (elab=0.427, cvt=2.850, bld=24.994); cpu 3.755 s on 1 threads; allocated 220.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/configuration/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module5/examples/configuration/obj_dir'
