@@ -1853,8 +1853,8 @@ g++    comparators.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_tim
 rm Vcomparators_top__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/comparators/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.646 MB sources in 342 modules, into 20.247 MB in 1841 C++ files needing 9.416 MB
-- Verilator: Walltime 18.224 s (elab=0.435, cvt=2.858, bld=14.425); cpu 3.798 s on 1 threads; allocated 220.105 MB
+- Verilator: Built from 7.652 MB sources in 342 modules, into 20.247 MB in 1841 C++ files needing 9.416 MB
+- Verilator: Walltime 23.297 s (elab=0.405, cvt=3.160, bld=19.189); cpu 4.098 s on 1 threads; allocated 220.109 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/comparators/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/comparators/obj_dir'

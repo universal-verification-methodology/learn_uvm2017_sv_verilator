@@ -29,8 +29,8 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq::__VnoInFun
                                              ->__VnoInFunc_clone(vlProcess, vlSymsp, __Vtask_clone__1__Vfuncout);
                                 }(), __Vtask_clone__1__Vfuncout), rw))))) {
             VL_WRITEF_NX("[%0t] %%Error: uvm_reg_indirect.svh:287: Assertion failed in %Nuvm_pkg.uvm_reg_indirect_ftdr_seq.body: '$cast' failed.\n",0,
-                         64,VL_TIME_UNITED_Q(1),-12,
-                         vlSymsp->name());
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,vlSymsp->name());
             VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_indirect.svh", 287, "");
         }
         VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_indirect.svh", 288)->__PVT__element 
@@ -50,8 +50,8 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_reg_indirect_ftdr_seq::__VnoInFun
                                              ->__VnoInFunc_clone(vlProcess, vlSymsp, __Vtask_clone__5__Vfuncout);
                                 }(), __Vtask_clone__5__Vfuncout), rw))))) {
             VL_WRITEF_NX("[%0t] %%Error: uvm_reg_indirect.svh:300: Assertion failed in %Nuvm_pkg.uvm_reg_indirect_ftdr_seq.body: '$cast' failed.\n",0,
-                         64,VL_TIME_UNITED_Q(1),-12,
-                         vlSymsp->name());
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,vlSymsp->name());
             VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_indirect.svh", 300, "");
         }
         VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_indirect.svh", 301)->__PVT__element 

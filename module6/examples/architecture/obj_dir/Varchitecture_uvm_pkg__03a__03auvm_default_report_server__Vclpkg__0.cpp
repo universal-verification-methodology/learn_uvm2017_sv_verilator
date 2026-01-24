@@ -695,8 +695,8 @@ void Varchitecture_uvm_pkg__03a__03auvm_default_report_server::__VnoInFunc_compo
                                                                              ->__VnoInFunc_get_filename(vlSymsp, __Vtask_get_filename__81__Vfuncout);
                         }(), __Vtask_get_filename__81__Vfuncout), "("s), line_str), ") "s);
     }
-    VL_SFORMAT_NX(64,time_str,"%0t",0,64,VL_TIME_UNITED_Q(1),
-                  -12);
+    VL_SFORMAT_NX(64,time_str,"%0t",0,64,VL_TIME_UNITED_Q(1000),
+                  -9);
     if ((""s != ([&]() {
                     VL_NULL_CHECK(report_message, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_server.svh", 793)
                  ->__VnoInFunc_get_context(vlSymsp, __Vtask_get_context__82__Vfuncout);

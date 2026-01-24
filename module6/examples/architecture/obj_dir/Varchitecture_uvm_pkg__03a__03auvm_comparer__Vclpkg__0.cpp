@@ -2745,8 +2745,8 @@ void Varchitecture_uvm_pkg__03a__03auvm_comparer::__VnoInFunc_compare_field(Varc
                                            & mask[0x0000007fU]);
                 VL_SFORMAT_NX(64,msg,"%@: lhs = %0t : rhs = %0t",0,
                               -1,&(name),4096,__Vtemp_10.data(),
-                              -12,4096,__Vtemp_11.data(),
-                              -12);
+                              -9,4096,__Vtemp_11.data(),
+                              -9);
             } else if ((0x08000000U == radix)) {
                 __Vtemp_12[0U] = (lhs[0U] & mask[0U]);
                 __Vtemp_12[1U] = (lhs[1U] & mask[1U]);

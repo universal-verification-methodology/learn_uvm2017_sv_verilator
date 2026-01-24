@@ -1,3 +1,25 @@
+/**
+ * Module 6 Example 6.3: Protocol Example - C++ Testbench
+ * 
+ * This C++ file serves as the testbench wrapper for the SystemVerilog
+ * protocol example. It instantiates the Verilator-generated model,
+ * manages simulation time, and generates VCD waveform files.
+ * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand Verilator C++ testbench structure
+ *   2. Learn how to instantiate Verilator-compiled modules
+ *   3. Master simulation time management
+ *   4. Generate VCD waveforms for debugging
+ *   5. Understand simulation lifecycle management
+ * 
+ * VERILATOR WORKFLOW:
+ *   1. Compile: verilator --cc --exe --build protocol.sv protocol.cpp
+ *   2. Run: ./obj_dir/Vprotocol
+ *   3. View: gtkwave protocol.vcd
+ * 
+ * NOTE: Longer timeout (5000) for protocol transactions
+ */
+
 #include "Vprotocol.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -23,4 +45,3 @@ int main(int argc, char** argv) {
     delete top;
     return 0;
 }
-

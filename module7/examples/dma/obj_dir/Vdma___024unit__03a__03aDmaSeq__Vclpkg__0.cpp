@@ -66,7 +66,7 @@ VlCoroutine Vdma___024unit__03a__03aDmaSeq::__VnoInFunc_body(VlProcessRef vlProc
     while (VL_LTS_III(32, 0U, unnamedblk1_1__DOT____Vrepeat0)) {
         vlSymsp->TOP__uvm_pkg__03a__03auvm_object_registry__pi60__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "t"s, VlNull{}, ""s, __Vfunc_create__4__Vfuncout);
         t = __Vfunc_create__4__Vfuncout;
-        VL_NULL_CHECK(t, "dma.sv", 35)->__VnoInFunc___Vrandwith_h7091dc69__0(vlSymsp, __Vtask___Vrandwith_h7091dc69__0__5__Vfuncout);
+        VL_NULL_CHECK(t, "dma.sv", 88)->__VnoInFunc___Vrandwith_h7091dc69__0(vlSymsp, __Vtask___Vrandwith_h7091dc69__0__5__Vfuncout);
         co_await this->__VnoInFunc_start_item(vlProcess, vlSymsp, t, 0xffffffffU, VlNull{});
         co_await this->__VnoInFunc_finish_item(vlProcess, vlSymsp, t, 0xffffffffU);
         unnamedblk1_1__DOT____Vrepeat0 = (unnamedblk1_1__DOT____Vrepeat0 

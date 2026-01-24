@@ -143,8 +143,8 @@ void Varchitecture_uvm_pkg__03a__03auvm_report_catcher__Vclpkg::__VnoInFunc_proc
                                                      ->__VnoInFunc_clone(vlProcess, vlSymsp, __Vtask_clone__16__Vfuncout);
                                         }(), __Vtask_clone__16__Vfuncout), this->__PVT__m_orig_report_message))))) {
                     VL_WRITEF_NX("[%0t] %%Error: uvm_report_catcher.svh:570: Assertion failed in %Nuvm_pkg.uvm_report_catcher.process_all_report_catchers.unnamedblk3: '$cast' failed.\n",0,
-                                 64,VL_TIME_UNITED_Q(1),
-                                 -12,vlSymsp->name());
+                                 64,VL_TIME_UNITED_Q(1000),
+                                 -9,vlSymsp->name());
                     VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_catcher.svh", 570, "");
                 }
                 if ((VlNull{} != unnamedblk3__DOT__p)) {

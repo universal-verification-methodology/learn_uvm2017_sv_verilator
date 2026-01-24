@@ -66,7 +66,7 @@ VlCoroutine Varchitecture___024unit__03a__03aArchSmokeSeq::__VnoInFunc_body(VlPr
     while (VL_LTS_III(32, 0U, unnamedblk1_1__DOT____Vrepeat0)) {
         vlSymsp->TOP__uvm_pkg__03a__03auvm_object_registry__Tz1_TBz2__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "t"s, VlNull{}, ""s, __Vfunc_create__4__Vfuncout);
         t = __Vfunc_create__4__Vfuncout;
-        VL_NULL_CHECK(t, "architecture.sv", 89)->__VnoInFunc___Vrandwith_h6b5f49b2__0(vlSymsp, __Vtask___Vrandwith_h6b5f49b2__0__5__Vfuncout);
+        VL_NULL_CHECK(t, "architecture.sv", 577)->__VnoInFunc___Vrandwith_h6b5f49b2__0(vlSymsp, __Vtask___Vrandwith_h6b5f49b2__0__5__Vfuncout);
         co_await this->__VnoInFunc_start_item(vlProcess, vlSymsp, t, 0xffffffffU, VlNull{});
         co_await this->__VnoInFunc_finish_item(vlProcess, vlSymsp, t, 0xffffffffU);
         unnamedblk1_1__DOT____Vrepeat0 = (unnamedblk1_1__DOT____Vrepeat0 

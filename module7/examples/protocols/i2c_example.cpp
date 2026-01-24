@@ -1,3 +1,11 @@
+/**
+ * Module 7 Example 7.4: I2C Example - C++ Testbench
+ * 
+ * This C++ file serves as the testbench wrapper for the SystemVerilog
+ * I2C example. It instantiates the Verilator-generated model,
+ * manages simulation time, and generates VCD waveform files.
+ */
+
 #include "Vi2c_example.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -23,4 +31,3 @@ int main(int argc, char** argv) {
     delete top;
     return 0;
 }
-

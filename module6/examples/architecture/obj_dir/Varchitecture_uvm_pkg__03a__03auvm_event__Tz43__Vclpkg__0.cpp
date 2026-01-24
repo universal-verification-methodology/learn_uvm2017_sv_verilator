@@ -115,7 +115,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_event__Tz43::__VnoInFunc_trigger(Varchit
         Varchitecture_uvm_pkg__03a__03auvm_event_base::__PVT__num_waiters = 0U;
         Varchitecture_uvm_pkg__03a__03auvm_event_base::__PVT__on = 1U;
         Varchitecture_uvm_pkg__03a__03auvm_event_base::__PVT__trigger_time 
-            = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+            = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
         this->__PVT__trigger_data = data;
     }
 }

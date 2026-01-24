@@ -60,18 +60,18 @@ VlCoroutine Varchitecture___024unit__03a__03aArchitectureTest::__VnoInFunc_run_p
     // Body
     VL_KEEP_THIS;
     VlClassRef<Varchitecture___024unit__03a__03aArchSmokeSeq> seq;
-    VL_NULL_CHECK(phase, "architecture.sv", 106)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
+    VL_NULL_CHECK(phase, "architecture.sv", 670)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
                                                                               VlClassRef<Varchitecture___024unit__03a__03aArchitectureTest>{this}, ""s, 1U);
     vlSymsp->TOP__uvm_pkg__03a__03auvm_object_registry__pi6__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "seq"s, VlNull{}, ""s, __Vfunc_create__5__Vfuncout);
     seq = __Vfunc_create__5__Vfuncout;
-    co_await VL_NULL_CHECK(seq, "architecture.sv", 108)->__VnoInFunc_start(vlProcess, vlSymsp, VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__env, "architecture.sv", 108)
-                                                                                ->__PVT__agent, "architecture.sv", 108)
+    co_await VL_NULL_CHECK(seq, "architecture.sv", 686)->__VnoInFunc_start(vlProcess, vlSymsp, VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__env, "architecture.sv", 686)
+                                                                                ->__PVT__agent, "architecture.sv", 686)
                                                                            ->__PVT__seqr, VlNull{}, 0xffffffffU, 1U);
-    co_await vlSymsp->TOP.__VdlySched.delay(0x0000000000000064ULL, 
+    co_await vlSymsp->TOP.__VdlySched.delay(0x00000000000186a0ULL, 
                                             vlProcess, 
                                             "architecture.sv", 
-                                            109);
-    VL_NULL_CHECK(phase, "architecture.sv", 110)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
+                                            691);
+    VL_NULL_CHECK(phase, "architecture.sv", 700)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                              VlClassRef<Varchitecture___024unit__03a__03aArchitectureTest>{this}, ""s, 1U);
     co_return;}
 

@@ -36,7 +36,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_heartbeat_callback::__VnoInFunc_raised(V
                      .at(source_obj));
         this->__PVT__cnt.at(source_obj) = __Vtemp_1;
         this->__PVT__last_trigger.at(source_obj) = 
-            VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+            VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
     }
 }
 

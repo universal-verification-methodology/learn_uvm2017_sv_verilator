@@ -824,8 +824,8 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_sequencer_base::__VnoInFunc_m_wai
     co_await VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__arb_sequence_q.at(__Vtask___VforkTask_0__61__is_relevant_entries.at(VL_NULL_CHECK(__Vtask___VforkTask_0__61____VDynScope_unnamedblk243_7, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/seq/uvm_sequencer_base.svh", 790)
                                                                                 ->__PVT__k)), "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/seq/uvm_sequencer_base.svh", 790)
                            ->__PVT__sequence_ptr, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/seq/uvm_sequencer_base.svh", 790)->__VnoInFunc_wait_for_relevant(vlProcess, vlSymsp);
-    if ((VL_TIME_UNITED_D(1) != VL_ITOR_D_Q(64, this->__PVT__m_last_wait_relevant_time))) {
-        this->__PVT__m_last_wait_relevant_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+    if ((VL_TIME_UNITED_D(1000) != VL_ITOR_D_Q(64, this->__PVT__m_last_wait_relevant_time))) {
+        this->__PVT__m_last_wait_relevant_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
         this->__PVT__m_wait_relevant_count = 0U;
     } else {
         this->__PVT__m_wait_relevant_count = ((IData)(1U) 

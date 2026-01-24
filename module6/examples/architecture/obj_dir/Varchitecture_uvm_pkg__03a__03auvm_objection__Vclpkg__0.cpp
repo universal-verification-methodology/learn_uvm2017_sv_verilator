@@ -792,8 +792,10 @@ void Varchitecture_uvm_pkg__03a__03auvm_objection::__VnoInFunc_m_drop(VlProcessR
             // Body
             VL_KEEP_THIS;
             if (this->__PVT__m_drain_time.exists(obj)) {
-                co_await vlSymsp->TOP.__VdlySched.delay(this->__PVT__m_drain_time
-                                                        .at(obj), 
+                co_await vlSymsp->TOP.__VdlySched.delay(
+                                                        (0x00000000000003e8ULL 
+                                                         * this->__PVT__m_drain_time
+                                                         .at(obj)), 
                                                         vlProcess, 
                                                         "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_objection.svh", 
                                                         708);
@@ -1370,8 +1372,8 @@ void Varchitecture_uvm_pkg__03a__03auvm_objection::__VnoInFunc_m_drop(VlProcessR
             VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_objection> _rhs;
             if (VL_UNLIKELY(((! VL_CAST_DYNAMIC(rhs, _rhs))))) {
                 VL_WRITEF_NX("[%0t] %%Error: uvm_objection.svh:1056: Assertion failed in %Nuvm_pkg.uvm_objection.do_copy: '$cast' failed.\n",0,
-                             64,VL_TIME_UNITED_Q(1),
-                             -12,vlSymsp->name());
+                             64,VL_TIME_UNITED_Q(1000),
+                             -9,vlSymsp->name());
                 VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_objection.svh", 1056, "");
             }
             this->__PVT__m_source_count = VL_NULL_CHECK(_rhs, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_objection.svh", 1057)

@@ -61,9 +61,9 @@ void Vdma___024unit__03a__03aDmaEnv::__VnoInFunc_connect_phase(VlProcessRef vlPr
     VL_DEBUG_IF(VL_DBG_MSGF("+                      Vdma___024unit__03a__03aDmaEnv::__VnoInFunc_connect_phase\n"); );
     // Body
     Vdma_uvm_pkg__03a__03auvm_component::__VnoInFunc_connect_phase(vlProcess, vlSymsp, phase);
-    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__drv, "dma.sv", 83)
-                  ->__PVT__seq_item_port, "dma.sv", 83)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__seqr, "dma.sv", 83)
-                                                                             ->__PVT__seq_item_export);
+    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__drv, "dma.sv", 221)
+                  ->__PVT__seq_item_port, "dma.sv", 221)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__seqr, "dma.sv", 221)
+                                                                              ->__PVT__seq_item_export);
 }
 
 void Vdma___024unit__03a__03aDmaEnv::__VnoInFunc_randomize(Vdma__Syms* __restrict vlSymsp, IData/*31:0*/ &randomize__Vfuncrtn) {

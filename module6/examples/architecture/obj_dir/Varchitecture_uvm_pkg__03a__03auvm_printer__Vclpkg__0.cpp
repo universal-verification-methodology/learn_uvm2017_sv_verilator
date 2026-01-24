@@ -433,7 +433,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_printer::__VnoInFunc_print_field(VlProce
                                                    &(__Vfunc_uvm_bitstream_to_string__5__radix_str),
                                                    4096,
                                                    __Vfunc_uvm_bitstream_to_string__5__value.data(),
-                                                   -12) 
+                                                   -9) 
                                 : ((0x02000000U == __Vfunc_uvm_bitstream_to_string__5__radix)
                                     ? VL_SFORMATF_N_NX("%0@%0d",0,
                                                        -1,
@@ -586,7 +586,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_printer::__VnoInFunc_print_field_int(VlP
                                                    &(__Vfunc_uvm_integral_to_string__11__radix_str),
                                                    64,
                                                    __Vfunc_uvm_integral_to_string__11__value,
-                                                   -12) 
+                                                   -9) 
                                 : ((0x02000000U == __Vfunc_uvm_integral_to_string__11__radix)
                                     ? VL_SFORMATF_N_NX("%0@%0d",0,
                                                        -1,

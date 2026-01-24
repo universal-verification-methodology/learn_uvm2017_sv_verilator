@@ -149,7 +149,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_resource_base::__VnoInFunc_record_read_a
         access_record.__PVT__read_count = ((IData)(1U) 
                                            + access_record
                                            .__PVT__read_count);
-        access_record.__PVT__read_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+        access_record.__PVT__read_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
         this->__PVT__access.at(str) = access_record;
         __Vlabel0: ;
     }
@@ -193,7 +193,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_resource_base::__VnoInFunc_record_write_
                 = ((IData)(1U) + unnamedblk1__DOT__access_record
                    .__PVT__write_count);
             unnamedblk1__DOT__access_record.__PVT__write_time 
-                = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+                = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
             this->__PVT__access.at(unnamedblk1__DOT__str) 
                 = unnamedblk1__DOT__access_record;
         }
@@ -258,12 +258,12 @@ void Varchitecture_uvm_pkg__03a__03auvm_resource_base::__VnoInFunc_print_accesso
                                               .__PVT__read_count,
                                               64,access_record
                                               .__PVT__read_time,
-                                              -12,32,
+                                              -9,32,
                                               access_record
                                               .__PVT__write_count,
                                               64,access_record
                                               .__PVT__write_time,
-                                              -12) );
+                                              -9) );
             }
         }
         if ((0U != ([&]() {

@@ -1,3 +1,30 @@
+/**
+ * Module 6 Example 6.2: Multi-Agent Example - C++ Testbench
+ * 
+ * This C++ file serves as the testbench wrapper for the SystemVerilog
+ * multi-agent example. It instantiates the Verilator-generated model,
+ * manages simulation time, and generates VCD waveform files.
+ * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand Verilator C++ testbench structure
+ *   2. Learn how to instantiate Verilator-compiled modules
+ *   3. Master simulation time management
+ *   4. Generate VCD waveforms for debugging
+ *   5. Understand simulation lifecycle management
+ * 
+ * VERILATOR WORKFLOW:
+ *   1. Compile: verilator --cc --exe --build multi_agent.sv multi_agent.cpp
+ *   2. Run: ./obj_dir/Vmulti_agent
+ *   3. View: gtkwave multi_agent.vcd
+ * 
+ * TESTBENCH PATTERNS:
+ *   - Module instantiation: Create Verilator-generated class instance
+ *   - Time management: Track simulation time with main_time
+ *   - Waveform generation: VCD file creation and dumping
+ *   - Simulation loop: Evaluate design at each time step
+ *   - Resource cleanup: Proper memory management
+ */
+
 #include "Vmulti_agent.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -23,4 +50,3 @@ int main(int argc, char** argv) {
     delete top;
     return 0;
 }
-

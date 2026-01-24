@@ -375,13 +375,13 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_heartbeat::__VnoInFunc_m_hb_proce
                                                                                 64,
                                                                                 VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 249)
                                                                                 ->__PVT__last_trigger,
-                                                                                -12,
+                                                                                -9,
                                                                                 64,
                                                                                 VL_NULL_CHECK(this->__PVT__m_cb, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 249)
                                                                                 ->__PVT__last_trigger
                                                                                 .at(VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 249)
                                                                                 ->__PVT__obj),
-                                                                                -12) , 0U, ""s, 0U, ""s, 0U);
+                                                                                -9) , 0U, ""s, 0U, ""s, 0U);
                         }
                     }
                 }
@@ -422,7 +422,7 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_heartbeat::__VnoInFunc_m_hb_proce
                                                                                 64,
                                                                                 VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 262)
                                                                                 ->__PVT__last_trigger,
-                                                                                -12,
+                                                                                -9,
                                                                                 -1,
                                                                                 &(__Vtask___VforkTask_1__22__unnamedblk4__DOT__s)) , 0U, ""s, 0U, ""s, 0U);
                 }
@@ -456,7 +456,7 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_heartbeat::__VnoInFunc_m_hb_proce
                                               ->__PVT__last_trigger
                                               .at(VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 272)
                                                   ->__PVT__obj),
-                                              -12);
+                                              -9);
                             }
                         }
                     }
@@ -470,7 +470,7 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_heartbeat::__VnoInFunc_m_hb_proce
                                                                                 64,
                                                                                 VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 275)
                                                                                 ->__PVT__last_trigger,
-                                                                                -12,
+                                                                                -9,
                                                                                 -1,
                                                                                 &(__Vtask___VforkTask_1__22__unnamedblk6__DOT__s)) , 0U, ""s, 0U, ""s, 0U);
                 }
@@ -510,7 +510,7 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_heartbeat::__VnoInFunc_m_hb_proce
                                                                                 64,
                                                                                 VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 284)
                                                                                 ->__PVT__last_trigger,
-                                                                                -12,
+                                                                                -9,
                                                                                 -1,
                                                                                 &(__Vtask___VforkTask_1__22__unnamedblk8__DOT__s)) , 0U, ""s, 0U, ""s, 0U);
                 }
@@ -518,7 +518,7 @@ VlCoroutine Varchitecture_uvm_pkg__03a__03auvm_heartbeat::__VnoInFunc_m_hb_proce
         }
         VL_NULL_CHECK(this->__PVT__m_cb, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 289)->__VnoInFunc_reset_counts(vlSymsp);
         VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 290)->__PVT__last_trigger 
-            = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+            = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
         VL_NULL_CHECK(__Vtask___VforkTask_1__22____VDynScope_m_hb_process_2, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 291)->__PVT__triggered = 1U;
     }
     __Vfork_2__sync.done("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_heartbeat.svh", 

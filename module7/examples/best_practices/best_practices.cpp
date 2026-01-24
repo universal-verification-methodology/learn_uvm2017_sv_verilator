@@ -1,3 +1,11 @@
+/**
+ * Module 7 Example 7.6: Best Practices Example - C++ Testbench
+ * 
+ * This C++ file serves as the testbench wrapper for the SystemVerilog
+ * best practices example. It instantiates the Verilator-generated model,
+ * manages simulation time, and generates VCD waveform files.
+ */
+
 #include "Vbest_practices.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -23,4 +31,3 @@ int main(int argc, char** argv) {
     delete top;
     return 0;
 }
-

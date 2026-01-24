@@ -1783,7 +1783,7 @@ Varchitecture_uvm_pkg__03a__03auvm_component::Varchitecture_uvm_pkg__03a__03auvm
             etype = ((IData)(keep_active) ? "Error, Link"s
                       : "Error"s);
             if ((0ULL == error_time)) {
-                error_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+                error_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
             }
             if ((""s == stream_name)) {
                 stream_name = "main"s;
@@ -1840,7 +1840,7 @@ Varchitecture_uvm_pkg__03a__03auvm_component::Varchitecture_uvm_pkg__03a__03auvm
             etype = ((IData)(keep_active) ? "Event, Link"s
                       : "Event"s);
             if ((0ULL == event_time)) {
-                event_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+                event_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
             }
             if ((""s == stream_name)) {
                 stream_name = "main"s;
@@ -2611,9 +2611,11 @@ Varchitecture_uvm_pkg__03a__03auvm_component::Varchitecture_uvm_pkg__03a__03auvm
                                                                   VL_CVT_PACK_STR_NN(vlSymsp->TOP__uvm_pkg__03a__03auvm_component__Vclpkg.__PVT__m_time_settings.at(__Vtask___VforkTask_0__259__unnamedblk216__DOT__i)
                                                                                 .__PVT__comp), __Vtask___VforkTask_0__259__unnamedblk216__DOT__unnamedblk217__DOT__comps, VlNull{});
                 co_await vlSymsp->TOP.__VdlySched.delay(
-                                                        (vlSymsp->TOP__uvm_pkg__03a__03auvm_component__Vclpkg.__PVT__m_time_settings.at(__Vtask___VforkTask_0__259__unnamedblk216__DOT__i)
-                                                         .__PVT__offset 
-                                                         - __Vtask___VforkTask_0__259__last_time), 
+                                                        (0x00000000000003e8ULL 
+                                                         * 
+                                                         (vlSymsp->TOP__uvm_pkg__03a__03auvm_component__Vclpkg.__PVT__m_time_settings.at(__Vtask___VforkTask_0__259__unnamedblk216__DOT__i)
+                                                          .__PVT__offset 
+                                                          - __Vtask___VforkTask_0__259__last_time)), 
                                                         vlProcess, 
                                                         "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_component.svh", 
                                                         3130);
@@ -3813,8 +3815,10 @@ Varchitecture_uvm_pkg__03a__03auvm_component::Varchitecture_uvm_pkg__03a__03auvm
                                                              3305);
             }
             __Vtask___VforkTask_1__323__setting = this->__PVT__m_verbosity_settings.at(__Vtask___VforkTask_1__323__i);
-            co_await vlSymsp->TOP.__VdlySched.delay(__Vtask___VforkTask_1__323__setting
-                                                    .__PVT__offset, 
+            co_await vlSymsp->TOP.__VdlySched.delay(
+                                                    (0x00000000000003e8ULL 
+                                                     * __Vtask___VforkTask_1__323__setting
+                                                     .__PVT__offset), 
                                                     vlProcess, 
                                                     "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_component.svh", 
                                                     3307);

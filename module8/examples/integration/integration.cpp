@@ -1,29 +1,45 @@
-#include <verilated.h>
-#include <verilated_vcd_c.h>
+/**
+ * Module 8 Example 8.9: Utility Integration - C++ Testbench
+ * 
+ * LEARNING OBJECTIVES:
+ *   1. Understand Verilator C++ testbench structure
+ *   2. Understand VCD waveform generation
+ *   3. Learn simulation time management
+ *   4. Understand Verilator workflow
+ * 
+ * VERILATOR WORKFLOW:
+ *   1. Compile SystemVerilog to C++ model
+ *   2. Link with this C++ testbench
+ *   3. Execute testbench
+ *   4. Generate VCD waveforms
+ * 
+ * This C++ file serves as the testbench wrapper for the SystemVerilog
+ * integration example. It instantiates the Verilator-generated model,
+ * manages simulation time, and generates VCD waveform files.
+ */
+
 #include "Vintegration_top.h"
+#include "verilated.h"
+#include "verilated_vcd_c.h"
+
+vluint64_t main_time = 0;
+double sc_time_stamp() { return main_time; }
 
 int main(int argc, char** argv) {
     Verilated::commandArgs(argc, argv);
-    
-    Vintegration_top* top = new Vintegration_top;
-    
     Verilated::traceEverOn(true);
-    VerilatedVcdC* tfp = new VerilatedVcdC;
+    auto* top = new Vintegration_top;
+    auto* tfp = new VerilatedVcdC;
     top->trace(tfp, 99);
     tfp->open("integration.vcd");
-    
-    // Initialize simulation
-    top->eval();
-    
-    // Run simulation
-    for (int i = 0; i < 1000; i++) {
+    while (!Verilated::gotFinish() && main_time < 2000) {
         top->eval();
-        tfp->dump(i);
+        tfp->dump(main_time);
+        main_time++;
     }
-    
+    top->final();
     tfp->close();
-    delete top;
     delete tfp;
-    
+    delete top;
     return 0;
 }

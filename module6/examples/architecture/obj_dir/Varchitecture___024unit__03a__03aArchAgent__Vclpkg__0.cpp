@@ -65,8 +65,8 @@ void Varchitecture___024unit__03a__03aArchAgent::__VnoInFunc_connect_phase(VlPro
     VL_DEBUG_IF(VL_DBG_MSGF("+          Varchitecture___024unit__03a__03aArchAgent::__VnoInFunc_connect_phase\n"); );
     // Body
     Varchitecture_uvm_pkg__03a__03auvm_component::__VnoInFunc_connect_phase(vlProcess, vlSymsp, phase);
-    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__drv, "architecture.sv", 67)
-                  ->__PVT__seq_item_port, "architecture.sv", 67)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__seqr, "architecture.sv", 67)
+    VL_NULL_CHECK(VL_NULL_CHECK(this->__PVT__drv, "architecture.sv", 448)
+                  ->__PVT__seq_item_port, "architecture.sv", 448)->__VnoInFunc_connect(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__seqr, "architecture.sv", 448)
                                                                                 ->__PVT__seq_item_export);
 }
 

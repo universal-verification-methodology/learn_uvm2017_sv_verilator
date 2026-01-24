@@ -60,17 +60,17 @@ VlCoroutine Vdma___024unit__03a__03aDmaTest::__VnoInFunc_run_phase(VlProcessRef 
     // Body
     VL_KEEP_THIS;
     VlClassRef<Vdma___024unit__03a__03aDmaSeq> seq;
-    VL_NULL_CHECK(phase, "dma.sv", 97)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
-                                                                    VlClassRef<Vdma___024unit__03a__03aDmaTest>{this}, ""s, 1U);
+    VL_NULL_CHECK(phase, "dma.sv", 244)->__VnoInFunc_raise_objection(vlProcess, vlSymsp, 
+                                                                     VlClassRef<Vdma___024unit__03a__03aDmaTest>{this}, ""s, 1U);
     vlSymsp->TOP__uvm_pkg__03a__03auvm_object_registry__pi61__Vclpkg.__VnoInFunc_create(vlProcess, vlSymsp, "seq"s, VlNull{}, ""s, __Vfunc_create__5__Vfuncout);
     seq = __Vfunc_create__5__Vfuncout;
-    co_await VL_NULL_CHECK(seq, "dma.sv", 99)->__VnoInFunc_start(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__env, "dma.sv", 99)
-                                                                 ->__PVT__seqr, VlNull{}, 0xffffffffU, 1U);
+    co_await VL_NULL_CHECK(seq, "dma.sv", 246)->__VnoInFunc_start(vlProcess, vlSymsp, VL_NULL_CHECK(this->__PVT__env, "dma.sv", 246)
+                                                                  ->__PVT__seqr, VlNull{}, 0xffffffffU, 1U);
     co_await vlSymsp->TOP.__VdlySched.delay(0x00000000001e8480ULL, 
                                             vlProcess, 
                                             "dma.sv", 
-                                            100);
-    VL_NULL_CHECK(phase, "dma.sv", 101)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
+                                            247);
+    VL_NULL_CHECK(phase, "dma.sv", 248)->__VnoInFunc_drop_objection(vlProcess, vlSymsp, 
                                                                     VlClassRef<Vdma___024unit__03a__03aDmaTest>{this}, ""s, 1U);
     co_return;}
 

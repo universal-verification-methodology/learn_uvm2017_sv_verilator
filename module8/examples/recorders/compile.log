@@ -1826,8 +1826,8 @@ g++    recorders.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_timin
 rm Vrecorders_top__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/recorders/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.635 MB sources in 338 modules, into 19.907 MB in 1814 C++ files needing 8.815 MB
-- Verilator: Walltime 18.154 s (elab=0.436, cvt=3.368, bld=13.832); cpu 4.319 s on 1 threads; allocated 219.102 MB
+- Verilator: Built from 7.637 MB sources in 338 modules, into 19.907 MB in 1814 C++ files needing 8.815 MB
+- Verilator: Walltime 19.194 s (elab=0.399, cvt=2.841, bld=15.388); cpu 3.800 s on 1 threads; allocated 219.105 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/recorders/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/recorders/obj_dir'

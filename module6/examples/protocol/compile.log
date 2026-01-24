@@ -1952,8 +1952,8 @@ g++    protocol.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_timing
 rm Vprotocol__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/protocol/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 11.456 MB sources in 343 modules, into 20.429 MB in 1940 C++ files needing 12.132 MB
-- Verilator: Walltime 27.271 s (elab=0.718, cvt=4.316, bld=21.304); cpu 5.949 s on 1 threads; allocated 225.102 MB
+- Verilator: Built from 11.489 MB sources in 343 modules, into 20.429 MB in 1940 C++ files needing 12.132 MB
+- Verilator: Walltime 18.432 s (elab=0.419, cvt=2.962, bld=14.507); cpu 3.922 s on 1 threads; allocated 226.105 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/protocol/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/protocol/obj_dir'

@@ -30,7 +30,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_comparer::__VnoInFunc_compare_field_int(
             } else if ((0x09000000U == radix)) {
                 VL_SFORMAT_NX(64,msg,"%@: lhs = %0t : rhs = %0t",0,
                               -1,&(name),64,(lhs & mask),
-                              -12,64,(rhs & mask),-12);
+                              -9,64,(rhs & mask),-9);
             } else if ((0x08000000U == radix)) {
                 VL_SFORMAT_NX(64,msg,"%@: lhs = %0s : rhs = %0s",0,
                               -1,&(name),64,(lhs & mask),

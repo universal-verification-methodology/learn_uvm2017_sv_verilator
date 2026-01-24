@@ -50,7 +50,7 @@ void Varchitecture_std__03a__03aprocess::__VnoInFunc_suspend(Varchitecture__Syms
     VL_DEBUG_IF(VL_DBG_MSGF("+            Varchitecture_std__03a__03aprocess::__VnoInFunc_suspend\n"); );
     // Body
     VL_WRITEF_NX("[%0t] %%Error: verilated_std.sv:168: Assertion failed in %Nstd.process.suspend: std::process::suspend() not supported\n",0,
-                 64,VL_TIME_UNITED_Q(1),-12,vlSymsp->name());
+                 64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
     VL_STOP_MT("/usr/local/share/verilator/include/verilated_std.sv", 168, "");
 }
 

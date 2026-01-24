@@ -1793,8 +1793,8 @@ g++    i2c_example.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_tim
 rm Vi2c_example__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module7/examples/protocols/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.628 MB sources in 336 modules, into 19.464 MB in 1781 C++ files needing 8.387 MB
-- Verilator: Walltime 25.883 s (elab=0.590, cvt=4.611, bld=19.884); cpu 5.988 s on 1 threads; allocated 217.098 MB
+- Verilator: Built from 7.629 MB sources in 336 modules, into 19.464 MB in 1781 C++ files needing 8.387 MB
+- Verilator: Walltime 17.334 s (elab=0.375, cvt=2.710, bld=13.766); cpu 3.567 s on 1 threads; allocated 217.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module7/examples/protocols/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module7/examples/protocols/obj_dir'

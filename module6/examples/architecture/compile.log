@@ -1943,8 +1943,8 @@ g++    architecture.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_ti
 rm Varchitecture__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/architecture/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 11.456 MB sources in 344 modules, into 20.596 MB in 1931 C++ files needing 13.278 MB
-- Verilator: Walltime 25.475 s (elab=0.682, cvt=4.664, bld=19.311); cpu 6.146 s on 1 threads; allocated 224.102 MB
+- Verilator: Built from 11.494 MB sources in 344 modules, into 20.596 MB in 1931 C++ files needing 13.278 MB
+- Verilator: Walltime 26.514 s (elab=0.534, cvt=3.301, bld=22.020); cpu 4.487 s on 1 threads; allocated 225.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/architecture/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/architecture/obj_dir'

@@ -185,7 +185,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_recorder::__VnoInFunc_close(Varchitectur
     // Body
     {
         if ((0ULL == close_time)) {
-            close_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+            close_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
         }
         if ((1U & (~ ([&]() {
                             this->__VnoInFunc_is_open(vlSymsp, __Vfunc_is_open__14__Vfuncout);

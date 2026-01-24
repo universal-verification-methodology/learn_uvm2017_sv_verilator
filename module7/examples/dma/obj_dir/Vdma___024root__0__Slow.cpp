@@ -361,7 +361,7 @@ VL_ATTR_COLD void Vdma___024root___eval_settle(Vdma___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vdma___024root___dump_triggers__stl(vlSelfRef.__VstlTriggered, "stl"s);
 #endif
-            VL_FATAL_MT("dma.sv", 105, "", "DIDNOTCONVERGE: Settle region did not converge after 100 tries");
+            VL_FATAL_MT("dma.sv", 255, "", "DIDNOTCONVERGE: Settle region did not converge after 100 tries");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
     } while (Vdma___024root___eval_phase__stl(vlSelf));

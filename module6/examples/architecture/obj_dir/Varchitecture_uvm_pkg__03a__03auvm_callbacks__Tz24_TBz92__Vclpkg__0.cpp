@@ -37,8 +37,8 @@ void Varchitecture_uvm_pkg__03a__03auvm_callbacks__Tz24_TBz92__Vclpkg::__VnoInFu
         if (VL_UNLIKELY(((unnamedblk1__DOT__cb_base_type 
                           == this->__PVT__m_cb_typeid)))) {
             VL_WRITEF_NX("[%0t] %%Error: uvm_callback.svh:528: Assertion failed in %Nuvm_pkg.uvm_callbacks__Tz24_TBz92.get.unnamedblk1: '$cast' failed.\n",0,
-                         64,VL_TIME_UNITED_Q(1),-12,
-                         vlSymsp->name());
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,vlSymsp->name());
             VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_callback.svh", 528, "");
             vlSymsp->TOP__uvm_pkg__03a__03auvm_typed_callbacks__Tz24__Vclpkg.__PVT__m_t_inst 
                 = this->__PVT__m_base_inst;

@@ -1,3 +1,13 @@
+/**
+ * Module 7 Example 7.2: UART Example - C++ Testbench
+ * 
+ * This C++ file serves as the testbench wrapper for the SystemVerilog
+ * UART example. It instantiates the Verilator-generated model,
+ * manages simulation time, and generates VCD waveform files.
+ * 
+ * NOTE: Longer timeout (8000) for UART serial transmission
+ */
+
 #include "Vuart_example.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
@@ -23,4 +33,3 @@ int main(int argc, char** argv) {
     delete top;
     return 0;
 }
-

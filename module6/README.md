@@ -64,12 +64,47 @@ Demonstrates a structured, hierarchical UVM environment skeleton with clean comp
 - **Sequence (`ArchSmokeSeq`)**: UVM sequence that generates random transactions
 - **Test (`ArchitectureTest`)**: Top-level UVM test that orchestrates the verification
 
+**Architecture Methods:**
+
+1. **Component Creation:**
+   ```systemverilog
+   function void build_phase(uvm_phase phase);
+       seqr = ArchSequencer::type_id::create("seqr", this);
+       drv  = ArchDriver::type_id::create("drv", this);
+       mon  = ArchMonitor::type_id::create("mon", this);
+   endfunction
+   ```
+   - **Purpose**: Create agent components using factory
+   - **Key**: All created in agent's `build_phase()`
+
+2. **Component Connection:**
+   ```systemverilog
+   function void connect_phase(uvm_phase phase);
+       drv.seq_item_port.connect(seqr.seq_item_export);
+   endfunction
+   ```
+   - **Purpose**: Connect driver to sequencer
+   - **Key**: TLM connection in `connect_phase()`
+
+3. **Sequence Execution:**
+   ```systemverilog
+   task run_phase(uvm_phase phase);
+       seq = ArchSmokeSeq::type_id::create("seq");
+       seq.start(env.agent.seqr);  // Start on sequencer
+   endtask
+   ```
+   - **Purpose**: Execute sequence on agent's sequencer
+   - **Key**: Create sequence, then start on sequencer
+
 **Key Concepts:**
 - Hierarchical component organization
 - Separation of concerns (driver, monitor, sequencer)
 - Component factory and configuration
 - Phase-based execution model
 - Transaction-based communication
+- **Component hierarchy**: Test → Env → Agent → Sequencer/Driver/Monitor
+- **Factory creation**: `type_id::create()` for all components
+- **Phase execution**: Build → Connect → Run → Report
 
 **Running the example:**
 
@@ -102,12 +137,57 @@ Demonstrates coordinating two independent agents from a single test using virtua
 - **Environment (`MA_Env`)**: Contains two agent instances (a0 and a1)
 - **Test (`MultiAgentTest`)**: Orchestrates multi-agent verification
 
+**Multi-Agent Methods:**
+
+1. **Agent Configuration:**
+   ```systemverilog
+   // Set configuration before creating agent
+   uvm_config_db#(int)::set(this, "a0", "agent_id", 0);
+   uvm_config_db#(int)::set(this, "a1", "agent_id", 1);
+   
+   // Get configuration in agent
+   if (!uvm_config_db#(int)::get(this, "", "agent_id", agent_id)) begin
+       agent_id = 0;  // Default
+   end
+   ```
+   - **Purpose**: Configure agent parameters
+   - **Key**: Set before creating, get in `build_phase()`
+
+2. **Virtual Sequence with execute_item:**
+   ```systemverilog
+   task body();
+       fork
+           begin
+               seqr0.execute_item(t0);  // Execute directly
+           end
+           begin
+               seqr1.execute_item(t1);  // Execute directly
+           end
+       join
+   endtask
+   ```
+   - **Purpose**: Execute transactions on multiple sequencers
+   - **Key**: `execute_item()` for direct execution
+
+3. **Setting Virtual Sequence References:**
+   ```systemverilog
+   vseq.seqr0 = env.a0.seqr;  // Set references
+   vseq.seqr1 = env.a1.seqr;
+   vseq.start(null);  // Start on null
+   ```
+   - **Purpose**: Connect virtual sequence to sequencers
+   - **Key**: Set references before starting
+
 **Key Concepts:**
 - Multiple agent coordination
 - Virtual sequences for cross-agent stimulus
 - Agent configuration via config database
 - Parallel sequence execution using fork-join
 - Agent reuse patterns
+- **Agent configuration** - Via ConfigDB before creation
+- **Virtual sequence** - Coordinates multiple sequencers
+- **`execute_item()`** - Direct transaction execution
+- **Parallel execution** - Fork-join for concurrent agents
 
 **Running the example:**
 
@@ -139,12 +219,67 @@ Demonstrates a minimal driver/monitor skeleton for protocol-like interfaces (AXI
 - **Environment (`ProtocolEnv`)**: Protocol verification environment
 - **Test (`ProtocolTest`)**: Protocol verification test
 
+**Protocol Methods:**
+
+1. **Virtual Interface Access:**
+   ```systemverilog
+   function void build_phase(uvm_phase phase);
+       if (!uvm_config_db#(virtual axi_lite_if)::get(this, "", "vif", vif)) begin
+           `uvm_fatal("NO_VIF", "Interface not set")
+       end
+   endfunction
+   ```
+   - **Purpose**: Get virtual interface for protocol access
+   - **Key**: Must be set before component can access signals
+
+2. **Handshake Pattern:**
+   ```systemverilog
+   @(posedge vif.ACLK);
+   vif.VALID <= 1;  // Assert valid
+   do @(posedge vif.ACLK); while (!vif.READY);  // Wait for ready
+   vif.VALID <= 0;  // Deassert valid
+   ```
+   - **Purpose**: Implement VALID/READY handshake
+   - **Key**: Assert VALID, wait for READY, deassert VALID
+
+3. **Write Transaction:**
+   ```systemverilog
+   // Write address + data channels
+   @(posedge vif.ACLK);
+   vif.AWADDR  <= t.addr;
+   vif.AWVALID <= 1;
+   vif.WDATA   <= t.data;
+   vif.WVALID  <= 1;
+   do @(posedge vif.ACLK); while (!(vif.AWREADY && vif.WREADY));
+   ```
+   - **Purpose**: AXI write transaction
+   - **Key**: Drive address and data, wait for both ready
+
+4. **Read Transaction:**
+   ```systemverilog
+   // Read address channel
+   @(posedge vif.ACLK);
+   vif.ARADDR  <= t.addr;
+   vif.ARVALID <= 1;
+   do @(posedge vif.ACLK); while (!vif.ARREADY);
+   // Read data channel
+   vif.RREADY  <= 1;
+   do @(posedge vif.ACLK); while (!vif.RVALID);
+   t.data = vif.RDATA;  // Capture data
+   ```
+   - **Purpose**: AXI read transaction
+   - **Key**: Drive address, wait for ready, capture data
+
 **Key Concepts:**
 - Protocol-shaped driver/monitor scaffolding
 - Handshake protocol implementation (VALID/READY)
 - Interface-based communication
 - Protocol transaction modeling
 - Clock-synchronized protocol operations
+- **Virtual interface** - Access protocol signals
+- **Handshake pattern** - VALID/READY protocol
+- **Clock synchronization** - `@(posedge clk)` for all operations
+- **`do-while` loop** - Wait for handshake completion
 
 **Note**: This is a **teaching scaffold**, not a full AXI4-Lite compliance VIP.
 
@@ -176,12 +311,51 @@ Demonstrates simple assertion-style checking for handshake behavior:
 - **Protocol Rules**: Valid must stay asserted until ready (bounded wait)
 - **Test (`ProtocolCheckersTest`)**: Test that exercises protocol checker
 
+**Protocol Checker Methods:**
+
+1. **Bounded Wait Pattern:**
+   ```systemverilog
+   int cycles = 0;
+   while (vif.valid && !vif.ready && cycles < 10) begin
+       cycles++;
+       @(posedge vif.clk);
+   end
+   if (vif.valid && !vif.ready) begin
+       `uvm_error("CHK", "Timeout violation")
+   end
+   ```
+   - **Purpose**: Check protocol doesn't wait indefinitely
+   - **Key**: Count cycles, report if exceeded bound
+
+2. **Reset Handling:**
+   ```systemverilog
+   @(posedge vif.clk);
+   if (!vif.rst_n) continue;  // Skip during reset
+   ```
+   - **Purpose**: Ignore protocol during reset
+   - **Key**: Use `continue` to skip reset cycles
+
+3. **Protocol State Monitoring:**
+   ```systemverilog
+   forever begin
+       @(posedge vif.clk);
+       if (!vif.rst_n) continue;
+       // Check protocol state
+   end
+   ```
+   - **Purpose**: Continuously monitor protocol
+   - **Key**: Forever loop with clock synchronization
+
 **Key Concepts:**
 - Protocol rule checking
 - Assertion-like patterns in UVM
 - Bounded wait checking
 - Protocol compliance verification
 - Error detection and reporting
+- **Bounded wait** - Check timeout conditions
+- **Reset handling** - Skip checking during reset
+- **State monitoring** - Check protocol signal combinations
+- **Error reporting** - Report violations with `uvm_error`
 
 **Running the example:**
 
@@ -211,12 +385,60 @@ Demonstrates matching and aggregating transactions from multiple streams:
 - **Multi-Channel Scoreboard (`MultiChannelScoreboard`)**: Scoreboard that matches transactions from multiple streams
 - **Test (`ScoreboardsTest`)**: Test with two stream producers and a scoreboard
 
+**Multi-Channel Scoreboard Methods:**
+
+1. **Associative Array Operations:**
+   ```systemverilog
+   SB_Txn q0[int];  // Associative array indexed by sequence number
+   q0[t.seq] = t;   // Store transaction
+   if (q0.exists(t.seq)) begin  // Check exists
+       // Match logic
+   end
+   q0.delete(t.seq);  // Delete after matching
+   ```
+   - **Purpose**: Store transactions by sequence number
+   - **Key**: Use sequence number as index
+
+2. **Transaction Matching:**
+   ```systemverilog
+   function void write(SB_Txn t);
+       // Store by stream
+       if (t.stream_id == 0) q0[t.seq] = t;
+       else q1[t.seq] = t;
+       
+       // Match when both streams have same sequence number
+       if (q0.exists(t.seq) && q1.exists(t.seq)) begin
+           if (q0[t.seq].data == q1[t.seq].data) pass++;
+           else fail++;
+           q0.delete(t.seq);  // Clean up
+           q1.delete(t.seq);
+       end
+   endfunction
+   ```
+   - **Purpose**: Match transactions across streams
+   - **Key**: Check both streams, compare, clean up
+
+3. **Multiple Stream Connection:**
+   ```systemverilog
+   function void connect_phase(uvm_phase phase);
+       p0.ap.connect(sb.imp);  // Connect stream 0
+       p1.ap.connect(sb.imp);  // Connect stream 1
+   endfunction
+   ```
+   - **Purpose**: Connect multiple streams to one scoreboard
+   - **Key**: One scoreboard can receive from multiple sources
+
 **Key Concepts:**
 - Multi-channel scoreboarding
 - Transaction matching across streams
 - Result aggregation
 - Scoreboard architecture
 - Stream-based verification
+- **Associative arrays** - Store transactions by sequence number
+- **`exists(key)`** - Check if both streams have transaction
+- **`delete(key)`** - Remove matched transactions
+- **Transaction matching** - Match by sequence number, compare data
+- **Multiple streams** - One scoreboard, multiple producers
 
 **Running the example:**
 
@@ -565,6 +787,100 @@ make SIM=verilator TEST=<test_name>
    ./scripts/module6.sh --no-clean
    ```
 
+## Complex Testbench Methods in Module 6
+
+### Quick Reference Table
+
+| **Category** | **Method/Pattern** | **Usage** | **Example** |
+|--------------|-------------------|-----------|-------------|
+| **Component Creation** | `type_id::create(name, parent)` | In `build_phase()` | `seqr = ArchSequencer::type_id::create("seqr", this);` |
+| **Configuration** | `uvm_config_db#(T)::set/get(...)` | Before/after creation | `uvm_config_db#(int)::set(this, "a0", "agent_id", 0);` |
+| **Sequence Execution** | `seq.start(sequencer)` | In `run_phase()` | `seq.start(env.agent.seqr);` |
+| **Virtual Sequence** | `sequencer.execute_item(txn)` | In virtual sequence | `seqr0.execute_item(t0);` |
+| **Virtual Interface** | `uvm_config_db#(virtual if)::get(...)` | In `build_phase()` | `uvm_config_db#(virtual axi_lite_if)::get(...)` |
+| **Handshake Pattern** | `VALID <= 1; wait READY; VALID <= 0` | Protocol driver | `vif.VALID <= 1; do @(posedge clk); while (!READY);` |
+| **Bounded Wait** | `while (condition && cycles < max)` | Protocol checker | `while (valid && !ready && cycles < 10)` |
+| **Associative Array** | `q[key] = value; q.exists(key); q.delete(key)` | Scoreboard | `q0[t.seq] = t; if (q0.exists(t.seq))` |
+
+### Common Patterns
+
+**1. Agent Configuration Pattern:**
+```systemverilog
+// Set before creating
+uvm_config_db#(int)::set(this, "a0", "agent_id", 0);
+a0 = MA_Agent::type_id::create("a0", this);
+
+// Get in agent
+if (!uvm_config_db#(int)::get(this, "", "agent_id", agent_id)) begin
+    agent_id = 0;  // Default
+end
+```
+
+**2. Virtual Sequence Pattern:**
+```systemverilog
+class MA_VirtualSeq extends uvm_sequence;
+    MA_Sequencer seqr0, seqr1;  // References
+    
+    task body();
+        fork
+            begin seqr0.execute_item(t0); end
+            begin seqr1.execute_item(t1); end
+        join
+    endtask
+endclass
+
+// In test
+vseq.seqr0 = env.a0.seqr;
+vseq.seqr1 = env.a1.seqr;
+vseq.start(null);
+```
+
+**3. Protocol Handshake Pattern:**
+```systemverilog
+@(posedge vif.clk);
+vif.VALID <= 1;
+do @(posedge vif.clk); while (!vif.READY);
+vif.VALID <= 0;
+```
+
+**4. Bounded Wait Pattern:**
+```systemverilog
+int cycles = 0;
+while (vif.valid && !vif.ready && cycles < max_cycles) begin
+    cycles++;
+    @(posedge vif.clk);
+end
+if (vif.valid && !vif.ready) begin
+    `uvm_error("CHK", "Timeout")
+end
+```
+
+**5. Multi-Stream Scoreboard Pattern:**
+```systemverilog
+function void write(SB_Txn t);
+    if (t.stream_id == 0) q0[t.seq] = t;
+    else q1[t.seq] = t;
+    
+    if (q0.exists(t.seq) && q1.exists(t.seq)) begin
+        // Match and compare
+        if (q0[t.seq].data == q1[t.seq].data) pass++;
+        else fail++;
+        q0.delete(t.seq);
+        q1.delete(t.seq);
+    end
+endfunction
+```
+
+### Best Practices
+
+1. **Component Creation**: Always use factory (`type_id::create()`)
+2. **Configuration**: Set config before creating components
+3. **Virtual Interfaces**: Set interface before `run_test()`
+4. **Virtual Sequences**: Set sequencer references before starting
+5. **Protocol Handshake**: Always use clock-synchronized operations
+6. **Bounded Wait**: Always check timeout conditions
+7. **Scoreboard Cleanup**: Delete matched transactions to prevent memory leaks
+
 ## Topics Covered
 
 1. **Testbench Architecture** - Hierarchical component organization and separation of concerns
@@ -577,6 +893,7 @@ make SIM=verilator TEST=<test_name>
 8. **Protocol Modeling** - Interface-based protocol verification
 9. **Transaction Matching** - Scoreboard-based result checking
 10. **Production-Quality Testbenches** - Building complex, maintainable verification environments
+11. **Functions and Methods** - Complex testbench method patterns and usage
 
 ## Next Steps
 

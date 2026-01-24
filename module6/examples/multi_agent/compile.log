@@ -1931,8 +1931,8 @@ g++    multi_agent.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_tim
 rm Vmulti_agent__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/multi_agent/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 11.455 MB sources in 343 modules, into 20.440 MB in 1919 C++ files needing 13.126 MB
-- Verilator: Walltime 30.522 s (elab=0.730, cvt=4.856, bld=24.069); cpu 6.434 s on 1 threads; allocated 223.105 MB
+- Verilator: Built from 11.488 MB sources in 343 modules, into 20.441 MB in 1919 C++ files needing 13.126 MB
+- Verilator: Walltime 19.397 s (elab=0.437, cvt=3.185, bld=15.230); cpu 4.164 s on 1 threads; allocated 224.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/multi_agent/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module6/examples/multi_agent/obj_dir'

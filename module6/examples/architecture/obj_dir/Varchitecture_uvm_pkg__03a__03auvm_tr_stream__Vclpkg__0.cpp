@@ -596,7 +596,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_tr_stream::__VnoInFunc_open_recorder(VlP
     std::string unnamedblk3__DOT__s;
     QData/*63:0*/ m_time;
     m_time = 0;
-    m_time = ((0ULL == open_time) ? VL_TIME_UNITED_Q(1)
+    m_time = ((0ULL == open_time) ? VL_TIME_UNITED_Q(1000)
                : open_time);
     if (([&]() {
                 this->__VnoInFunc_is_open(vlSymsp, __Vfunc_is_open__71__Vfuncout);

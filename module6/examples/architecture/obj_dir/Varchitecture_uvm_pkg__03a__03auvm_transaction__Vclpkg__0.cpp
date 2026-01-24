@@ -220,7 +220,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_transaction::__VnoInFunc_accept_tr(Varch
     if ((0ULL != accept_time)) {
         this->__PVT__accept_time = accept_time;
     } else {
-        this->__PVT__accept_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1));
+        this->__PVT__accept_time = VL_RTOIROUND_Q_D(VL_TIME_UNITED_D(1000));
     }
     this->__VnoInFunc_do_accept_tr(vlSymsp);
     VL_NULL_CHECK(this->__PVT__events, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_transaction.svh", 706)->__VnoInFunc_get(vlProcess, vlSymsp, "accept"s, __Vtask_get__18__Vfuncout);
@@ -271,7 +271,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_transaction::__VnoInFunc_m_begin_tr(VlPr
     QData/*63:0*/ tmp_time;
     tmp_time = 0;
     tmp_time = VL_RTOIROUND_Q_D(((0ULL == begin_time)
-                                  ? VL_TIME_UNITED_D(1)
+                                  ? VL_TIME_UNITED_D(1000)
                                   : VL_ITOR_D_Q(64, begin_time)));
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_recorder> parent_recorder;
     if ((0U != parent_handle)) {
@@ -337,7 +337,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_transaction::__VnoInFunc_end_tr(VlProces
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_event_> unnamedblk76__DOT__end_event;
     this->__PVT__end_time = VL_RTOIROUND_Q_D(((0ULL 
                                                == end_time)
-                                               ? VL_TIME_UNITED_D(1)
+                                               ? VL_TIME_UNITED_D(1000)
                                                : VL_ITOR_D_Q(64, end_time)));
     this->__VnoInFunc_do_end_tr(vlSymsp);
     if ((([&]() {

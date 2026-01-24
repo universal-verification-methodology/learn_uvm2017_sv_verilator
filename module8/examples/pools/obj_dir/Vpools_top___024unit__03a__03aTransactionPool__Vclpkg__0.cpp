@@ -113,7 +113,7 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_initialize_pool(
                 }(), __Vfunc_uvm_report_enabled__6__Vfuncout))) {
         __Vtask_uvm_report_info__10__report_enabled_checked = 1U;
         __Vtask_uvm_report_info__10__context_name = ""s;
-        __Vtask_uvm_report_info__10__line = 0x0000003aU;
+        __Vtask_uvm_report_info__10__line = 0x00000074U;
         __Vtask_uvm_report_info__10__filename = "pools.sv"s;
         __Vtask_uvm_report_info__10__verbosity = 0x00000064U;
         __Vtask_uvm_report_info__10__message = VL_SFORMATF_N_NX("Initialized pool with %0d objects",0,
@@ -208,11 +208,11 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_allocate(VlProce
                     }(), __Vfunc_uvm_report_enabled__14__Vfuncout))) {
             __Vtask_uvm_report_info__18__report_enabled_checked = 1U;
             __Vtask_uvm_report_info__18__context_name = ""s;
-            __Vtask_uvm_report_info__18__line = 0x00000043U;
+            __Vtask_uvm_report_info__18__line = 0x0000009bU;
             __Vtask_uvm_report_info__18__filename = "pools.sv"s;
             __Vtask_uvm_report_info__18__verbosity = 0x000001f4U;
             __Vtemp_1 = ([&]() {
-                    VL_NULL_CHECK(txn, "pools.sv", 67)
+                    VL_NULL_CHECK(txn, "pools.sv", 155)
                          ->__VnoInFunc_convert2string(vlProcess, vlSymsp, __Vtask_convert2string__19__Vfuncout);
                 }(), __Vtask_convert2string__19__Vfuncout);
             __Vtask_uvm_report_info__18__message = VL_SFORMATF_N_NX("Allocated from pool: %@ (remaining: %0d)",0,
@@ -252,11 +252,11 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_allocate(VlProce
                     }(), __Vfunc_uvm_report_enabled__24__Vfuncout))) {
             __Vtask_uvm_report_info__28__report_enabled_checked = 1U;
             __Vtask_uvm_report_info__28__context_name = ""s;
-            __Vtask_uvm_report_info__28__line = 0x00000048U;
+            __Vtask_uvm_report_info__28__line = 0x000000c4U;
             __Vtask_uvm_report_info__28__filename = "pools.sv"s;
             __Vtask_uvm_report_info__28__verbosity = 0x000001f4U;
             __Vtemp_2 = ([&]() {
-                    VL_NULL_CHECK(txn, "pools.sv", 72)
+                    VL_NULL_CHECK(txn, "pools.sv", 196)
                          ->__VnoInFunc_convert2string(vlProcess, vlSymsp, __Vtask_convert2string__29__Vfuncout);
                 }(), __Vtask_convert2string__29__Vfuncout);
             __Vtask_uvm_report_info__28__message = VL_SFORMATF_N_NX("Pool empty, created new: %@",0,
@@ -350,11 +350,11 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_free(VlProcessRe
                     }(), __Vfunc_uvm_report_enabled__33__Vfuncout))) {
             __Vtask_uvm_report_info__37__report_enabled_checked = 1U;
             __Vtask_uvm_report_info__37__context_name = ""s;
-            __Vtask_uvm_report_info__37__line = 0x00000052U;
+            __Vtask_uvm_report_info__37__line = 0x000000f5U;
             __Vtask_uvm_report_info__37__filename = "pools.sv"s;
             __Vtask_uvm_report_info__37__verbosity = 0x000001f4U;
             __Vtemp_1 = ([&]() {
-                    VL_NULL_CHECK(txn, "pools.sv", 82)
+                    VL_NULL_CHECK(txn, "pools.sv", 245)
                          ->__VnoInFunc_convert2string(vlProcess, vlSymsp, __Vtask_convert2string__38__Vfuncout);
                 }(), __Vtask_convert2string__38__Vfuncout);
             __Vtask_uvm_report_info__37__message = VL_SFORMATF_N_NX("Freed to pool: %@ (pool size: %0d)",0,
@@ -391,11 +391,11 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_free(VlProcessRe
                     }(), __Vfunc_uvm_report_enabled__42__Vfuncout))) {
             __Vtask_uvm_report_info__46__report_enabled_checked = 1U;
             __Vtask_uvm_report_info__46__context_name = ""s;
-            __Vtask_uvm_report_info__46__line = 0x00000055U;
+            __Vtask_uvm_report_info__46__line = 0x00000106U;
             __Vtask_uvm_report_info__46__filename = "pools.sv"s;
             __Vtask_uvm_report_info__46__verbosity = 0x000001f4U;
             __Vtemp_2 = ([&]() {
-                    VL_NULL_CHECK(txn, "pools.sv", 85)
+                    VL_NULL_CHECK(txn, "pools.sv", 262)
                          ->__VnoInFunc_convert2string(vlProcess, vlSymsp, __Vtask_convert2string__47__Vfuncout);
                 }(), __Vtask_convert2string__47__Vfuncout);
             __Vtask_uvm_report_info__46__message = VL_SFORMATF_N_NX("Pool full, discarding: %@",0,
@@ -551,7 +551,7 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_report_phase(Vpo
                 }(), __Vfunc_uvm_report_enabled__51__Vfuncout))) {
         __Vtask_uvm_report_info__55__report_enabled_checked = 1U;
         __Vtask_uvm_report_info__55__context_name = ""s;
-        __Vtask_uvm_report_info__55__line = 0x0000005aU;
+        __Vtask_uvm_report_info__55__line = 0x00000114U;
         __Vtask_uvm_report_info__55__filename = "pools.sv"s;
         __Vtask_uvm_report_info__55__verbosity = 0x00000064U;
         __Vtask_uvm_report_info__55__message = "Pool Statistics:"s;
@@ -582,7 +582,7 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_report_phase(Vpo
                 }(), __Vfunc_uvm_report_enabled__59__Vfuncout))) {
         __Vtask_uvm_report_info__63__report_enabled_checked = 1U;
         __Vtask_uvm_report_info__63__context_name = ""s;
-        __Vtask_uvm_report_info__63__line = 0x0000005bU;
+        __Vtask_uvm_report_info__63__line = 0x00000115U;
         __Vtask_uvm_report_info__63__filename = "pools.sv"s;
         __Vtask_uvm_report_info__63__verbosity = 0x00000064U;
         __Vtask_uvm_report_info__63__message = VL_SFORMATF_N_NX("  Pool Size: %0d",0,
@@ -615,7 +615,7 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_report_phase(Vpo
                 }(), __Vfunc_uvm_report_enabled__67__Vfuncout))) {
         __Vtask_uvm_report_info__71__report_enabled_checked = 1U;
         __Vtask_uvm_report_info__71__context_name = ""s;
-        __Vtask_uvm_report_info__71__line = 0x0000005cU;
+        __Vtask_uvm_report_info__71__line = 0x00000116U;
         __Vtask_uvm_report_info__71__filename = "pools.sv"s;
         __Vtask_uvm_report_info__71__verbosity = 0x00000064U;
         __Vtask_uvm_report_info__71__message = VL_SFORMATF_N_NX("  Current Pool Size: %0d",0,
@@ -648,7 +648,7 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_report_phase(Vpo
                 }(), __Vfunc_uvm_report_enabled__75__Vfuncout))) {
         __Vtask_uvm_report_info__79__report_enabled_checked = 1U;
         __Vtask_uvm_report_info__79__context_name = ""s;
-        __Vtask_uvm_report_info__79__line = 0x0000005dU;
+        __Vtask_uvm_report_info__79__line = 0x00000117U;
         __Vtask_uvm_report_info__79__filename = "pools.sv"s;
         __Vtask_uvm_report_info__79__verbosity = 0x00000064U;
         __Vtask_uvm_report_info__79__message = VL_SFORMATF_N_NX("  Allocated: %0d",0,
@@ -681,7 +681,7 @@ void Vpools_top___024unit__03a__03aTransactionPool::__VnoInFunc_report_phase(Vpo
                 }(), __Vfunc_uvm_report_enabled__83__Vfuncout))) {
         __Vtask_uvm_report_info__87__report_enabled_checked = 1U;
         __Vtask_uvm_report_info__87__context_name = ""s;
-        __Vtask_uvm_report_info__87__line = 0x0000005eU;
+        __Vtask_uvm_report_info__87__line = 0x00000118U;
         __Vtask_uvm_report_info__87__filename = "pools.sv"s;
         __Vtask_uvm_report_info__87__verbosity = 0x00000064U;
         __Vtask_uvm_report_info__87__message = VL_SFORMATF_N_NX("  Freed: %0d",0,

@@ -182,8 +182,8 @@ void Varchitecture_uvm_pkg__03a__03auvm_reg_read_only_cbs::__VnoInFunc_pre_write
             if (VL_UNLIKELY(((! VL_CAST_DYNAMIC(VL_NULL_CHECK(rw, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 226)
                                                 ->__PVT__element, unnamedblk1__DOT__fld))))) {
                 VL_WRITEF_NX("[%0t] %%Error: uvm_reg_cbs.svh:226: Assertion failed in %Nuvm_pkg.uvm_reg_read_only_cbs.pre_write.unnamedblk1: '$cast' failed.\n",0,
-                             64,VL_TIME_UNITED_Q(1),
-                             -12,vlSymsp->name());
+                             64,VL_TIME_UNITED_Q(1000),
+                             -9,vlSymsp->name());
                 VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 226, "");
             }
             VL_NULL_CHECK(unnamedblk1__DOT__fld, "/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/reg/uvm_reg_cbs.svh", 227)->__VnoInFunc_get_parent(vlSymsp, __Vtask_get_parent__5__Vfuncout);

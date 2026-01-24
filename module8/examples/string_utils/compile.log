@@ -1802,8 +1802,8 @@ g++    string_utils.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_ti
 rm Vstring_utils_top__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/string_utils/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.635 MB sources in 337 modules, into 19.973 MB in 1790 C++ files needing 8.393 MB
-- Verilator: Walltime 797.963 s (elab=0.393, cvt=3.129, bld=793.944); cpu 4.018 s on 1 threads; allocated 217.102 MB
+- Verilator: Built from 7.638 MB sources in 337 modules, into 19.973 MB in 1790 C++ files needing 8.393 MB
+- Verilator: Walltime 18.091 s (elab=0.394, cvt=2.830, bld=14.362); cpu 3.729 s on 1 threads; allocated 219.105 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/string_utils/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/string_utils/obj_dir'

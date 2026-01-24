@@ -28,7 +28,7 @@ VlCoroutine Vdma___024root___eval_initial__TOP__Vtiming__0(Vdma___024root* vlSel
         co_await vlSelfRef.__VdlySched.delay(0x0000000000001388ULL, 
                                              nullptr, 
                                              "dma.sv", 
-                                             115);
+                                             274);
         vlSelfRef.dma__DOT__clk = (1U & (~ (IData)(vlSelfRef.dma__DOT__clk)));
     }
     co_return;}
@@ -51,7 +51,7 @@ VlCoroutine Vdma___024root___eval_initial__TOP__Vtiming__1(Vdma___024root* vlSel
                                                              nullptr, 
                                                              "@(posedge dma.clk)", 
                                                              "dma.sv", 
-                                                             119);
+                                                             283);
         dma__DOT__unnamedblk1_1__DOT____Vrepeat0 = 
             (dma__DOT__unnamedblk1_1__DOT____Vrepeat0 
              - (IData)(1U));
@@ -371,7 +371,7 @@ void Vdma___024root___eval(Vdma___024root* vlSelf) {
 #ifdef VL_DEBUG
             Vdma___024root___dump_triggers__act(vlSelfRef.__VnbaTriggered, "nba"s);
 #endif
-            VL_FATAL_MT("dma.sv", 105, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
+            VL_FATAL_MT("dma.sv", 255, "", "DIDNOTCONVERGE: NBA region did not converge after 100 tries");
         }
         __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
         vlSelfRef.__VactIterCount = 0U;
@@ -380,7 +380,7 @@ void Vdma___024root___eval(Vdma___024root* vlSelf) {
 #ifdef VL_DEBUG
                 Vdma___024root___dump_triggers__act(vlSelfRef.__VactTriggered, "act"s);
 #endif
-                VL_FATAL_MT("dma.sv", 105, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
+                VL_FATAL_MT("dma.sv", 255, "", "DIDNOTCONVERGE: Active region did not converge after 100 tries");
             }
             vlSelfRef.__VactIterCount = ((IData)(1U) 
                                          + vlSelfRef.__VactIterCount);

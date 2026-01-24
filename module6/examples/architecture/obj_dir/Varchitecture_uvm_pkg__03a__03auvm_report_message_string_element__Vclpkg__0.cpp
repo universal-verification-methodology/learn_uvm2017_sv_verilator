@@ -34,7 +34,7 @@ void Varchitecture_uvm_pkg__03a__03auvm_report_message_string_element::__VnoInFu
     VlClassRef<Varchitecture_uvm_pkg__03a__03auvm_report_message_string_element> _rhs;
     if (VL_UNLIKELY(((! VL_CAST_DYNAMIC(rhs, _rhs))))) {
         VL_WRITEF_NX("[%0t] %%Error: uvm_report_message.svh:211: Assertion failed in %Nuvm_pkg.uvm_report_message_string_element.do_copy: '$cast' failed.\n",0,
-                     64,VL_TIME_UNITED_Q(1),-12,vlSymsp->name());
+                     64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
         VL_STOP_MT("/home/yongfu/proj/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src/base/uvm_report_message.svh", 211, "");
     }
     Varchitecture_uvm_pkg__03a__03auvm_report_message_element_base::__PVT___name 

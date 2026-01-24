@@ -49,10 +49,10 @@ VlCoroutine Varchitecture___024unit__03a__03aArchMonitor::__VnoInFunc_run_phase(
     // Body
     VL_KEEP_THIS;
     while (true) {
-        co_await vlSymsp->TOP.__VdlySched.delay(0x000000000000000aULL, 
+        co_await vlSymsp->TOP.__VdlySched.delay(0x0000000000002710ULL, 
                                                 vlProcess, 
                                                 "architecture.sv", 
-                                                47);
+                                                333);
     }
     co_return;}
 

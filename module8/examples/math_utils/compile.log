@@ -1802,8 +1802,8 @@ g++    math_utils.o verilated.o verilated_dpi.o verilated_vcd_c.o verilated_timi
 rm Vmath_utils_top__ALL.verilator_deplist.tmp
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/math_utils/obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.045 devel rev v5.044-73-gddbcd6672
-- Verilator: Built from 7.634 MB sources in 337 modules, into 19.793 MB in 1790 C++ files needing 8.393 MB
-- Verilator: Walltime 16.618 s (elab=0.374, cvt=2.689, bld=13.068); cpu 3.550 s on 1 threads; allocated 218.105 MB
+- Verilator: Built from 7.637 MB sources in 337 modules, into 19.793 MB in 1790 C++ files needing 8.393 MB
+- Verilator: Walltime 18.113 s (elab=0.399, cvt=2.780, bld=14.445); cpu 3.668 s on 1 threads; allocated 218.102 MB
 make: Entering directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/math_utils/obj_dir'
 make: Nothing to be done for 'default'.
 make: Leaving directory '/home/yongfu/proj/learn_uvm2017_sv_verilator/module8/examples/math_utils/obj_dir'
