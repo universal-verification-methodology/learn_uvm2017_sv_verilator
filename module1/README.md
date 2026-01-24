@@ -61,6 +61,55 @@ Demonstrates object-oriented programming concepts essential for verification:
   - `WriteTransaction` - Extends base with address and data fields
 - **UVM Integration**: Using UVM base classes and factory
 
+**Key Functions and Methods:**
+
+1. **Constructor: `new()`**
+   ```systemverilog
+   function new(string name = "Transaction");
+       id_counter++;      // Static counter increment
+       id = id_counter;   // Assign unique ID
+       data = 0;
+       timestamp = 0;
+   endfunction
+   ```
+   - Initializes object when created
+   - Uses static variable for unique ID generation
+
+2. **Copy Method: `copy()`**
+   ```systemverilog
+   function void copy(Transaction rhs);
+       if (rhs == null) begin
+           $error("Copy failed: null pointer");
+           return;
+       end
+       id = rhs.id;
+       data = rhs.data;
+       timestamp = rhs.timestamp;
+   endfunction
+   ```
+   - Creates deep copy of transaction
+   - Includes null pointer check for safety
+
+3. **Compare Method: `compare()`**
+   ```systemverilog
+   function bit compare(Transaction rhs);
+       if (rhs == null) return 0;
+       return (id == rhs.id) && (data == rhs.data);
+   endfunction
+   ```
+   - Returns `1` if transactions match, `0` otherwise
+   - Used in scoreboards for verification
+
+4. **String Conversion: `convert2string()`**
+   ```systemverilog
+   function string convert2string();
+       return $sformatf("Transaction(id=%0d, data=0x%0h, timestamp=%0d)", 
+                      id, data, timestamp);
+   endfunction
+   ```
+   - Uses `$sformatf()` built-in function for formatting
+   - Returns human-readable string representation
+
 **Running the example:**
 
 ```bash
@@ -106,8 +155,45 @@ Demonstrates SystemVerilog packages for code organization:
 - **Name Resolution**: Handling name conflicts
 - **Package Organization**: Structuring verification code
 
+**Key Functions and Tasks:**
+
+1. **Address Validation Function: `is_valid_address()`**
+   ```systemverilog
+   function automatic bit is_valid_address(logic [15:0] addr);
+       return (addr < 16'h1000);
+   endfunction
+   ```
+   - Returns `1` if address is valid, `0` otherwise
+   - Uses `automatic` keyword for re-entrant execution
+
+2. **Checksum Calculation Function: `calculate_checksum()`**
+   ```systemverilog
+   function automatic logic [7:0] calculate_checksum(logic [31:0] data);
+       return data[7:0] ^ data[15:8] ^ data[23:16] ^ data[31:24];
+   endfunction
+   ```
+   - Calculates XOR checksum of 32-bit data
+   - Returns 8-bit checksum value
+
+3. **Wait for Condition Task: `wait_for_condition()`**
+   ```systemverilog
+   task automatic wait_for_condition(ref bit condition, int timeout);
+       int count = 0;
+       while (!condition && count < timeout) begin
+           #1;
+           count++;
+       end
+   endtask
+   ```
+   - Waits for condition with timeout
+   - Uses `ref` parameter for pass-by-reference
+   - Demonstrates task with timing control
+
 **Key Concepts:**
-- Packages organize related code
+- Packages organize related code (types, functions, tasks, constants)
+- Functions in packages are reusable across modules
+- `automatic` keyword enables re-entrant functions/tasks
+- Tasks can contain delays, functions cannot
 - Import statements control namespace
 - Packages improve code reusability
 - Essential for UVM library organization
@@ -128,11 +214,69 @@ Shows data structures commonly used in verification:
 - **Coverage Collectors**: Using associative arrays for coverage tracking
 - **Dynamic Arrays**: Flexible array operations
 
+**Key Functions and Methods:**
+
+1. **Queue Methods:**
+   ```systemverilog
+   function void push(SimpleTransaction txn);
+       queue.push_back(txn);  // Built-in push_back() method
+   endfunction
+   
+   function SimpleTransaction pop();
+       if (queue.size() > 0)  // Built-in size() method
+           return queue.pop_front();  // Built-in pop_front() method
+   endfunction
+   ```
+   - Wraps built-in queue methods for clean interface
+   - `push_back()` adds to end, `pop_front()` removes from front
+
+2. **Scoreboard Methods:**
+   ```systemverilog
+   function void add_expected(int id, bit [31:0] data);
+       expected_data[id] = data;  // Associative array assignment
+   endfunction
+   
+   function bit check(int id);
+       if (expected_data.exists(id) == 0 || actual_data.exists(id) == 0)
+           return 0;  // Uses built-in exists() method
+       return (expected_data[id] == actual_data[id]);
+   endfunction
+   ```
+   - Uses `exists()` method to check if key exists
+   - Compares expected vs actual values
+
+3. **Coverage Collector Methods:**
+   ```systemverilog
+   function void sample_address(int addr);
+       if (address_count.exists(addr) != 0)
+           address_count[addr]++;  // Increment count
+       else
+           address_count[addr] = 1;  // Initialize
+   endfunction
+   
+   function real get_coverage(int max_address);
+       int covered = 0;
+       foreach (address_count[i]) begin  // Built-in foreach loop
+           if (i < max_address) covered++;
+       end
+       return (real'(covered) / real'(max_address)) * 100.0;
+   endfunction
+   ```
+   - Uses `foreach` loop to iterate associative arrays
+   - Calculates coverage percentage
+
 **Key Data Structures:**
 - `queue` - Fast FIFO/LIFO queue operations
 - `associative array` - Key-value lookups
 - `dynamic array` - Flexible array sizing
 - Structs for organizing related data
+
+**Built-in Array Methods Used:**
+- `push_back()` - Add element to queue end
+- `pop_front()` - Remove element from queue front
+- `size()` - Get number of elements
+- `exists()` - Check if associative array key exists
+- `foreach` - Iterate over associative arrays
 
 **Running the example:**
 
@@ -224,21 +368,60 @@ module counter (
 
 Comprehensive testbench for the AND gate using SystemVerilog:
 
-**Test Cases:**
-1. `test_basic` - Basic truth table test
+**Test Cases (Tasks):**
+
+1. **`test_basic()` Task** - Basic truth table test
+   ```systemverilog
+   task test_basic();
+       $display("Test 1: Basic truth table test");
+       a = 0; b = 0;
+       #10;  // Delay for signal propagation
+       assert (y == 0) else $error("Test failed: 0 & 0 should be 0, got %b", y);
+       // ... more test cases ...
+       $display("Test 1 passed!");
+   endtask
+   ```
    - Tests all 4 input combinations
-   - Verifies correct output for each combination
-   - Uses delays for signal propagation
+   - Uses delays (`#10`) for signal propagation
+   - Uses `assert` with `$error()` for verification
+   - Uses `$display()` for test output
 
-2. `test_truth_table` - Systematic truth table verification
-   - Uses loop to iterate through all combinations
-   - Checks output using assertions
-   - Demonstrates test vector generation
+2. **`test_truth_table()` Task** - Systematic truth table verification
+   ```systemverilog
+   task test_truth_table();
+       for (int i = 0; i < 2; i++) begin
+           for (int j = 0; j < 2; j++) begin
+               a = bit'(i);  // Type casting
+               b = bit'(j);
+               #10;
+               assert (y == (a & b)) else 
+                   $error("Test failed: %b & %b should be %b, got %b", a, b, (a & b), y);
+           end
+       end
+   endtask
+   ```
+   - Uses nested loops for exhaustive testing
+   - Type casting with `bit'(i)`
+   - Expression evaluation in assertion
 
-3. `test_timing` - Timing verification
+3. **`test_timing()` Task** - Timing verification
+   ```systemverilog
+   task test_timing();
+       a = 0; b = 0;
+       #5;  // Short delay
+       a = 1; b = 1;
+       #5;  // Another delay
+       assert (y == 1) else $error("Test failed: Output should propagate");
+   endtask
+   ```
    - Tests signal propagation timing
    - Verifies output stability
    - Checks response to input changes
+
+**Key Built-in Functions Used:**
+- `$display()` - Print formatted test output
+- `$error()` - Report assertion failures
+- `assert` - Immediate assertion statement
 
 **Running the test:**
 
@@ -260,28 +443,76 @@ make SIM=verilator TEST=test_and_gate
 
 Testbench for the counter module:
 
-**Test Cases:**
-1. `test_reset` - Reset functionality
+**Test Cases (Tasks):**
+
+1. **`reset()` Helper Task** - Reset sequence
+   ```systemverilog
+   task reset();
+       rst_n = 0;
+       enable = 0;
+       #20;      // Wait for reset to propagate
+       rst_n = 1;
+       #10;      // Wait after reset release
+   endtask
+   ```
+   - Encapsulates common reset sequence
+   - Reusable across multiple test tasks
+
+2. **`test_reset()` Task** - Reset functionality
+   ```systemverilog
+   task test_reset();
+       reset();  // Call helper task
+       assert (count == 8'h00) else $error("Test failed: Counter should reset to 0");
+   endtask
+   ```
    - Verifies counter resets to 0
    - Tests active-low reset behavior
 
-2. `test_increment` - Increment functionality
+3. **`test_increment()` Task** - Increment functionality
+   ```systemverilog
+   task test_increment();
+       reset();
+       enable = 1;
+       for (int i = 0; i < 10; i++) begin
+           @(posedge clk);  // Wait for clock edge
+           #1;              // Small delay for signal stability
+           assert (count == 8'(i)) else $error("Test failed: Expected count=%0d, got %0d", i, count);
+       end
+   endtask
+   ```
    - Verifies counter increments correctly
-   - Tests 10 consecutive clock cycles
-   - Validates enable control
+   - Uses `@(posedge clk)` for clock synchronization
+   - Type casting with `8'(i)` for bit width matching
 
-3. `test_enable` - Enable control
+4. **`test_enable()` Task** - Enable control
    - Tests counter hold when disabled
    - Verifies increment when enabled
+   - Uses clock edge detection
 
-4. `test_overflow` - Overflow behavior
+5. **`test_overflow()` Task** - Overflow behavior
+   ```systemverilog
+   task test_overflow();
+       reset();
+       enable = 1;
+       for (int i = 0; i < 256; i++) begin
+           @(posedge clk);
+           #1;
+           assert (count == 8'(i % 256));
+       end
+       // Verify wrap-around
+       @(posedge clk);
+       assert (count == 0);
+   endtask
+   ```
    - Tests wrap-around at 0xFF → 0x00
    - Verifies 256 count cycles
 
 **Key Features:**
-- Clock generation using `initial` block
-- Reset sequence helper function
-- Rising edge detection using `@(posedge clk)`
+- **Clock Generation**: `initial begin clk = 0; forever #5 clk = ~clk; end`
+- **Reset Sequence**: Helper task for reusable reset logic
+- **Clock Synchronization**: `@(posedge clk)` for rising edge detection
+- **Built-in Functions**: `$display()`, `$error()`, `assert`
+- **Event Control**: `@(posedge clk)` waits for clock transitions
 
 **Running the test:**
 
@@ -567,18 +798,104 @@ make SIM=verilator TEST=<test_name>
    make SIM=verilator TEST=test_and_gate V=1
    ```
 
+## Functions and Tasks in Module 1
+
+### Quick Reference: Functions vs Tasks
+
+| Feature | Function | Task |
+|---------|----------|------|
+| **Return Value** | Required | None (void) |
+| **Timing Control** | ❌ No delays | ✅ Can use delays |
+| **Use Case** | Calculations, comparisons | Test sequences, stimulus |
+| **Syntax** | `function <type> name(); ... endfunction` | `task name(); ... endtask` |
+
+### Common Function Patterns
+
+**1. Class Methods (Functions)**
+- `new()` - Constructor
+- `copy()` - Deep copy
+- `compare()` - Equality check
+- `convert2string()` - String representation
+- `get_id()`, `get_address()` - Accessor methods
+
+**2. Package Functions**
+- `is_valid_address()` - Address validation
+- `calculate_checksum()` - Data checksum calculation
+
+**3. Array Methods**
+- `push_back()`, `pop_front()` - Queue operations
+- `size()` - Get element count
+- `exists()` - Check associative array key
+
+### Common Task Patterns
+
+**1. Test Tasks**
+- `test_basic()`, `test_reset()` - Individual test cases
+- Organized as separate tasks for reusability
+
+**2. Helper Tasks**
+- `reset()` - Common reset sequence
+- Encapsulates reusable sequences
+
+**3. Clock Generation**
+```systemverilog
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+end
+```
+
+### Built-in Functions Used
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `$display()` | Print formatted text | `$display("Value: %0d", x);` |
+| `$sformatf()` | Format string | `string s = $sformatf("id=%0d", id);` |
+| `$error()` | Report error | `$error("Failed: %0d", code);` |
+| `$finish` | Terminate simulation | `$finish;` |
+| `$time` | Get simulation time | `time t = $time;` |
+
+### Format Specifiers
+
+- `%0d` - Decimal integer
+- `%0h` - Hexadecimal
+- `%0b` - Binary
+- `%0s` - String
+- `%0t` - Time
+
+### Best Practices
+
+1. **Use Functions For:**
+   - ✅ Calculations and data transformations
+   - ✅ Comparisons and validations
+   - ✅ String formatting
+   - ❌ Operations requiring delays
+
+2. **Use Tasks For:**
+   - ✅ Test sequences
+   - ✅ Stimulus generation
+   - ✅ Reset/initialization sequences
+   - ✅ Operations with timing control
+
+3. **Always:**
+   - Check for null before accessing object fields
+   - Use `automatic` keyword for re-entrant functions/tasks
+   - Use non-blocking assignment (`<=`) in sequential logic
+   - Use blocking assignment (`=`) in combinational logic
+
 ## Topics Covered
 
 1. **SystemVerilog Classes and Inheritance** - OOP fundamentals for verification data structures
 2. **Interfaces and Modports** - SystemVerilog patterns for testbench communication
 3. **Packages** - Code organization and namespace management
-4. **Verification Fundamentals** - Basic testbench concepts and structure
-5. **Testbench Architecture** - DUT, stimulus generation, result checking
-6. **Simulation Flow** - Time management and synchronization
-7. **Data Structures** - Collections optimized for verification (queues, scoreboards, coverage)
-8. **Error Handling** - UVM reporting and structured logging
-9. **SystemVerilog Basics** - Writing SystemVerilog testbenches
-10. **UVM Basics** - UVM-style testbench architecture
+4. **Functions and Tasks** - SystemVerilog procedural constructs for verification
+5. **Verification Fundamentals** - Basic testbench concepts and structure
+6. **Testbench Architecture** - DUT, stimulus generation, result checking
+7. **Simulation Flow** - Time management and synchronization
+8. **Data Structures** - Collections optimized for verification (queues, scoreboards, coverage)
+9. **Error Handling** - UVM reporting and structured logging
+10. **SystemVerilog Basics** - Writing SystemVerilog testbenches
+11. **UVM Basics** - UVM-style testbench architecture
 
 ## Next Steps
 

@@ -18,20 +18,21 @@ This project includes automated installation scripts to simplify the setup proce
 chmod +x scripts/*.sh
 
 # Install all tools with default settings
-./scripts/module0.sh
+./scripts/installation.sh
 
 # Or install with custom options
-./scripts/module0.sh --verilator-mode submodule --uvm-mode submodule
+./scripts/installation.sh --local  # Install to project-local directory
+./scripts/installation.sh --skip-uvm  # Install only Verilator
 ```
 
 **Individual Tool Installation**:
 - Verilator: `./scripts/install_verilator.sh [--from-submodule|--system|--source]`
-- UVM Library: `./scripts/install_uvm.sh [--from-submodule|--system]`
+- UVM Library: Installed automatically with `./scripts/installation.sh` (use `--skip-uvm` to skip)
 
 **Uninstallation**:
 - Uninstall all: Use individual uninstall scripts or remove tools manually
 - Verilator: `./scripts/uninstall_verilator.sh [--system] [--keep-submodule]`
-- UVM: `./scripts/uninstall_uvm.sh [--keep-submodule]`
+- UVM: Remove manually from `tools/uvm-2017/` directory
 
 For detailed usage of each script, see the corresponding installation sections below.
 
@@ -125,23 +126,27 @@ For detailed usage of each script, see the corresponding installation sections b
 - **Automated Installation (Recommended)**
   - **Using the installation script**:
     ```bash
-    # Install from git submodule (default - Accellera UVM 1.2)
-    ./scripts/install_uvm.sh --from-submodule
+    # UVM is installed automatically with the main installation script
+    ./scripts/installation.sh  # Installs both Verilator and UVM 2017-1.0
     
-    # Install from system package (if available)
-    ./scripts/install_uvm.sh --system
+    # To skip UVM installation
+    ./scripts/installation.sh --skip-uvm
     ```
   - The script automatically:
-    - Sets up git submodule in `tools/uvm-1.2/`
+    - Downloads Accellera UVM 2017-1.0 tarball to `tools/uvm-2017/`
+    - Extracts and sets up UVM library
+    - Creates environment setup script (`scripts/setup_uvm_env.sh`)
     - Configures UVM library paths
-    - Verifies the installation
 
 - **Manual Installation Methods**
-  - **From Accellera Repository**:
+  - **From Accellera Tarball**:
     ```bash
-    git clone https://github.com/accellera-official/uvm.git tools/uvm-1.2
-    cd tools/uvm-1.2
-    # Follow Accellera installation instructions
+    # Download Accellera UVM 2017-1.0 tarball
+    mkdir -p tools/uvm-2017
+    cd tools/uvm-2017
+    wget https://www.accellera.org/images/downloads/standards/uvm/Accellera-1800.2-2017-1.0.tar.gz
+    tar -xzf Accellera-1800.2-2017-1.0.tar.gz
+    # UVM will be extracted to 1800.2-2017-1.0/
     ```
   - **From System Package** (if available):
     - Some Linux distributions provide UVM packages
@@ -149,11 +154,11 @@ For detailed usage of each script, see the corresponding installation sections b
 
 - **Uninstallation**
   ```bash
-  # Uninstall and remove submodule
-  ./scripts/uninstall_uvm.sh
+  # Remove UVM manually
+  rm -rf tools/uvm-2017/
   
-  # Keep git submodule
-  ./scripts/uninstall_uvm.sh --keep-submodule
+  # Or remove just the extracted directory, keeping the tarball
+  rm -rf tools/uvm-2017/1800.2-2017-1.0/
   ```
 
 - **Environment Variables**
@@ -162,7 +167,7 @@ For detailed usage of each script, see the corresponding installation sections b
   - Include paths for compilation
 
 - **Verification Steps**
-  - Check UVM library exists: `ls $UVM_HOME/src/uvm_pkg.sv`
+  - Check UVM library exists: `ls $UVM_HOME/uvm_pkg.sv` (after sourcing `scripts/setup_uvm_env.sh`)
   - Compile simple UVM test
   - Verify UVM classes available
 
@@ -197,7 +202,7 @@ While this project focuses on Verilator, you may want to use commercial simulato
 
 - **Verilator Compilation**
   - SystemVerilog flags: `-sv`, `--timing`
-  - Include paths: `-I$UVM_HOME/src`
+  - Include paths: `+incdir+$UVM_HOME` (UVM_HOME already points to the src directory)
   - Optimization flags
   - Coverage options
 
@@ -234,10 +239,11 @@ While this project focuses on Verilator, you may want to use commercial simulato
   - Test directory structure
   - DUT (Design Under Test) organization
   - Configuration files
-  - `tools/` directory for git submodules (Verilator, UVM)
+  - `tools/` directory for tools (Verilator as git submodule, UVM as tarball)
 
 - **Git Submodules Management**
-  - Tools are managed as git submodules in the `tools/` directory
+  - Verilator is managed as a git submodule in `tools/verilator/`
+  - UVM is downloaded as a tarball to `tools/uvm-2017/` (not a git submodule)
   - Initialize submodules: `./scripts/init_submodules.sh` or `git submodule update --init --recursive`
   - Update submodules: `./scripts/update_submodules.sh` or `git submodule update --remote`
   - Add new submodule: `./scripts/add_submodule.sh <repo_url> <path>`
@@ -252,13 +258,13 @@ While this project focuses on Verilator, you may want to use commercial simulato
   - Git initialization
   - .gitignore for SystemVerilog and simulation (include build artifacts, waveforms)
   - Initial commit structure
-  - Git submodules in `.gitmodules` file
+  - Git submodules in `.gitmodules` file (only Verilator, not UVM)
 
 ### 8. First "Hello World" Verification Test
 
 - **Prerequisites**
-  - Ensure all tools are installed: `./scripts/module0.sh --verify-only`
-  - Verify tools are accessible
+  - Ensure all tools are installed: `./scripts/installation.sh`
+  - Verify tools are accessible: `verilator --version` and `ls $UVM_HOME/uvm_pkg.sv` (after sourcing `scripts/setup_uvm_env.sh`)
 
 - **Simple DUT Creation**
   - Basic Verilog module (e.g., AND gate)
@@ -326,9 +332,9 @@ While this project focuses on Verilator, you may want to use commercial simulato
   - Using script: `./scripts/install_verilator.sh --from-submodule`
   - Verify: `verilator --version`
 - [ ] UVM library installed and verified
-  - Using script: `./scripts/install_uvm.sh --from-submodule`
-  - Verify: `ls $UVM_HOME/src/uvm_pkg.sv`
-- [ ] All tools verified together: `./scripts/module0.sh --verify-only`
+  - Using script: `./scripts/installation.sh` (UVM is installed automatically)
+  - Verify: `ls $UVM_HOME/uvm_pkg.sv` (after sourcing `scripts/setup_uvm_env.sh`)
+- [ ] All tools verified together: Run `./scripts/installation.sh` and verify with `verilator --version` and `ls $UVM_HOME/uvm_pkg.sv` (after sourcing `scripts/setup_uvm_env.sh`)
 - [ ] IDE configured and working
 - [ ] First test runs successfully
 - [ ] Can create and run simple testbench
@@ -352,17 +358,16 @@ By the end of this module, you should be able to:
 ## Exercises
 
 1. **Installation Verification**
-   - Use `./scripts/module0.sh --verify-only` to check all installations
-   - Or verify each tool independently:
+   - Verify each tool independently:
      - Verilator: `verilator --version`
-     - UVM: `ls $UVM_HOME/src/uvm_pkg.sv`
+     - UVM: `ls $UVM_HOME/uvm_pkg.sv` (after sourcing `scripts/setup_uvm_env.sh`)
    - Document any issues encountered
 
 2. **Environment Setup**
-   - Option A (Automated): Run `./scripts/module0.sh` to install everything
+   - Option A (Automated): Run `./scripts/installation.sh` to install everything
    - Option B (Manual):
      - Install tools individually using the scripts or manually
-   - Set up environment variables
+   - Set up environment variables by sourcing: `source scripts/setup_uvm_env.sh`
 
 3. **First Test**
    - Create a simple Verilog module
@@ -376,9 +381,9 @@ By the end of this module, you should be able to:
 
 5. **Project Structure**
    - Create a well-organized project structure
-   - Set up version control (git submodules for tools are already managed)
+   - Set up version control (Verilator is a git submodule, UVM is a tarball)
    - Create initial documentation
-   - Understand the `tools/` directory structure (git submodules)
+   - Understand the `tools/` directory structure (Verilator submodule, UVM tarball)
 
 ## Assessment
 
@@ -400,7 +405,7 @@ After completing this module, proceed to [Module 1: SystemVerilog and Verificati
 
 - **Installation Scripts**:
   - All scripts are located in the `scripts/` directory
-  - Run `./scripts/module0.sh --help` for detailed usage
+  - Run `./scripts/installation.sh --help` for detailed usage
   - Individual script help: `./scripts/install_<tool>.sh --help`
   
 - **Verilator Documentation**: https://verilator.org/
