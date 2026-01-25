@@ -8,7 +8,6 @@
 A comprehensive, modular learning path for mastering **UVM (Universal Verification Methodology)** using **SystemVerilog** (IEEE 1800.2-2017) with progressive complexity levels. This project provides a complete educational resource with examples, testbenches, and documentation covering all aspects of UVM verification using SystemVerilog.
 
 ## 📋 Table of Contents
-\
 - [Overview](#overview)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
@@ -547,3 +546,4 @@ For questions, issues, or contributions:
 **Happy Learning! 🚀**
 
 Start your UVM journey today with Module 0: [Installation and Setup](docs/MODULE0.md)
+
