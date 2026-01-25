@@ -1,7 +1,5 @@
 # Module 5: Advanced UVM Concepts
 
-**Duration**: 3 weeks  
-**Complexity**: Advanced  
 **Goal**: Master advanced UVM features and patterns
 
 ## Overview
