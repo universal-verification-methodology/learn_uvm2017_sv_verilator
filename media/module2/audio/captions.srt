@@ -1,0 +1,323 @@
+1
+00:00:00,000 --> 00:00:03,936
+SystemVerilog Testbench Fundamentals Module 2
+
+2
+00:00:04,286 --> 00:00:08,894
+Learning objectives Master SystemVerilog testbench construction
+
+3
+00:00:09,244 --> 00:00:12,004
+Prerequisites See module README
+
+4
+00:00:12,354 --> 00:00:16,698
+Learning path Master SystemVerilog testbench construction
+
+5
+00:00:17,048 --> 00:00:31,832
+Overview This module provides comprehensive coverage of SystemVerilog testbench construction. You'll learn how to build testbenches, generate clocks, handle resets, access signals, and create robust verification environments.
+
+6
+00:00:32,182 --> 00:00:34,438
+Syllabus topics
+
+7
+00:00:34,788 --> 00:00:37,572
+From MODULE2 Topics Covered.
+
+8
+00:00:37,922 --> 00:00:40,706
+From MODULE2 Topics Covered.
+
+9
+00:00:41,056 --> 00:00:43,840
+From MODULE2 Topics Covered.
+
+10
+00:00:44,190 --> 00:00:46,974
+From MODULE2 Topics Covered.
+
+11
+00:00:47,324 --> 00:00:50,108
+From MODULE2 Topics Covered.
+
+12
+00:00:50,458 --> 00:00:53,242
+From MODULE2 Topics Covered.
+
+13
+00:00:53,592 --> 00:00:56,376
+From MODULE2 Topics Covered.
+
+14
+00:00:56,726 --> 00:00:59,510
+From MODULE2 Topics Covered.
+
+15
+00:00:59,860 --> 00:01:02,644
+From MODULE2 Topics Covered.
+
+16
+00:01:02,994 --> 00:01:05,778
+From MODULE2 Topics Covered.
+
+17
+00:01:06,128 --> 00:01:08,912
+From MODULE2 Topics Covered.
+
+18
+00:01:09,262 --> 00:01:12,046
+From MODULE2 Topics Covered.
+
+19
+00:01:12,396 --> 00:01:15,180
+From MODULE2 Topics Covered.
+
+20
+00:01:15,530 --> 00:01:18,314
+From MODULE2 Topics Covered.
+
+21
+00:01:18,664 --> 00:01:21,448
+From MODULE2 Topics Covered.
+
+22
+00:01:21,798 --> 00:01:24,582
+From MODULE2 Topics Covered.
+
+23
+00:01:24,932 --> 00:01:27,716
+From MODULE2 Topics Covered.
+
+24
+00:01:28,066 --> 00:01:30,850
+From MODULE2 Topics Covered.
+
+25
+00:01:31,200 --> 00:01:33,984
+From MODULE2 Topics Covered.
+
+26
+00:01:34,334 --> 00:01:37,118
+From MODULE2 Topics Covered.
+
+27
+00:01:37,468 --> 00:01:40,252
+From MODULE2 Topics Covered.
+
+28
+00:01:40,602 --> 00:01:43,386
+From MODULE2 Topics Covered.
+
+29
+00:01:43,736 --> 00:01:46,520
+From MODULE2 Topics Covered.
+
+30
+00:01:46,870 --> 00:01:49,654
+From MODULE2 Topics Covered.
+
+31
+00:01:50,004 --> 00:01:52,788
+From MODULE2 Topics Covered.
+
+32
+00:01:53,138 --> 00:01:55,922
+From MODULE2 Topics Covered.
+
+33
+00:01:56,272 --> 00:01:59,056
+From MODULE2 Topics Covered.
+
+34
+00:01:59,406 --> 00:02:02,190
+From MODULE2 Topics Covered.
+
+35
+00:02:02,540 --> 00:02:05,324
+From MODULE2 Topics Covered.
+
+36
+00:02:05,674 --> 00:02:08,458
+From MODULE2 Topics Covered.
+
+37
+00:02:08,808 --> 00:02:11,592
+From MODULE2 Topics Covered.
+
+38
+00:02:11,942 --> 00:02:14,726
+From MODULE2 Topics Covered.
+
+39
+00:02:15,076 --> 00:02:17,860
+From MODULE2 Topics Covered.
+
+40
+00:02:18,210 --> 00:02:20,994
+From MODULE2 Topics Covered.
+
+41
+00:02:21,344 --> 00:02:24,128
+From MODULE2 Topics Covered.
+
+42
+00:02:24,478 --> 00:02:27,262
+From MODULE2 Topics Covered.
+
+43
+00:02:27,612 --> 00:02:30,396
+From MODULE2 Topics Covered.
+
+44
+00:02:30,746 --> 00:02:33,530
+From MODULE2 Topics Covered.
+
+45
+00:02:33,880 --> 00:02:36,664
+From MODULE2 Topics Covered.
+
+46
+00:02:37,014 --> 00:02:39,798
+From MODULE2 Topics Covered.
+
+47
+00:02:40,148 --> 00:02:42,932
+From MODULE2 Topics Covered.
+
+48
+00:02:43,282 --> 00:02:46,066
+From MODULE2 Topics Covered.
+
+49
+00:02:46,416 --> 00:02:49,200
+From MODULE2 Topics Covered.
+
+50
+00:02:49,550 --> 00:02:52,334
+From MODULE2 Topics Covered.
+
+51
+00:02:52,684 --> 00:02:55,468
+From MODULE2 Topics Covered.
+
+52
+00:02:55,818 --> 00:02:58,602
+From MODULE2 Topics Covered.
+
+53
+00:02:58,952 --> 00:03:01,736
+From MODULE2 Topics Covered.
+
+54
+00:03:02,086 --> 00:03:04,870
+From MODULE2 Topics Covered.
+
+55
+00:03:05,220 --> 00:03:08,004
+From MODULE2 Topics Covered.
+
+56
+00:03:08,354 --> 00:03:11,138
+From MODULE2 Topics Covered.
+
+57
+00:03:11,488 --> 00:03:14,272
+From MODULE2 Topics Covered.
+
+58
+00:03:14,622 --> 00:03:17,406
+From MODULE2 Topics Covered.
+
+59
+00:03:17,756 --> 00:03:20,540
+From MODULE2 Topics Covered.
+
+60
+00:03:20,890 --> 00:03:23,674
+From MODULE2 Topics Covered.
+
+61
+00:03:24,024 --> 00:03:26,808
+From MODULE2 Topics Covered.
+
+62
+00:03:27,158 --> 00:03:29,942
+From MODULE2 Topics Covered.
+
+63
+00:03:30,292 --> 00:03:33,076
+From MODULE2 Topics Covered.
+
+64
+00:03:33,426 --> 00:03:36,210
+From MODULE2 Topics Covered.
+
+65
+00:03:36,560 --> 00:03:39,344
+From MODULE2 Topics Covered.
+
+66
+00:03:39,694 --> 00:03:42,478
+From MODULE2 Topics Covered.
+
+67
+00:03:42,828 --> 00:03:45,612
+From MODULE2 Topics Covered.
+
+68
+00:03:45,962 --> 00:03:48,746
+From MODULE2 Topics Covered.
+
+69
+00:03:49,096 --> 00:03:51,880
+From MODULE2 Topics Covered.
+
+70
+00:03:52,230 --> 00:03:55,014
+From MODULE2 Topics Covered.
+
+71
+00:03:55,364 --> 00:03:58,148
+From MODULE2 Topics Covered.
+
+72
+00:03:58,498 --> 00:04:01,282
+From MODULE2 Topics Covered.
+
+73
+00:04:01,632 --> 00:04:04,416
+From MODULE2 Topics Covered.
+
+74
+00:04:04,766 --> 00:04:07,550
+From MODULE2 Topics Covered.
+
+75
+00:04:07,900 --> 00:04:10,132
+Hands-on examples
+
+76
+00:04:10,482 --> 00:04:13,314
+Run from course repository root.
+
+77
+00:04:13,664 --> 00:04:17,672
+Exercise scaffold The following command is shown on screen.
+
+78
+00:04:18,022 --> 00:04:20,350
+Practice & assessment
+
+79
+00:04:20,700 --> 00:04:27,492
+Exercises Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+
+80
+00:04:27,842 --> 00:04:42,122
+Assessment checklist Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns Can structure testbenches effectively
+
+81
+00:04:42,472 --> 00:04:55,384
+Summary & next steps Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Run ./scripts/module2.sh --check Next: Next module in course

@@ -1,0 +1,161 @@
+[Slide 1] SystemVerilog Testbench Fundamentals Module 2
+
+[Slide 2] Learning objectives Master SystemVerilog testbench construction
+
+[Slide 3] Prerequisites See module README
+
+[Slide 4] Learning path Master SystemVerilog testbench construction
+
+[Slide 5] Overview This module provides comprehensive coverage of SystemVerilog testbench construction. You'll learn how to build testbenches, generate clocks, handle resets, access signals, and create robust verification environments.
+
+[Slide 6] Syllabus topics
+
+[Slide 7] From MODULE2 Topics Covered.
+
+[Slide 8] From MODULE2 Topics Covered.
+
+[Slide 9] From MODULE2 Topics Covered.
+
+[Slide 10] From MODULE2 Topics Covered.
+
+[Slide 11] From MODULE2 Topics Covered.
+
+[Slide 12] From MODULE2 Topics Covered.
+
+[Slide 13] From MODULE2 Topics Covered.
+
+[Slide 14] From MODULE2 Topics Covered.
+
+[Slide 15] From MODULE2 Topics Covered.
+
+[Slide 16] From MODULE2 Topics Covered.
+
+[Slide 17] From MODULE2 Topics Covered.
+
+[Slide 18] From MODULE2 Topics Covered.
+
+[Slide 19] From MODULE2 Topics Covered.
+
+[Slide 20] From MODULE2 Topics Covered.
+
+[Slide 21] From MODULE2 Topics Covered.
+
+[Slide 22] From MODULE2 Topics Covered.
+
+[Slide 23] From MODULE2 Topics Covered.
+
+[Slide 24] From MODULE2 Topics Covered.
+
+[Slide 25] From MODULE2 Topics Covered.
+
+[Slide 26] From MODULE2 Topics Covered.
+
+[Slide 27] From MODULE2 Topics Covered.
+
+[Slide 28] From MODULE2 Topics Covered.
+
+[Slide 29] From MODULE2 Topics Covered.
+
+[Slide 30] From MODULE2 Topics Covered.
+
+[Slide 31] From MODULE2 Topics Covered.
+
+[Slide 32] From MODULE2 Topics Covered.
+
+[Slide 33] From MODULE2 Topics Covered.
+
+[Slide 34] From MODULE2 Topics Covered.
+
+[Slide 35] From MODULE2 Topics Covered.
+
+[Slide 36] From MODULE2 Topics Covered.
+
+[Slide 37] From MODULE2 Topics Covered.
+
+[Slide 38] From MODULE2 Topics Covered.
+
+[Slide 39] From MODULE2 Topics Covered.
+
+[Slide 40] From MODULE2 Topics Covered.
+
+[Slide 41] From MODULE2 Topics Covered.
+
+[Slide 42] From MODULE2 Topics Covered.
+
+[Slide 43] From MODULE2 Topics Covered.
+
+[Slide 44] From MODULE2 Topics Covered.
+
+[Slide 45] From MODULE2 Topics Covered.
+
+[Slide 46] From MODULE2 Topics Covered.
+
+[Slide 47] From MODULE2 Topics Covered.
+
+[Slide 48] From MODULE2 Topics Covered.
+
+[Slide 49] From MODULE2 Topics Covered.
+
+[Slide 50] From MODULE2 Topics Covered.
+
+[Slide 51] From MODULE2 Topics Covered.
+
+[Slide 52] From MODULE2 Topics Covered.
+
+[Slide 53] From MODULE2 Topics Covered.
+
+[Slide 54] From MODULE2 Topics Covered.
+
+[Slide 55] From MODULE2 Topics Covered.
+
+[Slide 56] From MODULE2 Topics Covered.
+
+[Slide 57] From MODULE2 Topics Covered.
+
+[Slide 58] From MODULE2 Topics Covered.
+
+[Slide 59] From MODULE2 Topics Covered.
+
+[Slide 60] From MODULE2 Topics Covered.
+
+[Slide 61] From MODULE2 Topics Covered.
+
+[Slide 62] From MODULE2 Topics Covered.
+
+[Slide 63] From MODULE2 Topics Covered.
+
+[Slide 64] From MODULE2 Topics Covered.
+
+[Slide 65] From MODULE2 Topics Covered.
+
+[Slide 66] From MODULE2 Topics Covered.
+
+[Slide 67] From MODULE2 Topics Covered.
+
+[Slide 68] From MODULE2 Topics Covered.
+
+[Slide 69] From MODULE2 Topics Covered.
+
+[Slide 70] From MODULE2 Topics Covered.
+
+[Slide 71] From MODULE2 Topics Covered.
+
+[Slide 72] From MODULE2 Topics Covered.
+
+[Slide 73] From MODULE2 Topics Covered.
+
+[Slide 74] From MODULE2 Topics Covered.
+
+[Slide 75] Hands-on examples
+
+[Slide 76] Run from course repository root.
+
+[Slide 77] Exercise scaffold The following command is shown on screen.
+
+[Slide 78] Practice & assessment
+
+[Slide 79] Exercises Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+
+[Slide 80] Assessment checklist Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns Can structure testbenches effectively
+
+[Slide 81] Summary & next steps Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Run ./scripts/module2.sh --check Next: Next module in course

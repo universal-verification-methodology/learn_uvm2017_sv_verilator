@@ -1,0 +1,729 @@
+title: Module 2 — SystemVerilog Testbench Fundamentals
+course: learn_uvm2017_sv_verilator
+module: 2
+subtitle: Master SystemVerilog testbench construction
+footer: learn_uvm2017_sv_verilator / Module 2
+slides:
+- type: title
+  title: Module 2
+  subtitle: SystemVerilog Testbench Fundamentals
+- type: bullets
+  title: Learning objectives
+  bullets:
+  - Master SystemVerilog testbench construction
+- type: bullets
+  title: Prerequisites
+  bullets:
+  - See module README
+- type: image
+  title: Learning path
+  image: assets/diagrams/learning_path.png
+  caption: Master SystemVerilog testbench construction
+- type: bullets
+  title: Overview
+  bullets:
+  - This module provides comprehensive coverage of SystemVerilog testbench construction.
+    You'll learn how to build testbenches, generate clocks, handle resets, access
+    signals, and create robust verification environments.
+- type: section
+  title: Syllabus topics
+- type: bullets
+  title: 1. SystemVerilog Testbench Architecture (1/3)
+  bullets:
+  - What is a Testbench?
+  - Testbench purpose and structure
+  - DUT (Design Under Test) connection
+  - Stimulus generation
+  - Response checking
+  - Testbench Components
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 1. SystemVerilog Testbench Architecture (2/3)
+  bullets:
+  - Testbench module
+  - DUT instantiation
+  - Interface instantiation
+  - Clock and reset generation
+  - Stimulus and monitoring
+  - Key Concepts
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 1. SystemVerilog Testbench Architecture (3/3)
+  bullets:
+  - Module hierarchy
+  - Signal connectivity
+  - Time management
+  - Event scheduling
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (1/8)
+  bullets:
+  - Clock Generation
+  - Simple clock generation
+  - Clock with parameters (period, duty cycle)
+  - Multiple clocks
+  - Clock gating
+  - Clock Patterns
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (2/8)
+  bullets:
+  - Regular clocks
+  - Gated clocks
+  - Clock division
+  - Clock stopping
+  - Clock domain crossing
+  - Clock Domain Management
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (3/8)
+  bullets:
+  - Multiple clock domains
+  - Clock domain crossing verification
+  - Synchronization between domains
+  - Metastability handling
+  - 'Simple Clock: Basic clock generation with `always` block'
+  - 'Parameterized Clock: Clock with configurable period and duty cycle'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (4/8)
+  bullets:
+  - 'Multiple Clocks: Generating multiple independent clocks'
+  - 'Clock Gating: Conditional clock generation'
+  - 'Clock Stopping: Controlled clock stopping'
+  - Uses `always` block for continuous execution
+  - Delay operator `#` controls timing
+  - Creates 50% duty cycle clock
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (5/8)
+  bullets:
+  - Uses parameters for flexibility
+  - Same pattern, different frequency
+  - Conditional clock generation
+  - Uses `if-else` for gating control
+  - Uses `wait` statement for condition-based stopping
+  - Demonstrates controlled clock stopping
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (6/8)
+  bullets:
+  - '`$display()` - Print clock information'
+  - '`$time` - Get current simulation time'
+  - '`$finish` - Terminate simulation'
+  - Clocks are fundamental to synchronous designs
+  - Parameterized clocks enable flexibility
+  - Multiple clocks require careful synchronization
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (7/8)
+  bullets:
+  - Clock gating is common in low-power designs
+  - '`always` blocks create continuous processes'
+  - Delay operator `#` controls timing
+  - '`wait` statements enable condition-based control'
+  - Simple clock generation with configurable period
+  - Multiple independent clocks demonstrated
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 2. Clock Generation and Management (8/8)
+  bullets:
+  - Clock gating and stopping patterns working correctly
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 3. Reset Patterns and Sequences (1/7)
+  bullets:
+  - Reset Types
+  - Synchronous reset
+  - Asynchronous reset
+  - Reset assertion and de-assertion
+  - Reset timing
+  - Reset Patterns
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 3. Reset Patterns and Sequences (2/7)
+  bullets:
+  - Power-on reset
+  - Software reset
+  - Hardware reset
+  - Partial reset
+  - Reset Sequences
+  - Reset assertion sequence
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 3. Reset Patterns and Sequences (3/7)
+  bullets:
+  - Reset de-assertion sequence
+  - Reset verification
+  - Reset timing checks
+  - 'Synchronous Reset: Reset synchronized to clock'
+  - 'Asynchronous Reset: Reset independent of clock'
+  - 'Reset Sequence: Controlled reset assertion and de-assertion'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 3. Reset Patterns and Sequences (4/7)
+  bullets:
+  - 'Reset Verification: Checking reset behavior'
+  - 'Purpose: Encapsulates async reset sequence'
+  - 'Parameters: Configurable reset duration'
+  - 'Usage: `async_reset_sequence(100);`'
+  - 'Key Features: Uses delays, displays timing info'
+  - 'Purpose: Encapsulates sync reset sequence'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 3. Reset Patterns and Sequences (5/7)
+  bullets:
+  - 'Parameters: Number of reset cycles'
+  - 'Usage: `sync_reset_sequence(5);`'
+  - 'Key Features: Uses `repeat` and `@(posedge clk)` for clock synchronization'
+  - 'Purpose: Verifies reset properly initializes registers'
+  - 'Uses: `assert` statements with `$error()` for verification'
+  - 'Usage: `verify_reset();`'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 3. Reset Patterns and Sequences (6/7)
+  bullets:
+  - Reset is critical for proper design initialization
+  - Synchronous vs asynchronous reset have different timing
+  - Reset sequences must follow design requirements
+  - Reset verification ensures proper operation
+  - Tasks encapsulate reset sequences for reusability
+  - '`repeat` statement repeats clock cycles'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 3. Reset Patterns and Sequences (7/7)
+  bullets:
+  - '`@(posedge clk)` synchronizes to clock edges'
+  - '`assert` statements verify reset behavior'
+  - Synchronous and asynchronous reset patterns demonstrated
+  - Reset sequences executed correctly
+  - Reset verification checks passing
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (1/8)
+  bullets:
+  - Signal Access
+  - Reading signal values
+  - Signal types and widths
+  - Signal state checking
+  - Signal monitoring
+  - Driving Signals
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (2/8)
+  bullets:
+  - Assigning values
+  - Continuous assignment
+  - Procedural assignment
+  - Signal driving timing
+  - Signal Types
+  - Single-bit signals
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (3/8)
+  bullets:
+  - Multi-bit signals (vectors)
+  - Buses and arrays
+  - Bidirectional signals
+  - 'Signal Reading: Reading DUT signal values'
+  - 'Signal Driving: Driving signals to DUT'
+  - 'Signal Monitoring: Monitoring signal changes'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (4/8)
+  bullets:
+  - 'Signal Types: Handling different signal types'
+  - 'Purpose: Demonstrates reading signal values'
+  - 'Uses: `$display()` with format specifiers (`%02h`, `%0d`, `%b`)'
+  - 'Key: Reads signals after delays for proper timing'
+  - 'Purpose: Demonstrates driving signals to DUT'
+  - 'Uses: Blocking assignment (`=`) for signal driving'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (5/8)
+  bullets:
+  - 'Verification: Uses `assert` to verify driven values'
+  - 'Purpose: Automatically monitors signal changes'
+  - 'Uses: `always @(signal)` for event-driven monitoring'
+  - 'Key: Runs in parallel with test tasks'
+  - 'Purpose: Demonstrates different signal types'
+  - 'Uses: `$bits()` built-in function for signal width'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (6/8)
+  bullets:
+  - 'Key: Handles single-bit, multi-bit, and array signals'
+  - '`$display()` - Print signal values with formatting'
+  - '`$time` - Get current simulation time'
+  - '`$bits()` - Get signal bit width'
+  - '`$error()` - Report errors in assertions'
+  - Signal access is fundamental to testbench operation
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (7/8)
+  bullets:
+  - Proper timing is essential for signal driving
+  - Signal monitoring enables response checking
+  - Different signal types require different handling
+  - Tasks organize signal access operations
+  - '`always @(signal)` creates event-driven monitors'
+  - Blocking assignment (`=`) for signal driving
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 4. Signal Access and Driving (8/8)
+  bullets:
+  - Format specifiers (`%b`, `%h`, `%d`) for display
+  - Signal reading operations working correctly
+  - Signal driving verified with assertions
+  - Signal monitoring capturing changes
+  - Different signal types handled properly
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (1/9)
+  bullets:
+  - SystemVerilog Events
+  - Event declaration
+  - Event triggering (`->`)
+  - Event waiting (`@`)
+  - Named events
+  - Timing Control
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (2/9)
+  bullets:
+  - '`#` delay operator'
+  - '`@` event control'
+  - '`wait` statement'
+  - '`fork-join` constructs'
+  - Synchronization
+  - Task synchronization
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (3/9)
+  bullets:
+  - Barrier synchronization
+  - Timeout handling
+  - Race condition avoidance
+  - 'Event Control: Using `@` for event-based timing'
+  - 'Delay Control: Using `#` for time-based delays'
+  - 'Wait Statements: Using `wait` for condition-based waiting'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (4/9)
+  bullets:
+  - 'Fork-Join: Parallel execution with synchronization'
+  - 'Named Events: Event-based synchronization'
+  - 'Timeout Handling: Timeout patterns'
+  - 'Purpose: Demonstrates event-based timing'
+  - 'Uses: `@(posedge)`, `@(negedge)`, `@(signal)` for event control'
+  - 'Key: Waits for specific events before continuing'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (5/9)
+  bullets:
+  - 'Purpose: Demonstrates time-based delays'
+  - 'Uses: `#` delay operator with fixed and parameterized values'
+  - 'Key: Tracks time using `$time` built-in function'
+  - 'Purpose: Demonstrates condition-based waiting'
+  - 'Uses: `wait(condition)` statement'
+  - 'Key: Waits until condition becomes true'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (6/9)
+  bullets:
+  - 'Purpose: Demonstrates parallel execution'
+  - 'Uses: `fork-join` for parallel tasks'
+  - 'Key: Waits for all tasks to complete'
+  - 'Purpose: Continues after first task completes'
+  - 'Uses: `fork-join_any` construct'
+  - 'Key: Doesn''t wait for all tasks'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (7/9)
+  bullets:
+  - 'Purpose: Starts tasks without waiting'
+  - 'Uses: `fork-join_none` construct'
+  - 'Key: Continues immediately, tasks run in background'
+  - 'Purpose: Demonstrates named event synchronization'
+  - 'Uses: `event` declaration, `@(event)` wait, `-> event` trigger'
+  - 'Key: Flexible synchronization mechanism'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (8/9)
+  bullets:
+  - Events enable synchronization between processes
+  - Timing control is essential for proper testbench operation
+  - Wait statements enable condition-based synchronization
+  - Fork-join enables parallel execution
+  - '`@(posedge/negedge)` waits for signal edges'
+  - '`#` delay operator creates time-based delays'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 5. Event and Timing Control (9/9)
+  bullets:
+  - '`wait(condition)` waits for condition to become true'
+  - '`fork-join` creates parallel execution with synchronization'
+  - Named events provide flexible synchronization
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 6. Common Verification Patterns (1/7)
+  bullets:
+  - Testbench Structure
+  - Initialization phase
+  - Stimulus generation
+  - Response checking
+  - Cleanup phase
+  - Verification Patterns
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 6. Common Verification Patterns (2/7)
+  bullets:
+  - Directed testing
+  - Constrained random testing
+  - Coverage-driven verification
+  - Assertion-based verification
+  - Reusable Components
+  - Driver components
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 6. Common Verification Patterns (3/7)
+  bullets:
+  - Monitor components
+  - Scoreboard components
+  - Checker components
+  - 'Testbench Structure: Organized testbench with phases'
+  - 'Driver Pattern: Stimulus generation component'
+  - 'Monitor Pattern: Response monitoring component'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 6. Common Verification Patterns (4/7)
+  bullets:
+  - 'Scoreboard Pattern: Response checking component'
+  - 'Reusable Components: Component reuse patterns'
+  - 'Purpose: Demonstrates organized testbench phases'
+  - 'Structure: Initialization → Reset → Stimulus → Checking → Cleanup'
+  - 'Key: Clear separation of test phases'
+  - 'Purpose: Stimulus generation component'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 6. Common Verification Patterns (5/7)
+  bullets:
+  - 'Uses: Virtual task for polymorphism'
+  - 'Key: Can be extended in derived classes'
+  - 'Purpose: Response monitoring component'
+  - 'Uses: Constructor function, virtual task, accessor function'
+  - 'Key: Captures and provides access to monitored data'
+  - 'Purpose: Response checking component'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 6. Common Verification Patterns (6/7)
+  bullets:
+  - 'Uses: Queue methods (`push_back()`, `size()`), comparison logic'
+  - 'Key: Compares expected vs actual results'
+  - Structured testbenches are easier to maintain
+  - Reusable components improve productivity
+  - Common patterns enable code reuse
+  - Patterns prepare for UVM methodology
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 6. Common Verification Patterns (7/7)
+  bullets:
+  - Tasks organize test phases (init, reset, stimulus, check)
+  - Virtual tasks enable polymorphism
+  - Class methods encapsulate component behavior
+  - Queue operations manage transaction lists
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Test Structure and Organization (1/3)
+  bullets:
+  - Test Function Structure
+  - Test module organization
+  - Test phases
+  - Test organization
+  - Test parameters
+  - Multiple Tests
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Test Structure and Organization (2/3)
+  bullets:
+  - Test discovery
+  - Test selection
+  - Test parameters
+  - Test fixtures
+  - Test Organization
+  - Test file structure
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Test Structure and Organization (3/3)
+  bullets:
+  - Test naming conventions
+  - Test documentation
+  - Test maintenance
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (1/23)
+  bullets:
+  - 'Purpose: Encapsulate reset sequences'
+  - 'Reusability: Can be called from multiple test tasks'
+  - 'Parameters: Configurable duration/cycles'
+  - 'Purpose: Generate clock signals'
+  - 'Pattern: Use `always` blocks for continuous generation'
+  - 'Key: Delay operator `#` controls timing'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (2/23)
+  bullets:
+  - 'Purpose: Organize test into phases'
+  - 'Structure: Clear separation of concerns'
+  - 'Maintainability: Easy to modify individual phases'
+  - 'Purpose: Encapsulate signal operations'
+  - 'Output Parameters: Use `output` for return values'
+  - 'Timing: Synchronize with clock edges'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (3/23)
+  bullets:
+  - 'Purpose: Create time-based delays'
+  - 'Usage: In tasks and initial blocks'
+  - 'Key: Cannot be used in functions'
+  - 'Purpose: Synchronize to events'
+  - 'Usage: In tasks and always blocks'
+  - 'Key: Event-driven synchronization'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (4/23)
+  bullets:
+  - 'Purpose: Condition-based waiting'
+  - 'Usage: In tasks'
+  - 'Key: Waits until condition becomes true'
+  - 'Purpose: Parallel execution'
+  - 'Usage: In tasks'
+  - 'Key: Different join types for different synchronization needs'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (5/23)
+  bullets:
+  - 'Purpose: Track simulation time'
+  - 'Usage: Timing verification, logging'
+  - 'Purpose: Get signal dimensions'
+  - 'Usage: Dynamic signal handling'
+  - 'Purpose: Print formatted output'
+  - 'Format Specifiers: `%0d` (decimal), `%0h` (hex), `%0b` (binary), `%0t` (time)'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (6/23)
+  bullets:
+  - 'Purpose: Verify conditions'
+  - 'Usage: Test verification'
+  - 'Severity: ERROR, FATAL, WARNING'
+  - 'Pattern: Free-running clock'
+  - 'Key: Uses `forever` loop'
+  - 'Pattern: Reusable reset sequence'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (7/23)
+  bullets:
+  - 'Key: Encapsulated in task'
+  - 'Pattern: Loop-based stimulus'
+  - 'Key: Synchronized to clock'
+  - 'Pattern: Assertion-based checking'
+  - 'Key: Uses `assert` with `$error()`'
+  - 'Pattern: Event-driven monitoring'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (8/23)
+  bullets:
+  - 'Key: Uses `always @(posedge clk)`'
+  - Each test phase as separate task
+  - Helper tasks for common operations
+  - Clear task naming conventions
+  - Use parameters for configurability
+  - Default parameter values
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (9/23)
+  bullets:
+  - Type-safe parameters
+  - Always synchronize to clock edges
+  - Use appropriate delays
+  - Avoid race conditions
+  - Use assertions for verification
+  - Provide informative error messages
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (10/23)
+  bullets:
+  - Handle edge cases
+  - Encapsulate common sequences
+  - Use virtual tasks for polymorphism
+  - Create reusable components
+  - 'Issue: `forever` with `~` operator can cause timing issues'
+  - 'Solution: Use explicit assignment with delays'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (11/23)
+  bullets:
+  - 'Issue: Fixed delays don''t guarantee clock alignment'
+  - 'Solution: Always use `@(posedge clk)` for synchronization'
+  - 'Issue: Insufficient reset duration or propagation time'
+  - 'Solution: Use configurable duration and add propagation delay'
+  - 'Issue: Non-blocking assignments in tasks can cause timing issues'
+  - 'Solution: Use blocking assignments (`=`) in tasks'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (12/23)
+  bullets:
+  - 'Issue: No way to verify tasks completed successfully'
+  - 'Solution: Add completion messages or flags'
+  - 'Issue: Wait statement can hang if condition never becomes true'
+  - 'Solution: Use fork-join with timeout'
+  - 'Simple clocks: Use `always` blocks (efficient)'
+  - 'Multiple clocks: Each clock needs separate `always` block'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (13/23)
+  bullets:
+  - 'Gated clocks: Conditional logic adds minimal overhead'
+  - 'Tasks: Slower due to timing simulation overhead'
+  - 'Functions: Faster (zero-time), but can''t use delays'
+  - 'Recommendation: Use functions for calculations, tasks for sequences'
+  - '`@(posedge clk)`: Efficient, event-driven'
+  - '`#delay`: Time-based, requires scheduling'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (14/23)
+  bullets:
+  - '`wait(condition)`: Polls condition, can be slower'
+  - '`fork-join`: Creates parallel processes (overhead)'
+  - 'Use sparingly: Only when parallel execution is needed'
+  - 'Alternative: Sequential execution is faster'
+  - 'Symptoms: Clock signal stuck at 0 or 1'
+  - 'Causes:'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (15/23)
+  bullets:
+  - '`always` block not executing'
+  - Delay value too large or zero
+  - Blocking on condition that never becomes true
+  - 'Solutions:'
+  - Check `always` block syntax
+  - Verify delay values are positive
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (16/23)
+  bullets:
+  - Use `$display` to debug clock generation
+  - 'Symptoms: Registers not resetting to expected values'
+  - 'Causes:'
+  - Insufficient reset duration
+  - Reset de-asserted too early
+  - Missing propagation delay
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (17/23)
+  bullets:
+  - 'Solutions:'
+  - Increase reset duration
+  - Add delay after reset de-assert
+  - Verify reset polarity (active-high vs active-low)
+  - 'Symptoms: Signal value doesn''t change as expected'
+  - 'Causes:'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (18/23)
+  bullets:
+  - Not synchronized to clock
+  - Using wrong assignment type
+  - Signal not being driven
+  - 'Solutions:'
+  - Use `@(posedge clk)` before reading
+  - Use blocking assignment (`=`) in tasks
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (19/23)
+  bullets:
+  - Verify signal is being driven
+  - 'Symptoms: Inconsistent behavior, timing-dependent failures'
+  - 'Causes:'
+  - Multiple processes accessing same signal
+  - Clock and data changing simultaneously
+  - Missing synchronization
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (20/23)
+  bullets:
+  - 'Solutions:'
+  - Use proper clock synchronization
+  - Avoid shared variable access
+  - Use non-blocking assignment in sequential logic
+  - 'Symptoms: Code continues before tasks complete'
+  - 'Causes:'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (21/23)
+  bullets:
+  - Using `join_none` instead of `join`
+  - Tasks completing before join
+  - 'Solutions:'
+  - Use `join` to wait for all tasks
+  - Use `join_any` to wait for first task
+  - Add completion flags if needed
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (22/23)
+  bullets:
+  - 'Symptoms: Simulation hangs, never completes'
+  - 'Causes:'
+  - Condition never becomes true
+  - Signal never assigned
+  - Logic error in condition
+  - 'Solutions:'
+  notes: From MODULE2 Topics Covered.
+- type: bullets
+  title: 7. Functions and Tasks for Testbench Construction (23/23)
+  bullets:
+  - Add timeout mechanism
+  - Verify condition logic
+  - Check signal assignments
+  - Use `$display` to debug
+  notes: From MODULE2 Topics Covered.
+- type: section
+  title: Hands-on examples
+- type: demo
+  title: Module 2 self-check
+  command: ./scripts/module2.sh --check
+  screenshot: assets/screenshots/module2_check.png
+  expect_stdout_contains: All required checks passed
+  notes: Run from course repository root.
+- type: code
+  title: Exercise scaffold
+  language: bash
+  source_file: scripts/module2.sh
+  code: ./scripts/module2.sh --scaffold
+- type: section
+  title: Practice & assessment
+- type: bullets
+  title: Exercises
+  bullets:
+  - Clock Generation
+  - Reset Implementation
+  - Signal Access
+  - Timing Control
+  - Testbench Patterns
+- type: bullets
+  title: Assessment checklist
+  bullets:
+  - Can generate clocks and manage clock domains
+  - Can implement reset patterns
+  - Can access and drive signals correctly
+  - Can use events and timing control
+  - Can apply common verification patterns
+  - Can structure testbenches effectively
+- type: bullets
+  title: Summary & next steps
+  bullets:
+  - Master SystemVerilog testbench construction
+  - Complete module2/CHECKLIST.md
+  - Run ./scripts/module2.sh --check
+  - 'Next: Next module in course'

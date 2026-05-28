@@ -1,0 +1,105 @@
+[Slide 1] SystemVerilog and Verification Basics Module 1
+
+[Slide 2] Learning objectives Understand SystemVerilog for verification and verification fundamentals
+
+[Slide 3] Prerequisites See module README
+
+[Slide 4] Learning path Understand SystemVerilog for verification and verification fundamentals
+
+[Slide 5] Overview This module establishes the foundation for verification work. You'll learn essential SystemVerilog concepts used in verification and understand the fundamental principles of hardware verification.
+
+[Slide 6] Syllabus topics
+
+[Slide 7] From MODULE1 Topics Covered.
+
+[Slide 8] From MODULE1 Topics Covered.
+
+[Slide 9] From MODULE1 Topics Covered.
+
+[Slide 10] From MODULE1 Topics Covered.
+
+[Slide 11] From MODULE1 Topics Covered.
+
+[Slide 12] From MODULE1 Topics Covered.
+
+[Slide 13] From MODULE1 Topics Covered.
+
+[Slide 14] From MODULE1 Topics Covered.
+
+[Slide 15] From MODULE1 Topics Covered.
+
+[Slide 16] From MODULE1 Topics Covered.
+
+[Slide 17] From MODULE1 Topics Covered.
+
+[Slide 18] From MODULE1 Topics Covered.
+
+[Slide 19] From MODULE1 Topics Covered.
+
+[Slide 20] From MODULE1 Topics Covered.
+
+[Slide 21] From MODULE1 Topics Covered.
+
+[Slide 22] From MODULE1 Topics Covered.
+
+[Slide 23] From MODULE1 Topics Covered.
+
+[Slide 24] From MODULE1 Topics Covered.
+
+[Slide 25] From MODULE1 Topics Covered.
+
+[Slide 26] From MODULE1 Topics Covered.
+
+[Slide 27] From MODULE1 Topics Covered.
+
+[Slide 28] From MODULE1 Topics Covered.
+
+[Slide 29] From MODULE1 Topics Covered.
+
+[Slide 30] From MODULE1 Topics Covered.
+
+[Slide 31] From MODULE1 Topics Covered.
+
+[Slide 32] From MODULE1 Topics Covered.
+
+[Slide 33] From MODULE1 Topics Covered.
+
+[Slide 34] From MODULE1 Topics Covered.
+
+[Slide 35] From MODULE1 Topics Covered.
+
+[Slide 36] From MODULE1 Topics Covered.
+
+[Slide 37] From MODULE1 Topics Covered.
+
+[Slide 38] From MODULE1 Topics Covered.
+
+[Slide 39] From MODULE1 Topics Covered.
+
+[Slide 40] From MODULE1 Topics Covered.
+
+[Slide 41] From MODULE1 Topics Covered.
+
+[Slide 42] From MODULE1 Topics Covered.
+
+[Slide 43] From MODULE1 Topics Covered.
+
+[Slide 44] From MODULE1 Topics Covered.
+
+[Slide 45] From MODULE1 Topics Covered.
+
+[Slide 46] From MODULE1 Topics Covered.
+
+[Slide 47] Hands-on examples
+
+[Slide 48] Run from course repository root.
+
+[Slide 49] Exercise scaffold The following command is shown on screen.
+
+[Slide 50] Practice & assessment
+
+[Slide 51] Exercises Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+
+[Slide 52] Assessment checklist Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging Can write basic SystemVerilog testbenches
+
+[Slide 53] Summary & next steps Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Run ./scripts/module1.sh --check Next: Next module in course

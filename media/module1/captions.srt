@@ -1,0 +1,211 @@
+1
+00:00:00,000 --> 00:00:04,032
+SystemVerilog and Verification Basics Module 1
+
+2
+00:00:04,382 --> 00:00:10,670
+Learning objectives Understand SystemVerilog for verification and verification fundamentals
+
+3
+00:00:11,020 --> 00:00:13,780
+Prerequisites See module README
+
+4
+00:00:14,130 --> 00:00:20,130
+Learning path Understand SystemVerilog for verification and verification fundamentals
+
+5
+00:00:20,480 --> 00:00:33,272
+Overview This module establishes the foundation for verification work. You'll learn essential SystemVerilog concepts used in verification and understand the fundamental principles of hardware verification.
+
+6
+00:00:33,622 --> 00:00:35,878
+Syllabus topics
+
+7
+00:00:36,228 --> 00:00:39,036
+From MODULE1 Topics Covered.
+
+8
+00:00:39,386 --> 00:00:42,194
+From MODULE1 Topics Covered.
+
+9
+00:00:42,544 --> 00:00:45,352
+From MODULE1 Topics Covered.
+
+10
+00:00:45,702 --> 00:00:48,510
+From MODULE1 Topics Covered.
+
+11
+00:00:48,860 --> 00:00:51,668
+From MODULE1 Topics Covered.
+
+12
+00:00:52,018 --> 00:00:54,826
+From MODULE1 Topics Covered.
+
+13
+00:00:55,176 --> 00:00:57,984
+From MODULE1 Topics Covered.
+
+14
+00:00:58,334 --> 00:01:01,142
+From MODULE1 Topics Covered.
+
+15
+00:01:01,492 --> 00:01:04,300
+From MODULE1 Topics Covered.
+
+16
+00:01:04,650 --> 00:01:07,458
+From MODULE1 Topics Covered.
+
+17
+00:01:07,808 --> 00:01:10,616
+From MODULE1 Topics Covered.
+
+18
+00:01:10,966 --> 00:01:13,774
+From MODULE1 Topics Covered.
+
+19
+00:01:14,124 --> 00:01:16,932
+From MODULE1 Topics Covered.
+
+20
+00:01:17,282 --> 00:01:20,090
+From MODULE1 Topics Covered.
+
+21
+00:01:20,440 --> 00:01:23,248
+From MODULE1 Topics Covered.
+
+22
+00:01:23,598 --> 00:01:26,406
+From MODULE1 Topics Covered.
+
+23
+00:01:26,756 --> 00:01:29,564
+From MODULE1 Topics Covered.
+
+24
+00:01:29,914 --> 00:01:32,722
+From MODULE1 Topics Covered.
+
+25
+00:01:33,072 --> 00:01:35,880
+From MODULE1 Topics Covered.
+
+26
+00:01:36,230 --> 00:01:39,038
+From MODULE1 Topics Covered.
+
+27
+00:01:39,388 --> 00:01:42,196
+From MODULE1 Topics Covered.
+
+28
+00:01:42,546 --> 00:01:45,354
+From MODULE1 Topics Covered.
+
+29
+00:01:45,704 --> 00:01:48,512
+From MODULE1 Topics Covered.
+
+30
+00:01:48,862 --> 00:01:51,670
+From MODULE1 Topics Covered.
+
+31
+00:01:52,020 --> 00:01:54,828
+From MODULE1 Topics Covered.
+
+32
+00:01:55,178 --> 00:01:57,986
+From MODULE1 Topics Covered.
+
+33
+00:01:58,336 --> 00:02:01,144
+From MODULE1 Topics Covered.
+
+34
+00:02:01,494 --> 00:02:04,302
+From MODULE1 Topics Covered.
+
+35
+00:02:04,652 --> 00:02:07,460
+From MODULE1 Topics Covered.
+
+36
+00:02:07,810 --> 00:02:10,618
+From MODULE1 Topics Covered.
+
+37
+00:02:10,968 --> 00:02:13,776
+From MODULE1 Topics Covered.
+
+38
+00:02:14,126 --> 00:02:16,934
+From MODULE1 Topics Covered.
+
+39
+00:02:17,284 --> 00:02:20,092
+From MODULE1 Topics Covered.
+
+40
+00:02:20,442 --> 00:02:23,250
+From MODULE1 Topics Covered.
+
+41
+00:02:23,600 --> 00:02:26,408
+From MODULE1 Topics Covered.
+
+42
+00:02:26,758 --> 00:02:29,566
+From MODULE1 Topics Covered.
+
+43
+00:02:29,916 --> 00:02:32,724
+From MODULE1 Topics Covered.
+
+44
+00:02:33,074 --> 00:02:35,882
+From MODULE1 Topics Covered.
+
+45
+00:02:36,232 --> 00:02:39,040
+From MODULE1 Topics Covered.
+
+46
+00:02:39,390 --> 00:02:42,198
+From MODULE1 Topics Covered.
+
+47
+00:02:42,548 --> 00:02:44,780
+Hands-on examples
+
+48
+00:02:45,130 --> 00:02:47,962
+Run from course repository root.
+
+49
+00:02:48,312 --> 00:02:52,320
+Exercise scaffold The following command is shown on screen.
+
+50
+00:02:52,670 --> 00:02:54,998
+Practice & assessment
+
+51
+00:02:55,348 --> 00:03:02,380
+Exercises Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+
+52
+00:03:02,730 --> 00:03:18,186
+Assessment checklist Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging Can write basic SystemVerilog testbenches
+
+53
+00:03:18,536 --> 00:03:33,128
+Summary & next steps Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Run ./scripts/module1.sh --check Next: Next module in course

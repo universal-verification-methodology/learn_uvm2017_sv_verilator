@@ -1,0 +1,227 @@
+1
+00:00:00,000 --> 00:00:03,048
+Real-World Applications Module 7
+
+2
+00:00:03,398 --> 00:00:08,366
+Learning objectives Apply UVM to real-world verification scenarios
+
+3
+00:00:08,716 --> 00:00:11,476
+Prerequisites See module README
+
+4
+00:00:11,826 --> 00:00:16,530
+Learning path Apply UVM to real-world verification scenarios
+
+5
+00:00:16,880 --> 00:00:35,216
+Overview This module applies UVM to real-world verification scenarios including DMA verification, protocol verification (UART, SPI, I2C), VIP development, and best practices. You'll learn how to verify complex designs, develop re
+
+6
+00:00:35,566 --> 00:00:37,822
+Syllabus topics
+
+7
+00:00:38,172 --> 00:00:41,052
+From MODULE7 Topics Covered.
+
+8
+00:00:41,402 --> 00:00:44,282
+From MODULE7 Topics Covered.
+
+9
+00:00:44,632 --> 00:00:47,512
+From MODULE7 Topics Covered.
+
+10
+00:00:47,862 --> 00:00:50,742
+From MODULE7 Topics Covered.
+
+11
+00:00:51,092 --> 00:00:53,972
+From MODULE7 Topics Covered.
+
+12
+00:00:54,322 --> 00:00:57,202
+From MODULE7 Topics Covered.
+
+13
+00:00:57,552 --> 00:01:00,432
+From MODULE7 Topics Covered.
+
+14
+00:01:00,782 --> 00:01:03,662
+From MODULE7 Topics Covered.
+
+15
+00:01:04,012 --> 00:01:06,892
+From MODULE7 Topics Covered.
+
+16
+00:01:07,242 --> 00:01:10,122
+From MODULE7 Topics Covered.
+
+17
+00:01:10,472 --> 00:01:13,352
+From MODULE7 Topics Covered.
+
+18
+00:01:13,702 --> 00:01:16,582
+From MODULE7 Topics Covered.
+
+19
+00:01:16,932 --> 00:01:19,812
+From MODULE7 Topics Covered.
+
+20
+00:01:20,162 --> 00:01:23,042
+From MODULE7 Topics Covered.
+
+21
+00:01:23,392 --> 00:01:26,272
+From MODULE7 Topics Covered.
+
+22
+00:01:26,622 --> 00:01:29,502
+From MODULE7 Topics Covered.
+
+23
+00:01:29,852 --> 00:01:32,732
+From MODULE7 Topics Covered.
+
+24
+00:01:33,082 --> 00:01:35,962
+From MODULE7 Topics Covered.
+
+25
+00:01:36,312 --> 00:01:39,192
+From MODULE7 Topics Covered.
+
+26
+00:01:39,542 --> 00:01:42,422
+From MODULE7 Topics Covered.
+
+27
+00:01:42,772 --> 00:01:45,652
+From MODULE7 Topics Covered.
+
+28
+00:01:46,002 --> 00:01:48,882
+From MODULE7 Topics Covered.
+
+29
+00:01:49,232 --> 00:01:52,112
+From MODULE7 Topics Covered.
+
+30
+00:01:52,462 --> 00:01:55,342
+From MODULE7 Topics Covered.
+
+31
+00:01:55,692 --> 00:01:58,572
+From MODULE7 Topics Covered.
+
+32
+00:01:58,922 --> 00:02:01,802
+From MODULE7 Topics Covered.
+
+33
+00:02:02,152 --> 00:02:05,032
+From MODULE7 Topics Covered.
+
+34
+00:02:05,382 --> 00:02:08,262
+From MODULE7 Topics Covered.
+
+35
+00:02:08,612 --> 00:02:11,492
+From MODULE7 Topics Covered.
+
+36
+00:02:11,842 --> 00:02:14,722
+From MODULE7 Topics Covered.
+
+37
+00:02:15,072 --> 00:02:17,952
+From MODULE7 Topics Covered.
+
+38
+00:02:18,302 --> 00:02:21,182
+From MODULE7 Topics Covered.
+
+39
+00:02:21,532 --> 00:02:24,412
+From MODULE7 Topics Covered.
+
+40
+00:02:24,762 --> 00:02:27,642
+From MODULE7 Topics Covered.
+
+41
+00:02:27,992 --> 00:02:30,872
+From MODULE7 Topics Covered.
+
+42
+00:02:31,222 --> 00:02:34,102
+From MODULE7 Topics Covered.
+
+43
+00:02:34,452 --> 00:02:37,332
+From MODULE7 Topics Covered.
+
+44
+00:02:37,682 --> 00:02:40,562
+From MODULE7 Topics Covered.
+
+45
+00:02:40,912 --> 00:02:43,792
+From MODULE7 Topics Covered.
+
+46
+00:02:44,142 --> 00:02:47,022
+From MODULE7 Topics Covered.
+
+47
+00:02:47,372 --> 00:02:50,252
+From MODULE7 Topics Covered.
+
+48
+00:02:50,602 --> 00:02:53,482
+From MODULE7 Topics Covered.
+
+49
+00:02:53,832 --> 00:02:56,712
+From MODULE7 Topics Covered.
+
+50
+00:02:57,062 --> 00:02:59,942
+From MODULE7 Topics Covered.
+
+51
+00:03:00,292 --> 00:03:03,172
+From MODULE7 Topics Covered.
+
+52
+00:03:03,522 --> 00:03:05,754
+Hands-on examples
+
+53
+00:03:06,104 --> 00:03:08,936
+Run from course repository root.
+
+54
+00:03:09,286 --> 00:03:11,614
+Practice & assessment
+
+55
+00:03:11,964 --> 00:03:19,764
+Exercises DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+
+56
+00:03:20,114 --> 00:03:36,002
+Assessment checklist Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches Understands protocol verification patterns
+
+57
+00:03:36,352 --> 00:03:49,768
+Summary & next steps Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Run ./scripts/module7.sh --check Next: Next module in course

@@ -1,0 +1,113 @@
+[Slide 1] Real-World Applications Module 7
+
+[Slide 2] Learning objectives Apply UVM to real-world verification scenarios
+
+[Slide 3] Prerequisites See module README
+
+[Slide 4] Learning path Apply UVM to real-world verification scenarios
+
+[Slide 5] Overview This module applies UVM to real-world verification scenarios including DMA verification, protocol verification (UART, SPI, I2C), VIP development, and best practices. You'll learn how to verify complex designs, develop re
+
+[Slide 6] Syllabus topics
+
+[Slide 7] From MODULE7 Topics Covered.
+
+[Slide 8] From MODULE7 Topics Covered.
+
+[Slide 9] From MODULE7 Topics Covered.
+
+[Slide 10] From MODULE7 Topics Covered.
+
+[Slide 11] From MODULE7 Topics Covered.
+
+[Slide 12] From MODULE7 Topics Covered.
+
+[Slide 13] From MODULE7 Topics Covered.
+
+[Slide 14] From MODULE7 Topics Covered.
+
+[Slide 15] From MODULE7 Topics Covered.
+
+[Slide 16] From MODULE7 Topics Covered.
+
+[Slide 17] From MODULE7 Topics Covered.
+
+[Slide 18] From MODULE7 Topics Covered.
+
+[Slide 19] From MODULE7 Topics Covered.
+
+[Slide 20] From MODULE7 Topics Covered.
+
+[Slide 21] From MODULE7 Topics Covered.
+
+[Slide 22] From MODULE7 Topics Covered.
+
+[Slide 23] From MODULE7 Topics Covered.
+
+[Slide 24] From MODULE7 Topics Covered.
+
+[Slide 25] From MODULE7 Topics Covered.
+
+[Slide 26] From MODULE7 Topics Covered.
+
+[Slide 27] From MODULE7 Topics Covered.
+
+[Slide 28] From MODULE7 Topics Covered.
+
+[Slide 29] From MODULE7 Topics Covered.
+
+[Slide 30] From MODULE7 Topics Covered.
+
+[Slide 31] From MODULE7 Topics Covered.
+
+[Slide 32] From MODULE7 Topics Covered.
+
+[Slide 33] From MODULE7 Topics Covered.
+
+[Slide 34] From MODULE7 Topics Covered.
+
+[Slide 35] From MODULE7 Topics Covered.
+
+[Slide 36] From MODULE7 Topics Covered.
+
+[Slide 37] From MODULE7 Topics Covered.
+
+[Slide 38] From MODULE7 Topics Covered.
+
+[Slide 39] From MODULE7 Topics Covered.
+
+[Slide 40] From MODULE7 Topics Covered.
+
+[Slide 41] From MODULE7 Topics Covered.
+
+[Slide 42] From MODULE7 Topics Covered.
+
+[Slide 43] From MODULE7 Topics Covered.
+
+[Slide 44] From MODULE7 Topics Covered.
+
+[Slide 45] From MODULE7 Topics Covered.
+
+[Slide 46] From MODULE7 Topics Covered.
+
+[Slide 47] From MODULE7 Topics Covered.
+
+[Slide 48] From MODULE7 Topics Covered.
+
+[Slide 49] From MODULE7 Topics Covered.
+
+[Slide 50] From MODULE7 Topics Covered.
+
+[Slide 51] From MODULE7 Topics Covered.
+
+[Slide 52] Hands-on examples
+
+[Slide 53] Run from course repository root.
+
+[Slide 54] Practice & assessment
+
+[Slide 55] Exercises DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+
+[Slide 56] Assessment checklist Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches Understands protocol verification patterns
+
+[Slide 57] Summary & next steps Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Run ./scripts/module7.sh --check Next: Next module in course

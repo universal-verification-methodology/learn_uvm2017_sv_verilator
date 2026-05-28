@@ -1,0 +1,243 @@
+1
+00:00:00,000 --> 00:00:02,760
+UVM Basics Module 3
+
+2
+00:00:03,110 --> 00:00:07,718
+Learning objectives Master UVM class hierarchy and phases
+
+3
+00:00:08,068 --> 00:00:10,828
+Prerequisites See module README
+
+4
+00:00:11,178 --> 00:00:15,522
+Learning path Master UVM class hierarchy and phases
+
+5
+00:00:15,872 --> 00:00:33,320
+Overview This module introduces the Universal Verification Methodology (UVM) using SystemVerilog. You'll learn the fundamental UVM concepts, class hierarchy, phases, and how to structure UVM testbenches. This module establishes t
+
+6
+00:00:33,670 --> 00:00:35,926
+Syllabus topics
+
+7
+00:00:36,276 --> 00:00:39,084
+From MODULE3 Topics Covered.
+
+8
+00:00:39,434 --> 00:00:42,242
+From MODULE3 Topics Covered.
+
+9
+00:00:42,592 --> 00:00:45,400
+From MODULE3 Topics Covered.
+
+10
+00:00:45,750 --> 00:00:48,558
+From MODULE3 Topics Covered.
+
+11
+00:00:48,908 --> 00:00:51,716
+From MODULE3 Topics Covered.
+
+12
+00:00:52,066 --> 00:00:54,874
+From MODULE3 Topics Covered.
+
+13
+00:00:55,224 --> 00:00:58,032
+From MODULE3 Topics Covered.
+
+14
+00:00:58,382 --> 00:01:01,190
+From MODULE3 Topics Covered.
+
+15
+00:01:01,540 --> 00:01:04,348
+From MODULE3 Topics Covered.
+
+16
+00:01:04,698 --> 00:01:07,506
+From MODULE3 Topics Covered.
+
+17
+00:01:07,856 --> 00:01:10,664
+From MODULE3 Topics Covered.
+
+18
+00:01:11,014 --> 00:01:13,822
+From MODULE3 Topics Covered.
+
+19
+00:01:14,172 --> 00:01:16,980
+From MODULE3 Topics Covered.
+
+20
+00:01:17,330 --> 00:01:20,138
+From MODULE3 Topics Covered.
+
+21
+00:01:20,488 --> 00:01:23,296
+From MODULE3 Topics Covered.
+
+22
+00:01:23,646 --> 00:01:26,454
+From MODULE3 Topics Covered.
+
+23
+00:01:26,804 --> 00:01:29,612
+From MODULE3 Topics Covered.
+
+24
+00:01:29,962 --> 00:01:32,770
+From MODULE3 Topics Covered.
+
+25
+00:01:33,120 --> 00:01:35,928
+From MODULE3 Topics Covered.
+
+26
+00:01:36,278 --> 00:01:39,086
+From MODULE3 Topics Covered.
+
+27
+00:01:39,436 --> 00:01:42,244
+From MODULE3 Topics Covered.
+
+28
+00:01:42,594 --> 00:01:45,402
+From MODULE3 Topics Covered.
+
+29
+00:01:45,752 --> 00:01:48,560
+From MODULE3 Topics Covered.
+
+30
+00:01:48,910 --> 00:01:51,718
+From MODULE3 Topics Covered.
+
+31
+00:01:52,068 --> 00:01:54,876
+From MODULE3 Topics Covered.
+
+32
+00:01:55,226 --> 00:01:58,034
+From MODULE3 Topics Covered.
+
+33
+00:01:58,384 --> 00:02:01,192
+From MODULE3 Topics Covered.
+
+34
+00:02:01,542 --> 00:02:04,350
+From MODULE3 Topics Covered.
+
+35
+00:02:04,700 --> 00:02:07,508
+From MODULE3 Topics Covered.
+
+36
+00:02:07,858 --> 00:02:10,666
+From MODULE3 Topics Covered.
+
+37
+00:02:11,016 --> 00:02:13,824
+From MODULE3 Topics Covered.
+
+38
+00:02:14,174 --> 00:02:16,982
+From MODULE3 Topics Covered.
+
+39
+00:02:17,332 --> 00:02:20,140
+From MODULE3 Topics Covered.
+
+40
+00:02:20,490 --> 00:02:23,298
+From MODULE3 Topics Covered.
+
+41
+00:02:23,648 --> 00:02:26,456
+From MODULE3 Topics Covered.
+
+42
+00:02:26,806 --> 00:02:29,614
+From MODULE3 Topics Covered.
+
+43
+00:02:29,964 --> 00:02:32,772
+From MODULE3 Topics Covered.
+
+44
+00:02:33,122 --> 00:02:35,930
+From MODULE3 Topics Covered.
+
+45
+00:02:36,280 --> 00:02:39,088
+From MODULE3 Topics Covered.
+
+46
+00:02:39,438 --> 00:02:42,246
+From MODULE3 Topics Covered.
+
+47
+00:02:42,596 --> 00:02:45,404
+From MODULE3 Topics Covered.
+
+48
+00:02:45,754 --> 00:02:48,562
+From MODULE3 Topics Covered.
+
+49
+00:02:48,912 --> 00:02:51,720
+From MODULE3 Topics Covered.
+
+50
+00:02:52,070 --> 00:02:54,878
+From MODULE3 Topics Covered.
+
+51
+00:02:55,228 --> 00:02:58,036
+From MODULE3 Topics Covered.
+
+52
+00:02:58,386 --> 00:03:01,194
+From MODULE3 Topics Covered.
+
+53
+00:03:01,544 --> 00:03:04,352
+From MODULE3 Topics Covered.
+
+54
+00:03:04,702 --> 00:03:06,934
+Hands-on examples
+
+55
+00:03:07,284 --> 00:03:10,116
+Run from course repository root.
+
+56
+00:03:10,466 --> 00:03:14,474
+Exercise scaffold The following command is shown on screen.
+
+57
+00:03:14,824 --> 00:03:17,152
+Practice & assessment
+
+58
+00:03:17,502 --> 00:03:22,374
+Exercises Class Hierarchy Phases Reporting ConfigDB Factory
+
+59
+00:03:22,724 --> 00:03:25,268
+Exercises Objections
+
+60
+00:03:25,618 --> 00:03:38,866
+Assessment checklist Understands UVM class hierarchy Masters UVM phases Uses UVM reporting effectively Configures components using ConfigDB Understands factory pattern Controls simulation with objections
+
+61
+00:03:39,216 --> 00:03:52,104
+Summary & next steps Master UVM class hierarchy and phases Complete module3/CHECKLIST.md Run ./scripts/module3.sh --check Next: Next module in course

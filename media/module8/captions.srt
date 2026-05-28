@@ -1,0 +1,359 @@
+1
+00:00:00,000 --> 00:00:03,552
+UVM Miscellaneous Utilities Module 8
+
+2
+00:00:03,902 --> 00:00:07,910
+Learning objectives Master UVM utility classes
+
+3
+00:00:08,260 --> 00:00:11,020
+Prerequisites See module README
+
+4
+00:00:11,370 --> 00:00:15,090
+Learning path Master UVM utility classes
+
+5
+00:00:15,440 --> 00:00:32,408
+Overview This module covers UVM utility classes including Command Line Processor, comparators, recorders, pools, queues, and string/math/random utilities. These utilities provide essential functionality for building robust and fl
+
+6
+00:00:32,758 --> 00:00:35,014
+Syllabus topics
+
+7
+00:00:35,364 --> 00:00:38,124
+From MODULE8 Topics Covered.
+
+8
+00:00:38,474 --> 00:00:41,234
+From MODULE8 Topics Covered.
+
+9
+00:00:41,584 --> 00:00:44,344
+From MODULE8 Topics Covered.
+
+10
+00:00:44,694 --> 00:00:47,454
+From MODULE8 Topics Covered.
+
+11
+00:00:47,804 --> 00:00:50,564
+From MODULE8 Topics Covered.
+
+12
+00:00:50,914 --> 00:00:53,674
+From MODULE8 Topics Covered.
+
+13
+00:00:54,024 --> 00:00:56,784
+From MODULE8 Topics Covered.
+
+14
+00:00:57,134 --> 00:00:59,894
+From MODULE8 Topics Covered.
+
+15
+00:01:00,244 --> 00:01:03,004
+From MODULE8 Topics Covered.
+
+16
+00:01:03,354 --> 00:01:06,114
+From MODULE8 Topics Covered.
+
+17
+00:01:06,464 --> 00:01:09,224
+From MODULE8 Topics Covered.
+
+18
+00:01:09,574 --> 00:01:12,334
+From MODULE8 Topics Covered.
+
+19
+00:01:12,684 --> 00:01:15,444
+From MODULE8 Topics Covered.
+
+20
+00:01:15,794 --> 00:01:18,554
+From MODULE8 Topics Covered.
+
+21
+00:01:18,904 --> 00:01:21,664
+From MODULE8 Topics Covered.
+
+22
+00:01:22,014 --> 00:01:24,774
+From MODULE8 Topics Covered.
+
+23
+00:01:25,124 --> 00:01:27,884
+From MODULE8 Topics Covered.
+
+24
+00:01:28,234 --> 00:01:30,994
+From MODULE8 Topics Covered.
+
+25
+00:01:31,344 --> 00:01:34,104
+From MODULE8 Topics Covered.
+
+26
+00:01:34,454 --> 00:01:37,214
+From MODULE8 Topics Covered.
+
+27
+00:01:37,564 --> 00:01:40,324
+From MODULE8 Topics Covered.
+
+28
+00:01:40,674 --> 00:01:43,434
+From MODULE8 Topics Covered.
+
+29
+00:01:43,784 --> 00:01:46,544
+From MODULE8 Topics Covered.
+
+30
+00:01:46,894 --> 00:01:49,654
+From MODULE8 Topics Covered.
+
+31
+00:01:50,004 --> 00:01:52,764
+From MODULE8 Topics Covered.
+
+32
+00:01:53,114 --> 00:01:55,874
+From MODULE8 Topics Covered.
+
+33
+00:01:56,224 --> 00:01:58,984
+From MODULE8 Topics Covered.
+
+34
+00:01:59,334 --> 00:02:02,094
+From MODULE8 Topics Covered.
+
+35
+00:02:02,444 --> 00:02:05,204
+From MODULE8 Topics Covered.
+
+36
+00:02:05,554 --> 00:02:08,314
+From MODULE8 Topics Covered.
+
+37
+00:02:08,664 --> 00:02:11,424
+From MODULE8 Topics Covered.
+
+38
+00:02:11,774 --> 00:02:14,534
+From MODULE8 Topics Covered.
+
+39
+00:02:14,884 --> 00:02:17,644
+From MODULE8 Topics Covered.
+
+40
+00:02:17,994 --> 00:02:20,754
+From MODULE8 Topics Covered.
+
+41
+00:02:21,104 --> 00:02:23,864
+From MODULE8 Topics Covered.
+
+42
+00:02:24,214 --> 00:02:26,974
+From MODULE8 Topics Covered.
+
+43
+00:02:27,324 --> 00:02:30,084
+From MODULE8 Topics Covered.
+
+44
+00:02:30,434 --> 00:02:33,194
+From MODULE8 Topics Covered.
+
+45
+00:02:33,544 --> 00:02:36,304
+From MODULE8 Topics Covered.
+
+46
+00:02:36,654 --> 00:02:39,414
+From MODULE8 Topics Covered.
+
+47
+00:02:39,764 --> 00:02:42,524
+From MODULE8 Topics Covered.
+
+48
+00:02:42,874 --> 00:02:45,634
+From MODULE8 Topics Covered.
+
+49
+00:02:45,984 --> 00:02:48,744
+From MODULE8 Topics Covered.
+
+50
+00:02:49,094 --> 00:02:51,854
+From MODULE8 Topics Covered.
+
+51
+00:02:52,204 --> 00:02:54,964
+From MODULE8 Topics Covered.
+
+52
+00:02:55,314 --> 00:02:58,074
+From MODULE8 Topics Covered.
+
+53
+00:02:58,424 --> 00:03:01,184
+From MODULE8 Topics Covered.
+
+54
+00:03:01,534 --> 00:03:04,294
+From MODULE8 Topics Covered.
+
+55
+00:03:04,644 --> 00:03:07,404
+From MODULE8 Topics Covered.
+
+56
+00:03:07,754 --> 00:03:10,514
+From MODULE8 Topics Covered.
+
+57
+00:03:10,864 --> 00:03:13,624
+From MODULE8 Topics Covered.
+
+58
+00:03:13,974 --> 00:03:16,734
+From MODULE8 Topics Covered.
+
+59
+00:03:17,084 --> 00:03:19,844
+From MODULE8 Topics Covered.
+
+60
+00:03:20,194 --> 00:03:22,954
+From MODULE8 Topics Covered.
+
+61
+00:03:23,304 --> 00:03:26,064
+From MODULE8 Topics Covered.
+
+62
+00:03:26,414 --> 00:03:29,174
+From MODULE8 Topics Covered.
+
+63
+00:03:29,524 --> 00:03:32,284
+From MODULE8 Topics Covered.
+
+64
+00:03:32,634 --> 00:03:35,394
+From MODULE8 Topics Covered.
+
+65
+00:03:35,744 --> 00:03:38,504
+From MODULE8 Topics Covered.
+
+66
+00:03:38,854 --> 00:03:41,614
+From MODULE8 Topics Covered.
+
+67
+00:03:41,964 --> 00:03:44,724
+From MODULE8 Topics Covered.
+
+68
+00:03:45,074 --> 00:03:47,834
+From MODULE8 Topics Covered.
+
+69
+00:03:48,184 --> 00:03:50,944
+From MODULE8 Topics Covered.
+
+70
+00:03:51,294 --> 00:03:54,054
+From MODULE8 Topics Covered.
+
+71
+00:03:54,404 --> 00:03:57,164
+From MODULE8 Topics Covered.
+
+72
+00:03:57,514 --> 00:04:00,274
+From MODULE8 Topics Covered.
+
+73
+00:04:00,624 --> 00:04:03,384
+From MODULE8 Topics Covered.
+
+74
+00:04:03,734 --> 00:04:06,494
+From MODULE8 Topics Covered.
+
+75
+00:04:06,844 --> 00:04:09,604
+From MODULE8 Topics Covered.
+
+76
+00:04:09,954 --> 00:04:12,714
+From MODULE8 Topics Covered.
+
+77
+00:04:13,064 --> 00:04:15,824
+From MODULE8 Topics Covered.
+
+78
+00:04:16,174 --> 00:04:18,934
+From MODULE8 Topics Covered.
+
+79
+00:04:19,284 --> 00:04:22,044
+From MODULE8 Topics Covered.
+
+80
+00:04:22,394 --> 00:04:25,154
+From MODULE8 Topics Covered.
+
+81
+00:04:25,504 --> 00:04:28,264
+From MODULE8 Topics Covered.
+
+82
+00:04:28,614 --> 00:04:31,374
+From MODULE8 Topics Covered.
+
+83
+00:04:31,724 --> 00:04:34,484
+From MODULE8 Topics Covered.
+
+84
+00:04:34,834 --> 00:04:37,066
+Hands-on examples
+
+85
+00:04:37,416 --> 00:04:40,248
+Run from course repository root.
+
+86
+00:04:40,598 --> 00:04:42,926
+Practice & assessment
+
+87
+00:04:43,276 --> 00:04:48,220
+Exercises Command Line Processor Comparators Recorders Pools Queues
+
+88
+00:04:48,570 --> 00:04:53,802
+Exercises String Utilities Math Utilities Random Utilities Integration
+
+89
+00:04:54,152 --> 00:05:11,336
+Assessment checklist Can use UVM utility classes effectively Can parse command-line arguments using CLP Can compare transactions using comparators Can record and playback transactions Can use pools and queues for memory management Can apply string, math, and random utilities
+
+90
+00:05:11,686 --> 00:05:23,854
+Summary & next steps Master UVM utility classes Complete module8/CHECKLIST.md Run ./scripts/module8.sh --check Next: Next module in course

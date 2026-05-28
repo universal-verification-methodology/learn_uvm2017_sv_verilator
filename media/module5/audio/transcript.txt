@@ -1,0 +1,117 @@
+[Slide 1] Advanced UVM Concepts Module 5
+
+[Slide 2] Learning objectives Master advanced UVM features and patterns
+
+[Slide 3] Prerequisites See module README
+
+[Slide 4] Learning path Master advanced UVM features and patterns
+
+[Slide 5] Overview This module covers advanced UVM concepts including virtual sequences, coverage models, advanced configuration, callbacks, and register models. You'll learn how to coordinate multiple sequencers, implement functional cove
+
+[Slide 6] Syllabus topics
+
+[Slide 7] From MODULE5 Topics Covered.
+
+[Slide 8] From MODULE5 Topics Covered.
+
+[Slide 9] From MODULE5 Topics Covered.
+
+[Slide 10] From MODULE5 Topics Covered.
+
+[Slide 11] From MODULE5 Topics Covered.
+
+[Slide 12] From MODULE5 Topics Covered.
+
+[Slide 13] From MODULE5 Topics Covered.
+
+[Slide 14] From MODULE5 Topics Covered.
+
+[Slide 15] From MODULE5 Topics Covered.
+
+[Slide 16] From MODULE5 Topics Covered.
+
+[Slide 17] From MODULE5 Topics Covered.
+
+[Slide 18] From MODULE5 Topics Covered.
+
+[Slide 19] From MODULE5 Topics Covered.
+
+[Slide 20] From MODULE5 Topics Covered.
+
+[Slide 21] From MODULE5 Topics Covered.
+
+[Slide 22] From MODULE5 Topics Covered.
+
+[Slide 23] From MODULE5 Topics Covered.
+
+[Slide 24] From MODULE5 Topics Covered.
+
+[Slide 25] From MODULE5 Topics Covered.
+
+[Slide 26] From MODULE5 Topics Covered.
+
+[Slide 27] From MODULE5 Topics Covered.
+
+[Slide 28] From MODULE5 Topics Covered.
+
+[Slide 29] From MODULE5 Topics Covered.
+
+[Slide 30] From MODULE5 Topics Covered.
+
+[Slide 31] From MODULE5 Topics Covered.
+
+[Slide 32] From MODULE5 Topics Covered.
+
+[Slide 33] From MODULE5 Topics Covered.
+
+[Slide 34] From MODULE5 Topics Covered.
+
+[Slide 35] From MODULE5 Topics Covered.
+
+[Slide 36] From MODULE5 Topics Covered.
+
+[Slide 37] From MODULE5 Topics Covered.
+
+[Slide 38] From MODULE5 Topics Covered.
+
+[Slide 39] From MODULE5 Topics Covered.
+
+[Slide 40] From MODULE5 Topics Covered.
+
+[Slide 41] From MODULE5 Topics Covered.
+
+[Slide 42] From MODULE5 Topics Covered.
+
+[Slide 43] From MODULE5 Topics Covered.
+
+[Slide 44] From MODULE5 Topics Covered.
+
+[Slide 45] From MODULE5 Topics Covered.
+
+[Slide 46] From MODULE5 Topics Covered.
+
+[Slide 47] From MODULE5 Topics Covered.
+
+[Slide 48] From MODULE5 Topics Covered.
+
+[Slide 49] From MODULE5 Topics Covered.
+
+[Slide 50] From MODULE5 Topics Covered.
+
+[Slide 51] From MODULE5 Topics Covered.
+
+[Slide 52] From MODULE5 Topics Covered.
+
+[Slide 53] Hands-on examples
+
+[Slide 54] Run from course repository root.
+
+[Slide 55] Exercise scaffold The following command is shown on screen.
+
+[Slide 56] Practice & assessment
+
+[Slide 57] Exercises Virtual Sequences Coverage Models Advanced Configuration Callbacks Register Model
+
+[Slide 58] Assessment checklist Can implement virtual sequences Can create coverage models Can use advanced configuration Can implement callbacks Can use register models Understands advanced UVM patterns
+
+[Slide 59] Summary & next steps Master advanced UVM features and patterns Complete module5/CHECKLIST.md Run ./scripts/module5.sh --check Next: Next module in course

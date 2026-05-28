@@ -1,0 +1,179 @@
+[Slide 1] UVM Miscellaneous Utilities Module 8
+
+[Slide 2] Learning objectives Master UVM utility classes
+
+[Slide 3] Prerequisites See module README
+
+[Slide 4] Learning path Master UVM utility classes
+
+[Slide 5] Overview This module covers UVM utility classes including Command Line Processor, comparators, recorders, pools, queues, and string/math/random utilities. These utilities provide essential functionality for building robust and fl
+
+[Slide 6] Syllabus topics
+
+[Slide 7] From MODULE8 Topics Covered.
+
+[Slide 8] From MODULE8 Topics Covered.
+
+[Slide 9] From MODULE8 Topics Covered.
+
+[Slide 10] From MODULE8 Topics Covered.
+
+[Slide 11] From MODULE8 Topics Covered.
+
+[Slide 12] From MODULE8 Topics Covered.
+
+[Slide 13] From MODULE8 Topics Covered.
+
+[Slide 14] From MODULE8 Topics Covered.
+
+[Slide 15] From MODULE8 Topics Covered.
+
+[Slide 16] From MODULE8 Topics Covered.
+
+[Slide 17] From MODULE8 Topics Covered.
+
+[Slide 18] From MODULE8 Topics Covered.
+
+[Slide 19] From MODULE8 Topics Covered.
+
+[Slide 20] From MODULE8 Topics Covered.
+
+[Slide 21] From MODULE8 Topics Covered.
+
+[Slide 22] From MODULE8 Topics Covered.
+
+[Slide 23] From MODULE8 Topics Covered.
+
+[Slide 24] From MODULE8 Topics Covered.
+
+[Slide 25] From MODULE8 Topics Covered.
+
+[Slide 26] From MODULE8 Topics Covered.
+
+[Slide 27] From MODULE8 Topics Covered.
+
+[Slide 28] From MODULE8 Topics Covered.
+
+[Slide 29] From MODULE8 Topics Covered.
+
+[Slide 30] From MODULE8 Topics Covered.
+
+[Slide 31] From MODULE8 Topics Covered.
+
+[Slide 32] From MODULE8 Topics Covered.
+
+[Slide 33] From MODULE8 Topics Covered.
+
+[Slide 34] From MODULE8 Topics Covered.
+
+[Slide 35] From MODULE8 Topics Covered.
+
+[Slide 36] From MODULE8 Topics Covered.
+
+[Slide 37] From MODULE8 Topics Covered.
+
+[Slide 38] From MODULE8 Topics Covered.
+
+[Slide 39] From MODULE8 Topics Covered.
+
+[Slide 40] From MODULE8 Topics Covered.
+
+[Slide 41] From MODULE8 Topics Covered.
+
+[Slide 42] From MODULE8 Topics Covered.
+
+[Slide 43] From MODULE8 Topics Covered.
+
+[Slide 44] From MODULE8 Topics Covered.
+
+[Slide 45] From MODULE8 Topics Covered.
+
+[Slide 46] From MODULE8 Topics Covered.
+
+[Slide 47] From MODULE8 Topics Covered.
+
+[Slide 48] From MODULE8 Topics Covered.
+
+[Slide 49] From MODULE8 Topics Covered.
+
+[Slide 50] From MODULE8 Topics Covered.
+
+[Slide 51] From MODULE8 Topics Covered.
+
+[Slide 52] From MODULE8 Topics Covered.
+
+[Slide 53] From MODULE8 Topics Covered.
+
+[Slide 54] From MODULE8 Topics Covered.
+
+[Slide 55] From MODULE8 Topics Covered.
+
+[Slide 56] From MODULE8 Topics Covered.
+
+[Slide 57] From MODULE8 Topics Covered.
+
+[Slide 58] From MODULE8 Topics Covered.
+
+[Slide 59] From MODULE8 Topics Covered.
+
+[Slide 60] From MODULE8 Topics Covered.
+
+[Slide 61] From MODULE8 Topics Covered.
+
+[Slide 62] From MODULE8 Topics Covered.
+
+[Slide 63] From MODULE8 Topics Covered.
+
+[Slide 64] From MODULE8 Topics Covered.
+
+[Slide 65] From MODULE8 Topics Covered.
+
+[Slide 66] From MODULE8 Topics Covered.
+
+[Slide 67] From MODULE8 Topics Covered.
+
+[Slide 68] From MODULE8 Topics Covered.
+
+[Slide 69] From MODULE8 Topics Covered.
+
+[Slide 70] From MODULE8 Topics Covered.
+
+[Slide 71] From MODULE8 Topics Covered.
+
+[Slide 72] From MODULE8 Topics Covered.
+
+[Slide 73] From MODULE8 Topics Covered.
+
+[Slide 74] From MODULE8 Topics Covered.
+
+[Slide 75] From MODULE8 Topics Covered.
+
+[Slide 76] From MODULE8 Topics Covered.
+
+[Slide 77] From MODULE8 Topics Covered.
+
+[Slide 78] From MODULE8 Topics Covered.
+
+[Slide 79] From MODULE8 Topics Covered.
+
+[Slide 80] From MODULE8 Topics Covered.
+
+[Slide 81] From MODULE8 Topics Covered.
+
+[Slide 82] From MODULE8 Topics Covered.
+
+[Slide 83] From MODULE8 Topics Covered.
+
+[Slide 84] Hands-on examples
+
+[Slide 85] Run from course repository root.
+
+[Slide 86] Practice & assessment
+
+[Slide 87] Exercises Command Line Processor Comparators Recorders Pools Queues
+
+[Slide 88] Exercises String Utilities Math Utilities Random Utilities Integration
+
+[Slide 89] Assessment checklist Can use UVM utility classes effectively Can parse command-line arguments using CLP Can compare transactions using comparators Can record and playback transactions Can use pools and queues for memory management Can apply string, math, and random utilities
+
+[Slide 90] Summary & next steps Master UVM utility classes Complete module8/CHECKLIST.md Run ./scripts/module8.sh --check Next: Next module in course

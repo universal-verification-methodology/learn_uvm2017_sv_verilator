@@ -1,0 +1,203 @@
+1
+00:00:00,000 --> 00:00:03,192
+Installation and Setup Module 0
+
+2
+00:00:03,542 --> 00:00:08,462
+Learning objectives Set up development environment and verify installation
+
+3
+00:00:08,812 --> 00:00:11,572
+Prerequisites See module README
+
+4
+00:00:11,922 --> 00:00:16,602
+Learning path Set up development environment and verify installation
+
+5
+00:00:16,952 --> 00:00:31,280
+Overview This module covers the complete setup of your verification environment, including all required tools and dependencies. By the end of this module, you should have a working environment capable of running SystemVerilog UVM
+
+6
+00:00:31,630 --> 00:00:33,886
+Syllabus topics
+
+7
+00:00:34,236 --> 00:00:37,116
+From MODULE0 Topics Covered.
+
+8
+00:00:37,466 --> 00:00:40,346
+From MODULE0 Topics Covered.
+
+9
+00:00:40,696 --> 00:00:43,576
+From MODULE0 Topics Covered.
+
+10
+00:00:43,926 --> 00:00:46,806
+From MODULE0 Topics Covered.
+
+11
+00:00:47,156 --> 00:00:50,036
+From MODULE0 Topics Covered.
+
+12
+00:00:50,386 --> 00:00:53,266
+From MODULE0 Topics Covered.
+
+13
+00:00:53,616 --> 00:00:56,496
+From MODULE0 Topics Covered.
+
+14
+00:00:56,846 --> 00:00:59,726
+From MODULE0 Topics Covered.
+
+15
+00:01:00,076 --> 00:01:02,956
+From MODULE0 Topics Covered.
+
+16
+00:01:03,306 --> 00:01:06,186
+From MODULE0 Topics Covered.
+
+17
+00:01:06,536 --> 00:01:09,416
+From MODULE0 Topics Covered.
+
+18
+00:01:09,766 --> 00:01:12,646
+From MODULE0 Topics Covered.
+
+19
+00:01:12,996 --> 00:01:15,876
+From MODULE0 Topics Covered.
+
+20
+00:01:16,226 --> 00:01:19,106
+From MODULE0 Topics Covered.
+
+21
+00:01:19,456 --> 00:01:22,336
+From MODULE0 Topics Covered.
+
+22
+00:01:22,686 --> 00:01:25,566
+From MODULE0 Topics Covered.
+
+23
+00:01:25,916 --> 00:01:28,796
+From MODULE0 Topics Covered.
+
+24
+00:01:29,146 --> 00:01:32,026
+From MODULE0 Topics Covered.
+
+25
+00:01:32,376 --> 00:01:35,256
+From MODULE0 Topics Covered.
+
+26
+00:01:35,606 --> 00:01:38,486
+From MODULE0 Topics Covered.
+
+27
+00:01:38,836 --> 00:01:41,716
+From MODULE0 Topics Covered.
+
+28
+00:01:42,066 --> 00:01:44,946
+From MODULE0 Topics Covered.
+
+29
+00:01:45,296 --> 00:01:48,176
+From MODULE0 Topics Covered.
+
+30
+00:01:48,526 --> 00:01:51,406
+From MODULE0 Topics Covered.
+
+31
+00:01:51,756 --> 00:01:54,636
+From MODULE0 Topics Covered.
+
+32
+00:01:54,986 --> 00:01:57,866
+From MODULE0 Topics Covered.
+
+33
+00:01:58,216 --> 00:02:01,096
+From MODULE0 Topics Covered.
+
+34
+00:02:01,446 --> 00:02:04,326
+From MODULE0 Topics Covered.
+
+35
+00:02:04,676 --> 00:02:07,556
+From MODULE0 Topics Covered.
+
+36
+00:02:07,906 --> 00:02:10,786
+From MODULE0 Topics Covered.
+
+37
+00:02:11,136 --> 00:02:14,016
+From MODULE0 Topics Covered.
+
+38
+00:02:14,366 --> 00:02:17,246
+From MODULE0 Topics Covered.
+
+39
+00:02:17,596 --> 00:02:20,476
+From MODULE0 Topics Covered.
+
+40
+00:02:20,826 --> 00:02:23,706
+From MODULE0 Topics Covered.
+
+41
+00:02:24,056 --> 00:02:26,936
+From MODULE0 Topics Covered.
+
+42
+00:02:27,286 --> 00:02:30,166
+From MODULE0 Topics Covered.
+
+43
+00:02:30,516 --> 00:02:33,396
+From MODULE0 Topics Covered.
+
+44
+00:02:33,746 --> 00:02:36,626
+From MODULE0 Topics Covered.
+
+45
+00:02:36,976 --> 00:02:39,856
+From MODULE0 Topics Covered.
+
+46
+00:02:40,206 --> 00:02:42,438
+Hands-on examples
+
+47
+00:02:42,788 --> 00:02:45,620
+Run from course repository root.
+
+48
+00:02:45,970 --> 00:02:48,298
+Practice & assessment
+
+49
+00:02:48,648 --> 00:02:55,800
+Exercises Installation Verification Environment Setup First Test IDE Configuration Project Structure
+
+50
+00:02:56,150 --> 00:03:10,766
+Assessment checklist Can install all required tools independently Can set up Verilator Can verify Verilator installation Can verify UVM library installation Can configure IDE for verification work Can create and run a simple test
+
+51
+00:03:11,116 --> 00:03:24,580
+Summary & next steps Set up development environment and verify installation Complete module0/CHECKLIST.md Run ./scripts/module0.sh --check Next: Next module in course

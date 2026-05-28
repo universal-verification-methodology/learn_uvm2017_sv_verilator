@@ -1,0 +1,19 @@
+module: 3
+course: learn_uvm2017_sv_verilator
+assets:
+- id: learning_path
+  type: diagram
+  file: assets/diagrams/learning_path.png
+  source: assets/diagrams/learning_path.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 4
+  license: learn_uvm2017_sv_verilator course materials
+- id: module3_check
+  type: screenshot
+  file: assets/screenshots/module3_check.png
+  capture_command: ./scripts/module3.sh --check
+  cwd: .
+  slides:
+  - 55
+  expect_stdout_contains: All required checks passed

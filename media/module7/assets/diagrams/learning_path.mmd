@@ -1,0 +1,11 @@
+flowchart LR
+  T1["DMA Verification"]
+  T2["Protocol Verification"]
+  T1 --> T2
+  T3["VIP Development"]
+  T2 --> T3
+  T4["Best Practices"]
+  T3 --> T4
+  T5["System-Level Verification"]
+  T4 --> T5
+  T5 --> N["Next module in course"]
