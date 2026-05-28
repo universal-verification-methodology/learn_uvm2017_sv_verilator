@@ -484,17 +484,105 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 3 self-check
-  command: ./scripts/module3.sh --check
+  command: ./scripts/module3.sh --class-hierarchy
   screenshot: assets/screenshots/module3_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module3.sh
   code: ./scripts/module3.sh --scaffold
+- type: bullets
+  title: 'Example 1: Class Hierarchy'
+  bullets:
+  - 'Transaction Class (`MyTransaction`): Extends `uvm_sequence_item` (uvm_object
+    hierarchy)'
+  - 'Driver Class (`MyDriver`): Extends `uvm_driver` (uvm_component hierarchy)'
+  - 'Monitor Class (`MyMonitor`): Extends `uvm_monitor` (uvm_component hierarchy)'
+  notes: module3/examples/class_hierarchy/README.md
+- type: demo
+  title: 'Demo: Class Hierarchy'
+  command: ./scripts/module3.sh --class-hierarchy
+  screenshot: assets/screenshots/ex01_class_hierarchy.png
+  notes: 'Hands-on: module3/examples/class_hierarchy/'
+- type: bullets
+  title: 'Example 2: Phases'
+  bullets:
+  - 'Build-Time Phases: Top-down execution (parent before child)'
+  - 'Run-Time Phases: Bottom-up execution (child before parent)'
+  - 'Cleanup Phases: Bottom-up execution (child before parent)'
+  notes: module3/examples/phases/README.md
+- type: demo
+  title: 'Demo: Phases'
+  command: ./scripts/module3.sh --phases
+  screenshot: assets/screenshots/ex02_phases.png
+  notes: 'Hands-on: module3/examples/phases/'
+- type: bullets
+  title: 'Example 3: Reporting'
+  bullets:
+  - 'Severity Levels: INFO, WARNING, ERROR, FATAL'
+  - 'Verbosity Levels: UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL, UVM_DEBUG'
+  - 'Message Formatting: Formatted messages with data values'
+  notes: module3/examples/reporting/README.md
+- type: demo
+  title: 'Demo: Reporting'
+  command: ./scripts/module3.sh --reporting
+  screenshot: assets/screenshots/ex03_reporting.png
+  notes: 'Hands-on: module3/examples/reporting/'
+- type: bullets
+  title: 'Example 4: ConfigDB'
+  bullets:
+  - 'Setting Configuration: Global and component-specific'
+  - 'Getting Configuration: Hierarchical lookup'
+  - 'Configuration Objects: Complex configuration data'
+  notes: module3/examples/configdb/README.md
+- type: demo
+  title: 'Demo: ConfigDB'
+  command: ./scripts/module3.sh --configdb
+  screenshot: assets/screenshots/ex04_configdb.png
+  notes: 'Hands-on: module3/examples/configdb/'
+- type: bullets
+  title: 'Example 5: Factory'
+  bullets:
+  - 'Factory Registration: Automatic registration via `uvm_object_utils`'
+  - 'Factory Creation: Using `type_id::create()`'
+  - 'Type Override: Substituting base class with extended class'
+  notes: module3/examples/factory/README.md
+- type: demo
+  title: 'Demo: Factory'
+  command: ./scripts/module3.sh --factory
+  screenshot: assets/screenshots/ex05_factory.png
+  notes: 'Hands-on: module3/examples/factory/'
+- type: bullets
+  title: 'Example 6: Objections'
+  bullets:
+  - 'Raising Objections: Keep simulation running'
+  - 'Dropping Objections: Allow phase completion'
+  - 'Multiple Objections: Per-component objection tracking'
+  notes: module3/examples/objections/README.md
+- type: demo
+  title: 'Demo: Objections'
+  command: ./scripts/module3.sh --objections
+  screenshot: assets/screenshots/ex06_objections.png
+  notes: 'Hands-on: module3/examples/objections/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Understand UVM class hierarchy (uvm_object vs uvm_component)
+  - Master UVM phases (build-time, run-time, cleanup)
+  - Use UVM reporting effectively (severity, verbosity, formatting)
+  - Configure components using ConfigDB
+  - Understand factory pattern (registration, creation, overrides)
+  - Control simulation with objections
+  notes: From MODULE3 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Structure UVM testbenches properly
+  notes: From MODULE3 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -521,5 +609,5 @@ slides:
   bullets:
   - Master UVM class hierarchy and phases
   - Complete module3/CHECKLIST.md
-  - Run ./scripts/module3.sh --check
+  - Review module3/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

@@ -2,6 +2,14 @@
 
 This module covers UVM utility classes including Command Line Processor, comparators, recorders, pools, queues, and string/math/random utilities.
 
+
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module8](../media/module8/)
+- **Full syllabus:** [docs/MODULE8.md](../docs/MODULE8.md)
+
+
 ## Directory Structure
 
 ```

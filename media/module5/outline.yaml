@@ -480,17 +480,88 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 5 self-check
-  command: ./scripts/module5.sh --check
+  command: ./scripts/module5.sh --virtual-sequences
   screenshot: assets/screenshots/module5_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module5.sh
   code: ./scripts/module5.sh --scaffold
+- type: bullets
+  title: 'Example 1: Virtual Sequences'
+  bullets:
+  - 'VirtualSequencer: Contains references to multiple sequencers (`master_seqr`,
+    `slave_seqr`)'
+  - 'VirtualSequence: Coordinates sequences on multiple sequencers'
+  - 'ChannelSequence: Regular sequence for a single channel'
+  notes: module5/examples/virtual_sequences/README.md
+- type: demo
+  title: 'Demo: Virtual Sequences'
+  command: ./scripts/module5.sh --virtual-sequences
+  screenshot: assets/screenshots/ex01_virtual_sequences.png
+  notes: 'Hands-on: module5/examples/virtual_sequences/'
+- type: bullets
+  title: 'Example 2: Coverage'
+  bullets:
+  - 'CoverageModel: Extends `uvm_subscriber` for coverage collection'
+  - 'Coverage Sampling: Via `write()` method from analysis port'
+  - 'Coverage Types: Data, address range, command, and cross coverage'
+  notes: module5/examples/coverage/README.md
+- type: demo
+  title: 'Demo: Coverage'
+  command: ./scripts/module5.sh --coverage
+  screenshot: assets/screenshots/ex02_coverage.png
+  notes: 'Hands-on: module5/examples/coverage/'
+- type: bullets
+  title: 'Example 3: Advanced Configuration'
+  bullets:
+  - 'AgentConfig: Complex configuration object with multiple fields'
+  - 'EnvConfig: Environment-level configuration containing agent configs'
+  - 'Configuration Hierarchy: Multi-level configuration structure'
+  notes: module5/examples/configuration/README.md
+- type: demo
+  title: 'Demo: Advanced Configuration'
+  command: ./scripts/module5.sh --configuration
+  screenshot: assets/screenshots/ex03_configuration.png
+  notes: 'Hands-on: module5/examples/configuration/'
+- type: bullets
+  title: 'Example 4: Callbacks'
+  bullets:
+  - 'DriverCallbackBase: Base callback class for driver'
+  - 'DriverCallback: Driver callback implementation'
+  - 'MonitorCallbackBase: Base callback class for monitor'
+  notes: module5/examples/callbacks/README.md
+- type: demo
+  title: 'Demo: Callbacks'
+  command: ./scripts/module5.sh --callbacks
+  screenshot: assets/screenshots/ex04_callbacks.png
+  notes: 'Hands-on: module5/examples/callbacks/'
+- type: bullets
+  title: 'Example 5: Register Model'
+  bullets:
+  - 'RegisterField: Represents a register field with offset, width, and value'
+  - 'Register: Represents a register with address and fields'
+  - 'RegisterBlock: Represents a register block with multiple registers'
+  notes: module5/examples/register_model/README.md
+- type: demo
+  title: 'Demo: Register Model'
+  command: ./scripts/module5.sh --register-model
+  screenshot: assets/screenshots/ex05_register_model.png
+  notes: 'Hands-on: module5/examples/register_model/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know
+  bullets:
+  - Implement virtual sequences to coordinate multiple sequencers
+  - Create coverage models for functional verification
+  - Use advanced configuration with complex objects
+  - Implement callbacks for component extension
+  - Use register models for register verification
+  - Apply advanced UVM patterns in testbenches
+  notes: From MODULE5 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -513,5 +584,5 @@ slides:
   bullets:
   - Master advanced UVM features and patterns
   - Complete module5/CHECKLIST.md
-  - Run ./scripts/module5.sh --check
+  - Review module5/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

@@ -2,6 +2,14 @@
 
 This directory contains all examples, exercises, and test cases for Module 5, focusing on advanced UVM concepts including virtual sequences, coverage models, complex configuration, callbacks, and register models.
 
+
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module5](../media/module5/)
+- **Full syllabus:** [docs/MODULE5.md](../docs/MODULE5.md)
+
+
 ## Directory Structure
 
 ```

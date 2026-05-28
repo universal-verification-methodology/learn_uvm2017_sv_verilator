@@ -623,17 +623,98 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 6 self-check
-  command: ./scripts/module6.sh --check
+  command: ./scripts/module6.sh --architecture
   screenshot: assets/screenshots/module6_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module6.sh
   code: ./scripts/module6.sh --scaffold
+- type: bullets
+  title: 'Example 1: Testbench Architecture'
+  bullets:
+  - 'Transaction Class (`ArchTxn`): Base transaction with address, data, and write/read
+    control'
+  - 'Sequencer (`ArchSequencer`): UVM sequencer for transaction flow control'
+  - 'Driver (`ArchDriver`): UVM driver that receives and drives transactions'
+  notes: module6/examples/architecture/README.md
+- type: demo
+  title: 'Demo: Testbench Architecture'
+  command: ./scripts/module6.sh --architecture
+  screenshot: assets/screenshots/ex01_architecture.png
+  notes: 'Hands-on: module6/examples/architecture/'
+- type: bullets
+  title: 'Example 2: Multi-Agent Environment'
+  bullets:
+  - 'Transaction (`MA_Txn`): Transaction with agent ID and data fields'
+  - 'Agent (`MA_Agent`): Parameterized agent with configurable agent ID'
+  - 'Virtual Sequence (`MA_VirtualSeq`): Coordinates sequences across multiple sequencers'
+  notes: module6/examples/multi_agent/README.md
+- type: demo
+  title: 'Demo: Multi-Agent Environment'
+  command: ./scripts/module6.sh --multi-agent
+  screenshot: assets/screenshots/ex02_multi_agent.png
+  notes: 'Hands-on: module6/examples/multi_agent/'
+- type: bullets
+  title: 'Example 3: Protocol Verification'
+  bullets:
+  - 'Interface (`axi_lite_if`): AXI4-Lite interface with all required signals'
+  - 'Transaction (`AxiTxn`): AXI transaction with read/write, address, and data'
+  - 'Driver (`AxiDriver`): Protocol-aware driver implementing AXI4-Lite handshake
+    protocol'
+  notes: module6/examples/protocol/README.md
+- type: demo
+  title: 'Demo: Protocol Verification'
+  command: ./scripts/module6.sh --protocol
+  screenshot: assets/screenshots/ex03_protocol.png
+  notes: 'Hands-on: module6/examples/protocol/'
+- type: bullets
+  title: 'Example 4: Protocol Checkers'
+  bullets:
+  - 'Interface (`chk_if`): Simple handshake interface with valid/ready signals'
+  - 'Checker Component (`CheckerComp`): UVM component that monitors protocol rules'
+  - 'Protocol Rules: Valid must stay asserted until ready (bounded wait)'
+  notes: module6/examples/protocol_checkers/README.md
+- type: demo
+  title: 'Demo: Protocol Checkers'
+  command: ./scripts/module6.sh --protocol-checkers
+  screenshot: assets/screenshots/ex04_protocol_checkers.png
+  notes: 'Hands-on: module6/examples/protocol_checkers/'
+- type: bullets
+  title: 'Example 5: Multi-Channel Scoreboards'
+  bullets:
+  - 'Transaction (`SB_Txn`): Scoreboard transaction with stream ID, sequence number,
+    and data'
+  - 'Stream Producer (`StreamProducer`): Component that generates transactions for
+    a stream'
+  - 'Multi-Channel Scoreboard (`MultiChannelScoreboard`): Scoreboard that matches
+    transactions from multiple streams'
+  notes: module6/examples/scoreboards/README.md
+- type: demo
+  title: 'Demo: Multi-Channel Scoreboards'
+  command: ./scripts/module6.sh --scoreboards
+  screenshot: assets/screenshots/ex05_scoreboards.png
+  notes: 'Hands-on: module6/examples/scoreboards/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Design complex testbench architectures with hierarchical component organization
+  - Coordinate multiple agents using virtual sequences
+  - Verify protocols using protocol-shaped drivers and monitors
+  - Implement protocol checkers for compliance verification
+  - Build multi-channel scoreboards for transaction matching
+  - Apply production-quality testbench patterns
+  notes: From MODULE6 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Create reusable verification components
+  - Structure testbenches for maintainability and scalability
+  notes: From MODULE6 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -656,5 +737,5 @@ slides:
   bullets:
   - Build production-quality multi-agent testbenches
   - Complete module6/CHECKLIST.md
-  - Run ./scripts/module6.sh --check
+  - Review module6/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

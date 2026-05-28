@@ -415,17 +415,93 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 1 self-check
-  command: ./scripts/module1.sh --check
+  command: ./scripts/module1.sh --sv-basics
   screenshot: assets/screenshots/module1_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module1.sh
   code: ./scripts/module1.sh --scaffold
+- type: bullets
+  title: 'Example 1: Transaction Classes'
+  bullets:
+  - Base `Transaction` class with static variables (`id_counter`)
+  - Instance variables (`id`, `data`, `timestamp`)
+  - 'Special methods: `new()`, `copy()`, `compare()`, `convert2string()`'
+  notes: module1/examples/sv_basics/README.md
+- type: demo
+  title: 'Demo: Transaction Classes'
+  command: ./scripts/module1.sh --sv-basics
+  screenshot: assets/screenshots/ex01_sv_basics.png
+  notes: 'Hands-on: module1/examples/sv_basics/'
+- type: bullets
+  title: 'Example 2: Interfaces and Modports'
+  bullets:
+  - 'Interface Definition: `apb_if` interface with signals and clocking block'
+  - 'Modports: `master_mp` and `slave_mp` modports with different signal directions'
+  - 'Clocking Block: `cb` clocking block for synchronous access'
+  notes: module1/examples/interfaces/README.md
+- type: demo
+  title: 'Demo: Interfaces and Modports'
+  command: ./scripts/module1.sh --interfaces
+  screenshot: assets/screenshots/ex02_interfaces.png
+  notes: 'Hands-on: module1/examples/interfaces/'
+- type: bullets
+  title: 'Example 3: Packages'
+  bullets:
+  - 'Package Definition: `verification_pkg` with common types and functions'
+  - 'Package Import: Using `import verification_pkg::*`'
+  - 'Name Resolution: Handling name conflicts'
+  notes: module1/examples/packages/README.md
+- type: demo
+  title: 'Demo: Packages'
+  command: ./scripts/module1.sh --packages
+  screenshot: assets/screenshots/ex03_packages.png
+  notes: 'Hands-on: module1/examples/packages/'
+- type: bullets
+  title: 'Example 4: Data Structures'
+  bullets:
+  - 'Dynamic Arrays: Transaction arrays that grow dynamically'
+  - 'Queues: FIFO queues for transaction management'
+  - 'Associative Arrays: Indexed by transaction ID'
+  notes: module1/examples/data_structures/README.md
+- type: demo
+  title: 'Demo: Data Structures'
+  command: ./scripts/module1.sh --data-structures
+  screenshot: assets/screenshots/ex04_data_structures.png
+  notes: 'Hands-on: module1/examples/data_structures/'
+- type: bullets
+  title: 'Example 5: Error Handling'
+  bullets:
+  - 'UVM Reporting: Using `uvm_report_info()`, `uvm_report_error()`, etc.'
+  - 'Assertions: Immediate and concurrent assertions'
+  - 'Error Handling: Try-catch blocks for exception handling'
+  notes: module1/examples/error_handling/README.md
+- type: demo
+  title: 'Demo: Error Handling'
+  command: ./scripts/module1.sh --error-handling
+  screenshot: assets/screenshots/ex05_error_handling.png
+  notes: 'Hands-on: module1/examples/error_handling/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Understand SystemVerilog OOP concepts
+  - Create and use SystemVerilog classes
+  - Design interfaces with modports
+  - Organize code using packages
+  - Use appropriate data structures for verification
+  - Implement error handling and logging
+  notes: From MODULE1 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Write basic SystemVerilog testbenches
+  - Understand UVM class structure basics
+  notes: From MODULE1 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -448,5 +524,5 @@ slides:
   bullets:
   - Understand SystemVerilog for verification and verification fundamentals
   - Complete module1/CHECKLIST.md
-  - Run ./scripts/module1.sh --check
+  - Review module1/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

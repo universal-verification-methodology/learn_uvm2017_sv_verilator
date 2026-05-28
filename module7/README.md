@@ -2,6 +2,14 @@
 
 This directory contains all examples, exercises, and test cases for Module 7, focusing on applying UVM patterns to real-world verification scenarios including DMA verification, protocol verification (UART, SPI, I2C), VIP development, and best practices.
 
+
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module7](../media/module7/)
+- **Full syllabus:** [docs/MODULE7.md](../docs/MODULE7.md)
+
+
 ## Directory Structure
 
 ```

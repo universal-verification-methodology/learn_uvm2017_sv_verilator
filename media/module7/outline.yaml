@@ -479,12 +479,102 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 7 self-check
-  command: ./scripts/module7.sh --check
+  command: ./scripts/module7.sh --dma
   screenshot: assets/screenshots/module7_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
+- type: bullets
+  title: 'Example 1: DMA Verification'
+  bullets:
+  - 'Interface (`dma_if`): DMA interface with start, done, addresses, length, and
+    channel signals'
+  - 'Transaction (`DmaTxn`): DMA transaction with source address, destination address,
+    length, and channel'
+  - 'Sequence (`DmaSeq`): DMA sequence generating random DMA transfers'
+  notes: module7/examples/dma/README.md
+- type: demo
+  title: 'Demo: DMA Verification'
+  command: ./scripts/module7.sh --dma
+  screenshot: assets/screenshots/ex01_dma.png
+  notes: 'Hands-on: module7/examples/dma/'
+- type: bullets
+  title: 'Example 2: UART Verification'
+  bullets:
+  - 'Interface (`uart_if`): UART interface with TX/RX signals and control'
+  - 'Transaction (`UartTxn`): UART transaction with data field'
+  - 'Sequence (`UartSeq`): UART sequence generating random UART transfers'
+  notes: module7/examples/protocols/README.md
+- type: demo
+  title: 'Demo: UART Verification'
+  command: ./scripts/module7.sh --protocols
+  screenshot: assets/screenshots/ex02_protocols.png
+  notes: 'Hands-on: module7/examples/protocols/'
+- type: bullets
+  title: 'Example 3: SPI Verification'
+  bullets:
+  - 'Test (`SpiExampleTest`): SPI verification test scaffold'
+  - 'UVM Pattern: Demonstrates UVM structure for SPI verification'
+  notes: module7/examples/protocols/README.md
+- type: demo
+  title: 'Demo: SPI Verification'
+  command: ./scripts/module7.sh --protocols
+  screenshot: assets/screenshots/ex03_protocols.png
+  notes: 'Hands-on: module7/examples/protocols/'
+- type: bullets
+  title: 'Example 4: I2C Verification'
+  bullets:
+  - 'Test (`I2cExampleTest`): I2C verification test scaffold'
+  - 'UVM Pattern: Demonstrates UVM structure for I2C verification'
+  notes: module7/examples/protocols/README.md
+- type: demo
+  title: 'Demo: I2C Verification'
+  command: ./scripts/module7.sh --protocols
+  screenshot: assets/screenshots/ex04_protocols.png
+  notes: 'Hands-on: module7/examples/protocols/'
+- type: bullets
+  title: 'Example 5: VIP Development'
+  bullets:
+  - 'Transaction (`VipTxn`): VIP transaction with payload'
+  - 'Sequence (`VipSeq`): VIP sequence generating transactions'
+  - 'Driver (`VipDriver`): VIP driver'
+  notes: module7/examples/vip/README.md
+- type: demo
+  title: 'Demo: VIP Development'
+  command: ./scripts/module7.sh --vip
+  screenshot: assets/screenshots/ex05_vip.png
+  notes: 'Hands-on: module7/examples/vip/'
+- type: bullets
+  title: 'Example 6: Best Practices'
+  bullets:
+  - 'Test (`BestPracticesTest`): Test demonstrating best practices'
+  - 'Phase Organization: Proper phase usage and logging'
+  - 'Topology Printing: Component hierarchy visualization'
+  notes: module7/examples/best_practices/README.md
+- type: demo
+  title: 'Demo: Best Practices'
+  command: ./scripts/module7.sh --best-practices
+  screenshot: assets/screenshots/ex06_best_practices.png
+  notes: 'Hands-on: module7/examples/best_practices/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Verify complex designs (DMA, protocols) using UVM patterns
+  - Develop reusable VIP with proper architecture
+  - Apply best practices for code organization and maintainability
+  - Perform system-level verification with multiple DUTs
+  - Create production-quality testbenches
+  - Understand protocol verification patterns
+  notes: From MODULE7 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Package verification components for reuse
+  - Use topology printing for debugging
+  - Implement phase-based logging
+  - Apply real-world verification patterns
+  notes: From MODULE7 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -507,5 +597,5 @@ slides:
   bullets:
   - Apply UVM to real-world verification scenarios
   - Complete module7/CHECKLIST.md
-  - Run ./scripts/module7.sh --check
+  - Review module7/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

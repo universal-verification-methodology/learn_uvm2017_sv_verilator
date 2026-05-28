@@ -2,6 +2,14 @@
 
 This directory contains all examples, exercises, and test cases for Module 4, focusing on UVM component implementation including transactions, drivers, monitors, sequencers, TLM communication, scoreboards, and complete agents.
 
+
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module4](../media/module4/)
+- **Full syllabus:** [docs/MODULE4.md](../docs/MODULE4.md)
+
+
 ## Directory Structure
 
 ```

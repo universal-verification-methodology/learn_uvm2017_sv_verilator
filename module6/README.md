@@ -2,6 +2,14 @@
 
 This directory contains all examples, exercises, and test cases for Module 6, focusing on building production-quality multi-agent UVM environments, protocol-oriented verification scaffolds, protocol checkers, and multi-channel scoreboarding.
 
+
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module6](../media/module6/)
+- **Full syllabus:** [docs/MODULE6.md](../docs/MODULE6.md)
+
+
 ## Directory Structure
 
 ```

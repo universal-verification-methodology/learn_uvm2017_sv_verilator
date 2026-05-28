@@ -92,10 +92,22 @@
 
 [Slide 47] Run from course repository root.
 
-[Slide 48] Practice & assessment
+[Slide 48] Hands-on: module0/examples/install/
 
-[Slide 49] Exercises Installation Verification Environment Setup First Test IDE Configuration Project Structure
+[Slide 49] Hands-on: module0/examples/project/
 
-[Slide 50] Assessment checklist Can install all required tools independently Can set up Verilator Can verify Verilator installation Can verify UVM library installation Can configure IDE for verification work Can create and run a simple test
+[Slide 50] Hands-on: module0/examples/install-full/
 
-[Slide 51] Summary & next steps Set up development environment and verify installation Complete module0/CHECKLIST.md Run ./scripts/module0.sh --check Next: Next module in course
+[Slide 51] Hands-on: module0/examples/hello/
+
+[Slide 52] Practice & assessment
+
+[Slide 53] From MODULE0 Learning Outcomes.
+
+[Slide 54] From MODULE0 Learning Outcomes.
+
+[Slide 55] Exercises Installation Verification Environment Setup First Test IDE Configuration Project Structure
+
+[Slide 56] Assessment checklist Can install all required tools independently Can set up Verilator Can verify Verilator installation Can verify UVM library installation Can configure IDE for verification work Can create and run a simple test
+
+[Slide 57] Summary & next steps Set up development environment and verify installation Complete module0/CHECKLIST.md Review module0/EXAMPLES.md and run each lab Next: Next module in course

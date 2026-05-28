@@ -386,12 +386,51 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 0 self-check
-  command: ./scripts/module0.sh --check
+  command: verilator --version
   screenshot: assets/screenshots/module0_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: Verilator
   notes: Run from course repository root.
+- type: demo
+  title: 'Demo: Verify toolchain'
+  command: verilator --version && source scripts/setup_uvm_env.sh 2>/dev/null || true
+    && test -f "${UVM_HOME:-tools/uvm-2017/1800.2-2017-1.0/src}/uvm_pkg.sv" && echo
+    "UVM library OK" && make --version | head -1
+  screenshot: assets/screenshots/ex01_install.png
+  notes: 'Hands-on: module0/examples/install/'
+- type: demo
+  title: 'Demo: Project layout'
+  command: ls -la docs/MODULE0.md module1/README.md scripts/installation.sh
+  screenshot: assets/screenshots/ex02_project.png
+  notes: 'Hands-on: module0/examples/project/'
+  expect_stdout_contains: total
+- type: demo
+  title: 'Demo: Optional full install'
+  command: ./scripts/installation.sh --help | head -20
+  screenshot: assets/screenshots/ex03_install-full.png
+  notes: 'Hands-on: module0/examples/install-full/'
+- type: demo
+  title: 'Demo: First smoke test'
+  command: ./scripts/module1.sh --help | head -15
+  screenshot: assets/screenshots/ex04_hello.png
+  notes: 'Hands-on: module0/examples/hello/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Install and configure all required tools
+  - Set up Verilator
+  - Install and verify UVM library
+  - Configure your IDE for verification work
+  - Create a basic project structure
+  - Run a simple verification test
+  notes: From MODULE0 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Understand Verilator limitations
+  - Troubleshoot common installation issues
+  notes: From MODULE0 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -414,5 +453,5 @@ slides:
   bullets:
   - Set up development environment and verify installation
   - Complete module0/CHECKLIST.md
-  - Run ./scripts/module0.sh --check
+  - Review module0/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

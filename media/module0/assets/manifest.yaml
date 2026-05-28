@@ -8,12 +8,44 @@ assets:
   generator: render_diagrams.sh
   slides:
   - 4
+  - 4
   license: learn_uvm2017_sv_verilator course materials
 - id: module0_check
   type: screenshot
   file: assets/screenshots/module0_check.png
-  capture_command: ./scripts/module0.sh --check
+  capture_command: verilator --version
   cwd: .
   slides:
   - 47
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: Verilator
+- id: ex01_install
+  type: screenshot
+  file: assets/screenshots/ex01_install.png
+  capture_command: verilator --version && source scripts/setup_uvm_env.sh 2>/dev/null
+    || true && test -f "${UVM_HOME:-tools/uvm-2017/1800.2-2017-1.0/src}/uvm_pkg.sv"
+    && echo "UVM library OK" && make --version | head -1
+  cwd: .
+  slides:
+  - 48
+- id: ex02_project
+  type: screenshot
+  file: assets/screenshots/ex02_project.png
+  capture_command: ls -la docs/MODULE0.md module1/README.md scripts/installation.sh
+  cwd: .
+  slides:
+  - 49
+  expect_stdout_contains: total
+- id: ex03_install-full
+  type: screenshot
+  file: assets/screenshots/ex03_install-full.png
+  capture_command: ./scripts/installation.sh --help | head -20
+  cwd: .
+  slides:
+  - 50
+- id: ex04_hello
+  type: screenshot
+  file: assets/screenshots/ex04_hello.png
+  capture_command: ./scripts/module1.sh --help | head -15
+  cwd: .
+  slides:
+  - 51

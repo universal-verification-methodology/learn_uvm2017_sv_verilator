@@ -2,6 +2,13 @@
 
 This directory contains all examples, exercises, and test cases for Module 1, focusing on SystemVerilog fundamentals for hardware verification and basic testbench concepts.
 
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module1](../media/module1/)
+- **Full syllabus:** [docs/MODULE1.md](../docs/MODULE1.md)
+
+
 ## Directory Structure
 
 ```

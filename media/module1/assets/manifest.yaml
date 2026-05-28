@@ -8,12 +8,48 @@ assets:
   generator: render_diagrams.sh
   slides:
   - 4
+  - 4
   license: learn_uvm2017_sv_verilator course materials
 - id: module1_check
   type: screenshot
   file: assets/screenshots/module1_check.png
-  capture_command: ./scripts/module1.sh --check
+  capture_command: ./scripts/module1.sh --sv-basics
   cwd: .
   slides:
   - 48
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
+- id: ex01_sv_basics
+  type: screenshot
+  file: assets/screenshots/ex01_sv_basics.png
+  capture_command: ./scripts/module1.sh --sv-basics
+  cwd: .
+  slides:
+  - 51
+- id: ex02_interfaces
+  type: screenshot
+  file: assets/screenshots/ex02_interfaces.png
+  capture_command: ./scripts/module1.sh --interfaces
+  cwd: .
+  slides:
+  - 53
+- id: ex03_packages
+  type: screenshot
+  file: assets/screenshots/ex03_packages.png
+  capture_command: ./scripts/module1.sh --packages
+  cwd: .
+  slides:
+  - 55
+- id: ex04_data_structures
+  type: screenshot
+  file: assets/screenshots/ex04_data_structures.png
+  capture_command: ./scripts/module1.sh --data-structures
+  cwd: .
+  slides:
+  - 57
+- id: ex05_error_handling
+  type: screenshot
+  file: assets/screenshots/ex05_error_handling.png
+  capture_command: ./scripts/module1.sh --error-handling
+  cwd: .
+  slides:
+  - 59

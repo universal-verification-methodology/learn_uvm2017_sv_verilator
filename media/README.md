@@ -41,7 +41,14 @@ bash "$SKILL/scripts/build_course_media.sh" "$COURSE" --run-demos
 
 Optional: `media/outline_overrides.yaml` for demo commands that need git/scaffold (see `outline_overrides.yaml.example`).
 
-Typical full deck: **~35–45 slides** per module when using `generate_outline_from_module.py`.
+Typical full deck: **~60–110 slides** per module (syllabus + command highlights + **one demo slide per `moduleN/EXAMPLES.md` lab**).
+
+Regenerate hands-on labs from course docs:
+
+```bash
+bash "$SKILL/scripts/run_python.sh" \
+  "$SKILL/scripts/generate_examples_from_module.py" "$COURSE" --force
+```
 
 ## Install / refresh wrappers
 

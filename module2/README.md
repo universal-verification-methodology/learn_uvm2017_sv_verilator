@@ -2,6 +2,14 @@
 
 This directory contains all examples, exercises, and test cases for Module 2, focusing on SystemVerilog testbench construction including clock generation, reset patterns, signal access, timing control, and common verification patterns.
 
+
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module2](../media/module2/)
+- **Full syllabus:** [docs/MODULE2.md](../docs/MODULE2.md)
+
+
 ## Directory Structure
 
 ```

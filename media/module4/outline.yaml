@@ -551,17 +551,117 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 4 self-check
-  command: ./scripts/module4.sh --check
+  command: ./scripts/module4.sh --transactions
   screenshot: assets/screenshots/module4_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module4.sh
   code: ./scripts/module4.sh --scaffold
+- type: bullets
+  title: 'Example 1: Transactions'
+  bullets:
+  - 'BaseTransaction: Basic transaction with `data` and `address` fields'
+  - 'ExtendedTransaction: Extended transaction with `control` and `status` fields'
+  - 'ConstrainedTransaction: Transaction with randomization constraints'
+  notes: module4/examples/transactions/README.md
+- type: demo
+  title: 'Demo: Transactions'
+  command: ./scripts/module4.sh --transactions
+  screenshot: assets/screenshots/ex01_transactions.png
+  notes: 'Hands-on: module4/examples/transactions/'
+- type: bullets
+  title: 'Example 2: Drivers'
+  bullets:
+  - 'SimpleDriver: Basic driver implementation with transaction reception'
+  - 'ProtocolDriver: Protocol-aware driver with handshaking'
+  - 'Driver-Sequencer Communication: Using `seq_item_port` for transaction flow'
+  notes: module4/examples/drivers/README.md
+- type: demo
+  title: 'Demo: Drivers'
+  command: ./scripts/module4.sh --drivers
+  screenshot: assets/screenshots/ex02_drivers.png
+  notes: 'Hands-on: module4/examples/drivers/'
+- type: bullets
+  title: 'Example 3: Monitors'
+  bullets:
+  - 'SimpleMonitor: Basic monitor implementation with signal sampling'
+  - 'ProtocolMonitor: Protocol-aware monitor with handshake monitoring'
+  - 'Transaction Creation: Creating transactions from sampled signals'
+  notes: module4/examples/monitors/README.md
+- type: demo
+  title: 'Demo: Monitors'
+  command: ./scripts/module4.sh --monitors
+  screenshot: assets/screenshots/ex03_monitors.png
+  notes: 'Hands-on: module4/examples/monitors/'
+- type: bullets
+  title: 'Example 4: Sequencers'
+  bullets:
+  - 'SimpleSequence: Basic sequence implementation'
+  - 'ExtendedSequence: Extended sequence with configurable item count'
+  - 'Sequence Execution: Starting sequences on sequencers'
+  notes: module4/examples/sequencers/README.md
+- type: demo
+  title: 'Demo: Sequencers'
+  command: ./scripts/module4.sh --sequencers
+  screenshot: assets/screenshots/ex04_sequencers.png
+  notes: 'Hands-on: module4/examples/sequencers/'
+- type: bullets
+  title: 'Example 5: TLM'
+  bullets:
+  - 'TlmProducer: Uses `uvm_blocking_put_port` to produce transactions'
+  - 'TlmConsumer: Uses `uvm_blocking_get_export` to consume transactions'
+  - 'AnalysisProducer: Uses `uvm_analysis_port` to broadcast transactions'
+  notes: module4/examples/tlm/README.md
+- type: demo
+  title: 'Demo: TLM'
+  command: ./scripts/module4.sh --tlm
+  screenshot: assets/screenshots/ex05_tlm.png
+  notes: 'Hands-on: module4/examples/tlm/'
+- type: bullets
+  title: 'Example 6: Scoreboards'
+  bullets:
+  - 'SimpleScoreboard: Basic scoreboard with transaction comparison'
+  - 'Transaction Storage: Storing expected and actual transactions'
+  - 'Comparison Logic: Comparing transactions for verification'
+  notes: module4/examples/scoreboards/README.md
+- type: demo
+  title: 'Demo: Scoreboards'
+  command: ./scripts/module4.sh --scoreboards
+  screenshot: assets/screenshots/ex06_scoreboards.png
+  notes: 'Hands-on: module4/examples/scoreboards/'
+- type: bullets
+  title: 'Example 7: Complete Agents'
+  bullets:
+  - 'CompleteAgent: Contains driver, monitor, and sequencer'
+  - 'Agent Configuration: Configurable as active or passive'
+  - 'Component Integration: Integrating all agent components'
+  notes: module4/examples/agents/README.md
+- type: demo
+  title: 'Demo: Complete Agents'
+  command: ./scripts/module4.sh --agents
+  screenshot: assets/screenshots/ex07_agents.png
+  notes: 'Hands-on: module4/examples/agents/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Design and implement transaction classes
+  - Create drivers for DUT stimulus generation
+  - Implement monitors for DUT observation
+  - Build sequencers and sequences for test generation
+  - Use TLM for component communication
+  - Create scoreboards for result checking
+  notes: From MODULE4 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Build complete agents with all components integrated
+  - Apply UVM component patterns in testbenches
+  notes: From MODULE4 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -589,5 +689,5 @@ slides:
   bullets:
   - Build complete UVM agents with driver, monitor, and sequencer
   - Complete module4/CHECKLIST.md
-  - Run ./scripts/module4.sh --check
+  - Review module4/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

@@ -2,6 +2,14 @@
 
 This directory contains all examples, exercises, and test cases for Module 3, focusing on UVM (Universal Verification Methodology) fundamentals including class hierarchy, phases, reporting, configuration database, factory pattern, and objection mechanism.
 
+
+## Hands-on labs
+
+- **Step-by-step commands:** [EXAMPLES.md](EXAMPLES.md)
+- **Slides / PDF / video:** [media/module3](../media/module3/)
+- **Full syllabus:** [docs/MODULE3.md](../docs/MODULE3.md)
+
+
 ## Directory Structure
 
 ```

@@ -187,17 +187,41 @@ Hands-on examples
 Run from course repository root.
 
 48
-00:02:45,970 --> 00:02:48,298
-Practice & assessment
+00:02:45,970 --> 00:02:50,722
+Hands-on: module0/examples/install/
 
 49
-00:02:48,648 --> 00:02:55,800
-Exercises Installation Verification Environment Setup First Test IDE Configuration Project Structure
+00:02:51,072 --> 00:02:55,872
+Hands-on: module0/examples/project/
 
 50
-00:02:56,150 --> 00:03:10,766
-Assessment checklist Can install all required tools independently Can set up Verilator Can verify Verilator installation Can verify UVM library installation Can configure IDE for verification work Can create and run a simple test
+00:02:56,222 --> 00:03:01,142
+Hands-on: module0/examples/install-full/
 
 51
-00:03:11,116 --> 00:03:24,580
-Summary & next steps Set up development environment and verify installation Complete module0/CHECKLIST.md Run ./scripts/module0.sh --check Next: Next module in course
+00:03:01,492 --> 00:03:06,100
+Hands-on: module0/examples/hello/
+
+52
+00:03:06,450 --> 00:03:08,778
+Practice & assessment
+
+53
+00:03:09,128 --> 00:03:12,080
+From MODULE0 Learning Outcomes.
+
+54
+00:03:12,430 --> 00:03:15,382
+From MODULE0 Learning Outcomes.
+
+55
+00:03:15,732 --> 00:03:22,884
+Exercises Installation Verification Environment Setup First Test IDE Configuration Project Structure
+
+56
+00:03:23,234 --> 00:03:37,850
+Assessment checklist Can install all required tools independently Can set up Verilator Can verify Verilator installation Can verify UVM library installation Can configure IDE for verification work Can create and run a simple test
+
+57
+00:03:38,200 --> 00:03:52,072
+Summary & next steps Set up development environment and verify installation Complete module0/CHECKLIST.md Review module0/EXAMPLES.md and run each lab Next: Next module in course

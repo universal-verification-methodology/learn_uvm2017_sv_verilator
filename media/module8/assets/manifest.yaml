@@ -8,12 +8,76 @@ assets:
   generator: render_diagrams.sh
   slides:
   - 4
+  - 4
   license: learn_uvm2017_sv_verilator course materials
 - id: module8_check
   type: screenshot
   file: assets/screenshots/module8_check.png
-  capture_command: ./scripts/module8.sh --check
+  capture_command: ./scripts/module8.sh --clp
   cwd: .
   slides:
   - 85
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
+- id: ex01_clp
+  type: screenshot
+  file: assets/screenshots/ex01_clp.png
+  capture_command: ./scripts/module8.sh --clp
+  cwd: .
+  slides:
+  - 87
+- id: ex02_comparators
+  type: screenshot
+  file: assets/screenshots/ex02_comparators.png
+  capture_command: ./scripts/module8.sh --comparators
+  cwd: .
+  slides:
+  - 89
+- id: ex03_recorders
+  type: screenshot
+  file: assets/screenshots/ex03_recorders.png
+  capture_command: ./scripts/module8.sh --recorders
+  cwd: .
+  slides:
+  - 91
+- id: ex04_pools
+  type: screenshot
+  file: assets/screenshots/ex04_pools.png
+  capture_command: ./scripts/module8.sh --pools
+  cwd: .
+  slides:
+  - 93
+- id: ex05_queues
+  type: screenshot
+  file: assets/screenshots/ex05_queues.png
+  capture_command: ./scripts/module8.sh --queues
+  cwd: .
+  slides:
+  - 95
+- id: ex06_string_utils
+  type: screenshot
+  file: assets/screenshots/ex06_string_utils.png
+  capture_command: ./scripts/module8.sh --string-utils
+  cwd: .
+  slides:
+  - 97
+- id: ex07_math_utils
+  type: screenshot
+  file: assets/screenshots/ex07_math_utils.png
+  capture_command: ./scripts/module8.sh --math-utils
+  cwd: .
+  slides:
+  - 99
+- id: ex08_random_utils
+  type: screenshot
+  file: assets/screenshots/ex08_random_utils.png
+  capture_command: ./scripts/module8.sh --random-utils
+  cwd: .
+  slides:
+  - 101
+- id: ex09_integration
+  type: screenshot
+  file: assets/screenshots/ex09_integration.png
+  capture_command: ./scripts/module8.sh --integration
+  cwd: .
+  slides:
+  - 103

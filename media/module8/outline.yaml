@@ -790,12 +790,135 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 8 self-check
-  command: ./scripts/module8.sh --check
+  command: ./scripts/module8.sh --clp
   screenshot: assets/screenshots/module8_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
+- type: bullets
+  title: 'Example 1: Command Line Processor'
+  bullets:
+  - 'CLPTransaction: Transaction with data and address fields'
+  - 'CLPSequence: Sequence using CLP configuration for number of transactions'
+  - 'CLPDriver: Driver that processes transactions'
+  notes: module8/examples/clp/README.md
+- type: demo
+  title: 'Demo: Command Line Processor'
+  command: ./scripts/module8.sh --clp
+  screenshot: assets/screenshots/ex01_clp.png
+  notes: 'Hands-on: module8/examples/clp/'
+- type: bullets
+  title: 'Example 2: Comparators'
+  bullets:
+  - 'ComparatorTransaction: Transaction with data, address, and timestamp'
+  - 'InOrderComparator: Sequential transaction comparison'
+  - 'OutOfOrderComparator: Address-based transaction matching'
+  notes: module8/examples/comparators/README.md
+- type: demo
+  title: 'Demo: Comparators'
+  command: ./scripts/module8.sh --comparators
+  screenshot: assets/screenshots/ex02_comparators.png
+  notes: 'Hands-on: module8/examples/comparators/'
+- type: bullets
+  title: 'Example 3: Recorders'
+  bullets:
+  - 'RecorderTransaction: Transaction with recording capabilities'
+  - 'TransactionRecorder: Recorder that stores transactions'
+  - 'RecorderTest: Test demonstrating transaction recording'
+  notes: module8/examples/recorders/README.md
+- type: demo
+  title: 'Demo: Recorders'
+  command: ./scripts/module8.sh --recorders
+  screenshot: assets/screenshots/ex03_recorders.png
+  notes: 'Hands-on: module8/examples/recorders/'
+- type: bullets
+  title: 'Example 4: Pools'
+  bullets:
+  - 'PoolTransaction: Transaction for pool example'
+  - 'TransactionPool: Pool implementation with allocate/free'
+  - 'PoolTest: Test demonstrating object pooling'
+  notes: module8/examples/pools/README.md
+- type: demo
+  title: 'Demo: Pools'
+  command: ./scripts/module8.sh --pools
+  screenshot: assets/screenshots/ex04_pools.png
+  notes: 'Hands-on: module8/examples/pools/'
+- type: bullets
+  title: 'Example 5: Queues'
+  bullets:
+  - 'QueueTransaction: Transaction for queue example'
+  - 'QueueManager: Queue manager with FIFO and priority queues'
+  - 'QueueTest: Test demonstrating queue operations'
+  notes: module8/examples/queues/README.md
+- type: demo
+  title: 'Demo: Queues'
+  command: ./scripts/module8.sh --queues
+  screenshot: assets/screenshots/ex05_queues.png
+  notes: 'Hands-on: module8/examples/queues/'
+- type: bullets
+  title: 'Example 6: String Utilities'
+  bullets:
+  - 'StringUtils: Utility class for string operations'
+  - 'StringTest: Test demonstrating string utilities'
+  notes: module8/examples/string_utils/README.md
+- type: demo
+  title: 'Demo: String Utilities'
+  command: ./scripts/module8.sh --string-utils
+  screenshot: assets/screenshots/ex06_string_utils.png
+  notes: 'Hands-on: module8/examples/string_utils/'
+- type: bullets
+  title: 'Example 7: Math Utilities'
+  bullets:
+  - 'MathUtils: Utility class for mathematical operations'
+  - 'MathTest: Test demonstrating math utilities'
+  notes: module8/examples/math_utils/README.md
+- type: demo
+  title: 'Demo: Math Utilities'
+  command: ./scripts/module8.sh --math-utils
+  screenshot: assets/screenshots/ex07_math_utils.png
+  notes: 'Hands-on: module8/examples/math_utils/'
+- type: bullets
+  title: 'Example 8: Random Utilities'
+  bullets:
+  - 'RandomUtils: Utility class for random operations'
+  - 'RandomTest: Test demonstrating random utilities'
+  notes: module8/examples/random_utils/README.md
+- type: demo
+  title: 'Demo: Random Utilities'
+  command: ./scripts/module8.sh --random-utils
+  screenshot: assets/screenshots/ex08_random_utils.png
+  notes: 'Hands-on: module8/examples/random_utils/'
+- type: bullets
+  title: 'Example 9: Integration'
+  bullets:
+  - 'IntegrationTest: Test combining multiple utilities'
+  - Combined utility usage
+  - Transaction recording and queuing
+  notes: module8/examples/integration/README.md
+- type: demo
+  title: 'Demo: Integration'
+  command: ./scripts/module8.sh --integration
+  screenshot: assets/screenshots/ex09_integration.png
+  notes: 'Hands-on: module8/examples/integration/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Use UVM utility classes effectively
+  - Parse command-line arguments using CLP
+  - Compare transactions using comparators
+  - Record and playback transactions
+  - Use pools and queues for memory management
+  - Apply string, math, and random utilities
+  notes: From MODULE8 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Integrate multiple utilities in testbenches
+  - Build flexible and configurable testbenches
+  - Understand utility method signatures and usage patterns
+  - Apply utility patterns in real-world testbenches
+  notes: From MODULE8 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -825,5 +948,5 @@ slides:
   bullets:
   - Master UVM utility classes
   - Complete module8/CHECKLIST.md
-  - Run ./scripts/module8.sh --check
+  - Review module8/EXAMPLES.md and run each lab
   - 'Next: Next module in course'

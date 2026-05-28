@@ -8,12 +8,48 @@ assets:
   generator: render_diagrams.sh
   slides:
   - 4
+  - 4
   license: learn_uvm2017_sv_verilator course materials
 - id: module5_check
   type: screenshot
   file: assets/screenshots/module5_check.png
-  capture_command: ./scripts/module5.sh --check
+  capture_command: ./scripts/module5.sh --virtual-sequences
   cwd: .
   slides:
   - 54
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
+- id: ex01_virtual_sequences
+  type: screenshot
+  file: assets/screenshots/ex01_virtual_sequences.png
+  capture_command: ./scripts/module5.sh --virtual-sequences
+  cwd: .
+  slides:
+  - 57
+- id: ex02_coverage
+  type: screenshot
+  file: assets/screenshots/ex02_coverage.png
+  capture_command: ./scripts/module5.sh --coverage
+  cwd: .
+  slides:
+  - 59
+- id: ex03_configuration
+  type: screenshot
+  file: assets/screenshots/ex03_configuration.png
+  capture_command: ./scripts/module5.sh --configuration
+  cwd: .
+  slides:
+  - 61
+- id: ex04_callbacks
+  type: screenshot
+  file: assets/screenshots/ex04_callbacks.png
+  capture_command: ./scripts/module5.sh --callbacks
+  cwd: .
+  slides:
+  - 63
+- id: ex05_register_model
+  type: screenshot
+  file: assets/screenshots/ex05_register_model.png
+  capture_command: ./scripts/module5.sh --register-model
+  cwd: .
+  slides:
+  - 65

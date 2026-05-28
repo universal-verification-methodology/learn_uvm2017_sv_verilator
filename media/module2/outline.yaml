@@ -692,17 +692,95 @@ slides:
   title: Hands-on examples
 - type: demo
   title: Module 2 self-check
-  command: ./scripts/module2.sh --check
+  command: ./scripts/module2.sh --clock-generation
   screenshot: assets/screenshots/module2_check.png
-  expect_stdout_contains: All required checks passed
+  expect_stdout_contains: completed successfully
   notes: Run from course repository root.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module2.sh
   code: ./scripts/module2.sh --scaffold
+- type: bullets
+  title: 'Example 1: Clock Generation'
+  bullets:
+  - 'Simple Clock: Basic clock generation with `always` block'
+  - 'Parameterized Clock: Clock with configurable period and duty cycle'
+  - 'Multiple Clocks: Generating multiple independent clocks'
+  notes: module2/examples/clock_generation/README.md
+- type: demo
+  title: 'Demo: Clock Generation'
+  command: ./scripts/module2.sh --clock-generation
+  screenshot: assets/screenshots/ex01_clock_generation.png
+  notes: 'Hands-on: module2/examples/clock_generation/'
+- type: bullets
+  title: 'Example 2: Reset Patterns'
+  bullets:
+  - 'Synchronous Reset: Reset synchronized to clock'
+  - 'Asynchronous Reset: Reset independent of clock'
+  - 'Reset Sequence: Controlled reset assertion and de-assertion'
+  notes: module2/examples/reset_patterns/README.md
+- type: demo
+  title: 'Demo: Reset Patterns'
+  command: ./scripts/module2.sh --reset-patterns
+  screenshot: assets/screenshots/ex02_reset_patterns.png
+  notes: 'Hands-on: module2/examples/reset_patterns/'
+- type: bullets
+  title: 'Example 3: Signal Access'
+  bullets:
+  - 'Signal Reading: Reading DUT signal values'
+  - 'Signal Driving: Driving signals to DUT'
+  - 'Signal Monitoring: Monitoring signal changes'
+  notes: module2/examples/signal_access/README.md
+- type: demo
+  title: 'Demo: Signal Access'
+  command: ./scripts/module2.sh --signal-access
+  screenshot: assets/screenshots/ex03_signal_access.png
+  notes: 'Hands-on: module2/examples/signal_access/'
+- type: bullets
+  title: 'Example 4: Triggers and Timing'
+  bullets:
+  - 'Event Control: Using `@` for event-based timing'
+  - 'Delay Control: Using `#` for time-based delays'
+  - 'Wait Statements: Using `wait` for condition-based waiting'
+  notes: module2/examples/triggers/README.md
+- type: demo
+  title: 'Demo: Triggers and Timing'
+  command: ./scripts/module2.sh --triggers
+  screenshot: assets/screenshots/ex04_triggers.png
+  notes: 'Hands-on: module2/examples/triggers/'
+- type: bullets
+  title: 'Example 5: Common Patterns'
+  bullets:
+  - 'Testbench Structure: Organized testbench with phases'
+  - 'Driver Pattern: Stimulus generation component'
+  - 'Monitor Pattern: Response monitoring component'
+  notes: module2/examples/common_patterns/README.md
+- type: demo
+  title: 'Demo: Common Patterns'
+  command: ./scripts/module2.sh --common-patterns
+  screenshot: assets/screenshots/ex05_common_patterns.png
+  notes: 'Hands-on: module2/examples/common_patterns/'
 - type: section
   title: Practice & assessment
+- type: bullets
+  title: What you should know (1/2)
+  bullets:
+  - Understand SystemVerilog testbench architecture
+  - Generate clocks and manage clock domains
+  - Implement reset patterns and sequences
+  - Access and drive signals correctly
+  - Use events and timing control effectively
+  - Apply common verification patterns
+  notes: From MODULE2 Learning Outcomes.
+- type: bullets
+  title: What you should know (2/2)
+  bullets:
+  - Structure testbenches for maintainability
+  - Prepare for UVM methodology
+  - Write effective testbench tasks and functions
+  - Use timing control constructs properly
+  notes: From MODULE2 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -725,5 +803,5 @@ slides:
   bullets:
   - Master SystemVerilog testbench construction
   - Complete module2/CHECKLIST.md
-  - Run ./scripts/module2.sh --check
+  - Review module2/EXAMPLES.md and run each lab
   - 'Next: Next module in course'
