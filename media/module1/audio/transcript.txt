@@ -96,10 +96,34 @@
 
 [Slide 49] Exercise scaffold The following command is shown on screen.
 
-[Slide 50] Practice & assessment
+[Slide 50] module1/examples/sv_basics/README.md
 
-[Slide 51] Exercises Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+[Slide 51] Hands-on: module1/examples/sv_basics/
 
-[Slide 52] Assessment checklist Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging Can write basic SystemVerilog testbenches
+[Slide 52] module1/examples/interfaces/README.md
 
-[Slide 53] Summary & next steps Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Run ./scripts/module1.sh --check Next: Next module in course
+[Slide 53] Hands-on: module1/examples/interfaces/
+
+[Slide 54] module1/examples/packages/README.md
+
+[Slide 55] Hands-on: module1/examples/packages/
+
+[Slide 56] module1/examples/data_structures/README.md
+
+[Slide 57] Hands-on: module1/examples/data_structures/
+
+[Slide 58] module1/examples/error_handling/README.md
+
+[Slide 59] Hands-on: module1/examples/error_handling/
+
+[Slide 60] Practice & assessment
+
+[Slide 61] From MODULE1 Learning Outcomes.
+
+[Slide 62] From MODULE1 Learning Outcomes.
+
+[Slide 63] Exercises Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+
+[Slide 64] Assessment checklist Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging Can write basic SystemVerilog testbenches
+
+[Slide 65] Summary & next steps Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Review module1/EXAMPLES.md and run each lab Next: Next module in course

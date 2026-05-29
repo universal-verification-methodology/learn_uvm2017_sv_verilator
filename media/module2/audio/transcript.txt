@@ -152,10 +152,34 @@
 
 [Slide 77] Exercise scaffold The following command is shown on screen.
 
-[Slide 78] Practice & assessment
+[Slide 78] module2/examples/clock_generation/README.md
 
-[Slide 79] Exercises Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+[Slide 79] Hands-on: module2/examples/clock_generation/
 
-[Slide 80] Assessment checklist Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns Can structure testbenches effectively
+[Slide 80] module2/examples/reset_patterns/README.md
 
-[Slide 81] Summary & next steps Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Run ./scripts/module2.sh --check Next: Next module in course
+[Slide 81] Hands-on: module2/examples/reset_patterns/
+
+[Slide 82] module2/examples/signal_access/README.md
+
+[Slide 83] Hands-on: module2/examples/signal_access/
+
+[Slide 84] module2/examples/triggers/README.md
+
+[Slide 85] Hands-on: module2/examples/triggers/
+
+[Slide 86] module2/examples/common_patterns/README.md
+
+[Slide 87] Hands-on: module2/examples/common_patterns/
+
+[Slide 88] Practice & assessment
+
+[Slide 89] From MODULE2 Learning Outcomes.
+
+[Slide 90] From MODULE2 Learning Outcomes.
+
+[Slide 91] Exercises Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+
+[Slide 92] Assessment checklist Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns Can structure testbenches effectively
+
+[Slide 93] Summary & next steps Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Review module2/EXAMPLES.md and run each lab Next: Next module in course

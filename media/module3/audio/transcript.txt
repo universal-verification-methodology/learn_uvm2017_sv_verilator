@@ -110,12 +110,40 @@
 
 [Slide 56] Exercise scaffold The following command is shown on screen.
 
-[Slide 57] Practice & assessment
+[Slide 57] module3/examples/class_hierarchy/README.md
 
-[Slide 58] Exercises Class Hierarchy Phases Reporting ConfigDB Factory
+[Slide 58] Hands-on: module3/examples/class_hierarchy/
 
-[Slide 59] Exercises Objections
+[Slide 59] module3/examples/phases/README.md
 
-[Slide 60] Assessment checklist Understands UVM class hierarchy Masters UVM phases Uses UVM reporting effectively Configures components using ConfigDB Understands factory pattern Controls simulation with objections
+[Slide 60] Hands-on: module3/examples/phases/
 
-[Slide 61] Summary & next steps Master UVM class hierarchy and phases Complete module3/CHECKLIST.md Run ./scripts/module3.sh --check Next: Next module in course
+[Slide 61] module3/examples/reporting/README.md
+
+[Slide 62] Hands-on: module3/examples/reporting/
+
+[Slide 63] module3/examples/configdb/README.md
+
+[Slide 64] Hands-on: module3/examples/configdb/
+
+[Slide 65] module3/examples/factory/README.md
+
+[Slide 66] Hands-on: module3/examples/factory/
+
+[Slide 67] module3/examples/objections/README.md
+
+[Slide 68] Hands-on: module3/examples/objections/
+
+[Slide 69] Practice & assessment
+
+[Slide 70] From MODULE3 Learning Outcomes.
+
+[Slide 71] From MODULE3 Learning Outcomes.
+
+[Slide 72] Exercises Class Hierarchy Phases Reporting ConfigDB Factory
+
+[Slide 73] Exercises Objections
+
+[Slide 74] Assessment checklist Understands UVM class hierarchy Masters UVM phases Uses UVM reporting effectively Configures components using ConfigDB Understands factory pattern Controls simulation with objections
+
+[Slide 75] Summary & next steps Master UVM class hierarchy and phases Complete module3/CHECKLIST.md Review module3/EXAMPLES.md and run each lab Next: Next module in course

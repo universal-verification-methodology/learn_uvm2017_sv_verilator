@@ -124,12 +124,44 @@
 
 [Slide 63] Exercise scaffold The following command is shown on screen.
 
-[Slide 64] Practice & assessment
+[Slide 64] module4/examples/transactions/README.md
 
-[Slide 65] Exercises Transaction Modeling Driver Implementation Monitor Implementation Sequencer and Sequences TLM Communication
+[Slide 65] Hands-on: module4/examples/transactions/
 
-[Slide 66] Exercises Scoreboards Complete Agents
+[Slide 66] module4/examples/drivers/README.md
 
-[Slide 67] Assessment checklist Can design and implement transaction classes Can create drivers for DUT stimulus Can implement monitors for DUT observation Can build sequencers and sequences Can use TLM for component communication Can create scoreboards for result checking
+[Slide 67] Hands-on: module4/examples/drivers/
 
-[Slide 68] Summary & next steps Build complete UVM agents with driver, monitor, and sequencer Complete module4/CHECKLIST.md Run ./scripts/module4.sh --check Next: Next module in course
+[Slide 68] module4/examples/monitors/README.md
+
+[Slide 69] Hands-on: module4/examples/monitors/
+
+[Slide 70] module4/examples/sequencers/README.md
+
+[Slide 71] Hands-on: module4/examples/sequencers/
+
+[Slide 72] module4/examples/tlm/README.md
+
+[Slide 73] Hands-on: module4/examples/tlm/
+
+[Slide 74] module4/examples/scoreboards/README.md
+
+[Slide 75] Hands-on: module4/examples/scoreboards/
+
+[Slide 76] module4/examples/agents/README.md
+
+[Slide 77] Hands-on: module4/examples/agents/
+
+[Slide 78] Practice & assessment
+
+[Slide 79] From MODULE4 Learning Outcomes.
+
+[Slide 80] From MODULE4 Learning Outcomes.
+
+[Slide 81] Exercises Transaction Modeling Driver Implementation Monitor Implementation Sequencer and Sequences TLM Communication
+
+[Slide 82] Exercises Scoreboards Complete Agents
+
+[Slide 83] Assessment checklist Can design and implement transaction classes Can create drivers for DUT stimulus Can implement monitors for DUT observation Can build sequencers and sequences Can use TLM for component communication Can create scoreboards for result checking
+
+[Slide 84] Summary & next steps Build complete UVM agents with driver, monitor, and sequencer Complete module4/CHECKLIST.md Review module4/EXAMPLES.md and run each lab Next: Next module in course

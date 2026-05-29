@@ -108,10 +108,32 @@
 
 [Slide 55] Exercise scaffold The following command is shown on screen.
 
-[Slide 56] Practice & assessment
+[Slide 56] module5/examples/virtual_sequences/README.md
 
-[Slide 57] Exercises Virtual Sequences Coverage Models Advanced Configuration Callbacks Register Model
+[Slide 57] Hands-on: module5/examples/virtual_sequences/
 
-[Slide 58] Assessment checklist Can implement virtual sequences Can create coverage models Can use advanced configuration Can implement callbacks Can use register models Understands advanced UVM patterns
+[Slide 58] module5/examples/coverage/README.md
 
-[Slide 59] Summary & next steps Master advanced UVM features and patterns Complete module5/CHECKLIST.md Run ./scripts/module5.sh --check Next: Next module in course
+[Slide 59] Hands-on: module5/examples/coverage/
+
+[Slide 60] module5/examples/configuration/README.md
+
+[Slide 61] Hands-on: module5/examples/configuration/
+
+[Slide 62] module5/examples/callbacks/README.md
+
+[Slide 63] Hands-on: module5/examples/callbacks/
+
+[Slide 64] module5/examples/register_model/README.md
+
+[Slide 65] Hands-on: module5/examples/register_model/
+
+[Slide 66] Practice & assessment
+
+[Slide 67] From MODULE5 Learning Outcomes.
+
+[Slide 68] Exercises Virtual Sequences Coverage Models Advanced Configuration Callbacks Register Model
+
+[Slide 69] Assessment checklist Can implement virtual sequences Can create coverage models Can use advanced configuration Can implement callbacks Can use register models Understands advanced UVM patterns
+
+[Slide 70] Summary & next steps Master advanced UVM features and patterns Complete module5/CHECKLIST.md Review module5/EXAMPLES.md and run each lab Next: Next module in course

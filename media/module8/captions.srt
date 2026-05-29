@@ -339,21 +339,101 @@ Hands-on examples
 Run from course repository root.
 
 86
-00:04:40,598 --> 00:04:42,926
-Practice & assessment
+00:04:40,598 --> 00:04:45,446
+module8/examples/clp/README.md
 
 87
-00:04:43,276 --> 00:04:48,220
-Exercises Command Line Processor Comparators Recorders Pools Queues
+00:04:45,796 --> 00:04:50,476
+Hands-on: module8/examples/clp/
 
 88
-00:04:48,570 --> 00:04:53,802
-Exercises String Utilities Math Utilities Random Utilities Integration
+00:04:50,826 --> 00:04:55,842
+module8/examples/comparators/README.md
 
 89
-00:04:54,152 --> 00:05:11,336
-Assessment checklist Can use UVM utility classes effectively Can parse command-line arguments using CLP Can compare transactions using comparators Can record and playback transactions Can use pools and queues for memory management Can apply string, math, and random utilities
+00:04:56,192 --> 00:05:01,016
+Hands-on: module8/examples/comparators/
 
 90
-00:05:11,686 --> 00:05:23,854
-Summary & next steps Master UVM utility classes Complete module8/CHECKLIST.md Run ./scripts/module8.sh --check Next: Next module in course
+00:05:01,366 --> 00:05:06,190
+module8/examples/recorders/README.md
+
+91
+00:05:06,540 --> 00:05:11,172
+Hands-on: module8/examples/recorders/
+
+92
+00:05:11,522 --> 00:05:16,154
+module8/examples/pools/README.md
+
+93
+00:05:16,504 --> 00:05:20,968
+Hands-on: module8/examples/pools/
+
+94
+00:05:21,318 --> 00:05:25,926
+module8/examples/queues/README.md
+
+95
+00:05:26,276 --> 00:05:30,740
+Hands-on: module8/examples/queues/
+
+96
+00:05:31,090 --> 00:05:36,610
+module8/examples/string_utils/README.md
+
+97
+00:05:36,960 --> 00:05:42,264
+Hands-on: module8/examples/string_utils/
+
+98
+00:05:42,614 --> 00:05:48,134
+module8/examples/math_utils/README.md
+
+99
+00:05:48,484 --> 00:05:53,812
+Hands-on: module8/examples/math_utils/
+
+100
+00:05:54,162 --> 00:05:59,730
+module8/examples/random_utils/README.md
+
+101
+00:06:00,080 --> 00:06:05,456
+Hands-on: module8/examples/random_utils/
+
+102
+00:06:05,806 --> 00:06:10,774
+module8/examples/integration/README.md
+
+103
+00:06:11,124 --> 00:06:15,900
+Hands-on: module8/examples/integration/
+
+104
+00:06:16,250 --> 00:06:18,578
+Practice & assessment
+
+105
+00:06:18,928 --> 00:06:21,808
+From MODULE8 Learning Outcomes.
+
+106
+00:06:22,158 --> 00:06:25,038
+From MODULE8 Learning Outcomes.
+
+107
+00:06:25,388 --> 00:06:30,332
+Exercises Command Line Processor Comparators Recorders Pools Queues
+
+108
+00:06:30,682 --> 00:06:35,914
+Exercises String Utilities Math Utilities Random Utilities Integration
+
+109
+00:06:36,264 --> 00:06:53,448
+Assessment checklist Can use UVM utility classes effectively Can parse command-line arguments using CLP Can compare transactions using comparators Can record and playback transactions Can use pools and queues for memory management Can apply string, math, and random utilities
+
+110
+00:06:53,798 --> 00:07:06,350
+Summary & next steps Master UVM utility classes Complete module8/CHECKLIST.md Review module8/EXAMPLES.md and run each lab Next: Next module in course

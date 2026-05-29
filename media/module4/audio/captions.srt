@@ -251,21 +251,85 @@ Run from course repository root.
 Exercise scaffold The following command is shown on screen.
 
 64
-00:03:38,130 --> 00:03:40,458
-Practice & assessment
+00:03:38,130 --> 00:03:43,290
+module4/examples/transactions/README.md
 
 65
-00:03:40,808 --> 00:03:48,896
-Exercises Transaction Modeling Driver Implementation Monitor Implementation Sequencer and Sequences TLM Communication
+00:03:43,640 --> 00:03:48,608
+Hands-on: module4/examples/transactions/
 
 66
-00:03:49,246 --> 00:03:52,486
-Exercises Scoreboards Complete Agents
+00:03:48,958 --> 00:03:53,782
+module4/examples/drivers/README.md
 
 67
-00:03:52,836 --> 00:04:08,916
-Assessment checklist Can design and implement transaction classes Can create drivers for DUT stimulus Can implement monitors for DUT observation Can build sequencers and sequences Can use TLM for component communication Can create scoreboards for result checking
+00:03:54,132 --> 00:03:58,788
+Hands-on: module4/examples/drivers/
 
 68
-00:04:09,266 --> 00:04:23,546
-Summary & next steps Build complete UVM agents with driver, monitor, and sequencer Complete module4/CHECKLIST.md Run ./scripts/module4.sh --check Next: Next module in course
+00:03:59,138 --> 00:04:04,010
+module4/examples/monitors/README.md
+
+69
+00:04:04,360 --> 00:04:09,040
+Hands-on: module4/examples/monitors/
+
+70
+00:04:09,390 --> 00:04:14,358
+module4/examples/sequencers/README.md
+
+71
+00:04:14,708 --> 00:04:19,460
+Hands-on: module4/examples/sequencers/
+
+72
+00:04:19,810 --> 00:04:24,778
+module4/examples/tlm/README.md
+
+73
+00:04:25,128 --> 00:04:29,928
+Hands-on: module4/examples/tlm/
+
+74
+00:04:30,278 --> 00:04:35,270
+module4/examples/scoreboards/README.md
+
+75
+00:04:35,620 --> 00:04:40,372
+Hands-on: module4/examples/scoreboards/
+
+76
+00:04:40,722 --> 00:04:45,498
+module4/examples/agents/README.md
+
+77
+00:04:45,848 --> 00:04:50,456
+Hands-on: module4/examples/agents/
+
+78
+00:04:50,806 --> 00:04:53,134
+Practice & assessment
+
+79
+00:04:53,484 --> 00:04:56,412
+From MODULE4 Learning Outcomes.
+
+80
+00:04:56,762 --> 00:04:59,690
+From MODULE4 Learning Outcomes.
+
+81
+00:05:00,040 --> 00:05:08,128
+Exercises Transaction Modeling Driver Implementation Monitor Implementation Sequencer and Sequences TLM Communication
+
+82
+00:05:08,478 --> 00:05:11,718
+Exercises Scoreboards Complete Agents
+
+83
+00:05:12,068 --> 00:05:28,148
+Assessment checklist Can design and implement transaction classes Can create drivers for DUT stimulus Can implement monitors for DUT observation Can build sequencers and sequences Can use TLM for component communication Can create scoreboards for result checking
+
+84
+00:05:28,498 --> 00:05:43,186
+Summary & next steps Build complete UVM agents with driver, monitor, and sequencer Complete module4/CHECKLIST.md Review module4/EXAMPLES.md and run each lab Next: Next module in course

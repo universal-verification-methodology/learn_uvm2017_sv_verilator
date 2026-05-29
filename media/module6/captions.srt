@@ -271,17 +271,65 @@ Run from course repository root.
 Exercise scaffold The following command is shown on screen.
 
 69
-00:03:53,776 --> 00:03:56,104
-Practice & assessment
+00:03:53,776 --> 00:03:58,912
+module6/examples/architecture/README.md
 
 70
-00:03:56,454 --> 00:04:04,350
-Exercises Testbench Architecture Multi-Agent Coordination Protocol Verification Protocol Checkers Multi-Channel Scoreboards
+00:03:59,262 --> 00:04:04,182
+Hands-on: module6/examples/architecture/
 
 71
-00:04:04,700 --> 00:04:18,140
-Assessment checklist Can design complex testbench architectures Can coordinate multiple agents Can verify protocols Can implement protocol checkers Can build multi-channel scoreboards Can apply production-quality testbench patterns
+00:04:04,532 --> 00:04:10,076
+module6/examples/multi_agent/README.md
 
 72
-00:04:18,490 --> 00:04:31,522
-Summary & next steps Build production-quality multi-agent testbenches Complete module6/CHECKLIST.md Run ./scripts/module6.sh --check Next: Next module in course
+00:04:10,426 --> 00:04:15,778
+Hands-on: module6/examples/multi_agent/
+
+73
+00:04:16,128 --> 00:04:21,072
+module6/examples/protocol/README.md
+
+74
+00:04:21,422 --> 00:04:26,126
+Hands-on: module6/examples/protocol/
+
+75
+00:04:26,476 --> 00:04:32,284
+module6/examples/protocol_checkers/README.md
+
+76
+00:04:32,634 --> 00:04:38,178
+Hands-on: module6/examples/protocol_checkers/
+
+77
+00:04:38,528 --> 00:04:43,496
+module6/examples/scoreboards/README.md
+
+78
+00:04:43,846 --> 00:04:48,622
+Hands-on: module6/examples/scoreboards/
+
+79
+00:04:48,972 --> 00:04:51,300
+Practice & assessment
+
+80
+00:04:51,650 --> 00:04:54,602
+From MODULE6 Learning Outcomes.
+
+81
+00:04:54,952 --> 00:04:57,904
+From MODULE6 Learning Outcomes.
+
+82
+00:04:58,254 --> 00:05:06,150
+Exercises Testbench Architecture Multi-Agent Coordination Protocol Verification Protocol Checkers Multi-Channel Scoreboards
+
+83
+00:05:06,500 --> 00:05:19,940
+Assessment checklist Can design complex testbench architectures Can coordinate multiple agents Can verify protocols Can implement protocol checkers Can build multi-channel scoreboards Can apply production-quality testbench patterns
+
+84
+00:05:20,290 --> 00:05:33,634
+Summary & next steps Build production-quality multi-agent testbenches Complete module6/CHECKLIST.md Review module6/EXAMPLES.md and run each lab Next: Next module in course

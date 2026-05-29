@@ -219,17 +219,61 @@ Run from course repository root.
 Exercise scaffold The following command is shown on screen.
 
 56
-00:03:12,362 --> 00:03:14,690
-Practice & assessment
+00:03:12,362 --> 00:03:18,242
+module5/examples/virtual_sequences/README.md
 
 57
-00:03:15,040 --> 00:03:21,280
-Exercises Virtual Sequences Coverage Models Advanced Configuration Callbacks Register Model
+00:03:18,592 --> 00:03:24,280
+Hands-on: module5/examples/virtual_sequences/
 
 58
-00:03:21,630 --> 00:03:33,246
-Assessment checklist Can implement virtual sequences Can create coverage models Can use advanced configuration Can implement callbacks Can use register models Understands advanced UVM patterns
+00:03:24,630 --> 00:03:29,478
+module5/examples/coverage/README.md
 
 59
-00:03:33,596 --> 00:03:46,580
-Summary & next steps Master advanced UVM features and patterns Complete module5/CHECKLIST.md Run ./scripts/module5.sh --check Next: Next module in course
+00:03:29,828 --> 00:03:34,484
+Hands-on: module5/examples/coverage/
+
+60
+00:03:34,834 --> 00:03:40,042
+module5/examples/configuration/README.md
+
+61
+00:03:40,392 --> 00:03:45,432
+Hands-on: module5/examples/configuration/
+
+62
+00:03:45,782 --> 00:03:50,750
+module5/examples/callbacks/README.md
+
+63
+00:03:51,100 --> 00:03:55,852
+Hands-on: module5/examples/callbacks/
+
+64
+00:03:56,202 --> 00:04:01,890
+module5/examples/register_model/README.md
+
+65
+00:04:02,240 --> 00:04:07,688
+Hands-on: module5/examples/register_model/
+
+66
+00:04:08,038 --> 00:04:10,366
+Practice & assessment
+
+67
+00:04:10,716 --> 00:04:13,692
+From MODULE5 Learning Outcomes.
+
+68
+00:04:14,042 --> 00:04:20,282
+Exercises Virtual Sequences Coverage Models Advanced Configuration Callbacks Register Model
+
+69
+00:04:20,632 --> 00:04:32,248
+Assessment checklist Can implement virtual sequences Can create coverage models Can use advanced configuration Can implement callbacks Can use register models Understands advanced UVM patterns
+
+70
+00:04:32,598 --> 00:04:45,894
+Summary & next steps Master advanced UVM features and patterns Complete module5/CHECKLIST.md Review module5/EXAMPLES.md and run each lab Next: Next module in course

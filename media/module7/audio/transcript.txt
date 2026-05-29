@@ -104,10 +104,38 @@
 
 [Slide 53] Run from course repository root.
 
-[Slide 54] Practice & assessment
+[Slide 54] module7/examples/dma/README.md
 
-[Slide 55] Exercises DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+[Slide 55] Hands-on: module7/examples/dma/
 
-[Slide 56] Assessment checklist Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches Understands protocol verification patterns
+[Slide 56] module7/examples/protocols/README.md
 
-[Slide 57] Summary & next steps Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Run ./scripts/module7.sh --check Next: Next module in course
+[Slide 57] Hands-on: module7/examples/protocols/
+
+[Slide 58] module7/examples/protocols/README.md
+
+[Slide 59] Hands-on: module7/examples/protocols/
+
+[Slide 60] module7/examples/protocols/README.md
+
+[Slide 61] Hands-on: module7/examples/protocols/
+
+[Slide 62] module7/examples/vip/README.md
+
+[Slide 63] Hands-on: module7/examples/vip/
+
+[Slide 64] module7/examples/best_practices/README.md
+
+[Slide 65] Hands-on: module7/examples/best_practices/
+
+[Slide 66] Practice & assessment
+
+[Slide 67] From MODULE7 Learning Outcomes.
+
+[Slide 68] From MODULE7 Learning Outcomes.
+
+[Slide 69] Exercises DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+
+[Slide 70] Assessment checklist Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches Understands protocol verification patterns
+
+[Slide 71] Summary & next steps Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Review module7/EXAMPLES.md and run each lab Next: Next module in course

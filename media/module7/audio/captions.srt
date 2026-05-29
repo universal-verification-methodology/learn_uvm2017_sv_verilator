@@ -211,17 +211,73 @@ Hands-on examples
 Run from course repository root.
 
 54
-00:03:09,286 --> 00:03:11,614
-Practice & assessment
+00:03:09,286 --> 00:03:14,278
+module7/examples/dma/README.md
 
 55
-00:03:11,964 --> 00:03:19,764
-Exercises DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+00:03:14,628 --> 00:03:19,356
+Hands-on: module7/examples/dma/
 
 56
-00:03:20,114 --> 00:03:36,002
-Assessment checklist Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches Understands protocol verification patterns
+00:03:19,706 --> 00:03:24,746
+module7/examples/protocols/README.md
 
 57
-00:03:36,352 --> 00:03:49,768
-Summary & next steps Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Run ./scripts/module7.sh --check Next: Next module in course
+00:03:25,096 --> 00:03:29,896
+Hands-on: module7/examples/protocols/
+
+58
+00:03:30,246 --> 00:03:35,286
+module7/examples/protocols/README.md
+
+59
+00:03:35,636 --> 00:03:40,436
+Hands-on: module7/examples/protocols/
+
+60
+00:03:40,786 --> 00:03:45,826
+module7/examples/protocols/README.md
+
+61
+00:03:46,176 --> 00:03:50,976
+Hands-on: module7/examples/protocols/
+
+62
+00:03:51,326 --> 00:03:56,366
+module7/examples/vip/README.md
+
+63
+00:03:56,716 --> 00:04:01,540
+Hands-on: module7/examples/vip/
+
+64
+00:04:01,890 --> 00:04:07,698
+module7/examples/best_practices/README.md
+
+65
+00:04:08,048 --> 00:04:13,640
+Hands-on: module7/examples/best_practices/
+
+66
+00:04:13,990 --> 00:04:16,318
+Practice & assessment
+
+67
+00:04:16,668 --> 00:04:19,620
+From MODULE7 Learning Outcomes.
+
+68
+00:04:19,970 --> 00:04:22,922
+From MODULE7 Learning Outcomes.
+
+69
+00:04:23,272 --> 00:04:31,072
+Exercises DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+
+70
+00:04:31,422 --> 00:04:47,310
+Assessment checklist Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches Understands protocol verification patterns
+
+71
+00:04:47,660 --> 00:05:01,508
+Summary & next steps Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Review module7/EXAMPLES.md and run each lab Next: Next module in course

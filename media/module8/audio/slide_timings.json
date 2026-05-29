@@ -427,26 +427,126 @@
   {
     "slide": 86,
     "start": 280.598,
-    "duration": 2.678
+    "duration": 5.198
   },
   {
     "slide": 87,
-    "start": 283.276,
-    "duration": 5.294
+    "start": 285.796,
+    "duration": 5.03
   },
   {
     "slide": 88,
-    "start": 288.57,
-    "duration": 5.582
+    "start": 290.826,
+    "duration": 5.366
   },
   {
     "slide": 89,
-    "start": 294.152,
-    "duration": 17.534
+    "start": 296.192,
+    "duration": 5.174
   },
   {
     "slide": 90,
-    "start": 311.686,
-    "duration": 12.168
+    "start": 301.366,
+    "duration": 5.174
+  },
+  {
+    "slide": 91,
+    "start": 306.54,
+    "duration": 4.982
+  },
+  {
+    "slide": 92,
+    "start": 311.522,
+    "duration": 4.982
+  },
+  {
+    "slide": 93,
+    "start": 316.504,
+    "duration": 4.814
+  },
+  {
+    "slide": 94,
+    "start": 321.318,
+    "duration": 4.958
+  },
+  {
+    "slide": 95,
+    "start": 326.276,
+    "duration": 4.814
+  },
+  {
+    "slide": 96,
+    "start": 331.09,
+    "duration": 5.87
+  },
+  {
+    "slide": 97,
+    "start": 336.96,
+    "duration": 5.654
+  },
+  {
+    "slide": 98,
+    "start": 342.614,
+    "duration": 5.87
+  },
+  {
+    "slide": 99,
+    "start": 348.484,
+    "duration": 5.678
+  },
+  {
+    "slide": 100,
+    "start": 354.162,
+    "duration": 5.918
+  },
+  {
+    "slide": 101,
+    "start": 360.08,
+    "duration": 5.726
+  },
+  {
+    "slide": 102,
+    "start": 365.806,
+    "duration": 5.318
+  },
+  {
+    "slide": 103,
+    "start": 371.124,
+    "duration": 5.126
+  },
+  {
+    "slide": 104,
+    "start": 376.25,
+    "duration": 2.678
+  },
+  {
+    "slide": 105,
+    "start": 378.928,
+    "duration": 3.23
+  },
+  {
+    "slide": 106,
+    "start": 382.158,
+    "duration": 3.23
+  },
+  {
+    "slide": 107,
+    "start": 385.388,
+    "duration": 5.294
+  },
+  {
+    "slide": 108,
+    "start": 390.682,
+    "duration": 5.582
+  },
+  {
+    "slide": 109,
+    "start": 396.264,
+    "duration": 17.534
+  },
+  {
+    "slide": 110,
+    "start": 413.798,
+    "duration": 12.552
   }
 ]

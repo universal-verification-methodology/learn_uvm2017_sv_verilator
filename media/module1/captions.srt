@@ -195,17 +195,65 @@ Run from course repository root.
 Exercise scaffold The following command is shown on screen.
 
 50
-00:02:52,670 --> 00:02:54,998
-Practice & assessment
+00:02:52,670 --> 00:02:58,310
+module1/examples/sv_basics/README.md
 
 51
-00:02:55,348 --> 00:03:02,380
-Exercises Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+00:02:58,660 --> 00:03:04,108
+Hands-on: module1/examples/sv_basics/
 
 52
-00:03:02,730 --> 00:03:18,186
-Assessment checklist Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging Can write basic SystemVerilog testbenches
+00:03:04,458 --> 00:03:09,498
+module1/examples/interfaces/README.md
 
 53
-00:03:18,536 --> 00:03:33,128
-Summary & next steps Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Run ./scripts/module1.sh --check Next: Next module in course
+00:03:09,848 --> 00:03:14,672
+Hands-on: module1/examples/interfaces/
+
+54
+00:03:15,022 --> 00:03:19,990
+module1/examples/packages/README.md
+
+55
+00:03:20,340 --> 00:03:25,092
+Hands-on: module1/examples/packages/
+
+56
+00:03:25,442 --> 00:03:31,082
+module1/examples/data_structures/README.md
+
+57
+00:03:31,432 --> 00:03:36,856
+Hands-on: module1/examples/data_structures/
+
+58
+00:03:37,206 --> 00:03:42,750
+module1/examples/error_handling/README.md
+
+59
+00:03:43,100 --> 00:03:48,476
+Hands-on: module1/examples/error_handling/
+
+60
+00:03:48,826 --> 00:03:51,154
+Practice & assessment
+
+61
+00:03:51,504 --> 00:03:54,408
+From MODULE1 Learning Outcomes.
+
+62
+00:03:54,758 --> 00:03:57,662
+From MODULE1 Learning Outcomes.
+
+63
+00:03:58,012 --> 00:04:05,044
+Exercises Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+
+64
+00:04:05,394 --> 00:04:20,850
+Assessment checklist Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging Can write basic SystemVerilog testbenches
+
+65
+00:04:21,200 --> 00:04:36,128
+Summary & next steps Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Review module1/EXAMPLES.md and run each lab Next: Next module in course

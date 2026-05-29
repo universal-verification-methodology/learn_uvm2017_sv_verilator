@@ -168,12 +168,52 @@
 
 [Slide 85] Run from course repository root.
 
-[Slide 86] Practice & assessment
+[Slide 86] module8/examples/clp/README.md
 
-[Slide 87] Exercises Command Line Processor Comparators Recorders Pools Queues
+[Slide 87] Hands-on: module8/examples/clp/
 
-[Slide 88] Exercises String Utilities Math Utilities Random Utilities Integration
+[Slide 88] module8/examples/comparators/README.md
 
-[Slide 89] Assessment checklist Can use UVM utility classes effectively Can parse command-line arguments using CLP Can compare transactions using comparators Can record and playback transactions Can use pools and queues for memory management Can apply string, math, and random utilities
+[Slide 89] Hands-on: module8/examples/comparators/
 
-[Slide 90] Summary & next steps Master UVM utility classes Complete module8/CHECKLIST.md Run ./scripts/module8.sh --check Next: Next module in course
+[Slide 90] module8/examples/recorders/README.md
+
+[Slide 91] Hands-on: module8/examples/recorders/
+
+[Slide 92] module8/examples/pools/README.md
+
+[Slide 93] Hands-on: module8/examples/pools/
+
+[Slide 94] module8/examples/queues/README.md
+
+[Slide 95] Hands-on: module8/examples/queues/
+
+[Slide 96] module8/examples/string_utils/README.md
+
+[Slide 97] Hands-on: module8/examples/string_utils/
+
+[Slide 98] module8/examples/math_utils/README.md
+
+[Slide 99] Hands-on: module8/examples/math_utils/
+
+[Slide 100] module8/examples/random_utils/README.md
+
+[Slide 101] Hands-on: module8/examples/random_utils/
+
+[Slide 102] module8/examples/integration/README.md
+
+[Slide 103] Hands-on: module8/examples/integration/
+
+[Slide 104] Practice & assessment
+
+[Slide 105] From MODULE8 Learning Outcomes.
+
+[Slide 106] From MODULE8 Learning Outcomes.
+
+[Slide 107] Exercises Command Line Processor Comparators Recorders Pools Queues
+
+[Slide 108] Exercises String Utilities Math Utilities Random Utilities Integration
+
+[Slide 109] Assessment checklist Can use UVM utility classes effectively Can parse command-line arguments using CLP Can compare transactions using comparators Can record and playback transactions Can use pools and queues for memory management Can apply string, math, and random utilities
+
+[Slide 110] Summary & next steps Master UVM utility classes Complete module8/CHECKLIST.md Review module8/EXAMPLES.md and run each lab Next: Next module in course

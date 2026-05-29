@@ -134,10 +134,34 @@
 
 [Slide 68] Exercise scaffold The following command is shown on screen.
 
-[Slide 69] Practice & assessment
+[Slide 69] module6/examples/architecture/README.md
 
-[Slide 70] Exercises Testbench Architecture Multi-Agent Coordination Protocol Verification Protocol Checkers Multi-Channel Scoreboards
+[Slide 70] Hands-on: module6/examples/architecture/
 
-[Slide 71] Assessment checklist Can design complex testbench architectures Can coordinate multiple agents Can verify protocols Can implement protocol checkers Can build multi-channel scoreboards Can apply production-quality testbench patterns
+[Slide 71] module6/examples/multi_agent/README.md
 
-[Slide 72] Summary & next steps Build production-quality multi-agent testbenches Complete module6/CHECKLIST.md Run ./scripts/module6.sh --check Next: Next module in course
+[Slide 72] Hands-on: module6/examples/multi_agent/
+
+[Slide 73] module6/examples/protocol/README.md
+
+[Slide 74] Hands-on: module6/examples/protocol/
+
+[Slide 75] module6/examples/protocol_checkers/README.md
+
+[Slide 76] Hands-on: module6/examples/protocol_checkers/
+
+[Slide 77] module6/examples/scoreboards/README.md
+
+[Slide 78] Hands-on: module6/examples/scoreboards/
+
+[Slide 79] Practice & assessment
+
+[Slide 80] From MODULE6 Learning Outcomes.
+
+[Slide 81] From MODULE6 Learning Outcomes.
+
+[Slide 82] Exercises Testbench Architecture Multi-Agent Coordination Protocol Verification Protocol Checkers Multi-Channel Scoreboards
+
+[Slide 83] Assessment checklist Can design complex testbench architectures Can coordinate multiple agents Can verify protocols Can implement protocol checkers Can build multi-channel scoreboards Can apply production-quality testbench patterns
+
+[Slide 84] Summary & next steps Build production-quality multi-agent testbenches Complete module6/CHECKLIST.md Review module6/EXAMPLES.md and run each lab Next: Next module in course

@@ -223,21 +223,77 @@ Run from course repository root.
 Exercise scaffold The following command is shown on screen.
 
 57
-00:03:14,824 --> 00:03:17,152
-Practice & assessment
+00:03:14,824 --> 00:03:20,608
+module3/examples/class_hierarchy/README.md
 
 58
-00:03:17,502 --> 00:03:22,374
-Exercises Class Hierarchy Phases Reporting ConfigDB Factory
+00:03:20,958 --> 00:03:26,574
+Hands-on: module3/examples/class_hierarchy/
 
 59
-00:03:22,724 --> 00:03:25,268
-Exercises Objections
+00:03:26,924 --> 00:03:31,652
+module3/examples/phases/README.md
 
 60
-00:03:25,618 --> 00:03:38,866
-Assessment checklist Understands UVM class hierarchy Masters UVM phases Uses UVM reporting effectively Configures components using ConfigDB Understands factory pattern Controls simulation with objections
+00:03:32,002 --> 00:03:36,610
+Hands-on: module3/examples/phases/
 
 61
-00:03:39,216 --> 00:03:52,104
-Summary & next steps Master UVM class hierarchy and phases Complete module3/CHECKLIST.md Run ./scripts/module3.sh --check Next: Next module in course
+00:03:36,960 --> 00:03:41,784
+module3/examples/reporting/README.md
+
+62
+00:03:42,134 --> 00:03:46,790
+Hands-on: module3/examples/reporting/
+
+63
+00:03:47,140 --> 00:03:52,348
+module3/examples/configdb/README.md
+
+64
+00:03:52,698 --> 00:03:57,714
+Hands-on: module3/examples/configdb/
+
+65
+00:03:58,064 --> 00:04:02,888
+module3/examples/factory/README.md
+
+66
+00:04:03,238 --> 00:04:07,870
+Hands-on: module3/examples/factory/
+
+67
+00:04:08,220 --> 00:04:13,164
+module3/examples/objections/README.md
+
+68
+00:04:13,514 --> 00:04:18,338
+Hands-on: module3/examples/objections/
+
+69
+00:04:18,688 --> 00:04:21,016
+Practice & assessment
+
+70
+00:04:21,366 --> 00:04:24,318
+From MODULE3 Learning Outcomes.
+
+71
+00:04:24,668 --> 00:04:27,620
+From MODULE3 Learning Outcomes.
+
+72
+00:04:27,970 --> 00:04:32,842
+Exercises Class Hierarchy Phases Reporting ConfigDB Factory
+
+73
+00:04:33,192 --> 00:04:35,736
+Exercises Objections
+
+74
+00:04:36,086 --> 00:04:49,334
+Assessment checklist Understands UVM class hierarchy Masters UVM phases Uses UVM reporting effectively Configures components using ConfigDB Understands factory pattern Controls simulation with objections
+
+75
+00:04:49,684 --> 00:05:02,956
+Summary & next steps Master UVM class hierarchy and phases Complete module3/CHECKLIST.md Review module3/EXAMPLES.md and run each lab Next: Next module in course

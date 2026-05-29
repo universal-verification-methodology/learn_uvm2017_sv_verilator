@@ -307,17 +307,65 @@ Run from course repository root.
 Exercise scaffold The following command is shown on screen.
 
 78
-00:04:18,022 --> 00:04:20,350
-Practice & assessment
+00:04:18,022 --> 00:04:23,710
+module2/examples/clock_generation/README.md
 
 79
-00:04:20,700 --> 00:04:27,492
-Exercises Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+00:04:24,060 --> 00:04:29,604
+Hands-on: module2/examples/clock_generation/
 
 80
-00:04:27,842 --> 00:04:42,122
-Assessment checklist Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns Can structure testbenches effectively
+00:04:29,954 --> 00:04:35,618
+module2/examples/reset_patterns/README.md
 
 81
-00:04:42,472 --> 00:04:55,384
-Summary & next steps Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Run ./scripts/module2.sh --check Next: Next module in course
+00:04:35,968 --> 00:04:41,392
+Hands-on: module2/examples/reset_patterns/
+
+82
+00:04:41,742 --> 00:04:47,334
+module2/examples/signal_access/README.md
+
+83
+00:04:47,684 --> 00:04:53,036
+Hands-on: module2/examples/signal_access/
+
+84
+00:04:53,386 --> 00:04:58,090
+module2/examples/triggers/README.md
+
+85
+00:04:58,440 --> 00:05:03,048
+Hands-on: module2/examples/triggers/
+
+86
+00:05:03,398 --> 00:05:08,990
+module2/examples/common_patterns/README.md
+
+87
+00:05:09,340 --> 00:05:14,716
+Hands-on: module2/examples/common_patterns/
+
+88
+00:05:15,066 --> 00:05:17,394
+Practice & assessment
+
+89
+00:05:17,744 --> 00:05:20,624
+From MODULE2 Learning Outcomes.
+
+90
+00:05:20,974 --> 00:05:23,854
+From MODULE2 Learning Outcomes.
+
+91
+00:05:24,204 --> 00:05:30,996
+Exercises Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+
+92
+00:05:31,346 --> 00:05:45,626
+Assessment checklist Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns Can structure testbenches effectively
+
+93
+00:05:45,976 --> 00:05:59,296
+Summary & next steps Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Review module2/EXAMPLES.md and run each lab Next: Next module in course
