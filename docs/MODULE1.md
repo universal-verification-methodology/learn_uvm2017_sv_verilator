@@ -64,6 +64,48 @@ cd module1/tests/uvm_tests
 make SIM=verilator TEST=test_and_gate_uvm
 ```
 
+## Design Architecture
+
+### 1. Repository and example layout
+
+| Component | Role |
+|-----------|------|
+| `module1/examples/sv_basics/` | Classes, inheritance, polymorphism demos |
+| `module1/examples/interfaces/` | Interfaces, modports, clocking blocks |
+| `module1/examples/packages/` | Packages and name visibility |
+| `module1/dut/simple_gates/` | Small RTL (AND gate, counter) for directed tests |
+| `module1/tests/sv_tests/` | Makefile-driven SV testbenches on simple DUTs |
+| `scripts/module1.sh` | Orchestrates all examples and tests |
+
+- Each example directory is self-contained with README and compile/run instructions
+- DUTs are intentionally minimal so you focus on **SystemVerilog language** features
+- UVM tests in `tests/uvm_tests/` preview patterns used from Module 3 onward
+
+### 2. Verification building blocks
+
+- **Classes** — transactions and models as reusable objects (`uvm_object` foundation)
+- **Interfaces** — bundle DUT signals; connect testbench to RTL without port lists
+- **Packages** — share types and parameters across testbench files
+- **Data structures** — queues, associative arrays, dynamic arrays for stimulus/history
+- **Layering**: directed SV test → interface-based TB → optional UVM wrapper
+
+## Verification & Testing Methods
+
+### 1. Directed self-check methodology
+
+- Instantiate DUT, apply known stimulus in `initial` block or C++ main
+- Compare outputs in-test; print **`PASS`** / **`FAIL`** (no external scoreboard yet)
+- Use `$display` / `$error` for visibility; graduate to structured logging in Module 2
+- **Simulation flow**: `make SIM=verilator TEST=test_and_gate` → compile → run → read result
+
+### 2. Baseline test closure
+
+- **Stimulus**: fixed vectors covering corner cases (0, 1, overflow, reset)
+- **Checking**: inline assertions and explicit comparisons against expected values
+- **Coverage**: manual review of cases exercised (functional coverage in Module 5)
+- **Regression**: `./scripts/module1.sh --all-sv` runs all example compilations
+- **Out of scope**: constrained-random, scoreboards, multi-agent coordination (later modules)
+
 ## Topics Covered
 
 ### 1. SystemVerilog Classes and Inheritance for Verification

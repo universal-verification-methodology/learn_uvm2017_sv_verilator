@@ -1,259 +1,579 @@
 1
-00:00:00,000 --> 00:00:04,032
-SystemVerilog and Verification Basics Module 1
+00:00:00,000 --> 00:00:11,064
+Welcome to module 1, SystemVerilog and Verification Basics. In this module you will understand systemverilog for verification and verification fundamentals.
 
 2
-00:00:04,382 --> 00:00:10,670
-Learning objectives Understand SystemVerilog for verification and verification fundamentals
+00:00:11,414 --> 00:00:19,454
+Here is what you will learn in this module. Understand SystemVerilog for verification and verification fundamentals
 
 3
-00:00:11,020 --> 00:00:13,780
-Prerequisites See module README
+00:00:19,804 --> 00:00:25,852
+Before you start, make sure you have these prerequisites. See module README
 
 4
-00:00:14,130 --> 00:00:20,130
-Learning path Understand SystemVerilog for verification and verification fundamentals
+00:00:26,202 --> 00:00:33,282
+Learning path. Understand SystemVerilog for verification and verification fundamentals
 
 5
-00:00:20,480 --> 00:00:33,272
-Overview This module establishes the foundation for verification work. You'll learn essential SystemVerilog concepts used in verification and understand the fundamental principles of hardware verification.
+00:00:33,632 --> 00:00:44,336
+Overview. This module establishes the foundation for verification work. You'll learn essential SystemVerilog concepts used in verification and...
 
 6
-00:00:33,622 --> 00:00:35,878
-Syllabus topics
+00:00:44,686 --> 00:00:47,926
+Next section: Design architecture.
 
 7
-00:00:36,228 --> 00:00:39,036
-From MODULE1 Topics Covered.
+00:00:48,276 --> 00:01:17,724
+1. Repository and example layout (1/3). Each example directory is self-contained with README and compile/run instructions DUTs are intentionally minimal so you focus on SystemVerilog language features UVM tests in tests/uvm_tests/ preview patterns used from Module 3 onward module1/examples/sv_basics/: Classes, inheritance, polymorphism demos Refer to the diagram on the right.
 
 8
-00:00:39,386 --> 00:00:42,194
-From MODULE1 Topics Covered.
+00:01:18,074 --> 00:01:48,626
+1. Repository and example layout (2/3). module1/examples/interfaces/: Interfaces, modports, clocking blocks module1/examples/packages/: Packages and name visibility module1/dut/simple_gates/: Small RTL (AND gate, counter) for directed tests module1/tests/sv_tests/: Makefile-driven SV testbenches on simple DUTs
 
 9
-00:00:42,544 --> 00:00:45,352
-From MODULE1 Topics Covered.
+00:01:48,976 --> 00:01:58,888
+1. Repository and example layout (3/3). scripts/module1.sh: Orchestrates all examples and tests
 
 10
-00:00:45,702 --> 00:00:48,510
-From MODULE1 Topics Covered.
+00:01:59,238 --> 00:02:26,142
+2. Verification building blocks (1/2). Classes — transactions and models as reusable objects (uvm_object foundation) Interfaces — bundle DUT signals; connect testbench to RTL without port lists Packages — share types and parameters across testbench files Data structures — queues, associative arrays, dynamic arrays for stimulus/history Refer to the diagram on the right.
 
 11
-00:00:48,860 --> 00:00:51,668
-From MODULE1 Topics Covered.
+00:02:26,492 --> 00:02:36,068
+2. Verification building blocks (2/2). Layering: directed SV test → interface-based TB → optional UVM wrapper
 
 12
-00:00:52,018 --> 00:00:54,826
-From MODULE1 Topics Covered.
+00:02:36,418 --> 00:02:43,642
+RTL block diagram (reference). Module 1: DUT hierarchy and signal flow.
 
 13
-00:00:55,176 --> 00:00:57,984
-From MODULE1 Topics Covered.
+00:02:43,992 --> 00:02:48,024
+Next section: Execution & simulation flow.
 
 14
-00:00:58,334 --> 00:01:01,142
-From MODULE1 Topics Covered.
+00:02:48,374 --> 00:03:20,486
+How the example runs (toolchain). Match each bullet to files in the repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command: make SIM=verilator TEST=test_* (see module1 demo slide) Loopback / hooks connect...
 
 15
-00:01:01,492 --> 00:01:04,300
-From MODULE1 Topics Covered.
+00:03:20,836 --> 00:03:58,276
+Example directory layout (1). Match each bullet to files in the repository. module1/examples/sv_basics/: Classes, inheritance, polymorphism demos module1/examples/interfaces/: Interfaces, modports, clocking blocks module1/examples/packages/: Packages and name visibility module1/dut/simple_gates/: Small RTL (AND gate, counter) for directed tests module1/tests/sv_tests/: Makefile-driven SV...
 
 16
-00:01:04,650 --> 00:01:07,458
-From MODULE1 Topics Covered.
+00:03:58,626 --> 00:04:13,890
+Example directory layout (2). Match each bullet to files in the repository. scripts/module1.sh: Orchestrates all examples and tests Match each path to files under module/examples/.
 
 17
-00:01:07,808 --> 00:01:10,616
-From MODULE1 Topics Covered.
+00:04:14,240 --> 00:04:26,888
+Follow these steps in order when working through this module. make SIM=verilator TEST=test_and_gate compile run read result Follow this order when tracing waveforms or debugging.
 
 18
-00:01:10,966 --> 00:01:13,774
-From MODULE1 Topics Covered.
+00:04:27,238 --> 00:04:31,342
+Next section: Verification & testing methods.
 
 19
-00:01:14,124 --> 00:01:16,932
-From MODULE1 Topics Covered.
+00:04:31,692 --> 00:04:59,412
+1. Directed self-check methodology. Instantiate DUT, apply known stimulus in initial block or C++ main Compare outputs in-test; print PASS / FAIL (no external scoreboard yet) Use $display / $error for visibility; graduate to structured logging in Module 2 Simulation flow: make SIM=verilator TEST=test_and_gate → compile → run → read result Refer to the diagram on the right.
 
 20
-00:01:17,282 --> 00:01:20,090
-From MODULE1 Topics Covered.
+00:04:59,762 --> 00:05:27,602
+2. Baseline test closure (1/2). Stimulus: fixed vectors covering corner cases (0, 1, overflow, reset) Checking: inline assertions and explicit comparisons against expected values Coverage: manual review of cases exercised (functional coverage in Module 5) Regression: ./scripts/module1.sh --all-sv runs all example compilations Refer to the diagram on the right.
 
 21
-00:01:20,440 --> 00:01:23,248
-From MODULE1 Topics Covered.
+00:05:27,952 --> 00:05:37,864
+2. Baseline test closure (2/2). Out of scope: constrained-random, scoreboards, multi-agent coordination (later modules)
 
 22
-00:01:23,598 --> 00:01:26,406
-From MODULE1 Topics Covered.
+00:05:38,214 --> 00:05:41,478
+Next section: Syllabus topics.
 
 23
-00:01:26,756 --> 00:01:29,564
-From MODULE1 Topics Covered.
+00:05:41,828 --> 00:05:45,620
+Next section: Protocol & design details.
 
 24
-00:01:29,914 --> 00:01:32,722
-From MODULE1 Topics Covered.
+00:05:45,970 --> 00:06:18,058
+Protocol and design detail: Example 1.1: Transaction Classes (module1/examples/sv_basics/transaction.sv) (1). Base Transaction class with static variables (id_counter) Instance variables (id, data, timestamp) Special methods: new(), copy(), compare(), convert2string() Inheritance: ReadTransaction and WriteTransaction inherit from Transaction From MODULE1 Topics Covered — protocol/design depth.
 
 25
-00:01:33,072 --> 00:01:35,880
-From MODULE1 Topics Covered.
+00:06:18,408 --> 00:06:47,184
+Protocol and design detail: Example 1.1: Transaction Classes (module1/examples/sv_basics/transaction.sv) (2). Method overriding: Child classes override convert2string() method Using super to call parent class methods Purpose: Initialize object when created Called: Automatically via Transaction txn = new(); From MODULE1 Topics Covered — protocol/design depth.
 
 26
-00:01:36,230 --> 00:01:39,038
-From MODULE1 Topics Covered.
+00:06:47,534 --> 00:07:18,278
+Protocol and design detail: Example 1.2: Interfaces and Modports (module1/examples/interfaces/interface_example.sv) (1). Interface Definition: apb_if interface with signals and clocking block Modports: master_mp and slave_mp modports with different signal directions Clocking Block: cb clocking block for synchronous access Interface Usage: Module using interface with modport From MODULE1 Topics...
 
 27
-00:01:39,388 --> 00:01:42,196
-From MODULE1 Topics Covered.
+00:07:18,628 --> 00:07:49,132
+Protocol and design detail: Example 1.2: Interfaces and Modports (module1/examples/interfaces/interface_example.sv) (2). Testbench Integration: Testbench connecting to interface Task Usage: Clock generation task, APB transaction tasks Purpose: Generate free-running clock signal Built-in Features: forever loop, delay operator #, bitwise NOT ~ From MODULE1 Topics Covered — protocol/design depth.
 
 28
-00:01:42,546 --> 00:01:45,354
-From MODULE1 Topics Covered.
+00:07:49,482 --> 00:08:19,074
+Protocol and design detail: Example 1.3: Packages (module1/examples/packages/package_example.sv) (1). Package Definition: verification_pkg with common types and functions Package Import: Using import verification_pkg::* Name Resolution: Handling name conflicts Package Organization: Structuring verification code From MODULE1 Topics Covered — protocol/design depth.
 
 29
-00:01:45,704 --> 00:01:48,512
-From MODULE1 Topics Covered.
+00:08:19,424 --> 00:08:54,656
+Protocol and design detail: Example 1.3: Packages (module1/examples/packages/package_example.sv) (2). Function Definitions: is_valid_address(), calculate_checksum() functions Task Definitions: wait_for_condition() task with timeout Purpose: Validates address range (returns 1 if valid, 0 if invalid) Usage: if (is_valid_address(addr)) ... From MODULE1 Topics Covered — protocol/design depth.
 
 30
-00:01:48,862 --> 00:01:51,670
-From MODULE1 Topics Covered.
+00:08:55,006 --> 00:09:24,646
+Protocol and design detail: Example 1.4: Data Structures (module1/examples/data_structures/data_structures_example.sv) (1). Dynamic Arrays: Transaction arrays that grow dynamically Queues: FIFO queues for transaction management Associative Arrays: Indexed by transaction ID Structures: Complex data structures for verification From MODULE1 Topics Covered — protocol/design depth.
 
 31
-00:01:52,020 --> 00:01:54,828
-From MODULE1 Topics Covered.
+00:09:24,996 --> 00:09:55,380
+Protocol and design detail: Example 1.4: Data Structures (module1/examples/data_structures/data_structures_example.sv) (2). Array Methods: Using built-in array methods Class Methods: Queue and scoreboard methods (push(), pop(), check()) push(): Wraps push_back() for FIFO enqueue pop(): Wraps pop_front() for FIFO dequeue From MODULE1 Topics Covered — protocol/design depth.
 
 32
-00:01:55,178 --> 00:01:57,986
-From MODULE1 Topics Covered.
+00:09:55,730 --> 00:10:28,634
+Protocol and design detail: Example 1.5: Error Handling (module1/examples/error_handling/error_handling_example.sv) (1). UVM Reporting: Using uvm_report_info(), uvm_report_error(), etc. Assertions: Immediate and concurrent assertions Error Handling: Try-catch blocks for exception handling Logging Patterns: Structured logging for verification From MODULE1 Topics Covered — protocol/design depth.
 
 33
-00:01:58,336 --> 00:02:01,144
-From MODULE1 Topics Covered.
+00:10:28,984 --> 00:10:59,128
+Protocol and design detail: Example 1.5: Error Handling (module1/examples/error_handling/error_handling_example.sv) (2). Retry Logic: Task with retry mechanism using retry_task() Exception Objects: Custom exception class with convert2string() method Constructor: Initializes exception with message and code convert2string(): Formats exception for display From MODULE1 Topics Covered —...
 
 34
-00:02:01,494 --> 00:02:04,302
-From MODULE1 Topics Covered.
+00:10:59,478 --> 00:11:26,022
+Protocol and design detail: Functions vs Tasks (1). Purpose: Compute and return a single value Return Type: Must declare a return type (void, int, string, bit, etc.) Timing: Execute in zero simulation time (no delays allowed) Usage: For calculations, data transformations, comparisons From MODULE1 Topics Covered — protocol/design depth.
 
 35
-00:02:04,652 --> 00:02:07,460
-From MODULE1 Topics Covered.
+00:11:26,372 --> 00:11:49,292
+Protocol and design detail: Functions vs Tasks (2). Syntax: function <return_type> <name>(<arguments>); ... endfunction When to Use: ✅ Data validation (is_valid_address()) ✅ Calculations (calculate_checksum()) From MODULE1 Topics Covered — protocol/design depth.
 
 36
-00:02:07,810 --> 00:02:10,618
-From MODULE1 Topics Covered.
+00:11:49,642 --> 00:12:13,426
+Protocol and design detail: Built-in SystemVerilog Functions (1). Purpose: Print formatted text to console (like printf in C) Format Specifiers: %0d - Decimal integer (no leading zeros) %0h or %0x - Hexadecimal (no leading zeros) From MODULE1 Topics Covered — protocol/design depth.
 
 37
-00:02:10,968 --> 00:02:13,776
-From MODULE1 Topics Covered.
+00:12:13,776 --> 00:12:30,696
+Protocol and design detail: Built-in SystemVerilog Functions (2). %0b - Binary %0s - String %0t - Time %0f - Real (floating point) From MODULE1 Topics Covered — protocol/design depth.
 
 38
-00:02:14,126 --> 00:02:16,934
-From MODULE1 Topics Covered.
+00:12:31,046 --> 00:12:53,558
+Protocol and design detail: Class Methods (Functions in Classes) (1). Purpose: Initialize object when created Called: Automatically when using new() operator Parameters: Can have default values Example: Transaction txn = new(); creates object and calls new() From MODULE1 Topics Covered — protocol/design depth.
 
 39
-00:02:17,284 --> 00:02:20,092
-From MODULE1 Topics Covered.
+00:12:53,908 --> 00:13:21,076
+Protocol and design detail: Class Methods (Functions in Classes) (2). Purpose: Create deep copy of object Usage: Duplicate transactions for scoreboards, queues Null Check: Always check for null before accessing object fields Example: txn_copy.copy(txn1); copies all fields from txn1 to txn_copy From MODULE1 Topics Covered — protocol/design depth.
 
 40
-00:02:20,442 --> 00:02:23,250
-From MODULE1 Topics Covered.
+00:13:21,426 --> 00:13:45,282
+Protocol and design detail: Tasks in Testbenches (1). Purpose: Organize test code into reusable units Timing: Can contain delays (#10) and event waits (@(posedge clk)) Usage: Each test case is a separate task Calling: test_basic(); executes the task From MODULE1 Topics Covered — protocol/design depth.
 
 41
-00:02:23,600 --> 00:02:26,408
-From MODULE1 Topics Covered.
+00:13:45,632 --> 00:14:08,120
+Protocol and design detail: Tasks in Testbenches (2). Purpose: Encapsulate common sequences (reset, initialization) Reusability: Can be called from multiple test tasks Usage: reset(); applies reset sequence before each test Purpose: Pass data to tasks From MODULE1 Topics Covered — protocol/design depth.
 
 42
-00:02:26,758 --> 00:02:29,566
-From MODULE1 Topics Covered.
+00:14:08,470 --> 00:14:29,062
+Protocol and design detail: Array Methods (1). push_back(): Add element to end (FIFO enqueue) pop_front(): Remove element from front (FIFO dequeue) size(): Return number of elements Usage: Transaction queues, scoreboards From MODULE1 Topics Covered — protocol/design depth.
 
 43
-00:02:29,916 --> 00:02:32,724
-From MODULE1 Topics Covered.
+00:14:29,412 --> 00:14:46,236
+Protocol and design detail: Array Methods (2). exists(): Check if key exists in associative array Indexing: Use any integral type as key Usage: Scoreboards, coverage collectors From MODULE1 Topics Covered — protocol/design depth.
 
 44
-00:02:33,074 --> 00:02:35,882
-From MODULE1 Topics Covered.
+00:14:46,586 --> 00:15:04,874
+Protocol and design detail: Function and Task Best Practices (1). Functions execute in zero time Perfect for data transformations, comparisons Must return a value (or void) Tasks can contain delays From MODULE1 Topics Covered — protocol/design depth.
 
 45
-00:02:36,232 --> 00:02:39,040
-From MODULE1 Topics Covered.
+00:15:05,224 --> 00:15:23,584
+Protocol and design detail: Function and Task Best Practices (2). Perfect for test sequences, stimulus generation No return value Always check for null before accessing object fields Prevents simulation crashes From MODULE1 Topics Covered — protocol/design depth.
 
 46
-00:02:39,390 --> 00:02:42,198
-From MODULE1 Topics Covered.
+00:15:23,934 --> 00:15:44,454
+Protocol and design detail: Real-World Testbench Examples (1). Uses delays (#10) for signal propagation Uses assert with $error() for verification Uses $display() for test output Organized as separate task for reusability From MODULE1 Topics Covered — protocol/design depth.
 
 47
-00:02:42,548 --> 00:02:44,780
-Hands-on examples
+00:15:44,804 --> 00:16:06,980
+Protocol and design detail: Real-World Testbench Examples (2). Helper task (reset()) encapsulates common sequence Uses @(posedge clk) for clock synchronization Combines delays and event control Uses type casting (8'(i)) for bit width matching From MODULE1 Topics Covered — protocol/design depth.
 
 48
-00:02:45,130 --> 00:02:47,962
-Run from course repository root.
+00:16:07,330 --> 00:16:33,538
+Protocol and design detail: Performance Considerations (1). Functions: Execute in zero time, no simulation overhead Tasks: Consume simulation time, have scheduling overhead Recommendation: Use functions for calculations, tasks only when timing is needed push_back() / pop_front(): O(1) for queues From MODULE1 Topics Covered — protocol/design depth.
 
 49
-00:02:48,312 --> 00:02:52,320
-Exercise scaffold The following command is shown on screen.
+00:16:33,888 --> 00:16:52,752
+Protocol and design detail: Performance Considerations (2). size(): O(1) for queues and arrays exists(): O(1) average for associative arrays foreach: O(n) where n is number of elements From MODULE1 Topics Covered — protocol/design depth.
 
 50
-00:02:52,670 --> 00:02:58,310
-module1/examples/sv_basics/README.md
+00:16:53,102 --> 00:17:16,142
+Protocol and design detail: Troubleshooting Guide (1). Cause: Trying to use #, @, or wait in a function Solution: Convert to task or remove timing control Cause: Accessing object fields without null check Solution: Always check if (obj == null) before accessing From MODULE1 Topics Covered — protocol/design depth.
 
 51
-00:02:58,660 --> 00:03:04,108
-Hands-on: module1/examples/sv_basics/
+00:17:16,492 --> 00:17:41,860
+Protocol and design detail: Troubleshooting Guide (2). Cause: Trying to use task return value: int x = task_name(); Solution: Use output parameter: task_name(output int x); Cause: Function declared with return type but no return statement Solution: Add return statement or change to void function From MODULE1 Topics Covered — protocol/design depth.
 
 52
-00:03:04,458 --> 00:03:09,498
-module1/examples/interfaces/README.md
+00:17:42,210 --> 00:18:10,242
+In summary: Understand SystemVerilog for verification and verification fundamentals Next up: Next module in course. Functions: Zero-time operations that return values; use for calculations Tasks: Time-consuming operations; use for test sequences Class Methods: Functions within classes; enable object-oriented programming Built-in Functions: $display(), $sformatf(), $finish(), $error() From...
 
 53
-00:03:09,848 --> 00:03:14,672
-Hands-on: module1/examples/interfaces/
+00:18:10,592 --> 00:18:38,288
+In summary: Understand SystemVerilog for verification and verification fundamentals Next up: Next module in course. Array Methods: push_back(), pop_front(), size(), exists() Best Practices: Null checks, method overriding, task organization Common Pitfalls: Delays in functions, missing null checks, wrong assignment types Performance: Functions are faster; use tasks only when timing is needed...
 
 54
-00:03:15,022 --> 00:03:19,990
-module1/examples/packages/README.md
+00:18:38,638 --> 00:18:46,438
+Verification flow (reference). Stimulus, DUT response, and check points for this module.
 
 55
-00:03:20,340 --> 00:03:25,092
-Hands-on: module1/examples/packages/
+00:18:46,788 --> 00:19:01,308
+1. SystemVerilog Classes and Inheritance for Verification (1/9). Object-Oriented Programming Basics Classes and objects Instance variables and methods Static variables and methods Encapsulation concepts
 
 56
-00:03:25,442 --> 00:03:31,082
-module1/examples/data_structures/README.md
+00:19:01,658 --> 00:19:15,170
+1. SystemVerilog Classes and Inheritance for Verification (2/9). Inheritance in SystemVerilog Single inheritance Method overriding super keyword usage Virtual methods and polymorphism
 
 57
-00:03:31,432 --> 00:03:36,856
-Hands-on: module1/examples/data_structures/
+00:19:15,520 --> 00:19:30,712
+1. SystemVerilog Classes and Inheritance for Verification (3/9). Special Methods new() constructor copy() and clone() methods compare() and convert2string() methods print() and sprint() methods
 
 58
-00:03:37,206 --> 00:03:42,750
-module1/examples/error_handling/README.md
+00:19:31,062 --> 00:19:45,966
+1. SystemVerilog Classes and Inheritance for Verification (4/9). Factory pattern basics Singleton pattern Builder pattern Strategy pattern Base Transaction class with static variables (id_counter)
 
 59
-00:03:43,100 --> 00:03:48,476
-Hands-on: module1/examples/error_handling/
+00:19:46,316 --> 00:20:10,796
+1. SystemVerilog Classes and Inheritance for Verification (5/9). Special methods: new(), copy(), compare(), convert2string() Inheritance: ReadTransaction and WriteTransaction inherit from Transaction Method overriding: Child classes override convert2string() method Using super to call parent class methods Purpose: Initialize object when created
 
 60
-00:03:48,826 --> 00:03:51,154
-Practice & assessment
+00:20:11,146 --> 00:20:35,026
+1. SystemVerilog Classes and Inheritance for Verification (6/9). Default Parameters: name parameter has default value Purpose: Deep copy of transaction object Null Check: Always validates input before accessing Usage: txn_copy.copy(txn1); copies all fields Returns: 1 if equal, 0 if not equal
 
 61
-00:03:51,504 --> 00:03:54,408
-From MODULE1 Learning Outcomes.
+00:20:35,376 --> 00:21:03,672
+1. SystemVerilog Classes and Inheritance for Verification (7/9). Uses: $sformatf() built-in function for formatting Format Specifiers: %0d (decimal), %0h (hexadecimal) Usage: $display("%s", txn.convert2string()); Purpose: Encapsulated access to private fields Usage: int id_val = txn.get_id();
 
 62
-00:03:54,758 --> 00:03:57,662
-From MODULE1 Learning Outcomes.
+00:21:04,022 --> 00:21:23,966
+1. SystemVerilog Classes and Inheritance for Verification (8/9). Base transaction creation and manipulation Derived transaction examples showing inheritance Copy and compare operations working correctly String conversion examples Static Variables: id_counter is shared across all instances
 
 63
-00:03:58,012 --> 00:04:05,044
-Exercises Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+00:21:24,316 --> 00:21:51,964
+1. SystemVerilog Classes and Inheritance for Verification (9/9). Special Methods: Enable UVM-compatible behavior (copy, compare, string conversion) Inheritance: ReadTransaction and WriteTransaction extend base functionality Method Overriding: Child classes customize string representation Function Syntax: function <return_type> <name>(<args>); ... endfunction Null Safety: Always check for null...
 
 64
-00:04:05,394 --> 00:04:20,850
-Assessment checklist Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging Can write basic SystemVerilog testbenches
+00:21:52,314 --> 00:22:03,090
+2. Interfaces and Modports (1/8). SystemVerilog Interfaces Interface definition Interface signals Interface methods Interface instantiation
 
 65
-00:04:21,200 --> 00:04:36,128
-Summary & next steps Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Review module1/EXAMPLES.md and run each lab Next: Next module in course
+00:22:03,440 --> 00:22:16,976
+2. Interfaces and Modports (2/8). Modport definition Direction specification (input, output, inout) Modport usage in modules Multiple modports per interface Clocking Blocks
+
+66
+00:22:17,326 --> 00:22:29,350
+2. Interfaces and Modports (3/8). Clocking block signals Synchronous signal access Clocking block in interfaces Verification-Specific Interfaces Driver interfaces
+
+67
+00:22:29,700 --> 00:22:50,532
+2. Interfaces and Modports (4/8). Scoreboard interfaces Agent interfaces Interface Definition: apb_if interface with signals and clocking block Modports: master_mp and slave_mp modports with different signal directions Clocking Block: cb clocking block for synchronous access
+
+68
+00:22:50,882 --> 00:23:14,402
+2. Interfaces and Modports (5/8). Testbench Integration: Testbench connecting to interface Task Usage: Clock generation task, APB transaction tasks Purpose: Generate free-running clock signal Built-in Features: forever loop, delay operator #, bitwise NOT ~ Result: Clock with 10 time unit period (50% duty cycle)
+
+69
+00:23:14,752 --> 00:23:39,664
+2. Interfaces and Modports (6/8). Non-blocking Assignment: <= for sequential logic Wait Loop: while (!condition) @(posedge clk) pattern Blocking Assignment: = for initialization (combinational) Non-blocking Assignment: <= for sequential logic (clocked) Interface Signal Access: bus.signal_name accesses interface signals
+
+70
+00:23:40,014 --> 00:24:01,590
+2. Interfaces and Modports (7/8). Modports control signal direction and access Clocking blocks enable synchronous signal access Interfaces are essential for UVM testbenches Event Control: @(posedge clk) synchronizes to clock edges Assignment Types: = (blocking) vs <= (non-blocking)
+
+71
+00:24:01,940 --> 00:24:11,324
+2. Interfaces and Modports (8/8). Built-in Operators: ~ (NOT), && (AND), ! (logical NOT)
+
+72
+00:24:11,674 --> 00:24:24,586
+3. Packages and Namespaces (1/7). SystemVerilog Packages Package definition Package items (classes, functions, types) Package import Package compilation order
+
+73
+00:24:24,936 --> 00:24:36,000
+3. Packages and Namespaces (2/7). Package namespaces Resolving name conflicts Wildcard imports Explicit imports Verification Packages
+
+74
+00:24:36,350 --> 00:24:53,222
+3. Packages and Namespaces (3/7). Utility functions Shared classes Configuration types Package Definition: verification_pkg with common types and functions Package Import: Using import verification_pkg::*
+
+75
+00:24:53,572 --> 00:25:20,812
+3. Packages and Namespaces (4/7). Package Organization: Structuring verification code Function Definitions: is_valid_address(), calculate_checksum() functions Task Definitions: wait_for_condition() task with timeout Purpose: Validates address range (returns 1 if valid, 0 if invalid) Usage: if (is_valid_address(addr)) ...
+
+76
+00:25:21,162 --> 00:25:40,482
+3. Packages and Namespaces (5/7). Purpose: Calculates XOR checksum of 32-bit data Returns: 8-bit checksum value Usage: logic [7:0] checksum = calculate_checksum(data); Purpose: Wait for condition with timeout Key Features:
+
+77
+00:25:40,832 --> 00:25:59,936
+3. Packages and Namespaces (6/7). Contains delays (#1) Demonstrates task with timing control Packages organize related code (types, functions, tasks, constants) Import statements control namespace Functions in packages are reusable across modules
+
+78
+00:26:00,286 --> 00:26:12,334
+3. Packages and Namespaces (7/7). Tasks can contain delays, functions cannot Packages improve code reusability Essential for UVM library organization
+
+79
+00:26:12,684 --> 00:26:23,748
+4. Data Structures for Verification (1/8). SystemVerilog Data Types bit and logic types int, longint, shortint real and realtime string type
+
+80
+00:26:24,098 --> 00:26:33,266
+4. Data Structures for Verification (2/8). Arrays Fixed-size arrays Dynamic arrays Associative arrays Queues
+
+81
+00:26:33,616 --> 00:26:44,416
+4. Data Structures for Verification (3/8). Structures and Unions struct definition Packed and unpacked structures union types Structure methods
+
+82
+00:26:44,766 --> 00:26:57,630
+4. Data Structures for Verification (4/8). Transaction queues Coverage bins Scoreboard structures Configuration structures Dynamic Arrays: Transaction arrays that grow dynamically
+
+83
+00:26:57,980 --> 00:27:19,532
+4. Data Structures for Verification (5/8). Associative Arrays: Indexed by transaction ID Structures: Complex data structures for verification Array Methods: Using built-in array methods Class Methods: Queue and scoreboard methods (push(), pop(), check()) push(): Wraps push_back() for FIFO enqueue
+
+84
+00:27:19,882 --> 00:27:45,010
+4. Data Structures for Verification (6/8). size(): Returns queue element count Usage: queue.push(txn); txn = queue.pop(); add_expected(): Stores expected values check(): Compares expected vs actual using exists() method Usage: scoreboard.add_expected(1, data); scoreboard.check(1);
+
+85
+00:27:45,360 --> 00:28:04,992
+4. Data Structures for Verification (7/8). get_coverage(): Calculates coverage percentage Built-in Features: foreach loop, exists() method, type casting Dynamic arrays provide flexibility Queues are ideal for FIFO operations Associative arrays enable key-value lookups
+
+86
+00:28:05,342 --> 00:28:22,790
+4. Data Structures for Verification (8/8). Array methods (push_back(), pop_front(), size(), exists()) are essential Wrapper methods provide clean interfaces to built-in array operations foreach loops iterate over associative arrays efficiently
+
+87
+00:28:23,140 --> 00:28:33,484
+5. Error Handling and Logging (1/7). SystemVerilog Assertions Immediate assertions Concurrent assertions Assertion severity Assertion coverage
+
+88
+00:28:33,834 --> 00:28:47,730
+5. Error Handling and Logging (2/7). UVM messaging system Severity levels (FATAL, ERROR, WARNING, INFO, DEBUG) Verbosity levels Message formatting Exception Handling
+
+89
+00:28:48,080 --> 00:28:58,112
+5. Error Handling and Logging (3/7). Error propagation Graceful error handling Logging Patterns Structured logging Log file management
+
+90
+00:28:58,462 --> 00:29:20,494
+5. Error Handling and Logging (4/7). Production logging UVM Reporting: Using uvm_report_info(), uvm_report_error(), etc. Assertions: Immediate and concurrent assertions Error Handling: Try-catch blocks for exception handling Logging Patterns: Structured logging for verification
+
+91
+00:29:20,844 --> 00:29:43,980
+5. Error Handling and Logging (5/7). Exception Objects: Custom exception class with convert2string() method Constructor: Initializes exception with message and code convert2string(): Formats exception for display Usage: $display("%s", exc.convert2string()); Purpose: Retry operation with configurable attempts
+
+92
+00:29:44,330 --> 00:30:05,570
+5. Error Handling and Logging (6/7). $display(): Print formatted messages $urandom_range(): Generate random numbers for simulation Usage: comp.retry_task(3); retries up to 3 times Purpose: Demonstrate different message severity levels Usage: Shows structured logging patterns
+
+93
+00:30:05,920 --> 00:30:24,328
+5. Error Handling and Logging (7/7). Assertions catch design errors early Exception handling enables graceful failures Logging is essential for debugging Tasks can implement retry logic with delays Built-in functions like $urandom_range() are useful for simulation
+
+94
+00:30:24,678 --> 00:30:52,518
+6. SystemVerilog Functions and Tasks (1/26). Purpose: Compute and return a single value Return Type: Must declare a return type (void, int, string, bit, etc.) Timing: Execute in zero simulation time (no delays allowed) Usage: For calculations, data transformations, comparisons Syntax: function <return_type> <name>(<arguments>); ... endfunction
+
+95
+00:30:52,868 --> 00:31:17,012
+6. SystemVerilog Functions and Tasks (2/26). ✅ Data validation (is_valid_address()) ✅ Calculations (calculate_checksum()) ✅ Comparisons (compare()) ✅ String formatting (convert2string()) ✅ Accessor methods (get_id())
+
+96
+00:31:17,362 --> 00:31:40,066
+6. SystemVerilog Functions and Tasks (3/26). ❌ Test sequences Purpose: Perform operations that may consume time Return Type: No return value (implicitly void) Timing: Can contain delays (#, @, wait) Usage: For test sequences, stimulus generation, complex operations
+
+97
+00:31:40,416 --> 00:32:03,024
+6. SystemVerilog Functions and Tasks (4/26). When to Use: ✅ Test sequences (test_basic(), test_reset()) ✅ Reset/initialization sequences (reset()) ✅ Clock generation ✅ Protocol transactions (APB write/read)
+
+98
+00:32:03,374 --> 00:32:25,262
+6. SystemVerilog Functions and Tasks (5/26). ❌ Simple calculations (use function instead) ❌ Data transformations (use function instead) Purpose: Print formatted text to console (like printf in C) Format Specifiers: %0d - Decimal integer (no leading zeros)
+
+99
+00:32:25,612 --> 00:32:41,092
+6. SystemVerilog Functions and Tasks (6/26). %0b - Binary %0s - String %0t - Time %0f - Real (floating point) %0e - Scientific notation
+
+100
+00:32:41,442 --> 00:32:59,514
+6. SystemVerilog Functions and Tasks (7/26). $display() - Standard output $displayb() - Binary format $displayh() - Hexadecimal format $displayo() - Octal format Example from code: Used extensively in all examples for test output
+
+101
+00:32:59,864 --> 00:33:23,864
+6. SystemVerilog Functions and Tasks (8/26). Purpose: Format string with placeholders (like sprintf in C) Returns: Formatted string (doesn't print to console) Usage: Create string representations of objects Example from code: Used in convert2string() methods to format transaction data Real Example (from transaction.sv):
+
+102
+00:33:24,214 --> 00:33:48,646
+6. SystemVerilog Functions and Tasks (9/26). Usage: End testbench execution after tests complete Exit Codes: 0 = success, 1 = error, 2 = fatal Example from code: Called at end of all test programs Real Example (from test_and_gate.sv): Purpose: Report errors with formatted messages
+
+103
+00:33:48,996 --> 00:34:12,372
+6. SystemVerilog Functions and Tasks (10/26). Severity: ERROR level (stops simulation if severity is high enough) Example from code: Used in test assertions when checks fail Real Example (from test_and_gate.sv): Purpose: Different severity levels for reporting Usage: Use appropriate level for the situation
+
+104
+00:34:12,722 --> 00:34:37,634
+6. SystemVerilog Functions and Tasks (11/26). Purpose: Get current simulation time Usage: Timing verification, logging with timestamps Purpose: Generate random numbers for test stimulus Usage: Random test generation, constrained random verification Example from code: Used in error_handling_example.sv for retry simulation
+
+105
+00:34:37,984 --> 00:34:58,312
+6. SystemVerilog Functions and Tasks (12/26). Returns: 1 if cast succeeds, 0 if fails Usage: Polymorphic object handling, type checking Purpose: Initialize object when created Called: Automatically when using new() operator Parameters: Can have default values
+
+106
+00:34:58,662 --> 00:35:25,062
+6. SystemVerilog Functions and Tasks (13/26). Purpose: Create deep copy of object Usage: Duplicate transactions for scoreboards, queues Null Check: Always check for null before accessing object fields Example: txn_copy.copy(txn1); copies all fields from txn1 to txn_copy Purpose: Compare two objects for equality
+
+107
+00:35:25,412 --> 00:35:49,628
+6. SystemVerilog Functions and Tasks (14/26). Usage: Scoreboard checking, test verification Example: if (txn1.compare(txn2)) $display("Match!"); Purpose: Create human-readable string representation Returns: Formatted string with object fields Usage: Debugging, logging, test output
+
+108
+00:35:49,978 --> 00:36:15,514
+6. SystemVerilog Functions and Tasks (15/26). Purpose: Provide controlled access to private fields Usage: Encapsulation, data access Example: int id_val = txn.get_id(); Purpose: Organize test code into reusable units Timing: Can contain delays (#10) and event waits (@(posedge clk))
+
+109
+00:36:15,864 --> 00:36:39,384
+6. SystemVerilog Functions and Tasks (16/26). Calling: test_basic(); executes the task Purpose: Encapsulate common sequences (reset, initialization) Reusability: Can be called from multiple test tasks Usage: reset(); applies reset sequence before each test Purpose: Pass data to tasks
+
+110
+00:36:39,734 --> 00:37:04,694
+6. SystemVerilog Functions and Tasks (17/26). Calling: write_transaction(16'h1000, 32'hDEADBEEF); push_back(): Add element to end (FIFO enqueue) pop_front(): Remove element from front (FIFO dequeue) size(): Return number of elements Usage: Transaction queues, scoreboards
+
+111
+00:37:05,044 --> 00:37:23,476
+6. SystemVerilog Functions and Tasks (18/26). Indexing: Use any integral type as key Usage: Scoreboards, coverage collectors Functions execute in zero time Perfect for data transformations, comparisons Must return a value (or void)
+
+112
+00:37:23,826 --> 00:37:41,754
+6. SystemVerilog Functions and Tasks (19/26). Perfect for test sequences, stimulus generation No return value Always check for null before accessing object fields Prevents simulation crashes Derived classes can override base class methods
+
+113
+00:37:42,104 --> 00:38:01,688
+6. SystemVerilog Functions and Tasks (20/26). Each test case as separate task Main initial block orchestrates test execution Improves code readability and maintainability Uses delays (#10) for signal propagation Uses assert with $error() for verification
+
+114
+00:38:02,038 --> 00:38:24,118
+6. SystemVerilog Functions and Tasks (21/26). Organized as separate task for reusability Helper task (reset()) encapsulates common sequence Uses @(posedge clk) for clock synchronization Combines delays and event control Uses type casting (8'(i)) for bit width matching
+
+115
+00:38:24,468 --> 00:38:45,372
+6. SystemVerilog Functions and Tasks (22/26). Type casting with bit'(i) Expression evaluation in assertion Multiple format specifiers in $error() Functions: Execute in zero time, no simulation overhead Tasks: Consume simulation time, have scheduling overhead
+
+116
+00:38:45,722 --> 00:39:10,466
+6. SystemVerilog Functions and Tasks (23/26). push_back() / pop_front(): O(1) for queues size(): O(1) for queues and arrays exists(): O(1) average for associative arrays foreach: O(n) where n is number of elements Cause: Trying to use #, @, or wait in a function
+
+117
+00:39:10,816 --> 00:39:37,672
+6. SystemVerilog Functions and Tasks (24/26). Cause: Accessing object fields without null check Solution: Always check if (obj == null) before accessing Cause: Trying to use task return value: int x = task_name(); Solution: Use output parameter: task_name(output int x); Cause: Function declared with return type but no return statement
+
+118
+00:39:38,022 --> 00:40:10,086
+6. SystemVerilog Functions and Tasks (25/26). Cause: Using wrong format in $display() or $sformatf() Solution: Use %0d for decimal, %0h for hex, %0b for binary, %0s for string Functions: Zero-time operations that return values; use for calculations Tasks: Time-consuming operations; use for test sequences Class Methods: Functions within classes; enable object-oriented programming
+
+119
+00:40:10,436 --> 00:40:35,852
+6. SystemVerilog Functions and Tasks (26/26). Array Methods: push_back(), pop_front(), size(), exists() Best Practices: Null checks, method overriding, task organization Common Pitfalls: Delays in functions, missing null checks, wrong assignment types Performance: Functions are faster; use tasks only when timing is needed
+
+120
+00:40:36,202 --> 00:40:50,794
+Run: Example 1.1: Transaction Classes. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE1.md.
+
+121
+00:40:51,144 --> 00:40:54,384
+Next section: Hands-on examples.
+
+122
+00:40:54,734 --> 00:41:01,742
+Module 1 self-check. Watch the terminal output and confirm you see the expected pass message.
+
+123
+00:41:02,092 --> 00:41:08,476
+Exercise scaffold. Review the code on screen and match it to files in the repository.
+
+124
+00:41:08,826 --> 00:41:38,082
+Example 1: Transaction Classes. Base Transaction class with static variables (id_counter) Instance variables (id, data, timestamp) Special methods: new(), copy(), compare(), convert2string() Inheritance: ReadTransaction and WriteTransaction inherit from Transaction Method overriding: Child classes override convert2string() method module1/examples/sv_basics/README.md
+
+125
+00:41:38,432 --> 00:41:46,160
+Demo: Transaction Classes. Watch the terminal output and confirm you see the expected pass message.
+
+126
+00:41:46,510 --> 00:42:15,166
+Example 2: Interfaces and Modports. Interface Definition: apb_if interface with signals and clocking block Modports: master_mp and slave_mp modports with different signal directions Clocking Block: cb clocking block for synchronous access Interface Usage: Module using interface with modport Testbench Integration: Testbench connecting to interface module1/examples/interfaces/README.md
+
+127
+00:42:15,516 --> 00:42:23,388
+Demo: Interfaces and Modports. Watch the terminal output and confirm you see the expected pass message.
+
+128
+00:42:23,738 --> 00:42:51,578
+Example 3: Packages. Package Definition: verification_pkg with common types and functions Package Import: Using import verification_pkg::* Name Resolution: Handling name conflicts Package Organization: Structuring verification code Function Definitions: is_valid_address(), calculate_checksum() functions module1/examples/packages/README.md
+
+129
+00:42:51,928 --> 00:42:59,032
+Demo: Packages. Watch the terminal output and confirm you see the expected pass message.
+
+130
+00:42:59,382 --> 00:43:22,758
+Example 4: Data Structures. Dynamic Arrays: Transaction arrays that grow dynamically Queues: FIFO queues for transaction management Associative Arrays: Indexed by transaction ID Structures: Complex data structures for verification Array Methods: Using built-in array methods module1/examples/data_structures/README.md
+
+131
+00:43:23,108 --> 00:43:30,476
+Demo: Data Structures. Watch the terminal output and confirm you see the expected pass message.
+
+132
+00:43:30,826 --> 00:44:00,250
+Example 5: Error Handling. UVM Reporting: Using uvm_report_info(), uvm_report_error(), etc. Assertions: Immediate and concurrent assertions Error Handling: Try-catch blocks for exception handling Logging Patterns: Structured logging for verification Retry Logic: Task with retry mechanism using retry_task() module1/examples/error_handling/README.md
+
+133
+00:44:00,600 --> 00:44:07,776
+Demo: Error Handling. Watch the terminal output and confirm you see the expected pass message.
+
+134
+00:44:08,126 --> 00:44:11,318
+Next section: Common pitfalls.
+
+135
+00:44:11,668 --> 00:44:24,076
+Transaction Class Design. Create a base transaction class Implement copy, compare, and string conversion methods Create derived transaction classes Test inheritance and polymorphism
+
+136
+00:44:24,426 --> 00:44:34,938
+Interface Design. Design an interface for a simple bus protocol Create modports for master and slave Implement a clocking block Connect interface to a module
+
+137
+00:44:35,288 --> 00:44:45,128
+Package Organization. Create a verification package Define common types and functions Import and use package in testbench Resolve name conflicts
+
+138
+00:44:45,478 --> 00:44:56,950
+Data Structure Usage. Use dynamic arrays for transaction storage Implement a queue-based scoreboard Use associative arrays for coverage tracking Create structures for configuration
+
+139
+00:44:57,300 --> 00:45:07,332
+Error Handling. Implement UVM reporting in testbench Add assertions to verify design behavior Handle exceptions gracefully Create structured logging
+
+140
+00:45:07,682 --> 00:45:11,066
+Next section: Practice & assessment.
+
+141
+00:45:11,416 --> 00:45:28,000
+By now you should be able to explain the following. Understand SystemVerilog OOP concepts Create and use SystemVerilog classes Design interfaces with modports Organize code using packages Use appropriate data structures for verification From MODULE1 Learning Outcomes.
+
+142
+00:45:28,350 --> 00:45:39,054
+By now you should be able to explain the following. Write basic SystemVerilog testbenches Understand UVM class structure basics From MODULE1 Learning Outcomes.
+
+143
+00:45:39,404 --> 00:45:47,588
+Exercises. Transaction Class Design Interface Design Package Organization Data Structure Usage Error Handling
+
+144
+00:45:47,938 --> 00:46:01,882
+Assessment checklist. Can create SystemVerilog classes with inheritance Can design and use interfaces with modports Can organize code using packages Can use appropriate data structures Can implement error handling and logging
+
+145
+00:46:02,232 --> 00:46:23,904
+In summary: Understand SystemVerilog for verification and verification fundamentals Next up: Next module in course. Understand SystemVerilog for verification and verification fundamentals Complete module1/CHECKLIST.md Review module1/EXAMPLES.md and run each lab Next: Next module in course

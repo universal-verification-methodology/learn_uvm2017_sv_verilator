@@ -67,6 +67,59 @@ cd module7/tests/uvm_tests
 make SIM=verilator TEST=test_real_world_uvm
 ```
 
+## Design Architecture
+
+### 1. Real-world verification architecture
+
+| Component | Role |
+|-----------|------|
+| DMA agent | Programs descriptors; monitors transfer completion |
+| Protocol agents (UART/SPI/I2C) | Bus-specific driver/monitor/sequencer sets |
+| VIP package | Reusable agent + sequences + config for a protocol |
+| Scoreboard / predictor | End-to-end data integrity across DMA + peripheral |
+| Reference model | Software model of DMA or protocol behavior |
+
+- **DMA path**: CPU/config → descriptor ring → bus master → memory/peripheral
+- **Protocol path**: serial frame → byte stream → transaction → scoreboard
+- VIP encapsulates protocol knowledge for reuse across projects and modules
+- `module7/dut/dma/simple_dma.v` and `dut/protocols/uart.v` anchor the labs
+
+### 2. VIP and reuse architecture
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | VIP interface | Standardized signal bundle + modport |
+| 2 | VIP agent | Configurable active/passive agent |
+| 3 | VIP sequences | Library of legal and stress sequences |
+| 4 | Integration env | Instantiates DUT + VIP + scoreboard |
+| 5 | Test suite | Directed + random tests using VIP API |
+| **Simulation flow**: VIP config → env build → sequence library → coverage + report
+
+### 3. Module 7 application map
+
+- `examples/dma/` — descriptor programming, transfer status, interrupts
+- `examples/protocols/` — UART, SPI, I2C patterns (timing and framing)
+- `examples/vip/` — packaging reusable verification IP
+- `examples/best_practices/` — naming, config, debug, regression discipline
+- `test_real_world_uvm.sv` — integrated scenario combining subsystems
+
+## Verification & Testing Methods
+
+### 1. Application-specific verification strategy
+
+- **DMA**: descriptor alignment, boundary lengths, error flags, concurrent channels
+- **Serial protocols**: baud/bit timing, framing, parity, back-to-back packets
+- **VIP usage**: configure via object; run standard sequences before custom stress
+- Directed tests prove basic paths; random tests explore corner combinations
+
+### 2. Production best practices
+
+- Centralize plusargs via CLP (Module 8) for seed, verbosity, test name
+- Separate **test intent** (test class) from **reusable env** (VIP + env)
+- Log protocol transactions at UVM_MEDIUM; errors at UVM_LOW
+- **Regression**: `./scripts/module7.sh --all-examples --uvm-tests`
+- **Closure**: functional coverage bins hit + scoreboard clean + VIP protocol clean
+
 ## Topics Covered
 
 ### 1. DMA Verification

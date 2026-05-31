@@ -1,6 +1,6 @@
 ==========================================
 Module 4 Execution Log
-Started: 2026-05-28 21:28:25
+Started: 2026-05-31 03:34:32
 Command: ./scripts/module4.sh --agents
 Working directory: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator
 UVM_HOME: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src
@@ -13,6 +13,6 @@ Parallel jobs: 8
 [0;36mModule 4: UVM Components[0m
 [0;36m========================================[0m
 
-[0;34m[2026-05-28 21:28:25] Log file: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/module4/module4.log[0m
-[0;34m[2026-05-28 21:28:25] Checking prerequisites...[0m
-[0;31m[2026-05-28 21:28:25] Error: verilator not found. Please install it first.[0m
+[0;34m[2026-05-31 03:34:32] Log file: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/module4/module4.log[0m
+[0;34m[2026-05-31 03:34:32] Checking prerequisites...[0m
+[0;31m[2026-05-31 03:34:32] Error: verilator not found. Please install it first.[0m

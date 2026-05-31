@@ -34,6 +34,55 @@ chmod +x scripts/*.sh
 
 For detailed usage of each script, see the corresponding installation sections below.
 
+## Design Architecture
+
+### 1. Course repository layout
+
+| Component | Role |
+|-----------|------|
+| `tools/verilator/` | Git submodule — SystemVerilog/Verilog simulator (build from source) |
+| `tools/uvm-2017/` | IEEE 1800.2-2017 UVM library sources (`UVM_HOME`) |
+| `scripts/installation.sh` | One-shot installer for Verilator + UVM + dependencies |
+| `scripts/moduleN.sh` | Per-module example orchestrator (modules 1–8) |
+| `moduleN/examples/` | Hands-on labs referenced by slides and EXAMPLES.md |
+| `media/moduleN/` | Generated slides, PDF, and narrated video per module |
+
+- Project-local install (`--local`) keeps tools inside the repo for reproducibility
+- WSL2/Linux is the primary target; macOS supported via Homebrew
+- Environment variables: `VERILATOR_ROOT`, `UVM_HOME` must resolve before running labs
+
+### 2. Build and simulation artifact flow
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | Source `.v`/`.sv` | RTL and testbench SystemVerilog |
+| 2 | `verilator --cc` | Emits C++ model under `obj_dir/` |
+| 3 | `make -C obj_dir` | Links `Vtop` (or `V<module>`) executable |
+| 4 | `./obj_dir/V*` | Runs simulation; prints PASS/FAIL or UVM report |
+| 5 | `*.vcd` (optional) | Waveform when `--trace` enabled |
+
+- Verilator compiles **design + testbench** into a single fast C++ binary
+- UVM examples add `-I$UVM_HOME/src` and `+define+UVM_NO_DPI` for Verilator compatibility
+- **Self-check flow**: install → `verilator --version` → `./scripts/module0.sh --check` → run Module 1 lab
+
+## Verification & Testing Methods
+
+### 1. Environment verification strategy
+
+- Run `./scripts/installation.sh` (or per-tool scripts) before any module labs
+- Verify compiler toolchain: `gcc --version`, `make --version`, `git --version`
+- Confirm Verilator: `verilator --version` and a minimal `--lint-only` compile
+- Confirm UVM: `echo $UVM_HOME` points at `tools/uvm-2017/1800.2-2017-1.0/src`
+- Use `./scripts/module0.sh --check` for an automated PASS summary
+
+### 2. Smoke test and troubleshooting workflow
+
+- **Smoke test**: compile one trivial Verilog file with Verilator; expect clean exit
+- **UVM smoke**: run `module3/examples/class_hierarchy` after Module 0 completes
+- **Common failures**: missing `UVM_HOME`, wrong Verilator version, WSL path issues
+- **Logs**: capture terminal output; search for `Error`, `%Error`, `UVM_FATAL`
+- **Escalation**: re-run installer with `--from-submodule` for a clean Verilator build
+
 ## Topics Covered
 
 ### 1. System Requirements and Prerequisites

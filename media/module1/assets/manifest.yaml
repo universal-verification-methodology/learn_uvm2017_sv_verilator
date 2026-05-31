@@ -10,46 +10,75 @@ assets:
   - 4
   - 4
   license: learn_uvm2017_sv_verilator course materials
+- id: rtl_architecture
+  type: diagram
+  file: assets/diagrams/rtl_architecture.png
+  source: assets/diagrams/rtl_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 7
+  - 12
+  license: learn_uvm2017_sv_verilator course materials
+- id: verification_architecture
+  type: diagram
+  file: assets/diagrams/verification_architecture.png
+  source: assets/diagrams/verification_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 10
+  license: learn_uvm2017_sv_verilator course materials
+- id: testing_methods
+  type: diagram
+  file: assets/diagrams/testing_methods.png
+  source: assets/diagrams/testing_methods.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 19
+  - 20
+  - 54
+  license: learn_uvm2017_sv_verilator course materials
 - id: module1_check
   type: screenshot
   file: assets/screenshots/module1_check.png
-  capture_command: ./scripts/module1.sh --sv-basics
+  capture_command: ./scripts/module1.sh --help
   cwd: .
   slides:
-  - 48
-  expect_stdout_contains: completed successfully
+  - 122
+  expect_stdout_contains: Module
 - id: ex01_sv_basics
   type: screenshot
   file: assets/screenshots/ex01_sv_basics.png
-  capture_command: ./scripts/module1.sh --sv-basics
+  capture_command: ./scripts/module1.sh --sv-basics && cd module1/examples/sv_basics
+    && verilator -sv --cc --exe transaction.sv -o transaction_example && make -C obj_dir
+    -f Vtransaction_example.mk
   cwd: .
   slides:
-  - 51
+  - 125
 - id: ex02_interfaces
   type: screenshot
   file: assets/screenshots/ex02_interfaces.png
   capture_command: ./scripts/module1.sh --interfaces
   cwd: .
   slides:
-  - 53
+  - 127
 - id: ex03_packages
   type: screenshot
   file: assets/screenshots/ex03_packages.png
   capture_command: ./scripts/module1.sh --packages
   cwd: .
   slides:
-  - 55
+  - 129
 - id: ex04_data_structures
   type: screenshot
   file: assets/screenshots/ex04_data_structures.png
   capture_command: ./scripts/module1.sh --data-structures
   cwd: .
   slides:
-  - 57
+  - 131
 - id: ex05_error_handling
   type: screenshot
   file: assets/screenshots/ex05_error_handling.png
   capture_command: ./scripts/module1.sh --error-handling
   cwd: .
   slides:
-  - 59
+  - 133

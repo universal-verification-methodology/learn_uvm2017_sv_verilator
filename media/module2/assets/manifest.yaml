@@ -10,46 +10,75 @@ assets:
   - 4
   - 4
   license: learn_uvm2017_sv_verilator course materials
+- id: rtl_architecture
+  type: diagram
+  file: assets/diagrams/rtl_architecture.png
+  source: assets/diagrams/rtl_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 7
+  - 12
+  license: learn_uvm2017_sv_verilator course materials
+- id: verification_architecture
+  type: diagram
+  file: assets/diagrams/verification_architecture.png
+  source: assets/diagrams/verification_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 10
+  - 13
+  license: learn_uvm2017_sv_verilator course materials
+- id: testing_methods
+  type: diagram
+  file: assets/diagrams/testing_methods.png
+  source: assets/diagrams/testing_methods.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 11
+  - 20
+  - 21
+  - 51
+  license: learn_uvm2017_sv_verilator course materials
 - id: module2_check
   type: screenshot
   file: assets/screenshots/module2_check.png
-  capture_command: ./scripts/module2.sh --clock-generation
+  capture_command: ./scripts/module2.sh --help
   cwd: .
   slides:
-  - 76
-  expect_stdout_contains: completed successfully
+  - 121
+  expect_stdout_contains: Module
 - id: ex01_clock_generation
   type: screenshot
   file: assets/screenshots/ex01_clock_generation.png
   capture_command: ./scripts/module2.sh --clock-generation
   cwd: .
   slides:
-  - 79
+  - 124
 - id: ex02_reset_patterns
   type: screenshot
   file: assets/screenshots/ex02_reset_patterns.png
   capture_command: ./scripts/module2.sh --reset-patterns
   cwd: .
   slides:
-  - 81
+  - 126
 - id: ex03_signal_access
   type: screenshot
   file: assets/screenshots/ex03_signal_access.png
   capture_command: ./scripts/module2.sh --signal-access
   cwd: .
   slides:
-  - 83
+  - 128
 - id: ex04_triggers
   type: screenshot
   file: assets/screenshots/ex04_triggers.png
   capture_command: ./scripts/module2.sh --triggers
   cwd: .
   slides:
-  - 85
+  - 130
 - id: ex05_common_patterns
   type: screenshot
   file: assets/screenshots/ex05_common_patterns.png
   capture_command: ./scripts/module2.sh --common-patterns
   cwd: .
   slides:
-  - 87
+  - 132

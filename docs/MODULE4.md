@@ -68,6 +68,63 @@ cd module4/tests/uvm_tests
 make SIM=verilator TEST=test_complete_agent_uvm
 ```
 
+## Design Architecture
+
+### 1. UVM agent internal architecture
+
+| Component | Role |
+|-----------|------|
+| `uvm_sequencer` | Arbitrates sequences; exports `seq_item_export` |
+| `uvm_driver` | `seq_item_port` pulls items; drives virtual interface |
+| `uvm_monitor` | Passive observation; broadcasts via analysis port |
+| `uvm_agent` | Configures active/passive; builds child components |
+| `uvm_sequence` | Produces randomized/constrained transactions |
+
+- **Active agent**: sequencer + driver + monitor (generates and observes stimulus)
+- **Passive agent**: monitor only (observation/checking on monitored bus)
+- Agent `is_active` config selects build-time component set
+- Sequencer-driver TLM: `driver.seq_item_port.connect(sequencer.seq_item_export)`
+
+### 2. Transaction-level data path
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | Sequence | `randomize()` transaction fields |
+| 2 | Sequencer | Sends item to driver via TLM port |
+| 3 | Driver | Drives interface signals from item |
+| 4 | DUT | Responds on bus/interface |
+| 5 | Monitor | Captures pin activity → transaction |
+| 6 | Scoreboard | Compares expected vs observed (Module 4 examples) |
+
+- **TLM ports**: `uvm_analysis_port` / `uvm_analysis_export` for monitor → scoreboard
+- Transactions implement `do_copy`, `do_compare`, `convert2string` for debug and checking
+- **Execution sequence**: build agent → connect TLM → start sequence in `run_phase`
+
+### 3. Module 4 example progression
+
+- `examples/transactions/` → data modeling fundamentals
+- `examples/drivers/`, `monitors/`, `sequencers/` → individual components
+- `examples/tlm/`, `scoreboards/` → communication and checking
+- `examples/agents/` → integrated active agent
+- `tests/uvm_tests/test_complete_agent_uvm.sv` — full agent on interface DUT
+
+## Verification & Testing Methods
+
+### 1. Component-level verification strategy
+
+- Verify each component **in isolation** before agent integration
+- Driver: loopback or simple slave model confirms pin wiggles match items
+- Monitor: drive known patterns; confirm reconstructed transactions
+- Sequencer: run single sequence; count items completed vs requested
+
+### 2. Agent integration and closure
+
+- Connect monitor analysis port to scoreboard export in `connect_phase`
+- Use `uvm_config_db` to pass virtual interface to driver and monitor
+- **Regression**: `./scripts/module4.sh --all-examples` then `--uvm-tests`
+- **Pass criteria**: scoreboard match count equals transaction count; no UVM_ERROR
+- Waveform optional — rely on transaction logs and scoreboard summary first
+
 ## Topics Covered
 
 ### 1. UVM Agent Architecture

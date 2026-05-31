@@ -7,26 +7,847 @@ slides:
 - type: title
   title: Module 8
   subtitle: UVM Miscellaneous Utilities
+  narration: Welcome to module 8, UVM Miscellaneous Utilities. In this module you
+    will master uvm utility classes.
 - type: bullets
   title: Learning objectives
   bullets:
   - Master UVM utility classes
+  narration: Here is what you will learn in this module. Master UVM utility classes
 - type: bullets
   title: Prerequisites
   bullets:
   - See module README
+  narration: Before you start, make sure you have these prerequisites. See module
+    README
 - type: image
   title: Learning path
   image: assets/diagrams/learning_path.png
   caption: Master UVM utility classes
+  narration: Learning path. Master UVM utility classes
 - type: bullets
   title: Overview
   bullets:
   - This module covers UVM utility classes including Command Line Processor, comparators,
-    recorders, pools, queues, and string/math/random utilities. These utilities provide
-    essential functionality for building robust and fl
+    recorders, pools, queues, and string/math/random...
+  narration: Overview. This module covers UVM utility classes including Command Line
+    Processor, comparators, recorders, pools, queues, and string/math/random...
+- type: section
+  title: Design architecture
+  narration: 'Next section: Design architecture.'
+- type: two_column
+  title: 1. UVM utility layer architecture (1/3)
+  left:
+  - Utilities sit below agents/env — used by transactions, scoreboards, tests
+  - CLP is singleton — query in `build_phase` or test `new()` for test configuration
+  - Comparators plug into `do_compare` for field-tolerant matching
+  - Integration example (`examples/integration/`) wires multiple utilities in one
+    TB
+  right: assets/diagrams/rtl_architecture.png
+  notes: From MODULE8 Design Architecture.
+  narration: 1. UVM utility layer architecture (1/3). Utilities sit below agents/env
+    — used by transactions, scoreboards, tests CLP is singleton — query in build_phase
+    or test new() for test configuration Comparators plug into do_compare for field-tolerant
+    matching Integration example (examples/integration/) wires multiple utilities
+    in one TB Refer to the diagram on the right.
+- type: bullets
+  title: 1. UVM utility layer architecture (2/3)
+  bullets:
+  - 'uvm_cmdline_processor: Parses +UVM_* and custom plusargs at startup'
+  - 'uvm_comparer / uvm_packer: Transaction compare and pack/unpack utilities'
+  - 'uvm_recorder: Transaction recording for debug and replay'
+  - 'uvm_pool / queues: Shared storage across components'
+  notes: From MODULE8 Design Architecture.
+  narration: '1. UVM utility layer architecture (2/3). uvm_cmdline_processor: Parses
+    +UVM_* and custom plusargs at startup uvm_comparer / uvm_packer: Transaction compare
+    and pack/unpack utilities uvm_recorder: Transaction recording for debug and replay
+    uvm_pool / queues: Shared storage across components'
+- type: bullets
+  title: 1. UVM utility layer architecture (3/3)
+  bullets:
+  - 'String/math/random utils: Formatting, statistics, and RNG helpers'
+  notes: From MODULE8 Design Architecture.
+  narration: '1. UVM utility layer architecture (3/3). String/math/random utils: Formatting,
+    statistics, and RNG helpers'
+- type: two_column
+  title: 2. Utility integration flow (1/2)
+  left:
+  - '1: CLP — Read +TESTNAME=, +UVM_VERBOSITY=, seed plusargs'
+  - '2: Random utils — Seed RNG for repeatable constrained-random runs'
+  - '3: Transaction — pack/unpack for scoreboard queues or recording'
+  - '4: Recorder — Log high-value transactions to file for offline debug'
+  right: assets/diagrams/verification_architecture.png
+  notes: From MODULE8 Design Architecture.
+  narration: '2. Utility integration flow (1/2). 1: CLP — Read +TESTNAME=, +UVM_VERBOSITY=,
+    seed plusargs 2: Random utils — Seed RNG for repeatable constrained-random runs
+    3: Transaction — pack/unpack for scoreboard queues or recording 4: Recorder —
+    Log high-value transactions to file for offline debug Refer to the diagram on
+    the right.'
+- type: bullets
+  title: 2. Utility integration flow (2/2)
+  bullets:
+  - '5: Report — Summarize comparer mismatches and pool statistics'
+  notes: From MODULE8 Design Architecture.
+  narration: '2. Utility integration flow (2/2). 5: Report — Summarize comparer mismatches
+    and pool statistics'
+- type: two_column
+  title: 3. Module 8 example catalog
+  left:
+  - One example per utility family (CLP, comparators, recorders, pools, queues, string/math/random)
+  - '`dut/dma/simple_dma.v` provides lightweight RTL context for integration demo'
+  - '`test_utilities_uvm.sv` shows utilities inside a full UVM test structure'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE8 Design Architecture.
+  narration: 3. Module 8 example catalog. One example per utility family (CLP, comparators,
+    recorders, pools, queues, string/math/random) dut/dma/simple_dma.v provides lightweight
+    RTL context for integration demo test_utilities_uvm.sv shows utilities inside
+    a full UVM test structure Refer to the diagram on the right.
+- type: image
+  title: RTL block diagram (reference)
+  image: assets/diagrams/rtl_architecture.png
+  caption: 'Module 8: DUT hierarchy and signal flow.'
+  narration: 'RTL block diagram (reference). Module 8: DUT hierarchy and signal flow.'
+- type: image
+  title: Verification / testbench diagram (reference)
+  image: assets/diagrams/verification_architecture.png
+  caption: 'Module 8: stimulus, observation, and checking.'
+  narration: 'Verification / testbench diagram (reference). Module 8: stimulus, observation,
+    and checking.'
+- type: section
+  title: Execution & simulation flow
+  narration: 'Next section: Execution & simulation flow.'
+- type: bullets
+  title: How the example runs (toolchain)
+  bullets:
+  - 'Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv'
+  - 'UVM phases: build → connect → run_test → report (same pattern as Module 2)'
+  - Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end)
+  - 'Typical command: make SIM=verilator TEST=test_* (see module8 demo slide)'
+  - Loopback / hooks connect monitor observations to scoreboard checks
+  notes: From MODULE8 — execution and artifact layout.
+  narration: 'How the example runs (toolchain). Match each bullet to files in the
+    repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv
+    UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence
+    → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command:
+    make SIM=verilator TEST=test_* (see module8 demo slide) Loopback / hooks connect...'
+- type: bullets
+  title: Artifact flow (spec → sim) (1)
+  bullets:
+  - '1: CLP — Read +TESTNAME=, +UVM_VERBOSITY=, seed plusargs'
+  - '2: Random utils — Seed RNG for repeatable constrained-random runs'
+  - '3: Transaction — pack/unpack for scoreboard queues or recording'
+  - '4: Recorder — Log high-value transactions to file for offline debug'
+  notes: From MODULE8 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (1). Match each bullet to files in the repository.
+    1: CLP — Read +TESTNAME=, +UVM_VERBOSITY=, seed plusargs 2: Random utils — Seed
+    RNG for repeatable constrained-random runs 3: Transaction — pack/unpack for scoreboard
+    queues or recording 4: Recorder — Log high-value transactions to file for offline
+    debug From MODULE8 — execution and artifact layout.'
+- type: bullets
+  title: Artifact flow (spec → sim) (2)
+  bullets:
+  - '5: Report — Summarize comparer mismatches and pool statistics'
+  notes: From MODULE8 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (2). Match each bullet to files in the repository.
+    5: Report — Summarize comparer mismatches and pool statistics From MODULE8 — execution
+    and artifact layout.'
+- type: bullets
+  title: Example directory layout
+  bullets:
+  - 'uvm_cmdline_processor: Parses +UVM_* and custom plusargs at startup'
+  - 'uvm_comparer / uvm_packer: Transaction compare and pack/unpack utilities'
+  - 'uvm_recorder: Transaction recording for debug and replay'
+  - 'uvm_pool / queues: Shared storage across components'
+  - 'String/math/random utils: Formatting, statistics, and RNG helpers'
+  notes: Match each path to files under module/examples/.
+  narration: 'Example directory layout. Match each bullet to files in the repository.
+    uvm_cmdline_processor: Parses +UVM_* and custom plusargs at startup uvm_comparer
+    / uvm_packer: Transaction compare and pack/unpack utilities uvm_recorder: Transaction
+    recording for debug and replay uvm_pool / queues: Shared storage across components
+    String/math/random utils: Formatting, statistics, and RNG helpers Match...'
+- type: bullets
+  title: Directed test execution sequence
+  bullets:
+  - parse args
+  - configure test
+  - run
+  - utility-backed report
+  notes: Follow this order when tracing waveforms or debugging.
+  narration: Follow these steps in order when working through this module. parse args
+    configure test run utility-backed report Follow this order when tracing waveforms
+    or debugging.
+- type: section
+  title: Verification & testing methods
+  narration: 'Next section: Verification & testing methods.'
+- type: two_column
+  title: 1. Utility-driven test configuration
+  left:
+  - Use `+UVM_TESTNAME=` and `+UVM_VERBOSITY=` instead of hard-coded test selection
+  - Pass custom plusargs (`+NUM_TRANS=`, `+TIMEOUT=`) via CLP getters
+  - 'Seed control: plusarg → `uvm_random_utils` or `$urandom` for reproducible bugs'
+  - Recorders capture failing transaction windows for post-sim review
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE8 Verification & Testing Methods.
+  narration: '1. Utility-driven test configuration. Use +UVM_TESTNAME= and +UVM_VERBOSITY=
+    instead of hard-coded test selection Pass custom plusargs (+NUM_TRANS=, +TIMEOUT=)
+    via CLP getters Seed control: plusarg → uvm_random_utils or $urandom for reproducible
+    bugs Recorders capture failing transaction windows for post-sim review Refer to
+    the diagram on the right.'
+- type: two_column
+  title: 2. Debug and regression strategy (1/2)
+  left:
+  - Enable comparer policy (ignore certain fields) for noisy buses
+  - Pools share counters/statistics between monitor and scoreboard without globals
+  - 'Regression: `./scripts/module8.sh --all-examples --uvm-tests`'
+  - '`./scripts/module8.sh --integration` validates combined utility usage'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE8 Verification & Testing Methods.
+  narration: '2. Debug and regression strategy (1/2). Enable comparer policy (ignore
+    certain fields) for noisy buses Pools share counters/statistics between monitor
+    and scoreboard without globals Regression: ./scripts/module8.sh --all-examples
+    --uvm-tests ./scripts/module8.sh --integration validates combined utility usage
+    Refer to the diagram on the right.'
+- type: bullets
+  title: 2. Debug and regression strategy (2/2)
+  bullets:
+  - 'Closure: utility self-tests PASS + integration test UVM report clean'
+  notes: From MODULE8 Verification & Testing Methods.
+  narration: '2. Debug and regression strategy (2/2). Closure: utility self-tests
+    PASS + integration test UVM report clean'
 - type: section
   title: Syllabus topics
+  narration: 'Next section: Syllabus topics.'
+- type: section
+  title: Protocol & design details
+  narration: 'Next section: Protocol & design details.'
+- type: bullets
+  title: 'Detail: Example 8.1: Command Line Processor (`module8/examples/clp/clp.sv`)
+    (1)'
+  bullets:
+  - 'CLPTransaction: Transaction with data and address fields'
+  - 'CLPSequence: Sequence using CLP configuration for number of transactions'
+  - 'CLPDriver: Driver that processes transactions'
+  - 'CLPAgent: Agent with driver, monitor, and sequencer'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.1: Command Line Processor (module8/examples/clp/clp.sv)
+    (1). CLPTransaction: Transaction with data and address fields CLPSequence: Sequence
+    using CLP configuration for number of transactions CLPDriver: Driver that processes
+    transactions CLPAgent: Agent with driver, monitor, and sequencer From MODULE8
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.1: Command Line Processor (`module8/examples/clp/clp.sv`)
+    (2)'
+  bullets:
+  - 'CLPEnv: Environment that uses CLP for configuration'
+  - 'CLPTest: Test that parses command-line arguments'
+  - 'Method Signature: `static function bit get_arg_value(string plusarg, ref string
+    value);`'
+  - 'Return Type: `bit` (1 = found, 0 = not found)'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.1: Command Line Processor (module8/examples/clp/clp.sv)
+    (2). CLPEnv: Environment that uses CLP for configuration CLPTest: Test that parses
+    command-line arguments Method Signature: static function bit get_arg_value(string
+    plusarg, ref string value); Return Type: bit (1 = found, 0 = not found) From MODULE8
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.2: Comparators (`module8/examples/comparators/comparators.sv`)
+    (1)'
+  bullets:
+  - 'ComparatorTransaction: Transaction with data, address, and timestamp'
+  - 'InOrderComparator: Sequential transaction comparison'
+  - 'OutOfOrderComparator: Address-based transaction matching'
+  - 'ComparatorTest: Test demonstrating both comparator types'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.2: Comparators (module8/examples/comparators/comparators.sv)
+    (1). ComparatorTransaction: Transaction with data, address, and timestamp InOrderComparator:
+    Sequential transaction comparison OutOfOrderComparator: Address-based transaction
+    matching ComparatorTest: Test demonstrating both comparator types From MODULE8
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.2: Comparators (`module8/examples/comparators/comparators.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Create multiple typed analysis implementations'
+  - 'Key: Allows separate `write_expected()` and `write_actual()` methods'
+  - 'Method Signatures:'
+  - '`function void write_expected(T txn);` - Write expected transaction'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.2: Comparators (module8/examples/comparators/comparators.sv)
+    (2). Purpose: Create multiple typed analysis implementations Key: Allows separate
+    write_expected() and write_actual() methods Method Signatures: function void write_expected(T
+    txn); - Write expected transaction From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 8.3: Recorders (`module8/examples/recorders/recorders.sv`)
+    (1)'
+  bullets:
+  - 'RecorderTransaction: Transaction with recording capabilities'
+  - 'TransactionRecorder: Recorder that stores transactions'
+  - 'RecorderTest: Test demonstrating transaction recording'
+  - 'Method Signature: `function void do_record(uvm_recorder recorder);`'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.3: Recorders (module8/examples/recorders/recorders.sv)
+    (1). RecorderTransaction: Transaction with recording capabilities TransactionRecorder:
+    Recorder that stores transactions RecorderTest: Test demonstrating transaction
+    recording Method Signature: function void do_record(uvm_recorder recorder); From
+    MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.3: Recorders (`module8/examples/recorders/recorders.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Record transaction fields for playback/analysis'
+  - 'Radix Types: UVM_HEX, UVM_DEC, UVM_BIN, UVM_OCT'
+  - 'Key: Call `super.do_record()` first, then record all fields'
+  - 'Method Signature: `function void write(T txn);`'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.3: Recorders (module8/examples/recorders/recorders.sv)
+    (2). Purpose: Record transaction fields for playback/analysis Radix Types: UVM_HEX,
+    UVM_DEC, UVM_BIN, UVM_OCT Key: Call super.do_record() first, then record all fields
+    Method Signature: function void write(T txn); From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 8.4: Pools (`module8/examples/pools/pools.sv`) (1)'
+  bullets:
+  - 'PoolTransaction: Transaction for pool example'
+  - 'TransactionPool: Pool implementation with allocate/free'
+  - 'PoolTest: Test demonstrating object pooling'
+  - 'Purpose: Pre-allocate pool objects'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.4: Pools (module8/examples/pools/pools.sv)
+    (1). PoolTransaction: Transaction for pool example TransactionPool: Pool implementation
+    with allocate/free PoolTest: Test demonstrating object pooling Purpose: Pre-allocate
+    pool objects From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.4: Pools (`module8/examples/pools/pools.sv`) (2)'
+  bullets:
+  - 'Key: Create objects once, reuse multiple times'
+  - 'Method Signature: `function PoolTransaction allocate();`'
+  - 'Purpose: Allocate object from pool'
+  - 'Behavior: Returns pooled object if available, creates new if empty'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.4: Pools (module8/examples/pools/pools.sv)
+    (2). Key: Create objects once, reuse multiple times Method Signature: function
+    PoolTransaction allocate(); Purpose: Allocate object from pool Behavior: Returns
+    pooled object if available, creates new if empty From MODULE8 Topics Covered —
+    protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.5: Queues (`module8/examples/queues/queues.sv`) (1)'
+  bullets:
+  - 'QueueTransaction: Transaction for queue example'
+  - 'QueueManager: Queue manager with FIFO and priority queues'
+  - 'QueueTest: Test demonstrating queue operations'
+  - 'Method Signatures:'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.5: Queues (module8/examples/queues/queues.sv)
+    (1). QueueTransaction: Transaction for queue example QueueManager: Queue manager
+    with FIFO and priority queues QueueTest: Test demonstrating queue operations Method
+    Signatures: From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.5: Queues (`module8/examples/queues/queues.sv`) (2)'
+  bullets:
+  - '`function void enqueue_fifo(T txn);` - Add to queue'
+  - '`function T dequeue_fifo();` - Remove from queue'
+  - 'FIFO Pattern: `push_back()` to enqueue, `pop_front()` to dequeue'
+  - 'Key: First In, First Out order'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.5: Queues (module8/examples/queues/queues.sv)
+    (2). function void enqueue_fifo(T txn); - Add to queue function T dequeue_fifo();
+    - Remove from queue FIFO Pattern: push_back() to enqueue, pop_front() to dequeue
+    Key: First In, First Out order From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.6: String Utilities (`module8/examples/string_utils/string_utils.sv`)
+    (1)'
+  bullets:
+  - 'StringUtils: Utility class for string operations'
+  - 'StringTest: Test demonstrating string utilities'
+  - 'Method Signature: `function string int_to_hex(int value, int width = 8);`'
+  - 'Purpose: Convert integer to hexadecimal string'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.6: String Utilities (module8/examples/string_utils/string_utils.sv)
+    (1). StringUtils: Utility class for string operations StringTest: Test demonstrating
+    string utilities Method Signature: function string int_to_hex(int value, int width
+    = 8); Purpose: Convert integer to hexadecimal string From MODULE8 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.6: String Utilities (`module8/examples/string_utils/string_utils.sv`)
+    (2)'
+  bullets:
+  - 'Format: `%0h` - hex without padding, `%02h` - 2-digit hex'
+  - 'Method Signature: `function string int_to_bin(int value, int width = 8);`'
+  - 'Purpose: Convert integer to binary string'
+  - 'Format: `%0b` - binary without padding'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.6: String Utilities (module8/examples/string_utils/string_utils.sv)
+    (2). Format: %0h - hex without padding, %02h - 2-digit hex Method Signature: function
+    string int_to_bin(int value, int width = 8); Purpose: Convert integer to binary
+    string Format: %0b - binary without padding From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 8.7: Math Utilities (`module8/examples/math_utils/math_utils.sv`)
+    (1)'
+  bullets:
+  - 'MathUtils: Utility class for mathematical operations'
+  - 'MathTest: Test demonstrating math utilities'
+  - 'Method Signature: `function real calculate_average(int values[]);`'
+  - 'Return Type: `real` (floating point)'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.7: Math Utilities (module8/examples/math_utils/math_utils.sv)
+    (1). MathUtils: Utility class for mathematical operations MathTest: Test demonstrating
+    math utilities Method Signature: function real calculate_average(int values[]);
+    Return Type: real (floating point) From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 8.7: Math Utilities (`module8/examples/math_utils/math_utils.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Calculate average of array values'
+  - 'Key: Use `real''()` cast for floating-point division'
+  - 'Method Signature: `function int calculate_max(int values[]);`'
+  - 'Purpose: Find maximum value in array'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.7: Math Utilities (module8/examples/math_utils/math_utils.sv)
+    (2). Purpose: Calculate average of array values Key: Use real''() cast for floating-point
+    division Method Signature: function int calculate_max(int values[]); Purpose:
+    Find maximum value in array From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.8: Random Utilities (`module8/examples/random_utils/random_utils.sv`)
+    (1)'
+  bullets:
+  - 'RandomUtils: Utility class for random operations'
+  - 'RandomTest: Test demonstrating random utilities'
+  - 'Method Signature: `function int random_range(int min_val, int max_val);`'
+  - 'Purpose: Generate random integer in range'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.8: Random Utilities (module8/examples/random_utils/random_utils.sv)
+    (1). RandomUtils: Utility class for random operations RandomTest: Test demonstrating
+    random utilities Method Signature: function int random_range(int min_val, int
+    max_val); Purpose: Generate random integer in range From MODULE8 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.8: Random Utilities (`module8/examples/random_utils/random_utils.sv`)
+    (2)'
+  bullets:
+  - 'Built-in Function: `$urandom_range(max, min)` - random range'
+  - 'Key: Parameters are max, min (order matters)'
+  - 'Method Signature: `function logic [31:0] random_bits(int width = 32);`'
+  - 'Purpose: Generate random bit vector'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.8: Random Utilities (module8/examples/random_utils/random_utils.sv)
+    (2). Built-in Function: $urandom_range(max, min) - random range Key: Parameters
+    are max, min (order matters) Method Signature: function logic [31:0] random_bits(int
+    width = 32); Purpose: Generate random bit vector From MODULE8 Topics Covered —
+    protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.9: Integration (`module8/examples/integration/integration.sv`)
+    (1)'
+  bullets:
+  - 'IntegrationTest: Test combining multiple utilities'
+  - Combined utility usage
+  - Transaction recording and queuing
+  - Command-line configuration
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.9: Integration (module8/examples/integration/integration.sv)
+    (1). IntegrationTest: Test combining multiple utilities Combined utility usage
+    Transaction recording and queuing Command-line configuration From MODULE8 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 8.9: Integration (`module8/examples/integration/integration.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Use CLP for configuration'
+  - 'Pattern: Parse plusargs in `build_phase()`'
+  - 'Purpose: Record transactions with timestamps'
+  - 'Key Methods: `copy()`, `$time`, `push_back()`'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 8.9: Integration (module8/examples/integration/integration.sv)
+    (2). Purpose: Use CLP for configuration Pattern: Parse plusargs in build_phase()
+    Purpose: Record transactions with timestamps Key Methods: copy(), $time, push_back()
+    From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: get_arg_value() (1)'
+  bullets:
+  - 'Return Type: `bit` (1 = found, 0 = not found)'
+  - 'Parameters:'
+  - '`plusarg`: Plusarg name (must start with `+`)'
+  - '`value`: Variable to store value (passed by reference)'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: get_arg_value() (1). Return Type: bit (1
+    = found, 0 = not found) Parameters: plusarg: Plusarg name (must start with +)
+    value: Variable to store value (passed by reference) From MODULE8 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: get_arg_value() (2)'
+  bullets:
+  - 'Purpose: Parse command-line plusarg and retrieve value'
+  - 'Usage: Call in `build_phase()` to configure components'
+  - 'Plusarg Format: `+name=value` (e.g., `+test_mode=stress`)'
+  - 'Example:'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: get_arg_value() (2). Purpose: Parse command-line
+    plusarg and retrieve value Usage: Call in build_phase() to configure components
+    Plusarg Format: +name=value (e.g., +test_mode=stress) Example: From MODULE8 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Analysis Imp Declaration'
+  bullets:
+  - 'Purpose: Declare typed analysis implementation ports'
+  - 'Behavior: Creates `uvm_analysis_imp_<suffix>` type'
+  - 'Usage: Multiple analysis ports with different `write()` methods'
+  - 'Example:'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Analysis Imp Declaration. Purpose: Declare
+    typed analysis implementation ports Behavior: Creates uvm_analysis_imp_<suffix>
+    type Usage: Multiple analysis ports with different write() methods Example: From
+    MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: write_expected() and write_actual()'
+  bullets:
+  - '`function void write_expected(T txn);`'
+  - '`function void write_actual(T txn);`'
+  - 'Purpose: Write transactions to comparator'
+  - 'Usage: Connect analysis ports to comparator implementations'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: write_expected() and write_actual(). function
+    void write_expected(T txn); function void write_actual(T txn); Purpose: Write
+    transactions to comparator Usage: Connect analysis ports to comparator implementations
+    From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: compare_transactions()'
+  bullets:
+  - 'Purpose: Compare queued transactions'
+  - 'In-Order Pattern: Compare from front of queues'
+  - 'Out-of-Order Pattern: Match by address using associative arrays'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: compare_transactions(). Purpose: Compare
+    queued transactions In-Order Pattern: Compare from front of queues Out-of-Order
+    Pattern: Match by address using associative arrays From MODULE8 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: do_record()'
+  bullets:
+  - 'Purpose: Record transaction fields'
+  - 'Key: Call `super.do_record()` first'
+  - 'Usage: Override in transaction class'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: do_record(). Purpose: Record transaction
+    fields Key: Call super.do_record() first Usage: Override in transaction class
+    From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: record_field() (1)'
+  bullets:
+  - 'Parameters:'
+  - '`name`: Field name (string)'
+  - '`value`: Field value (any type)'
+  - '`size`: Field size in bits'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: record_field() (1). Parameters: name: Field
+    name (string) value: Field value (any type) size: Field size in bits From MODULE8
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: record_field() (2)'
+  bullets:
+  - '`radix`: Display format (UVM_HEX, UVM_DEC, UVM_BIN, UVM_OCT)'
+  - 'Purpose: Record individual field with format'
+  - 'Usage: Record all transaction fields'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: record_field() (2). radix: Display format
+    (UVM_HEX, UVM_DEC, UVM_BIN, UVM_OCT) Purpose: Record individual field with format
+    Usage: Record all transaction fields From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: copy()'
+  bullets:
+  - 'Purpose: Deep copy transaction'
+  - 'Behavior: Copies all fields to new object'
+  - 'Usage: Create independent copy for recording'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: copy(). Purpose: Deep copy transaction Behavior:
+    Copies all fields to new object Usage: Create independent copy for recording From
+    MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: allocate()'
+  bullets:
+  - 'Return Type: Pool transaction object'
+  - 'Purpose: Allocate object from pool'
+  - 'Behavior: Returns pooled object if available, creates new if empty'
+  - 'Usage: Get object from pool for reuse'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: allocate(). Return Type: Pool transaction
+    object Purpose: Allocate object from pool Behavior: Returns pooled object if available,
+    creates new if empty Usage: Get object from pool for reuse From MODULE8 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: free()'
+  bullets:
+  - 'Purpose: Return object to pool'
+  - 'Behavior: Adds to pool if space available, discards if full'
+  - 'Usage: Return object for reuse'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: free(). Purpose: Return object to pool Behavior:
+    Adds to pool if space available, discards if full Usage: Return object for reuse
+    From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: FIFO Queue Operations'
+  bullets:
+  - 'Purpose: Add transaction to FIFO queue'
+  - 'Method: `push_back(txn)` - Add to end'
+  - 'Purpose: Remove transaction from FIFO queue'
+  - 'Method: `pop_front()` - Remove from front'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: FIFO Queue Operations. Purpose: Add transaction
+    to FIFO queue Method: push_back(txn) - Add to end Purpose: Remove transaction
+    from FIFO queue Method: pop_front() - Remove from front From MODULE8 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Priority Queue Operations'
+  bullets:
+  - 'Purpose: Add transaction with priority ordering'
+  - 'Methods: `compare()`, `insert(index, item)` - Maintain priority order'
+  - 'Purpose: Remove highest priority transaction'
+  - 'Method: `pop_front()` - Remove from front (highest priority)'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Priority Queue Operations. Purpose: Add
+    transaction with priority ordering Methods: compare(), insert(index, item) - Maintain
+    priority order Purpose: Remove highest priority transaction Method: pop_front()
+    - Remove from front (highest priority) From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: int_to_hex()'
+  bullets:
+  - 'Purpose: Convert integer to hexadecimal string'
+  - 'Format: `$sformatf("%0h", value)`'
+  - 'Return: Hexadecimal string'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: int_to_hex(). Purpose: Convert integer to
+    hexadecimal string Format: $sformatf("%0h", value) Return: Hexadecimal string
+    From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: int_to_bin()'
+  bullets:
+  - 'Purpose: Convert integer to binary string'
+  - 'Format: `$sformatf("%0b", value)`'
+  - 'Return: Binary string'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: int_to_bin(). Purpose: Convert integer to
+    binary string Format: $sformatf("%0b", value) Return: Binary string From MODULE8
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: pad_string()'
+  bullets:
+  - 'Purpose: Pad string to specified width'
+  - 'Methods: `len()` - Get length, `{str1, str2}` - Concatenate'
+  - 'Return: Padded string'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: pad_string(). Purpose: Pad string to specified
+    width Methods: len() - Get length, {str1, str2} - Concatenate Return: Padded string
+    From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: format_transaction()'
+  bullets:
+  - 'Purpose: Format transaction as string'
+  - 'Format: `$sformatf("%s: data=0x%02h, addr=0x%04h", ...)`'
+  - 'Return: Formatted transaction string'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: format_transaction(). Purpose: Format transaction
+    as string Format: $sformatf("%s: data=0x%02h, addr=0x%04h", ...) Return: Formatted
+    transaction string From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: extract_field()'
+  bullets:
+  - 'Purpose: Extract field value from formatted string'
+  - 'Methods: `find_substring()`, `getc()`, `substr()`, `len()`'
+  - 'Return: Extracted field value'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: extract_field(). Purpose: Extract field
+    value from formatted string Methods: find_substring(), getc(), substr(), len()
+    Return: Extracted field value From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: calculate_average()'
+  bullets:
+  - 'Return Type: `real` (floating point)'
+  - 'Purpose: Calculate average of array'
+  - 'Formula: sum / count'
+  - 'Key: Use `real''()` cast for floating-point division'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: calculate_average(). Return Type: real (floating
+    point) Purpose: Calculate average of array Formula: sum / count Key: Use real''()
+    cast for floating-point division From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: calculate_max()'
+  bullets:
+  - 'Purpose: Find maximum value'
+  - 'Pattern: Initialize with first, compare with all'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: calculate_max(). Purpose: Find maximum value
+    Pattern: Initialize with first, compare with all From MODULE8 Topics Covered —
+    protocol/design depth.'
+- type: bullets
+  title: 'Detail: calculate_min()'
+  bullets:
+  - 'Purpose: Find minimum value'
+  - 'Pattern: Initialize with first, compare with all'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: calculate_min(). Purpose: Find minimum value
+    Pattern: Initialize with first, compare with all From MODULE8 Topics Covered —
+    protocol/design depth.'
+- type: bullets
+  title: 'Detail: calculate_std_dev()'
+  bullets:
+  - 'Purpose: Calculate standard deviation'
+  - 'Formula: sqrt(sum((x - mean)^2) / n)'
+  - 'Function: `$sqrt()` for square root'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: calculate_std_dev(). Purpose: Calculate
+    standard deviation Formula: sqrt(sum((x - mean)^2) / n) Function: $sqrt() for
+    square root From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: clamp()'
+  bullets:
+  - 'Purpose: Clamp value to range'
+  - 'Behavior: Returns value if in range, min if too low, max if too high'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: clamp(). Purpose: Clamp value to range Behavior:
+    Returns value if in range, min if too low, max if too high From MODULE8 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: random_range()'
+  bullets:
+  - 'Purpose: Generate random integer in range'
+  - 'Built-in: `$urandom_range(max, min)` - random range'
+  - 'Note: Parameters are max, min (order matters)'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: random_range(). Purpose: Generate random
+    integer in range Built-in: $urandom_range(max, min) - random range Note: Parameters
+    are max, min (order matters) From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: random_bits()'
+  bullets:
+  - 'Purpose: Generate random bit vector'
+  - 'Built-in: `$urandom()` - 32-bit random value'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: random_bits(). Purpose: Generate random
+    bit vector Built-in: $urandom() - 32-bit random value From MODULE8 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: weighted_random()'
+  bullets:
+  - 'Purpose: Select index based on weights'
+  - 'Algorithm: Cumulative weight distribution'
+  - 'Usage: Probability-based selection'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: weighted_random(). Purpose: Select index
+    based on weights Algorithm: Cumulative weight distribution Usage: Probability-based
+    selection From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: random_delay()'
+  bullets:
+  - 'Purpose: Generate random delay value'
+  - 'Usage: Variable timing delays'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: random_delay(). Purpose: Generate random
+    delay value Usage: Variable timing delays From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Queue Operations (1)'
+  bullets:
+  - '`push_back(item)`: Add to end of queue'
+  - '`pop_front()`: Remove and return first element'
+  - '`size()`: Get queue size'
+  - '`insert(index, item)`: Insert at position'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Queue Operations (1). push_back(item): Add
+    to end of queue pop_front(): Remove and return first element size(): Get queue
+    size insert(index, item): Insert at position From MODULE8 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Queue Operations (2)'
+  bullets:
+  - '`foreach (queue[i])`: Iterate over queue'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Queue Operations (2). foreach (queue[i]):
+    Iterate over queue From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Associative Array Operations (1)'
+  bullets:
+  - '`map[key] = value`: Store by key'
+  - '`exists(key)`: Check if key exists'
+  - '`delete(key)`: Remove key-value pair'
+  - '`foreach (map[index])`: Iterate over all keys'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Associative Array Operations (1). map[key]
+    = value: Store by key exists(key): Check if key exists delete(key): Remove key-value
+    pair foreach (map[index]): Iterate over all keys From MODULE8 Topics Covered —
+    protocol/design depth.'
+- type: bullets
+  title: 'Detail: Associative Array Operations (2)'
+  bullets:
+  - '`num()`: Get number of entries'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Associative Array Operations (2). num():
+    Get number of entries From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: String Operations'
+  bullets:
+  - '`len()`: Get string length'
+  - '`getc(index)`: Get character at index'
+  - '`substr(start, end)`: Extract substring'
+  - '`{str1, str2}`: String concatenation'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: String Operations. len(): Get string length
+    getc(index): Get character at index substr(start, end): Extract substring {str1,
+    str2}: String concatenation From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Random Functions'
+  bullets:
+  - '`$urandom()`: Generate random 32-bit value'
+  - '`$urandom_range(max, min)`: Generate random in range'
+  - '`randomize()`: Randomize object fields'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Random Functions. $urandom(): Generate random
+    32-bit value $urandom_range(max, min): Generate random in range randomize(): Randomize
+    object fields From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Math Functions'
+  bullets:
+  - '`$sqrt(value)`: Calculate square root'
+  - '`$bits(expression)`: Get bit width'
+  - '`$time`: Get current simulation time'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Math Functions. $sqrt(value): Calculate
+    square root $bits(expression): Get bit width $time: Get current simulation time
+    From MODULE8 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Type Casting (1)'
+  bullets:
+  - '`real''(int_value)`: Convert integer to real'
+  - '`int''(real_value)`: Convert real to integer'
+  - 'Too Small: Frequent object creation/deletion overhead'
+  - 'Too Large: Unnecessary memory usage'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Type Casting (1). real''(int_value): Convert
+    integer to real int''(real_value): Convert real to integer Too Small: Frequent
+    object creation/deletion overhead Too Large: Unnecessary memory usage From MODULE8
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Type Casting (2)'
+  bullets:
+  - 'Optimal: Match typical allocation pattern (e.g., 2x average concurrent objects)'
+  - 'FIFO Queue: Use `size()` check before `pop_front()` to avoid warnings'
+  - 'Priority Queue: `insert()` has O(n) complexity - consider heap for large queues'
+  - 'Associative Arrays: `foreach` iteration - cache results if frequently accessed'
+  notes: From MODULE8 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Type Casting (2). Optimal: Match typical
+    allocation pattern (e.g., 2x average concurrent objects) FIFO Queue: Use size()
+    check before pop_front() to avoid warnings Priority Queue: insert() has O(n) complexity
+    - consider heap for large queues Associative Arrays: foreach iteration - cache
+    results if frequently accessed From MODULE8 Topics Covered — protocol/design depth.'
+- type: image
+  title: Verification flow (reference)
+  image: assets/diagrams/testing_methods.png
+  caption: Stimulus, DUT response, and check points for this module.
+  narration: Verification flow (reference). Stimulus, DUT response, and check points
+    for this module.
 - type: bullets
   title: 1. Command Line Processor (CLP) (1/7)
   bullets:
@@ -37,6 +858,8 @@ slides:
   - CLP usage patterns
   - CLP Features
   notes: From MODULE8 Topics Covered.
+  narration: 1. Command Line Processor (CLP) (1/7). CLP Basics Command-line argument
+    parsing Plusarg handling Test configuration from command line CLP usage patterns
 - type: bullets
   title: 1. Command Line Processor (CLP) (2/7)
   bullets:
@@ -47,6 +870,10 @@ slides:
   - 'CLPTransaction: Transaction with data and address fields'
   - 'CLPSequence: Sequence using CLP configuration for number of transactions'
   notes: From MODULE8 Topics Covered.
+  narration: '1. Command Line Processor (CLP) (2/7). uvm_cmdline_proc.get_arg_value()
+    for parsing command-line arguments Configuration via plusargs Test mode and parameter
+    configuration Dynamic test configuration CLPTransaction: Transaction with data
+    and address fields'
 - type: bullets
   title: 1. Command Line Processor (CLP) (3/7)
   bullets:
@@ -58,6 +885,11 @@ slides:
     value);`'
   - 'Return Type: `bit` (1 = found, 0 = not found)'
   notes: From MODULE8 Topics Covered.
+  narration: '1. Command Line Processor (CLP) (3/7). CLPDriver: Driver that processes
+    transactions CLPAgent: Agent with driver, monitor, and sequencer CLPEnv: Environment
+    that uses CLP for configuration CLPTest: Test that parses command-line arguments
+    Method Signature: static function bit get_arg_value(string plusarg, ref string
+    value);'
 - type: bullets
   title: 1. Command Line Processor (CLP) (4/7)
   bullets:
@@ -68,6 +900,11 @@ slides:
   - 'Key: Always check return value, provide defaults if not found'
   - 'Pattern: Parse in environment, pass to components'
   notes: From MODULE8 Topics Covered.
+  narration: '1. Command Line Processor (CLP) (4/7). Purpose: Parse command-line plusargs
+    and retrieve values Usage: Call in build_phase() to configure components Plusarg
+    Format: +name=value (e.g., +test_mode=stress) String Conversion: Use sv_atoi()
+    or $atoi() to convert strings to integers Key: Always check return value, provide
+    defaults if not found'
 - type: bullets
   title: 1. Command Line Processor (CLP) (5/7)
   bullets:
@@ -78,6 +915,10 @@ slides:
   - Plusarg handling (`+test_mode`, `+debug_level`, etc.)
   - Test configuration from command line
   notes: From MODULE8 Topics Covered.
+  narration: '1. Command Line Processor (CLP) (5/7). Key: Set defaults in variable
+    declarations Purpose: Use CLP-configured value for number of transactions Key:
+    Sequence receives configuration from environment Command-line argument parsing
+    using uvm_cmdline_proc Plusarg handling (+test_mode, +debug_level, etc.)'
 - type: bullets
   title: 1. Command Line Processor (CLP) (6/7)
   bullets:
@@ -88,6 +929,10 @@ slides:
   - 'Configuration Flow: Parse in environment → Pass to components'
   - Command-line argument parsing
   notes: From MODULE8 Topics Covered.
+  narration: '1. Command Line Processor (CLP) (6/7). CLP usage patterns CLP Method:
+    get_arg_value(plusarg, value) → bit (found/not found) Plusarg Format: +name=value
+    (e.g., +test_mode=stress) String Conversion: Use sv_atoi() or $atoi() for integer
+    conversion Configuration Flow: Parse in environment → Pass to components'
 - type: bullets
   title: 1. Command Line Processor (CLP) (7/7)
   bullets:
@@ -95,6 +940,8 @@ slides:
   - Test configuration from command line
   - Dynamic test configuration
   notes: From MODULE8 Topics Covered.
+  narration: 1. Command Line Processor (CLP) (7/7). Plusarg handling Test configuration
+    from command line Dynamic test configuration
 - type: bullets
   title: 2. Comparators (1/9)
   bullets:
@@ -105,6 +952,8 @@ slides:
   - Custom comparators
   - Comparator Features
   notes: From MODULE8 Topics Covered.
+  narration: 2. Comparators (1/9). Built-in Comparators In-order comparator Out-of-order
+    comparator Algorithmic comparator Custom comparators
 - type: bullets
   title: 2. Comparators (2/9)
   bullets:
@@ -115,6 +964,9 @@ slides:
   - 'ComparatorTransaction: Transaction with data, address, and timestamp'
   - 'InOrderComparator: Sequential transaction comparison'
   notes: From MODULE8 Topics Covered.
+  narration: '2. Comparators (2/9). Transaction comparison Match/mismatch tracking
+    Statistics and reporting Address-based matching ComparatorTransaction: Transaction
+    with data, address, and timestamp'
 - type: bullets
   title: 2. Comparators (3/9)
   bullets:
@@ -125,6 +977,10 @@ slides:
   - 'Method Signatures:'
   - '`function void write_expected(T txn);` - Write expected transaction'
   notes: From MODULE8 Topics Covered.
+  narration: '2. Comparators (3/9). OutOfOrderComparator: Address-based transaction
+    matching ComparatorTest: Test demonstrating both comparator types Purpose: Create
+    multiple typed analysis implementations Key: Allows separate write_expected()
+    and write_actual() methods Method Signatures:'
 - type: bullets
   title: 2. Comparators (4/9)
   bullets:
@@ -135,6 +991,9 @@ slides:
   - '`pop_front()` - Remove from front'
   - '`size()` - Get queue size'
   notes: From MODULE8 Topics Covered.
+  narration: '2. Comparators (4/9). function void write_actual(T txn); - Write actual
+    transaction function void compare_transactions(); - Compare queued transactions
+    Queue Operations: push_back(item) - Add to end pop_front() - Remove from front'
 - type: bullets
   title: 2. Comparators (5/9)
   bullets:
@@ -145,6 +1004,10 @@ slides:
   - '`function void write_actual(T txn);` - Write actual transaction'
   - '`function void compare_transactions();` - Compare by address'
   notes: From MODULE8 Topics Covered.
+  narration: '2. Comparators (5/9). Purpose: Sequential transaction comparison (FIFO
+    order) Pattern: Queue both streams, compare when both have transactions Method
+    Signatures: function void write_expected(T txn); - Write expected transaction
+    function void write_actual(T txn); - Write actual transaction'
 - type: bullets
   title: 2. Comparators (6/9)
   bullets:
@@ -155,6 +1018,9 @@ slides:
   - '`foreach (map[index])` - Iterate over all keys'
   - 'Purpose: Address-based transaction matching (out-of-order)'
   notes: From MODULE8 Topics Covered.
+  narration: '2. Comparators (6/9). Associative Array Operations: map[key] = value
+    - Store by key exists(key) - Check if key exists delete(key) - Remove key-value
+    pair foreach (map[index]) - Iterate over all keys'
 - type: bullets
   title: 2. Comparators (7/9)
   bullets:
@@ -165,6 +1031,10 @@ slides:
   - Comparator statistics and reporting
   - 'Analysis Imp Declaration: `uvm_analysis_imp_decl(suffix)` for multiple ports'
   notes: From MODULE8 Topics Covered.
+  narration: '2. Comparators (7/9). Pattern: Store by address, match when both have
+    same address In-order transaction comparison Out-of-order transaction comparison
+    using address matching Transaction matching algorithms Comparator statistics and
+    reporting'
 - type: bullets
   title: 2. Comparators (8/9)
   bullets:
@@ -175,11 +1045,16 @@ slides:
   - Out-of-order transaction comparison
   - Match/mismatch tracking
   notes: From MODULE8 Topics Covered.
+  narration: '2. Comparators (8/9). Queue Operations: push_back(), pop_front(), size()
+    Associative Array Operations: exists(), delete(), foreach Comparison Pattern:
+    Queue-based (in-order) vs. Map-based (out-of-order) In-order transaction comparison
+    Out-of-order transaction comparison'
 - type: bullets
   title: 2. Comparators (9/9)
   bullets:
   - Comparator statistics
   notes: From MODULE8 Topics Covered.
+  narration: 2. Comparators (9/9). Comparator statistics
 - type: bullets
   title: 3. Recorders (1/6)
   bullets:
@@ -190,6 +1065,8 @@ slides:
   - Playback capabilities
   - 'RecorderTransaction: Transaction with recording capabilities'
   notes: From MODULE8 Topics Covered.
+  narration: 3. Recorders (1/6). Transaction Recording Transaction recording with
+    timestamps Recorder implementation Recording formats Playback capabilities
 - type: bullets
   title: 3. Recorders (2/6)
   bullets:
@@ -200,6 +1077,10 @@ slides:
   - 'Radix Types: UVM_HEX, UVM_DEC, UVM_BIN, UVM_OCT'
   - 'Key: Call `super.do_record()` first, then record all fields'
   notes: From MODULE8 Topics Covered.
+  narration: '3. Recorders (2/6). TransactionRecorder: Recorder that stores transactions
+    RecorderTest: Test demonstrating transaction recording Method Signature: function
+    void do_record(uvm_recorder recorder); Purpose: Record transaction fields for
+    playback/analysis Radix Types: UVM_HEX, UVM_DEC, UVM_BIN, UVM_OCT'
 - type: bullets
   title: 3. Recorders (3/6)
   bullets:
@@ -210,6 +1091,9 @@ slides:
   - '`$time` - Get simulation time'
   - '`push_back(item)` - Add to queue'
   notes: From MODULE8 Topics Covered.
+  narration: '3. Recorders (3/6). Method Signature: function void write(T txn); Purpose:
+    Record transaction with timestamp Key Methods: copy(rhs) - Deep copy transaction
+    $time - Get simulation time'
 - type: bullets
   title: 3. Recorders (4/6)
   bullets:
@@ -220,6 +1104,9 @@ slides:
   - Recorder implementation
   - Recording formats
   notes: From MODULE8 Topics Covered.
+  narration: '3. Recorders (4/6). Method Signature: function void playback_transactions();
+    Purpose: Playback all recorded transactions Queue Iteration: Use foreach (queue[i])
+    to iterate Transaction recording with timestamps Recorder implementation'
 - type: bullets
   title: 3. Recorders (5/6)
   bullets:
@@ -230,6 +1117,9 @@ slides:
   - '$time: Get current simulation time'
   - 'Queue Operations: `push_back()`, `size()`, `foreach`'
   notes: From MODULE8 Topics Covered.
+  narration: '3. Recorders (5/6). Playback capabilities do_record(): Record transaction
+    fields with radix record_field(): Record individual field with format copy():
+    Deep copy transaction for recording $time: Get current simulation time'
 - type: bullets
   title: 3. Recorders (6/6)
   bullets:
@@ -238,6 +1128,8 @@ slides:
   - Playback functionality
   - Recording formats
   notes: From MODULE8 Topics Covered.
+  narration: 3. Recorders (6/6). Transaction recording Recorder storage Playback functionality
+    Recording formats
 - type: bullets
   title: 4. Pools (1/5)
   bullets:
@@ -248,6 +1140,8 @@ slides:
   - Memory management
   - 'PoolTransaction: Transaction for pool example'
   notes: From MODULE8 Topics Covered.
+  narration: 4. Pools (1/5). Object Pooling Object pooling to reduce allocation overhead
+    Pool implementation with configurable size Pool usage patterns Memory management
 - type: bullets
   title: 4. Pools (2/5)
   bullets:
@@ -258,6 +1152,10 @@ slides:
   - 'Method Signature: `function PoolTransaction allocate();`'
   - 'Purpose: Allocate object from pool'
   notes: From MODULE8 Topics Covered.
+  narration: '4. Pools (2/5). TransactionPool: Pool implementation with allocate/free
+    PoolTest: Test demonstrating object pooling Purpose: Pre-allocate pool objects
+    Key: Create objects once, reuse multiple times Method Signature: function PoolTransaction
+    allocate();'
 - type: bullets
   title: 4. Pools (3/5)
   bullets:
@@ -268,6 +1166,10 @@ slides:
   - 'Behavior: Adds to pool if space available, discards if full'
   - 'Key: Reuse objects to reduce memory allocation'
   notes: From MODULE8 Topics Covered.
+  narration: '4. Pools (3/5). Behavior: Returns pooled object if available, creates
+    new if empty Key: Reduces allocation overhead by reusing objects Method Signature:
+    function void free(PoolTransaction txn); Purpose: Return object to pool for reuse
+    Behavior: Adds to pool if space available, discards if full'
 - type: bullets
   title: 4. Pools (4/5)
   bullets:
@@ -278,6 +1180,9 @@ slides:
   - 'Pool Operations: `allocate()` - Get object, `free()` - Return object'
   - 'Queue Operations: `push_back()`, `pop_front()`, `size()`'
   notes: From MODULE8 Topics Covered.
+  narration: '4. Pools (4/5). Object pooling to reduce allocation overhead Pool implementation
+    with configurable size Pool usage patterns Memory management Pool Operations:
+    allocate() - Get object, free() - Return object'
 - type: bullets
   title: 4. Pools (5/5)
   bullets:
@@ -288,6 +1193,9 @@ slides:
   - Object deallocation
   - Pool statistics
   notes: From MODULE8 Topics Covered.
+  narration: '4. Pools (5/5). Memory Efficiency: Reuse objects instead of creating
+    new ones Pool Size: Configurable maximum pool size Object pool creation Object
+    allocation Object deallocation'
 - type: bullets
   title: 5. Queues (1/6)
   bullets:
@@ -298,6 +1206,8 @@ slides:
   - Queue statistics
   - 'QueueTransaction: Transaction for queue example'
   notes: From MODULE8 Topics Covered.
+  narration: 5. Queues (1/6). Queue Utilities FIFO queue operations Priority queue
+    implementation Queue management Queue statistics
 - type: bullets
   title: 5. Queues (2/6)
   bullets:
@@ -308,6 +1218,10 @@ slides:
   - '`function T dequeue_fifo();` - Remove from queue'
   - 'FIFO Pattern: `push_back()` to enqueue, `pop_front()` to dequeue'
   notes: From MODULE8 Topics Covered.
+  narration: '5. Queues (2/6). QueueManager: Queue manager with FIFO and priority
+    queues QueueTest: Test demonstrating queue operations Method Signatures: function
+    void enqueue_fifo(T txn); - Add to queue function T dequeue_fifo(); - Remove from
+    queue'
 - type: bullets
   title: 5. Queues (3/6)
   bullets:
@@ -318,6 +1232,10 @@ slides:
   - 'Priority Pattern: Insert in priority order, dequeue from front'
   - 'Key Methods:'
   notes: From MODULE8 Topics Covered.
+  narration: '5. Queues (3/6). Key: First In, First Out order Method Signatures: function
+    void enqueue_priority(T txn); - Add with priority function T dequeue_priority();
+    - Remove highest priority Priority Pattern: Insert in priority order, dequeue
+    from front'
 - type: bullets
   title: 5. Queues (4/6)
   bullets:
@@ -328,6 +1246,9 @@ slides:
   - 'Return: >0 if higher priority, <0 if lower, 0 if equal'
   - 'Purpose: Compare transactions for priority ordering'
   notes: From MODULE8 Topics Covered.
+  narration: '5. Queues (4/6). compare() - Compare by priority insert(index, item)
+    - Insert at position pop_front() - Remove highest priority Method Signature: function
+    int compare(T rhs); Return: >0 if higher priority, <0 if lower, 0 if equal'
 - type: bullets
   title: 5. Queues (5/6)
   bullets:
@@ -338,6 +1259,9 @@ slides:
   - 'FIFO Operations: `push_back()` to enqueue, `pop_front()` to dequeue'
   - 'Priority Operations: `insert()` to maintain order, `pop_front()` to dequeue'
   notes: From MODULE8 Topics Covered.
+  narration: '5. Queues (5/6). FIFO queue operations Priority queue implementation
+    Queue management Queue statistics FIFO Operations: push_back() to enqueue, pop_front()
+    to dequeue'
 - type: bullets
   title: 5. Queues (6/6)
   bullets:
@@ -348,6 +1272,9 @@ slides:
   - Queue management
   - Queue statistics
   notes: From MODULE8 Topics Covered.
+  narration: '5. Queues (6/6). Queue Methods: size(), push_back(), pop_front(), insert(),
+    foreach Comparison: Use compare() method for priority ordering FIFO queue operations
+    Priority queue operations Queue management'
 - type: bullets
   title: 6. String Utilities (1/7)
   bullets:
@@ -358,6 +1285,8 @@ slides:
   - Field extraction
   - 'StringUtils: Utility class for string operations'
   notes: From MODULE8 Topics Covered.
+  narration: 6. String Utilities (1/7). String Manipulation String conversion (hex,
+    binary) String padding Transaction formatting Field extraction
 - type: bullets
   title: 6. String Utilities (2/7)
   bullets:
@@ -368,6 +1297,11 @@ slides:
   - 'Method Signature: `function string int_to_bin(int value, int width = 8);`'
   - 'Purpose: Convert integer to binary string'
   notes: From MODULE8 Topics Covered.
+  narration: '6. String Utilities (2/7). StringTest: Test demonstrating string utilities
+    Method Signature: function string int_to_hex(int value, int width = 8); Purpose:
+    Convert integer to hexadecimal string Format: %0h - hex without padding, %02h
+    - 2-digit hex Method Signature: function string int_to_bin(int value, int width
+    = 8);'
 - type: bullets
   title: 6. String Utilities (3/7)
   bullets:
@@ -379,6 +1313,10 @@ slides:
   - '`len()` - Get string length'
   - '`{str1, str2}` - String concatenation'
   notes: From MODULE8 Topics Covered.
+  narration: '6. String Utilities (3/7). Format: %0b - binary without padding Method
+    Signature: function string pad_string(string str, int width, string pad_char =
+    " "); Purpose: Pad string to specified width String Methods: len() - Get string
+    length'
 - type: bullets
   title: 6. String Utilities (4/7)
   bullets:
@@ -391,6 +1329,11 @@ slides:
     field_name);`'
   - 'Purpose: Extract field value from formatted string'
   notes: From MODULE8 Topics Covered.
+  narration: '6. String Utilities (4/7). Pattern: Prepend padding character until
+    desired width Method Signature: function string format_transaction(string name,
+    logic [7:0] data, logic [15:0] addr); Purpose: Format transaction fields as string
+    Format Specifiers: %s (string), %02h (2-digit hex), %04h (4-digit hex) Method
+    Signature: function string extract_field(string formatted_str, string field_name);'
 - type: bullets
   title: 6. String Utilities (5/7)
   bullets:
@@ -401,6 +1344,9 @@ slides:
   - '`len()` - Get string length'
   - String conversion (hex, binary)
   notes: From MODULE8 Topics Covered.
+  narration: '6. String Utilities (5/7). String Methods: find_substring(str, substr)
+    - Find substring getc(index) - Get character at index substr(start, end) - Extract
+    substring len() - Get string length'
 - type: bullets
   title: 6. String Utilities (6/7)
   bullets:
@@ -411,6 +1357,9 @@ slides:
   - 'String Concatenation: `{str1, str2}` operator'
   - 'Format Specifiers: `%s` (string), `%h` (hex), `%b` (binary), `%d` (decimal)'
   notes: From MODULE8 Topics Covered.
+  narration: '6. String Utilities (6/7). String padding Transaction formatting Field
+    extraction String Methods: len(), getc(), substr(), find_substring() String Concatenation:
+    {str1, str2} operator'
 - type: bullets
   title: 6. String Utilities (7/7)
   bullets:
@@ -420,6 +1369,9 @@ slides:
   - Transaction formatting
   - Field extraction
   notes: From MODULE8 Topics Covered.
+  narration: '6. String Utilities (7/7). String Manipulation: Padding, extraction,
+    formatting String conversion operations String padding Transaction formatting
+    Field extraction'
 - type: bullets
   title: 7. Math Utilities (1/6)
   bullets:
@@ -430,6 +1382,8 @@ slides:
   - Value clamping
   - 'MathUtils: Utility class for mathematical operations'
   notes: From MODULE8 Topics Covered.
+  narration: 7. Math Utilities (1/6). Mathematical Operations Average calculation
+    Min/max operations Standard deviation calculation Value clamping
 - type: bullets
   title: 7. Math Utilities (2/6)
   bullets:
@@ -440,6 +1394,10 @@ slides:
   - 'Key: Use `real''()` cast for floating-point division'
   - 'Method Signature: `function int calculate_max(int values[]);`'
   notes: From MODULE8 Topics Covered.
+  narration: '7. Math Utilities (2/6). MathTest: Test demonstrating math utilities
+    Method Signature: function real calculate_average(int values[]); Return Type:
+    real (floating point) Purpose: Calculate average of array values Key: Use real''()
+    cast for floating-point division'
 - type: bullets
   title: 7. Math Utilities (3/6)
   bullets:
@@ -450,6 +1408,10 @@ slides:
   - 'Pattern: Initialize with first element, compare with all'
   - 'Method Signature: `function real calculate_std_dev(int values[]);`'
   notes: From MODULE8 Topics Covered.
+  narration: '7. Math Utilities (3/6). Purpose: Find maximum value in array Pattern:
+    Initialize with first element, compare with all Method Signature: function int
+    calculate_min(int values[]); Purpose: Find minimum value in array Pattern: Initialize
+    with first element, compare with all'
 - type: bullets
   title: 7. Math Utilities (4/6)
   bullets:
@@ -460,6 +1422,10 @@ slides:
   - 'Purpose: Clamp value to range [min_val, max_val]'
   - 'Behavior: Returns value if in range, min if too low, max if too high'
   notes: From MODULE8 Topics Covered.
+  narration: '7. Math Utilities (4/6). Purpose: Calculate standard deviation Formula:
+    sqrt(sum((x - mean)^2) / n) Key Functions: $sqrt() for square root Method Signature:
+    function int clamp(int value, int min_val, int max_val); Purpose: Clamp value
+    to range [min_val, max_val]'
 - type: bullets
   title: 7. Math Utilities (5/6)
   bullets:
@@ -470,6 +1436,9 @@ slides:
   - 'Array Operations: `foreach`, `size()`, array indexing'
   - 'Type Casting: `real''(int)` for floating-point operations'
   notes: From MODULE8 Topics Covered.
+  narration: '7. Math Utilities (5/6). Average calculation Min/max operations Standard
+    deviation calculation Value clamping Array Operations: foreach, size(), array
+    indexing'
 - type: bullets
   title: 7. Math Utilities (6/6)
   bullets:
@@ -480,6 +1449,9 @@ slides:
   - Standard deviation calculation
   - Value clamping
   notes: From MODULE8 Topics Covered.
+  narration: '7. Math Utilities (6/6). Math Functions: $sqrt() for square root Statistical
+    Functions: Average, min, max, standard deviation Average calculation Min/max operations
+    Standard deviation calculation'
 - type: bullets
   title: 8. Random Utilities (1/6)
   bullets:
@@ -490,6 +1462,8 @@ slides:
   - Random delay generation
   - 'RandomUtils: Utility class for random operations'
   notes: From MODULE8 Topics Covered.
+  narration: 8. Random Utilities (1/6). Random Number Generation Random range generation
+    Random bit vector generation Weighted random selection Random delay generation
 - type: bullets
   title: 8. Random Utilities (2/6)
   bullets:
@@ -500,6 +1474,10 @@ slides:
   - 'Key: Parameters are max, min (order matters)'
   - 'Method Signature: `function logic [31:0] random_bits(int width = 32);`'
   notes: From MODULE8 Topics Covered.
+  narration: '8. Random Utilities (2/6). RandomTest: Test demonstrating random utilities
+    Method Signature: function int random_range(int min_val, int max_val); Purpose:
+    Generate random integer in range Built-in Function: $urandom_range(max, min) -
+    random range Key: Parameters are max, min (order matters)'
 - type: bullets
   title: 8. Random Utilities (3/6)
   bullets:
@@ -510,6 +1488,10 @@ slides:
   - 'Algorithm:'
   - 'Usage: Probability-based selection'
   notes: From MODULE8 Topics Covered.
+  narration: '8. Random Utilities (3/6). Purpose: Generate random bit vector Built-in
+    Function: $urandom() - random 32-bit value Method Signature: function int weighted_random(int
+    weights[]); Purpose: Select index based on weights (probability distribution)
+    Algorithm:'
 - type: bullets
   title: 8. Random Utilities (4/6)
   bullets:
@@ -520,6 +1502,10 @@ slides:
   - 'Constraint Syntax: `field inside {[min:max]};`'
   - 'Usage: Ensure random values are valid'
   notes: From MODULE8 Topics Covered.
+  narration: '8. Random Utilities (4/6). Method Signature: function int random_delay(int
+    min_delay, int max_delay); Purpose: Generate random delay value Usage: Variable
+    timing delays Purpose: Constrain random values to valid ranges Constraint Syntax:
+    field inside {[min:max]};'
 - type: bullets
   title: 8. Random Utilities (5/6)
   bullets:
@@ -531,6 +1517,9 @@ slides:
     range'
   - 'Weighted Random: Probability-based selection using cumulative weights'
   notes: From MODULE8 Topics Covered.
+  narration: '8. Random Utilities (5/6). Random range generation Random bit vector
+    generation Weighted random selection Constrained random transactions Random Functions:
+    $urandom() - 32-bit random, $urandom_range(max, min) - range'
 - type: bullets
   title: 8. Random Utilities (6/6)
   bullets:
@@ -541,8 +1530,11 @@ slides:
   - Weighted random selection
   - Random delay generation
   notes: From MODULE8 Topics Covered.
+  narration: '8. Random Utilities (6/6). Constraints: inside {[min:max]} for value
+    ranges Random Patterns: Range generation, bit vectors, weighted selection Random
+    range generation Random bit vector generation Weighted random selection'
 - type: bullets
-  title: 9. Integration (1/25)
+  title: 9. Integration (1/31)
   bullets:
   - Utility Integration
   - Combining CLP, recorders, and queues
@@ -551,8 +1543,11 @@ slides:
   - 'IntegrationTest: Test combining multiple utilities'
   - Combined utility usage
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (1/31). Utility Integration Combining CLP, recorders,
+    and queues Utility integration patterns Real-world utility usage IntegrationTest:
+    Test combining multiple utilities'
 - type: bullets
-  title: 9. Integration (2/25)
+  title: 9. Integration (2/31)
   bullets:
   - Transaction recording and queuing
   - Command-line configuration
@@ -561,8 +1556,11 @@ slides:
   - 'Purpose: Record transactions with timestamps'
   - 'Key Methods: `copy()`, `$time`, `push_back()`'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (2/31). Transaction recording and queuing Command-line
+    configuration Purpose: Use CLP for configuration Pattern: Parse plusargs in build_phase()
+    Purpose: Record transactions with timestamps'
 - type: bullets
-  title: 9. Integration (3/25)
+  title: 9. Integration (3/31)
   bullets:
   - 'Purpose: Queue management for transactions'
   - 'Queue Operations: `push_back()`, `pop_front()`, `size()`'
@@ -571,8 +1569,11 @@ slides:
   - Real-world utility usage
   - 'Integration Pattern: CLP → Recording → Queuing → Processing'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (3/31). Purpose: Queue management for transactions Queue
+    Operations: push_back(), pop_front(), size() Combining CLP, recorders, and queues
+    Utility integration patterns Real-world utility usage'
 - type: bullets
-  title: 9. Integration (4/25)
+  title: 9. Integration (4/31)
   bullets:
   - 'Utility Combination: Multiple utilities in single component'
   - 'Real-World Usage: Command-line config, recording, queuing together'
@@ -581,8 +1582,11 @@ slides:
   - Command-line configuration
   - Integration patterns
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (4/31). Utility Combination: Multiple utilities in single
+    component Real-World Usage: Command-line config, recording, queuing together Combined
+    utility usage Transaction recording and queuing Command-line configuration'
 - type: bullets
-  title: 9. Integration (5/25)
+  title: 9. Integration (5/31)
   bullets:
   - 'Return Type: `bit` (1 = found, 0 = not found)'
   - 'Parameters:'
@@ -591,8 +1595,11 @@ slides:
   - 'Purpose: Parse command-line plusarg and retrieve value'
   - 'Usage: Call in `build_phase()` to configure components'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (5/31). Return Type: bit (1 = found, 0 = not found) Parameters:
+    plusarg: Plusarg name (must start with +) value: Variable to store value (passed
+    by reference) Purpose: Parse command-line plusarg and retrieve value'
 - type: bullets
-  title: 9. Integration (6/25)
+  title: 9. Integration (6/31)
   bullets:
   - 'Plusarg Format: `+name=value` (e.g., `+test_mode=stress`)'
   - 'Example:'
@@ -601,8 +1608,12 @@ slides:
   - 'Usage: Multiple analysis ports with different `write()` methods'
   - 'Example:'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (6/31). Plusarg Format: +name=value (e.g., +test_mode=stress)
+    Example: Purpose: Declare typed analysis implementation ports Behavior: Creates
+    uvm_analysis_imp_<suffix> type Usage: Multiple analysis ports with different write()
+    methods'
 - type: bullets
-  title: 9. Integration (7/25)
+  title: 9. Integration (7/31)
   bullets:
   - '`function void write_expected(T txn);`'
   - '`function void write_actual(T txn);`'
@@ -611,8 +1622,11 @@ slides:
   - 'Purpose: Compare queued transactions'
   - 'In-Order Pattern: Compare from front of queues'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (7/31). function void write_expected(T txn); function
+    void write_actual(T txn); Purpose: Write transactions to comparator Usage: Connect
+    analysis ports to comparator implementations Purpose: Compare queued transactions'
 - type: bullets
-  title: 9. Integration (8/25)
+  title: 9. Integration (8/31)
   bullets:
   - 'Out-of-Order Pattern: Match by address using associative arrays'
   - 'Purpose: Record transaction fields'
@@ -621,8 +1635,11 @@ slides:
   - 'Parameters:'
   - '`name`: Field name (string)'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (8/31). Out-of-Order Pattern: Match by address using
+    associative arrays Purpose: Record transaction fields Key: Call super.do_record()
+    first Usage: Override in transaction class Parameters:'
 - type: bullets
-  title: 9. Integration (9/25)
+  title: 9. Integration (9/31)
   bullets:
   - '`value`: Field value (any type)'
   - '`size`: Field size in bits'
@@ -631,8 +1648,11 @@ slides:
   - 'Usage: Record all transaction fields'
   - 'Purpose: Deep copy transaction'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (9/31). value: Field value (any type) size: Field size
+    in bits radix: Display format (UVM_HEX, UVM_DEC, UVM_BIN, UVM_OCT) Purpose: Record
+    individual field with format Usage: Record all transaction fields'
 - type: bullets
-  title: 9. Integration (10/25)
+  title: 9. Integration (10/31)
   bullets:
   - 'Behavior: Copies all fields to new object'
   - 'Usage: Create independent copy for recording'
@@ -641,8 +1661,12 @@ slides:
   - 'Behavior: Returns pooled object if available, creates new if empty'
   - 'Usage: Get object from pool for reuse'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (10/31). Behavior: Copies all fields to new object Usage:
+    Create independent copy for recording Return Type: Pool transaction object Purpose:
+    Allocate object from pool Behavior: Returns pooled object if available, creates
+    new if empty'
 - type: bullets
-  title: 9. Integration (11/25)
+  title: 9. Integration (11/31)
   bullets:
   - 'Purpose: Return object to pool'
   - 'Behavior: Adds to pool if space available, discards if full'
@@ -651,8 +1675,11 @@ slides:
   - 'Method: `push_back(txn)` - Add to end'
   - 'Purpose: Remove transaction from FIFO queue'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (11/31). Purpose: Return object to pool Behavior: Adds
+    to pool if space available, discards if full Usage: Return object for reuse Purpose:
+    Add transaction to FIFO queue Method: push_back(txn) - Add to end'
 - type: bullets
-  title: 9. Integration (12/25)
+  title: 9. Integration (12/31)
   bullets:
   - 'Method: `pop_front()` - Remove from front'
   - 'Purpose: Add transaction with priority ordering'
@@ -661,8 +1688,12 @@ slides:
   - 'Method: `pop_front()` - Remove from front (highest priority)'
   - 'Purpose: Convert integer to hexadecimal string'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (12/31). Method: pop_front() - Remove from front Purpose:
+    Add transaction with priority ordering Methods: compare(), insert(index, item)
+    - Maintain priority order Purpose: Remove highest priority transaction Method:
+    pop_front() - Remove from front (highest priority)'
 - type: bullets
-  title: 9. Integration (13/25)
+  title: 9. Integration (13/31)
   bullets:
   - 'Format: `$sformatf("%0h", value)`'
   - 'Return: Hexadecimal string'
@@ -671,8 +1702,11 @@ slides:
   - 'Return: Binary string'
   - 'Purpose: Pad string to specified width'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (13/31). Format: $sformatf("%0h", value) Return: Hexadecimal
+    string Purpose: Convert integer to binary string Format: $sformatf("%0b", value)
+    Return: Binary string'
 - type: bullets
-  title: 9. Integration (14/25)
+  title: 9. Integration (14/31)
   bullets:
   - 'Methods: `len()` - Get length, `{str1, str2}` - Concatenate'
   - 'Return: Padded string'
@@ -681,8 +1715,11 @@ slides:
   - 'Return: Formatted transaction string'
   - 'Purpose: Extract field value from formatted string'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (14/31). Methods: len() - Get length, {str1, str2} -
+    Concatenate Return: Padded string Purpose: Format transaction as string Format:
+    $sformatf("%s: data=0x%02h, addr=0x%04h", ...) Return: Formatted transaction string'
 - type: bullets
-  title: 9. Integration (15/25)
+  title: 9. Integration (15/31)
   bullets:
   - 'Methods: `find_substring()`, `getc()`, `substr()`, `len()`'
   - 'Return: Extracted field value'
@@ -691,8 +1728,11 @@ slides:
   - 'Formula: sum / count'
   - 'Key: Use `real''()` cast for floating-point division'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (15/31). Methods: find_substring(), getc(), substr(),
+    len() Return: Extracted field value Return Type: real (floating point) Purpose:
+    Calculate average of array Formula: sum / count'
 - type: bullets
-  title: 9. Integration (16/25)
+  title: 9. Integration (16/31)
   bullets:
   - 'Purpose: Find maximum value'
   - 'Pattern: Initialize with first, compare with all'
@@ -701,8 +1741,11 @@ slides:
   - 'Purpose: Calculate standard deviation'
   - 'Formula: sqrt(sum((x - mean)^2) / n)'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (16/31). Purpose: Find maximum value Pattern: Initialize
+    with first, compare with all Purpose: Find minimum value Pattern: Initialize with
+    first, compare with all Purpose: Calculate standard deviation'
 - type: bullets
-  title: 9. Integration (17/25)
+  title: 9. Integration (17/31)
   bullets:
   - 'Function: `$sqrt()` for square root'
   - 'Purpose: Clamp value to range'
@@ -711,8 +1754,12 @@ slides:
   - 'Built-in: `$urandom_range(max, min)` - random range'
   - 'Note: Parameters are max, min (order matters)'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (17/31). Function: $sqrt() for square root Purpose: Clamp
+    value to range Behavior: Returns value if in range, min if too low, max if too
+    high Purpose: Generate random integer in range Built-in: $urandom_range(max, min)
+    - random range'
 - type: bullets
-  title: 9. Integration (18/25)
+  title: 9. Integration (18/31)
   bullets:
   - 'Purpose: Generate random bit vector'
   - 'Built-in: `$urandom()` - 32-bit random value'
@@ -721,8 +1768,11 @@ slides:
   - 'Usage: Probability-based selection'
   - 'Purpose: Generate random delay value'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (18/31). Purpose: Generate random bit vector Built-in:
+    $urandom() - 32-bit random value Purpose: Select index based on weights Algorithm:
+    Cumulative weight distribution Usage: Probability-based selection'
 - type: bullets
-  title: 9. Integration (19/25)
+  title: 9. Integration (19/31)
   bullets:
   - 'Usage: Variable timing delays'
   - '`push_back(item)`: Add to end of queue'
@@ -731,8 +1781,11 @@ slides:
   - '`insert(index, item)`: Insert at position'
   - '`foreach (queue[i])`: Iterate over queue'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (19/31). Usage: Variable timing delays push_back(item):
+    Add to end of queue pop_front(): Remove and return first element size(): Get queue
+    size insert(index, item): Insert at position'
 - type: bullets
-  title: 9. Integration (20/25)
+  title: 9. Integration (20/31)
   bullets:
   - '`map[key] = value`: Store by key'
   - '`exists(key)`: Check if key exists'
@@ -741,8 +1794,11 @@ slides:
   - '`num()`: Get number of entries'
   - '`len()`: Get string length'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (20/31). map[key] = value: Store by key exists(key):
+    Check if key exists delete(key): Remove key-value pair foreach (map[index]): Iterate
+    over all keys num(): Get number of entries'
 - type: bullets
-  title: 9. Integration (21/25)
+  title: 9. Integration (21/31)
   bullets:
   - '`getc(index)`: Get character at index'
   - '`substr(start, end)`: Extract substring'
@@ -751,8 +1807,11 @@ slides:
   - '`$urandom_range(max, min)`: Generate random in range'
   - '`randomize()`: Randomize object fields'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (21/31). getc(index): Get character at index substr(start,
+    end): Extract substring {str1, str2}: String concatenation $urandom(): Generate
+    random 32-bit value $urandom_range(max, min): Generate random in range'
 - type: bullets
-  title: 9. Integration (22/25)
+  title: 9. Integration (22/31)
   bullets:
   - '`$sqrt(value)`: Calculate square root'
   - '`$bits(expression)`: Get bit width'
@@ -761,8 +1820,11 @@ slides:
   - '`int''(real_value)`: Convert real to integer'
   - 'Too Small: Frequent object creation/deletion overhead'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (22/31). $sqrt(value): Calculate square root $bits(expression):
+    Get bit width $time: Get current simulation time real''(int_value): Convert integer
+    to real int''(real_value): Convert real to integer'
 - type: bullets
-  title: 9. Integration (23/25)
+  title: 9. Integration (23/31)
   bullets:
   - 'Too Large: Unnecessary memory usage'
   - 'Optimal: Match typical allocation pattern (e.g., 2x average concurrent objects)'
@@ -771,8 +1833,13 @@ slides:
   - 'Associative Arrays: `foreach` iteration - cache results if frequently accessed'
   - 'String Concatenation: `{str1, str2}` creates new string - minimize in loops'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (23/31). Too Large: Unnecessary memory usage Optimal:
+    Match typical allocation pattern (e.g., 2x average concurrent objects) FIFO Queue:
+    Use size() check before pop_front() to avoid warnings Priority Queue: insert()
+    has O(n) complexity - consider heap for large queues Associative Arrays: foreach
+    iteration - cache results if frequently accessed'
 - type: bullets
-  title: 9. Integration (24/25)
+  title: 9. Integration (24/31)
   bullets:
   - 'Substring Extraction: `substr()` creates new string - cache if reused'
   - 'Character Access: `getc()` is O(1) - prefer over substring for single characters'
@@ -781,43 +1848,232 @@ slides:
   - 'Optimization: Use `num()` to check map size before iteration'
   - 'Transaction Storage: Each recorded transaction uses memory'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (24/31). Substring Extraction: substr() creates new string
+    - cache if reused Character Access: getc() is O(1) - prefer over substring for
+    single characters In-Order: O(1) per transaction if queues balanced Out-of-Order:
+    O(n) per transaction for foreach iteration Optimization: Use num() to check map
+    size before iteration'
 - type: bullets
-  title: 9. Integration (25/25)
+  title: 9. Integration (25/31)
   bullets:
   - 'Consideration: Limit recording to relevant transactions or use sampling'
+  - 'Problem: Configuration uses default values'
+  - 'Solution: Check return value, provide defaults'
+  - 'Code: `if (uvm_cmdline_proc.get_arg_value("+arg", str_val)) value = sv_atoi(str_val);`'
+  - 'Problem: Transactions never arrive in both queues'
+  - 'Solution: Check analysis port connections'
   notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (25/31). Consideration: Limit recording to relevant transactions
+    or use sampling Problem: Configuration uses default values Solution: Check return
+    value, provide defaults Code: if (uvm_cmdline_proc.get_arg_value("+arg", str_val))
+    value = sv_atoi(str_val); Problem: Transactions never arrive in both queues'
+- type: bullets
+  title: 9. Integration (26/31)
+  bullets:
+  - 'Code: Verify `expected_port.connect()` and `actual_port.connect()`'
+  - 'Problem: Pool runs out of objects'
+  - 'Solution: Increase pool size or check free() calls'
+  - 'Code: `pool_size = 20;` or ensure all objects are freed'
+  - 'Problem: Transactions not in priority order'
+  - 'Solution: Check compare() method implementation'
+  notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (26/31). Code: Verify expected_port.connect() and actual_port.connect()
+    Problem: Pool runs out of objects Solution: Increase pool size or check free()
+    calls Code: pool_size = 20; or ensure all objects are freed Problem: Transactions
+    not in priority order'
+- type: bullets
+  title: 9. Integration (27/31)
+  bullets:
+  - 'Code: `if (prio > rhs.prio) return 1;` (higher priority = higher value)'
+  - 'Problem: Field not extracted correctly'
+  - 'Solution: Check string format and field name'
+  - 'Code: Verify format matches expected pattern'
+  - 'Problem: Average calculation truncates'
+  - 'Solution: Use `real''()` cast for floating-point division'
+  notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (27/31). Code: if (prio > rhs.prio) return 1; (higher
+    priority = higher value) Problem: Field not extracted correctly Solution: Check
+    string format and field name Code: Verify format matches expected pattern Problem:
+    Average calculation truncates'
+- type: bullets
+  title: 9. Integration (28/31)
+  bullets:
+  - 'Code: `return sum / real''(values.size());`'
+  - 'Problem: `$urandom_range()` returns wrong values'
+  - 'Solution: Parameters are max, min (not min, max)'
+  - 'Code: `$urandom_range(max_val, min_val)` not `$urandom_range(min_val, max_val)`'
+  - 'Check: Plusarg format (`+name=value`)'
+  - 'Check: Call `get_arg_value()` in `build_phase()`'
+  notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (28/31). Code: return sum / real''(values.size()); Problem:
+    $urandom_range() returns wrong values Solution: Parameters are max, min (not min,
+    max) Code: $urandom_range(max_val, min_val) not $urandom_range(min_val, max_val)
+    Check: Plusarg format (+name=value)'
+- type: bullets
+  title: 9. Integration (29/31)
+  bullets:
+  - 'Check: Check return value (1 = found, 0 = not found)'
+  - 'Debug: Print all plusargs using `get_plusargs()`'
+  - 'Solution: Verify plusargs passed correctly on command line'
+  - 'Check: Analysis port connections'
+  - 'Check: Both `write_expected()` and `write_actual()` called'
+  - 'Check: Queue sizes (`expected_queue.size()`, `actual_queue.size()`)'
+  notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (29/31). Check: Check return value (1 = found, 0 = not
+    found) Debug: Print all plusargs using get_plusargs() Solution: Verify plusargs
+    passed correctly on command line Check: Analysis port connections Check: Both
+    write_expected() and write_actual() called'
+- type: bullets
+  title: 9. Integration (30/31)
+  bullets:
+  - 'Check: Pool size configuration'
+  - 'Check: All objects freed with `free()`'
+  - 'Check: Pool initialization (`initialize_pool()`)'
+  - 'Check: `compare()` method implementation'
+  - 'Check: Priority values (higher = higher priority)'
+  - 'Check: `insert()` position calculation'
+  notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (30/31). Check: Pool size configuration Check: All objects
+    freed with free() Check: Pool initialization (initialize_pool()) Check: compare()
+    method implementation Check: Priority values (higher = higher priority)'
+- type: bullets
+  title: 9. Integration (31/31)
+  bullets:
+  - 'Check: String length (`len()`)'
+  - 'Check: Character access (`getc()`)'
+  - 'Check: Substring bounds (`substr(start, end)`)'
+  - 'Check: Type casting (`real''()` for division)'
+  - 'Check: Array initialization'
+  - 'Check: Function return types'
+  notes: From MODULE8 Topics Covered.
+  narration: '9. Integration (31/31). Check: String length (len()) Check: Character
+    access (getc()) Check: Substring bounds (substr(start, end)) Check: Type casting
+    (real''() for division) Check: Array initialization'
+- type: code
+  title: 'Run: Example 8.1: Command Line Processor'
+  language: bash
+  code: './scripts/module8.sh --clp
+
+    cd module8/examples/clp
+
+    make SIM=verilator TEST=clp_top EXTRA_ARGS="+test_mode=stress +num_transactions=20"'
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.1: Command Line Processor. Review the code on screen
+    and match it to files in the repository. Execute from course root or example directory
+    — see docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.2: Comparators'
+  language: bash
+  code: ./scripts/module8.sh --comparators
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.2: Comparators. Review the code on screen and match it
+    to files in the repository. Execute from course root or example directory — see
+    docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.3: Recorders'
+  language: bash
+  code: ./scripts/module8.sh --recorders
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.3: Recorders. Review the code on screen and match it
+    to files in the repository. Execute from course root or example directory — see
+    docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.4: Pools'
+  language: bash
+  code: ./scripts/module8.sh --pools
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.4: Pools. Review the code on screen and match it to files
+    in the repository. Execute from course root or example directory — see docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.5: Queues'
+  language: bash
+  code: ./scripts/module8.sh --queues
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.5: Queues. Review the code on screen and match it to
+    files in the repository. Execute from course root or example directory — see docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.6: String Utilities'
+  language: bash
+  code: ./scripts/module8.sh --string-utils
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.6: String Utilities. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.7: Math Utilities'
+  language: bash
+  code: ./scripts/module8.sh --math-utils
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.7: Math Utilities. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.8: Random Utilities'
+  language: bash
+  code: ./scripts/module8.sh --random-utils
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.8: Random Utilities. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE8.md.'
+- type: code
+  title: 'Run: Example 8.9: Integration'
+  language: bash
+  code: ./scripts/module8.sh --integration
+  notes: Execute from course root or example directory — see docs/MODULE8.md.
+  narration: 'Run: Example 8.9: Integration. Review the code on screen and match it
+    to files in the repository. Execute from course root or example directory — see
+    docs/MODULE8.md.'
 - type: section
   title: Hands-on examples
+  narration: 'Next section: Hands-on examples.'
 - type: demo
   title: Module 8 self-check
-  command: ./scripts/module8.sh --clp
+  command: ./scripts/module8.sh --help
   screenshot: assets/screenshots/module8_check.png
-  expect_stdout_contains: completed successfully
+  expect_stdout_contains: Module
   notes: Run from course repository root.
+  narration: Module 8 self-check. Watch the terminal output and confirm you see the
+    expected pass message.
 - type: bullets
   title: 'Example 1: Command Line Processor'
   bullets:
   - 'CLPTransaction: Transaction with data and address fields'
   - 'CLPSequence: Sequence using CLP configuration for number of transactions'
   - 'CLPDriver: Driver that processes transactions'
+  - 'CLPAgent: Agent with driver, monitor, and sequencer'
+  - 'CLPEnv: Environment that uses CLP for configuration'
   notes: module8/examples/clp/README.md
+  narration: 'Example 1: Command Line Processor. CLPTransaction: Transaction with
+    data and address fields CLPSequence: Sequence using CLP configuration for number
+    of transactions CLPDriver: Driver that processes transactions CLPAgent: Agent
+    with driver, monitor, and sequencer CLPEnv: Environment that uses CLP for configuration
+    module8/examples/clp/README.md'
 - type: demo
   title: 'Demo: Command Line Processor'
   command: ./scripts/module8.sh --clp
   screenshot: assets/screenshots/ex01_clp.png
   notes: 'Hands-on: module8/examples/clp/'
+  narration: 'Demo: Command Line Processor. Watch the terminal output and confirm
+    you see the expected pass message.'
 - type: bullets
   title: 'Example 2: Comparators'
   bullets:
   - 'ComparatorTransaction: Transaction with data, address, and timestamp'
   - 'InOrderComparator: Sequential transaction comparison'
   - 'OutOfOrderComparator: Address-based transaction matching'
+  - 'ComparatorTest: Test demonstrating both comparator types'
   notes: module8/examples/comparators/README.md
+  narration: 'Example 2: Comparators. ComparatorTransaction: Transaction with data,
+    address, and timestamp InOrderComparator: Sequential transaction comparison OutOfOrderComparator:
+    Address-based transaction matching ComparatorTest: Test demonstrating both comparator
+    types module8/examples/comparators/README.md'
 - type: demo
   title: 'Demo: Comparators'
   command: ./scripts/module8.sh --comparators
   screenshot: assets/screenshots/ex02_comparators.png
   notes: 'Hands-on: module8/examples/comparators/'
+  narration: 'Demo: Comparators. Watch the terminal output and confirm you see the
+    expected pass message.'
 - type: bullets
   title: 'Example 3: Recorders'
   bullets:
@@ -825,11 +2081,16 @@ slides:
   - 'TransactionRecorder: Recorder that stores transactions'
   - 'RecorderTest: Test demonstrating transaction recording'
   notes: module8/examples/recorders/README.md
+  narration: 'Example 3: Recorders. RecorderTransaction: Transaction with recording
+    capabilities TransactionRecorder: Recorder that stores transactions RecorderTest:
+    Test demonstrating transaction recording module8/examples/recorders/README.md'
 - type: demo
   title: 'Demo: Recorders'
   command: ./scripts/module8.sh --recorders
   screenshot: assets/screenshots/ex03_recorders.png
   notes: 'Hands-on: module8/examples/recorders/'
+  narration: 'Demo: Recorders. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 4: Pools'
   bullets:
@@ -837,11 +2098,16 @@ slides:
   - 'TransactionPool: Pool implementation with allocate/free'
   - 'PoolTest: Test demonstrating object pooling'
   notes: module8/examples/pools/README.md
+  narration: 'Example 4: Pools. PoolTransaction: Transaction for pool example TransactionPool:
+    Pool implementation with allocate/free PoolTest: Test demonstrating object pooling
+    module8/examples/pools/README.md'
 - type: demo
   title: 'Demo: Pools'
   command: ./scripts/module8.sh --pools
   screenshot: assets/screenshots/ex04_pools.png
   notes: 'Hands-on: module8/examples/pools/'
+  narration: 'Demo: Pools. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 5: Queues'
   bullets:
@@ -849,58 +2115,143 @@ slides:
   - 'QueueManager: Queue manager with FIFO and priority queues'
   - 'QueueTest: Test demonstrating queue operations'
   notes: module8/examples/queues/README.md
+  narration: 'Example 5: Queues. QueueTransaction: Transaction for queue example QueueManager:
+    Queue manager with FIFO and priority queues QueueTest: Test demonstrating queue
+    operations module8/examples/queues/README.md'
 - type: demo
   title: 'Demo: Queues'
   command: ./scripts/module8.sh --queues
   screenshot: assets/screenshots/ex05_queues.png
   notes: 'Hands-on: module8/examples/queues/'
+  narration: 'Demo: Queues. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 6: String Utilities'
   bullets:
   - 'StringUtils: Utility class for string operations'
   - 'StringTest: Test demonstrating string utilities'
   notes: module8/examples/string_utils/README.md
+  narration: 'Example 6: String Utilities. StringUtils: Utility class for string operations
+    StringTest: Test demonstrating string utilities module8/examples/string_utils/README.md'
 - type: demo
   title: 'Demo: String Utilities'
   command: ./scripts/module8.sh --string-utils
   screenshot: assets/screenshots/ex06_string_utils.png
   notes: 'Hands-on: module8/examples/string_utils/'
+  narration: 'Demo: String Utilities. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 7: Math Utilities'
   bullets:
   - 'MathUtils: Utility class for mathematical operations'
   - 'MathTest: Test demonstrating math utilities'
   notes: module8/examples/math_utils/README.md
+  narration: 'Example 7: Math Utilities. MathUtils: Utility class for mathematical
+    operations MathTest: Test demonstrating math utilities module8/examples/math_utils/README.md'
 - type: demo
   title: 'Demo: Math Utilities'
   command: ./scripts/module8.sh --math-utils
   screenshot: assets/screenshots/ex07_math_utils.png
   notes: 'Hands-on: module8/examples/math_utils/'
+  narration: 'Demo: Math Utilities. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 8: Random Utilities'
   bullets:
   - 'RandomUtils: Utility class for random operations'
   - 'RandomTest: Test demonstrating random utilities'
   notes: module8/examples/random_utils/README.md
+  narration: 'Example 8: Random Utilities. RandomUtils: Utility class for random operations
+    RandomTest: Test demonstrating random utilities module8/examples/random_utils/README.md'
 - type: demo
   title: 'Demo: Random Utilities'
   command: ./scripts/module8.sh --random-utils
   screenshot: assets/screenshots/ex08_random_utils.png
   notes: 'Hands-on: module8/examples/random_utils/'
+  narration: 'Demo: Random Utilities. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 9: Integration'
   bullets:
   - 'IntegrationTest: Test combining multiple utilities'
   - Combined utility usage
   - Transaction recording and queuing
+  - Command-line configuration
   notes: module8/examples/integration/README.md
+  narration: 'Example 9: Integration. IntegrationTest: Test combining multiple utilities
+    Combined utility usage Transaction recording and queuing Command-line configuration
+    module8/examples/integration/README.md'
 - type: demo
   title: 'Demo: Integration'
   command: ./scripts/module8.sh --integration
   screenshot: assets/screenshots/ex09_integration.png
   notes: 'Hands-on: module8/examples/integration/'
+  narration: 'Demo: Integration. Watch the terminal output and confirm you see the
+    expected pass message.'
+- type: section
+  title: Common pitfalls
+  narration: 'Next section: Common pitfalls.'
+- type: bullets
+  title: CLP Plusarg Not Found
+  bullets:
+  - 'Problem: Configuration uses default values'
+  - 'Solution: Check return value, provide defaults'
+  - 'Code: `if (uvm_cmdline_proc.get_arg_value("+arg", str_val)) value = sv_atoi(str_val);`'
+  notes: From MODULE8 Common Pitfalls.
+  narration: 'CLP Plusarg Not Found. Problem: Configuration uses default values Solution:
+    Check return value, provide defaults Code: if (uvm_cmdline_proc.get_arg_value("+arg",
+    str_val)) value = sv_atoi(str_val);'
+- type: bullets
+  title: Comparator Queues Never Match
+  bullets:
+  - 'Problem: Transactions never arrive in both queues'
+  - 'Solution: Check analysis port connections'
+  - 'Code: Verify `expected_port.connect()` and `actual_port.connect()`'
+  notes: From MODULE8 Common Pitfalls.
+  narration: 'Comparator Queues Never Match. Problem: Transactions never arrive in
+    both queues Solution: Check analysis port connections Code: Verify expected_port.connect()
+    and actual_port.connect()'
+- type: bullets
+  title: Pool Exhaustion
+  bullets:
+  - 'Problem: Pool runs out of objects'
+  - 'Solution: Increase pool size or check free() calls'
+  - 'Code: `pool_size = 20;` or ensure all objects are freed'
+  notes: From MODULE8 Common Pitfalls.
+  narration: 'Pool Exhaustion. Problem: Pool runs out of objects Solution: Increase
+    pool size or check free() calls Code: pool_size = 20; or ensure all objects are
+    freed'
+- type: bullets
+  title: Priority Queue Wrong Order
+  bullets:
+  - 'Problem: Transactions not in priority order'
+  - 'Solution: Check compare() method implementation'
+  - 'Code: `if (prio > rhs.prio) return 1;` (higher priority = higher value)'
+  notes: From MODULE8 Common Pitfalls.
+  narration: 'Priority Queue Wrong Order. Problem: Transactions not in priority order
+    Solution: Check compare() method implementation Code: if (prio > rhs.prio) return
+    1; (higher priority = higher value)'
+- type: bullets
+  title: String Extraction Fails
+  bullets:
+  - 'Problem: Field not extracted correctly'
+  - 'Solution: Check string format and field name'
+  - 'Code: Verify format matches expected pattern'
+  notes: From MODULE8 Common Pitfalls.
+  narration: 'String Extraction Fails. Problem: Field not extracted correctly Solution:
+    Check string format and field name Code: Verify format matches expected pattern'
+- type: bullets
+  title: Math Division Truncation
+  bullets:
+  - 'Problem: Average calculation truncates'
+  - 'Solution: Use `real''()` cast for floating-point division'
+  - 'Code: `return sum / real''(values.size());`'
+  notes: From MODULE8 Common Pitfalls.
+  narration: 'Math Division Truncation. Problem: Average calculation truncates Solution:
+    Use real''() cast for floating-point division Code: return sum / real''(values.size());'
 - type: section
   title: Practice & assessment
+  narration: 'Next section: Practice & assessment.'
 - type: bullets
   title: What you should know (1/2)
   bullets:
@@ -911,6 +2262,10 @@ slides:
   - Use pools and queues for memory management
   - Apply string, math, and random utilities
   notes: From MODULE8 Learning Outcomes.
+  narration: By now you should be able to explain the following. Use UVM utility classes
+    effectively Parse command-line arguments using CLP Compare transactions using
+    comparators Record and playback transactions Use pools and queues for memory management
+    From MODULE8 Learning Outcomes.
 - type: bullets
   title: What you should know (2/2)
   bullets:
@@ -919,6 +2274,10 @@ slides:
   - Understand utility method signatures and usage patterns
   - Apply utility patterns in real-world testbenches
   notes: From MODULE8 Learning Outcomes.
+  narration: By now you should be able to explain the following. Integrate multiple
+    utilities in testbenches Build flexible and configurable testbenches Understand
+    utility method signatures and usage patterns Apply utility patterns in real-world
+    testbenches From MODULE8 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -927,6 +2286,7 @@ slides:
   - Recorders
   - Pools
   - Queues
+  narration: Exercises. Command Line Processor Comparators Recorders Pools Queues
 - type: bullets
   title: Exercises
   bullets:
@@ -934,6 +2294,7 @@ slides:
   - Math Utilities
   - Random Utilities
   - Integration
+  narration: Exercises. String Utilities Math Utilities Random Utilities Integration
 - type: bullets
   title: Assessment checklist
   bullets:
@@ -943,6 +2304,9 @@ slides:
   - Can record and playback transactions
   - Can use pools and queues for memory management
   - Can apply string, math, and random utilities
+  narration: Assessment checklist. Can use UVM utility classes effectively Can parse
+    command-line arguments using CLP Can compare transactions using comparators Can
+    record and playback transactions Can use pools and queues for memory management
 - type: bullets
   title: Summary & next steps
   bullets:
@@ -950,3 +2314,6 @@ slides:
   - Complete module8/CHECKLIST.md
   - Review module8/EXAMPLES.md and run each lab
   - 'Next: Next module in course'
+  narration: 'In summary: Master UVM utility classes Next up: Next module in course.
+    Master UVM utility classes Complete module8/CHECKLIST.md Review module8/EXAMPLES.md
+    and run each lab Next: Next module in course'

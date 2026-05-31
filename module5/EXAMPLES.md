@@ -22,7 +22,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module5.sh --virtual-sequences
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE5.md` and explore `module5/examples/virtual_sequences/`.
 
@@ -42,7 +42,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module5.sh --coverage
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE5.md` and explore `module5/examples/coverage/`.
 
@@ -62,7 +62,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module5.sh --configuration
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE5.md` and explore `module5/examples/configuration/`.
 
@@ -83,7 +83,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module5.sh --callbacks
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE5.md` and explore `module5/examples/callbacks/`.
 
@@ -103,6 +103,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module5.sh --register-model
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE5.md` and explore `module5/examples/register_model/`.

@@ -7,26 +7,580 @@ slides:
 - type: title
   title: Module 1
   subtitle: SystemVerilog and Verification Basics
+  narration: Welcome to module 1, SystemVerilog and Verification Basics. In this module
+    you will understand systemverilog for verification and verification fundamentals.
 - type: bullets
   title: Learning objectives
   bullets:
   - Understand SystemVerilog for verification and verification fundamentals
+  narration: Here is what you will learn in this module. Understand SystemVerilog
+    for verification and verification fundamentals
 - type: bullets
   title: Prerequisites
   bullets:
   - See module README
+  narration: Before you start, make sure you have these prerequisites. See module
+    README
 - type: image
   title: Learning path
   image: assets/diagrams/learning_path.png
   caption: Understand SystemVerilog for verification and verification fundamentals
+  narration: Learning path. Understand SystemVerilog for verification and verification
+    fundamentals
 - type: bullets
   title: Overview
   bullets:
   - This module establishes the foundation for verification work. You'll learn essential
-    SystemVerilog concepts used in verification and understand the fundamental principles
-    of hardware verification.
+    SystemVerilog concepts used in verification and...
+  narration: Overview. This module establishes the foundation for verification work.
+    You'll learn essential SystemVerilog concepts used in verification and...
+- type: section
+  title: Design architecture
+  narration: 'Next section: Design architecture.'
+- type: two_column
+  title: 1. Repository and example layout (1/3)
+  left:
+  - Each example directory is self-contained with README and compile/run instructions
+  - DUTs are intentionally minimal so you focus on SystemVerilog language features
+  - UVM tests in `tests/uvm_tests/` preview patterns used from Module 3 onward
+  - 'module1/examples/sv_basics/: Classes, inheritance, polymorphism demos'
+  right: assets/diagrams/rtl_architecture.png
+  notes: From MODULE1 Design Architecture.
+  narration: '1. Repository and example layout (1/3). Each example directory is self-contained
+    with README and compile/run instructions DUTs are intentionally minimal so you
+    focus on SystemVerilog language features UVM tests in tests/uvm_tests/ preview
+    patterns used from Module 3 onward module1/examples/sv_basics/: Classes, inheritance,
+    polymorphism demos Refer to the diagram on the right.'
+- type: bullets
+  title: 1. Repository and example layout (2/3)
+  bullets:
+  - 'module1/examples/interfaces/: Interfaces, modports, clocking blocks'
+  - 'module1/examples/packages/: Packages and name visibility'
+  - 'module1/dut/simple_gates/: Small RTL (AND gate, counter) for directed tests'
+  - 'module1/tests/sv_tests/: Makefile-driven SV testbenches on simple DUTs'
+  notes: From MODULE1 Design Architecture.
+  narration: '1. Repository and example layout (2/3). module1/examples/interfaces/:
+    Interfaces, modports, clocking blocks module1/examples/packages/: Packages and
+    name visibility module1/dut/simple_gates/: Small RTL (AND gate, counter) for directed
+    tests module1/tests/sv_tests/: Makefile-driven SV testbenches on simple DUTs'
+- type: bullets
+  title: 1. Repository and example layout (3/3)
+  bullets:
+  - 'scripts/module1.sh: Orchestrates all examples and tests'
+  notes: From MODULE1 Design Architecture.
+  narration: '1. Repository and example layout (3/3). scripts/module1.sh: Orchestrates
+    all examples and tests'
+- type: two_column
+  title: 2. Verification building blocks (1/2)
+  left:
+  - Classes — transactions and models as reusable objects (`uvm_object` foundation)
+  - Interfaces — bundle DUT signals; connect testbench to RTL without port lists
+  - Packages — share types and parameters across testbench files
+  - Data structures — queues, associative arrays, dynamic arrays for stimulus/history
+  right: assets/diagrams/verification_architecture.png
+  notes: From MODULE1 Design Architecture.
+  narration: 2. Verification building blocks (1/2). Classes — transactions and models
+    as reusable objects (uvm_object foundation) Interfaces — bundle DUT signals; connect
+    testbench to RTL without port lists Packages — share types and parameters across
+    testbench files Data structures — queues, associative arrays, dynamic arrays for
+    stimulus/history Refer to the diagram on the right.
+- type: bullets
+  title: 2. Verification building blocks (2/2)
+  bullets:
+  - 'Layering: directed SV test → interface-based TB → optional UVM wrapper'
+  notes: From MODULE1 Design Architecture.
+  narration: '2. Verification building blocks (2/2). Layering: directed SV test →
+    interface-based TB → optional UVM wrapper'
+- type: image
+  title: RTL block diagram (reference)
+  image: assets/diagrams/rtl_architecture.png
+  caption: 'Module 1: DUT hierarchy and signal flow.'
+  narration: 'RTL block diagram (reference). Module 1: DUT hierarchy and signal flow.'
+- type: section
+  title: Execution & simulation flow
+  narration: 'Next section: Execution & simulation flow.'
+- type: bullets
+  title: How the example runs (toolchain)
+  bullets:
+  - 'Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv'
+  - 'UVM phases: build → connect → run_test → report (same pattern as Module 2)'
+  - Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end)
+  - 'Typical command: make SIM=verilator TEST=test_* (see module1 demo slide)'
+  - Loopback / hooks connect monitor observations to scoreboard checks
+  notes: From MODULE1 — execution and artifact layout.
+  narration: 'How the example runs (toolchain). Match each bullet to files in the
+    repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv
+    UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence
+    → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command:
+    make SIM=verilator TEST=test_* (see module1 demo slide) Loopback / hooks connect...'
+- type: bullets
+  title: Example directory layout (1)
+  bullets:
+  - 'module1/examples/sv_basics/: Classes, inheritance, polymorphism demos'
+  - 'module1/examples/interfaces/: Interfaces, modports, clocking blocks'
+  - 'module1/examples/packages/: Packages and name visibility'
+  - 'module1/dut/simple_gates/: Small RTL (AND gate, counter) for directed tests'
+  - 'module1/tests/sv_tests/: Makefile-driven SV testbenches on simple DUTs'
+  notes: Match each path to files under module/examples/.
+  narration: 'Example directory layout (1). Match each bullet to files in the repository.
+    module1/examples/sv_basics/: Classes, inheritance, polymorphism demos module1/examples/interfaces/:
+    Interfaces, modports, clocking blocks module1/examples/packages/: Packages and
+    name visibility module1/dut/simple_gates/: Small RTL (AND gate, counter) for directed
+    tests module1/tests/sv_tests/: Makefile-driven SV...'
+- type: bullets
+  title: Example directory layout (2)
+  bullets:
+  - 'scripts/module1.sh: Orchestrates all examples and tests'
+  notes: Match each path to files under module/examples/.
+  narration: 'Example directory layout (2). Match each bullet to files in the repository.
+    scripts/module1.sh: Orchestrates all examples and tests Match each path to files
+    under module/examples/.'
+- type: bullets
+  title: Directed test execution sequence
+  bullets:
+  - make SIM=verilator TEST=test_and_gate
+  - compile
+  - run
+  - read result
+  notes: Follow this order when tracing waveforms or debugging.
+  narration: Follow these steps in order when working through this module. make SIM=verilator
+    TEST=test_and_gate compile run read result Follow this order when tracing waveforms
+    or debugging.
+- type: section
+  title: Verification & testing methods
+  narration: 'Next section: Verification & testing methods.'
+- type: two_column
+  title: 1. Directed self-check methodology
+  left:
+  - Instantiate DUT, apply known stimulus in `initial` block or C++ main
+  - Compare outputs in-test; print `PASS` / `FAIL` (no external scoreboard yet)
+  - Use `$display` / `$error` for visibility; graduate to structured logging in Module
+    2
+  - 'Simulation flow: `make SIM=verilator TEST=test_and_gate` → compile → run → read
+    result'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE1 Verification & Testing Methods.
+  narration: '1. Directed self-check methodology. Instantiate DUT, apply known stimulus
+    in initial block or C++ main Compare outputs in-test; print PASS / FAIL (no external
+    scoreboard yet) Use $display / $error for visibility; graduate to structured logging
+    in Module 2 Simulation flow: make SIM=verilator TEST=test_and_gate → compile →
+    run → read result Refer to the diagram on the right.'
+- type: two_column
+  title: 2. Baseline test closure (1/2)
+  left:
+  - 'Stimulus: fixed vectors covering corner cases (0, 1, overflow, reset)'
+  - 'Checking: inline assertions and explicit comparisons against expected values'
+  - 'Coverage: manual review of cases exercised (functional coverage in Module 5)'
+  - 'Regression: `./scripts/module1.sh --all-sv` runs all example compilations'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE1 Verification & Testing Methods.
+  narration: '2. Baseline test closure (1/2). Stimulus: fixed vectors covering corner
+    cases (0, 1, overflow, reset) Checking: inline assertions and explicit comparisons
+    against expected values Coverage: manual review of cases exercised (functional
+    coverage in Module 5) Regression: ./scripts/module1.sh --all-sv runs all example
+    compilations Refer to the diagram on the right.'
+- type: bullets
+  title: 2. Baseline test closure (2/2)
+  bullets:
+  - 'Out of scope: constrained-random, scoreboards, multi-agent coordination (later
+    modules)'
+  notes: From MODULE1 Verification & Testing Methods.
+  narration: '2. Baseline test closure (2/2). Out of scope: constrained-random, scoreboards,
+    multi-agent coordination (later modules)'
 - type: section
   title: Syllabus topics
+  narration: 'Next section: Syllabus topics.'
+- type: section
+  title: Protocol & design details
+  narration: 'Next section: Protocol & design details.'
+- type: bullets
+  title: 'Detail: Example 1.1: Transaction Classes (`module1/examples/sv_basics/transaction.sv`)
+    (1)'
+  bullets:
+  - Base `Transaction` class with static variables (`id_counter`)
+  - Instance variables (`id`, `data`, `timestamp`)
+  - 'Special methods: `new()`, `copy()`, `compare()`, `convert2string()`'
+  - 'Inheritance: `ReadTransaction` and `WriteTransaction` inherit from `Transaction`'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.1: Transaction Classes (module1/examples/sv_basics/transaction.sv)
+    (1). Base Transaction class with static variables (id_counter) Instance variables
+    (id, data, timestamp) Special methods: new(), copy(), compare(), convert2string()
+    Inheritance: ReadTransaction and WriteTransaction inherit from Transaction From
+    MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 1.1: Transaction Classes (`module1/examples/sv_basics/transaction.sv`)
+    (2)'
+  bullets:
+  - 'Method overriding: Child classes override `convert2string()` method'
+  - Using `super` to call parent class methods
+  - 'Purpose: Initialize object when created'
+  - 'Called: Automatically via `Transaction txn = new();`'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.1: Transaction Classes (module1/examples/sv_basics/transaction.sv)
+    (2). Method overriding: Child classes override convert2string() method Using super
+    to call parent class methods Purpose: Initialize object when created Called: Automatically
+    via Transaction txn = new(); From MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 1.2: Interfaces and Modports (`module1/examples/interfaces/interface_example.sv`)
+    (1)'
+  bullets:
+  - 'Interface Definition: `apb_if` interface with signals and clocking block'
+  - 'Modports: `master_mp` and `slave_mp` modports with different signal directions'
+  - 'Clocking Block: `cb` clocking block for synchronous access'
+  - 'Interface Usage: Module using interface with modport'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.2: Interfaces and Modports (module1/examples/interfaces/interface_example.sv)
+    (1). Interface Definition: apb_if interface with signals and clocking block Modports:
+    master_mp and slave_mp modports with different signal directions Clocking Block:
+    cb clocking block for synchronous access Interface Usage: Module using interface
+    with modport From MODULE1 Topics...'
+- type: bullets
+  title: 'Detail: Example 1.2: Interfaces and Modports (`module1/examples/interfaces/interface_example.sv`)
+    (2)'
+  bullets:
+  - 'Testbench Integration: Testbench connecting to interface'
+  - 'Task Usage: Clock generation task, APB transaction tasks'
+  - 'Purpose: Generate free-running clock signal'
+  - 'Built-in Features: `forever` loop, delay operator `#`, bitwise NOT `~`'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.2: Interfaces and Modports (module1/examples/interfaces/interface_example.sv)
+    (2). Testbench Integration: Testbench connecting to interface Task Usage: Clock
+    generation task, APB transaction tasks Purpose: Generate free-running clock signal
+    Built-in Features: forever loop, delay operator #, bitwise NOT ~ From MODULE1
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 1.3: Packages (`module1/examples/packages/package_example.sv`)
+    (1)'
+  bullets:
+  - 'Package Definition: `verification_pkg` with common types and functions'
+  - 'Package Import: Using `import verification_pkg::*`'
+  - 'Name Resolution: Handling name conflicts'
+  - 'Package Organization: Structuring verification code'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.3: Packages (module1/examples/packages/package_example.sv)
+    (1). Package Definition: verification_pkg with common types and functions Package
+    Import: Using import verification_pkg::* Name Resolution: Handling name conflicts
+    Package Organization: Structuring verification code From MODULE1 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 1.3: Packages (`module1/examples/packages/package_example.sv`)
+    (2)'
+  bullets:
+  - 'Function Definitions: `is_valid_address()`, `calculate_checksum()` functions'
+  - 'Task Definitions: `wait_for_condition()` task with timeout'
+  - 'Purpose: Validates address range (returns 1 if valid, 0 if invalid)'
+  - 'Usage: `if (is_valid_address(addr)) ...`'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.3: Packages (module1/examples/packages/package_example.sv)
+    (2). Function Definitions: is_valid_address(), calculate_checksum() functions
+    Task Definitions: wait_for_condition() task with timeout Purpose: Validates address
+    range (returns 1 if valid, 0 if invalid) Usage: if (is_valid_address(addr)) ...
+    From MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 1.4: Data Structures (`module1/examples/data_structures/data_structures_example.sv`)
+    (1)'
+  bullets:
+  - 'Dynamic Arrays: Transaction arrays that grow dynamically'
+  - 'Queues: FIFO queues for transaction management'
+  - 'Associative Arrays: Indexed by transaction ID'
+  - 'Structures: Complex data structures for verification'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.4: Data Structures (module1/examples/data_structures/data_structures_example.sv)
+    (1). Dynamic Arrays: Transaction arrays that grow dynamically Queues: FIFO queues
+    for transaction management Associative Arrays: Indexed by transaction ID Structures:
+    Complex data structures for verification From MODULE1 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 1.4: Data Structures (`module1/examples/data_structures/data_structures_example.sv`)
+    (2)'
+  bullets:
+  - 'Array Methods: Using built-in array methods'
+  - 'Class Methods: Queue and scoreboard methods (`push()`, `pop()`, `check()`)'
+  - '`push()`: Wraps `push_back()` for FIFO enqueue'
+  - '`pop()`: Wraps `pop_front()` for FIFO dequeue'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.4: Data Structures (module1/examples/data_structures/data_structures_example.sv)
+    (2). Array Methods: Using built-in array methods Class Methods: Queue and scoreboard
+    methods (push(), pop(), check()) push(): Wraps push_back() for FIFO enqueue pop():
+    Wraps pop_front() for FIFO dequeue From MODULE1 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 1.5: Error Handling (`module1/examples/error_handling/error_handling_example.sv`)
+    (1)'
+  bullets:
+  - 'UVM Reporting: Using `uvm_report_info()`, `uvm_report_error()`, etc.'
+  - 'Assertions: Immediate and concurrent assertions'
+  - 'Error Handling: Try-catch blocks for exception handling'
+  - 'Logging Patterns: Structured logging for verification'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.5: Error Handling (module1/examples/error_handling/error_handling_example.sv)
+    (1). UVM Reporting: Using uvm_report_info(), uvm_report_error(), etc. Assertions:
+    Immediate and concurrent assertions Error Handling: Try-catch blocks for exception
+    handling Logging Patterns: Structured logging for verification From MODULE1 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 1.5: Error Handling (`module1/examples/error_handling/error_handling_example.sv`)
+    (2)'
+  bullets:
+  - 'Retry Logic: Task with retry mechanism using `retry_task()`'
+  - 'Exception Objects: Custom exception class with `convert2string()` method'
+  - 'Constructor: Initializes exception with message and code'
+  - '`convert2string()`: Formats exception for display'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 1.5: Error Handling (module1/examples/error_handling/error_handling_example.sv)
+    (2). Retry Logic: Task with retry mechanism using retry_task() Exception Objects:
+    Custom exception class with convert2string() method Constructor: Initializes exception
+    with message and code convert2string(): Formats exception for display From MODULE1
+    Topics Covered —...'
+- type: bullets
+  title: 'Detail: Functions vs Tasks (1)'
+  bullets:
+  - 'Purpose: Compute and return a single value'
+  - 'Return Type: Must declare a return type (`void`, `int`, `string`, `bit`, etc.)'
+  - 'Timing: Execute in zero simulation time (no delays allowed)'
+  - 'Usage: For calculations, data transformations, comparisons'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Functions vs Tasks (1). Purpose: Compute
+    and return a single value Return Type: Must declare a return type (void, int,
+    string, bit, etc.) Timing: Execute in zero simulation time (no delays allowed)
+    Usage: For calculations, data transformations, comparisons From MODULE1 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Functions vs Tasks (2)'
+  bullets:
+  - 'Syntax: `function <return_type> <name>(<arguments>); ... endfunction`'
+  - 'When to Use:'
+  - ✅ Data validation (`is_valid_address()`)
+  - ✅ Calculations (`calculate_checksum()`)
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Functions vs Tasks (2). Syntax: function
+    <return_type> <name>(<arguments>); ... endfunction When to Use: ✅ Data validation
+    (is_valid_address()) ✅ Calculations (calculate_checksum()) From MODULE1 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Built-in SystemVerilog Functions (1)'
+  bullets:
+  - 'Purpose: Print formatted text to console (like `printf` in C)'
+  - 'Format Specifiers:'
+  - '`%0d` - Decimal integer (no leading zeros)'
+  - '`%0h` or `%0x` - Hexadecimal (no leading zeros)'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Built-in SystemVerilog Functions (1). Purpose:
+    Print formatted text to console (like printf in C) Format Specifiers: %0d - Decimal
+    integer (no leading zeros) %0h or %0x - Hexadecimal (no leading zeros) From MODULE1
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Built-in SystemVerilog Functions (2)'
+  bullets:
+  - '`%0b` - Binary'
+  - '`%0s` - String'
+  - '`%0t` - Time'
+  - '`%0f` - Real (floating point)'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Built-in SystemVerilog Functions (2). %0b
+    - Binary %0s - String %0t - Time %0f - Real (floating point) From MODULE1 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Class Methods (Functions in Classes) (1)'
+  bullets:
+  - 'Purpose: Initialize object when created'
+  - 'Called: Automatically when using `new()` operator'
+  - 'Parameters: Can have default values'
+  - 'Example: `Transaction txn = new();` creates object and calls `new()`'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Class Methods (Functions in Classes) (1).
+    Purpose: Initialize object when created Called: Automatically when using new()
+    operator Parameters: Can have default values Example: Transaction txn = new();
+    creates object and calls new() From MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Class Methods (Functions in Classes) (2)'
+  bullets:
+  - 'Purpose: Create deep copy of object'
+  - 'Usage: Duplicate transactions for scoreboards, queues'
+  - 'Null Check: Always check for null before accessing object fields'
+  - 'Example: `txn_copy.copy(txn1);` copies all fields from `txn1` to `txn_copy`'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Class Methods (Functions in Classes) (2).
+    Purpose: Create deep copy of object Usage: Duplicate transactions for scoreboards,
+    queues Null Check: Always check for null before accessing object fields Example:
+    txn_copy.copy(txn1); copies all fields from txn1 to txn_copy From MODULE1 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Tasks in Testbenches (1)'
+  bullets:
+  - 'Purpose: Organize test code into reusable units'
+  - 'Timing: Can contain delays (`#10`) and event waits (`@(posedge clk)`)'
+  - 'Usage: Each test case is a separate task'
+  - 'Calling: `test_basic();` executes the task'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Tasks in Testbenches (1). Purpose: Organize
+    test code into reusable units Timing: Can contain delays (#10) and event waits
+    (@(posedge clk)) Usage: Each test case is a separate task Calling: test_basic();
+    executes the task From MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Tasks in Testbenches (2)'
+  bullets:
+  - 'Purpose: Encapsulate common sequences (reset, initialization)'
+  - 'Reusability: Can be called from multiple test tasks'
+  - 'Usage: `reset();` applies reset sequence before each test'
+  - 'Purpose: Pass data to tasks'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Tasks in Testbenches (2). Purpose: Encapsulate
+    common sequences (reset, initialization) Reusability: Can be called from multiple
+    test tasks Usage: reset(); applies reset sequence before each test Purpose: Pass
+    data to tasks From MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Array Methods (1)'
+  bullets:
+  - '`push_back()`: Add element to end (FIFO enqueue)'
+  - '`pop_front()`: Remove element from front (FIFO dequeue)'
+  - '`size()`: Return number of elements'
+  - 'Usage: Transaction queues, scoreboards'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Array Methods (1). push_back(): Add element
+    to end (FIFO enqueue) pop_front(): Remove element from front (FIFO dequeue) size():
+    Return number of elements Usage: Transaction queues, scoreboards From MODULE1
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Array Methods (2)'
+  bullets:
+  - '`exists()`: Check if key exists in associative array'
+  - 'Indexing: Use any integral type as key'
+  - 'Usage: Scoreboards, coverage collectors'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Array Methods (2). exists(): Check if key
+    exists in associative array Indexing: Use any integral type as key Usage: Scoreboards,
+    coverage collectors From MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Function and Task Best Practices (1)'
+  bullets:
+  - Functions execute in zero time
+  - Perfect for data transformations, comparisons
+  - Must return a value (or `void`)
+  - Tasks can contain delays
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Function and Task Best Practices (1). Functions
+    execute in zero time Perfect for data transformations, comparisons Must return
+    a value (or void) Tasks can contain delays From MODULE1 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Function and Task Best Practices (2)'
+  bullets:
+  - Perfect for test sequences, stimulus generation
+  - No return value
+  - Always check for null before accessing object fields
+  - Prevents simulation crashes
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Function and Task Best Practices (2). Perfect
+    for test sequences, stimulus generation No return value Always check for null
+    before accessing object fields Prevents simulation crashes From MODULE1 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Real-World Testbench Examples (1)'
+  bullets:
+  - Uses delays (`#10`) for signal propagation
+  - Uses `assert` with `$error()` for verification
+  - Uses `$display()` for test output
+  - Organized as separate task for reusability
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Real-World Testbench Examples (1). Uses
+    delays (#10) for signal propagation Uses assert with $error() for verification
+    Uses $display() for test output Organized as separate task for reusability From
+    MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Real-World Testbench Examples (2)'
+  bullets:
+  - Helper task (`reset()`) encapsulates common sequence
+  - Uses `@(posedge clk)` for clock synchronization
+  - Combines delays and event control
+  - Uses type casting (`8'(i)`) for bit width matching
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Real-World Testbench Examples (2). Helper
+    task (reset()) encapsulates common sequence Uses @(posedge clk) for clock synchronization
+    Combines delays and event control Uses type casting (8''(i)) for bit width matching
+    From MODULE1 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Performance Considerations (1)'
+  bullets:
+  - 'Functions: Execute in zero time, no simulation overhead'
+  - 'Tasks: Consume simulation time, have scheduling overhead'
+  - 'Recommendation: Use functions for calculations, tasks only when timing is needed'
+  - '`push_back()` / `pop_front()`: O(1) for queues'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Performance Considerations (1). Functions:
+    Execute in zero time, no simulation overhead Tasks: Consume simulation time, have
+    scheduling overhead Recommendation: Use functions for calculations, tasks only
+    when timing is needed push_back() / pop_front(): O(1) for queues From MODULE1
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Performance Considerations (2)'
+  bullets:
+  - '`size()`: O(1) for queues and arrays'
+  - '`exists()`: O(1) average for associative arrays'
+  - '`foreach`: O(n) where n is number of elements'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Performance Considerations (2). size():
+    O(1) for queues and arrays exists(): O(1) average for associative arrays foreach:
+    O(n) where n is number of elements From MODULE1 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Troubleshooting Guide (1)'
+  bullets:
+  - 'Cause: Trying to use `#`, `@`, or `wait` in a function'
+  - 'Solution: Convert to task or remove timing control'
+  - 'Cause: Accessing object fields without null check'
+  - 'Solution: Always check `if (obj == null)` before accessing'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Troubleshooting Guide (1). Cause: Trying
+    to use #, @, or wait in a function Solution: Convert to task or remove timing
+    control Cause: Accessing object fields without null check Solution: Always check
+    if (obj == null) before accessing From MODULE1 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Troubleshooting Guide (2)'
+  bullets:
+  - 'Cause: Trying to use task return value: `int x = task_name();`'
+  - 'Solution: Use output parameter: `task_name(output int x);`'
+  - 'Cause: Function declared with return type but no return statement'
+  - 'Solution: Add `return` statement or change to `void` function'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Troubleshooting Guide (2). Cause: Trying
+    to use task return value: int x = task_name(); Solution: Use output parameter:
+    task_name(output int x); Cause: Function declared with return type but no return
+    statement Solution: Add return statement or change to void function From MODULE1
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Summary (1)'
+  bullets:
+  - 'Functions: Zero-time operations that return values; use for calculations'
+  - 'Tasks: Time-consuming operations; use for test sequences'
+  - 'Class Methods: Functions within classes; enable object-oriented programming'
+  - 'Built-in Functions: `$display()`, `$sformatf()`, `$finish()`, `$error()`'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'In summary: Understand SystemVerilog for verification and verification
+    fundamentals Next up: Next module in course. Functions: Zero-time operations that
+    return values; use for calculations Tasks: Time-consuming operations; use for
+    test sequences Class Methods: Functions within classes; enable object-oriented
+    programming Built-in Functions: $display(), $sformatf(), $finish(), $error() From...'
+- type: bullets
+  title: 'Detail: Summary (2)'
+  bullets:
+  - 'Array Methods: `push_back()`, `pop_front()`, `size()`, `exists()`'
+  - 'Best Practices: Null checks, method overriding, task organization'
+  - 'Common Pitfalls: Delays in functions, missing null checks, wrong assignment types'
+  - 'Performance: Functions are faster; use tasks only when timing is needed'
+  notes: From MODULE1 Topics Covered — protocol/design depth.
+  narration: 'In summary: Understand SystemVerilog for verification and verification
+    fundamentals Next up: Next module in course. Array Methods: push_back(), pop_front(),
+    size(), exists() Best Practices: Null checks, method overriding, task organization
+    Common Pitfalls: Delays in functions, missing null checks, wrong assignment types
+    Performance: Functions are faster; use tasks only when timing is needed...'
+- type: image
+  title: Verification flow (reference)
+  image: assets/diagrams/testing_methods.png
+  caption: Stimulus, DUT response, and check points for this module.
+  narration: Verification flow (reference). Stimulus, DUT response, and check points
+    for this module.
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (1/9)
   bullets:
@@ -37,6 +591,9 @@ slides:
   - Encapsulation concepts
   - Access modifiers (public, protected, local)
   notes: From MODULE1 Topics Covered.
+  narration: 1. SystemVerilog Classes and Inheritance for Verification (1/9). Object-Oriented
+    Programming Basics Classes and objects Instance variables and methods Static variables
+    and methods Encapsulation concepts
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (2/9)
   bullets:
@@ -47,6 +604,9 @@ slides:
   - Virtual methods and polymorphism
   - Abstract classes
   notes: From MODULE1 Topics Covered.
+  narration: 1. SystemVerilog Classes and Inheritance for Verification (2/9). Inheritance
+    in SystemVerilog Single inheritance Method overriding super keyword usage Virtual
+    methods and polymorphism
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (3/9)
   bullets:
@@ -57,6 +617,9 @@ slides:
   - '`print()` and `sprint()` methods'
   - Class Design Patterns for Verification
   notes: From MODULE1 Topics Covered.
+  narration: 1. SystemVerilog Classes and Inheritance for Verification (3/9). Special
+    Methods new() constructor copy() and clone() methods compare() and convert2string()
+    methods print() and sprint() methods
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (4/9)
   bullets:
@@ -67,6 +630,9 @@ slides:
   - Base `Transaction` class with static variables (`id_counter`)
   - Instance variables (`id`, `data`, `timestamp`)
   notes: From MODULE1 Topics Covered.
+  narration: 1. SystemVerilog Classes and Inheritance for Verification (4/9). Factory
+    pattern basics Singleton pattern Builder pattern Strategy pattern Base Transaction
+    class with static variables (id_counter)
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (5/9)
   bullets:
@@ -77,6 +643,11 @@ slides:
   - 'Purpose: Initialize object when created'
   - 'Called: Automatically via `Transaction txn = new();`'
   notes: From MODULE1 Topics Covered.
+  narration: '1. SystemVerilog Classes and Inheritance for Verification (5/9). Special
+    methods: new(), copy(), compare(), convert2string() Inheritance: ReadTransaction
+    and WriteTransaction inherit from Transaction Method overriding: Child classes
+    override convert2string() method Using super to call parent class methods Purpose:
+    Initialize object when created'
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (6/9)
   bullets:
@@ -87,6 +658,10 @@ slides:
   - 'Returns: `1` if equal, `0` if not equal'
   - 'Usage: `if (txn1.compare(txn2)) $display("Match!");`'
   notes: From MODULE1 Topics Covered.
+  narration: '1. SystemVerilog Classes and Inheritance for Verification (6/9). Default
+    Parameters: name parameter has default value Purpose: Deep copy of transaction
+    object Null Check: Always validates input before accessing Usage: txn_copy.copy(txn1);
+    copies all fields Returns: 1 if equal, 0 if not equal'
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (7/9)
   bullets:
@@ -97,6 +672,10 @@ slides:
   - 'Usage: `int id_val = txn.get_id();`'
   - 'Polymorphism: Derived class method called when using base class handle'
   notes: From MODULE1 Topics Covered.
+  narration: '1. SystemVerilog Classes and Inheritance for Verification (7/9). Uses:
+    $sformatf() built-in function for formatting Format Specifiers: %0d (decimal),
+    %0h (hexadecimal) Usage: $display("%s", txn.convert2string()); Purpose: Encapsulated
+    access to private fields Usage: int id_val = txn.get_id();'
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (8/9)
   bullets:
@@ -107,6 +686,10 @@ slides:
   - 'Static Variables: `id_counter` is shared across all instances'
   - 'Instance Variables: Each transaction has its own `id`, `data`, `timestamp`'
   notes: From MODULE1 Topics Covered.
+  narration: '1. SystemVerilog Classes and Inheritance for Verification (8/9). Base
+    transaction creation and manipulation Derived transaction examples showing inheritance
+    Copy and compare operations working correctly String conversion examples Static
+    Variables: id_counter is shared across all instances'
 - type: bullets
   title: 1. SystemVerilog Classes and Inheritance for Verification (9/9)
   bullets:
@@ -117,6 +700,11 @@ slides:
   - 'Null Safety: Always check for null before accessing object fields'
   - 'Built-in Functions: `$sformatf()`, `$error()`, `$display()` used throughout'
   notes: From MODULE1 Topics Covered.
+  narration: '1. SystemVerilog Classes and Inheritance for Verification (9/9). Special
+    Methods: Enable UVM-compatible behavior (copy, compare, string conversion) Inheritance:
+    ReadTransaction and WriteTransaction extend base functionality Method Overriding:
+    Child classes customize string representation Function Syntax: function <return_type>
+    <name>(<args>); ... endfunction Null Safety: Always check for null...'
 - type: bullets
   title: 2. Interfaces and Modports (1/8)
   bullets:
@@ -127,6 +715,8 @@ slides:
   - Interface instantiation
   - Modports
   notes: From MODULE1 Topics Covered.
+  narration: 2. Interfaces and Modports (1/8). SystemVerilog Interfaces Interface
+    definition Interface signals Interface methods Interface instantiation
 - type: bullets
   title: 2. Interfaces and Modports (2/8)
   bullets:
@@ -137,6 +727,9 @@ slides:
   - Clocking Blocks
   - Clocking block definition
   notes: From MODULE1 Topics Covered.
+  narration: 2. Interfaces and Modports (2/8). Modport definition Direction specification
+    (input, output, inout) Modport usage in modules Multiple modports per interface
+    Clocking Blocks
 - type: bullets
   title: 2. Interfaces and Modports (3/8)
   bullets:
@@ -147,6 +740,9 @@ slides:
   - Driver interfaces
   - Monitor interfaces
   notes: From MODULE1 Topics Covered.
+  narration: 2. Interfaces and Modports (3/8). Clocking block signals Synchronous
+    signal access Clocking block in interfaces Verification-Specific Interfaces Driver
+    interfaces
 - type: bullets
   title: 2. Interfaces and Modports (4/8)
   bullets:
@@ -157,6 +753,10 @@ slides:
   - 'Clocking Block: `cb` clocking block for synchronous access'
   - 'Interface Usage: Module using interface with modport'
   notes: From MODULE1 Topics Covered.
+  narration: '2. Interfaces and Modports (4/8). Scoreboard interfaces Agent interfaces
+    Interface Definition: apb_if interface with signals and clocking block Modports:
+    master_mp and slave_mp modports with different signal directions Clocking Block:
+    cb clocking block for synchronous access'
 - type: bullets
   title: 2. Interfaces and Modports (5/8)
   bullets:
@@ -167,6 +767,10 @@ slides:
   - 'Result: Clock with 10 time unit period (50% duty cycle)'
   - 'Event Control: `@(posedge clk)` waits for clock edge'
   notes: From MODULE1 Topics Covered.
+  narration: '2. Interfaces and Modports (5/8). Testbench Integration: Testbench connecting
+    to interface Task Usage: Clock generation task, APB transaction tasks Purpose:
+    Generate free-running clock signal Built-in Features: forever loop, delay operator
+    #, bitwise NOT ~ Result: Clock with 10 time unit period (50% duty cycle)'
 - type: bullets
   title: 2. Interfaces and Modports (6/8)
   bullets:
@@ -177,6 +781,10 @@ slides:
   - 'Interface Signal Access: `bus.signal_name` accesses interface signals'
   - Interfaces provide structured communication between modules
   notes: From MODULE1 Topics Covered.
+  narration: '2. Interfaces and Modports (6/8). Non-blocking Assignment: <= for sequential
+    logic Wait Loop: while (!condition) @(posedge clk) pattern Blocking Assignment:
+    = for initialization (combinational) Non-blocking Assignment: <= for sequential
+    logic (clocked) Interface Signal Access: bus.signal_name accesses interface signals'
 - type: bullets
   title: 2. Interfaces and Modports (7/8)
   bullets:
@@ -187,11 +795,17 @@ slides:
   - 'Assignment Types: `=` (blocking) vs `<=` (non-blocking)'
   - 'Wait Patterns: `while (!condition) @(posedge clk)` for handshaking'
   notes: From MODULE1 Topics Covered.
+  narration: '2. Interfaces and Modports (7/8). Modports control signal direction
+    and access Clocking blocks enable synchronous signal access Interfaces are essential
+    for UVM testbenches Event Control: @(posedge clk) synchronizes to clock edges
+    Assignment Types: = (blocking) vs <= (non-blocking)'
 - type: bullets
   title: 2. Interfaces and Modports (8/8)
   bullets:
   - 'Built-in Operators: `~` (NOT), `&&` (AND), `!` (logical NOT)'
   notes: From MODULE1 Topics Covered.
+  narration: '2. Interfaces and Modports (8/8). Built-in Operators: ~ (NOT), && (AND),
+    ! (logical NOT)'
 - type: bullets
   title: 3. Packages and Namespaces (1/7)
   bullets:
@@ -202,6 +816,8 @@ slides:
   - Package compilation order
   - Namespaces
   notes: From MODULE1 Topics Covered.
+  narration: 3. Packages and Namespaces (1/7). SystemVerilog Packages Package definition
+    Package items (classes, functions, types) Package import Package compilation order
 - type: bullets
   title: 3. Packages and Namespaces (2/7)
   bullets:
@@ -212,6 +828,8 @@ slides:
   - Verification Packages
   - Common verification types
   notes: From MODULE1 Topics Covered.
+  narration: 3. Packages and Namespaces (2/7). Package namespaces Resolving name conflicts
+    Wildcard imports Explicit imports Verification Packages
 - type: bullets
   title: 3. Packages and Namespaces (3/7)
   bullets:
@@ -222,6 +840,9 @@ slides:
   - 'Package Import: Using `import verification_pkg::*`'
   - 'Name Resolution: Handling name conflicts'
   notes: From MODULE1 Topics Covered.
+  narration: '3. Packages and Namespaces (3/7). Utility functions Shared classes Configuration
+    types Package Definition: verification_pkg with common types and functions Package
+    Import: Using import verification_pkg::*'
 - type: bullets
   title: 3. Packages and Namespaces (4/7)
   bullets:
@@ -232,6 +853,11 @@ slides:
   - 'Usage: `if (is_valid_address(addr)) ...`'
   - 'Key Feature: `automatic` keyword makes function re-entrant'
   notes: From MODULE1 Topics Covered.
+  narration: '3. Packages and Namespaces (4/7). Package Organization: Structuring
+    verification code Function Definitions: is_valid_address(), calculate_checksum()
+    functions Task Definitions: wait_for_condition() task with timeout Purpose: Validates
+    address range (returns 1 if valid, 0 if invalid) Usage: if (is_valid_address(addr))
+    ...'
 - type: bullets
   title: 3. Packages and Namespaces (5/7)
   bullets:
@@ -242,6 +868,9 @@ slides:
   - 'Key Features:'
   - '`ref` parameter passes by reference'
   notes: From MODULE1 Topics Covered.
+  narration: '3. Packages and Namespaces (5/7). Purpose: Calculates XOR checksum of
+    32-bit data Returns: 8-bit checksum value Usage: logic [7:0] checksum = calculate_checksum(data);
+    Purpose: Wait for condition with timeout Key Features:'
 - type: bullets
   title: 3. Packages and Namespaces (6/7)
   bullets:
@@ -252,6 +881,10 @@ slides:
   - Functions in packages are reusable across modules
   - '`automatic` keyword enables re-entrant functions/tasks'
   notes: From MODULE1 Topics Covered.
+  narration: 3. Packages and Namespaces (6/7). Contains delays (#1) Demonstrates task
+    with timing control Packages organize related code (types, functions, tasks, constants)
+    Import statements control namespace Functions in packages are reusable across
+    modules
 - type: bullets
   title: 3. Packages and Namespaces (7/7)
   bullets:
@@ -259,6 +892,8 @@ slides:
   - Packages improve code reusability
   - Essential for UVM library organization
   notes: From MODULE1 Topics Covered.
+  narration: 3. Packages and Namespaces (7/7). Tasks can contain delays, functions
+    cannot Packages improve code reusability Essential for UVM library organization
 - type: bullets
   title: 4. Data Structures for Verification (1/8)
   bullets:
@@ -269,6 +904,8 @@ slides:
   - '`string` type'
   - '`enum` types'
   notes: From MODULE1 Topics Covered.
+  narration: 4. Data Structures for Verification (1/8). SystemVerilog Data Types bit
+    and logic types int, longint, shortint real and realtime string type
 - type: bullets
   title: 4. Data Structures for Verification (2/8)
   bullets:
@@ -279,6 +916,8 @@ slides:
   - Queues
   - Array methods
   notes: From MODULE1 Topics Covered.
+  narration: 4. Data Structures for Verification (2/8). Arrays Fixed-size arrays Dynamic
+    arrays Associative arrays Queues
 - type: bullets
   title: 4. Data Structures for Verification (3/8)
   bullets:
@@ -289,6 +928,8 @@ slides:
   - Structure methods
   - Verification-Specific Data Structures
   notes: From MODULE1 Topics Covered.
+  narration: 4. Data Structures for Verification (3/8). Structures and Unions struct
+    definition Packed and unpacked structures union types Structure methods
 - type: bullets
   title: 4. Data Structures for Verification (4/8)
   bullets:
@@ -299,6 +940,9 @@ slides:
   - 'Dynamic Arrays: Transaction arrays that grow dynamically'
   - 'Queues: FIFO queues for transaction management'
   notes: From MODULE1 Topics Covered.
+  narration: '4. Data Structures for Verification (4/8). Transaction queues Coverage
+    bins Scoreboard structures Configuration structures Dynamic Arrays: Transaction
+    arrays that grow dynamically'
 - type: bullets
   title: 4. Data Structures for Verification (5/8)
   bullets:
@@ -309,6 +953,10 @@ slides:
   - '`push()`: Wraps `push_back()` for FIFO enqueue'
   - '`pop()`: Wraps `pop_front()` for FIFO dequeue'
   notes: From MODULE1 Topics Covered.
+  narration: '4. Data Structures for Verification (5/8). Associative Arrays: Indexed
+    by transaction ID Structures: Complex data structures for verification Array Methods:
+    Using built-in array methods Class Methods: Queue and scoreboard methods (push(),
+    pop(), check()) push(): Wraps push_back() for FIFO enqueue'
 - type: bullets
   title: 4. Data Structures for Verification (6/8)
   bullets:
@@ -319,6 +967,10 @@ slides:
   - 'Usage: `scoreboard.add_expected(1, data); scoreboard.check(1);`'
   - '`sample_address()`: Records address access'
   notes: From MODULE1 Topics Covered.
+  narration: '4. Data Structures for Verification (6/8). size(): Returns queue element
+    count Usage: queue.push(txn); txn = queue.pop(); add_expected(): Stores expected
+    values check(): Compares expected vs actual using exists() method Usage: scoreboard.add_expected(1,
+    data); scoreboard.check(1);'
 - type: bullets
   title: 4. Data Structures for Verification (7/8)
   bullets:
@@ -329,6 +981,10 @@ slides:
   - Associative arrays enable key-value lookups
   - Structures organize related data
   notes: From MODULE1 Topics Covered.
+  narration: '4. Data Structures for Verification (7/8). get_coverage(): Calculates
+    coverage percentage Built-in Features: foreach loop, exists() method, type casting
+    Dynamic arrays provide flexibility Queues are ideal for FIFO operations Associative
+    arrays enable key-value lookups'
 - type: bullets
   title: 4. Data Structures for Verification (8/8)
   bullets:
@@ -336,6 +992,9 @@ slides:
   - Wrapper methods provide clean interfaces to built-in array operations
   - '`foreach` loops iterate over associative arrays efficiently'
   notes: From MODULE1 Topics Covered.
+  narration: 4. Data Structures for Verification (8/8). Array methods (push_back(),
+    pop_front(), size(), exists()) are essential Wrapper methods provide clean interfaces
+    to built-in array operations foreach loops iterate over associative arrays efficiently
 - type: bullets
   title: 5. Error Handling and Logging (1/7)
   bullets:
@@ -346,6 +1005,8 @@ slides:
   - Assertion coverage
   - UVM Reporting
   notes: From MODULE1 Topics Covered.
+  narration: 5. Error Handling and Logging (1/7). SystemVerilog Assertions Immediate
+    assertions Concurrent assertions Assertion severity Assertion coverage
 - type: bullets
   title: 5. Error Handling and Logging (2/7)
   bullets:
@@ -356,6 +1017,9 @@ slides:
   - Exception Handling
   - Try-catch blocks (SystemVerilog 2017+)
   notes: From MODULE1 Topics Covered.
+  narration: 5. Error Handling and Logging (2/7). UVM messaging system Severity levels
+    (FATAL, ERROR, WARNING, INFO, DEBUG) Verbosity levels Message formatting Exception
+    Handling
 - type: bullets
   title: 5. Error Handling and Logging (3/7)
   bullets:
@@ -366,6 +1030,8 @@ slides:
   - Log file management
   - Debug logging
   notes: From MODULE1 Topics Covered.
+  narration: 5. Error Handling and Logging (3/7). Error propagation Graceful error
+    handling Logging Patterns Structured logging Log file management
 - type: bullets
   title: 5. Error Handling and Logging (4/7)
   bullets:
@@ -376,6 +1042,10 @@ slides:
   - 'Logging Patterns: Structured logging for verification'
   - 'Retry Logic: Task with retry mechanism using `retry_task()`'
   notes: From MODULE1 Topics Covered.
+  narration: '5. Error Handling and Logging (4/7). Production logging UVM Reporting:
+    Using uvm_report_info(), uvm_report_error(), etc. Assertions: Immediate and concurrent
+    assertions Error Handling: Try-catch blocks for exception handling Logging Patterns:
+    Structured logging for verification'
 - type: bullets
   title: 5. Error Handling and Logging (5/7)
   bullets:
@@ -386,6 +1056,10 @@ slides:
   - 'Purpose: Retry operation with configurable attempts'
   - 'Built-in Functions Used:'
   notes: From MODULE1 Topics Covered.
+  narration: '5. Error Handling and Logging (5/7). Exception Objects: Custom exception
+    class with convert2string() method Constructor: Initializes exception with message
+    and code convert2string(): Formats exception for display Usage: $display("%s",
+    exc.convert2string()); Purpose: Retry operation with configurable attempts'
 - type: bullets
   title: 5. Error Handling and Logging (6/7)
   bullets:
@@ -396,6 +1070,10 @@ slides:
   - 'Usage: Shows structured logging patterns'
   - UVM reporting provides standardized messaging
   notes: From MODULE1 Topics Covered.
+  narration: '5. Error Handling and Logging (6/7). $display(): Print formatted messages
+    $urandom_range(): Generate random numbers for simulation Usage: comp.retry_task(3);
+    retries up to 3 times Purpose: Demonstrate different message severity levels Usage:
+    Shows structured logging patterns'
 - type: bullets
   title: 5. Error Handling and Logging (7/7)
   bullets:
@@ -406,86 +1084,566 @@ slides:
   - Built-in functions like `$urandom_range()` are useful for simulation
   - Custom exception classes provide structured error information
   notes: From MODULE1 Topics Covered.
+  narration: 5. Error Handling and Logging (7/7). Assertions catch design errors early
+    Exception handling enables graceful failures Logging is essential for debugging
+    Tasks can implement retry logic with delays Built-in functions like $urandom_range()
+    are useful for simulation
 - type: bullets
-  title: 6. SystemVerilog Functions and Tasks
+  title: 6. SystemVerilog Functions and Tasks (1/26)
   bullets:
-  - See docs/MODULE1.md
+  - 'Purpose: Compute and return a single value'
+  - 'Return Type: Must declare a return type (`void`, `int`, `string`, `bit`, etc.)'
+  - 'Timing: Execute in zero simulation time (no delays allowed)'
+  - 'Usage: For calculations, data transformations, comparisons'
+  - 'Syntax: `function <return_type> <name>(<arguments>); ... endfunction`'
+  - 'When to Use:'
   notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (1/26). Purpose: Compute and return
+    a single value Return Type: Must declare a return type (void, int, string, bit,
+    etc.) Timing: Execute in zero simulation time (no delays allowed) Usage: For calculations,
+    data transformations, comparisons Syntax: function <return_type> <name>(<arguments>);
+    ... endfunction'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (2/26)
+  bullets:
+  - ✅ Data validation (`is_valid_address()`)
+  - ✅ Calculations (`calculate_checksum()`)
+  - ✅ Comparisons (`compare()`)
+  - ✅ String formatting (`convert2string()`)
+  - ✅ Accessor methods (`get_id()`)
+  - ❌ Operations requiring delays
+  notes: From MODULE1 Topics Covered.
+  narration: 6. SystemVerilog Functions and Tasks (2/26). ✅ Data validation (is_valid_address())
+    ✅ Calculations (calculate_checksum()) ✅ Comparisons (compare()) ✅ String formatting
+    (convert2string()) ✅ Accessor methods (get_id())
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (3/26)
+  bullets:
+  - ❌ Test sequences
+  - 'Purpose: Perform operations that may consume time'
+  - 'Return Type: No return value (implicitly `void`)'
+  - 'Timing: Can contain delays (`#`, `@`, `wait`)'
+  - 'Usage: For test sequences, stimulus generation, complex operations'
+  - 'Syntax: `task <name>(<arguments>); ... endtask`'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (3/26). ❌ Test sequences Purpose:
+    Perform operations that may consume time Return Type: No return value (implicitly
+    void) Timing: Can contain delays (#, @, wait) Usage: For test sequences, stimulus
+    generation, complex operations'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (4/26)
+  bullets:
+  - 'When to Use:'
+  - ✅ Test sequences (`test_basic()`, `test_reset()`)
+  - ✅ Reset/initialization sequences (`reset()`)
+  - ✅ Clock generation
+  - ✅ Protocol transactions (APB write/read)
+  - ✅ Retry logic with delays
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (4/26). When to Use: ✅ Test sequences
+    (test_basic(), test_reset()) ✅ Reset/initialization sequences (reset()) ✅ Clock
+    generation ✅ Protocol transactions (APB write/read)'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (5/26)
+  bullets:
+  - ❌ Simple calculations (use function instead)
+  - ❌ Data transformations (use function instead)
+  - 'Purpose: Print formatted text to console (like `printf` in C)'
+  - 'Format Specifiers:'
+  - '`%0d` - Decimal integer (no leading zeros)'
+  - '`%0h` or `%0x` - Hexadecimal (no leading zeros)'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (5/26). ❌ Simple calculations (use
+    function instead) ❌ Data transformations (use function instead) Purpose: Print
+    formatted text to console (like printf in C) Format Specifiers: %0d - Decimal
+    integer (no leading zeros)'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (6/26)
+  bullets:
+  - '`%0b` - Binary'
+  - '`%0s` - String'
+  - '`%0t` - Time'
+  - '`%0f` - Real (floating point)'
+  - '`%0e` - Scientific notation'
+  - 'Variants:'
+  notes: From MODULE1 Topics Covered.
+  narration: 6. SystemVerilog Functions and Tasks (6/26). %0b - Binary %0s - String
+    %0t - Time %0f - Real (floating point) %0e - Scientific notation
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (7/26)
+  bullets:
+  - '`$display()` - Standard output'
+  - '`$displayb()` - Binary format'
+  - '`$displayh()` - Hexadecimal format'
+  - '`$displayo()` - Octal format'
+  - 'Example from code: Used extensively in all examples for test output'
+  - 'Real Example (from `test_counter.sv`):'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (7/26). $display() - Standard output
+    $displayb() - Binary format $displayh() - Hexadecimal format $displayo() - Octal
+    format Example from code: Used extensively in all examples for test output'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (8/26)
+  bullets:
+  - 'Purpose: Format string with placeholders (like `sprintf` in C)'
+  - 'Returns: Formatted string (doesn''t print to console)'
+  - 'Usage: Create string representations of objects'
+  - 'Example from code: Used in `convert2string()` methods to format transaction data'
+  - 'Real Example (from `transaction.sv`):'
+  - 'Purpose: Stop simulation and exit'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (8/26). Purpose: Format string
+    with placeholders (like sprintf in C) Returns: Formatted string (doesn''t print
+    to console) Usage: Create string representations of objects Example from code:
+    Used in convert2string() methods to format transaction data Real Example (from
+    transaction.sv):'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (9/26)
+  bullets:
+  - 'Usage: End testbench execution after tests complete'
+  - 'Exit Codes: 0 = success, 1 = error, 2 = fatal'
+  - 'Example from code: Called at end of all test programs'
+  - 'Real Example (from `test_and_gate.sv`):'
+  - 'Purpose: Report errors with formatted messages'
+  - 'Usage: In assertions and error handling'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (9/26). Usage: End testbench execution
+    after tests complete Exit Codes: 0 = success, 1 = error, 2 = fatal Example from
+    code: Called at end of all test programs Real Example (from test_and_gate.sv):
+    Purpose: Report errors with formatted messages'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (10/26)
+  bullets:
+  - 'Severity: ERROR level (stops simulation if severity is high enough)'
+  - 'Example from code: Used in test assertions when checks fail'
+  - 'Real Example (from `test_and_gate.sv`):'
+  - 'Purpose: Different severity levels for reporting'
+  - 'Usage: Use appropriate level for the situation'
+  - 'Severity Order: FATAL > ERROR > WARNING > INFO'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (10/26). Severity: ERROR level
+    (stops simulation if severity is high enough) Example from code: Used in test
+    assertions when checks fail Real Example (from test_and_gate.sv): Purpose: Different
+    severity levels for reporting Usage: Use appropriate level for the situation'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (11/26)
+  bullets:
+  - 'Purpose: Get current simulation time'
+  - 'Usage: Timing verification, logging with timestamps'
+  - 'Purpose: Generate random numbers for test stimulus'
+  - 'Usage: Random test generation, constrained random verification'
+  - 'Example from code: Used in `error_handling_example.sv` for retry simulation'
+  - 'Purpose: Safe type casting between compatible types'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (11/26). Purpose: Get current simulation
+    time Usage: Timing verification, logging with timestamps Purpose: Generate random
+    numbers for test stimulus Usage: Random test generation, constrained random verification
+    Example from code: Used in error_handling_example.sv for retry simulation'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (12/26)
+  bullets:
+  - 'Returns: `1` if cast succeeds, `0` if fails'
+  - 'Usage: Polymorphic object handling, type checking'
+  - 'Purpose: Initialize object when created'
+  - 'Called: Automatically when using `new()` operator'
+  - 'Parameters: Can have default values'
+  - 'Example: `Transaction txn = new();` creates object and calls `new()`'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (12/26). Returns: 1 if cast succeeds,
+    0 if fails Usage: Polymorphic object handling, type checking Purpose: Initialize
+    object when created Called: Automatically when using new() operator Parameters:
+    Can have default values'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (13/26)
+  bullets:
+  - 'Purpose: Create deep copy of object'
+  - 'Usage: Duplicate transactions for scoreboards, queues'
+  - 'Null Check: Always check for null before accessing object fields'
+  - 'Example: `txn_copy.copy(txn1);` copies all fields from `txn1` to `txn_copy`'
+  - 'Purpose: Compare two objects for equality'
+  - 'Returns: `1` if equal, `0` if not equal'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (13/26). Purpose: Create deep copy
+    of object Usage: Duplicate transactions for scoreboards, queues Null Check: Always
+    check for null before accessing object fields Example: txn_copy.copy(txn1); copies
+    all fields from txn1 to txn_copy Purpose: Compare two objects for equality'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (14/26)
+  bullets:
+  - 'Usage: Scoreboard checking, test verification'
+  - 'Example: `if (txn1.compare(txn2)) $display("Match!");`'
+  - 'Purpose: Create human-readable string representation'
+  - 'Returns: Formatted string with object fields'
+  - 'Usage: Debugging, logging, test output'
+  - 'Example: `$display("%s", txn.convert2string());`'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (14/26). Usage: Scoreboard checking,
+    test verification Example: if (txn1.compare(txn2)) $display("Match!"); Purpose:
+    Create human-readable string representation Returns: Formatted string with object
+    fields Usage: Debugging, logging, test output'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (15/26)
+  bullets:
+  - 'Purpose: Provide controlled access to private fields'
+  - 'Usage: Encapsulation, data access'
+  - 'Example: `int id_val = txn.get_id();`'
+  - 'Purpose: Organize test code into reusable units'
+  - 'Timing: Can contain delays (`#10`) and event waits (`@(posedge clk)`)'
+  - 'Usage: Each test case is a separate task'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (15/26). Purpose: Provide controlled
+    access to private fields Usage: Encapsulation, data access Example: int id_val
+    = txn.get_id(); Purpose: Organize test code into reusable units Timing: Can contain
+    delays (#10) and event waits (@(posedge clk))'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (16/26)
+  bullets:
+  - 'Calling: `test_basic();` executes the task'
+  - 'Purpose: Encapsulate common sequences (reset, initialization)'
+  - 'Reusability: Can be called from multiple test tasks'
+  - 'Usage: `reset();` applies reset sequence before each test'
+  - 'Purpose: Pass data to tasks'
+  - 'Usage: Make tasks flexible and reusable'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (16/26). Calling: test_basic();
+    executes the task Purpose: Encapsulate common sequences (reset, initialization)
+    Reusability: Can be called from multiple test tasks Usage: reset(); applies reset
+    sequence before each test Purpose: Pass data to tasks'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (17/26)
+  bullets:
+  - 'Calling: `write_transaction(16''h1000, 32''hDEADBEEF);`'
+  - '`push_back()`: Add element to end (FIFO enqueue)'
+  - '`pop_front()`: Remove element from front (FIFO dequeue)'
+  - '`size()`: Return number of elements'
+  - 'Usage: Transaction queues, scoreboards'
+  - '`exists()`: Check if key exists in associative array'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (17/26). Calling: write_transaction(16''h1000,
+    32''hDEADBEEF); push_back(): Add element to end (FIFO enqueue) pop_front(): Remove
+    element from front (FIFO dequeue) size(): Return number of elements Usage: Transaction
+    queues, scoreboards'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (18/26)
+  bullets:
+  - 'Indexing: Use any integral type as key'
+  - 'Usage: Scoreboards, coverage collectors'
+  - Functions execute in zero time
+  - Perfect for data transformations, comparisons
+  - Must return a value (or `void`)
+  - Tasks can contain delays
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (18/26). Indexing: Use any integral
+    type as key Usage: Scoreboards, coverage collectors Functions execute in zero
+    time Perfect for data transformations, comparisons Must return a value (or void)'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (19/26)
+  bullets:
+  - Perfect for test sequences, stimulus generation
+  - No return value
+  - Always check for null before accessing object fields
+  - Prevents simulation crashes
+  - Derived classes can override base class methods
+  - Provides polymorphic behavior
+  notes: From MODULE1 Topics Covered.
+  narration: 6. SystemVerilog Functions and Tasks (19/26). Perfect for test sequences,
+    stimulus generation No return value Always check for null before accessing object
+    fields Prevents simulation crashes Derived classes can override base class methods
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (20/26)
+  bullets:
+  - Each test case as separate task
+  - Main `initial` block orchestrates test execution
+  - Improves code readability and maintainability
+  - Uses delays (`#10`) for signal propagation
+  - Uses `assert` with `$error()` for verification
+  - Uses `$display()` for test output
+  notes: From MODULE1 Topics Covered.
+  narration: 6. SystemVerilog Functions and Tasks (20/26). Each test case as separate
+    task Main initial block orchestrates test execution Improves code readability
+    and maintainability Uses delays (#10) for signal propagation Uses assert with
+    $error() for verification
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (21/26)
+  bullets:
+  - Organized as separate task for reusability
+  - Helper task (`reset()`) encapsulates common sequence
+  - Uses `@(posedge clk)` for clock synchronization
+  - Combines delays and event control
+  - Uses type casting (`8'(i)`) for bit width matching
+  - Uses nested loops for exhaustive testing
+  notes: From MODULE1 Topics Covered.
+  narration: 6. SystemVerilog Functions and Tasks (21/26). Organized as separate task
+    for reusability Helper task (reset()) encapsulates common sequence Uses @(posedge
+    clk) for clock synchronization Combines delays and event control Uses type casting
+    (8'(i)) for bit width matching
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (22/26)
+  bullets:
+  - Type casting with `bit'(i)`
+  - Expression evaluation in assertion
+  - Multiple format specifiers in `$error()`
+  - 'Functions: Execute in zero time, no simulation overhead'
+  - 'Tasks: Consume simulation time, have scheduling overhead'
+  - 'Recommendation: Use functions for calculations, tasks only when timing is needed'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (22/26). Type casting with bit''(i)
+    Expression evaluation in assertion Multiple format specifiers in $error() Functions:
+    Execute in zero time, no simulation overhead Tasks: Consume simulation time, have
+    scheduling overhead'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (23/26)
+  bullets:
+  - '`push_back()` / `pop_front()`: O(1) for queues'
+  - '`size()`: O(1) for queues and arrays'
+  - '`exists()`: O(1) average for associative arrays'
+  - '`foreach`: O(n) where n is number of elements'
+  - 'Cause: Trying to use `#`, `@`, or `wait` in a function'
+  - 'Solution: Convert to task or remove timing control'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (23/26). push_back() / pop_front():
+    O(1) for queues size(): O(1) for queues and arrays exists(): O(1) average for
+    associative arrays foreach: O(n) where n is number of elements Cause: Trying to
+    use #, @, or wait in a function'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (24/26)
+  bullets:
+  - 'Cause: Accessing object fields without null check'
+  - 'Solution: Always check `if (obj == null)` before accessing'
+  - 'Cause: Trying to use task return value: `int x = task_name();`'
+  - 'Solution: Use output parameter: `task_name(output int x);`'
+  - 'Cause: Function declared with return type but no return statement'
+  - 'Solution: Add `return` statement or change to `void` function'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (24/26). Cause: Accessing object
+    fields without null check Solution: Always check if (obj == null) before accessing
+    Cause: Trying to use task return value: int x = task_name(); Solution: Use output
+    parameter: task_name(output int x); Cause: Function declared with return type
+    but no return statement'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (25/26)
+  bullets:
+  - 'Cause: Using wrong format in `$display()` or `$sformatf()`'
+  - 'Solution: Use `%0d` for decimal, `%0h` for hex, `%0b` for binary, `%0s` for string'
+  - 'Functions: Zero-time operations that return values; use for calculations'
+  - 'Tasks: Time-consuming operations; use for test sequences'
+  - 'Class Methods: Functions within classes; enable object-oriented programming'
+  - 'Built-in Functions: `$display()`, `$sformatf()`, `$finish()`, `$error()`'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (25/26). Cause: Using wrong format
+    in $display() or $sformatf() Solution: Use %0d for decimal, %0h for hex, %0b for
+    binary, %0s for string Functions: Zero-time operations that return values; use
+    for calculations Tasks: Time-consuming operations; use for test sequences Class
+    Methods: Functions within classes; enable object-oriented programming'
+- type: bullets
+  title: 6. SystemVerilog Functions and Tasks (26/26)
+  bullets:
+  - 'Array Methods: `push_back()`, `pop_front()`, `size()`, `exists()`'
+  - 'Best Practices: Null checks, method overriding, task organization'
+  - 'Common Pitfalls: Delays in functions, missing null checks, wrong assignment types'
+  - 'Performance: Functions are faster; use tasks only when timing is needed'
+  notes: From MODULE1 Topics Covered.
+  narration: '6. SystemVerilog Functions and Tasks (26/26). Array Methods: push_back(),
+    pop_front(), size(), exists() Best Practices: Null checks, method overriding,
+    task organization Common Pitfalls: Delays in functions, missing null checks, wrong
+    assignment types Performance: Functions are faster; use tasks only when timing
+    is needed'
+- type: code
+  title: 'Run: Example 1.1: Transaction Classes'
+  language: bash
+  code: './scripts/module1.sh --sv-basics
+
+    cd module1/examples/sv_basics
+
+    verilator -sv --cc --exe transaction.sv -o transaction_example
+
+    make -C obj_dir -f Vtransaction_example.mk
+
+    ./obj_dir/Vtransaction_example'
+  notes: Execute from course root or example directory — see docs/MODULE1.md.
+  narration: 'Run: Example 1.1: Transaction Classes. Review the code on screen and
+    match it to files in the repository. Execute from course root or example directory
+    — see docs/MODULE1.md.'
 - type: section
   title: Hands-on examples
+  narration: 'Next section: Hands-on examples.'
 - type: demo
   title: Module 1 self-check
-  command: ./scripts/module1.sh --sv-basics
+  command: ./scripts/module1.sh --help
   screenshot: assets/screenshots/module1_check.png
-  expect_stdout_contains: completed successfully
+  expect_stdout_contains: Module
   notes: Run from course repository root.
+  narration: Module 1 self-check. Watch the terminal output and confirm you see the
+    expected pass message.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module1.sh
   code: ./scripts/module1.sh --scaffold
+  narration: Exercise scaffold. Review the code on screen and match it to files in
+    the repository.
 - type: bullets
   title: 'Example 1: Transaction Classes'
   bullets:
   - Base `Transaction` class with static variables (`id_counter`)
   - Instance variables (`id`, `data`, `timestamp`)
   - 'Special methods: `new()`, `copy()`, `compare()`, `convert2string()`'
+  - 'Inheritance: `ReadTransaction` and `WriteTransaction` inherit from `Transaction`'
+  - 'Method overriding: Child classes override `convert2string()` method'
   notes: module1/examples/sv_basics/README.md
+  narration: 'Example 1: Transaction Classes. Base Transaction class with static variables
+    (id_counter) Instance variables (id, data, timestamp) Special methods: new(),
+    copy(), compare(), convert2string() Inheritance: ReadTransaction and WriteTransaction
+    inherit from Transaction Method overriding: Child classes override convert2string()
+    method module1/examples/sv_basics/README.md'
 - type: demo
   title: 'Demo: Transaction Classes'
-  command: ./scripts/module1.sh --sv-basics
+  command: ./scripts/module1.sh --sv-basics && cd module1/examples/sv_basics && verilator
+    -sv --cc --exe transaction.sv -o transaction_example && make -C obj_dir -f Vtransaction_example.mk
   screenshot: assets/screenshots/ex01_sv_basics.png
   notes: 'Hands-on: module1/examples/sv_basics/'
+  narration: 'Demo: Transaction Classes. Watch the terminal output and confirm you
+    see the expected pass message.'
 - type: bullets
   title: 'Example 2: Interfaces and Modports'
   bullets:
   - 'Interface Definition: `apb_if` interface with signals and clocking block'
   - 'Modports: `master_mp` and `slave_mp` modports with different signal directions'
   - 'Clocking Block: `cb` clocking block for synchronous access'
+  - 'Interface Usage: Module using interface with modport'
+  - 'Testbench Integration: Testbench connecting to interface'
   notes: module1/examples/interfaces/README.md
+  narration: 'Example 2: Interfaces and Modports. Interface Definition: apb_if interface
+    with signals and clocking block Modports: master_mp and slave_mp modports with
+    different signal directions Clocking Block: cb clocking block for synchronous
+    access Interface Usage: Module using interface with modport Testbench Integration:
+    Testbench connecting to interface module1/examples/interfaces/README.md'
 - type: demo
   title: 'Demo: Interfaces and Modports'
   command: ./scripts/module1.sh --interfaces
   screenshot: assets/screenshots/ex02_interfaces.png
   notes: 'Hands-on: module1/examples/interfaces/'
+  narration: 'Demo: Interfaces and Modports. Watch the terminal output and confirm
+    you see the expected pass message.'
 - type: bullets
   title: 'Example 3: Packages'
   bullets:
   - 'Package Definition: `verification_pkg` with common types and functions'
   - 'Package Import: Using `import verification_pkg::*`'
   - 'Name Resolution: Handling name conflicts'
+  - 'Package Organization: Structuring verification code'
+  - 'Function Definitions: `is_valid_address()`, `calculate_checksum()` functions'
   notes: module1/examples/packages/README.md
+  narration: 'Example 3: Packages. Package Definition: verification_pkg with common
+    types and functions Package Import: Using import verification_pkg::* Name Resolution:
+    Handling name conflicts Package Organization: Structuring verification code Function
+    Definitions: is_valid_address(), calculate_checksum() functions module1/examples/packages/README.md'
 - type: demo
   title: 'Demo: Packages'
   command: ./scripts/module1.sh --packages
   screenshot: assets/screenshots/ex03_packages.png
   notes: 'Hands-on: module1/examples/packages/'
+  narration: 'Demo: Packages. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 4: Data Structures'
   bullets:
   - 'Dynamic Arrays: Transaction arrays that grow dynamically'
   - 'Queues: FIFO queues for transaction management'
   - 'Associative Arrays: Indexed by transaction ID'
+  - 'Structures: Complex data structures for verification'
+  - 'Array Methods: Using built-in array methods'
   notes: module1/examples/data_structures/README.md
+  narration: 'Example 4: Data Structures. Dynamic Arrays: Transaction arrays that
+    grow dynamically Queues: FIFO queues for transaction management Associative Arrays:
+    Indexed by transaction ID Structures: Complex data structures for verification
+    Array Methods: Using built-in array methods module1/examples/data_structures/README.md'
 - type: demo
   title: 'Demo: Data Structures'
   command: ./scripts/module1.sh --data-structures
   screenshot: assets/screenshots/ex04_data_structures.png
   notes: 'Hands-on: module1/examples/data_structures/'
+  narration: 'Demo: Data Structures. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 5: Error Handling'
   bullets:
   - 'UVM Reporting: Using `uvm_report_info()`, `uvm_report_error()`, etc.'
   - 'Assertions: Immediate and concurrent assertions'
   - 'Error Handling: Try-catch blocks for exception handling'
+  - 'Logging Patterns: Structured logging for verification'
+  - 'Retry Logic: Task with retry mechanism using `retry_task()`'
   notes: module1/examples/error_handling/README.md
+  narration: 'Example 5: Error Handling. UVM Reporting: Using uvm_report_info(), uvm_report_error(),
+    etc. Assertions: Immediate and concurrent assertions Error Handling: Try-catch
+    blocks for exception handling Logging Patterns: Structured logging for verification
+    Retry Logic: Task with retry mechanism using retry_task() module1/examples/error_handling/README.md'
 - type: demo
   title: 'Demo: Error Handling'
   command: ./scripts/module1.sh --error-handling
   screenshot: assets/screenshots/ex05_error_handling.png
   notes: 'Hands-on: module1/examples/error_handling/'
+  narration: 'Demo: Error Handling. Watch the terminal output and confirm you see
+    the expected pass message.'
+- type: section
+  title: Common pitfalls
+  narration: 'Next section: Common pitfalls.'
+- type: bullets
+  title: Transaction Class Design
+  bullets:
+  - Create a base transaction class
+  - Implement copy, compare, and string conversion methods
+  - Create derived transaction classes
+  - Test inheritance and polymorphism
+  notes: From MODULE1 Common Pitfalls.
+  narration: Transaction Class Design. Create a base transaction class Implement copy,
+    compare, and string conversion methods Create derived transaction classes Test
+    inheritance and polymorphism
+- type: bullets
+  title: Interface Design
+  bullets:
+  - Design an interface for a simple bus protocol
+  - Create modports for master and slave
+  - Implement a clocking block
+  - Connect interface to a module
+  notes: From MODULE1 Common Pitfalls.
+  narration: Interface Design. Design an interface for a simple bus protocol Create
+    modports for master and slave Implement a clocking block Connect interface to
+    a module
+- type: bullets
+  title: Package Organization
+  bullets:
+  - Create a verification package
+  - Define common types and functions
+  - Import and use package in testbench
+  - Resolve name conflicts
+  notes: From MODULE1 Common Pitfalls.
+  narration: Package Organization. Create a verification package Define common types
+    and functions Import and use package in testbench Resolve name conflicts
+- type: bullets
+  title: Data Structure Usage
+  bullets:
+  - Use dynamic arrays for transaction storage
+  - Implement a queue-based scoreboard
+  - Use associative arrays for coverage tracking
+  - Create structures for configuration
+  notes: From MODULE1 Common Pitfalls.
+  narration: Data Structure Usage. Use dynamic arrays for transaction storage Implement
+    a queue-based scoreboard Use associative arrays for coverage tracking Create structures
+    for configuration
+- type: bullets
+  title: Error Handling
+  bullets:
+  - Implement UVM reporting in testbench
+  - Add assertions to verify design behavior
+  - Handle exceptions gracefully
+  - Create structured logging
+  notes: From MODULE1 Common Pitfalls.
+  narration: Error Handling. Implement UVM reporting in testbench Add assertions to
+    verify design behavior Handle exceptions gracefully Create structured logging
 - type: section
   title: Practice & assessment
+  narration: 'Next section: Practice & assessment.'
 - type: bullets
   title: What you should know (1/2)
   bullets:
@@ -496,12 +1654,18 @@ slides:
   - Use appropriate data structures for verification
   - Implement error handling and logging
   notes: From MODULE1 Learning Outcomes.
+  narration: By now you should be able to explain the following. Understand SystemVerilog
+    OOP concepts Create and use SystemVerilog classes Design interfaces with modports
+    Organize code using packages Use appropriate data structures for verification
+    From MODULE1 Learning Outcomes.
 - type: bullets
   title: What you should know (2/2)
   bullets:
   - Write basic SystemVerilog testbenches
   - Understand UVM class structure basics
   notes: From MODULE1 Learning Outcomes.
+  narration: By now you should be able to explain the following. Write basic SystemVerilog
+    testbenches Understand UVM class structure basics From MODULE1 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -510,6 +1674,8 @@ slides:
   - Package Organization
   - Data Structure Usage
   - Error Handling
+  narration: Exercises. Transaction Class Design Interface Design Package Organization
+    Data Structure Usage Error Handling
 - type: bullets
   title: Assessment checklist
   bullets:
@@ -519,6 +1685,9 @@ slides:
   - Can use appropriate data structures
   - Can implement error handling and logging
   - Can write basic SystemVerilog testbenches
+  narration: Assessment checklist. Can create SystemVerilog classes with inheritance
+    Can design and use interfaces with modports Can organize code using packages Can
+    use appropriate data structures Can implement error handling and logging
 - type: bullets
   title: Summary & next steps
   bullets:
@@ -526,3 +1695,7 @@ slides:
   - Complete module1/CHECKLIST.md
   - Review module1/EXAMPLES.md and run each lab
   - 'Next: Next module in course'
+  narration: 'In summary: Understand SystemVerilog for verification and verification
+    fundamentals Next up: Next module in course. Understand SystemVerilog for verification
+    and verification fundamentals Complete module1/CHECKLIST.md Review module1/EXAMPLES.md
+    and run each lab Next: Next module in course'

@@ -10,60 +10,89 @@ assets:
   - 4
   - 4
   license: learn_uvm2017_sv_verilator course materials
+- id: rtl_architecture
+  type: diagram
+  file: assets/diagrams/rtl_architecture.png
+  source: assets/diagrams/rtl_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 7
+  - 15
+  license: learn_uvm2017_sv_verilator course materials
+- id: verification_architecture
+  type: diagram
+  file: assets/diagrams/verification_architecture.png
+  source: assets/diagrams/verification_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 10
+  - 16
+  license: learn_uvm2017_sv_verilator course materials
+- id: testing_methods
+  type: diagram
+  file: assets/diagrams/testing_methods.png
+  source: assets/diagrams/testing_methods.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 13
+  - 24
+  - 25
+  - 43
+  license: learn_uvm2017_sv_verilator course materials
 - id: module4_check
   type: screenshot
   file: assets/screenshots/module4_check.png
-  capture_command: ./scripts/module4.sh --transactions
+  capture_command: ./scripts/module4.sh --help
   cwd: .
   slides:
-  - 62
-  expect_stdout_contains: completed successfully
+  - 106
+  expect_stdout_contains: Module
 - id: ex01_transactions
   type: screenshot
   file: assets/screenshots/ex01_transactions.png
   capture_command: ./scripts/module4.sh --transactions
   cwd: .
   slides:
-  - 65
+  - 109
 - id: ex02_drivers
   type: screenshot
   file: assets/screenshots/ex02_drivers.png
   capture_command: ./scripts/module4.sh --drivers
   cwd: .
   slides:
-  - 67
+  - 111
 - id: ex03_monitors
   type: screenshot
   file: assets/screenshots/ex03_monitors.png
   capture_command: ./scripts/module4.sh --monitors
   cwd: .
   slides:
-  - 69
+  - 113
 - id: ex04_sequencers
   type: screenshot
   file: assets/screenshots/ex04_sequencers.png
   capture_command: ./scripts/module4.sh --sequencers
   cwd: .
   slides:
-  - 71
+  - 115
 - id: ex05_tlm
   type: screenshot
   file: assets/screenshots/ex05_tlm.png
   capture_command: ./scripts/module4.sh --tlm
   cwd: .
   slides:
-  - 73
+  - 117
 - id: ex06_scoreboards
   type: screenshot
   file: assets/screenshots/ex06_scoreboards.png
   capture_command: ./scripts/module4.sh --scoreboards
   cwd: .
   slides:
-  - 75
+  - 119
 - id: ex07_agents
   type: screenshot
   file: assets/screenshots/ex07_agents.png
   capture_command: ./scripts/module4.sh --agents
   cwd: .
   slides:
-  - 77
+  - 121

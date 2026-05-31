@@ -10,46 +10,75 @@ assets:
   - 4
   - 4
   license: learn_uvm2017_sv_verilator course materials
+- id: rtl_architecture
+  type: diagram
+  file: assets/diagrams/rtl_architecture.png
+  source: assets/diagrams/rtl_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 7
+  - 13
+  license: learn_uvm2017_sv_verilator course materials
+- id: verification_architecture
+  type: diagram
+  file: assets/diagrams/verification_architecture.png
+  source: assets/diagrams/verification_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 10
+  - 14
+  license: learn_uvm2017_sv_verilator course materials
+- id: testing_methods
+  type: diagram
+  file: assets/diagrams/testing_methods.png
+  source: assets/diagrams/testing_methods.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 12
+  - 22
+  - 23
+  - 45
+  license: learn_uvm2017_sv_verilator course materials
 - id: module5_check
   type: screenshot
   file: assets/screenshots/module5_check.png
-  capture_command: ./scripts/module5.sh --virtual-sequences
+  capture_command: ./scripts/module5.sh --help
   cwd: .
   slides:
-  - 54
-  expect_stdout_contains: completed successfully
+  - 98
+  expect_stdout_contains: Module
 - id: ex01_virtual_sequences
   type: screenshot
   file: assets/screenshots/ex01_virtual_sequences.png
   capture_command: ./scripts/module5.sh --virtual-sequences
   cwd: .
   slides:
-  - 57
+  - 101
 - id: ex02_coverage
   type: screenshot
   file: assets/screenshots/ex02_coverage.png
   capture_command: ./scripts/module5.sh --coverage
   cwd: .
   slides:
-  - 59
+  - 103
 - id: ex03_configuration
   type: screenshot
   file: assets/screenshots/ex03_configuration.png
   capture_command: ./scripts/module5.sh --configuration
   cwd: .
   slides:
-  - 61
+  - 105
 - id: ex04_callbacks
   type: screenshot
   file: assets/screenshots/ex04_callbacks.png
   capture_command: ./scripts/module5.sh --callbacks
   cwd: .
   slides:
-  - 63
+  - 107
 - id: ex05_register_model
   type: screenshot
   file: assets/screenshots/ex05_register_model.png
   capture_command: ./scripts/module5.sh --register-model
   cwd: .
   slides:
-  - 65
+  - 109

@@ -71,6 +71,57 @@ cd module8/tests/uvm_tests
 make SIM=verilator TEST=test_utilities_uvm
 ```
 
+## Design Architecture
+
+### 1. UVM utility layer architecture
+
+| Component | Role |
+|-----------|------|
+| `uvm_cmdline_processor` | Parses `+UVM_*` and custom plusargs at startup |
+| `uvm_comparer` / `uvm_packer` | Transaction compare and pack/unpack utilities |
+| `uvm_recorder` | Transaction recording for debug and replay |
+| `uvm_pool` / queues | Shared storage across components |
+| String/math/random utils | Formatting, statistics, and RNG helpers |
+
+- Utilities sit **below** agents/env — used by transactions, scoreboards, tests
+- CLP is singleton — query in `build_phase` or test `new()` for test configuration
+- Comparators plug into `do_compare` for field-tolerant matching
+- **Integration example** (`examples/integration/`) wires multiple utilities in one TB
+
+### 2. Utility integration flow
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | CLP | Read `+TESTNAME=`, `+UVM_VERBOSITY=`, seed plusargs |
+| 2 | Random utils | Seed RNG for repeatable constrained-random runs |
+| 3 | Transaction | `pack`/`unpack` for scoreboard queues or recording |
+| 4 | Recorder | Log high-value transactions to file for offline debug |
+| 5 | Report | Summarize comparer mismatches and pool statistics |
+| **Execution sequence**: parse args → configure test → run → utility-backed report
+
+### 3. Module 8 example catalog
+
+- One example per utility family (CLP, comparators, recorders, pools, queues, string/math/random)
+- `dut/dma/simple_dma.v` provides lightweight RTL context for integration demo
+- `test_utilities_uvm.sv` shows utilities inside a full UVM test structure
+
+## Verification & Testing Methods
+
+### 1. Utility-driven test configuration
+
+- Use `+UVM_TESTNAME=` and `+UVM_VERBOSITY=` instead of hard-coded test selection
+- Pass custom plusargs (`+NUM_TRANS=`, `+TIMEOUT=`) via CLP getters
+- Seed control: plusarg → `uvm_random_utils` or `$urandom` for reproducible bugs
+- Recorders capture failing transaction windows for post-sim review
+
+### 2. Debug and regression strategy
+
+- Enable comparer **policy** (ignore certain fields) for noisy buses
+- Pools share counters/statistics between monitor and scoreboard without globals
+- **Regression**: `./scripts/module8.sh --all-examples --uvm-tests`
+- `./scripts/module8.sh --integration` validates combined utility usage
+- **Closure**: utility self-tests PASS + integration test UVM report clean
+
 ## Topics Covered
 
 ### 1. Command Line Processor (CLP)

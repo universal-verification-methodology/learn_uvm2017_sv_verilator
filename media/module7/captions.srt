@@ -1,283 +1,567 @@
 1
-00:00:00,000 --> 00:00:03,048
-Real-World Applications Module 7
+00:00:00,000 --> 00:00:08,904
+Welcome to module 7, Real-World Applications. In this module you will apply uvm to real-world verification scenarios.
 
 2
-00:00:03,398 --> 00:00:08,366
-Learning objectives Apply UVM to real-world verification scenarios
+00:00:09,254 --> 00:00:16,094
+Here is what you will learn in this module. Apply UVM to real-world verification scenarios
 
 3
-00:00:08,716 --> 00:00:11,476
-Prerequisites See module README
+00:00:16,444 --> 00:00:22,492
+Before you start, make sure you have these prerequisites. See module README
 
 4
-00:00:11,826 --> 00:00:16,530
-Learning path Apply UVM to real-world verification scenarios
+00:00:22,842 --> 00:00:28,722
+Learning path. Apply UVM to real-world verification scenarios
 
 5
-00:00:16,880 --> 00:00:35,216
-Overview This module applies UVM to real-world verification scenarios including DMA verification, protocol verification (UART, SPI, I2C), VIP development, and best practices. You'll learn how to verify complex designs, develop re
+00:00:29,072 --> 00:00:42,512
+Overview. This module applies UVM to real-world verification scenarios including DMA verification, protocol verification (UART, SPI, I2C), VIP...
 
 6
-00:00:35,566 --> 00:00:37,822
-Syllabus topics
+00:00:42,862 --> 00:00:46,102
+Next section: Design architecture.
 
 7
-00:00:38,172 --> 00:00:41,052
-From MODULE7 Topics Covered.
+00:00:46,452 --> 00:01:14,556
+1. Real-world verification architecture (1/3). DMA path: CPU/config → descriptor ring → bus master → memory/peripheral Protocol path: serial frame → byte stream → transaction → scoreboard VIP encapsulates protocol knowledge for reuse across projects and modules module7/dut/dma/simple_dma.v and dut/protocols/uart.v anchor the labs Refer to the diagram on the right.
 
 8
-00:00:41,402 --> 00:00:44,282
-From MODULE7 Topics Covered.
+00:01:14,906 --> 00:01:40,754
+1. Real-world verification architecture (2/3). DMA agent: Programs descriptors; monitors transfer completion Protocol agents (UART/SPI/I2C): Bus-specific driver/monitor/sequencer sets VIP package: Reusable agent + sequences + config for a protocol Scoreboard / predictor: End-to-end data integrity across DMA + peripheral
 
 9
-00:00:44,632 --> 00:00:47,512
-From MODULE7 Topics Covered.
+00:01:41,104 --> 00:01:50,296
+1. Real-world verification architecture (3/3). Reference model: Software model of DMA or protocol behavior
 
 10
-00:00:47,862 --> 00:00:50,742
-From MODULE7 Topics Covered.
+00:01:50,646 --> 00:02:15,414
+2. VIP and reuse architecture (1/2). 1: VIP interface — Standardized signal bundle + modport 2: VIP agent — Configurable active/passive agent 3: VIP sequences — Library of legal and stress sequences 4: Integration env — Instantiates DUT + VIP + scoreboard Refer to the diagram on the right.
 
 11
-00:00:51,092 --> 00:00:53,972
-From MODULE7 Topics Covered.
+00:02:15,764 --> 00:02:25,772
+2. VIP and reuse architecture (2/2). 5: Test suite — Directed + random tests using VIP API
 
 12
-00:00:54,322 --> 00:00:57,202
-From MODULE7 Topics Covered.
+00:02:26,122 --> 00:02:55,450
+3. Module 7 application map (1/2). examples/dma/ — descriptor programming, transfer status, interrupts examples/protocols/ — UART, SPI, I2C patterns (timing and framing) examples/vip/ — packaging reusable verification IP examples/best_practices/ — naming, config, debug, regression discipline Refer to the diagram on the right.
 
 13
-00:00:57,552 --> 00:01:00,432
-From MODULE7 Topics Covered.
+00:02:55,800 --> 00:03:07,440
+3. Module 7 application map (2/2). test_real_world_uvm.sv — integrated scenario combining subsystems
 
 14
-00:01:00,782 --> 00:01:03,662
-From MODULE7 Topics Covered.
+00:03:07,790 --> 00:03:15,086
+RTL block diagram (reference). Module 7: DUT hierarchy and signal flow.
 
 15
-00:01:04,012 --> 00:01:06,892
-From MODULE7 Topics Covered.
+00:03:15,436 --> 00:03:23,884
+Verification / testbench diagram (reference). Module 7: stimulus, observation, and checking.
 
 16
-00:01:07,242 --> 00:01:10,122
-From MODULE7 Topics Covered.
+00:03:24,234 --> 00:03:28,266
+Next section: Execution & simulation flow.
 
 17
-00:01:10,472 --> 00:01:13,352
-From MODULE7 Topics Covered.
+00:03:28,616 --> 00:04:00,968
+How the example runs (toolchain). Match each bullet to files in the repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command: make SIM=verilator TEST=test_* (see module7 demo slide) Loopback / hooks connect...
 
 18
-00:01:13,702 --> 00:01:16,582
-From MODULE7 Topics Covered.
+00:04:01,318 --> 00:04:30,070
+Artifact flow (spec → sim) (1). Match each bullet to files in the repository. 1: VIP interface — Standardized signal bundle + modport 2: VIP agent — Configurable active/passive agent 3: VIP sequences — Library of legal and stress sequences 4: Integration env — Instantiates DUT + VIP + scoreboard From MODULE7 — execution and artifact layout.
 
 19
-00:01:16,932 --> 00:01:19,812
-From MODULE7 Topics Covered.
+00:04:30,420 --> 00:04:46,116
+Artifact flow (spec → sim) (2). Match each bullet to files in the repository. 5: Test suite — Directed + random tests using VIP API From MODULE7 — execution and artifact layout.
 
 20
-00:01:20,162 --> 00:01:23,042
-From MODULE7 Topics Covered.
+00:04:46,466 --> 00:05:16,370
+Example directory layout. Match each bullet to files in the repository. DMA agent: Programs descriptors; monitors transfer completion Protocol agents (UART/SPI/I2C): Bus-specific driver/monitor/sequencer sets VIP package: Reusable agent + sequences + config for a protocol Scoreboard / predictor: End-to-end data integrity across DMA + peripheral Reference model: Software model of DMA or...
 
 21
-00:01:23,392 --> 00:01:26,272
-From MODULE7 Topics Covered.
+00:05:16,720 --> 00:05:27,904
+Follow these steps in order when working through this module. VIP config env build sequence library coverage + report Follow this order when tracing waveforms or debugging.
 
 22
-00:01:26,622 --> 00:01:29,502
-From MODULE7 Topics Covered.
+00:05:28,254 --> 00:05:32,358
+Next section: Verification & testing methods.
 
 23
-00:01:29,852 --> 00:01:32,732
-From MODULE7 Topics Covered.
+00:05:32,708 --> 00:06:00,116
+1. Application-specific verification strategy. DMA: descriptor alignment, boundary lengths, error flags, concurrent channels Serial protocols: baud/bit timing, framing, parity, back-to-back packets VIP usage: configure via object; run standard sequences before custom stress Directed tests prove basic paths; random tests explore corner combinations Refer to the diagram on the right.
 
 24
-00:01:33,082 --> 00:01:35,962
-From MODULE7 Topics Covered.
+00:06:00,466 --> 00:06:28,234
+2. Production best practices (1/2). Centralize plusargs via CLP (Module 8) for seed, verbosity, test name Separate test intent (test class) from reusable env (VIP + env) Log protocol transactions at UVM_MEDIUM; errors at UVM_LOW Regression: ./scripts/module7.sh --all-examples --uvm-tests Refer to the diagram on the right.
 
 25
-00:01:36,312 --> 00:01:39,192
-From MODULE7 Topics Covered.
+00:06:28,584 --> 00:06:38,928
+2. Production best practices (2/2). Closure: functional coverage bins hit + scoreboard clean + VIP protocol clean
 
 26
-00:01:39,542 --> 00:01:42,422
-From MODULE7 Topics Covered.
+00:06:39,278 --> 00:06:42,542
+Next section: Syllabus topics.
 
 27
-00:01:42,772 --> 00:01:45,652
-From MODULE7 Topics Covered.
+00:06:42,892 --> 00:06:46,684
+Next section: Protocol & design details.
 
 28
-00:01:46,002 --> 00:01:48,882
-From MODULE7 Topics Covered.
+00:06:47,034 --> 00:07:20,634
+Protocol and design detail: Example 7.1: DMA Verification (module7/examples/dma/dma.sv) (1). Interface (dma_if): DMA interface with start, done, addresses, length, and channel signals Transaction (DmaTxn): DMA transaction with source address, destination address, length, and channel Sequence (DmaSeq): DMA sequence generating random DMA transfers Driver (DmaDriver): DMA driver implementing DMA...
 
 29
-00:01:49,232 --> 00:01:52,112
-From MODULE7 Topics Covered.
+00:07:20,984 --> 00:07:50,528
+Protocol and design detail: Example 7.1: DMA Verification (module7/examples/dma/dma.sv) (2). Environment (DmaEnv): DMA verification environment Test (DmaTest): DMA verification test with simple DMA DUT Method Signature: function bit randomize(); Purpose: Generate random DMA transfer parameters From MODULE7 Topics Covered — protocol/design depth.
 
 30
-00:01:52,462 --> 00:01:55,342
-From MODULE7 Topics Covered.
+00:07:50,878 --> 00:08:23,518
+Protocol and design detail: Example 7.2: UART Verification (module7/examples/protocols/uart_example.sv) (1). Interface (uart_if): UART interface with TX/RX signals and control Transaction (UartTxn): UART transaction with data field Sequence (UartSeq): UART sequence generating random UART transfers Driver (UartDriver): UART driver implementing UART protocol From MODULE7 Topics Covered —...
 
 31
-00:01:55,692 --> 00:01:58,572
-From MODULE7 Topics Covered.
+00:08:23,868 --> 00:08:54,972
+Protocol and design detail: Example 7.2: UART Verification (module7/examples/protocols/uart_example.sv) (2). Environment (UartEnv): UART verification environment Test (UartTest): UART verification test with UART DUT Method Signature: task get_next_item(ref T item); - Get transaction from sequencer From MODULE7 Topics Covered — protocol/design depth.
 
 32
-00:01:58,922 --> 00:02:01,802
-From MODULE7 Topics Covered.
+00:08:55,322 --> 00:09:27,746
+Protocol and design detail: Example 7.3: SPI Verification (module7/examples/protocols/spi_example.sv) (1). Test (SpiExampleTest): SPI verification test scaffold UVM Pattern: Demonstrates UVM structure for SPI verification SPI protocol verification patterns provide reusable structure UVM scaffold for protocol verification enables rapid development From MODULE7 Topics Covered — protocol/design...
 
 33
-00:02:02,152 --> 00:02:05,032
-From MODULE7 Topics Covered.
+00:09:28,096 --> 00:09:48,712
+Protocol and design detail: Example 7.3: SPI Verification (module7/examples/protocols/spi_example.sv) (2). Protocol-specific testbench structure supports future DUT integration From MODULE7 Topics Covered — protocol/design depth.
 
 34
-00:02:05,382 --> 00:02:08,262
-From MODULE7 Topics Covered.
+00:09:49,062 --> 00:10:21,678
+Protocol and design detail: Example 7.4: I2C Verification (module7/examples/protocols/i2c_example.sv) (1). Test (I2cExampleTest): I2C verification test scaffold UVM Pattern: Demonstrates UVM structure for I2C verification I2C protocol verification patterns provide reusable structure UVM scaffold for protocol verification enables rapid development From MODULE7 Topics Covered — protocol/design...
 
 35
-00:02:08,612 --> 00:02:11,492
-From MODULE7 Topics Covered.
+00:10:22,028 --> 00:10:42,716
+Protocol and design detail: Example 7.4: I2C Verification (module7/examples/protocols/i2c_example.sv) (2). Protocol-specific testbench structure supports future DUT integration From MODULE7 Topics Covered — protocol/design depth.
 
 36
-00:02:11,842 --> 00:02:14,722
-From MODULE7 Topics Covered.
+00:10:43,066 --> 00:11:12,802
+Protocol and design detail: Example 7.5: VIP Development (module7/examples/vip/vip.sv) (1). Transaction (VipTxn): VIP transaction with payload Sequence (VipSeq): VIP sequence generating transactions Driver (VipDriver): VIP driver Agent (VipAgent): VIP agent containing sequencer and driver From MODULE7 Topics Covered — protocol/design depth.
 
 37
-00:02:15,072 --> 00:02:17,952
-From MODULE7 Topics Covered.
+00:11:13,152 --> 00:11:43,416
+Protocol and design detail: Example 7.5: VIP Development (module7/examples/vip/vip.sv) (2). Test (VipTest): VIP test demonstrating VIP usage Purpose: Package VIP components (sequencer + driver) in agent Pattern: Agent encapsulates all VIP components Key: Standard UVM agent structure for reusability From MODULE7 Topics Covered — protocol/design depth.
 
 38
-00:02:18,302 --> 00:02:21,182
-From MODULE7 Topics Covered.
+00:11:43,766 --> 00:12:13,766
+Protocol and design detail: Example 7.6: Best Practices (module7/examples/best_practices/best_practices.sv) (1). Test (BestPracticesTest): Test demonstrating best practices Phase Organization: Proper phase usage and logging Topology Printing: Component hierarchy visualization Logging Patterns: Structured logging for maintainability From MODULE7 Topics Covered — protocol/design depth.
 
 39
-00:02:21,532 --> 00:02:24,412
-From MODULE7 Topics Covered.
+00:12:14,116 --> 00:12:39,340
+Protocol and design detail: Example 7.6: Best Practices (module7/examples/best_practices/best_practices.sv) (2). Purpose: Log execution flow through phases Pattern: Log at start of each phase Key: Consistent logging improves debugging Method Signature: From MODULE7 Topics Covered — protocol/design depth.
 
 40
-00:02:24,762 --> 00:02:27,642
-From MODULE7 Topics Covered.
+00:12:39,690 --> 00:13:04,962
+Protocol and design detail: DMA Transaction Randomization (1). Method Signature: function bit randomize(); Return Type: bit (1 = success, 0 = failure) Purpose: Generate random DMA transfer parameters Usage: void'(t.randomize() with { len inside {[1:20]}; }); From MODULE7 Topics Covered — protocol/design depth.
 
 41
-00:02:27,992 --> 00:02:30,872
-From MODULE7 Topics Covered.
+00:13:05,312 --> 00:13:32,888
+Protocol and design detail: DMA Transaction Randomization (2). Parameters: None (randomizes all rand fields in object) Constraints: Use with { constraint_expression; } to limit values Example: len inside {[1:20]} constrains transfer length to 1-20 bytes Key: void'() suppresses Verilator warning about ignored return value From MODULE7 Topics Covered — protocol/design depth.
 
 42
-00:02:31,222 --> 00:02:34,102
-From MODULE7 Topics Covered.
+00:13:33,238 --> 00:13:48,166
+Protocol and design detail: DMA Protocol Implementation. Pattern: Start pulse → Wait for done → Completion Key: do-while loop waits for dma_done pulse From MODULE7 Topics Covered — protocol/design depth.
 
 43
-00:02:34,452 --> 00:02:37,332
-From MODULE7 Topics Covered.
+00:13:48,516 --> 00:14:12,156
+Protocol and design detail: UART Protocol Implementation (1). Pattern: Data → Start → Wait for busy deassert → Completion Key: Wait for tx_busy to deassert Event Control: @(posedge clk) - wait for positive clock edge Non-blocking Assignment: <= - schedule assignment for next time step From MODULE7 Topics Covered — protocol/design depth.
 
 44
-00:02:37,682 --> 00:02:40,562
-From MODULE7 Topics Covered.
+00:14:12,506 --> 00:14:32,834
+Protocol and design detail: UART Protocol Implementation (2). Do-While Loop: do @(posedge clk); while (condition); - wait for condition Purpose: Enable loopback testing Use Case: Minimal smoke testing without external device From MODULE7 Topics Covered — protocol/design depth.
 
 45
-00:02:40,912 --> 00:02:43,792
-From MODULE7 Topics Covered.
+00:14:33,184 --> 00:14:50,800
+Protocol and design detail: VIP Agent Packaging. Purpose: Package VIP components for reusability Pattern: Agent encapsulates sequencer + driver Key: Standard UVM agent structure From MODULE7 Topics Covered — protocol/design depth.
 
 46
-00:02:44,142 --> 00:02:47,022
-From MODULE7 Topics Covered.
+00:14:51,150 --> 00:15:12,342
+Protocol and design detail: VIP Logging (1). Macro: uvm_info(id, message, verbosity) Function: $sformatf(format, args) → string Purpose: Log transaction with formatted message Format Specifiers: From MODULE7 Topics Covered — protocol/design depth.
 
 47
-00:02:47,372 --> 00:02:50,252
-From MODULE7 Topics Covered.
+00:15:12,692 --> 00:15:32,732
+Protocol and design detail: VIP Logging (2). %02h - 2-digit hexadecimal, zero-padded %08h - 8-digit hexadecimal, zero-padded %0d - Decimal, no padding %s - String From MODULE7 Topics Covered — protocol/design depth.
 
 48
-00:02:50,602 --> 00:02:53,482
-From MODULE7 Topics Covered.
+00:15:33,082 --> 00:15:48,586
+Protocol and design detail: Phase-Based Logging. Purpose: Log execution flow through phases Pattern: Log at start of each phase Key: Consistent logging improves debugging From MODULE7 Topics Covered — protocol/design depth.
 
 49
-00:02:53,832 --> 00:02:56,712
-From MODULE7 Topics Covered.
+00:15:48,936 --> 00:16:08,688
+Protocol and design detail: Topology Printing (1). Method Signature: static function uvm_root get(); → returns singleton root function void print_topology(); → prints hierarchy Purpose: Visualize component hierarchy From MODULE7 Topics Covered — protocol/design depth.
 
 50
-00:02:57,062 --> 00:02:59,942
-From MODULE7 Topics Covered.
+00:16:09,038 --> 00:16:27,806
+Protocol and design detail: Topology Printing (2). Timing: Call in end_of_elaboration_phase() (after all connections) Output: Prints complete component tree with hierarchical paths Usage: From MODULE7 Topics Covered — protocol/design depth.
 
 51
-00:03:00,292 --> 00:03:03,172
-From MODULE7 Topics Covered.
+00:16:28,156 --> 00:16:53,332
+Protocol and design detail: end_of_elaboration_phase (1). Phase Type: Build-time phase (function, executes bottom-up) Purpose: Final elaboration tasks after all connections Timing: After connect_phase(), before start_of_simulation_phase() Common Uses: From MODULE7 Topics Covered — protocol/design depth.
 
 52
-00:03:03,522 --> 00:03:05,754
-Hands-on examples
+00:16:53,682 --> 00:17:08,394
+Protocol and design detail: end_of_elaboration_phase (2). Print topology Validate configuration Final checks Setup verification From MODULE7 Topics Covered — protocol/design depth.
 
 53
-00:03:06,104 --> 00:03:08,936
-Run from course repository root.
+00:17:08,744 --> 00:17:16,544
+Verification flow (reference). Stimulus, DUT response, and check points for this module.
 
 54
-00:03:09,286 --> 00:03:14,278
-module7/examples/dma/README.md
+00:17:16,894 --> 00:17:29,878
+1. DMA Verification (1/9). DMA Controller Verification DMA transaction modeling DMA protocol implementation DMA sequence generation DMA result checking
 
 55
-00:03:14,628 --> 00:03:19,356
-Hands-on: module7/examples/dma/
+00:17:30,228 --> 00:17:47,340
+1. DMA Verification (2/9). DMA transfer patterns Multi-channel DMA DMA completion handling DMA error handling Interface (dma_if): DMA interface with start, done, addresses, length, and channel signals
 
 56
-00:03:19,706 --> 00:03:24,746
-module7/examples/protocols/README.md
+00:17:47,690 --> 00:18:12,242
+1. DMA Verification (3/9). Sequence (DmaSeq): DMA sequence generating random DMA transfers Driver (DmaDriver): DMA driver implementing DMA protocol Environment (DmaEnv): DMA verification environment Test (DmaTest): DMA verification test with simple DMA DUT Method Signature: function bit randomize();
 
 57
-00:03:25,096 --> 00:03:29,896
-Hands-on: module7/examples/protocols/
+00:18:12,592 --> 00:18:34,000
+1. DMA Verification (4/9). Constraints: Use with { constraint; } to limit values Key: len inside {[1:20]} constrains transfer length Method Signature: task get_next_item(ref T item); - Get transaction from sequencer task item_done(); - Signal transaction completion
 
 58
-00:03:30,246 --> 00:03:35,286
-module7/examples/protocols/README.md
+00:18:34,350 --> 00:19:01,662
+1. DMA Verification (5/9). Protocol Flow: Key: do-while loop waits for dma_done pulse (blocking wait) Timing: Start signal is one clock cycle pulse Blocking Behavior: get_next_item() blocks until sequencer provides transaction, item_done() unblocks sequencer Completion Detection: Wait for dma_done signal assertion (may take multiple clock cycles)
 
 59
-00:03:35,636 --> 00:03:40,436
-Hands-on: module7/examples/protocols/
+00:19:02,012 --> 00:19:20,348
+1. DMA Verification (6/9). Purpose: Generate and send multiple DMA transfers to sequencer Execution Flow: Key: repeat loop creates multiple transactions sequentially Blocking Behavior: start_item() blocks until sequencer grants access
 
 60
-00:03:40,786 --> 00:03:45,826
-module7/examples/protocols/README.md
+00:19:20,698 --> 00:19:37,042
+1. DMA Verification (7/9). Transaction Lifetime: Created in loop Sent to sequencer via start_item() Driver processes it (drives signals, waits for DMA done) Driver signals completion via item_done()
 
 61
-00:03:46,176 --> 00:03:50,976
-Hands-on: module7/examples/protocols/
+00:19:37,392 --> 00:20:00,264
+1. DMA Verification (8/9). Constraint: len inside {[1:20]} ensures reasonable transfer lengths DMA transaction modeling captures transfer semantics DMA protocol implementation handles start/done handshake DMA sequence generation creates realistic transfer scenarios DMA result checking verifies transfer completion
 
 62
-00:03:51,326 --> 00:03:56,366
-module7/examples/vip/README.md
+00:20:00,614 --> 00:20:17,654
+1. DMA Verification (9/9). Transaction Flow: Sequence → Sequencer → Driver → DUT Completion Detection: Wait for dma_done signal assertion DMA transaction generation DMA protocol execution DMA transfer completion
 
 63
-00:03:56,716 --> 00:04:01,540
-Hands-on: module7/examples/vip/
+00:20:18,004 --> 00:20:30,436
+2. Protocol Verification (1/9). UART Verification UART protocol modeling Serial communication verification Loopback testing UART-specific patterns
 
 64
-00:04:01,890 --> 00:04:07,698
-module7/examples/best_practices/README.md
+00:20:30,786 --> 00:20:45,234
+2. Protocol Verification (2/9). SPI protocol verification patterns UVM scaffold for SPI Protocol-specific testbench structure I2C Verification I2C protocol verification patterns
 
 65
-00:04:08,048 --> 00:04:13,640
-Hands-on: module7/examples/best_practices/
+00:20:45,584 --> 00:21:10,496
+2. Protocol Verification (3/9). Protocol-specific testbench structure Interface (uart_if): UART interface with TX/RX signals and control Transaction (UartTxn): UART transaction with data field Sequence (UartSeq): UART sequence generating random UART transfers Driver (UartDriver): UART driver implementing UART protocol
 
 66
-00:04:13,990 --> 00:04:16,318
-Practice & assessment
+00:21:10,846 --> 00:21:32,542
+2. Protocol Verification (4/9). Test (UartTest): UART verification test with UART DUT Method Signature: task get_next_item(ref T item); - Get transaction from sequencer task item_done(); - Signal transaction completion Purpose: Implement UART TX protocol
 
 67
-00:04:16,668 --> 00:04:19,620
-From MODULE7 Learning Outcomes.
+00:21:32,892 --> 00:22:03,084
+2. Protocol Verification (5/9). Key: Wait for tx_busy to deassert (transmission complete) Timing: Start signal is one clock cycle pulse Blocking Behavior: get_next_item() blocks until sequencer provides transaction, item_done() unblocks sequencer Completion Detection: Wait for tx_busy signal deassertion (may take many clock cycles for serial transmission) UART Characteristics: Serial...
 
 68
-00:04:19,970 --> 00:04:22,922
-From MODULE7 Learning Outcomes.
+00:22:03,434 --> 00:22:24,938
+2. Protocol Verification (6/9). Pattern: assign rx = tx creates loopback path Use Case: Minimal smoke testing without external device UART protocol modeling captures serial communication Serial communication verification tests TX/RX paths Loopback testing enables minimal smoke testing
 
 69
-00:04:23,272 --> 00:04:31,072
-Exercises DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+00:22:25,288 --> 00:22:44,008
+2. Protocol Verification (7/9). UART Protocol: Data → Start → Wait for busy → Completion Loopback Pattern: TX output connected to RX input Busy Signal: Wait for tx_busy deassertion UART transaction generation UART protocol execution
 
 70
-00:04:31,422 --> 00:04:47,310
-Assessment checklist Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches Understands protocol verification patterns
+00:22:44,358 --> 00:23:06,534
+2. Protocol Verification (8/9). Loopback verification Test (SpiExampleTest): SPI verification test scaffold UVM Pattern: Demonstrates UVM structure for SPI verification SPI protocol verification patterns provide reusable structure UVM scaffold for protocol verification enables rapid development
 
 71
-00:04:47,660 --> 00:05:01,508
-Summary & next steps Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Review module7/EXAMPLES.md and run each lab Next: Next module in course
+00:23:06,884 --> 00:23:31,988
+2. Protocol Verification (9/9). Test (I2cExampleTest): I2C verification test scaffold UVM Pattern: Demonstrates UVM structure for I2C verification I2C protocol verification patterns provide reusable structure UVM scaffold for protocol verification enables rapid development Protocol-specific testbench structure supports future DUT integration
+
+72
+00:23:32,338 --> 00:23:44,578
+3. VIP Development (1/6). VIP Architecture VIP component organization VIP packaging patterns VIP reuse strategies VIP configuration
+
+73
+00:23:44,928 --> 00:23:57,480
+3. VIP Development (2/6). Transaction classes Sequence classes Driver and monitor Agent packaging Transaction (VipTxn): VIP transaction with payload
+
+74
+00:23:57,830 --> 00:24:21,134
+3. VIP Development (3/6). Driver (VipDriver): VIP driver Agent (VipAgent): VIP agent containing sequencer and driver Test (VipTest): VIP test demonstrating VIP usage Purpose: Package VIP components (sequencer + driver) in agent Pattern: Agent encapsulates all VIP components
+
+75
+00:24:21,484 --> 00:24:41,500
+3. VIP Development (4/6). Purpose: VIP driver with structured logging Logging: Use uvm_info with formatted messages Key: $sformatf() for formatted string generation Purpose: Demonstrate VIP usage in test Pattern: Create VIP agent, use its sequencer
+
+76
+00:24:41,850 --> 00:25:03,282
+3. VIP Development (5/6). VIP architecture enables reusable verification components VIP component organization provides clear structure VIP packaging patterns support easy integration VIP reuse strategies improve productivity VIP Packaging: Transaction + Sequence + Driver + Agent
+
+77
+00:25:03,632 --> 00:25:18,800
+3. VIP Development (6/6). Structured Logging: Use uvm_info with formatted messages VIP transaction generation VIP agent operation VIP packaging demonstration VIP reuse pattern
+
+78
+00:25:19,150 --> 00:25:29,326
+4. Best Practices (1/10). Code Organization Component organization File structure Module organization Package organization
+
+79
+00:25:29,676 --> 00:25:38,916
+4. Best Practices (2/10). Component naming Variable naming File naming Test naming Logging and Debugging
+
+80
+00:25:39,266 --> 00:25:53,930
+4. Best Practices (3/10). Phase-based logging Topology visualization Debug techniques Test (BestPracticesTest): Test demonstrating best practices Phase Organization: Proper phase usage and logging
+
+81
+00:25:54,280 --> 00:26:10,120
+4. Best Practices (4/10). Logging Patterns: Structured logging for maintainability Purpose: Log execution flow through phases Pattern: Log at start of each phase Key: Consistent logging improves debugging Method Signature:
+
+82
+00:26:10,470 --> 00:26:31,374
+4. Best Practices (5/10). function void print_topology(); → prints hierarchy Purpose: Visualize component hierarchy for debugging Timing: Call in end_of_elaboration_phase() (after all connections) Output: Prints complete component tree with hierarchical paths Output Format:
+
+83
+00:26:31,724 --> 00:26:44,444
+4. Best Practices (6/10). When to Use: After all components created After all connections made When debugging component hierarchy issues To verify testbench structure
+
+84
+00:26:44,794 --> 00:27:03,826
+4. Best Practices (7/10). Visual representation of testbench structure Helps identify missing components Verifies hierarchical naming Aids in debugging connection issues Method Signature: function void end_of_elaboration_phase(uvm_phase phase);
+
+85
+00:27:04,176 --> 00:27:27,096
+4. Best Practices (8/10). Purpose: Final elaboration tasks after all connections Common Uses: Print topology, validate configuration, final checks Timing: After connect_phase(), before start_of_simulation_phase() Code organization improves maintainability Naming conventions enhance readability
+
+86
+00:27:27,446 --> 00:27:52,286
+4. Best Practices (9/10). Topology visualization aids debugging Phase Logging: Log at start of each phase Topology Printing: Use print_topology() in end_of_elaboration_phase() Structured Logging: Use consistent message IDs and formats end_of_elaboration_phase: Use for final checks and topology printing
+
+87
+00:27:52,636 --> 00:28:01,972
+4. Best Practices (10/10). Component topology printing Best practices demonstration Structured logging output
+
+88
+00:28:02,322 --> 00:28:14,922
+5. System-Level Verification (1/24). Multi-DUT Verification Multiple DUT instantiation Multi-DUT coordination System integration System-level testing
+
+89
+00:28:15,272 --> 00:28:30,800
+5. System-Level Verification (2/24). Practical verification scenarios Production-quality testbenches Maintainable verification environments Scalable verification solutions Method Signature: function bit randomize();
+
+90
+00:28:31,150 --> 00:28:58,078
+5. System-Level Verification (3/24). Purpose: Generate random DMA transfer parameters Usage: void'(t.randomize() with { len inside {[1:20]}; }); Parameters: None (randomizes all rand fields in object) Constraints: Use with { constraint_expression; } to limit values Example: len inside {[1:20]} constrains transfer length to 1-20 bytes
+
+91
+00:28:58,428 --> 00:29:17,052
+5. System-Level Verification (4/24). Constraint Syntax: len inside {[1:20]} - Range constraint len inside {1, 2, 4, 8, 16} - Set constraint len > 0 && len < 100 - Boolean constraint Randomization Order:
+
+92
+00:29:17,402 --> 00:29:39,914
+5. System-Level Verification (5/24). Key: do-while loop waits for dma_done pulse Pattern: Data → Start → Wait for busy deassert → Completion Key: Wait for tx_busy to deassert Event Control: @(posedge clk) - wait for positive clock edge Non-blocking Assignment: <= - schedule assignment for next time step
+
+93
+00:29:40,264 --> 00:29:59,704
+5. System-Level Verification (6/24). Purpose: Enable loopback testing Use Case: Minimal smoke testing without external device Purpose: Package VIP components for reusability Pattern: Agent encapsulates sequencer + driver Key: Standard UVM agent structure
+
+94
+00:30:00,054 --> 00:30:21,054
+5. System-Level Verification (7/24). Function: $sformatf(format, args) → string Purpose: Log transaction with formatted message Format Specifiers: %02h - 2-digit hexadecimal, zero-padded %08h - 8-digit hexadecimal, zero-padded
+
+95
+00:30:21,404 --> 00:30:44,660
+5. System-Level Verification (8/24). %s - String Verbosity Levels: UVM_NONE, UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL Message IDs: Use consistent IDs for filtering and debugging Purpose: Log execution flow through phases Pattern: Log at start of each phase
+
+96
+00:30:45,010 --> 00:31:06,706
+5. System-Level Verification (9/24). Method Signature: static function uvm_root get(); → returns singleton root function void print_topology(); → prints hierarchy Purpose: Visualize component hierarchy Timing: Call in end_of_elaboration_phase() (after all connections)
+
+97
+00:31:07,056 --> 00:31:27,480
+5. System-Level Verification (10/24). Usage: Phase Type: Build-time phase (function, executes bottom-up) Purpose: Final elaboration tasks after all connections Timing: After connect_phase(), before start_of_simulation_phase() Common Uses:
+
+98
+00:31:27,830 --> 00:31:43,310
+5. System-Level Verification (11/24). Validate configuration Final checks Setup verification Pattern: forever #period clk = ~clk; Purpose: Generate continuous clock signal
+
+99
+00:31:43,660 --> 00:32:02,716
+5. System-Level Verification (12/24). Key: forever loop runs indefinitely Pattern: repeat(n) @(posedge clk); Purpose: Wait for n clock cycles Usage: Reset sequences, initialization delays Key: repeat loop with event control
+
+100
+00:32:03,066 --> 00:32:22,506
+5. System-Level Verification (13/24). Purpose: Configure components before test starts Key: Use null context and "*" wildcard for global configuration Operator: @(event) - event control Purpose: Wait for event to occur Behavior: Blocks until event occurs
+
+101
+00:32:22,856 --> 00:32:41,216
+5. System-Level Verification (14/24). Operator: #time - delay operator Purpose: Wait for specified time Behavior: Blocks for specified time units Usage: Clock generation, timing delays Operator: <= - non-blocking assignment
+
+102
+00:32:41,566 --> 00:33:00,574
+5. System-Level Verification (15/24). Behavior: All non-blocking assignments in current time step execute together Usage: Clock-synchronized signal assignments Statement: repeat(n) statement; Purpose: Execute statement n times Behavior: Loops n times
+
+103
+00:33:00,924 --> 00:33:19,308
+5. System-Level Verification (16/24). Statement: forever statement; Purpose: Execute statement indefinitely Behavior: Infinite loop Usage: Clock generation, continuous monitoring Function: $sformatf(format, args...) → string
+
+104
+00:33:19,658 --> 00:33:36,722
+5. System-Level Verification (17/24). Return: Formatted string Usage: Logging, debugging, reporting Problem: Simulation hangs waiting for dma_done Solution: Check DUT implementation, add timeout Code:
+
+105
+00:33:37,072 --> 00:33:56,392
+5. System-Level Verification (18/24). Problem: Simulation hangs waiting for tx_busy deassert Solution: Check DUT implementation, verify clock Code: Prevention: Add bounded wait with timeout checking Problem: print_topology() shows nothing
+
+106
+00:33:56,742 --> 00:34:17,358
+5. System-Level Verification (19/24). Code: Must be after connect_phase() completes Check: Verify all components created in build_phase() Problem: VIP agent hardcoded for specific use Solution: Use ConfigDB for configuration, avoid hardcoded values Code:
+
+107
+00:34:17,708 --> 00:34:41,108
+5. System-Level Verification (20/24). Solution: Use appropriate verbosity levels Code: UVM_MEDIUM for normal, UVM_HIGH for detailed Control: Set verbosity via +UVM_VERBOSITY=UVM_MEDIUM Problem: Simulation hangs, no progress Solution: Verify clock generation in module
+
+108
+00:34:41,458 --> 00:35:03,754
+5. System-Level Verification (21/24). Check: Clock must be in initial block, not always block Problem: uvm_fatal("NO_VIF", ...) error Solution: Set interface before run_test() Code: Timing: ConfigDB set → run_test() → component build_phase() retrieves
+
+109
+00:35:04,104 --> 00:35:20,304
+5. System-Level Verification (22/24). Solution: Verify reset sequence completes Code: Check: DUT dma_done signal implementation Check: Clock running correctly Check: Reset sequence completed
+
+110
+00:35:20,654 --> 00:35:39,878
+5. System-Level Verification (23/24). Check: DUT tx_busy signal implementation Check: Clock running correctly Check: Loopback connection (if used) Check: Data values valid Check: Called in end_of_elaboration_phase()
+
+111
+00:35:40,228 --> 00:35:57,556
+5. System-Level Verification (24/24). Check: All connections made in connect_phase() Check: Virtual interface set via ConfigDB Check: Agent configuration retrieved correctly Check: Sequencer/driver connections made
+
+112
+00:35:57,906 --> 00:36:12,690
+Run: Example 7.1: DMA Verification. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE7.md.
+
+113
+00:36:13,040 --> 00:36:28,136
+Run: Example 7.2: UART Verification. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE7.md.
+
+114
+00:36:28,486 --> 00:36:43,222
+Run: Example 7.5: VIP Development. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE7.md.
+
+115
+00:36:43,572 --> 00:36:58,260
+Run: Example 7.6: Best Practices. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE7.md.
+
+116
+00:36:58,610 --> 00:37:01,850
+Next section: Hands-on examples.
+
+117
+00:37:02,200 --> 00:37:09,328
+Module 7 self-check. Watch the terminal output and confirm you see the expected pass message.
+
+118
+00:37:09,678 --> 00:37:40,110
+Example 1: DMA Verification. Interface (dma_if): DMA interface with start, done, addresses, length, and channel signals Transaction (DmaTxn): DMA transaction with source address, destination address, length, and channel Sequence (DmaSeq): DMA sequence generating random DMA transfers Driver (DmaDriver): DMA driver implementing DMA protocol Environment (DmaEnv): DMA verification environment...
+
+119
+00:37:40,460 --> 00:37:48,140
+Demo: DMA Verification. Watch the terminal output and confirm you see the expected pass message.
+
+120
+00:37:48,490 --> 00:38:19,090
+Example 2: UART Verification. Interface (uart_if): UART interface with TX/RX signals and control Transaction (UartTxn): UART transaction with data field Sequence (UartSeq): UART sequence generating random UART transfers Driver (UartDriver): UART driver implementing UART protocol Environment (UartEnv): UART verification environment module7/examples/protocols/README.md
+
+121
+00:38:19,440 --> 00:38:27,288
+Demo: UART Verification. Watch the terminal output and confirm you see the expected pass message.
+
+122
+00:38:27,638 --> 00:38:44,678
+Example 3: SPI Verification. Test (SpiExampleTest): SPI verification test scaffold UVM Pattern: Demonstrates UVM structure for SPI verification module7/examples/protocols/README.md
+
+123
+00:38:45,028 --> 00:38:52,828
+Demo: SPI Verification. Watch the terminal output and confirm you see the expected pass message.
+
+124
+00:38:53,178 --> 00:39:10,386
+Example 4: I2C Verification. Test (I2cExampleTest): I2C verification test scaffold UVM Pattern: Demonstrates UVM structure for I2C verification module7/examples/protocols/README.md
+
+125
+00:39:10,736 --> 00:39:18,560
+Demo: I2C Verification. Watch the terminal output and confirm you see the expected pass message.
+
+126
+00:39:18,910 --> 00:39:45,718
+Example 5: VIP Development. Transaction (VipTxn): VIP transaction with payload Sequence (VipSeq): VIP sequence generating transactions Driver (VipDriver): VIP driver Agent (VipAgent): VIP agent containing sequencer and driver Test (VipTest): VIP test demonstrating VIP usage module7/examples/vip/README.md
+
+127
+00:39:46,068 --> 00:39:53,628
+Demo: VIP Development. Watch the terminal output and confirm you see the expected pass message.
+
+128
+00:39:53,978 --> 00:40:16,034
+Example 6: Best Practices. Test (BestPracticesTest): Test demonstrating best practices Phase Organization: Proper phase usage and logging Topology Printing: Component hierarchy visualization Logging Patterns: Structured logging for maintainability module7/examples/best_practices/README.md
+
+129
+00:40:16,384 --> 00:40:23,848
+Demo: Best Practices. Watch the terminal output and confirm you see the expected pass message.
+
+130
+00:40:24,198 --> 00:40:27,390
+Next section: Common pitfalls.
+
+131
+00:40:27,740 --> 00:40:41,348
+DMA Done Not Detected. Problem: Simulation hangs waiting for dma_done Solution: Check DUT implementation, add timeout Code: Prevention: Add bounded wait with timeout checking
+
+132
+00:40:41,698 --> 00:40:56,506
+UART Busy Never Deasserts. Problem: Simulation hangs waiting for tx_busy deassert Solution: Check DUT implementation, verify clock Code: Prevention: Add bounded wait with timeout checking
+
+133
+00:40:56,856 --> 00:41:15,000
+Topology Not Printed. Problem: print_topology() shows nothing Solution: Call in end_of_elaboration_phase(), not earlier Code: Must be after connect_phase() completes Check: Verify all components created in build_phase()
+
+134
+00:41:15,350 --> 00:41:26,894
+VIP Agent Not Reusable. Problem: VIP agent hardcoded for specific use Solution: Use ConfigDB for configuration, avoid hardcoded values Code:
+
+135
+00:41:27,244 --> 00:41:44,908
+Phase Logging Too Verbose. Problem: Too many log messages Solution: Use appropriate verbosity levels Code: UVM_MEDIUM for normal, UVM_HIGH for detailed Control: Set verbosity via +UVM_VERBOSITY=UVM_MEDIUM
+
+136
+00:41:45,258 --> 00:41:57,594
+Clock Not Running. Problem: Simulation hangs, no progress Solution: Verify clock generation in module Code: Check: Clock must be in initial block, not always block
+
+137
+00:41:57,944 --> 00:42:01,328
+Next section: Practice & assessment.
+
+138
+00:42:01,678 --> 00:42:24,166
+By now you should be able to explain the following. Verify complex designs (DMA, protocols) using UVM patterns Develop reusable VIP with proper architecture Apply best practices for code organization and maintainability Perform system-level verification with multiple DUTs Create production-quality testbenches From MODULE7 Learning Outcomes.
+
+139
+00:42:24,516 --> 00:42:38,460
+By now you should be able to explain the following. Package verification components for reuse Use topology printing for debugging Implement phase-based logging Apply real-world verification patterns From MODULE7 Learning Outcomes.
+
+140
+00:42:38,810 --> 00:42:47,762
+Exercises. DMA Verification Protocol Verification VIP Development Best Practices System-Level Verification
+
+141
+00:42:48,112 --> 00:43:02,536
+Assessment checklist. Can verify complex designs (DMA, protocols) Can develop reusable VIP Can apply best practices Can perform system-level verification Can create production-quality testbenches
+
+142
+00:43:02,886 --> 00:43:22,278
+In summary: Apply UVM to real-world verification scenarios Next up: Next module in course. Apply UVM to real-world verification scenarios Complete module7/CHECKLIST.md Review module7/EXAMPLES.md and run each lab Next: Next module in course

@@ -66,6 +66,59 @@ cd module3/tests/uvm_tests
 make SIM=verilator TEST=test_adder_uvm
 ```
 
+## Design Architecture
+
+### 1. UVM class hierarchy
+
+| Component | Role |
+|-----------|------|
+| `uvm_test` | Top-level; calls `run_test()`, owns environment |
+| `uvm_env` | Contains agents, scoreboard, coverage (as needed) |
+| `uvm_agent` | Groups driver, monitor, sequencer on one interface |
+| `uvm_driver` | Converts sequence items to pin wiggles |
+| `uvm_monitor` | Observes bus/DUT; emits transactions |
+| `uvm_sequence_item` | Transaction payload (data, address, etc.) |
+
+- **Object hierarchy**: `uvm_object` → `uvm_sequence_item` → your transaction
+- **Component hierarchy**: `uvm_component` → driver/monitor/agent/env/test
+- Factory macros (`uvm_component_utils`) register types for `type_id::create()`
+- **Component tree**: Test → Env → Agent → {Driver, Monitor, Sequencer}
+
+### 2. UVM phase graph and execution order
+
+- **Build-time (top-down)**: `build_phase` → `connect_phase` → `end_of_elaboration_phase`
+- **Run-time (bottom-up)**: `run_phase` with objections controlling sim time
+- **Report**: `report_phase` summarizes UVM_INFO/WARNING/ERROR counts
+- `super.build_phase(phase)` required in every override to preserve hierarchy
+- **Simulation flow**: elaboration → `run_test()` → phases → `$finish`
+
+### 3. Module 3 repository map
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | `module3/examples/class_hierarchy/` | Minimal full UVM hierarchy demo |
+| 2 | `module3/examples/phases/` | Phase callback visibility |
+| 3 | `module3/dut/simple_blocks/adder.v` | Small RTL for integrated UVM test |
+| 4 | `module3/tests/uvm_tests/test_adder_uvm.sv` | End-to-end UVM testbench |
+| **Self-check flow**: `./scripts/module3.sh --class-hierarchy` → UVM report → PASS
+
+## Verification & Testing Methods
+
+### 1. UVM infrastructure patterns
+
+- **Factory** — create components with `type_id::create()`; enable overrides later
+- **ConfigDB** — pass virtual interfaces and config objects down the hierarchy
+- **Reporting** — `uvm_info`/`uvm_error` with verbosity and ID filtering
+- **Objections** — `raise_objection`/`drop_objection` in `run_phase` hold simulation alive
+
+### 2. Verilator + UVM execution strategy
+
+- Compile with `-I$UVM_HOME/src +define+UVM_NO_DPI` (no DPI for Verilator)
+- C++ `main` calls `uvm_main` or wrapper that invokes `run_test("MyTest")`
+- Start with **standalone examples** (no DUT) to learn hierarchy and phases
+- Progress to `test_adder_uvm` — connect virtual interface to RTL adder
+- **Closure**: zero `UVM_ERROR`/`UVM_FATAL`; expected INFO lines in log
+
 ## Topics Covered
 
 ### 1. Introduction to UVM

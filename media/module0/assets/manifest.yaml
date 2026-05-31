@@ -10,13 +10,38 @@ assets:
   - 4
   - 4
   license: learn_uvm2017_sv_verilator course materials
+- id: rtl_architecture
+  type: diagram
+  file: assets/diagrams/rtl_architecture.png
+  source: assets/diagrams/rtl_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 7
+  license: learn_uvm2017_sv_verilator course materials
+- id: verification_architecture
+  type: diagram
+  file: assets/diagrams/verification_architecture.png
+  source: assets/diagrams/verification_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 10
+  license: learn_uvm2017_sv_verilator course materials
+- id: testing_methods
+  type: diagram
+  file: assets/diagrams/testing_methods.png
+  source: assets/diagrams/testing_methods.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 20
+  - 22
+  license: learn_uvm2017_sv_verilator course materials
 - id: module0_check
   type: screenshot
   file: assets/screenshots/module0_check.png
   capture_command: verilator --version
   cwd: .
   slides:
-  - 47
+  - 65
   expect_stdout_contains: Verilator
 - id: ex01_install
   type: screenshot
@@ -26,14 +51,14 @@ assets:
     && echo "UVM library OK" && make --version | head -1
   cwd: .
   slides:
-  - 48
+  - 66
 - id: ex02_project
   type: screenshot
   file: assets/screenshots/ex02_project.png
   capture_command: ls -la docs/MODULE0.md module1/README.md scripts/installation.sh
   cwd: .
   slides:
-  - 49
+  - 67
   expect_stdout_contains: total
 - id: ex03_install-full
   type: screenshot
@@ -41,11 +66,11 @@ assets:
   capture_command: ./scripts/installation.sh --help | head -20
   cwd: .
   slides:
-  - 50
+  - 68
 - id: ex04_hello
   type: screenshot
   file: assets/screenshots/ex04_hello.png
   capture_command: ./scripts/module1.sh --help | head -15
   cwd: .
   slides:
-  - 51
+  - 69

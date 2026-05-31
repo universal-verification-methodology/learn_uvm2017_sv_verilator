@@ -21,7 +21,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module4.sh --transactions
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE4.md` and explore `module4/examples/transactions/`.
 
@@ -41,7 +41,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module4.sh --drivers
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE4.md` and explore `module4/examples/drivers/`.
 
@@ -61,7 +61,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module4.sh --monitors
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE4.md` and explore `module4/examples/monitors/`.
 
@@ -81,7 +81,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module4.sh --sequencers
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE4.md` and explore `module4/examples/sequencers/`.
 
@@ -101,7 +101,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module4.sh --tlm
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE4.md` and explore `module4/examples/tlm/`.
 
@@ -121,7 +121,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module4.sh --scoreboards
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE4.md` and explore `module4/examples/scoreboards/`.
 
@@ -141,6 +141,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module4.sh --agents
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE4.md` and explore `module4/examples/agents/`.

@@ -1,279 +1,455 @@
 1
-00:00:00,000 --> 00:00:03,360
-Advanced UVM Concepts Module 5
+00:00:00,000 --> 00:00:08,688
+Welcome to module 5, Advanced UVM Concepts. In this module you will master advanced uvm features and patterns.
 
 2
-00:00:03,710 --> 00:00:08,198
-Learning objectives Master advanced UVM features and patterns
+00:00:09,038 --> 00:00:15,374
+Here is what you will learn in this module. Master advanced UVM features and patterns
 
 3
-00:00:08,548 --> 00:00:11,308
-Prerequisites See module README
+00:00:15,724 --> 00:00:21,772
+Before you start, make sure you have these prerequisites. See module README
 
 4
-00:00:11,658 --> 00:00:15,882
-Learning path Master advanced UVM features and patterns
+00:00:22,122 --> 00:00:27,474
+Learning path. Master advanced UVM features and patterns
 
 5
-00:00:16,232 --> 00:00:31,808
-Overview This module covers advanced UVM concepts including virtual sequences, coverage models, advanced configuration, callbacks, and register models. You'll learn how to coordinate multiple sequencers, implement functional cove
+00:00:27,824 --> 00:00:39,200
+Overview. This module covers advanced UVM concepts including virtual sequences, coverage models, advanced configuration, callbacks, and register...
 
 6
-00:00:32,158 --> 00:00:34,414
-Syllabus topics
+00:00:39,550 --> 00:00:42,790
+Next section: Design architecture.
 
 7
-00:00:34,764 --> 00:00:37,620
-From MODULE5 Topics Covered.
+00:00:43,140 --> 00:01:10,140
+1. Advanced UVM coordination architecture (1/3). Virtual sequences run on virtual sequencer; delegate to agent sequencers Register model maps address space — frontdoor (bus) and backdoor (hdl paths) Callbacks intercept pre/post drive, report, or phase hooks Hierarchy: Test → Env → {Agent(s), Reg model, Coverage collector} Refer to the diagram on the right.
 
 8
-00:00:37,970 --> 00:00:40,826
-From MODULE5 Topics Covered.
+00:01:10,490 --> 00:01:37,442
+1. Advanced UVM coordination architecture (2/3). uvm_virtual_sequencer: Coordinates multiple sub-sequencers (multi-agent) uvm_reg_block / uvm_reg: Register abstraction layer (RAL) uvm_subscriber / callbacks: Hook component behavior without subclassing Coverage model: covergroup in classes or standalone cover components
 
 9
-00:00:41,176 --> 00:00:44,032
-From MODULE5 Topics Covered.
+00:01:37,792 --> 00:01:47,968
+1. Advanced UVM coordination architecture (3/3). Config objects: Structured uvm_object passed via ConfigDB
 
 10
-00:00:44,382 --> 00:00:47,238
-From MODULE5 Topics Covered.
+00:01:48,318 --> 00:02:13,494
+2. Cross-cutting concern flow (1/2). 1: Config object — Built in test; set via uvm_config_db 2: Virtual sequence — Starts traffic on multiple interfaces 3: Functional coverage — Samples during monitor/scoreboard activity 4: Register sequences — RAL write/read with predicted values Refer to the diagram on the right.
 
 11
-00:00:47,588 --> 00:00:50,444
-From MODULE5 Topics Covered.
+00:02:13,844 --> 00:02:22,868
+2. Cross-cutting concern flow (2/2). 5: Callback — Alters or logs transaction before drive
 
 12
-00:00:50,794 --> 00:00:53,650
-From MODULE5 Topics Covered.
+00:02:23,218 --> 00:02:47,530
+3. Module 5 DUT context. dut/advanced/multi_channel.v — multi-channel design for virtual sequence demos Examples map 1:1 to advanced topics (virtual seq, coverage, reg model, callbacks) Integrated test test_advanced_uvm.sv combines multiple advanced features Refer to the diagram on the right.
 
 13
-00:00:54,000 --> 00:00:56,856
-From MODULE5 Topics Covered.
+00:02:47,880 --> 00:02:55,248
+RTL block diagram (reference). Module 5: DUT hierarchy and signal flow.
 
 14
-00:00:57,206 --> 00:01:00,062
-From MODULE5 Topics Covered.
+00:02:55,598 --> 00:03:04,046
+Verification / testbench diagram (reference). Module 5: stimulus, observation, and checking.
 
 15
-00:01:00,412 --> 00:01:03,268
-From MODULE5 Topics Covered.
+00:03:04,396 --> 00:03:08,428
+Next section: Execution & simulation flow.
 
 16
-00:01:03,618 --> 00:01:06,474
-From MODULE5 Topics Covered.
+00:03:08,778 --> 00:03:40,938
+How the example runs (toolchain). Match each bullet to files in the repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command: make SIM=verilator TEST=test_* (see module5 demo slide) Loopback / hooks connect...
 
 17
-00:01:06,824 --> 00:01:09,680
-From MODULE5 Topics Covered.
+00:03:41,288 --> 00:04:10,688
+Artifact flow (spec → sim) (1). Match each bullet to files in the repository. 1: Config object — Built in test; set via uvm_config_db 2: Virtual sequence — Starts traffic on multiple interfaces 3: Functional coverage — Samples during monitor/scoreboard activity 4: Register sequences — RAL write/read with predicted values From MODULE5 — execution and artifact layout.
 
 18
-00:01:10,030 --> 00:01:12,886
-From MODULE5 Topics Covered.
+00:04:11,038 --> 00:04:25,630
+Artifact flow (spec → sim) (2). Match each bullet to files in the repository. 5: Callback — Alters or logs transaction before drive From MODULE5 — execution and artifact layout.
 
 19
-00:01:13,236 --> 00:01:16,092
-From MODULE5 Topics Covered.
+00:04:25,980 --> 00:04:57,732
+Example directory layout. Match each bullet to files in the repository. uvm_virtual_sequencer: Coordinates multiple sub-sequencers (multi-agent) uvm_reg_block / uvm_reg: Register abstraction layer (RAL) uvm_subscriber / callbacks: Hook component behavior without subclassing Coverage model: covergroup in classes or standalone cover components Config objects: Structured uvm_object passed via...
 
 20
-00:01:16,442 --> 00:01:19,298
-From MODULE5 Topics Covered.
+00:04:58,082 --> 00:05:08,426
+Follow these steps in order when working through this module. config build connect virtual seq report + coverage Follow this order when tracing waveforms or debugging.
 
 21
-00:01:19,648 --> 00:01:22,504
-From MODULE5 Topics Covered.
+00:05:08,776 --> 00:05:12,880
+Next section: Verification & testing methods.
 
 22
-00:01:22,854 --> 00:01:25,710
-From MODULE5 Topics Covered.
+00:05:13,230 --> 00:05:38,430
+1. System-level stimulus strategy. Virtual sequences coordinate reset, config, traffic, and shutdown across agents Constrained-random transactions with covergroups measuring interesting bins Register tests: reset values, bit-field access, alias rules, prediction vs actual Callbacks for error injection and debug without modifying driver source Refer to the diagram on the right.
 
 23
-00:01:26,060 --> 00:01:28,916
-From MODULE5 Topics Covered.
+00:05:38,780 --> 00:06:03,908
+2. Coverage-driven closure (1/2). Define coverpoints on transaction fields and cross coverage between channels Use uvm_config_db to enable/disable coverage and set verbosity per test Closure metrics: functional coverage goals + zero scoreboard mismatches ./scripts/module5.sh --coverage demonstrates sampling and report Refer to the diagram on the right.
 
 24
-00:01:29,266 --> 00:01:32,122
-From MODULE5 Topics Covered.
+00:06:04,258 --> 00:06:13,306
+2. Coverage-driven closure (2/2). Out of scope on Verilator: some advanced RAL backdoor paths may be limited
 
 25
-00:01:32,472 --> 00:01:35,328
-From MODULE5 Topics Covered.
+00:06:13,656 --> 00:06:16,920
+Next section: Syllabus topics.
 
 26
-00:01:35,678 --> 00:01:38,534
-From MODULE5 Topics Covered.
+00:06:17,270 --> 00:06:21,062
+Next section: Protocol & design details.
 
 27
-00:01:38,884 --> 00:01:41,740
-From MODULE5 Topics Covered.
+00:06:21,412 --> 00:06:52,396
+Protocol and design detail: Example 5.1: Virtual Sequences (module5/examples/virtual_sequences/virtual_sequences.sv) (1). VirtualSequencer: Contains references to multiple sequencers (master_seqr, slave_seqr) VirtualSequence: Coordinates sequences on multiple sequencers ChannelSequence: Regular sequence for a single channel Parallel Execution: Using fork-join for concurrent sequences From...
 
 28
-00:01:42,090 --> 00:01:44,946
-From MODULE5 Topics Covered.
+00:06:52,746 --> 00:07:22,338
+Protocol and design detail: Example 5.1: Virtual Sequences (module5/examples/virtual_sequences/virtual_sequences.sv) (2). Sequential Execution: Sequential sequence coordination Purpose: Hold references to multiple sequencers Key: References are set in connect_phase() from environment Note: Virtual sequencer doesn't create sequencers, only references them From MODULE5 Topics Covered —...
 
 29
-00:01:45,296 --> 00:01:48,152
-From MODULE5 Topics Covered.
+00:07:22,688 --> 00:07:51,968
+Protocol and design detail: Example 5.2: Coverage (module5/examples/coverage/coverage.sv) (1). CoverageModel: Extends uvm_subscriber for coverage collection Coverage Sampling: Via write() method from analysis port Coverage Types: Data, address range, command, and cross coverage Coverage Analysis: Coverage statistics and reporting From MODULE5 Topics Covered — protocol/design depth.
 
 30
-00:01:48,502 --> 00:01:51,358
-From MODULE5 Topics Covered.
+00:07:52,318 --> 00:08:19,006
+Protocol and design detail: Example 5.2: Coverage (module5/examples/coverage/coverage.sv) (2). Purpose: Sample coverage data from transactions Usage: Called automatically when monitor writes to analysis port Key: Uses associative arrays to track unique values Purpose: Track unique values and counts From MODULE5 Topics Covered — protocol/design depth.
 
 31
-00:01:51,708 --> 00:01:54,564
-From MODULE5 Topics Covered.
+00:08:19,356 --> 00:08:48,852
+Protocol and design detail: Example 5.3: Advanced Configuration (module5/examples/configuration/configuration.sv) (1). AgentConfig: Complex configuration object with multiple fields EnvConfig: Environment-level configuration containing agent configs Configuration Hierarchy: Multi-level configuration structure Configuration Usage: Setting and getting complex configuration From MODULE5 Topics...
 
 32
-00:01:54,914 --> 00:01:57,770
-From MODULE5 Topics Covered.
+00:08:49,202 --> 00:09:16,202
+Protocol and design detail: Example 5.3: Advanced Configuration (module5/examples/configuration/configuration.sv) (2). Purpose: Enable configuration copying Usage: Allows configuration inheritance and copying Key: Must copy all configuration fields Purpose: Multi-level configuration hierarchy From MODULE5 Topics Covered — protocol/design depth.
 
 33
-00:01:58,120 --> 00:02:00,976
-From MODULE5 Topics Covered.
+00:09:16,552 --> 00:09:42,928
+Protocol and design detail: Example 5.4: Callbacks (module5/examples/callbacks/callbacks.sv) (1). DriverCallbackBase: Base callback class for driver DriverCallback: Driver callback implementation MonitorCallbackBase: Base callback class for monitor MonitorCallback: Monitor callback implementation From MODULE5 Topics Covered — protocol/design depth.
 
 34
-00:02:01,326 --> 00:02:04,182
-From MODULE5 Topics Covered.
+00:09:43,278 --> 00:10:08,910
+Protocol and design detail: Example 5.4: Callbacks (module5/examples/callbacks/callbacks.sv) (2). Callback Registration: Registering callbacks with components Purpose: Define callback interface Key: Virtual functions to be overridden in derived classes Purpose: Implement callback behavior From MODULE5 Topics Covered — protocol/design depth.
 
 35
-00:02:04,532 --> 00:02:07,388
-From MODULE5 Topics Covered.
+00:10:09,260 --> 00:10:38,660
+Protocol and design detail: Example 5.5: Register Model (module5/examples/register_model/register_model.sv) (1). RegisterField: Represents a register field with offset, width, and value Register: Represents a register with address and fields RegisterBlock: Represents a register block with multiple registers Register Operations: Read/write operations on registers From MODULE5 Topics Covered —...
 
 36
-00:02:07,738 --> 00:02:10,594
-From MODULE5 Topics Covered.
+00:10:39,010 --> 00:11:04,714
+Protocol and design detail: Example 5.5: Register Model (module5/examples/register_model/register_model.sv) (2). Purpose: Represent individual register fields Key: Fields have offset, width, and value Purpose: Add field to register Usage: Build register structure From MODULE5 Topics Covered — protocol/design depth.
 
 37
-00:02:10,944 --> 00:02:13,800
-From MODULE5 Topics Covered.
+00:11:05,064 --> 00:11:30,168
+Protocol and design detail: Virtual Sequence Methods (1). Sequencer References: Hold references to multiple sequencers Connect Phase: Set references from environment No Transaction Type: Virtual sequencer doesn't extend uvm_sequencer #(type) Body Task: Coordinates sequences on multiple sequencers From MODULE5 Topics Covered — protocol/design depth.
 
 38
-00:02:14,150 --> 00:02:17,006
-From MODULE5 Topics Covered.
+00:11:30,518 --> 00:11:49,262
+Protocol and design detail: Virtual Sequence Methods (2). Sequencer References: Set before starting sequence Parallel Execution: fork-join for concurrent sequences Sequential Execution: Sequential start() calls From MODULE5 Topics Covered — protocol/design depth.
 
 39
-00:02:17,356 --> 00:02:20,212
-From MODULE5 Topics Covered.
+00:11:49,612 --> 00:12:07,828
+Protocol and design detail: Coverage Methods (1). write(t) - Receive transaction for sampling Associative Arrays - Track unique values exists(key) - Check if key exists num() - Count unique keys From MODULE5 Topics Covered — protocol/design depth.
 
 40
-00:02:20,562 --> 00:02:23,418
-From MODULE5 Topics Covered.
+00:12:08,178 --> 00:12:18,402
+Protocol and design detail: Coverage Methods (2). foreach - Iterate over keys From MODULE5 Topics Covered — protocol/design depth.
 
 41
-00:02:23,768 --> 00:02:26,624
-From MODULE5 Topics Covered.
+00:12:18,752 --> 00:12:37,496
+Protocol and design detail: Advanced Configuration Methods. do_copy(rhs) - Copy configuration fields convert2string() - String representation Nested Configs - Config objects containing other configs From MODULE5 Topics Covered — protocol/design depth.
 
 42
-00:02:26,974 --> 00:02:29,830
-From MODULE5 Topics Covered.
+00:12:37,846 --> 00:13:11,014
+Protocol and design detail: Callback Methods. uvm_register_cb(Component, Callback) - Register callback type uvm_do_callbacks(Component, Callback, method(args)) - Execute callbacks uvm_callbacks#(Component, Callback)::add(component, callback) - Add callback uvm_callbacks#(Component, Callback)::delete(component, callback) - Remove callback From MODULE5 Topics Covered — protocol/design depth.
 
 43
-00:02:30,180 --> 00:02:33,036
-From MODULE5 Topics Covered.
+00:13:11,364 --> 00:13:30,276
+Protocol and design detail: Register Model Methods (1). convert2string() - String representation add_field(field) - Add field to register write(data) - Write value to register read() - Read value from register From MODULE5 Topics Covered — protocol/design depth.
 
 44
-00:02:33,386 --> 00:02:36,242
-From MODULE5 Topics Covered.
+00:13:30,626 --> 00:13:53,258
+Protocol and design detail: Register Model Methods (2). add_register(reg) - Add register to block get_register(name) - Look up register by name write_register(name, data) - Write register by name read_register(name) - Read register by name From MODULE5 Topics Covered — protocol/design depth.
 
 45
-00:02:36,592 --> 00:02:39,448
-From MODULE5 Topics Covered.
+00:13:53,608 --> 00:14:01,408
+Verification flow (reference). Stimulus, DUT response, and check points for this module.
 
 46
-00:02:39,798 --> 00:02:42,654
-From MODULE5 Topics Covered.
+00:14:01,758 --> 00:14:14,886
+1. Virtual Sequences and Sequencers (1/9). Virtual Sequence Purpose Coordinating multiple sequencers Cross-agent stimulus generation System-level sequence coordination Sequence libraries
 
 47
-00:02:43,004 --> 00:02:45,860
-From MODULE5 Topics Covered.
+00:14:15,236 --> 00:14:33,500
+1. Virtual Sequences and Sequencers (2/9). Virtual sequencer structure Sequencer references Connection in connect_phase Virtual sequencer usage VirtualSequencer: Contains references to multiple sequencers (master_seqr, slave_seqr)
 
 48
-00:02:46,210 --> 00:02:49,066
-From MODULE5 Topics Covered.
+00:14:33,850 --> 00:14:56,050
+1. Virtual Sequences and Sequencers (3/9). ChannelSequence: Regular sequence for a single channel Parallel Execution: Using fork-join for concurrent sequences Sequential Execution: Sequential sequence coordination Purpose: Hold references to multiple sequencers Key: References are set in connect_phase() from environment
 
 49
-00:02:49,416 --> 00:02:52,272
-From MODULE5 Topics Covered.
+00:14:56,400 --> 00:15:21,672
+1. Virtual Sequences and Sequencers (4/9). Purpose: Coordinate sequences on multiple sequencers Key: Virtual sequence doesn't extend uvm_sequence #(transaction_type) Parallel: Use fork-join for concurrent execution Sequential: Call start() sequentially for ordered execution Purpose: Connect virtual sequencer/sequence to actual sequencers
 
 50
-00:02:52,622 --> 00:02:55,478
-From MODULE5 Topics Covered.
+00:15:22,022 --> 00:15:42,446
+1. Virtual Sequences and Sequencers (5/9). Key: Must be set before starting virtual sequence Purpose: Start virtual sequence execution Key: Virtual sequence can start on virtual sequencer or null Purpose: Execute sequences concurrently Key: Both sequences run in parallel, join waits for both
 
 51
-00:02:55,828 --> 00:02:58,684
-From MODULE5 Topics Covered.
+00:15:42,796 --> 00:16:02,524
+1. Virtual Sequences and Sequencers (6/9). Use case: Independent operations, concurrent testing fork-join: Wait for all sequences (most common) fork-join_any: Wait for first to complete fork-join_none: Fire and forget Purpose: Execute sequences in order
 
 52
-00:02:59,034 --> 00:03:01,890
-From MODULE5 Topics Covered.
+00:16:02,874 --> 00:16:24,978
+1. Virtual Sequences and Sequencers (7/9). Timing: Total time = seq1_time + seq2_time Use case: Ordered operations, dependencies Purpose: Check sequencer availability Key: Always check for null before using sequencer references Virtual sequencer contains references to multiple sequencers
 
 53
-00:03:02,240 --> 00:03:04,472
-Hands-on examples
+00:16:25,328 --> 00:16:49,352
+1. Virtual Sequences and Sequencers (8/9). Parallel sequence execution using fork-join enables concurrent testing Sequential sequence execution enables ordered coordination Virtual sequencer - Holds references, doesn't create sequencers Virtual sequence - Coordinates sequences on multiple sequencers Sequencer references - Set in connect_phase() from environment
 
 54
-00:03:04,822 --> 00:03:07,654
-Run from course repository root.
+00:16:49,702 --> 00:17:06,790
+1. Virtual Sequences and Sequencers (9/9). Sequential execution - Sequential start() calls for ordered execution Virtual sequencer creation and connection Virtual sequence coordination Parallel sequence execution Sequential sequence execution
 
 55
-00:03:08,004 --> 00:03:12,012
-Exercise scaffold The following command is shown on screen.
+00:17:07,140 --> 00:17:16,284
+2. Coverage Models (1/8). Functional Coverage Coverage model structure Coverage sampling Coverage analysis Coverage reporting
 
 56
-00:03:12,362 --> 00:03:18,242
-module5/examples/virtual_sequences/README.md
+00:17:16,634 --> 00:17:28,730
+2. Coverage Models (2/8). Data coverage Address range coverage Command coverage Cross coverage CoverageModel: Extends uvm_subscriber for coverage collection
 
 57
-00:03:18,592 --> 00:03:24,280
-Hands-on: module5/examples/virtual_sequences/
+00:17:29,080 --> 00:17:50,680
+2. Coverage Models (3/8). Coverage Types: Data, address range, command, and cross coverage Coverage Analysis: Coverage statistics and reporting Purpose: Sample coverage data from transactions Usage: Called automatically when monitor writes to analysis port Key: Uses associative arrays to track unique values
 
 58
-00:03:24,630 --> 00:03:29,478
-module5/examples/coverage/README.md
+00:17:51,030 --> 00:18:07,974
+2. Coverage Models (4/8). Key: Associative arrays enable efficient coverage tracking Purpose: Report coverage statistics Usage: Called in cleanup phase Key: Uses num() to count unique keys Purpose: Connect producer to coverage model
 
 59
-00:03:29,828 --> 00:03:34,484
-Hands-on: module5/examples/coverage/
+00:18:08,324 --> 00:18:30,308
+2. Coverage Models (5/8). Purpose: Track combinations of multiple fields Key: 2D associative arrays for cross coverage Usage: Track (data, command) pairs, (address, data) pairs, etc. Purpose: Initialize coverage data structures Key: Fixed arrays initialized in constructor
 
 60
-00:03:34,834 --> 00:03:40,042
-module5/examples/configuration/README.md
+00:18:30,658 --> 00:18:50,818
+2. Coverage Models (6/8). Coverage sampling via write() method receives transactions Coverpoints and bins track unique values and ranges Cross coverage between multiple fields tracks combinations write(t) - Receive transaction for coverage sampling Associative arrays - Track unique values efficiently
 
 61
-00:03:40,392 --> 00:03:45,432
-Hands-on: module5/examples/configuration/
+00:18:51,168 --> 00:19:06,024
+2. Coverage Models (7/8). num() - Count number of unique keys foreach - Iterate over associative array keys 2D associative arrays - Track cross coverage pairs Coverage sampling demonstrated Data coverage tracking
 
 62
-00:03:45,782 --> 00:03:50,750
-module5/examples/callbacks/README.md
+00:19:06,374 --> 00:19:13,478
+2. Coverage Models (8/8). Command coverage tracking Cross coverage analysis
 
 63
-00:03:51,100 --> 00:03:55,852
-Hands-on: module5/examples/callbacks/
+00:19:13,828 --> 00:19:25,732
+3. Advanced Configuration (1/7). Complex Configuration Objects Configuration object design Configuration fields Configuration methods Configuration copying
 
 64
-00:03:56,202 --> 00:04:01,890
-module5/examples/register_model/README.md
+00:19:26,082 --> 00:19:41,634
+3. Advanced Configuration (2/7). Environment-level configuration Agent-level configuration Component-specific configuration Configuration inheritance AgentConfig: Complex configuration object with multiple fields
 
 65
-00:04:02,240 --> 00:04:07,688
-Hands-on: module5/examples/register_model/
+00:19:41,984 --> 00:20:02,576
+3. Advanced Configuration (3/7). Configuration Hierarchy: Multi-level configuration structure Configuration Usage: Setting and getting complex configuration Purpose: Enable configuration copying Usage: Allows configuration inheritance and copying Key: Must copy all configuration fields
 
 66
-00:04:08,038 --> 00:04:10,366
-Practice & assessment
+00:20:02,926 --> 00:20:23,758
+3. Advanced Configuration (4/7). Key: Configuration objects can contain other configuration objects Purpose: Set configuration for specific components Key: Use component path in set() call Purpose: Retrieve configuration in component Key: Always check return value, provide defaults
 
 67
-00:04:10,716 --> 00:04:13,692
-From MODULE5 Learning Outcomes.
+00:20:24,108 --> 00:20:44,940
+3. Advanced Configuration (5/7). Usage: Logging, debugging Complex configuration objects enable rich configuration data Configuration hierarchy supports multi-level configuration Resource database usage provides flexible configuration access Configuration inheritance enables configuration reuse
 
 68
-00:04:14,042 --> 00:04:20,282
-Exercises Virtual Sequences Coverage Models Advanced Configuration Callbacks Register Model
+00:20:45,290 --> 00:21:06,170
+3. Advanced Configuration (6/7). Nested configs - Configuration objects containing other configs Component-specific paths - Set config for specific components Config hierarchy - Multi-level configuration structure convert2string() - Debug configuration values Complex configuration object creation
 
 69
-00:04:20,632 --> 00:04:32,248
-Assessment checklist Can implement virtual sequences Can create coverage models Can use advanced configuration Can implement callbacks Can use register models Understands advanced UVM patterns
+00:21:06,520 --> 00:21:15,040
+3. Advanced Configuration (7/7). Configuration setting and getting Configuration object usage
 
 70
-00:04:32,598 --> 00:04:45,894
-Summary & next steps Master advanced UVM features and patterns Complete module5/CHECKLIST.md Review module5/EXAMPLES.md and run each lab Next: Next module in course
+00:21:15,390 --> 00:21:25,998
+4. Callbacks (1/8). Callback Mechanism Callback base classes Callback registration Pre/post callbacks Callback execution
+
+71
+00:21:26,348 --> 00:21:38,276
+4. Callbacks (2/8). Driver callbacks Monitor callbacks Transaction modification Side-effect actions DriverCallbackBase: Base callback class for driver
+
+72
+00:21:38,626 --> 00:21:57,562
+4. Callbacks (3/8). MonitorCallbackBase: Base callback class for monitor MonitorCallback: Monitor callback implementation Callback Registration: Registering callbacks with components Purpose: Define callback interface Key: Virtual functions to be overridden in derived classes
+
+73
+00:21:57,912 --> 00:22:17,352
+4. Callbacks (4/8). Key: uvm_register_cb macro registers callback type Purpose: Register callback type with component type Usage: Must be in callback class definition Key: Enables type-safe callback registration Purpose: Execute all registered callbacks
+
+74
+00:22:17,702 --> 00:22:36,422
+4. Callbacks (5/8). Key: Executes all callbacks registered for this component instance Purpose: Connect callback to component instance Usage: In test's connect_phase() Key: Callback must be registered before it can be executed Purpose: Manage callbacks
+
+75
+00:22:36,772 --> 00:22:55,348
+4. Callbacks (6/8). Purpose: Multiple callbacks for same component Key: All registered callbacks execute in registration order Purpose: Control callback execution order Key: Pre-callbacks → operation → post-callbacks Callback mechanism enables non-intrusive extension
+
+76
+00:22:55,698 --> 00:23:16,506
+4. Callbacks (7/8). Callback registration connects callbacks to components Callback usage patterns enable flexible test customization uvm_register_cb - Register callback type uvm_do_callbacks - Execute all registered callbacks Callback base class - Define callback interface
+
+77
+00:23:16,856 --> 00:23:31,736
+4. Callbacks (8/8). Pre/post callbacks - Hooks before/after operations Callback registration demonstrated Pre-drive callbacks executed Post-drive callbacks executed Monitor callbacks executed
+
+78
+00:23:32,086 --> 00:23:44,206
+5. Register Model (1/9). Register Model Basics Register model structure Register blocks, registers, fields Register read/write operations Register predictor
+
+79
+00:23:44,556 --> 00:24:01,380
+5. Register Model (2/9). RegisterField: Individual register fields Register: Complete registers RegisterBlock: Register address spaces Register operations RegisterField: Represents a register field with offset, width, and value
+
+80
+00:24:01,730 --> 00:24:21,266
+5. Register Model (3/9). RegisterBlock: Represents a register block with multiple registers Register Operations: Read/write operations on registers Purpose: Represent individual register fields Key: Fields have offset, width, and value Purpose: Add field to register
+
+81
+00:24:21,616 --> 00:24:37,576
+5. Register Model (4/9). Key: Fields stored in queue Purpose: Write value to register Key: Updates register value and all field values Field extraction: Uses bit shifting and masking Purpose: Read register value
+
+82
+00:24:37,926 --> 00:24:54,006
+5. Register Model (5/9). Purpose: Add register to block Key: Automatically assigns address based on position Purpose: Look up register by name Key: Returns null if register not found Purpose: High-level register access
+
+83
+00:24:54,356 --> 00:25:14,324
+5. Register Model (6/9). Key: Handles null checks Purpose: Extract field values from register value Key: Bit shifting and masking for field extraction Example: Field at offset 4, width 3: (data >> 4) & 7 Purpose: Compose register value from field values
+
+84
+00:25:14,674 --> 00:25:39,586
+5. Register Model (7/9). Purpose: Automatically assign register addresses Key: Address = base_address + (index * 4) for 32-bit registers Register model structure provides abstraction for register access Register blocks, registers, fields organize register hierarchy Register read/write operations enable register verification
+
+85
+00:25:39,936 --> 00:25:57,144
+5. Register Model (8/9). add_field() - Add field to register write(data) - Write value to register read() - Read value from register add_register() - Add register to block get_register(name) - Look up register by name
+
+86
+00:25:57,494 --> 00:26:13,526
+5. Register Model (9/9). read_register() - High-level read by name Field extraction - Bit shifting and masking for field values Register model structure demonstrated Register field operations Register read/write operations
+
+87
+00:26:13,876 --> 00:26:38,140
+6. Advanced UVM Methods Reference (1/5). Sequencer References: Hold references to multiple sequencers Connect Phase: Set references from environment No Transaction Type: Virtual sequencer doesn't extend uvm_sequencer #(type) Body Task: Coordinates sequences on multiple sequencers Sequencer References: Set before starting sequence
+
+88
+00:26:38,490 --> 00:26:56,538
+6. Advanced UVM Methods Reference (2/5). Sequential Execution: Sequential start() calls write(t) - Receive transaction for sampling Associative Arrays - Track unique values exists(key) - Check if key exists num() - Count unique keys
+
+89
+00:26:56,888 --> 00:27:23,768
+6. Advanced UVM Methods Reference (3/5). do_copy(rhs) - Copy configuration fields convert2string() - String representation Nested Configs - Config objects containing other configs uvm_register_cb(Component, Callback) - Register callback type uvm_do_callbacks(Component, Callback, method(args)) - Execute callbacks
+
+90
+00:27:24,118 --> 00:27:46,222
+6. Advanced UVM Methods Reference (4/5). uvm_callbacks#(Component, Callback)::delete(component, callback) - Remove callback convert2string() - String representation add_field(field) - Add field to register write(data) - Write value to register read() - Read value from register
+
+91
+00:27:46,572 --> 00:28:02,268
+6. Advanced UVM Methods Reference (5/5). get_register(name) - Look up register by name write_register(name, data) - Write register by name read_register(name) - Read register by name
+
+92
+00:28:02,618 --> 00:28:17,258
+Run: Example 5.1: Virtual Sequences. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE5.md.
+
+93
+00:28:17,608 --> 00:28:31,672
+Run: Example 5.2: Coverage. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE5.md.
+
+94
+00:28:32,022 --> 00:28:46,902
+Run: Example 5.3: Advanced Configuration. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE5.md.
+
+95
+00:28:47,252 --> 00:29:01,532
+Run: Example 5.4: Callbacks. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE5.md.
+
+96
+00:29:01,882 --> 00:29:16,210
+Run: Example 5.5: Register Model. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE5.md.
+
+97
+00:29:16,560 --> 00:29:19,800
+Next section: Hands-on examples.
+
+98
+00:29:20,150 --> 00:29:27,254
+Module 5 self-check. Watch the terminal output and confirm you see the expected pass message.
+
+99
+00:29:27,604 --> 00:29:33,988
+Exercise scaffold. Review the code on screen and match it to files in the repository.
+
+100
+00:29:34,338 --> 00:30:04,170
+Example 1: Virtual Sequences. VirtualSequencer: Contains references to multiple sequencers (master_seqr, slave_seqr) VirtualSequence: Coordinates sequences on multiple sequencers ChannelSequence: Regular sequence for a single channel Parallel Execution: Using fork-join for concurrent sequences Sequential Execution: Sequential sequence coordination module5/examples/virtual_sequences/README.md
+
+101
+00:30:04,520 --> 00:30:12,128
+Demo: Virtual Sequences. Watch the terminal output and confirm you see the expected pass message.
+
+102
+00:30:12,478 --> 00:30:35,014
+Example 2: Coverage. CoverageModel: Extends uvm_subscriber for coverage collection Coverage Sampling: Via write() method from analysis port Coverage Types: Data, address range, command, and cross coverage Coverage Analysis: Coverage statistics and reporting module5/examples/coverage/README.md
+
+103
+00:30:35,364 --> 00:30:42,348
+Demo: Coverage. Watch the terminal output and confirm you see the expected pass message.
+
+104
+00:30:42,698 --> 00:31:07,010
+Example 3: Advanced Configuration. AgentConfig: Complex configuration object with multiple fields EnvConfig: Environment-level configuration containing agent configs Configuration Hierarchy: Multi-level configuration structure Configuration Usage: Setting and getting complex configuration module5/examples/configuration/README.md
+
+105
+00:31:07,360 --> 00:31:15,112
+Demo: Advanced Configuration. Watch the terminal output and confirm you see the expected pass message.
+
+106
+00:31:15,462 --> 00:31:38,190
+Example 4: Callbacks. DriverCallbackBase: Base callback class for driver DriverCallback: Driver callback implementation MonitorCallbackBase: Base callback class for monitor MonitorCallback: Monitor callback implementation Callback Registration: Registering callbacks with components module5/examples/callbacks/README.md
+
+107
+00:31:38,540 --> 00:31:45,620
+Demo: Callbacks. Watch the terminal output and confirm you see the expected pass message.
+
+108
+00:31:45,970 --> 00:32:09,682
+Example 5: Register Model. RegisterField: Represents a register field with offset, width, and value Register: Represents a register with address and fields RegisterBlock: Represents a register block with multiple registers Register Operations: Read/write operations on registers module5/examples/register_model/README.md
+
+109
+00:32:10,032 --> 00:32:17,232
+Demo: Register Model. Watch the terminal output and confirm you see the expected pass message.
+
+110
+00:32:17,582 --> 00:32:20,966
+Next section: Practice & assessment.
+
+111
+00:32:21,316 --> 00:32:41,044
+By now you should be able to explain the following. Implement virtual sequences to coordinate multiple sequencers Create coverage models for functional verification Use advanced configuration with complex objects Implement callbacks for component extension Use register models for register verification From MODULE5 Learning Outcomes.
+
+112
+00:32:41,394 --> 00:32:48,834
+Exercises. Virtual Sequences Coverage Models Advanced Configuration Callbacks Register Model
+
+113
+00:32:49,184 --> 00:32:59,720
+Assessment checklist. Can implement virtual sequences Can create coverage models Can use advanced configuration Can implement callbacks Can use register models
+
+114
+00:33:00,070 --> 00:33:18,310
+In summary: Master advanced UVM features and patterns Next up: Next module in course. Master advanced UVM features and patterns Complete module5/CHECKLIST.md Review module5/EXAMPLES.md and run each lab Next: Next module in course

@@ -1,6 +1,6 @@
 ==========================================
 Module 3 Execution Log
-Started: 2026-05-28 21:23:33
+Started: 2026-05-31 03:05:22
 Command: ./scripts/module3.sh --objections
 Working directory: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator
 UVM_HOME: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src
@@ -13,6 +13,6 @@ Parallel jobs: 8
 [0;36mModule 3: UVM Basics[0m
 [0;36m========================================[0m
 
-[0;34m[2026-05-28 21:23:33] Log file: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/module3/module3.log[0m
-[0;34m[2026-05-28 21:23:33] Checking prerequisites...[0m
-[0;31m[2026-05-28 21:23:33] Error: verilator not found. Please install it first.[0m
+[0;34m[2026-05-31 03:05:22] Log file: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/module3/module3.log[0m
+[0;34m[2026-05-31 03:05:22] Checking prerequisites...[0m
+[0;31m[2026-05-31 03:05:22] Error: verilator not found. Please install it first.[0m

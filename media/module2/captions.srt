@@ -1,371 +1,575 @@
 1
-00:00:00,000 --> 00:00:03,936
-SystemVerilog Testbench Fundamentals Module 2
+00:00:00,000 --> 00:00:09,336
+Welcome to module 2, SystemVerilog Testbench Fundamentals. In this module you will master systemverilog testbench construction.
 
 2
-00:00:04,286 --> 00:00:08,894
-Learning objectives Master SystemVerilog testbench construction
+00:00:09,686 --> 00:00:16,166
+Here is what you will learn in this module. Master SystemVerilog testbench construction
 
 3
-00:00:09,244 --> 00:00:12,004
-Prerequisites See module README
+00:00:16,516 --> 00:00:22,564
+Before you start, make sure you have these prerequisites. See module README
 
 4
-00:00:12,354 --> 00:00:16,698
-Learning path Master SystemVerilog testbench construction
+00:00:22,914 --> 00:00:28,410
+Learning path. Master SystemVerilog testbench construction
 
 5
-00:00:17,048 --> 00:00:31,832
-Overview This module provides comprehensive coverage of SystemVerilog testbench construction. You'll learn how to build testbenches, generate clocks, handle resets, access signals, and create robust verification environments.
+00:00:28,760 --> 00:00:39,344
+Overview. This module provides comprehensive coverage of SystemVerilog testbench construction. You'll learn how to build testbenches, generate...
 
 6
-00:00:32,182 --> 00:00:34,438
-Syllabus topics
+00:00:39,694 --> 00:00:42,934
+Next section: Design architecture.
 
 7
-00:00:34,788 --> 00:00:37,572
-From MODULE2 Topics Covered.
+00:00:43,284 --> 00:01:10,452
+1. SystemVerilog testbench architecture (1/3). DUT boundary: signals cross via module ports or SystemVerilog interfaces Hierarchy: TB module → DUT instance → optional interface instance Time: #delay, @posedge, and C++ time loop must stay consistent See SYSTEMVERILOG_VERILATOR_INTERACTION.md for compile/sim details Refer to the diagram on the right.
 
 8
-00:00:37,922 --> 00:00:40,706
-From MODULE2 Topics Covered.
+00:01:10,802 --> 00:01:44,858
+1. SystemVerilog testbench architecture (2/3). module2/dut/: RTL blocks under test (registers, FIFOs, state machines) module2/examples/*/: Focused TB patterns (clock, reset, triggers, access) module2/tests/uvm_tests/: UVM wrappers on the same DUTs (bridge to Module 3) Testbench module: Instantiates DUT + interfaces; generates clk/rst
 
 9
-00:00:41,056 --> 00:00:43,840
-From MODULE2 Topics Covered.
+00:01:45,208 --> 00:01:57,088
+1. SystemVerilog testbench architecture (3/3). sim_main.cpp: C++ entry: drives time, calls eval() each cycle
 
 10
-00:00:44,190 --> 00:00:46,974
-From MODULE2 Topics Covered.
+00:01:57,438 --> 00:02:23,790
+2. RTL block architecture (example DUTs). Register files — address decode, read/write timing, reset behavior FIFOs — full/empty flags, pointer management, back-pressure State machines — explicit states, transition conditions, output logic Signal flow: clk/rst → sequential logic → status flags → TB monitors Refer to the diagram on the right.
 
 11
-00:00:47,324 --> 00:00:50,108
-From MODULE2 Topics Covered.
+00:02:24,140 --> 00:02:52,148
+3. Verilator execution pipeline. 1: Makefile — Invokes Verilator with --cc --exe --timing 2: obj_dir/V*.cpp — Generated cycle-accurate C++ model 3: sim_main.cpp — Clock generation and $finish coordination 4: ./obj_dir/V* — Executable; TB prints PASS/FAIL Refer to the diagram on the right.
 
 12
-00:00:50,458 --> 00:00:53,242
-From MODULE2 Topics Covered.
+00:02:52,498 --> 00:02:59,794
+RTL block diagram (reference). Module 2: DUT hierarchy and signal flow.
 
 13
-00:00:53,592 --> 00:00:56,376
-From MODULE2 Topics Covered.
+00:03:00,144 --> 00:03:08,568
+Verification / testbench diagram (reference). Module 2: stimulus, observation, and checking.
 
 14
-00:00:56,726 --> 00:00:59,510
-From MODULE2 Topics Covered.
+00:03:08,918 --> 00:03:12,950
+Next section: Execution & simulation flow.
 
 15
-00:00:59,860 --> 00:01:02,644
-From MODULE2 Topics Covered.
+00:03:13,300 --> 00:03:45,388
+How the example runs (toolchain). Match each bullet to files in the repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command: make SIM=verilator TEST=test_* (see module2 demo slide) Loopback / hooks connect...
 
 16
-00:01:02,994 --> 00:01:05,778
-From MODULE2 Topics Covered.
+00:03:45,738 --> 00:04:18,162
+Artifact flow (spec → sim). Match each bullet to files in the repository. 1: Makefile — Invokes Verilator with --cc --exe --timing 2: obj_dir/V*.cpp — Generated cycle-accurate C++ model 3: sim_main.cpp — Clock generation and $finish coordination 4: ./obj_dir/V* — Executable; TB prints PASS/FAIL From MODULE2 — execution and artifact layout.
 
 17
-00:01:06,128 --> 00:01:08,912
-From MODULE2 Topics Covered.
+00:04:18,512 --> 00:04:57,488
+Example directory layout. Match each bullet to files in the repository. module2/dut/: RTL blocks under test (registers, FIFOs, state machines) module2/examples/*/: Focused TB patterns (clock, reset, triggers, access) module2/tests/uvm_tests/: UVM wrappers on the same DUTs (bridge to Module 3) Testbench module: Instantiates DUT + interfaces; generates clk/rst sim_main.cpp: C++ entry: drives...
 
 18
-00:01:09,262 --> 00:01:12,046
-From MODULE2 Topics Covered.
+00:04:57,838 --> 00:05:07,054
+Follow these steps in order when working through this module. make link run grep PASS in log Follow this order when tracing waveforms or debugging.
 
 19
-00:01:12,396 --> 00:01:15,180
-From MODULE2 Topics Covered.
+00:05:07,404 --> 00:05:11,508
+Next section: Verification & testing methods.
 
 20
-00:01:15,530 --> 00:01:18,314
-From MODULE2 Topics Covered.
+00:05:11,858 --> 00:05:36,290
+1. Stimulus and timing strategy. Clock generation: parameterized period/duty; multiple clocks for CDC awareness Reset sequences: assert length, sync deassert, mid-test reset injection Triggers: @posedge, wait(), fork-join for parallel activity Signal access: hierarchical references and interface modport access Refer to the diagram on the right.
 
 21
-00:01:18,664 --> 00:01:21,448
-From MODULE2 Topics Covered.
+00:05:36,640 --> 00:06:00,832
+2. Checking and debug workflow (1/2). Self-checking tests compare DUT outputs against expected values each cycle Waveforms (--trace) for debugging timing and reset issues Closure criteria: all directed cases PASS; no $error or timeout ./scripts/module2.sh --all-examples for module-level regression Refer to the diagram on the right.
 
 22
-00:01:21,798 --> 00:01:24,582
-From MODULE2 Topics Covered.
+00:06:01,182 --> 00:06:12,246
+2. Checking and debug workflow (2/2). UVM tests reuse same DUTs — compare directed vs phase-based execution in Module 3
 
 23
-00:01:24,932 --> 00:01:27,716
-From MODULE2 Topics Covered.
+00:06:12,596 --> 00:06:15,860
+Next section: Syllabus topics.
 
 24
-00:01:28,066 --> 00:01:30,850
-From MODULE2 Topics Covered.
+00:06:16,210 --> 00:06:20,002
+Next section: Protocol & design details.
 
 25
-00:01:31,200 --> 00:01:33,984
-From MODULE2 Topics Covered.
+00:06:20,352 --> 00:06:49,416
+Protocol and design detail: Example 2.1: Clock Generation (module2/examples/clock_generation/clock_gen.sv) (1). Simple Clock: Basic clock generation with always block Parameterized Clock: Clock with configurable period and duty cycle Multiple Clocks: Generating multiple independent clocks Clock Gating: Conditional clock generation From MODULE2 Topics Covered — protocol/design depth.
 
 26
-00:01:34,334 --> 00:01:37,118
-From MODULE2 Topics Covered.
+00:06:49,766 --> 00:07:15,086
+Protocol and design detail: Example 2.1: Clock Generation (module2/examples/clock_generation/clock_gen.sv) (2). Clock Stopping: Controlled clock stopping Uses always block for continuous execution Delay operator # controls timing Creates 50% duty cycle clock From MODULE2 Topics Covered — protocol/design depth.
 
 27
-00:01:37,468 --> 00:01:40,252
-From MODULE2 Topics Covered.
+00:07:15,436 --> 00:07:43,420
+Protocol and design detail: Example 2.2: Reset Patterns (module2/examples/reset_patterns/reset_patterns.sv) (1). Synchronous Reset: Reset synchronized to clock Asynchronous Reset: Reset independent of clock Reset Sequence: Controlled reset assertion and de-assertion Reset Verification: Checking reset behavior From MODULE2 Topics Covered — protocol/design depth.
 
 28
-00:01:40,602 --> 00:01:43,386
-From MODULE2 Topics Covered.
+00:07:43,770 --> 00:08:12,594
+Protocol and design detail: Example 2.2: Reset Patterns (module2/examples/reset_patterns/reset_patterns.sv) (2). Purpose: Encapsulates async reset sequence Parameters: Configurable reset duration Usage: async_reset_sequence(100); Key Features: Uses delays, displays timing info From MODULE2 Topics Covered — protocol/design depth.
 
 29
-00:01:43,736 --> 00:01:46,520
-From MODULE2 Topics Covered.
+00:08:12,944 --> 00:08:39,368
+Protocol and design detail: Example 2.3: Signal Access (module2/examples/signal_access/signal_access.sv) (1). Signal Reading: Reading DUT signal values Signal Driving: Driving signals to DUT Signal Monitoring: Monitoring signal changes Signal Types: Handling different signal types From MODULE2 Topics Covered — protocol/design depth.
 
 30
-00:01:46,870 --> 00:01:49,654
-From MODULE2 Topics Covered.
+00:08:39,718 --> 00:09:11,494
+Protocol and design detail: Example 2.3: Signal Access (module2/examples/signal_access/signal_access.sv) (2). Purpose: Demonstrates reading signal values Uses: $display() with format specifiers (%02h, %0d, %b) Key: Reads signals after delays for proper timing Purpose: Demonstrates driving signals to DUT From MODULE2 Topics Covered — protocol/design depth.
 
 31
-00:01:50,004 --> 00:01:52,788
-From MODULE2 Topics Covered.
+00:09:11,844 --> 00:09:38,244
+Protocol and design detail: Example 2.4: Triggers and Timing (module2/examples/triggers/triggers.sv) (1). Event Control: Using @ for event-based timing Delay Control: Using # for time-based delays Wait Statements: Using wait for condition-based waiting Fork-Join: Parallel execution with synchronization From MODULE2 Topics Covered — protocol/design depth.
 
 32
-00:01:53,138 --> 00:01:55,922
-From MODULE2 Topics Covered.
+00:09:38,594 --> 00:10:04,922
+Protocol and design detail: Example 2.4: Triggers and Timing (module2/examples/triggers/triggers.sv) (2). Named Events: Event-based synchronization Timeout Handling: Timeout patterns Purpose: Demonstrates event-based timing Uses: @(posedge), @(negedge), @(signal) for event control From MODULE2 Topics Covered — protocol/design depth.
 
 33
-00:01:56,272 --> 00:01:59,056
-From MODULE2 Topics Covered.
+00:10:05,272 --> 00:10:32,656
+Protocol and design detail: Example 2.5: Common Patterns (module2/examples/common_patterns/common_patterns.sv) (1). Testbench Structure: Organized testbench with phases Driver Pattern: Stimulus generation component Monitor Pattern: Response monitoring component Scoreboard Pattern: Response checking component From MODULE2 Topics Covered — protocol/design depth.
 
 34
-00:01:59,406 --> 00:02:02,190
-From MODULE2 Topics Covered.
+00:10:33,006 --> 00:11:00,750
+Protocol and design detail: Example 2.5: Common Patterns (module2/examples/common_patterns/common_patterns.sv) (2). Reusable Components: Component reuse patterns Purpose: Demonstrates organized testbench phases Structure: Initialization → Reset → Stimulus → Checking → Cleanup Key: Clear separation of test phases From MODULE2 Topics Covered — protocol/design depth.
 
 35
-00:02:02,540 --> 00:02:05,324
-From MODULE2 Topics Covered.
+00:11:01,100 --> 00:11:20,684
+Protocol and design detail: Testbench Task Patterns (1). Purpose: Encapsulate reset sequences Reusability: Can be called from multiple test tasks Parameters: Configurable duration/cycles Purpose: Generate clock signals From MODULE2 Topics Covered — protocol/design depth.
 
 36
-00:02:05,674 --> 00:02:08,458
-From MODULE2 Topics Covered.
+00:11:21,034 --> 00:11:40,978
+Protocol and design detail: Testbench Task Patterns (2). Pattern: Use always blocks for continuous generation Key: Delay operator # controls timing Purpose: Organize test into phases Structure: Clear separation of concerns From MODULE2 Topics Covered — protocol/design depth.
 
 37
-00:02:08,808 --> 00:02:11,592
-From MODULE2 Topics Covered.
+00:11:41,328 --> 00:11:59,160
+Protocol and design detail: Timing Control Functions and Tasks (1). Purpose: Create time-based delays Usage: In tasks and initial blocks Key: Cannot be used in functions Purpose: Synchronize to events From MODULE2 Topics Covered — protocol/design depth.
 
 38
-00:02:11,942 --> 00:02:14,726
-From MODULE2 Topics Covered.
+00:11:59,510 --> 00:12:17,006
+Protocol and design detail: Timing Control Functions and Tasks (2). Usage: In tasks and always blocks Key: Event-driven synchronization Purpose: Condition-based waiting Usage: In tasks From MODULE2 Topics Covered — protocol/design depth.
 
 39
-00:02:15,076 --> 00:02:17,860
-From MODULE2 Topics Covered.
+00:12:17,356 --> 00:12:35,476
+Protocol and design detail: Built-in Functions for Testbenches (1). Purpose: Track simulation time Usage: Timing verification, logging Purpose: Get signal dimensions Usage: Dynamic signal handling From MODULE2 Topics Covered — protocol/design depth.
 
 40
-00:02:18,210 --> 00:02:20,994
-From MODULE2 Topics Covered.
+00:12:35,826 --> 00:13:00,162
+Protocol and design detail: Built-in Functions for Testbenches (2). Purpose: Print formatted output Format Specifiers: %0d (decimal), %0h (hex), %0b (binary), %0t (time) Purpose: Verify conditions Usage: Test verification From MODULE2 Topics Covered — protocol/design depth.
 
 41
-00:02:21,344 --> 00:02:24,128
-From MODULE2 Topics Covered.
+00:13:00,512 --> 00:13:16,952
+Protocol and design detail: Common Testbench Patterns (1). Pattern: Free-running clock Key: Uses forever loop Pattern: Reusable reset sequence Key: Encapsulated in task From MODULE2 Topics Covered — protocol/design depth.
 
 42
-00:02:24,478 --> 00:02:27,262
-From MODULE2 Topics Covered.
+00:13:17,302 --> 00:13:33,958
+Protocol and design detail: Common Testbench Patterns (2). Pattern: Loop-based stimulus Key: Synchronized to clock Pattern: Assertion-based checking Key: Uses assert with $error() From MODULE2 Topics Covered — protocol/design depth.
 
 43
-00:02:27,612 --> 00:02:30,396
-From MODULE2 Topics Covered.
+00:13:34,308 --> 00:13:51,828
+Protocol and design detail: Best Practices for Testbench Tasks (1). Each test phase as separate task Helper tasks for common operations Clear task naming conventions Use parameters for configurability From MODULE2 Topics Covered — protocol/design depth.
 
 44
-00:02:30,746 --> 00:02:33,530
-From MODULE2 Topics Covered.
+00:13:52,178 --> 00:14:07,562
+Protocol and design detail: Best Practices for Testbench Tasks (2). Default parameter values Type-safe parameters Always synchronize to clock edges Use appropriate delays From MODULE2 Topics Covered — protocol/design depth.
 
 45
-00:02:33,880 --> 00:02:36,664
-From MODULE2 Topics Covered.
+00:14:07,912 --> 00:14:30,688
+Protocol and design detail: Common Pitfalls in Testbench Construction (1). Issue: forever with ~ operator can cause timing issues Solution: Use explicit assignment with delays Issue: Fixed delays don't guarantee clock alignment Solution: Always use @(posedge clk) for synchronization From MODULE2 Topics Covered — protocol/design depth.
 
 46
-00:02:37,014 --> 00:02:39,798
-From MODULE2 Topics Covered.
+00:14:31,038 --> 00:14:55,374
+Protocol and design detail: Common Pitfalls in Testbench Construction (2). Issue: Insufficient reset duration or propagation time Solution: Use configurable duration and add propagation delay Issue: Non-blocking assignments in tasks can cause timing issues Solution: Use blocking assignments (=) in tasks From MODULE2 Topics Covered — protocol/design depth.
 
 47
-00:02:40,148 --> 00:02:42,932
-From MODULE2 Topics Covered.
+00:14:55,724 --> 00:15:17,468
+Protocol and design detail: Performance Considerations (1). Simple clocks: Use always blocks (efficient) Multiple clocks: Each clock needs separate always block Gated clocks: Conditional logic adds minimal overhead Tasks: Slower due to timing simulation overhead From MODULE2 Topics Covered — protocol/design depth.
 
 48
-00:02:43,282 --> 00:02:46,066
-From MODULE2 Topics Covered.
+00:15:17,818 --> 00:15:40,858
+Protocol and design detail: Performance Considerations (2). Functions: Faster (zero-time), but can't use delays Recommendation: Use functions for calculations, tasks for sequences @(posedge clk): Efficient, event-driven #delay: Time-based, requires scheduling From MODULE2 Topics Covered — protocol/design depth.
 
 49
-00:02:46,416 --> 00:02:49,200
-From MODULE2 Topics Covered.
+00:15:41,208 --> 00:15:57,240
+Protocol and design detail: Troubleshooting Guide (1). Symptoms: Clock signal stuck at 0 or 1 Causes: always block not executing Delay value too large or zero From MODULE2 Topics Covered — protocol/design depth.
 
 50
-00:02:49,550 --> 00:02:52,334
-From MODULE2 Topics Covered.
+00:15:57,590 --> 00:16:12,998
+Protocol and design detail: Troubleshooting Guide (2). Blocking on condition that never becomes true Solutions: Check always block syntax Verify delay values are positive From MODULE2 Topics Covered — protocol/design depth.
 
 51
-00:02:52,684 --> 00:02:55,468
-From MODULE2 Topics Covered.
+00:16:13,348 --> 00:16:21,148
+Verification flow (reference). Stimulus, DUT response, and check points for this module.
 
 52
-00:02:55,818 --> 00:02:58,602
-From MODULE2 Topics Covered.
+00:16:21,498 --> 00:16:35,730
+1. SystemVerilog Testbench Architecture (1/3). What is a Testbench? Testbench purpose and structure DUT (Design Under Test) connection Stimulus generation Response checking
 
 53
-00:02:58,952 --> 00:03:01,736
-From MODULE2 Topics Covered.
+00:16:36,080 --> 00:16:48,416
+1. SystemVerilog Testbench Architecture (2/3). Testbench module DUT instantiation Interface instantiation Clock and reset generation Stimulus and monitoring
 
 54
-00:03:02,086 --> 00:03:04,870
-From MODULE2 Topics Covered.
+00:16:48,766 --> 00:16:58,414
+1. SystemVerilog Testbench Architecture (3/3). Module hierarchy Signal connectivity Time management Event scheduling
 
 55
-00:03:05,220 --> 00:03:08,004
-From MODULE2 Topics Covered.
+00:16:58,764 --> 00:17:10,860
+2. Clock Generation and Management (1/8). Clock Generation Simple clock generation Clock with parameters (period, duty cycle) Multiple clocks Clock gating
 
 56
-00:03:08,354 --> 00:03:11,138
-From MODULE2 Topics Covered.
+00:17:11,210 --> 00:17:20,954
+2. Clock Generation and Management (2/8). Regular clocks Gated clocks Clock division Clock stopping Clock domain crossing
 
 57
-00:03:11,488 --> 00:03:14,272
-From MODULE2 Topics Covered.
+00:17:21,304 --> 00:17:35,896
+2. Clock Generation and Management (3/8). Multiple clock domains Clock domain crossing verification Synchronization between domains Metastability handling Simple Clock: Basic clock generation with always block
 
 58
-00:03:14,622 --> 00:03:17,406
-From MODULE2 Topics Covered.
+00:17:36,246 --> 00:17:54,078
+2. Clock Generation and Management (4/8). Multiple Clocks: Generating multiple independent clocks Clock Gating: Conditional clock generation Clock Stopping: Controlled clock stopping Uses always block for continuous execution Delay operator # controls timing
 
 59
-00:03:17,756 --> 00:03:20,540
-From MODULE2 Topics Covered.
+00:17:54,428 --> 00:18:08,996
+2. Clock Generation and Management (5/8). Uses parameters for flexibility Same pattern, different frequency Conditional clock generation Uses if-else for gating control Uses wait statement for condition-based stopping
 
 60
-00:03:20,890 --> 00:03:23,674
-From MODULE2 Topics Covered.
+00:18:09,346 --> 00:18:25,522
+2. Clock Generation and Management (6/8). $display() - Print clock information $time - Get current simulation time $finish - Terminate simulation Clocks are fundamental to synchronous designs Parameterized clocks enable flexibility
 
 61
-00:03:24,024 --> 00:03:26,808
-From MODULE2 Topics Covered.
+00:18:25,872 --> 00:18:43,152
+2. Clock Generation and Management (7/8). Clock gating is common in low-power designs always blocks create continuous processes Delay operator # controls timing wait statements enable condition-based control Simple clock generation with configurable period
 
 62
-00:03:27,158 --> 00:03:29,942
-From MODULE2 Topics Covered.
+00:18:43,502 --> 00:18:51,326
+2. Clock Generation and Management (8/8). Clock gating and stopping patterns working correctly
 
 63
-00:03:30,292 --> 00:03:33,076
-From MODULE2 Topics Covered.
+00:18:51,676 --> 00:19:02,068
+3. Reset Patterns and Sequences (1/7). Reset Types Synchronous reset Asynchronous reset Reset assertion and de-assertion Reset timing
 
 64
-00:03:33,426 --> 00:03:36,210
-From MODULE2 Topics Covered.
+00:19:02,418 --> 00:19:12,474
+3. Reset Patterns and Sequences (2/7). Power-on reset Software reset Hardware reset Partial reset Reset Sequences
 
 65
-00:03:36,560 --> 00:03:39,344
-From MODULE2 Topics Covered.
+00:19:12,824 --> 00:19:27,680
+3. Reset Patterns and Sequences (3/7). Reset de-assertion sequence Reset verification Reset timing checks Synchronous Reset: Reset synchronized to clock Asynchronous Reset: Reset independent of clock
 
 66
-00:03:39,694 --> 00:03:42,478
-From MODULE2 Topics Covered.
+00:19:28,030 --> 00:19:48,718
+3. Reset Patterns and Sequences (4/7). Reset Verification: Checking reset behavior Purpose: Encapsulates async reset sequence Parameters: Configurable reset duration Usage: async_reset_sequence(100); Key Features: Uses delays, displays timing info
 
 67
-00:03:42,828 --> 00:03:45,612
-From MODULE2 Topics Covered.
+00:19:49,068 --> 00:20:12,204
+3. Reset Patterns and Sequences (5/7). Parameters: Number of reset cycles Usage: sync_reset_sequence(5); Key Features: Uses repeat and @(posedge clk) for clock synchronization Purpose: Verifies reset properly initializes registers Uses: assert statements with $error() for verification
 
 68
-00:03:45,962 --> 00:03:48,746
-From MODULE2 Topics Covered.
+00:20:12,554 --> 00:20:32,018
+3. Reset Patterns and Sequences (6/7). Reset is critical for proper design initialization Synchronous vs asynchronous reset have different timing Reset sequences must follow design requirements Reset verification ensures proper operation Tasks encapsulate reset sequences for reusability
 
 69
-00:03:49,096 --> 00:03:51,880
-From MODULE2 Topics Covered.
+00:20:32,368 --> 00:20:50,776
+3. Reset Patterns and Sequences (7/7). @(posedge clk) synchronizes to clock edges assert statements verify reset behavior Synchronous and asynchronous reset patterns demonstrated Reset sequences executed correctly Reset verification checks passing
 
 70
-00:03:52,230 --> 00:03:55,014
-From MODULE2 Topics Covered.
+00:20:51,126 --> 00:21:01,326
+4. Signal Access and Driving (1/8). Signal Access Reading signal values Signal types and widths Signal state checking Signal monitoring
 
 71
-00:03:55,364 --> 00:03:58,148
-From MODULE2 Topics Covered.
+00:21:01,676 --> 00:21:12,044
+4. Signal Access and Driving (2/8). Assigning values Continuous assignment Procedural assignment Signal driving timing Signal Types
 
 72
-00:03:58,498 --> 00:04:01,282
-From MODULE2 Topics Covered.
+00:21:12,394 --> 00:21:26,698
+4. Signal Access and Driving (3/8). Multi-bit signals (vectors) Buses and arrays Bidirectional signals Signal Reading: Reading DUT signal values Signal Driving: Driving signals to DUT
 
 73
-00:04:01,632 --> 00:04:04,416
-From MODULE2 Topics Covered.
+00:21:27,048 --> 00:21:50,280
+4. Signal Access and Driving (4/8). Signal Types: Handling different signal types Purpose: Demonstrates reading signal values Uses: $display() with format specifiers (%02h, %0d, %b) Key: Reads signals after delays for proper timing Purpose: Demonstrates driving signals to DUT
 
 74
-00:04:04,766 --> 00:04:07,550
-From MODULE2 Topics Covered.
+00:21:50,630 --> 00:22:10,166
+4. Signal Access and Driving (5/8). Verification: Uses assert to verify driven values Purpose: Automatically monitors signal changes Uses: always @(signal) for event-driven monitoring Key: Runs in parallel with test tasks Purpose: Demonstrates different signal types
 
 75
-00:04:07,900 --> 00:04:10,132
-Hands-on examples
+00:22:10,516 --> 00:22:28,444
+4. Signal Access and Driving (6/8). Key: Handles single-bit, multi-bit, and array signals $display() - Print signal values with formatting $time - Get current simulation time $bits() - Get signal bit width $error() - Report errors in assertions
 
 76
-00:04:10,482 --> 00:04:13,314
-Run from course repository root.
+00:22:28,794 --> 00:22:46,626
+4. Signal Access and Driving (7/8). Proper timing is essential for signal driving Signal monitoring enables response checking Different signal types require different handling Tasks organize signal access operations always @(signal) creates event-driven monitors
 
 77
-00:04:13,664 --> 00:04:17,672
-Exercise scaffold The following command is shown on screen.
+00:22:46,976 --> 00:23:05,000
+4. Signal Access and Driving (8/8). Format specifiers (%b, %h, %d) for display Signal reading operations working correctly Signal driving verified with assertions Signal monitoring capturing changes Different signal types handled properly
 
 78
-00:04:18,022 --> 00:04:23,710
-module2/examples/clock_generation/README.md
+00:23:05,350 --> 00:23:16,606
+5. Event and Timing Control (1/9). SystemVerilog Events Event declaration Event triggering (->) Event waiting (@) Named events
 
 79
-00:04:24,060 --> 00:04:29,604
-Hands-on: module2/examples/clock_generation/
+00:23:16,956 --> 00:23:27,012
+5. Event and Timing Control (2/9). # delay operator @ event control wait statement fork-join constructs Synchronization
 
 80
-00:04:29,954 --> 00:04:35,618
-module2/examples/reset_patterns/README.md
+00:23:27,362 --> 00:23:41,666
+5. Event and Timing Control (3/9). Barrier synchronization Timeout handling Race condition avoidance Event Control: Using @ for event-based timing Delay Control: Using # for time-based delays
 
 81
-00:04:35,968 --> 00:04:41,392
-Hands-on: module2/examples/reset_patterns/
+00:23:42,016 --> 00:24:01,840
+5. Event and Timing Control (4/9). Fork-Join: Parallel execution with synchronization Named Events: Event-based synchronization Timeout Handling: Timeout patterns Purpose: Demonstrates event-based timing Uses: @(posedge), @(negedge), @(signal) for event control
 
 82
-00:04:41,742 --> 00:04:47,334
-module2/examples/signal_access/README.md
+00:24:02,190 --> 00:24:21,510
+5. Event and Timing Control (5/9). Purpose: Demonstrates time-based delays Uses: # delay operator with fixed and parameterized values Key: Tracks time using $time built-in function Purpose: Demonstrates condition-based waiting Uses: wait(condition) statement
 
 83
-00:04:47,684 --> 00:04:53,036
-Hands-on: module2/examples/signal_access/
+00:24:21,860 --> 00:24:39,404
+5. Event and Timing Control (6/9). Purpose: Demonstrates parallel execution Uses: fork-join for parallel tasks Key: Waits for all tasks to complete Purpose: Continues after first task completes Uses: fork-join_any construct
 
 84
-00:04:53,386 --> 00:04:58,090
-module2/examples/triggers/README.md
+00:24:39,754 --> 00:25:00,130
+5. Event and Timing Control (7/9). Purpose: Starts tasks without waiting Uses: fork-join_none construct Key: Continues immediately, tasks run in background Purpose: Demonstrates named event synchronization Uses: event declaration, @(event) wait, -> event trigger
 
 85
-00:04:58,440 --> 00:05:03,048
-Hands-on: module2/examples/triggers/
+00:25:00,480 --> 00:25:19,848
+5. Event and Timing Control (8/9). Events enable synchronization between processes Timing control is essential for proper testbench operation Wait statements enable condition-based synchronization Fork-join enables parallel execution @(posedge/negedge) waits for signal edges
 
 86
-00:05:03,398 --> 00:05:08,990
-module2/examples/common_patterns/README.md
+00:25:20,198 --> 00:25:33,998
+5. Event and Timing Control (9/9). wait(condition) waits for condition to become true fork-join creates parallel execution with synchronization Named events provide flexible synchronization
 
 87
-00:05:09,340 --> 00:05:14,716
-Hands-on: module2/examples/common_patterns/
+00:25:34,348 --> 00:25:44,692
+6. Common Verification Patterns (1/7). Testbench Structure Initialization phase Stimulus generation Response checking Cleanup phase
 
 88
-00:05:15,066 --> 00:05:17,394
-Practice & assessment
+00:25:45,042 --> 00:25:57,066
+6. Common Verification Patterns (2/7). Directed testing Constrained random testing Coverage-driven verification Assertion-based verification Reusable Components
 
 89
-00:05:17,744 --> 00:05:20,624
-From MODULE2 Learning Outcomes.
+00:25:57,416 --> 00:26:11,816
+6. Common Verification Patterns (3/7). Monitor components Scoreboard components Checker components Testbench Structure: Organized testbench with phases Driver Pattern: Stimulus generation component
 
 90
-00:05:20,974 --> 00:05:23,854
-From MODULE2 Learning Outcomes.
+00:26:12,166 --> 00:26:31,942
+6. Common Verification Patterns (4/7). Scoreboard Pattern: Response checking component Reusable Components: Component reuse patterns Purpose: Demonstrates organized testbench phases Structure: Initialization → Reset → Stimulus → Checking → Cleanup Key: Clear separation of test phases
 
 91
-00:05:24,204 --> 00:05:30,996
-Exercises Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+00:26:32,292 --> 00:26:52,236
+6. Common Verification Patterns (5/7). Uses: Virtual task for polymorphism Key: Can be extended in derived classes Purpose: Response monitoring component Uses: Constructor function, virtual task, accessor function Key: Captures and provides access to monitored data
 
 92
-00:05:31,346 --> 00:05:45,626
-Assessment checklist Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns Can structure testbenches effectively
+00:26:52,586 --> 00:27:12,506
+6. Common Verification Patterns (6/7). Uses: Queue methods (push_back(), size()), comparison logic Key: Compares expected vs actual results Structured testbenches are easier to maintain Reusable components improve productivity Common patterns enable code reuse
 
 93
-00:05:45,976 --> 00:05:59,296
-Summary & next steps Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Review module2/EXAMPLES.md and run each lab Next: Next module in course
+00:27:12,856 --> 00:27:29,944
+6. Common Verification Patterns (7/7). Tasks organize test phases (init, reset, stimulus, check) Virtual tasks enable polymorphism Class methods encapsulate component behavior Queue operations manage transaction lists
+
+94
+00:27:30,294 --> 00:27:40,974
+7. Test Structure and Organization (1/3). Test Function Structure Test module organization Test phases Test organization Test parameters
+
+95
+00:27:41,324 --> 00:27:51,236
+7. Test Structure and Organization (2/3). Test discovery Test selection Test parameters Test fixtures Test Organization
+
+96
+00:27:51,586 --> 00:28:00,394
+7. Test Structure and Organization (3/3). Test naming conventions Test documentation Test maintenance
+
+97
+00:28:00,744 --> 00:28:20,856
+7. Functions and Tasks for Testbench Construction (1/23). Purpose: Encapsulate reset sequences Reusability: Can be called from multiple test tasks Parameters: Configurable duration/cycles Purpose: Generate clock signals Pattern: Use always blocks for continuous generation
+
+98
+00:28:21,206 --> 00:28:40,934
+7. Functions and Tasks for Testbench Construction (2/23). Purpose: Organize test into phases Structure: Clear separation of concerns Maintainability: Easy to modify individual phases Purpose: Encapsulate signal operations Output Parameters: Use output for return values
+
+99
+00:28:41,284 --> 00:28:58,252
+7. Functions and Tasks for Testbench Construction (3/23). Purpose: Create time-based delays Usage: In tasks and initial blocks Key: Cannot be used in functions Purpose: Synchronize to events Usage: In tasks and always blocks
+
+100
+00:28:58,602 --> 00:29:13,842
+7. Functions and Tasks for Testbench Construction (4/23). Purpose: Condition-based waiting Usage: In tasks Key: Waits until condition becomes true Purpose: Parallel execution Usage: In tasks
+
+101
+00:29:14,192 --> 00:29:30,800
+7. Functions and Tasks for Testbench Construction (5/23). Purpose: Track simulation time Usage: Timing verification, logging Purpose: Get signal dimensions Usage: Dynamic signal handling Purpose: Print formatted output
+
+102
+00:29:31,150 --> 00:29:46,438
+7. Functions and Tasks for Testbench Construction (6/23). Purpose: Verify conditions Usage: Test verification Severity: ERROR, FATAL, WARNING Pattern: Free-running clock Key: Uses forever loop
+
+103
+00:29:46,788 --> 00:30:02,244
+7. Functions and Tasks for Testbench Construction (7/23). Key: Encapsulated in task Pattern: Loop-based stimulus Key: Synchronized to clock Pattern: Assertion-based checking Key: Uses assert with $error()
+
+104
+00:30:02,594 --> 00:30:19,610
+7. Functions and Tasks for Testbench Construction (8/23). Key: Uses always @(posedge clk) Each test phase as separate task Helper tasks for common operations Clear task naming conventions Use parameters for configurability
+
+105
+00:30:19,960 --> 00:30:33,352
+7. Functions and Tasks for Testbench Construction (9/23). Type-safe parameters Always synchronize to clock edges Use appropriate delays Avoid race conditions Use assertions for verification
+
+106
+00:30:33,702 --> 00:30:49,614
+7. Functions and Tasks for Testbench Construction (10/23). Handle edge cases Encapsulate common sequences Use virtual tasks for polymorphism Create reusable components Issue: forever with ~ operator can cause timing issues
+
+107
+00:30:49,964 --> 00:31:14,468
+7. Functions and Tasks for Testbench Construction (11/23). Issue: Fixed delays don't guarantee clock alignment Solution: Always use @(posedge clk) for synchronization Issue: Insufficient reset duration or propagation time Solution: Use configurable duration and add propagation delay Issue: Non-blocking assignments in tasks can cause timing issues
+
+108
+00:31:14,818 --> 00:31:36,058
+7. Functions and Tasks for Testbench Construction (12/23). Issue: No way to verify tasks completed successfully Solution: Add completion messages or flags Issue: Wait statement can hang if condition never becomes true Solution: Use fork-join with timeout Simple clocks: Use always blocks (efficient)
+
+109
+00:31:36,408 --> 00:32:00,312
+7. Functions and Tasks for Testbench Construction (13/23). Gated clocks: Conditional logic adds minimal overhead Tasks: Slower due to timing simulation overhead Functions: Faster (zero-time), but can't use delays Recommendation: Use functions for calculations, tasks for sequences @(posedge clk): Efficient, event-driven
+
+110
+00:32:00,662 --> 00:32:22,766
+7. Functions and Tasks for Testbench Construction (14/23). wait(condition): Polls condition, can be slower fork-join: Creates parallel processes (overhead) Use sparingly: Only when parallel execution is needed Alternative: Sequential execution is faster Symptoms: Clock signal stuck at 0 or 1
+
+111
+00:32:23,116 --> 00:32:38,356
+7. Functions and Tasks for Testbench Construction (15/23). always block not executing Delay value too large or zero Blocking on condition that never becomes true Solutions: Check always block syntax
+
+112
+00:32:38,706 --> 00:32:55,290
+7. Functions and Tasks for Testbench Construction (16/23). Use $display to debug clock generation Symptoms: Registers not resetting to expected values Causes: Insufficient reset duration Reset de-asserted too early
+
+113
+00:32:55,640 --> 00:33:13,520
+7. Functions and Tasks for Testbench Construction (17/23). Solutions: Increase reset duration Add delay after reset de-assert Verify reset polarity (active-high vs active-low) Symptoms: Signal value doesn't change as expected
+
+114
+00:33:13,870 --> 00:33:28,294
+7. Functions and Tasks for Testbench Construction (18/23). Not synchronized to clock Using wrong assignment type Signal not being driven Solutions: Use @(posedge clk) before reading
+
+115
+00:33:28,644 --> 00:33:46,428
+7. Functions and Tasks for Testbench Construction (19/23). Verify signal is being driven Symptoms: Inconsistent behavior, timing-dependent failures Causes: Multiple processes accessing same signal Clock and data changing simultaneously
+
+116
+00:33:46,778 --> 00:34:03,578
+7. Functions and Tasks for Testbench Construction (20/23). Solutions: Use proper clock synchronization Avoid shared variable access Use non-blocking assignment in sequential logic Symptoms: Code continues before tasks complete
+
+117
+00:34:03,928 --> 00:34:20,032
+7. Functions and Tasks for Testbench Construction (21/23). Using join_none instead of join Tasks completing before join Solutions: Use join to wait for all tasks Use join_any to wait for first task
+
+118
+00:34:20,382 --> 00:34:35,214
+7. Functions and Tasks for Testbench Construction (22/23). Symptoms: Simulation hangs, never completes Causes: Condition never becomes true Signal never assigned Logic error in condition
+
+119
+00:34:35,564 --> 00:34:48,092
+7. Functions and Tasks for Testbench Construction (23/23). Add timeout mechanism Verify condition logic Check signal assignments Use $display to debug
+
+120
+00:34:48,442 --> 00:34:51,682
+Next section: Hands-on examples.
+
+121
+00:34:52,032 --> 00:34:59,064
+Module 2 self-check. Watch the terminal output and confirm you see the expected pass message.
+
+122
+00:34:59,414 --> 00:35:05,798
+Exercise scaffold. Review the code on screen and match it to files in the repository.
+
+123
+00:35:06,148 --> 00:35:30,172
+Example 1: Clock Generation. Simple Clock: Basic clock generation with always block Parameterized Clock: Clock with configurable period and duty cycle Multiple Clocks: Generating multiple independent clocks Clock Gating: Conditional clock generation Clock Stopping: Controlled clock stopping module2/examples/clock_generation/README.md
+
+124
+00:35:30,522 --> 00:35:37,962
+Demo: Clock Generation. Watch the terminal output and confirm you see the expected pass message.
+
+125
+00:35:38,312 --> 00:35:58,856
+Example 2: Reset Patterns. Synchronous Reset: Reset synchronized to clock Asynchronous Reset: Reset independent of clock Reset Sequence: Controlled reset assertion and de-assertion Reset Verification: Checking reset behavior module2/examples/reset_patterns/README.md
+
+126
+00:35:59,206 --> 00:36:06,622
+Demo: Reset Patterns. Watch the terminal output and confirm you see the expected pass message.
+
+127
+00:36:06,972 --> 00:36:25,884
+Example 3: Signal Access. Signal Reading: Reading DUT signal values Signal Driving: Driving signals to DUT Signal Monitoring: Monitoring signal changes Signal Types: Handling different signal types module2/examples/signal_access/README.md
+
+128
+00:36:26,234 --> 00:36:33,722
+Demo: Signal Access. Watch the terminal output and confirm you see the expected pass message.
+
+129
+00:36:34,072 --> 00:36:56,080
+Example 4: Triggers and Timing. Event Control: Using @ for event-based timing Delay Control: Using # for time-based delays Wait Statements: Using wait for condition-based waiting Fork-Join: Parallel execution with synchronization Named Events: Event-based synchronization module2/examples/triggers/README.md
+
+130
+00:36:56,430 --> 00:37:03,846
+Demo: Triggers and Timing. Watch the terminal output and confirm you see the expected pass message.
+
+131
+00:37:04,196 --> 00:37:26,900
+Example 5: Common Patterns. Testbench Structure: Organized testbench with phases Driver Pattern: Stimulus generation component Monitor Pattern: Response monitoring component Scoreboard Pattern: Response checking component Reusable Components: Component reuse patterns module2/examples/common_patterns/README.md
+
+132
+00:37:27,250 --> 00:37:34,642
+Demo: Common Patterns. Watch the terminal output and confirm you see the expected pass message.
+
+133
+00:37:34,992 --> 00:37:38,184
+Next section: Common pitfalls.
+
+134
+00:37:38,534 --> 00:37:49,094
+Clock Generation. Create a parameterized clock generator Generate multiple clocks with different frequencies Implement clock gating Test clock domain crossing
+
+135
+00:37:49,444 --> 00:37:58,996
+Reset Implementation. Implement synchronous and asynchronous reset Create reset sequences Verify reset behavior Test reset timing
+
+136
+00:37:59,346 --> 00:38:07,890
+Signal Access. Read and drive DUT signals Monitor signal changes Handle different signal types Implement signal checking
+
+137
+00:38:08,240 --> 00:38:17,072
+Timing Control. Use events for synchronization Implement delays and waits Use fork-join for parallel execution Handle timeouts
+
+138
+00:38:17,422 --> 00:38:26,758
+Testbench Patterns. Implement driver pattern Implement monitor pattern Implement scoreboard pattern Create reusable testbench components
+
+139
+00:38:27,108 --> 00:38:30,492
+Next section: Practice & assessment.
+
+140
+00:38:30,842 --> 00:38:48,242
+By now you should be able to explain the following. Understand SystemVerilog testbench architecture Generate clocks and manage clock domains Implement reset patterns and sequences Access and drive signals correctly Use events and timing control effectively From MODULE2 Learning Outcomes.
+
+141
+00:38:48,592 --> 00:39:03,328
+By now you should be able to explain the following. Structure testbenches for maintainability Prepare for UVM methodology Write effective testbench tasks and functions Use timing control constructs properly From MODULE2 Learning Outcomes.
+
+142
+00:39:03,678 --> 00:39:11,646
+Exercises. Clock Generation Reset Implementation Signal Access Timing Control Testbench Patterns
+
+143
+00:39:11,996 --> 00:39:25,244
+Assessment checklist. Can generate clocks and manage clock domains Can implement reset patterns Can access and drive signals correctly Can use events and timing control Can apply common verification patterns
+
+144
+00:39:25,594 --> 00:39:44,002
+In summary: Master SystemVerilog testbench construction Next up: Next module in course. Master SystemVerilog testbench construction Complete module2/CHECKLIST.md Review module2/EXAMPLES.md and run each lab Next: Next module in course

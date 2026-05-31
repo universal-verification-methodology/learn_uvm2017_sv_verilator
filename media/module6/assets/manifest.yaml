@@ -10,46 +10,77 @@ assets:
   - 4
   - 4
   license: learn_uvm2017_sv_verilator course materials
+- id: rtl_architecture
+  type: diagram
+  file: assets/diagrams/rtl_architecture.png
+  source: assets/diagrams/rtl_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 7
+  - 14
+  license: learn_uvm2017_sv_verilator course materials
+- id: verification_architecture
+  type: diagram
+  file: assets/diagrams/verification_architecture.png
+  source: assets/diagrams/verification_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 10
+  - 15
+  license: learn_uvm2017_sv_verilator course materials
+- id: testing_methods
+  type: diagram
+  file: assets/diagrams/testing_methods.png
+  source: assets/diagrams/testing_methods.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 12
+  - 23
+  - 24
+  - 54
+  license: learn_uvm2017_sv_verilator course materials
 - id: module6_check
   type: screenshot
   file: assets/screenshots/module6_check.png
-  capture_command: ./scripts/module6.sh --architecture
+  capture_command: ./scripts/module6.sh --help
   cwd: .
   slides:
-  - 67
-  expect_stdout_contains: completed successfully
+  - 124
+  expect_stdout_contains: Module
 - id: ex01_architecture
   type: screenshot
   file: assets/screenshots/ex01_architecture.png
   capture_command: ./scripts/module6.sh --architecture
   cwd: .
   slides:
-  - 70
+  - 127
 - id: ex02_multi_agent
   type: screenshot
   file: assets/screenshots/ex02_multi_agent.png
   capture_command: ./scripts/module6.sh --multi-agent
   cwd: .
   slides:
-  - 72
+  - 129
 - id: ex03_protocol
   type: screenshot
   file: assets/screenshots/ex03_protocol.png
   capture_command: ./scripts/module6.sh --protocol
   cwd: .
   slides:
-  - 74
+  - 131
 - id: ex04_protocol_checkers
   type: screenshot
   file: assets/screenshots/ex04_protocol_checkers.png
-  capture_command: ./scripts/module6.sh --protocol-checkers
+  capture_command: ./scripts/module6.sh --protocol-checkers && cd module6/examples/protocol_checkers
+    && verilator -sv --cc --exe --timing --trace protocol_checkers.sv protocol_checkers.cpp
+    \ && -I"$UVM_HOME" +incdir+"$UVM_HOME" +define+UVM_NO_DPI \
   cwd: .
   slides:
-  - 76
+  - 133
 - id: ex05_scoreboards
   type: screenshot
   file: assets/screenshots/ex05_scoreboards.png
   capture_command: ./scripts/module6.sh --scoreboards
   cwd: .
   slides:
-  - 78
+  - 135

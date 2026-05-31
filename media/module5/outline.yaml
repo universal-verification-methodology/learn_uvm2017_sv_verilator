@@ -7,26 +7,455 @@ slides:
 - type: title
   title: Module 5
   subtitle: Advanced UVM Concepts
+  narration: Welcome to module 5, Advanced UVM Concepts. In this module you will master
+    advanced uvm features and patterns.
 - type: bullets
   title: Learning objectives
   bullets:
   - Master advanced UVM features and patterns
+  narration: Here is what you will learn in this module. Master advanced UVM features
+    and patterns
 - type: bullets
   title: Prerequisites
   bullets:
   - See module README
+  narration: Before you start, make sure you have these prerequisites. See module
+    README
 - type: image
   title: Learning path
   image: assets/diagrams/learning_path.png
   caption: Master advanced UVM features and patterns
+  narration: Learning path. Master advanced UVM features and patterns
 - type: bullets
   title: Overview
   bullets:
   - This module covers advanced UVM concepts including virtual sequences, coverage
-    models, advanced configuration, callbacks, and register models. You'll learn how
-    to coordinate multiple sequencers, implement functional cove
+    models, advanced configuration, callbacks, and register...
+  narration: Overview. This module covers advanced UVM concepts including virtual
+    sequences, coverage models, advanced configuration, callbacks, and register...
+- type: section
+  title: Design architecture
+  narration: 'Next section: Design architecture.'
+- type: two_column
+  title: 1. Advanced UVM coordination architecture (1/3)
+  left:
+  - Virtual sequences run on virtual sequencer; delegate to agent sequencers
+  - Register model maps address space — frontdoor (bus) and backdoor (hdl paths)
+  - Callbacks intercept pre/post drive, report, or phase hooks
+  - 'Hierarchy: Test → Env → {Agent(s), Reg model, Coverage collector}'
+  right: assets/diagrams/rtl_architecture.png
+  notes: From MODULE5 Design Architecture.
+  narration: '1. Advanced UVM coordination architecture (1/3). Virtual sequences run
+    on virtual sequencer; delegate to agent sequencers Register model maps address
+    space — frontdoor (bus) and backdoor (hdl paths) Callbacks intercept pre/post
+    drive, report, or phase hooks Hierarchy: Test → Env → {Agent(s), Reg model, Coverage
+    collector} Refer to the diagram on the right.'
+- type: bullets
+  title: 1. Advanced UVM coordination architecture (2/3)
+  bullets:
+  - 'uvm_virtual_sequencer: Coordinates multiple sub-sequencers (multi-agent)'
+  - 'uvm_reg_block / uvm_reg: Register abstraction layer (RAL)'
+  - 'uvm_subscriber / callbacks: Hook component behavior without subclassing'
+  - 'Coverage model: covergroup in classes or standalone cover components'
+  notes: From MODULE5 Design Architecture.
+  narration: '1. Advanced UVM coordination architecture (2/3). uvm_virtual_sequencer:
+    Coordinates multiple sub-sequencers (multi-agent) uvm_reg_block / uvm_reg: Register
+    abstraction layer (RAL) uvm_subscriber / callbacks: Hook component behavior without
+    subclassing Coverage model: covergroup in classes or standalone cover components'
+- type: bullets
+  title: 1. Advanced UVM coordination architecture (3/3)
+  bullets:
+  - 'Config objects: Structured uvm_object passed via ConfigDB'
+  notes: From MODULE5 Design Architecture.
+  narration: '1. Advanced UVM coordination architecture (3/3). Config objects: Structured
+    uvm_object passed via ConfigDB'
+- type: two_column
+  title: 2. Cross-cutting concern flow (1/2)
+  left:
+  - '1: Config object — Built in test; set via uvm_config_db'
+  - '2: Virtual sequence — Starts traffic on multiple interfaces'
+  - '3: Functional coverage — Samples during monitor/scoreboard activity'
+  - '4: Register sequences — RAL write/read with predicted values'
+  right: assets/diagrams/verification_architecture.png
+  notes: From MODULE5 Design Architecture.
+  narration: '2. Cross-cutting concern flow (1/2). 1: Config object — Built in test;
+    set via uvm_config_db 2: Virtual sequence — Starts traffic on multiple interfaces
+    3: Functional coverage — Samples during monitor/scoreboard activity 4: Register
+    sequences — RAL write/read with predicted values Refer to the diagram on the right.'
+- type: bullets
+  title: 2. Cross-cutting concern flow (2/2)
+  bullets:
+  - '5: Callback — Alters or logs transaction before drive'
+  notes: From MODULE5 Design Architecture.
+  narration: '2. Cross-cutting concern flow (2/2). 5: Callback — Alters or logs transaction
+    before drive'
+- type: two_column
+  title: 3. Module 5 DUT context
+  left:
+  - '`dut/advanced/multi_channel.v` — multi-channel design for virtual sequence demos'
+  - Examples map 1:1 to advanced topics (virtual seq, coverage, reg model, callbacks)
+  - Integrated test `test_advanced_uvm.sv` combines multiple advanced features
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE5 Design Architecture.
+  narration: 3. Module 5 DUT context. dut/advanced/multi_channel.v — multi-channel
+    design for virtual sequence demos Examples map 1:1 to advanced topics (virtual
+    seq, coverage, reg model, callbacks) Integrated test test_advanced_uvm.sv combines
+    multiple advanced features Refer to the diagram on the right.
+- type: image
+  title: RTL block diagram (reference)
+  image: assets/diagrams/rtl_architecture.png
+  caption: 'Module 5: DUT hierarchy and signal flow.'
+  narration: 'RTL block diagram (reference). Module 5: DUT hierarchy and signal flow.'
+- type: image
+  title: Verification / testbench diagram (reference)
+  image: assets/diagrams/verification_architecture.png
+  caption: 'Module 5: stimulus, observation, and checking.'
+  narration: 'Verification / testbench diagram (reference). Module 5: stimulus, observation,
+    and checking.'
+- type: section
+  title: Execution & simulation flow
+  narration: 'Next section: Execution & simulation flow.'
+- type: bullets
+  title: How the example runs (toolchain)
+  bullets:
+  - 'Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv'
+  - 'UVM phases: build → connect → run_test → report (same pattern as Module 2)'
+  - Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end)
+  - 'Typical command: make SIM=verilator TEST=test_* (see module5 demo slide)'
+  - Loopback / hooks connect monitor observations to scoreboard checks
+  notes: From MODULE5 — execution and artifact layout.
+  narration: 'How the example runs (toolchain). Match each bullet to files in the
+    repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv
+    UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence
+    → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command:
+    make SIM=verilator TEST=test_* (see module5 demo slide) Loopback / hooks connect...'
+- type: bullets
+  title: Artifact flow (spec → sim) (1)
+  bullets:
+  - '1: Config object — Built in test; set via uvm_config_db'
+  - '2: Virtual sequence — Starts traffic on multiple interfaces'
+  - '3: Functional coverage — Samples during monitor/scoreboard activity'
+  - '4: Register sequences — RAL write/read with predicted values'
+  notes: From MODULE5 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (1). Match each bullet to files in the repository.
+    1: Config object — Built in test; set via uvm_config_db 2: Virtual sequence —
+    Starts traffic on multiple interfaces 3: Functional coverage — Samples during
+    monitor/scoreboard activity 4: Register sequences — RAL write/read with predicted
+    values From MODULE5 — execution and artifact layout.'
+- type: bullets
+  title: Artifact flow (spec → sim) (2)
+  bullets:
+  - '5: Callback — Alters or logs transaction before drive'
+  notes: From MODULE5 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (2). Match each bullet to files in the repository.
+    5: Callback — Alters or logs transaction before drive From MODULE5 — execution
+    and artifact layout.'
+- type: bullets
+  title: Example directory layout
+  bullets:
+  - 'uvm_virtual_sequencer: Coordinates multiple sub-sequencers (multi-agent)'
+  - 'uvm_reg_block / uvm_reg: Register abstraction layer (RAL)'
+  - 'uvm_subscriber / callbacks: Hook component behavior without subclassing'
+  - 'Coverage model: covergroup in classes or standalone cover components'
+  - 'Config objects: Structured uvm_object passed via ConfigDB'
+  notes: Match each path to files under module/examples/.
+  narration: 'Example directory layout. Match each bullet to files in the repository.
+    uvm_virtual_sequencer: Coordinates multiple sub-sequencers (multi-agent) uvm_reg_block
+    / uvm_reg: Register abstraction layer (RAL) uvm_subscriber / callbacks: Hook component
+    behavior without subclassing Coverage model: covergroup in classes or standalone
+    cover components Config objects: Structured uvm_object passed via...'
+- type: bullets
+  title: Directed test execution sequence
+  bullets:
+  - config
+  - build
+  - connect
+  - virtual seq
+  - report + coverage
+  notes: Follow this order when tracing waveforms or debugging.
+  narration: Follow these steps in order when working through this module. config
+    build connect virtual seq report + coverage Follow this order when tracing waveforms
+    or debugging.
+- type: section
+  title: Verification & testing methods
+  narration: 'Next section: Verification & testing methods.'
+- type: two_column
+  title: 1. System-level stimulus strategy
+  left:
+  - Virtual sequences coordinate reset, config, traffic, and shutdown across agents
+  - Constrained-random transactions with covergroups measuring interesting bins
+  - 'Register tests: reset values, bit-field access, alias rules, prediction vs actual'
+  - Callbacks for error injection and debug without modifying driver source
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE5 Verification & Testing Methods.
+  narration: '1. System-level stimulus strategy. Virtual sequences coordinate reset,
+    config, traffic, and shutdown across agents Constrained-random transactions with
+    covergroups measuring interesting bins Register tests: reset values, bit-field
+    access, alias rules, prediction vs actual Callbacks for error injection and debug
+    without modifying driver source Refer to the diagram on the right.'
+- type: two_column
+  title: 2. Coverage-driven closure (1/2)
+  left:
+  - Define coverpoints on transaction fields and cross coverage between channels
+  - Use `uvm_config_db` to enable/disable coverage and set verbosity per test
+  - 'Closure metrics: functional coverage goals + zero scoreboard mismatches'
+  - '`./scripts/module5.sh --coverage` demonstrates sampling and report'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE5 Verification & Testing Methods.
+  narration: '2. Coverage-driven closure (1/2). Define coverpoints on transaction
+    fields and cross coverage between channels Use uvm_config_db to enable/disable
+    coverage and set verbosity per test Closure metrics: functional coverage goals
+    + zero scoreboard mismatches ./scripts/module5.sh --coverage demonstrates sampling
+    and report Refer to the diagram on the right.'
+- type: bullets
+  title: 2. Coverage-driven closure (2/2)
+  bullets:
+  - 'Out of scope on Verilator: some advanced RAL backdoor paths may be limited'
+  notes: From MODULE5 Verification & Testing Methods.
+  narration: '2. Coverage-driven closure (2/2). Out of scope on Verilator: some advanced
+    RAL backdoor paths may be limited'
 - type: section
   title: Syllabus topics
+  narration: 'Next section: Syllabus topics.'
+- type: section
+  title: Protocol & design details
+  narration: 'Next section: Protocol & design details.'
+- type: bullets
+  title: 'Detail: Example 5.1: Virtual Sequences (`module5/examples/virtual_sequences/virtual_sequences.sv`)
+    (1)'
+  bullets:
+  - 'VirtualSequencer: Contains references to multiple sequencers (`master_seqr`,
+    `slave_seqr`)'
+  - 'VirtualSequence: Coordinates sequences on multiple sequencers'
+  - 'ChannelSequence: Regular sequence for a single channel'
+  - 'Parallel Execution: Using `fork-join` for concurrent sequences'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.1: Virtual Sequences (module5/examples/virtual_sequences/virtual_sequences.sv)
+    (1). VirtualSequencer: Contains references to multiple sequencers (master_seqr,
+    slave_seqr) VirtualSequence: Coordinates sequences on multiple sequencers ChannelSequence:
+    Regular sequence for a single channel Parallel Execution: Using fork-join for
+    concurrent sequences From...'
+- type: bullets
+  title: 'Detail: Example 5.1: Virtual Sequences (`module5/examples/virtual_sequences/virtual_sequences.sv`)
+    (2)'
+  bullets:
+  - 'Sequential Execution: Sequential sequence coordination'
+  - 'Purpose: Hold references to multiple sequencers'
+  - 'Key: References are set in `connect_phase()` from environment'
+  - 'Note: Virtual sequencer doesn''t create sequencers, only references them'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.1: Virtual Sequences (module5/examples/virtual_sequences/virtual_sequences.sv)
+    (2). Sequential Execution: Sequential sequence coordination Purpose: Hold references
+    to multiple sequencers Key: References are set in connect_phase() from environment
+    Note: Virtual sequencer doesn''t create sequencers, only references them From
+    MODULE5 Topics Covered —...'
+- type: bullets
+  title: 'Detail: Example 5.2: Coverage (`module5/examples/coverage/coverage.sv`)
+    (1)'
+  bullets:
+  - 'CoverageModel: Extends `uvm_subscriber` for coverage collection'
+  - 'Coverage Sampling: Via `write()` method from analysis port'
+  - 'Coverage Types: Data, address range, command, and cross coverage'
+  - 'Coverage Analysis: Coverage statistics and reporting'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.2: Coverage (module5/examples/coverage/coverage.sv)
+    (1). CoverageModel: Extends uvm_subscriber for coverage collection Coverage Sampling:
+    Via write() method from analysis port Coverage Types: Data, address range, command,
+    and cross coverage Coverage Analysis: Coverage statistics and reporting From MODULE5
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 5.2: Coverage (`module5/examples/coverage/coverage.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Sample coverage data from transactions'
+  - 'Usage: Called automatically when monitor writes to analysis port'
+  - 'Key: Uses associative arrays to track unique values'
+  - 'Purpose: Track unique values and counts'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.2: Coverage (module5/examples/coverage/coverage.sv)
+    (2). Purpose: Sample coverage data from transactions Usage: Called automatically
+    when monitor writes to analysis port Key: Uses associative arrays to track unique
+    values Purpose: Track unique values and counts From MODULE5 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 5.3: Advanced Configuration (`module5/examples/configuration/configuration.sv`)
+    (1)'
+  bullets:
+  - 'AgentConfig: Complex configuration object with multiple fields'
+  - 'EnvConfig: Environment-level configuration containing agent configs'
+  - 'Configuration Hierarchy: Multi-level configuration structure'
+  - 'Configuration Usage: Setting and getting complex configuration'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.3: Advanced Configuration (module5/examples/configuration/configuration.sv)
+    (1). AgentConfig: Complex configuration object with multiple fields EnvConfig:
+    Environment-level configuration containing agent configs Configuration Hierarchy:
+    Multi-level configuration structure Configuration Usage: Setting and getting complex
+    configuration From MODULE5 Topics...'
+- type: bullets
+  title: 'Detail: Example 5.3: Advanced Configuration (`module5/examples/configuration/configuration.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Enable configuration copying'
+  - 'Usage: Allows configuration inheritance and copying'
+  - 'Key: Must copy all configuration fields'
+  - 'Purpose: Multi-level configuration hierarchy'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.3: Advanced Configuration (module5/examples/configuration/configuration.sv)
+    (2). Purpose: Enable configuration copying Usage: Allows configuration inheritance
+    and copying Key: Must copy all configuration fields Purpose: Multi-level configuration
+    hierarchy From MODULE5 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 5.4: Callbacks (`module5/examples/callbacks/callbacks.sv`)
+    (1)'
+  bullets:
+  - 'DriverCallbackBase: Base callback class for driver'
+  - 'DriverCallback: Driver callback implementation'
+  - 'MonitorCallbackBase: Base callback class for monitor'
+  - 'MonitorCallback: Monitor callback implementation'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.4: Callbacks (module5/examples/callbacks/callbacks.sv)
+    (1). DriverCallbackBase: Base callback class for driver DriverCallback: Driver
+    callback implementation MonitorCallbackBase: Base callback class for monitor MonitorCallback:
+    Monitor callback implementation From MODULE5 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 5.4: Callbacks (`module5/examples/callbacks/callbacks.sv`)
+    (2)'
+  bullets:
+  - 'Callback Registration: Registering callbacks with components'
+  - 'Purpose: Define callback interface'
+  - 'Key: Virtual functions to be overridden in derived classes'
+  - 'Purpose: Implement callback behavior'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.4: Callbacks (module5/examples/callbacks/callbacks.sv)
+    (2). Callback Registration: Registering callbacks with components Purpose: Define
+    callback interface Key: Virtual functions to be overridden in derived classes
+    Purpose: Implement callback behavior From MODULE5 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 5.5: Register Model (`module5/examples/register_model/register_model.sv`)
+    (1)'
+  bullets:
+  - 'RegisterField: Represents a register field with offset, width, and value'
+  - 'Register: Represents a register with address and fields'
+  - 'RegisterBlock: Represents a register block with multiple registers'
+  - 'Register Operations: Read/write operations on registers'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.5: Register Model (module5/examples/register_model/register_model.sv)
+    (1). RegisterField: Represents a register field with offset, width, and value
+    Register: Represents a register with address and fields RegisterBlock: Represents
+    a register block with multiple registers Register Operations: Read/write operations
+    on registers From MODULE5 Topics Covered —...'
+- type: bullets
+  title: 'Detail: Example 5.5: Register Model (`module5/examples/register_model/register_model.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Represent individual register fields'
+  - 'Key: Fields have offset, width, and value'
+  - 'Purpose: Add field to register'
+  - 'Usage: Build register structure'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 5.5: Register Model (module5/examples/register_model/register_model.sv)
+    (2). Purpose: Represent individual register fields Key: Fields have offset, width,
+    and value Purpose: Add field to register Usage: Build register structure From
+    MODULE5 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Virtual Sequence Methods (1)'
+  bullets:
+  - 'Sequencer References: Hold references to multiple sequencers'
+  - 'Connect Phase: Set references from environment'
+  - 'No Transaction Type: Virtual sequencer doesn''t extend `uvm_sequencer #(type)`'
+  - 'Body Task: Coordinates sequences on multiple sequencers'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Virtual Sequence Methods (1). Sequencer
+    References: Hold references to multiple sequencers Connect Phase: Set references
+    from environment No Transaction Type: Virtual sequencer doesn''t extend uvm_sequencer
+    #(type) Body Task: Coordinates sequences on multiple sequencers From MODULE5 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Virtual Sequence Methods (2)'
+  bullets:
+  - 'Sequencer References: Set before starting sequence'
+  - 'Parallel Execution: `fork-join` for concurrent sequences'
+  - 'Sequential Execution: Sequential `start()` calls'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Virtual Sequence Methods (2). Sequencer
+    References: Set before starting sequence Parallel Execution: fork-join for concurrent
+    sequences Sequential Execution: Sequential start() calls From MODULE5 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Coverage Methods (1)'
+  bullets:
+  - '`write(t)` - Receive transaction for sampling'
+  - Associative Arrays - Track unique values
+  - '`exists(key)` - Check if key exists'
+  - '`num()` - Count unique keys'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Coverage Methods (1). write(t) - Receive
+    transaction for sampling Associative Arrays - Track unique values exists(key)
+    - Check if key exists num() - Count unique keys From MODULE5 Topics Covered —
+    protocol/design depth.'
+- type: bullets
+  title: 'Detail: Coverage Methods (2)'
+  bullets:
+  - '`foreach` - Iterate over keys'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Coverage Methods (2). foreach - Iterate
+    over keys From MODULE5 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Advanced Configuration Methods'
+  bullets:
+  - '`do_copy(rhs)` - Copy configuration fields'
+  - '`convert2string()` - String representation'
+  - Nested Configs - Config objects containing other configs
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Advanced Configuration Methods. do_copy(rhs)
+    - Copy configuration fields convert2string() - String representation Nested Configs
+    - Config objects containing other configs From MODULE5 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Callback Methods'
+  bullets:
+  - '`uvm_register_cb(Component, Callback)` - Register callback type'
+  - '`uvm_do_callbacks(Component, Callback, method(args))` - Execute callbacks'
+  - '`uvm_callbacks#(Component, Callback)::add(component, callback)` - Add callback'
+  - '`uvm_callbacks#(Component, Callback)::delete(component, callback)` - Remove callback'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Callback Methods. uvm_register_cb(Component,
+    Callback) - Register callback type uvm_do_callbacks(Component, Callback, method(args))
+    - Execute callbacks uvm_callbacks#(Component, Callback)::add(component, callback)
+    - Add callback uvm_callbacks#(Component, Callback)::delete(component, callback)
+    - Remove callback From MODULE5 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Register Model Methods (1)'
+  bullets:
+  - '`convert2string()` - String representation'
+  - '`add_field(field)` - Add field to register'
+  - '`write(data)` - Write value to register'
+  - '`read()` - Read value from register'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Register Model Methods (1). convert2string()
+    - String representation add_field(field) - Add field to register write(data) -
+    Write value to register read() - Read value from register From MODULE5 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Register Model Methods (2)'
+  bullets:
+  - '`add_register(reg)` - Add register to block'
+  - '`get_register(name)` - Look up register by name'
+  - '`write_register(name, data)` - Write register by name'
+  - '`read_register(name)` - Read register by name'
+  notes: From MODULE5 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Register Model Methods (2). add_register(reg)
+    - Add register to block get_register(name) - Look up register by name write_register(name,
+    data) - Write register by name read_register(name) - Read register by name From
+    MODULE5 Topics Covered — protocol/design depth.'
+- type: image
+  title: Verification flow (reference)
+  image: assets/diagrams/testing_methods.png
+  caption: Stimulus, DUT response, and check points for this module.
+  narration: Verification flow (reference). Stimulus, DUT response, and check points
+    for this module.
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (1/9)
   bullets:
@@ -37,6 +466,9 @@ slides:
   - Sequence libraries
   - Virtual Sequencer Implementation
   notes: From MODULE5 Topics Covered.
+  narration: 1. Virtual Sequences and Sequencers (1/9). Virtual Sequence Purpose Coordinating
+    multiple sequencers Cross-agent stimulus generation System-level sequence coordination
+    Sequence libraries
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (2/9)
   bullets:
@@ -48,6 +480,9 @@ slides:
     `slave_seqr`)'
   - 'VirtualSequence: Coordinates sequences on multiple sequencers'
   notes: From MODULE5 Topics Covered.
+  narration: '1. Virtual Sequences and Sequencers (2/9). Virtual sequencer structure
+    Sequencer references Connection in connect_phase Virtual sequencer usage VirtualSequencer:
+    Contains references to multiple sequencers (master_seqr, slave_seqr)'
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (3/9)
   bullets:
@@ -58,6 +493,11 @@ slides:
   - 'Key: References are set in `connect_phase()` from environment'
   - 'Note: Virtual sequencer doesn''t create sequencers, only references them'
   notes: From MODULE5 Topics Covered.
+  narration: '1. Virtual Sequences and Sequencers (3/9). ChannelSequence: Regular
+    sequence for a single channel Parallel Execution: Using fork-join for concurrent
+    sequences Sequential Execution: Sequential sequence coordination Purpose: Hold
+    references to multiple sequencers Key: References are set in connect_phase() from
+    environment'
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (4/9)
   bullets:
@@ -68,6 +508,10 @@ slides:
   - 'Purpose: Connect virtual sequencer/sequence to actual sequencers'
   - 'Usage: In test''s `connect_phase()`'
   notes: From MODULE5 Topics Covered.
+  narration: '1. Virtual Sequences and Sequencers (4/9). Purpose: Coordinate sequences
+    on multiple sequencers Key: Virtual sequence doesn''t extend uvm_sequence #(transaction_type)
+    Parallel: Use fork-join for concurrent execution Sequential: Call start() sequentially
+    for ordered execution Purpose: Connect virtual sequencer/sequence to actual sequencers'
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (5/9)
   bullets:
@@ -78,6 +522,10 @@ slides:
   - 'Key: Both sequences run in parallel, `join` waits for both'
   - 'Timing: Total time = max(seq1_time, seq2_time)'
   notes: From MODULE5 Topics Covered.
+  narration: '1. Virtual Sequences and Sequencers (5/9). Key: Must be set before starting
+    virtual sequence Purpose: Start virtual sequence execution Key: Virtual sequence
+    can start on virtual sequencer or null Purpose: Execute sequences concurrently
+    Key: Both sequences run in parallel, join waits for both'
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (6/9)
   bullets:
@@ -88,6 +536,10 @@ slides:
   - 'Purpose: Execute sequences in order'
   - 'Key: Second sequence starts after first completes'
   notes: From MODULE5 Topics Covered.
+  narration: '1. Virtual Sequences and Sequencers (6/9). Use case: Independent operations,
+    concurrent testing fork-join: Wait for all sequences (most common) fork-join_any:
+    Wait for first to complete fork-join_none: Fire and forget Purpose: Execute sequences
+    in order'
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (7/9)
   bullets:
@@ -98,6 +550,10 @@ slides:
   - Virtual sequencer contains references to multiple sequencers
   - Virtual sequence coordinates sequences on different sequencers
   notes: From MODULE5 Topics Covered.
+  narration: '1. Virtual Sequences and Sequencers (7/9). Timing: Total time = seq1_time
+    + seq2_time Use case: Ordered operations, dependencies Purpose: Check sequencer
+    availability Key: Always check for null before using sequencer references Virtual
+    sequencer contains references to multiple sequencers'
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (8/9)
   bullets:
@@ -108,6 +564,11 @@ slides:
   - Sequencer references - Set in `connect_phase()` from environment
   - Parallel execution - `fork-join` for concurrent sequences
   notes: From MODULE5 Topics Covered.
+  narration: 1. Virtual Sequences and Sequencers (8/9). Parallel sequence execution
+    using fork-join enables concurrent testing Sequential sequence execution enables
+    ordered coordination Virtual sequencer - Holds references, doesn't create sequencers
+    Virtual sequence - Coordinates sequences on multiple sequencers Sequencer references
+    - Set in connect_phase() from environment
 - type: bullets
   title: 1. Virtual Sequences and Sequencers (9/9)
   bullets:
@@ -117,6 +578,10 @@ slides:
   - Parallel sequence execution
   - Sequential sequence execution
   notes: From MODULE5 Topics Covered.
+  narration: 1. Virtual Sequences and Sequencers (9/9). Sequential execution - Sequential
+    start() calls for ordered execution Virtual sequencer creation and connection
+    Virtual sequence coordination Parallel sequence execution Sequential sequence
+    execution
 - type: bullets
   title: 2. Coverage Models (1/8)
   bullets:
@@ -127,6 +592,8 @@ slides:
   - Coverage reporting
   - Coverage Types
   notes: From MODULE5 Topics Covered.
+  narration: 2. Coverage Models (1/8). Functional Coverage Coverage model structure
+    Coverage sampling Coverage analysis Coverage reporting
 - type: bullets
   title: 2. Coverage Models (2/8)
   bullets:
@@ -137,6 +604,8 @@ slides:
   - 'CoverageModel: Extends `uvm_subscriber` for coverage collection'
   - 'Coverage Sampling: Via `write()` method from analysis port'
   notes: From MODULE5 Topics Covered.
+  narration: '2. Coverage Models (2/8). Data coverage Address range coverage Command
+    coverage Cross coverage CoverageModel: Extends uvm_subscriber for coverage collection'
 - type: bullets
   title: 2. Coverage Models (3/8)
   bullets:
@@ -147,6 +616,10 @@ slides:
   - 'Key: Uses associative arrays to track unique values'
   - 'Purpose: Track unique values and counts'
   notes: From MODULE5 Topics Covered.
+  narration: '2. Coverage Models (3/8). Coverage Types: Data, address range, command,
+    and cross coverage Coverage Analysis: Coverage statistics and reporting Purpose:
+    Sample coverage data from transactions Usage: Called automatically when monitor
+    writes to analysis port Key: Uses associative arrays to track unique values'
 - type: bullets
   title: 2. Coverage Models (4/8)
   bullets:
@@ -157,6 +630,9 @@ slides:
   - 'Purpose: Connect producer to coverage model'
   - 'Key: Coverage automatically receives via `write()` method'
   notes: From MODULE5 Topics Covered.
+  narration: '2. Coverage Models (4/8). Key: Associative arrays enable efficient coverage
+    tracking Purpose: Report coverage statistics Usage: Called in cleanup phase Key:
+    Uses num() to count unique keys Purpose: Connect producer to coverage model'
 - type: bullets
   title: 2. Coverage Models (5/8)
   bullets:
@@ -167,6 +643,10 @@ slides:
   - 'Key: Fixed arrays initialized in constructor'
   - Coverage model class extending `uvm_subscriber` enables automatic sampling
   notes: From MODULE5 Topics Covered.
+  narration: '2. Coverage Models (5/8). Purpose: Track combinations of multiple fields
+    Key: 2D associative arrays for cross coverage Usage: Track (data, command) pairs,
+    (address, data) pairs, etc. Purpose: Initialize coverage data structures Key:
+    Fixed arrays initialized in constructor'
 - type: bullets
   title: 2. Coverage Models (6/8)
   bullets:
@@ -177,6 +657,10 @@ slides:
   - Associative arrays - Track unique values efficiently
   - '`exists(key)` - Check if key exists in associative array'
   notes: From MODULE5 Topics Covered.
+  narration: 2. Coverage Models (6/8). Coverage sampling via write() method receives
+    transactions Coverpoints and bins track unique values and ranges Cross coverage
+    between multiple fields tracks combinations write(t) - Receive transaction for
+    coverage sampling Associative arrays - Track unique values efficiently
 - type: bullets
   title: 2. Coverage Models (7/8)
   bullets:
@@ -187,12 +671,16 @@ slides:
   - Data coverage tracking
   - Address range coverage
   notes: From MODULE5 Topics Covered.
+  narration: 2. Coverage Models (7/8). num() - Count number of unique keys foreach
+    - Iterate over associative array keys 2D associative arrays - Track cross coverage
+    pairs Coverage sampling demonstrated Data coverage tracking
 - type: bullets
   title: 2. Coverage Models (8/8)
   bullets:
   - Command coverage tracking
   - Cross coverage analysis
   notes: From MODULE5 Topics Covered.
+  narration: 2. Coverage Models (8/8). Command coverage tracking Cross coverage analysis
 - type: bullets
   title: 3. Advanced Configuration (1/7)
   bullets:
@@ -203,6 +691,8 @@ slides:
   - Configuration copying
   - Configuration Hierarchy
   notes: From MODULE5 Topics Covered.
+  narration: 3. Advanced Configuration (1/7). Complex Configuration Objects Configuration
+    object design Configuration fields Configuration methods Configuration copying
 - type: bullets
   title: 3. Advanced Configuration (2/7)
   bullets:
@@ -213,6 +703,9 @@ slides:
   - 'AgentConfig: Complex configuration object with multiple fields'
   - 'EnvConfig: Environment-level configuration containing agent configs'
   notes: From MODULE5 Topics Covered.
+  narration: '3. Advanced Configuration (2/7). Environment-level configuration Agent-level
+    configuration Component-specific configuration Configuration inheritance AgentConfig:
+    Complex configuration object with multiple fields'
 - type: bullets
   title: 3. Advanced Configuration (3/7)
   bullets:
@@ -223,6 +716,10 @@ slides:
   - 'Key: Must copy all configuration fields'
   - 'Purpose: Multi-level configuration hierarchy'
   notes: From MODULE5 Topics Covered.
+  narration: '3. Advanced Configuration (3/7). Configuration Hierarchy: Multi-level
+    configuration structure Configuration Usage: Setting and getting complex configuration
+    Purpose: Enable configuration copying Usage: Allows configuration inheritance
+    and copying Key: Must copy all configuration fields'
 - type: bullets
   title: 3. Advanced Configuration (4/7)
   bullets:
@@ -233,6 +730,10 @@ slides:
   - 'Key: Always check return value, provide defaults'
   - 'Purpose: Debug configuration values'
   notes: From MODULE5 Topics Covered.
+  narration: '3. Advanced Configuration (4/7). Key: Configuration objects can contain
+    other configuration objects Purpose: Set configuration for specific components
+    Key: Use component path in set() call Purpose: Retrieve configuration in component
+    Key: Always check return value, provide defaults'
 - type: bullets
   title: 3. Advanced Configuration (5/7)
   bullets:
@@ -243,6 +744,10 @@ slides:
   - Configuration inheritance enables configuration reuse
   - '`do_copy()` - Enable configuration copying'
   notes: From MODULE5 Topics Covered.
+  narration: '3. Advanced Configuration (5/7). Usage: Logging, debugging Complex configuration
+    objects enable rich configuration data Configuration hierarchy supports multi-level
+    configuration Resource database usage provides flexible configuration access Configuration
+    inheritance enables configuration reuse'
 - type: bullets
   title: 3. Advanced Configuration (6/7)
   bullets:
@@ -253,12 +758,18 @@ slides:
   - Complex configuration object creation
   - Configuration hierarchy demonstrated
   notes: From MODULE5 Topics Covered.
+  narration: 3. Advanced Configuration (6/7). Nested configs - Configuration objects
+    containing other configs Component-specific paths - Set config for specific components
+    Config hierarchy - Multi-level configuration structure convert2string() - Debug
+    configuration values Complex configuration object creation
 - type: bullets
   title: 3. Advanced Configuration (7/7)
   bullets:
   - Configuration setting and getting
   - Configuration object usage
   notes: From MODULE5 Topics Covered.
+  narration: 3. Advanced Configuration (7/7). Configuration setting and getting Configuration
+    object usage
 - type: bullets
   title: 4. Callbacks (1/8)
   bullets:
@@ -269,6 +780,8 @@ slides:
   - Callback execution
   - Callback Usage Patterns
   notes: From MODULE5 Topics Covered.
+  narration: 4. Callbacks (1/8). Callback Mechanism Callback base classes Callback
+    registration Pre/post callbacks Callback execution
 - type: bullets
   title: 4. Callbacks (2/8)
   bullets:
@@ -279,6 +792,8 @@ slides:
   - 'DriverCallbackBase: Base callback class for driver'
   - 'DriverCallback: Driver callback implementation'
   notes: From MODULE5 Topics Covered.
+  narration: '4. Callbacks (2/8). Driver callbacks Monitor callbacks Transaction modification
+    Side-effect actions DriverCallbackBase: Base callback class for driver'
 - type: bullets
   title: 4. Callbacks (3/8)
   bullets:
@@ -289,6 +804,10 @@ slides:
   - 'Key: Virtual functions to be overridden in derived classes'
   - 'Purpose: Implement callback behavior'
   notes: From MODULE5 Topics Covered.
+  narration: '4. Callbacks (3/8). MonitorCallbackBase: Base callback class for monitor
+    MonitorCallback: Monitor callback implementation Callback Registration: Registering
+    callbacks with components Purpose: Define callback interface Key: Virtual functions
+    to be overridden in derived classes'
 - type: bullets
   title: 4. Callbacks (4/8)
   bullets:
@@ -299,6 +818,10 @@ slides:
   - 'Purpose: Execute all registered callbacks'
   - 'Usage: Call at appropriate points in component code'
   notes: From MODULE5 Topics Covered.
+  narration: '4. Callbacks (4/8). Key: uvm_register_cb macro registers callback type
+    Purpose: Register callback type with component type Usage: Must be in callback
+    class definition Key: Enables type-safe callback registration Purpose: Execute
+    all registered callbacks'
 - type: bullets
   title: 4. Callbacks (5/8)
   bullets:
@@ -309,6 +832,10 @@ slides:
   - 'Purpose: Manage callbacks'
   - 'Key: Static methods operate on callback registry'
   notes: From MODULE5 Topics Covered.
+  narration: '4. Callbacks (5/8). Key: Executes all callbacks registered for this
+    component instance Purpose: Connect callback to component instance Usage: In test''s
+    connect_phase() Key: Callback must be registered before it can be executed Purpose:
+    Manage callbacks'
 - type: bullets
   title: 4. Callbacks (6/8)
   bullets:
@@ -319,6 +846,10 @@ slides:
   - Callback mechanism enables non-intrusive extension
   - Pre/post callbacks provide hooks for customization
   notes: From MODULE5 Topics Covered.
+  narration: '4. Callbacks (6/8). Purpose: Multiple callbacks for same component Key:
+    All registered callbacks execute in registration order Purpose: Control callback
+    execution order Key: Pre-callbacks → operation → post-callbacks Callback mechanism
+    enables non-intrusive extension'
 - type: bullets
   title: 4. Callbacks (7/8)
   bullets:
@@ -329,6 +860,10 @@ slides:
   - Callback base class - Define callback interface
   - Callback registration - Connect callback to component
   notes: From MODULE5 Topics Covered.
+  narration: 4. Callbacks (7/8). Callback registration connects callbacks to components
+    Callback usage patterns enable flexible test customization uvm_register_cb - Register
+    callback type uvm_do_callbacks - Execute all registered callbacks Callback base
+    class - Define callback interface
 - type: bullets
   title: 4. Callbacks (8/8)
   bullets:
@@ -338,6 +873,9 @@ slides:
   - Post-drive callbacks executed
   - Monitor callbacks executed
   notes: From MODULE5 Topics Covered.
+  narration: 4. Callbacks (8/8). Pre/post callbacks - Hooks before/after operations
+    Callback registration demonstrated Pre-drive callbacks executed Post-drive callbacks
+    executed Monitor callbacks executed
 - type: bullets
   title: 5. Register Model (1/9)
   bullets:
@@ -348,6 +886,8 @@ slides:
   - Register predictor
   - Register Model Components
   notes: From MODULE5 Topics Covered.
+  narration: 5. Register Model (1/9). Register Model Basics Register model structure
+    Register blocks, registers, fields Register read/write operations Register predictor
 - type: bullets
   title: 5. Register Model (2/9)
   bullets:
@@ -358,6 +898,9 @@ slides:
   - 'RegisterField: Represents a register field with offset, width, and value'
   - 'Register: Represents a register with address and fields'
   notes: From MODULE5 Topics Covered.
+  narration: '5. Register Model (2/9). RegisterField: Individual register fields Register:
+    Complete registers RegisterBlock: Register address spaces Register operations
+    RegisterField: Represents a register field with offset, width, and value'
 - type: bullets
   title: 5. Register Model (3/9)
   bullets:
@@ -368,6 +911,10 @@ slides:
   - 'Purpose: Add field to register'
   - 'Usage: Build register structure'
   notes: From MODULE5 Topics Covered.
+  narration: '5. Register Model (3/9). RegisterBlock: Represents a register block
+    with multiple registers Register Operations: Read/write operations on registers
+    Purpose: Represent individual register fields Key: Fields have offset, width,
+    and value Purpose: Add field to register'
 - type: bullets
   title: 5. Register Model (4/9)
   bullets:
@@ -378,6 +925,9 @@ slides:
   - 'Purpose: Read register value'
   - 'Returns: Register value'
   notes: From MODULE5 Topics Covered.
+  narration: '5. Register Model (4/9). Key: Fields stored in queue Purpose: Write
+    value to register Key: Updates register value and all field values Field extraction:
+    Uses bit shifting and masking Purpose: Read register value'
 - type: bullets
   title: 5. Register Model (5/9)
   bullets:
@@ -388,6 +938,9 @@ slides:
   - 'Purpose: High-level register access'
   - 'Usage: Access registers by name'
   notes: From MODULE5 Topics Covered.
+  narration: '5. Register Model (5/9). Purpose: Add register to block Key: Automatically
+    assigns address based on position Purpose: Look up register by name Key: Returns
+    null if register not found Purpose: High-level register access'
 - type: bullets
   title: 5. Register Model (6/9)
   bullets:
@@ -398,6 +951,10 @@ slides:
   - 'Purpose: Compose register value from field values'
   - 'Key: Shift and OR field values into register'
   notes: From MODULE5 Topics Covered.
+  narration: '5. Register Model (6/9). Key: Handles null checks Purpose: Extract field
+    values from register value Key: Bit shifting and masking for field extraction
+    Example: Field at offset 4, width 3: (data >> 4) & 7 Purpose: Compose register
+    value from field values'
 - type: bullets
   title: 5. Register Model (7/9)
   bullets:
@@ -409,6 +966,11 @@ slides:
   - Simplified register model demonstrates concepts (full implementation requires
     uvm_reg)
   notes: From MODULE5 Topics Covered.
+  narration: '5. Register Model (7/9). Purpose: Automatically assign register addresses
+    Key: Address = base_address + (index * 4) for 32-bit registers Register model
+    structure provides abstraction for register access Register blocks, registers,
+    fields organize register hierarchy Register read/write operations enable register
+    verification'
 - type: bullets
   title: 5. Register Model (8/9)
   bullets:
@@ -419,6 +981,9 @@ slides:
   - '`get_register(name)` - Look up register by name'
   - '`write_register()` - High-level write by name'
   notes: From MODULE5 Topics Covered.
+  narration: 5. Register Model (8/9). add_field() - Add field to register write(data)
+    - Write value to register read() - Read value from register add_register() - Add
+    register to block get_register(name) - Look up register by name
 - type: bullets
   title: 5. Register Model (9/9)
   bullets:
@@ -429,6 +994,9 @@ slides:
   - Register read/write operations
   - Register block management
   notes: From MODULE5 Topics Covered.
+  narration: 5. Register Model (9/9). read_register() - High-level read by name Field
+    extraction - Bit shifting and masking for field values Register model structure
+    demonstrated Register field operations Register read/write operations
 - type: bullets
   title: 6. Advanced UVM Methods Reference (1/5)
   bullets:
@@ -439,6 +1007,11 @@ slides:
   - 'Sequencer References: Set before starting sequence'
   - 'Parallel Execution: `fork-join` for concurrent sequences'
   notes: From MODULE5 Topics Covered.
+  narration: '6. Advanced UVM Methods Reference (1/5). Sequencer References: Hold
+    references to multiple sequencers Connect Phase: Set references from environment
+    No Transaction Type: Virtual sequencer doesn''t extend uvm_sequencer #(type) Body
+    Task: Coordinates sequences on multiple sequencers Sequencer References: Set before
+    starting sequence'
 - type: bullets
   title: 6. Advanced UVM Methods Reference (2/5)
   bullets:
@@ -449,6 +1022,9 @@ slides:
   - '`num()` - Count unique keys'
   - '`foreach` - Iterate over keys'
   notes: From MODULE5 Topics Covered.
+  narration: '6. Advanced UVM Methods Reference (2/5). Sequential Execution: Sequential
+    start() calls write(t) - Receive transaction for sampling Associative Arrays -
+    Track unique values exists(key) - Check if key exists num() - Count unique keys'
 - type: bullets
   title: 6. Advanced UVM Methods Reference (3/5)
   bullets:
@@ -459,6 +1035,10 @@ slides:
   - '`uvm_do_callbacks(Component, Callback, method(args))` - Execute callbacks'
   - '`uvm_callbacks#(Component, Callback)::add(component, callback)` - Add callback'
   notes: From MODULE5 Topics Covered.
+  narration: 6. Advanced UVM Methods Reference (3/5). do_copy(rhs) - Copy configuration
+    fields convert2string() - String representation Nested Configs - Config objects
+    containing other configs uvm_register_cb(Component, Callback) - Register callback
+    type uvm_do_callbacks(Component, Callback, method(args)) - Execute callbacks
 - type: bullets
   title: 6. Advanced UVM Methods Reference (4/5)
   bullets:
@@ -469,6 +1049,10 @@ slides:
   - '`read()` - Read value from register'
   - '`add_register(reg)` - Add register to block'
   notes: From MODULE5 Topics Covered.
+  narration: 6. Advanced UVM Methods Reference (4/5). uvm_callbacks#(Component, Callback)::delete(component,
+    callback) - Remove callback convert2string() - String representation add_field(field)
+    - Add field to register write(data) - Write value to register read() - Read value
+    from register
 - type: bullets
   title: 6. Advanced UVM Methods Reference (5/5)
   bullets:
@@ -476,19 +1060,80 @@ slides:
   - '`write_register(name, data)` - Write register by name'
   - '`read_register(name)` - Read register by name'
   notes: From MODULE5 Topics Covered.
+  narration: 6. Advanced UVM Methods Reference (5/5). get_register(name) - Look up
+    register by name write_register(name, data) - Write register by name read_register(name)
+    - Read register by name
+- type: code
+  title: 'Run: Example 5.1: Virtual Sequences'
+  language: bash
+  code: './scripts/module5.sh --virtual-sequences
+
+    cd module5/examples/virtual_sequences
+
+    verilator -sv --cc --exe --timing --trace \
+
+    -I$UVM_HOME/src +incdir+$UVM_HOME/src +define+UVM_NO_DPI \
+
+    --binary $UVM_HOME/src/uvm_pkg.sv virtual_sequences.sv virtual_sequences.cpp \
+
+    --top-module virtual_sequences
+
+    make -C obj_dir -f Vvirtual_sequences.mk
+
+    ./obj_dir/Vvirtual_sequences'
+  notes: Execute from course root or example directory — see docs/MODULE5.md.
+  narration: 'Run: Example 5.1: Virtual Sequences. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE5.md.'
+- type: code
+  title: 'Run: Example 5.2: Coverage'
+  language: bash
+  code: ./scripts/module5.sh --coverage
+  notes: Execute from course root or example directory — see docs/MODULE5.md.
+  narration: 'Run: Example 5.2: Coverage. Review the code on screen and match it to
+    files in the repository. Execute from course root or example directory — see docs/MODULE5.md.'
+- type: code
+  title: 'Run: Example 5.3: Advanced Configuration'
+  language: bash
+  code: ./scripts/module5.sh --configuration
+  notes: Execute from course root or example directory — see docs/MODULE5.md.
+  narration: 'Run: Example 5.3: Advanced Configuration. Review the code on screen
+    and match it to files in the repository. Execute from course root or example directory
+    — see docs/MODULE5.md.'
+- type: code
+  title: 'Run: Example 5.4: Callbacks'
+  language: bash
+  code: ./scripts/module5.sh --callbacks
+  notes: Execute from course root or example directory — see docs/MODULE5.md.
+  narration: 'Run: Example 5.4: Callbacks. Review the code on screen and match it
+    to files in the repository. Execute from course root or example directory — see
+    docs/MODULE5.md.'
+- type: code
+  title: 'Run: Example 5.5: Register Model'
+  language: bash
+  code: ./scripts/module5.sh --register-model
+  notes: Execute from course root or example directory — see docs/MODULE5.md.
+  narration: 'Run: Example 5.5: Register Model. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE5.md.'
 - type: section
   title: Hands-on examples
+  narration: 'Next section: Hands-on examples.'
 - type: demo
   title: Module 5 self-check
-  command: ./scripts/module5.sh --virtual-sequences
+  command: ./scripts/module5.sh --help
   screenshot: assets/screenshots/module5_check.png
-  expect_stdout_contains: completed successfully
+  expect_stdout_contains: Module
   notes: Run from course repository root.
+  narration: Module 5 self-check. Watch the terminal output and confirm you see the
+    expected pass message.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module5.sh
   code: ./scripts/module5.sh --scaffold
+  narration: Exercise scaffold. Review the code on screen and match it to files in
+    the repository.
 - type: bullets
   title: 'Example 1: Virtual Sequences'
   bullets:
@@ -496,62 +1141,101 @@ slides:
     `slave_seqr`)'
   - 'VirtualSequence: Coordinates sequences on multiple sequencers'
   - 'ChannelSequence: Regular sequence for a single channel'
+  - 'Parallel Execution: Using `fork-join` for concurrent sequences'
+  - 'Sequential Execution: Sequential sequence coordination'
   notes: module5/examples/virtual_sequences/README.md
+  narration: 'Example 1: Virtual Sequences. VirtualSequencer: Contains references
+    to multiple sequencers (master_seqr, slave_seqr) VirtualSequence: Coordinates
+    sequences on multiple sequencers ChannelSequence: Regular sequence for a single
+    channel Parallel Execution: Using fork-join for concurrent sequences Sequential
+    Execution: Sequential sequence coordination module5/examples/virtual_sequences/README.md'
 - type: demo
   title: 'Demo: Virtual Sequences'
   command: ./scripts/module5.sh --virtual-sequences
   screenshot: assets/screenshots/ex01_virtual_sequences.png
   notes: 'Hands-on: module5/examples/virtual_sequences/'
+  narration: 'Demo: Virtual Sequences. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 2: Coverage'
   bullets:
   - 'CoverageModel: Extends `uvm_subscriber` for coverage collection'
   - 'Coverage Sampling: Via `write()` method from analysis port'
   - 'Coverage Types: Data, address range, command, and cross coverage'
+  - 'Coverage Analysis: Coverage statistics and reporting'
   notes: module5/examples/coverage/README.md
+  narration: 'Example 2: Coverage. CoverageModel: Extends uvm_subscriber for coverage
+    collection Coverage Sampling: Via write() method from analysis port Coverage Types:
+    Data, address range, command, and cross coverage Coverage Analysis: Coverage statistics
+    and reporting module5/examples/coverage/README.md'
 - type: demo
   title: 'Demo: Coverage'
   command: ./scripts/module5.sh --coverage
   screenshot: assets/screenshots/ex02_coverage.png
   notes: 'Hands-on: module5/examples/coverage/'
+  narration: 'Demo: Coverage. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 3: Advanced Configuration'
   bullets:
   - 'AgentConfig: Complex configuration object with multiple fields'
   - 'EnvConfig: Environment-level configuration containing agent configs'
   - 'Configuration Hierarchy: Multi-level configuration structure'
+  - 'Configuration Usage: Setting and getting complex configuration'
   notes: module5/examples/configuration/README.md
+  narration: 'Example 3: Advanced Configuration. AgentConfig: Complex configuration
+    object with multiple fields EnvConfig: Environment-level configuration containing
+    agent configs Configuration Hierarchy: Multi-level configuration structure Configuration
+    Usage: Setting and getting complex configuration module5/examples/configuration/README.md'
 - type: demo
   title: 'Demo: Advanced Configuration'
   command: ./scripts/module5.sh --configuration
   screenshot: assets/screenshots/ex03_configuration.png
   notes: 'Hands-on: module5/examples/configuration/'
+  narration: 'Demo: Advanced Configuration. Watch the terminal output and confirm
+    you see the expected pass message.'
 - type: bullets
   title: 'Example 4: Callbacks'
   bullets:
   - 'DriverCallbackBase: Base callback class for driver'
   - 'DriverCallback: Driver callback implementation'
   - 'MonitorCallbackBase: Base callback class for monitor'
+  - 'MonitorCallback: Monitor callback implementation'
+  - 'Callback Registration: Registering callbacks with components'
   notes: module5/examples/callbacks/README.md
+  narration: 'Example 4: Callbacks. DriverCallbackBase: Base callback class for driver
+    DriverCallback: Driver callback implementation MonitorCallbackBase: Base callback
+    class for monitor MonitorCallback: Monitor callback implementation Callback Registration:
+    Registering callbacks with components module5/examples/callbacks/README.md'
 - type: demo
   title: 'Demo: Callbacks'
   command: ./scripts/module5.sh --callbacks
   screenshot: assets/screenshots/ex04_callbacks.png
   notes: 'Hands-on: module5/examples/callbacks/'
+  narration: 'Demo: Callbacks. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 5: Register Model'
   bullets:
   - 'RegisterField: Represents a register field with offset, width, and value'
   - 'Register: Represents a register with address and fields'
   - 'RegisterBlock: Represents a register block with multiple registers'
+  - 'Register Operations: Read/write operations on registers'
   notes: module5/examples/register_model/README.md
+  narration: 'Example 5: Register Model. RegisterField: Represents a register field
+    with offset, width, and value Register: Represents a register with address and
+    fields RegisterBlock: Represents a register block with multiple registers Register
+    Operations: Read/write operations on registers module5/examples/register_model/README.md'
 - type: demo
   title: 'Demo: Register Model'
   command: ./scripts/module5.sh --register-model
   screenshot: assets/screenshots/ex05_register_model.png
   notes: 'Hands-on: module5/examples/register_model/'
+  narration: 'Demo: Register Model. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: section
   title: Practice & assessment
+  narration: 'Next section: Practice & assessment.'
 - type: bullets
   title: What you should know
   bullets:
@@ -562,6 +1246,11 @@ slides:
   - Use register models for register verification
   - Apply advanced UVM patterns in testbenches
   notes: From MODULE5 Learning Outcomes.
+  narration: By now you should be able to explain the following. Implement virtual
+    sequences to coordinate multiple sequencers Create coverage models for functional
+    verification Use advanced configuration with complex objects Implement callbacks
+    for component extension Use register models for register verification From MODULE5
+    Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -570,6 +1259,8 @@ slides:
   - Advanced Configuration
   - Callbacks
   - Register Model
+  narration: Exercises. Virtual Sequences Coverage Models Advanced Configuration Callbacks
+    Register Model
 - type: bullets
   title: Assessment checklist
   bullets:
@@ -579,6 +1270,9 @@ slides:
   - Can implement callbacks
   - Can use register models
   - Understands advanced UVM patterns
+  narration: Assessment checklist. Can implement virtual sequences Can create coverage
+    models Can use advanced configuration Can implement callbacks Can use register
+    models
 - type: bullets
   title: Summary & next steps
   bullets:
@@ -586,3 +1280,6 @@ slides:
   - Complete module5/CHECKLIST.md
   - Review module5/EXAMPLES.md and run each lab
   - 'Next: Next module in course'
+  narration: 'In summary: Master advanced UVM features and patterns Next up: Next
+    module in course. Master advanced UVM features and patterns Complete module5/CHECKLIST.md
+    Review module5/EXAMPLES.md and run each lab Next: Next module in course'

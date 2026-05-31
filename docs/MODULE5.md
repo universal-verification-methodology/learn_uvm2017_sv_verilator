@@ -64,6 +64,57 @@ cd module5/tests/uvm_tests
 make SIM=verilator TEST=test_advanced_uvm
 ```
 
+## Design Architecture
+
+### 1. Advanced UVM coordination architecture
+
+| Component | Role |
+|-----------|------|
+| `uvm_virtual_sequencer` | Coordinates multiple sub-sequencers (multi-agent) |
+| `uvm_reg_block` / `uvm_reg` | Register abstraction layer (RAL) |
+| `uvm_subscriber` / callbacks | Hook component behavior without subclassing |
+| Coverage model | `covergroup` in classes or standalone cover components |
+| Config objects | Structured `uvm_object` passed via ConfigDB |
+
+- Virtual sequences run on virtual sequencer; delegate to agent sequencers
+- Register model maps address space — frontdoor (bus) and backdoor (hdl paths)
+- Callbacks intercept pre/post drive, report, or phase hooks
+- **Hierarchy**: Test → Env → {Agent(s), Reg model, Coverage collector}
+
+### 2. Cross-cutting concern flow
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | Config object | Built in test; set via `uvm_config_db` |
+| 2 | Virtual sequence | Starts traffic on multiple interfaces |
+| 3 | Functional coverage | Samples during monitor/scoreboard activity |
+| 4 | Register sequences | RAL `write`/`read` with predicted values |
+| 5 | Callback | Alters or logs transaction before drive |
+| **Simulation flow**: config → build → connect → virtual seq → report + coverage
+
+### 3. Module 5 DUT context
+
+- `dut/advanced/multi_channel.v` — multi-channel design for virtual sequence demos
+- Examples map 1:1 to advanced topics (virtual seq, coverage, reg model, callbacks)
+- Integrated test `test_advanced_uvm.sv` combines multiple advanced features
+
+## Verification & Testing Methods
+
+### 1. System-level stimulus strategy
+
+- **Virtual sequences** coordinate reset, config, traffic, and shutdown across agents
+- **Constrained-random** transactions with covergroups measuring interesting bins
+- **Register tests**: reset values, bit-field access, alias rules, prediction vs actual
+- **Callbacks** for error injection and debug without modifying driver source
+
+### 2. Coverage-driven closure
+
+- Define coverpoints on transaction fields and cross coverage between channels
+- Use `uvm_config_db` to enable/disable coverage and set verbosity per test
+- **Closure metrics**: functional coverage goals + zero scoreboard mismatches
+- `./scripts/module5.sh --coverage` demonstrates sampling and report
+- Out of scope on Verilator: some advanced RAL backdoor paths may be limited
+
 ## Topics Covered
 
 ### 1. Virtual Sequences and Sequencers

@@ -19,10 +19,10 @@ Run commands from the **course repository root** unless noted.
 **Run:**
 
 ```bash
-./scripts/module1.sh --sv-basics
+./scripts/module1.sh --sv-basics && cd module1/examples/sv_basics && verilator -sv --cc --exe transaction.sv -o transaction_example && make -C obj_dir -f Vtransaction_example.mk
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE1.md` and explore `module1/examples/sv_basics/`.
 
@@ -43,7 +43,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module1.sh --interfaces
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE1.md` and explore `module1/examples/interfaces/`.
 
@@ -64,7 +64,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module1.sh --packages
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE1.md` and explore `module1/examples/packages/`.
 
@@ -85,7 +85,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module1.sh --data-structures
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE1.md` and explore `module1/examples/data_structures/`.
 
@@ -106,6 +106,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module1.sh --error-handling
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE1.md` and explore `module1/examples/error_handling/`.

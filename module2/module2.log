@@ -1,6 +1,6 @@
 ==========================================
 Module 2 Execution Log
-Started: 2026-05-28 21:17:39
+Started: 2026-05-31 02:35:11
 Command: ./scripts/module2.sh --common-patterns
 Working directory: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator
 UVM_HOME: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/tools/uvm-2017/1800.2-2017-1.0/src
@@ -13,6 +13,6 @@ Parallel jobs: 8
 [0;36mModule 2: SystemVerilog Testbench Fundamentals[0m
 [0;36m========================================[0m
 
-[0;34m[2026-05-28 21:17:39] Log file: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/module2/module2.log[0m
-[0;34m[2026-05-28 21:17:39] Checking prerequisites...[0m
-[0;31m[2026-05-28 21:17:39] Error: verilator not found. Please install it first.[0m
+[0;34m[2026-05-31 02:35:11] Log file: /home/yongfu/proj/universal-verification-methodology/learn_uvm2017_sv_verilator/module2/module2.log[0m
+[0;34m[2026-05-31 02:35:11] Checking prerequisites...[0m
+[0;31m[2026-05-31 02:35:11] Error: verilator not found. Please install it first.[0m

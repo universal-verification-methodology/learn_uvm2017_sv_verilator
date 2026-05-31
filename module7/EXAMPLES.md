@@ -22,7 +22,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module7.sh --dma
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE7.md` and explore `module7/examples/dma/`.
 
@@ -43,7 +43,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module7.sh --protocols
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE7.md` and explore `module7/examples/protocols/`.
 
@@ -61,7 +61,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module7.sh --protocols
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE7.md` and explore `module7/examples/protocols/`.
 
@@ -79,7 +79,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module7.sh --protocols
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE7.md` and explore `module7/examples/protocols/`.
 
@@ -97,10 +97,10 @@ Run commands from the **course repository root** unless noted.
 **Run:**
 
 ```bash
-./scripts/module7.sh --vip
+./scripts/module7.sh --vip && cd module7/examples/vip && verilator -sv --cc --exe --timing --trace vip.sv vip.cpp \ && -I"$UVM_HOME" +incdir+"$UVM_HOME" +define+UVM_NO_DPI \
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE7.md` and explore `module7/examples/vip/`.
 
@@ -120,6 +120,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module7.sh --best-practices
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE7.md` and explore `module7/examples/best_practices/`.

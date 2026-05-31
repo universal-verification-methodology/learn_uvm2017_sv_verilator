@@ -1,167 +1,295 @@
-[Slide 1] Complex Testbenches Module 6
+[Slide 1] Welcome to module 6, Complex Testbenches. In this module you will build production-quality multi-agent testbenches.
 
-[Slide 2] Learning objectives Build production-quality multi-agent testbenches
+[Slide 2] Here is what you will learn in this module. Build production-quality multi-agent testbenches
 
-[Slide 3] Prerequisites See module README
+[Slide 3] Before you start, make sure you have these prerequisites. See module README
 
-[Slide 4] Learning path Build production-quality multi-agent testbenches
+[Slide 4] Learning path. Build production-quality multi-agent testbenches
 
-[Slide 5] Overview This module covers building complex, production-quality testbenches with multiple agents, protocol verification, and system-level architecture. You'll learn how to coordinate multiple agents, verify protocols, implement 
+[Slide 5] Overview. This module covers building complex, production-quality testbenches with multiple agents, protocol verification, and system-level...
 
-[Slide 6] Syllabus topics
+[Slide 6] Next section: Design architecture.
 
-[Slide 7] From MODULE6 Topics Covered.
+[Slide 7] 1. Multi-agent testbench architecture (1/3). Horizontal reuse: one agent type per interface; duplicate for multi-port DUTs Vertical reuse: env composes agents + checkers + scoreboard module6/dut/protocols/axi4_lite_slave.v — realistic protocol DUT Environment config object controls agent count, active/passive, address maps Refer to the diagram on the right.
 
-[Slide 8] From MODULE6 Topics Covered.
+[Slide 8] 1. Multi-agent testbench architecture (2/3). uvm_env (top): Instantiates multiple agents, scoreboards, predictors Master agent: Initiates protocol transactions (e.g., AXI master) Slave agent: Responds to bus requests; memory model Protocol checker: Passive monitor enforcing protocol rules
 
-[Slide 9] From MODULE6 Topics Covered.
+[Slide 9] 1. Multi-agent testbench architecture (3/3). Multi-channel scoreboard: Per-channel expected vs actual queues
 
-[Slide 10] From MODULE6 Topics Covered.
+[Slide 10] 2. Protocol verification architecture (1/2). 1: Interface SVA / checker — Legal handshake and timing rules 2: Monitor — Transaction reconstruction from pins 3: Predictor / reference model — Expected response from stimulus 4: Scoreboard — Compare monitor vs predictor streams Refer to the diagram on the right.
 
-[Slide 11] From MODULE6 Topics Covered.
+[Slide 11] 2. Protocol verification architecture (2/2). 5: Report — Protocol violations as UVM_ERROR
 
-[Slide 12] From MODULE6 Topics Covered.
+[Slide 12] 3. Module 6 example map (1/2). examples/architecture/ — env composition patterns examples/multi_agent/ — two (or more) agents in one env examples/protocol/ + protocol_checkers/ — bus rules and checking examples/scoreboards/ — multi-stream compare Refer to the diagram on the right.
 
-[Slide 13] From MODULE6 Topics Covered.
+[Slide 13] 3. Module 6 example map (2/2). test_complex_testbench_uvm.sv — production-style integration
 
-[Slide 14] From MODULE6 Topics Covered.
+[Slide 14] RTL block diagram (reference). Module 6: DUT hierarchy and signal flow.
 
-[Slide 15] From MODULE6 Topics Covered.
+[Slide 15] Verification / testbench diagram (reference). Module 6: stimulus, observation, and checking.
 
-[Slide 16] From MODULE6 Topics Covered.
+[Slide 16] Next section: Execution & simulation flow.
 
-[Slide 17] From MODULE6 Topics Covered.
+[Slide 17] How the example runs (toolchain). Match each bullet to files in the repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command: make SIM=verilator TEST=test_* (see module6 demo slide) Loopback / hooks connect...
 
-[Slide 18] From MODULE6 Topics Covered.
+[Slide 18] Artifact flow (spec → sim) (1). Match each bullet to files in the repository. 1: Interface SVA / checker — Legal handshake and timing rules 2: Monitor — Transaction reconstruction from pins 3: Predictor / reference model — Expected response from stimulus 4: Scoreboard — Compare monitor vs predictor streams From MODULE6 — execution and artifact layout.
 
-[Slide 19] From MODULE6 Topics Covered.
+[Slide 19] Artifact flow (spec → sim) (2). Match each bullet to files in the repository. 5: Report — Protocol violations as UVM_ERROR From MODULE6 — execution and artifact layout.
 
-[Slide 20] From MODULE6 Topics Covered.
+[Slide 20] Example directory layout. Match each bullet to files in the repository. uvm_env (top): Instantiates multiple agents, scoreboards, predictors Master agent: Initiates protocol transactions (e.g., AXI master) Slave agent: Responds to bus requests; memory model Protocol checker: Passive monitor enforcing protocol rules Multi-channel scoreboard: Per-channel expected vs actual queues Match each path...
 
-[Slide 21] From MODULE6 Topics Covered.
+[Slide 21] Follow these steps in order when working through this module. reset config agents concurrent sequences drain scoreboards Follow this order when tracing waveforms or debugging.
 
-[Slide 22] From MODULE6 Topics Covered.
+[Slide 22] Next section: Verification & testing methods.
 
-[Slide 23] From MODULE6 Topics Covered.
+[Slide 23] 1. Multi-agent coordination strategy. Assign each agent a virtual interface and address/data range via ConfigDB Run parallel sequences with objections on env or test (not per short sequence) Protocol checker runs passively — does not drive, only flags violations Use predictable directed traffic before enabling constrained-random stress Refer to the diagram on the right.
 
-[Slide 24] From MODULE6 Topics Covered.
+[Slide 24] 2. System-level closure workflow (1/2). Scoreboard empty at end — no pending expected transactions Protocol checker reports zero violations Regression: ./scripts/module6.sh --all-examples --uvm-tests Debug order: signal wave → monitor log → scoreboard mismatch → checker message Refer to the diagram on the right.
 
-[Slide 25] From MODULE6 Topics Covered.
+[Slide 25] 2. System-level closure workflow (2/2). Performance: --jobs N for parallel example builds during development
 
-[Slide 26] From MODULE6 Topics Covered.
+[Slide 26] Next section: Syllabus topics.
 
-[Slide 27] From MODULE6 Topics Covered.
+[Slide 27] Next section: Protocol & design details.
 
-[Slide 28] From MODULE6 Topics Covered.
+[Slide 28] Protocol and design detail: Example 6.1: Testbench Architecture (module6/examples/architecture/architecture.sv) (1). Transaction Class (ArchTxn): Base transaction with address, data, and write/read control Sequencer (ArchSequencer): UVM sequencer for transaction flow control Driver (ArchDriver): UVM driver that receives and drives transactions Monitor (ArchMonitor): UVM monitor that observes...
 
-[Slide 29] From MODULE6 Topics Covered.
+[Slide 29] Protocol and design detail: Example 6.1: Testbench Architecture (module6/examples/architecture/architecture.sv) (2). Agent (ArchAgent): UVM agent containing sequencer, driver, and monitor Environment (ArchEnv): UVM environment containing agent instances Sequence (ArchSmokeSeq): UVM sequence generating random transactions Test (ArchitectureTest): Top-level UVM test orchestrating verification...
 
-[Slide 30] From MODULE6 Topics Covered.
+[Slide 30] Protocol and design detail: Example 6.2: Multi-Agent Environment (module6/examples/multi_agent/multi_agent.sv) (1). Transaction (MA_Txn): Transaction with agent ID and data fields Agent (MA_Agent): Parameterized agent with configurable agent ID Virtual Sequence (MA_VirtualSeq): Coordinates sequences across multiple sequencers Environment (MA_Env): Contains two agent instances (a0 and a1) From...
 
-[Slide 31] From MODULE6 Topics Covered.
+[Slide 31] Protocol and design detail: Example 6.2: Multi-Agent Environment (module6/examples/multi_agent/multi_agent.sv) (2). Test (MultiAgentTest): Orchestrates multi-agent verification Method Signature: static function bit get(uvm_component cntxt, string inst_name, string field_name, ref T value); Template Parameter: T = type of value (int, string, object, etc.) Purpose: Retrieve configuration values...
 
-[Slide 32] From MODULE6 Topics Covered.
+[Slide 32] Protocol and design detail: Example 6.3: Protocol Verification (module6/examples/protocol/protocol.sv) (1). Interface (axi_lite_if): AXI4-Lite interface with all required signals Transaction (AxiTxn): AXI transaction with read/write, address, and data Driver (AxiDriver): Protocol-aware driver implementing AXI4-Lite handshake protocol Monitor (AxiMonitor): Protocol monitor for observing AXI...
 
-[Slide 33] From MODULE6 Topics Covered.
+[Slide 33] Protocol and design detail: Example 6.3: Protocol Verification (module6/examples/protocol/protocol.sv) (2). Environment (ProtocolEnv): Protocol verification environment Test (ProtocolTest): Protocol verification test with AXI4-Lite slave DUT Purpose: Get virtual interface for protocol access Key: Must be set before driver can access signals From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 34] From MODULE6 Topics Covered.
+[Slide 34] Protocol and design detail: Example 6.4: Protocol Checkers (module6/examples/protocol_checkers/protocol_checkers.sv) (1). Interface (chk_if): Simple handshake interface with valid/ready signals Checker Component (CheckerComp): UVM component that monitors protocol rules Protocol Rules: Valid must stay asserted until ready (bounded wait) Test (ProtocolCheckersTest): Test that exercises protocol...
 
-[Slide 35] From MODULE6 Topics Covered.
+[Slide 35] Protocol and design detail: Example 6.4: Protocol Checkers (module6/examples/protocol_checkers/protocol_checkers.sv) (2). Purpose: Monitor protocol compliance Key: Bounded wait prevents infinite waits Purpose: Check that protocol doesn't wait indefinitely Key: Count cycles, report if exceeded From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 36] From MODULE6 Topics Covered.
+[Slide 36] Protocol and design detail: Example 6.5: Multi-Channel Scoreboards (module6/examples/scoreboards/scoreboards.sv) (1). Transaction (SB_Txn): Scoreboard transaction with stream ID, sequence number, and data Stream Producer (StreamProducer): Component that generates transactions for a stream Multi-Channel Scoreboard (MultiChannelScoreboard): Scoreboard that matches transactions from multiple...
 
-[Slide 37] From MODULE6 Topics Covered.
+[Slide 37] Protocol and design detail: Example 6.5: Multi-Channel Scoreboards (module6/examples/scoreboards/scoreboards.sv) (2). Purpose: Match transactions from multiple streams Key: Use associative arrays indexed by sequence number Purpose: Manage transaction queues per stream Key: Associative arrays enable efficient lookup From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 38] From MODULE6 Topics Covered.
+[Slide 38] Protocol and design detail: Component Creation and Hierarchy (1). Purpose: Create components using UVM factory Usage: In build_phase() of parent component Key: Always provide name and parent Purpose: Connect TLM ports/exports From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 39] From MODULE6 Topics Covered.
+[Slide 39] Protocol and design detail: Component Creation and Hierarchy (2). Usage: In connect_phase() after build Key: Connect driver to sequencer Purpose: Execute sequence on sequencer Usage: In test's run_phase() From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 40] From MODULE6 Topics Covered.
+[Slide 40] Protocol and design detail: Agent Configuration (1). Purpose: Configure agent parameters Usage: Before creating agent Key: Set config, then create component Purpose: Retrieve agent configuration From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 41] From MODULE6 Topics Covered.
+[Slide 41] Protocol and design detail: Agent Configuration (2). Usage: In agent's build_phase() Key: Check return value, provide defaults From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 42] From MODULE6 Topics Covered.
+[Slide 42] Protocol and design detail: Virtual Sequence Methods (1). Purpose: Execute transaction directly on sequencer Usage: Alternative to start_item()/finish_item() Key: Useful in virtual sequences for direct execution Note: Transaction must be created and randomized first From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 43] From MODULE6 Topics Covered.
+[Slide 43] Protocol and design detail: Virtual Sequence Methods (2). Purpose: Coordinate multiple sequencers Key: Set sequencer references before starting From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 44] From MODULE6 Topics Covered.
+[Slide 44] Protocol and design detail: Virtual Interface Access (1). Purpose: Get virtual interface for protocol access Usage: In driver/monitor build_phase() Key: Must be set before component can access signals Purpose: Set interface for all components From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 45] From MODULE6 Topics Covered.
+[Slide 45] Protocol and design detail: Virtual Interface Access (2). Usage: In module before run_test() Key: Use wildcard "*" to match all components From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 46] From MODULE6 Topics Covered.
+[Slide 46] Protocol and design detail: Protocol Handshake Patterns (1). Purpose: Implement VALID/READY handshake Key: Assert VALID, wait for READY, deassert VALID Purpose: AXI write transaction Key: Drive address and data, wait for both ready From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 47] From MODULE6 Topics Covered.
+[Slide 47] Protocol and design detail: Protocol Handshake Patterns (2). Purpose: AXI read transaction Key: Drive address, wait for ready, capture data From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 48] From MODULE6 Topics Covered.
+[Slide 48] Protocol and design detail: Bounded Wait Checking (1). Purpose: Check protocol doesn't wait indefinitely Key: Count cycles, report if exceeded bound Purpose: Ignore protocol during reset Key: Use continue to skip reset cycles From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 49] From MODULE6 Topics Covered.
+[Slide 49] Protocol and design detail: Bounded Wait Checking (2). Purpose: Continuously monitor protocol Key: Forever loop with clock synchronization From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 50] From MODULE6 Topics Covered.
+[Slide 50] Protocol and design detail: Associative Array Operations (1). Purpose: Store transactions by sequence number Key: Use sequence number as index Purpose: Check if transaction exists Key: Use exists() method From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 51] From MODULE6 Topics Covered.
+[Slide 51] Protocol and design detail: Associative Array Operations (2). Purpose: Remove matched transactions Key: Use delete() method From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 52] From MODULE6 Topics Covered.
+[Slide 52] Protocol and design detail: Transaction Matching (1). Purpose: Match transactions across streams Key: Check both streams, compare, clean up Purpose: Connect multiple streams to one scoreboard Key: One scoreboard can receive from multiple sources From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 53] From MODULE6 Topics Covered.
+[Slide 53] Protocol and design detail: Transaction Matching (2). Problem: uvm_fatal("NO_VIF", ...) error Solution: Set interface in module before run_test() Code: uvm_config_db#(virtual if)::set(null, "*", "vif", vif); Problem: Agent uses default values From MODULE6 Topics Covered — protocol/design depth.
 
-[Slide 54] From MODULE6 Topics Covered.
+[Slide 54] Verification flow (reference). Stimulus, DUT response, and check points for this module.
 
-[Slide 55] From MODULE6 Topics Covered.
+[Slide 55] 1. Testbench Architecture (1/13). Hierarchical Component Organization Component hierarchy design Separation of concerns Component relationships Environment structure
 
-[Slide 56] From MODULE6 Topics Covered.
+[Slide 56] 1. Testbench Architecture (2/13). Agent construction Environment assembly Component connections Phase-based execution Best Practices
 
-[Slide 57] From MODULE6 Topics Covered.
+[Slide 57] 1. Testbench Architecture (3/13). Reusable components Configuration management Maintainable testbench structure Transaction Class (ArchTxn): Base transaction with address, data, and write/read control Sequencer (ArchSequencer): UVM sequencer for transaction flow control
 
-[Slide 58] From MODULE6 Topics Covered.
+[Slide 58] 1. Testbench Architecture (4/13). Monitor (ArchMonitor): UVM monitor that observes DUT behavior Agent (ArchAgent): UVM agent containing sequencer, driver, and monitor Environment (ArchEnv): UVM environment containing agent instances Sequence (ArchSmokeSeq): UVM sequence generating random transactions Test (ArchitectureTest): Top-level UVM test orchestrating verification
 
-[Slide 59] From MODULE6 Topics Covered.
+[Slide 59] 1. Testbench Architecture (5/13). Return Type: bit (1 = success, 0 = failure) Purpose: Generate random test vectors with constraints Usage: Call after creating transaction, before sending to sequencer Key: void'() suppresses Verilator warning about ignored return value Constraints: Use with { constraint_expression; } for conditional randomization
 
-[Slide 60] From MODULE6 Topics Covered.
+[Slide 60] 1. Testbench Architecture (6/13). Method Signature: task body(); (no parameters, no return) Purpose: Generate and send multiple transactions to sequencer Execution Flow: Key: repeat loop generates multiple transactions sequentially Blocking Behavior: start_item() and finish_item() both block
 
-[Slide 61] From MODULE6 Topics Covered.
+[Slide 61] 1. Testbench Architecture (7/13). Method Signature: function void build_phase(uvm_phase phase); Phase Type: Build-time phase (function, executes top-down) Purpose: Create all child components of the agent Execution Order: Key: All components created in agent's build_phase(), before connect_phase()
 
-[Slide 62] From MODULE6 Topics Covered.
+[Slide 62] 1. Testbench Architecture (8/13). Hierarchical Naming: Full path = "test.env.agent.seqr" (automatic) Method Signature: function void connect_phase(uvm_phase phase); Phase Type: Connect-time phase (function, executes bottom-up) Purpose: Connect TLM ports/exports between components Execution Order:
 
-[Slide 63] From MODULE6 Topics Covered.
+[Slide 63] 1. Testbench Architecture (9/13). TLM Pattern: Port (initiator) connects to Export (target) Transaction Flow: Sequence → Sequencer (export) → Driver (port) → DUT Connection Timing: Must happen after build_phase() (components must exist) Method Signature: task run_phase(uvm_phase phase); Phase Type: Run-time phase (task, executes concurrently)
 
-[Slide 64] From MODULE6 Topics Covered.
+[Slide 64] 1. Testbench Architecture (10/13). Execution Flow: Key: Objection mechanism controls phase completion Sequence Execution: seq.start(sequencer) blocks until body() completes Transaction Flow: Test → Sequence → Sequencer → Driver → DUT Timing: All run_phase tasks execute concurrently (forked)
 
-[Slide 65] From MODULE6 Topics Covered.
+[Slide 65] 1. Testbench Architecture (11/13). Separation of concerns (driver, monitor, sequencer) improves reusability Component factory and configuration provide flexibility Phase-based execution model ensures proper initialization and execution Transaction-based communication decouples components Component hierarchy: Test → Env → Agent → Sequencer/Driver/Monitor
 
-[Slide 66] Hands-on examples
+[Slide 66] 1. Testbench Architecture (12/13). Phase execution: Build → Connect → Run → Report Sequence execution: seq.start(sequencer) in run_phase UVM component hierarchy construction Transaction generation and driving Component phase execution
 
-[Slide 67] Run from course repository root.
+[Slide 67] 1. Testbench Architecture (13/13). Component Hierarchy: Agent → Sequencer/Driver/Monitor structure Factory Pattern: Using type_id::create() for component creation Phase Execution: Build, connect, run, check, report phases Transaction Flow: Sequence → Sequencer → Driver → DUT
 
-[Slide 68] Exercise scaffold The following command is shown on screen.
+[Slide 68] 2. Multi-Agent Environments (1/12). Multiple Agent Coordination Multiple agent instantiation Agent configuration Agent communication Cross-agent stimulus
 
-[Slide 69] module6/examples/architecture/README.md
+[Slide 69] 2. Multi-Agent Environments (2/12). Virtual sequence definition Multi-sequencer coordination Parallel sequence execution Sequence synchronization Agent Reuse
 
-[Slide 70] Hands-on: module6/examples/architecture/
+[Slide 70] 2. Multi-Agent Environments (3/12). Agent configuration database Reusable agent patterns Agent instantiation patterns Transaction (MA_Txn): Transaction with agent ID and data fields Agent (MA_Agent): Parameterized agent with configurable agent ID
 
-[Slide 71] module6/examples/multi_agent/README.md
+[Slide 71] 2. Multi-Agent Environments (4/12). Environment (MA_Env): Contains two agent instances (a0 and a1) Test (MultiAgentTest): Orchestrates multi-agent verification Method Signature: static function bit get(uvm_component cntxt, string inst_name, string field_name, ref T value); Template Parameter: T = type of value (int, string, object, etc.) Purpose: Retrieve configuration values from ConfigDB
 
-[Slide 72] Hands-on: module6/examples/multi_agent/
+[Slide 72] 2. Multi-Agent Environments (5/12). Usage: Call in build_phase() before using the value Key: Always check return value, provide defaults Hierarchy Search: Searches current component → parent → ... → top Method Signature: static function void set(uvm_component cntxt, string inst_name, string field_name, T value); Template Parameter: T = type of value
 
-[Slide 73] module6/examples/protocol/README.md
+[Slide 73] 2. Multi-Agent Environments (6/12). Timing: MUST be called BEFORE creating the component Hierarchical Path: Full path = "env.a0.agent_id" (automatic) Key: Set config → Create component → Component retrieves config in its build_phase() Pattern: Environment sets config, agents retrieve config Method Signature: task execute_item(uvm_sequence_item item);
 
-[Slide 74] Hands-on: module6/examples/protocol/
+[Slide 74] 2. Multi-Agent Environments (7/12). Behavior: Sends transaction to sequencer Waits for driver to complete Blocks until transaction fully processed Usage: Alternative to start_item() + finish_item() pair
 
-[Slide 75] module6/examples/protocol_checkers/README.md
+[Slide 75] 2. Multi-Agent Environments (8/12). Parallel Execution: Fork-join enables concurrent execution on multiple sequencers Transaction Flow: Virtual sequence → Multiple sequencers → Multiple drivers → DUT Method Signature: task start(uvm_sequencer_base sequencer); Purpose: Start virtual sequence execution Virtual Sequence Pattern:
 
-[Slide 76] Hands-on: module6/examples/protocol_checkers/
+[Slide 76] 2. Multi-Agent Environments (9/12). Difference: Regular sequences use start(sequencer), virtual sequences use assigned references Execution: Virtual sequence body() uses assigned sequencers for parallel execution Purpose: Execute transactions on multiple agents concurrently Key: Fork-join enables parallel execution Multiple agents enable complex verification scenarios
 
-[Slide 77] module6/examples/scoreboards/README.md
+[Slide 77] 2. Multi-Agent Environments (10/12). Agent configuration via config database provides flexibility Parallel sequence execution using fork-join enables concurrent testing Agent reuse patterns improve productivity Agent configuration - Via ConfigDB before creation Virtual sequence - Coordinates multiple sequencers
 
-[Slide 78] Hands-on: module6/examples/scoreboards/
+[Slide 78] 2. Multi-Agent Environments (11/12). Parallel execution - Fork-join for concurrent agents Agent reuse - Same agent class, different instances Two agents running in parallel Virtual sequence coordinating both agents Agent-specific transaction generation
 
-[Slide 79] Practice & assessment
+[Slide 79] 2. Multi-Agent Environments (12/12). Virtual Sequences: Sequences that coordinate multiple sequencers Agent Configuration: Using uvm_config_db to configure agent parameters Parallel Execution: Fork-join for concurrent sequence execution Agent Reuse: Same agent class used for multiple instances
 
-[Slide 80] From MODULE6 Learning Outcomes.
+[Slide 80] 3. Protocol Verification (1/9). Protocol Modeling Interface definition Protocol transaction modeling Protocol signal mapping Protocol timing
 
-[Slide 81] From MODULE6 Learning Outcomes.
+[Slide 81] 3. Protocol Verification (2/9). Protocol-aware sequences Protocol transaction generation Protocol sequence patterns Protocol coverage Protocol Drivers and Monitors
 
-[Slide 82] Exercises Testbench Architecture Multi-Agent Coordination Protocol Verification Protocol Checkers Multi-Channel Scoreboards
+[Slide 82] 3. Protocol Verification (3/9). Protocol monitor implementation Handshake protocol handling Protocol signal sampling Interface (axi_lite_if): AXI4-Lite interface with all required signals Transaction (AxiTxn): AXI transaction with read/write, address, and data
 
-[Slide 83] Assessment checklist Can design complex testbench architectures Can coordinate multiple agents Can verify protocols Can implement protocol checkers Can build multi-channel scoreboards Can apply production-quality testbench patterns
+[Slide 83] 3. Protocol Verification (4/9). Monitor (AxiMonitor): Protocol monitor for observing AXI transactions Environment (ProtocolEnv): Protocol verification environment Test (ProtocolTest): Protocol verification test with AXI4-Lite slave DUT Purpose: Get virtual interface for protocol access Key: Must be set before driver can access signals
 
-[Slide 84] Summary & next steps Build production-quality multi-agent testbenches Complete module6/CHECKLIST.md Review module6/EXAMPLES.md and run each lab Next: Next module in course
+[Slide 84] 3. Protocol Verification (5/9). Key: Handshake pattern - assert VALID, wait for READY Purpose: Implement AXI read protocol Key: Capture read data from interface Purpose: Generic handshake implementation Key: Assert VALID, wait for READY, deassert VALID
+
+[Slide 85] 3. Protocol Verification (6/9). Key: All protocol operations clock-synchronized Purpose: Set interface for all components Key: Set before run_test() Protocol-shaped driver/monitor scaffolding enables protocol verification Handshake protocol implementation (VALID/READY) is fundamental
+
+[Slide 86] 3. Protocol Verification (7/9). Protocol transaction modeling captures protocol semantics Clock-synchronized protocol operations ensure correct timing Virtual interface - Access protocol signals Handshake pattern - VALID/READY protocol Clock synchronization - @(posedge clk) for all operations
+
+[Slide 87] 3. Protocol Verification (8/9). Read protocol - Address + Data channels do-while loop - Wait for handshake completion AXI4-Lite write and read transactions Handshake protocol demonstration Protocol driver and monitor operation
+
+[Slide 88] 3. Protocol Verification (9/9). Protocol Interfaces: Structured interface definition for protocol signals Handshake Protocol: VALID/READY handshake for flow control Protocol Drivers: Clock-synchronized protocol signal driving Protocol Monitors: Protocol signal observation and transaction reconstruction
+
+[Slide 89] 4. Protocol Checkers (1/8). Protocol Rule Checking Protocol rule definition Assertion-like checking Bounded wait checking Protocol compliance verification
+
+[Slide 90] 4. Protocol Checkers (2/8). Protocol violation detection Error reporting Protocol timing checks Protocol state checking Checker Implementation
+
+[Slide 91] 4. Protocol Checkers (3/8). Interface monitoring Rule enforcement Compliance reporting Interface (chk_if): Simple handshake interface with valid/ready signals Checker Component (CheckerComp): UVM component that monitors protocol rules
+
+[Slide 92] 4. Protocol Checkers (4/8). Test (ProtocolCheckersTest): Test that exercises protocol checker Purpose: Monitor protocol compliance Key: Bounded wait prevents infinite waits Purpose: Check that protocol doesn't wait indefinitely Key: Count cycles, report if exceeded
+
+[Slide 93] 4. Protocol Checkers (5/8). Key: Use continue to skip reset cycles Purpose: Detect protocol states Key: Check signal combinations Purpose: Report protocol violations Key: Use appropriate severity level
+
+[Slide 94] 4. Protocol Checkers (6/8). Assertion-like patterns in UVM provide structured checking Bounded wait checking prevents protocol violations Protocol compliance verification catches design errors Error detection and reporting enable debugging Bounded wait - Check timeout conditions
+
+[Slide 95] 4. Protocol Checkers (7/8). State monitoring - Check protocol signal combinations Error reporting - Report violations with uvm_error Forever loop - Continuous monitoring Protocol handshake monitoring Rule violation detection (if any)
+
+[Slide 96] 4. Protocol Checkers (8/8). Protocol compliance reporting Protocol Checkers: UVM components that monitor protocol rules Bounded Wait: Checking that protocol signals don't wait indefinitely Rule Enforcement: Detecting and reporting protocol violations Compliance Verification: Ensuring design follows protocol specification
+
+[Slide 97] 5. Multi-Channel Scoreboards (1/21). Multi-Channel Scoreboarding Multiple stream handling Transaction matching Result aggregation Scoreboard architecture
+
+[Slide 98] 5. Multi-Channel Scoreboards (2/21). Matching algorithms Transaction comparison Match criteria Unmatched transaction handling Result Aggregation
+
+[Slide 99] 5. Multi-Channel Scoreboards (3/21). Result reporting Statistics collection Coverage tracking Transaction (SB_Txn): Scoreboard transaction with stream ID, sequence number, and data Stream Producer (StreamProducer): Component that generates transactions for a stream
+
+[Slide 100] 5. Multi-Channel Scoreboards (4/21). Test (ScoreboardsTest): Test with two stream producers and a scoreboard Purpose: Match transactions from multiple streams Key: Use associative arrays indexed by sequence number Purpose: Manage transaction queues per stream Key: Associative arrays enable efficient lookup
+
+[Slide 101] 5. Multi-Channel Scoreboards (5/21). Key: Compare data, track pass/fail, clean up Purpose: Generate transactions for a stream Key: Assign sequence numbers for matching Purpose: Connect multiple streams to scoreboard Key: One scoreboard can receive from multiple sources
+
+[Slide 102] 5. Multi-Channel Scoreboards (6/21). Key: Aggregate pass/fail counts Multi-channel scoreboarding enables complex verification scenarios Transaction matching across streams verifies data integrity Result aggregation provides overall test status Scoreboard architecture supports multiple verification paths
+
+[Slide 103] 5. Multi-Channel Scoreboards (7/21). Associative arrays - Store transactions by sequence number exists(key) - Check if both streams have transaction delete(key) - Remove matched transactions Transaction matching - Match by sequence number, compare data Multiple streams - One scoreboard, multiple producers
+
+[Slide 104] 5. Multi-Channel Scoreboards (8/21). Two stream producers generating transactions Scoreboard matching transactions from both streams Pass/fail reporting Transaction matching results Multi-Channel Scoreboards: Scoreboards that handle multiple transaction streams
+
+[Slide 105] 5. Multi-Channel Scoreboards (9/21). Result Aggregation: Collecting and reporting overall test results Stream-Based Verification: Verifying data integrity across multiple paths Purpose: Create components using UVM factory Usage: In build_phase() of parent component Key: Always provide name and parent
+
+[Slide 106] 5. Multi-Channel Scoreboards (10/21). Usage: In connect_phase() after build Key: Connect driver to sequencer Purpose: Execute sequence on sequencer Usage: In test's run_phase() Key: Create sequence, then start on sequencer
+
+[Slide 107] 5. Multi-Channel Scoreboards (11/21). Usage: Before creating agent Key: Set config, then create component Purpose: Retrieve agent configuration Usage: In agent's build_phase() Key: Check return value, provide defaults
+
+[Slide 108] 5. Multi-Channel Scoreboards (12/21). Usage: Alternative to start_item()/finish_item() Key: Useful in virtual sequences for direct execution Note: Transaction must be created and randomized first Purpose: Coordinate multiple sequencers Key: Set sequencer references before starting
+
+[Slide 109] 5. Multi-Channel Scoreboards (13/21). Usage: In driver/monitor build_phase() Key: Must be set before component can access signals Purpose: Set interface for all components Usage: In module before run_test() Key: Use wildcard "*" to match all components
+
+[Slide 110] 5. Multi-Channel Scoreboards (14/21). Key: Assert VALID, wait for READY, deassert VALID Purpose: AXI write transaction Key: Drive address and data, wait for both ready Purpose: AXI read transaction Key: Drive address, wait for ready, capture data
+
+[Slide 111] 5. Multi-Channel Scoreboards (15/21). Key: Count cycles, report if exceeded bound Purpose: Ignore protocol during reset Key: Use continue to skip reset cycles Purpose: Continuously monitor protocol Key: Forever loop with clock synchronization
+
+[Slide 112] 5. Multi-Channel Scoreboards (16/21). Key: Use sequence number as index Purpose: Check if transaction exists Key: Use exists() method Purpose: Remove matched transactions Key: Use delete() method
+
+[Slide 113] 5. Multi-Channel Scoreboards (17/21). Key: Check both streams, compare, clean up Purpose: Connect multiple streams to one scoreboard Key: One scoreboard can receive from multiple sources Problem: uvm_fatal("NO_VIF", ...) error Solution: Set interface in module before run_test()
+
+[Slide 114] 5. Multi-Channel Scoreboards (18/21). Problem: Agent uses default values Solution: Check return value, provide defaults Code: if (!uvm_config_db#(int)::get(...)) agent_id = 0; Problem: Null pointer exception Solution: Set sequencer references before starting
+
+[Slide 115] 5. Multi-Channel Scoreboards (19/21). Problem: Simulation hangs waiting for READY Solution: Use bounded wait in protocol checker Code: while (condition && cycles < max_cycles) Problem: Unmatched transactions accumulate Solution: Delete matched transactions
+
+[Slide 116] 5. Multi-Channel Scoreboards (20/21). Check: Virtual interface retrieved in build_phase() Check: Interface set before run_test() Check: Clock running in module Check: Sequencer references set before start() Check: Objection raised in test's run_phase()
+
+[Slide 117] 5. Multi-Channel Scoreboards (21/21). Check: Sequence numbers assigned correctly Check: Both streams connected to scoreboard Check: write() method called for both streams Check: Reset handling (skip during reset) Check: Bounded wait threshold appropriate
+
+[Slide 118] Run: Example 6.1: Testbench Architecture. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE6.md.
+
+[Slide 119] Run: Example 6.2: Multi-Agent Environment. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE6.md.
+
+[Slide 120] Run: Example 6.3: Protocol Verification. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE6.md.
+
+[Slide 121] Run: Example 6.4: Protocol Checkers. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE6.md.
+
+[Slide 122] Run: Example 6.5: Multi-Channel Scoreboards. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE6.md.
+
+[Slide 123] Next section: Hands-on examples.
+
+[Slide 124] Module 6 self-check. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 125] Exercise scaffold. Review the code on screen and match it to files in the repository.
+
+[Slide 126] Example 1: Testbench Architecture. Transaction Class (ArchTxn): Base transaction with address, data, and write/read control Sequencer (ArchSequencer): UVM sequencer for transaction flow control Driver (ArchDriver): UVM driver that receives and drives transactions Monitor (ArchMonitor): UVM monitor that observes DUT behavior Agent (ArchAgent): UVM agent containing sequencer, driver, and monitor...
+
+[Slide 127] Demo: Testbench Architecture. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 128] Example 2: Multi-Agent Environment. Transaction (MA_Txn): Transaction with agent ID and data fields Agent (MA_Agent): Parameterized agent with configurable agent ID Virtual Sequence (MA_VirtualSeq): Coordinates sequences across multiple sequencers Environment (MA_Env): Contains two agent instances (a0 and a1) Test (MultiAgentTest): Orchestrates multi-agent verification...
+
+[Slide 129] Demo: Multi-Agent Environment. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 130] Example 3: Protocol Verification. Interface (axi_lite_if): AXI4-Lite interface with all required signals Transaction (AxiTxn): AXI transaction with read/write, address, and data Driver (AxiDriver): Protocol-aware driver implementing AXI4-Lite handshake protocol Monitor (AxiMonitor): Protocol monitor for observing AXI transactions Environment (ProtocolEnv): Protocol verification environment...
+
+[Slide 131] Demo: Protocol Verification. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 132] Example 4: Protocol Checkers. Interface (chk_if): Simple handshake interface with valid/ready signals Checker Component (CheckerComp): UVM component that monitors protocol rules Protocol Rules: Valid must stay asserted until ready (bounded wait) Test (ProtocolCheckersTest): Test that exercises protocol checker module6/examples/protocol_checkers/README.md
+
+[Slide 133] Demo: Protocol Checkers. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 134] Example 5: Multi-Channel Scoreboards. Transaction (SB_Txn): Scoreboard transaction with stream ID, sequence number, and data Stream Producer (StreamProducer): Component that generates transactions for a stream Multi-Channel Scoreboard (MultiChannelScoreboard): Scoreboard that matches transactions from multiple streams Test (ScoreboardsTest): Test with two stream producers and a scoreboard...
+
+[Slide 135] Demo: Multi-Channel Scoreboards. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 136] Next section: Common pitfalls.
+
+[Slide 137] Virtual Interface Not Set. Problem: uvm_fatal("NO_VIF", ...) error Solution: Set interface in module before run_test() Code: uvm_config_db#(virtual if)::set(null, "*", "vif", vif);
+
+[Slide 138] Agent Configuration Not Retrieved. Problem: Agent uses default values Solution: Check return value, provide defaults Code: if (!uvm_config_db#(int)::get(...)) agent_id = 0;
+
+[Slide 139] Virtual Sequence References Not Set. Problem: Null pointer exception Solution: Set sequencer references before starting Code: vseq.seqr0 = env.a0.seqr; vseq.start(null);
+
+[Slide 140] Protocol Handshake Deadlock. Problem: Simulation hangs waiting for READY Solution: Use bounded wait in protocol checker Code: while (condition && cycles < max_cycles)
+
+[Slide 141] Scoreboard Memory Leak. Problem: Unmatched transactions accumulate Solution: Delete matched transactions Code: q0.delete(t.seq); q1.delete(t.seq); Check: Virtual interface retrieved in build_phase()
+
+[Slide 142] Testbench Architecture. Design a hierarchical testbench with multiple agents Implement component separation of concerns Create reusable agent and environment patterns Structure testbench for maintainability
+
+[Slide 143] Next section: Practice & assessment.
+
+[Slide 144] By now you should be able to explain the following. Design complex testbench architectures with hierarchical component organization Coordinate multiple agents using virtual sequences Verify protocols using protocol-shaped drivers and monitors Implement protocol checkers for compliance verification Build multi-channel scoreboards for transaction matching From MODULE6 Learning Outcomes.
+
+[Slide 145] By now you should be able to explain the following. Create reusable verification components Structure testbenches for maintainability and scalability From MODULE6 Learning Outcomes.
+
+[Slide 146] Exercises. Testbench Architecture Multi-Agent Coordination Protocol Verification Protocol Checkers Multi-Channel Scoreboards
+
+[Slide 147] Assessment checklist. Can design complex testbench architectures Can coordinate multiple agents Can verify protocols Can implement protocol checkers Can build multi-channel scoreboards
+
+[Slide 148] In summary: Build production-quality multi-agent testbenches Next up: Next module in course. Build production-quality multi-agent testbenches Complete module6/CHECKLIST.md Review module6/EXAMPLES.md and run each lab Next: Next module in course

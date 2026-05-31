@@ -10,74 +10,103 @@ assets:
   - 4
   - 4
   license: learn_uvm2017_sv_verilator course materials
+- id: rtl_architecture
+  type: diagram
+  file: assets/diagrams/rtl_architecture.png
+  source: assets/diagrams/rtl_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 7
+  - 13
+  license: learn_uvm2017_sv_verilator course materials
+- id: verification_architecture
+  type: diagram
+  file: assets/diagrams/verification_architecture.png
+  source: assets/diagrams/verification_architecture.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 10
+  - 14
+  license: learn_uvm2017_sv_verilator course materials
+- id: testing_methods
+  type: diagram
+  file: assets/diagrams/testing_methods.png
+  source: assets/diagrams/testing_methods.mmd
+  generator: render_diagrams.sh
+  slides:
+  - 12
+  - 22
+  - 23
+  - 81
+  license: learn_uvm2017_sv_verilator course materials
 - id: module8_check
   type: screenshot
   file: assets/screenshots/module8_check.png
-  capture_command: ./scripts/module8.sh --clp
+  capture_command: ./scripts/module8.sh --help
   cwd: .
   slides:
-  - 85
-  expect_stdout_contains: completed successfully
+  - 175
+  expect_stdout_contains: Module
 - id: ex01_clp
   type: screenshot
   file: assets/screenshots/ex01_clp.png
   capture_command: ./scripts/module8.sh --clp
   cwd: .
   slides:
-  - 87
+  - 177
 - id: ex02_comparators
   type: screenshot
   file: assets/screenshots/ex02_comparators.png
   capture_command: ./scripts/module8.sh --comparators
   cwd: .
   slides:
-  - 89
+  - 179
 - id: ex03_recorders
   type: screenshot
   file: assets/screenshots/ex03_recorders.png
   capture_command: ./scripts/module8.sh --recorders
   cwd: .
   slides:
-  - 91
+  - 181
 - id: ex04_pools
   type: screenshot
   file: assets/screenshots/ex04_pools.png
   capture_command: ./scripts/module8.sh --pools
   cwd: .
   slides:
-  - 93
+  - 183
 - id: ex05_queues
   type: screenshot
   file: assets/screenshots/ex05_queues.png
   capture_command: ./scripts/module8.sh --queues
   cwd: .
   slides:
-  - 95
+  - 185
 - id: ex06_string_utils
   type: screenshot
   file: assets/screenshots/ex06_string_utils.png
   capture_command: ./scripts/module8.sh --string-utils
   cwd: .
   slides:
-  - 97
+  - 187
 - id: ex07_math_utils
   type: screenshot
   file: assets/screenshots/ex07_math_utils.png
   capture_command: ./scripts/module8.sh --math-utils
   cwd: .
   slides:
-  - 99
+  - 189
 - id: ex08_random_utils
   type: screenshot
   file: assets/screenshots/ex08_random_utils.png
   capture_command: ./scripts/module8.sh --random-utils
   cwd: .
   slides:
-  - 101
+  - 191
 - id: ex09_integration
   type: screenshot
   file: assets/screenshots/ex09_integration.png
   capture_command: ./scripts/module8.sh --integration
   cwd: .
   slides:
-  - 103
+  - 193

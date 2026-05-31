@@ -7,26 +7,532 @@ slides:
 - type: title
   title: Module 7
   subtitle: Real-World Applications
+  narration: Welcome to module 7, Real-World Applications. In this module you will
+    apply uvm to real-world verification scenarios.
 - type: bullets
   title: Learning objectives
   bullets:
   - Apply UVM to real-world verification scenarios
+  narration: Here is what you will learn in this module. Apply UVM to real-world verification
+    scenarios
 - type: bullets
   title: Prerequisites
   bullets:
   - See module README
+  narration: Before you start, make sure you have these prerequisites. See module
+    README
 - type: image
   title: Learning path
   image: assets/diagrams/learning_path.png
   caption: Apply UVM to real-world verification scenarios
+  narration: Learning path. Apply UVM to real-world verification scenarios
 - type: bullets
   title: Overview
   bullets:
   - This module applies UVM to real-world verification scenarios including DMA verification,
-    protocol verification (UART, SPI, I2C), VIP development, and best practices. You'll
-    learn how to verify complex designs, develop re
+    protocol verification (UART, SPI, I2C), VIP...
+  narration: Overview. This module applies UVM to real-world verification scenarios
+    including DMA verification, protocol verification (UART, SPI, I2C), VIP...
+- type: section
+  title: Design architecture
+  narration: 'Next section: Design architecture.'
+- type: two_column
+  title: 1. Real-world verification architecture (1/3)
+  left:
+  - 'DMA path: CPU/config → descriptor ring → bus master → memory/peripheral'
+  - 'Protocol path: serial frame → byte stream → transaction → scoreboard'
+  - VIP encapsulates protocol knowledge for reuse across projects and modules
+  - '`module7/dut/dma/simple_dma.v` and `dut/protocols/uart.v` anchor the labs'
+  right: assets/diagrams/rtl_architecture.png
+  notes: From MODULE7 Design Architecture.
+  narration: '1. Real-world verification architecture (1/3). DMA path: CPU/config
+    → descriptor ring → bus master → memory/peripheral Protocol path: serial frame
+    → byte stream → transaction → scoreboard VIP encapsulates protocol knowledge for
+    reuse across projects and modules module7/dut/dma/simple_dma.v and dut/protocols/uart.v
+    anchor the labs Refer to the diagram on the right.'
+- type: bullets
+  title: 1. Real-world verification architecture (2/3)
+  bullets:
+  - 'DMA agent: Programs descriptors; monitors transfer completion'
+  - 'Protocol agents (UART/SPI/I2C): Bus-specific driver/monitor/sequencer sets'
+  - 'VIP package: Reusable agent + sequences + config for a protocol'
+  - 'Scoreboard / predictor: End-to-end data integrity across DMA + peripheral'
+  notes: From MODULE7 Design Architecture.
+  narration: '1. Real-world verification architecture (2/3). DMA agent: Programs descriptors;
+    monitors transfer completion Protocol agents (UART/SPI/I2C): Bus-specific driver/monitor/sequencer
+    sets VIP package: Reusable agent + sequences + config for a protocol Scoreboard
+    / predictor: End-to-end data integrity across DMA + peripheral'
+- type: bullets
+  title: 1. Real-world verification architecture (3/3)
+  bullets:
+  - 'Reference model: Software model of DMA or protocol behavior'
+  notes: From MODULE7 Design Architecture.
+  narration: '1. Real-world verification architecture (3/3). Reference model: Software
+    model of DMA or protocol behavior'
+- type: two_column
+  title: 2. VIP and reuse architecture (1/2)
+  left:
+  - '1: VIP interface — Standardized signal bundle + modport'
+  - '2: VIP agent — Configurable active/passive agent'
+  - '3: VIP sequences — Library of legal and stress sequences'
+  - '4: Integration env — Instantiates DUT + VIP + scoreboard'
+  right: assets/diagrams/verification_architecture.png
+  notes: From MODULE7 Design Architecture.
+  narration: '2. VIP and reuse architecture (1/2). 1: VIP interface — Standardized
+    signal bundle + modport 2: VIP agent — Configurable active/passive agent 3: VIP
+    sequences — Library of legal and stress sequences 4: Integration env — Instantiates
+    DUT + VIP + scoreboard Refer to the diagram on the right.'
+- type: bullets
+  title: 2. VIP and reuse architecture (2/2)
+  bullets:
+  - '5: Test suite — Directed + random tests using VIP API'
+  notes: From MODULE7 Design Architecture.
+  narration: '2. VIP and reuse architecture (2/2). 5: Test suite — Directed + random
+    tests using VIP API'
+- type: two_column
+  title: 3. Module 7 application map (1/2)
+  left:
+  - '`examples/dma/` — descriptor programming, transfer status, interrupts'
+  - '`examples/protocols/` — UART, SPI, I2C patterns (timing and framing)'
+  - '`examples/vip/` — packaging reusable verification IP'
+  - '`examples/best_practices/` — naming, config, debug, regression discipline'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE7 Design Architecture.
+  narration: 3. Module 7 application map (1/2). examples/dma/ — descriptor programming,
+    transfer status, interrupts examples/protocols/ — UART, SPI, I2C patterns (timing
+    and framing) examples/vip/ — packaging reusable verification IP examples/best_practices/
+    — naming, config, debug, regression discipline Refer to the diagram on the right.
+- type: bullets
+  title: 3. Module 7 application map (2/2)
+  bullets:
+  - '`test_real_world_uvm.sv` — integrated scenario combining subsystems'
+  notes: From MODULE7 Design Architecture.
+  narration: 3. Module 7 application map (2/2). test_real_world_uvm.sv — integrated
+    scenario combining subsystems
+- type: image
+  title: RTL block diagram (reference)
+  image: assets/diagrams/rtl_architecture.png
+  caption: 'Module 7: DUT hierarchy and signal flow.'
+  narration: 'RTL block diagram (reference). Module 7: DUT hierarchy and signal flow.'
+- type: image
+  title: Verification / testbench diagram (reference)
+  image: assets/diagrams/verification_architecture.png
+  caption: 'Module 7: stimulus, observation, and checking.'
+  narration: 'Verification / testbench diagram (reference). Module 7: stimulus, observation,
+    and checking.'
+- type: section
+  title: Execution & simulation flow
+  narration: 'Next section: Execution & simulation flow.'
+- type: bullets
+  title: How the example runs (toolchain)
+  bullets:
+  - 'Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv'
+  - 'UVM phases: build → connect → run_test → report (same pattern as Module 2)'
+  - Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end)
+  - 'Typical command: make SIM=verilator TEST=test_* (see module7 demo slide)'
+  - Loopback / hooks connect monitor observations to scoreboard checks
+  notes: From MODULE7 — execution and artifact layout.
+  narration: 'How the example runs (toolchain). Match each bullet to files in the
+    repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv
+    UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence
+    → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command:
+    make SIM=verilator TEST=test_* (see module7 demo slide) Loopback / hooks connect...'
+- type: bullets
+  title: Artifact flow (spec → sim) (1)
+  bullets:
+  - '1: VIP interface — Standardized signal bundle + modport'
+  - '2: VIP agent — Configurable active/passive agent'
+  - '3: VIP sequences — Library of legal and stress sequences'
+  - '4: Integration env — Instantiates DUT + VIP + scoreboard'
+  notes: From MODULE7 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (1). Match each bullet to files in the repository.
+    1: VIP interface — Standardized signal bundle + modport 2: VIP agent — Configurable
+    active/passive agent 3: VIP sequences — Library of legal and stress sequences
+    4: Integration env — Instantiates DUT + VIP + scoreboard From MODULE7 — execution
+    and artifact layout.'
+- type: bullets
+  title: Artifact flow (spec → sim) (2)
+  bullets:
+  - '5: Test suite — Directed + random tests using VIP API'
+  notes: From MODULE7 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (2). Match each bullet to files in the repository.
+    5: Test suite — Directed + random tests using VIP API From MODULE7 — execution
+    and artifact layout.'
+- type: bullets
+  title: Example directory layout
+  bullets:
+  - 'DMA agent: Programs descriptors; monitors transfer completion'
+  - 'Protocol agents (UART/SPI/I2C): Bus-specific driver/monitor/sequencer sets'
+  - 'VIP package: Reusable agent + sequences + config for a protocol'
+  - 'Scoreboard / predictor: End-to-end data integrity across DMA + peripheral'
+  - 'Reference model: Software model of DMA or protocol behavior'
+  notes: Match each path to files under module/examples/.
+  narration: 'Example directory layout. Match each bullet to files in the repository.
+    DMA agent: Programs descriptors; monitors transfer completion Protocol agents
+    (UART/SPI/I2C): Bus-specific driver/monitor/sequencer sets VIP package: Reusable
+    agent + sequences + config for a protocol Scoreboard / predictor: End-to-end data
+    integrity across DMA + peripheral Reference model: Software model of DMA or...'
+- type: bullets
+  title: Directed test execution sequence
+  bullets:
+  - VIP config
+  - env build
+  - sequence library
+  - coverage + report
+  notes: Follow this order when tracing waveforms or debugging.
+  narration: Follow these steps in order when working through this module. VIP config
+    env build sequence library coverage + report Follow this order when tracing waveforms
+    or debugging.
+- type: section
+  title: Verification & testing methods
+  narration: 'Next section: Verification & testing methods.'
+- type: two_column
+  title: 1. Application-specific verification strategy
+  left:
+  - 'DMA: descriptor alignment, boundary lengths, error flags, concurrent channels'
+  - 'Serial protocols: baud/bit timing, framing, parity, back-to-back packets'
+  - 'VIP usage: configure via object; run standard sequences before custom stress'
+  - Directed tests prove basic paths; random tests explore corner combinations
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE7 Verification & Testing Methods.
+  narration: '1. Application-specific verification strategy. DMA: descriptor alignment,
+    boundary lengths, error flags, concurrent channels Serial protocols: baud/bit
+    timing, framing, parity, back-to-back packets VIP usage: configure via object;
+    run standard sequences before custom stress Directed tests prove basic paths;
+    random tests explore corner combinations Refer to the diagram on the right.'
+- type: two_column
+  title: 2. Production best practices (1/2)
+  left:
+  - Centralize plusargs via CLP (Module 8) for seed, verbosity, test name
+  - Separate test intent (test class) from reusable env (VIP + env)
+  - Log protocol transactions at UVM_MEDIUM; errors at UVM_LOW
+  - 'Regression: `./scripts/module7.sh --all-examples --uvm-tests`'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE7 Verification & Testing Methods.
+  narration: '2. Production best practices (1/2). Centralize plusargs via CLP (Module
+    8) for seed, verbosity, test name Separate test intent (test class) from reusable
+    env (VIP + env) Log protocol transactions at UVM_MEDIUM; errors at UVM_LOW Regression:
+    ./scripts/module7.sh --all-examples --uvm-tests Refer to the diagram on the right.'
+- type: bullets
+  title: 2. Production best practices (2/2)
+  bullets:
+  - 'Closure: functional coverage bins hit + scoreboard clean + VIP protocol clean'
+  notes: From MODULE7 Verification & Testing Methods.
+  narration: '2. Production best practices (2/2). Closure: functional coverage bins
+    hit + scoreboard clean + VIP protocol clean'
 - type: section
   title: Syllabus topics
+  narration: 'Next section: Syllabus topics.'
+- type: section
+  title: Protocol & design details
+  narration: 'Next section: Protocol & design details.'
+- type: bullets
+  title: 'Detail: Example 7.1: DMA Verification (`module7/examples/dma/dma.sv`) (1)'
+  bullets:
+  - 'Interface (`dma_if`): DMA interface with start, done, addresses, length, and
+    channel signals'
+  - 'Transaction (`DmaTxn`): DMA transaction with source address, destination address,
+    length, and channel'
+  - 'Sequence (`DmaSeq`): DMA sequence generating random DMA transfers'
+  - 'Driver (`DmaDriver`): DMA driver implementing DMA protocol'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.1: DMA Verification (module7/examples/dma/dma.sv)
+    (1). Interface (dma_if): DMA interface with start, done, addresses, length, and
+    channel signals Transaction (DmaTxn): DMA transaction with source address, destination
+    address, length, and channel Sequence (DmaSeq): DMA sequence generating random
+    DMA transfers Driver (DmaDriver): DMA driver implementing DMA...'
+- type: bullets
+  title: 'Detail: Example 7.1: DMA Verification (`module7/examples/dma/dma.sv`) (2)'
+  bullets:
+  - 'Environment (`DmaEnv`): DMA verification environment'
+  - 'Test (`DmaTest`): DMA verification test with simple DMA DUT'
+  - 'Method Signature: `function bit randomize();`'
+  - 'Purpose: Generate random DMA transfer parameters'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.1: DMA Verification (module7/examples/dma/dma.sv)
+    (2). Environment (DmaEnv): DMA verification environment Test (DmaTest): DMA verification
+    test with simple DMA DUT Method Signature: function bit randomize(); Purpose:
+    Generate random DMA transfer parameters From MODULE7 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 7.2: UART Verification (`module7/examples/protocols/uart_example.sv`)
+    (1)'
+  bullets:
+  - 'Interface (`uart_if`): UART interface with TX/RX signals and control'
+  - 'Transaction (`UartTxn`): UART transaction with data field'
+  - 'Sequence (`UartSeq`): UART sequence generating random UART transfers'
+  - 'Driver (`UartDriver`): UART driver implementing UART protocol'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.2: UART Verification (module7/examples/protocols/uart_example.sv)
+    (1). Interface (uart_if): UART interface with TX/RX signals and control Transaction
+    (UartTxn): UART transaction with data field Sequence (UartSeq): UART sequence
+    generating random UART transfers Driver (UartDriver): UART driver implementing
+    UART protocol From MODULE7 Topics Covered —...'
+- type: bullets
+  title: 'Detail: Example 7.2: UART Verification (`module7/examples/protocols/uart_example.sv`)
+    (2)'
+  bullets:
+  - 'Environment (`UartEnv`): UART verification environment'
+  - 'Test (`UartTest`): UART verification test with UART DUT'
+  - 'Method Signature:'
+  - '`task get_next_item(ref T item);` - Get transaction from sequencer'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.2: UART Verification (module7/examples/protocols/uart_example.sv)
+    (2). Environment (UartEnv): UART verification environment Test (UartTest): UART
+    verification test with UART DUT Method Signature: task get_next_item(ref T item);
+    - Get transaction from sequencer From MODULE7 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 7.3: SPI Verification (`module7/examples/protocols/spi_example.sv`)
+    (1)'
+  bullets:
+  - 'Test (`SpiExampleTest`): SPI verification test scaffold'
+  - 'UVM Pattern: Demonstrates UVM structure for SPI verification'
+  - SPI protocol verification patterns provide reusable structure
+  - UVM scaffold for protocol verification enables rapid development
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.3: SPI Verification (module7/examples/protocols/spi_example.sv)
+    (1). Test (SpiExampleTest): SPI verification test scaffold UVM Pattern: Demonstrates
+    UVM structure for SPI verification SPI protocol verification patterns provide
+    reusable structure UVM scaffold for protocol verification enables rapid development
+    From MODULE7 Topics Covered — protocol/design...'
+- type: bullets
+  title: 'Detail: Example 7.3: SPI Verification (`module7/examples/protocols/spi_example.sv`)
+    (2)'
+  bullets:
+  - Protocol-specific testbench structure supports future DUT integration
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.3: SPI Verification (module7/examples/protocols/spi_example.sv)
+    (2). Protocol-specific testbench structure supports future DUT integration From
+    MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 7.4: I2C Verification (`module7/examples/protocols/i2c_example.sv`)
+    (1)'
+  bullets:
+  - 'Test (`I2cExampleTest`): I2C verification test scaffold'
+  - 'UVM Pattern: Demonstrates UVM structure for I2C verification'
+  - I2C protocol verification patterns provide reusable structure
+  - UVM scaffold for protocol verification enables rapid development
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.4: I2C Verification (module7/examples/protocols/i2c_example.sv)
+    (1). Test (I2cExampleTest): I2C verification test scaffold UVM Pattern: Demonstrates
+    UVM structure for I2C verification I2C protocol verification patterns provide
+    reusable structure UVM scaffold for protocol verification enables rapid development
+    From MODULE7 Topics Covered — protocol/design...'
+- type: bullets
+  title: 'Detail: Example 7.4: I2C Verification (`module7/examples/protocols/i2c_example.sv`)
+    (2)'
+  bullets:
+  - Protocol-specific testbench structure supports future DUT integration
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.4: I2C Verification (module7/examples/protocols/i2c_example.sv)
+    (2). Protocol-specific testbench structure supports future DUT integration From
+    MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 7.5: VIP Development (`module7/examples/vip/vip.sv`) (1)'
+  bullets:
+  - 'Transaction (`VipTxn`): VIP transaction with payload'
+  - 'Sequence (`VipSeq`): VIP sequence generating transactions'
+  - 'Driver (`VipDriver`): VIP driver'
+  - 'Agent (`VipAgent`): VIP agent containing sequencer and driver'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.5: VIP Development (module7/examples/vip/vip.sv)
+    (1). Transaction (VipTxn): VIP transaction with payload Sequence (VipSeq): VIP
+    sequence generating transactions Driver (VipDriver): VIP driver Agent (VipAgent):
+    VIP agent containing sequencer and driver From MODULE7 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 7.5: VIP Development (`module7/examples/vip/vip.sv`) (2)'
+  bullets:
+  - 'Test (`VipTest`): VIP test demonstrating VIP usage'
+  - 'Purpose: Package VIP components (sequencer + driver) in agent'
+  - 'Pattern: Agent encapsulates all VIP components'
+  - 'Key: Standard UVM agent structure for reusability'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.5: VIP Development (module7/examples/vip/vip.sv)
+    (2). Test (VipTest): VIP test demonstrating VIP usage Purpose: Package VIP components
+    (sequencer + driver) in agent Pattern: Agent encapsulates all VIP components Key:
+    Standard UVM agent structure for reusability From MODULE7 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 7.6: Best Practices (`module7/examples/best_practices/best_practices.sv`)
+    (1)'
+  bullets:
+  - 'Test (`BestPracticesTest`): Test demonstrating best practices'
+  - 'Phase Organization: Proper phase usage and logging'
+  - 'Topology Printing: Component hierarchy visualization'
+  - 'Logging Patterns: Structured logging for maintainability'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.6: Best Practices (module7/examples/best_practices/best_practices.sv)
+    (1). Test (BestPracticesTest): Test demonstrating best practices Phase Organization:
+    Proper phase usage and logging Topology Printing: Component hierarchy visualization
+    Logging Patterns: Structured logging for maintainability From MODULE7 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 7.6: Best Practices (`module7/examples/best_practices/best_practices.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Log execution flow through phases'
+  - 'Pattern: Log at start of each phase'
+  - 'Key: Consistent logging improves debugging'
+  - 'Method Signature:'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 7.6: Best Practices (module7/examples/best_practices/best_practices.sv)
+    (2). Purpose: Log execution flow through phases Pattern: Log at start of each
+    phase Key: Consistent logging improves debugging Method Signature: From MODULE7
+    Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: DMA Transaction Randomization (1)'
+  bullets:
+  - 'Method Signature: `function bit randomize();`'
+  - 'Return Type: `bit` (1 = success, 0 = failure)'
+  - 'Purpose: Generate random DMA transfer parameters'
+  - 'Usage: `void''(t.randomize() with { len inside {[1:20]}; });`'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: DMA Transaction Randomization (1). Method
+    Signature: function bit randomize(); Return Type: bit (1 = success, 0 = failure)
+    Purpose: Generate random DMA transfer parameters Usage: void''(t.randomize() with
+    { len inside {[1:20]}; }); From MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: DMA Transaction Randomization (2)'
+  bullets:
+  - 'Parameters: None (randomizes all `rand` fields in object)'
+  - 'Constraints: Use `with { constraint_expression; }` to limit values'
+  - 'Example: `len inside {[1:20]}` constrains transfer length to 1-20 bytes'
+  - 'Key: `void''()` suppresses Verilator warning about ignored return value'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: DMA Transaction Randomization (2). Parameters:
+    None (randomizes all rand fields in object) Constraints: Use with { constraint_expression;
+    } to limit values Example: len inside {[1:20]} constrains transfer length to 1-20
+    bytes Key: void''() suppresses Verilator warning about ignored return value From
+    MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: DMA Protocol Implementation'
+  bullets:
+  - 'Pattern: Start pulse → Wait for done → Completion'
+  - 'Key: `do-while` loop waits for `dma_done` pulse'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: DMA Protocol Implementation. Pattern: Start
+    pulse → Wait for done → Completion Key: do-while loop waits for dma_done pulse
+    From MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: UART Protocol Implementation (1)'
+  bullets:
+  - 'Pattern: Data → Start → Wait for busy deassert → Completion'
+  - 'Key: Wait for `tx_busy` to deassert'
+  - 'Event Control: `@(posedge clk)` - wait for positive clock edge'
+  - 'Non-blocking Assignment: `<=` - schedule assignment for next time step'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: UART Protocol Implementation (1). Pattern:
+    Data → Start → Wait for busy deassert → Completion Key: Wait for tx_busy to deassert
+    Event Control: @(posedge clk) - wait for positive clock edge Non-blocking Assignment:
+    <= - schedule assignment for next time step From MODULE7 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: UART Protocol Implementation (2)'
+  bullets:
+  - 'Do-While Loop: `do @(posedge clk); while (condition);` - wait for condition'
+  - 'Purpose: Enable loopback testing'
+  - 'Use Case: Minimal smoke testing without external device'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: UART Protocol Implementation (2). Do-While
+    Loop: do @(posedge clk); while (condition); - wait for condition Purpose: Enable
+    loopback testing Use Case: Minimal smoke testing without external device From
+    MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: VIP Agent Packaging'
+  bullets:
+  - 'Purpose: Package VIP components for reusability'
+  - 'Pattern: Agent encapsulates sequencer + driver'
+  - 'Key: Standard UVM agent structure'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: VIP Agent Packaging. Purpose: Package VIP
+    components for reusability Pattern: Agent encapsulates sequencer + driver Key:
+    Standard UVM agent structure From MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: VIP Logging (1)'
+  bullets:
+  - 'Macro: `uvm_info(id, message, verbosity)`'
+  - 'Function: `$sformatf(format, args)` → string'
+  - 'Purpose: Log transaction with formatted message'
+  - 'Format Specifiers:'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: VIP Logging (1). Macro: uvm_info(id, message,
+    verbosity) Function: $sformatf(format, args) → string Purpose: Log transaction
+    with formatted message Format Specifiers: From MODULE7 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: VIP Logging (2)'
+  bullets:
+  - '`%02h` - 2-digit hexadecimal, zero-padded'
+  - '`%08h` - 8-digit hexadecimal, zero-padded'
+  - '`%0d` - Decimal, no padding'
+  - '`%s` - String'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: VIP Logging (2). %02h - 2-digit hexadecimal,
+    zero-padded %08h - 8-digit hexadecimal, zero-padded %0d - Decimal, no padding
+    %s - String From MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Phase-Based Logging'
+  bullets:
+  - 'Purpose: Log execution flow through phases'
+  - 'Pattern: Log at start of each phase'
+  - 'Key: Consistent logging improves debugging'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Phase-Based Logging. Purpose: Log execution
+    flow through phases Pattern: Log at start of each phase Key: Consistent logging
+    improves debugging From MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Topology Printing (1)'
+  bullets:
+  - 'Method Signature:'
+  - '`static function uvm_root get();` → returns singleton root'
+  - '`function void print_topology();` → prints hierarchy'
+  - 'Purpose: Visualize component hierarchy'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Topology Printing (1). Method Signature:
+    static function uvm_root get(); → returns singleton root function void print_topology();
+    → prints hierarchy Purpose: Visualize component hierarchy From MODULE7 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Topology Printing (2)'
+  bullets:
+  - 'Timing: Call in `end_of_elaboration_phase()` (after all connections)'
+  - 'Output: Prints complete component tree with hierarchical paths'
+  - 'Usage:'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Topology Printing (2). Timing: Call in end_of_elaboration_phase()
+    (after all connections) Output: Prints complete component tree with hierarchical
+    paths Usage: From MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: end_of_elaboration_phase (1)'
+  bullets:
+  - 'Phase Type: Build-time phase (function, executes bottom-up)'
+  - 'Purpose: Final elaboration tasks after all connections'
+  - 'Timing: After `connect_phase()`, before `start_of_simulation_phase()`'
+  - 'Common Uses:'
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: end_of_elaboration_phase (1). Phase Type:
+    Build-time phase (function, executes bottom-up) Purpose: Final elaboration tasks
+    after all connections Timing: After connect_phase(), before start_of_simulation_phase()
+    Common Uses: From MODULE7 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: end_of_elaboration_phase (2)'
+  bullets:
+  - Print topology
+  - Validate configuration
+  - Final checks
+  - Setup verification
+  notes: From MODULE7 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: end_of_elaboration_phase (2). Print topology
+    Validate configuration Final checks Setup verification From MODULE7 Topics Covered
+    — protocol/design depth.'
+- type: image
+  title: Verification flow (reference)
+  image: assets/diagrams/testing_methods.png
+  caption: Stimulus, DUT response, and check points for this module.
+  narration: Verification flow (reference). Stimulus, DUT response, and check points
+    for this module.
 - type: bullets
   title: 1. DMA Verification (1/9)
   bullets:
@@ -37,6 +543,8 @@ slides:
   - DMA result checking
   - DMA Patterns
   notes: From MODULE7 Topics Covered.
+  narration: 1. DMA Verification (1/9). DMA Controller Verification DMA transaction
+    modeling DMA protocol implementation DMA sequence generation DMA result checking
 - type: bullets
   title: 1. DMA Verification (2/9)
   bullets:
@@ -49,6 +557,9 @@ slides:
   - 'Transaction (`DmaTxn`): DMA transaction with source address, destination address,
     length, and channel'
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (2/9). DMA transfer patterns Multi-channel DMA DMA
+    completion handling DMA error handling Interface (dma_if): DMA interface with
+    start, done, addresses, length, and channel signals'
 - type: bullets
   title: 1. DMA Verification (3/9)
   bullets:
@@ -59,6 +570,10 @@ slides:
   - 'Method Signature: `function bit randomize();`'
   - 'Purpose: Generate random DMA transfer parameters'
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (3/9). Sequence (DmaSeq): DMA sequence generating
+    random DMA transfers Driver (DmaDriver): DMA driver implementing DMA protocol
+    Environment (DmaEnv): DMA verification environment Test (DmaTest): DMA verification
+    test with simple DMA DUT Method Signature: function bit randomize();'
 - type: bullets
   title: 1. DMA Verification (4/9)
   bullets:
@@ -69,6 +584,10 @@ slides:
   - '`task item_done();` - Signal transaction completion'
   - 'Purpose: Implement DMA protocol with start/done handshake'
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (4/9). Constraints: Use with { constraint; } to
+    limit values Key: len inside {[1:20]} constrains transfer length Method Signature:
+    task get_next_item(ref T item); - Get transaction from sequencer task item_done();
+    - Signal transaction completion'
 - type: bullets
   title: 1. DMA Verification (5/9)
   bullets:
@@ -81,6 +600,11 @@ slides:
     clock cycles)'
   - 'Method Signature: `task body();` (no parameters, no return)'
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (5/9). Protocol Flow: Key: do-while loop waits for
+    dma_done pulse (blocking wait) Timing: Start signal is one clock cycle pulse Blocking
+    Behavior: get_next_item() blocks until sequencer provides transaction, item_done()
+    unblocks sequencer Completion Detection: Wait for dma_done signal assertion (may
+    take multiple clock cycles)'
 - type: bullets
   title: 1. DMA Verification (6/9)
   bullets:
@@ -91,6 +615,9 @@ slides:
   - '`start_item()` blocks until sequencer grants access'
   - '`finish_item()` blocks until driver completes transaction (may take many cycles)'
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (6/9). Purpose: Generate and send multiple DMA transfers
+    to sequencer Execution Flow: Key: repeat loop creates multiple transactions sequentially
+    Blocking Behavior: start_item() blocks until sequencer grants access'
 - type: bullets
   title: 1. DMA Verification (7/9)
   bullets:
@@ -101,6 +628,9 @@ slides:
   - Driver signals completion via `item_done()`
   - '`finish_item()` returns, loop continues'
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (7/9). Transaction Lifetime: Created in loop Sent
+    to sequencer via start_item() Driver processes it (drives signals, waits for DMA
+    done) Driver signals completion via item_done()'
 - type: bullets
   title: 1. DMA Verification (8/9)
   bullets:
@@ -111,6 +641,10 @@ slides:
   - DMA result checking verifies transfer completion
   - 'DMA Protocol: Start pulse → Wait for done → Completion'
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (8/9). Constraint: len inside {[1:20]} ensures reasonable
+    transfer lengths DMA transaction modeling captures transfer semantics DMA protocol
+    implementation handles start/done handshake DMA sequence generation creates realistic
+    transfer scenarios DMA result checking verifies transfer completion'
 - type: bullets
   title: 1. DMA Verification (9/9)
   bullets:
@@ -121,6 +655,9 @@ slides:
   - DMA transfer completion
   - UVM report summary
   notes: From MODULE7 Topics Covered.
+  narration: '1. DMA Verification (9/9). Transaction Flow: Sequence → Sequencer →
+    Driver → DUT Completion Detection: Wait for dma_done signal assertion DMA transaction
+    generation DMA protocol execution DMA transfer completion'
 - type: bullets
   title: 2. Protocol Verification (1/9)
   bullets:
@@ -131,6 +668,8 @@ slides:
   - UART-specific patterns
   - SPI Verification
   notes: From MODULE7 Topics Covered.
+  narration: 2. Protocol Verification (1/9). UART Verification UART protocol modeling
+    Serial communication verification Loopback testing UART-specific patterns
 - type: bullets
   title: 2. Protocol Verification (2/9)
   bullets:
@@ -141,6 +680,9 @@ slides:
   - I2C protocol verification patterns
   - UVM scaffold for I2C
   notes: From MODULE7 Topics Covered.
+  narration: 2. Protocol Verification (2/9). SPI protocol verification patterns UVM
+    scaffold for SPI Protocol-specific testbench structure I2C Verification I2C protocol
+    verification patterns
 - type: bullets
   title: 2. Protocol Verification (3/9)
   bullets:
@@ -151,6 +693,11 @@ slides:
   - 'Driver (`UartDriver`): UART driver implementing UART protocol'
   - 'Environment (`UartEnv`): UART verification environment'
   notes: From MODULE7 Topics Covered.
+  narration: '2. Protocol Verification (3/9). Protocol-specific testbench structure
+    Interface (uart_if): UART interface with TX/RX signals and control Transaction
+    (UartTxn): UART transaction with data field Sequence (UartSeq): UART sequence
+    generating random UART transfers Driver (UartDriver): UART driver implementing
+    UART protocol'
 - type: bullets
   title: 2. Protocol Verification (4/9)
   bullets:
@@ -161,6 +708,10 @@ slides:
   - 'Purpose: Implement UART TX protocol'
   - 'Protocol Flow:'
   notes: From MODULE7 Topics Covered.
+  narration: '2. Protocol Verification (4/9). Test (UartTest): UART verification test
+    with UART DUT Method Signature: task get_next_item(ref T item); - Get transaction
+    from sequencer task item_done(); - Signal transaction completion Purpose: Implement
+    UART TX protocol'
 - type: bullets
   title: 2. Protocol Verification (5/9)
   bullets:
@@ -173,6 +724,11 @@ slides:
   - 'UART Characteristics: Serial transmission takes time (one bit per baud period)'
   - 'Purpose: Enable loopback testing'
   notes: From MODULE7 Topics Covered.
+  narration: '2. Protocol Verification (5/9). Key: Wait for tx_busy to deassert (transmission
+    complete) Timing: Start signal is one clock cycle pulse Blocking Behavior: get_next_item()
+    blocks until sequencer provides transaction, item_done() unblocks sequencer Completion
+    Detection: Wait for tx_busy signal deassertion (may take many clock cycles for
+    serial transmission) UART Characteristics: Serial...'
 - type: bullets
   title: 2. Protocol Verification (6/9)
   bullets:
@@ -183,6 +739,10 @@ slides:
   - Loopback testing enables minimal smoke testing
   - Protocol-specific patterns provide reusable verification components
   notes: From MODULE7 Topics Covered.
+  narration: '2. Protocol Verification (6/9). Pattern: assign rx = tx creates loopback
+    path Use Case: Minimal smoke testing without external device UART protocol modeling
+    captures serial communication Serial communication verification tests TX/RX paths
+    Loopback testing enables minimal smoke testing'
 - type: bullets
   title: 2. Protocol Verification (7/9)
   bullets:
@@ -193,6 +753,9 @@ slides:
   - UART protocol execution
   - UART TX/RX operation
   notes: From MODULE7 Topics Covered.
+  narration: '2. Protocol Verification (7/9). UART Protocol: Data → Start → Wait for
+    busy → Completion Loopback Pattern: TX output connected to RX input Busy Signal:
+    Wait for tx_busy deassertion UART transaction generation UART protocol execution'
 - type: bullets
   title: 2. Protocol Verification (8/9)
   bullets:
@@ -203,6 +766,10 @@ slides:
   - UVM scaffold for protocol verification enables rapid development
   - Protocol-specific testbench structure supports future DUT integration
   notes: From MODULE7 Topics Covered.
+  narration: '2. Protocol Verification (8/9). Loopback verification Test (SpiExampleTest):
+    SPI verification test scaffold UVM Pattern: Demonstrates UVM structure for SPI
+    verification SPI protocol verification patterns provide reusable structure UVM
+    scaffold for protocol verification enables rapid development'
 - type: bullets
   title: 2. Protocol Verification (9/9)
   bullets:
@@ -212,6 +779,11 @@ slides:
   - UVM scaffold for protocol verification enables rapid development
   - Protocol-specific testbench structure supports future DUT integration
   notes: From MODULE7 Topics Covered.
+  narration: '2. Protocol Verification (9/9). Test (I2cExampleTest): I2C verification
+    test scaffold UVM Pattern: Demonstrates UVM structure for I2C verification I2C
+    protocol verification patterns provide reusable structure UVM scaffold for protocol
+    verification enables rapid development Protocol-specific testbench structure supports
+    future DUT integration'
 - type: bullets
   title: 3. VIP Development (1/6)
   bullets:
@@ -222,6 +794,8 @@ slides:
   - VIP configuration
   - VIP Components
   notes: From MODULE7 Topics Covered.
+  narration: 3. VIP Development (1/6). VIP Architecture VIP component organization
+    VIP packaging patterns VIP reuse strategies VIP configuration
 - type: bullets
   title: 3. VIP Development (2/6)
   bullets:
@@ -232,6 +806,8 @@ slides:
   - 'Transaction (`VipTxn`): VIP transaction with payload'
   - 'Sequence (`VipSeq`): VIP sequence generating transactions'
   notes: From MODULE7 Topics Covered.
+  narration: '3. VIP Development (2/6). Transaction classes Sequence classes Driver
+    and monitor Agent packaging Transaction (VipTxn): VIP transaction with payload'
 - type: bullets
   title: 3. VIP Development (3/6)
   bullets:
@@ -242,6 +818,10 @@ slides:
   - 'Pattern: Agent encapsulates all VIP components'
   - 'Key: Standard UVM agent structure for reusability'
   notes: From MODULE7 Topics Covered.
+  narration: '3. VIP Development (3/6). Driver (VipDriver): VIP driver Agent (VipAgent):
+    VIP agent containing sequencer and driver Test (VipTest): VIP test demonstrating
+    VIP usage Purpose: Package VIP components (sequencer + driver) in agent Pattern:
+    Agent encapsulates all VIP components'
 - type: bullets
   title: 3. VIP Development (4/6)
   bullets:
@@ -252,6 +832,10 @@ slides:
   - 'Pattern: Create VIP agent, use its sequencer'
   - 'Key: VIP agent is reusable component'
   notes: From MODULE7 Topics Covered.
+  narration: '3. VIP Development (4/6). Purpose: VIP driver with structured logging
+    Logging: Use uvm_info with formatted messages Key: $sformatf() for formatted string
+    generation Purpose: Demonstrate VIP usage in test Pattern: Create VIP agent, use
+    its sequencer'
 - type: bullets
   title: 3. VIP Development (5/6)
   bullets:
@@ -262,6 +846,10 @@ slides:
   - 'VIP Packaging: Transaction + Sequence + Driver + Agent'
   - 'Reusability: VIP agent can be instantiated in any test'
   notes: From MODULE7 Topics Covered.
+  narration: '3. VIP Development (5/6). VIP architecture enables reusable verification
+    components VIP component organization provides clear structure VIP packaging patterns
+    support easy integration VIP reuse strategies improve productivity VIP Packaging:
+    Transaction + Sequence + Driver + Agent'
 - type: bullets
   title: 3. VIP Development (6/6)
   bullets:
@@ -271,6 +859,9 @@ slides:
   - VIP packaging demonstration
   - VIP reuse pattern
   notes: From MODULE7 Topics Covered.
+  narration: '3. VIP Development (6/6). Structured Logging: Use uvm_info with formatted
+    messages VIP transaction generation VIP agent operation VIP packaging demonstration
+    VIP reuse pattern'
 - type: bullets
   title: 4. Best Practices (1/10)
   bullets:
@@ -281,6 +872,8 @@ slides:
   - Package organization
   - Naming Conventions
   notes: From MODULE7 Topics Covered.
+  narration: 4. Best Practices (1/10). Code Organization Component organization File
+    structure Module organization Package organization
 - type: bullets
   title: 4. Best Practices (2/10)
   bullets:
@@ -291,6 +884,8 @@ slides:
   - Logging and Debugging
   - Structured logging
   notes: From MODULE7 Topics Covered.
+  narration: 4. Best Practices (2/10). Component naming Variable naming File naming
+    Test naming Logging and Debugging
 - type: bullets
   title: 4. Best Practices (3/10)
   bullets:
@@ -301,6 +896,9 @@ slides:
   - 'Phase Organization: Proper phase usage and logging'
   - 'Topology Printing: Component hierarchy visualization'
   notes: From MODULE7 Topics Covered.
+  narration: '4. Best Practices (3/10). Phase-based logging Topology visualization
+    Debug techniques Test (BestPracticesTest): Test demonstrating best practices Phase
+    Organization: Proper phase usage and logging'
 - type: bullets
   title: 4. Best Practices (4/10)
   bullets:
@@ -311,6 +909,9 @@ slides:
   - 'Method Signature:'
   - '`static function uvm_root get();` → returns singleton root instance'
   notes: From MODULE7 Topics Covered.
+  narration: '4. Best Practices (4/10). Logging Patterns: Structured logging for maintainability
+    Purpose: Log execution flow through phases Pattern: Log at start of each phase
+    Key: Consistent logging improves debugging Method Signature:'
 - type: bullets
   title: 4. Best Practices (5/10)
   bullets:
@@ -321,6 +922,10 @@ slides:
   - 'Output Format:'
   - 'Key: Helps debug component structure and connections'
   notes: From MODULE7 Topics Covered.
+  narration: '4. Best Practices (5/10). function void print_topology(); → prints hierarchy
+    Purpose: Visualize component hierarchy for debugging Timing: Call in end_of_elaboration_phase()
+    (after all connections) Output: Prints complete component tree with hierarchical
+    paths Output Format:'
 - type: bullets
   title: 4. Best Practices (6/10)
   bullets:
@@ -331,6 +936,9 @@ slides:
   - To verify testbench structure
   - 'Benefits:'
   notes: From MODULE7 Topics Covered.
+  narration: '4. Best Practices (6/10). When to Use: After all components created
+    After all connections made When debugging component hierarchy issues To verify
+    testbench structure'
 - type: bullets
   title: 4. Best Practices (7/10)
   bullets:
@@ -341,6 +949,10 @@ slides:
   - 'Method Signature: `function void end_of_elaboration_phase(uvm_phase phase);`'
   - 'Phase Type: Build-time phase (function, executes bottom-up)'
   notes: From MODULE7 Topics Covered.
+  narration: '4. Best Practices (7/10). Visual representation of testbench structure
+    Helps identify missing components Verifies hierarchical naming Aids in debugging
+    connection issues Method Signature: function void end_of_elaboration_phase(uvm_phase
+    phase);'
 - type: bullets
   title: 4. Best Practices (8/10)
   bullets:
@@ -351,6 +963,10 @@ slides:
   - Naming conventions enhance readability
   - Phase-based logging provides clear execution flow
   notes: From MODULE7 Topics Covered.
+  narration: '4. Best Practices (8/10). Purpose: Final elaboration tasks after all
+    connections Common Uses: Print topology, validate configuration, final checks
+    Timing: After connect_phase(), before start_of_simulation_phase() Code organization
+    improves maintainability Naming conventions enhance readability'
 - type: bullets
   title: 4. Best Practices (9/10)
   bullets:
@@ -361,6 +977,10 @@ slides:
   - 'end_of_elaboration_phase: Use for final checks and topology printing'
   - Phase-based logging
   notes: From MODULE7 Topics Covered.
+  narration: '4. Best Practices (9/10). Topology visualization aids debugging Phase
+    Logging: Log at start of each phase Topology Printing: Use print_topology() in
+    end_of_elaboration_phase() Structured Logging: Use consistent message IDs and
+    formats end_of_elaboration_phase: Use for final checks and topology printing'
 - type: bullets
   title: 4. Best Practices (10/10)
   bullets:
@@ -368,8 +988,10 @@ slides:
   - Best practices demonstration
   - Structured logging output
   notes: From MODULE7 Topics Covered.
+  narration: 4. Best Practices (10/10). Component topology printing Best practices
+    demonstration Structured logging output
 - type: bullets
-  title: 5. System-Level Verification (1/11)
+  title: 5. System-Level Verification (1/24)
   bullets:
   - Multi-DUT Verification
   - Multiple DUT instantiation
@@ -378,8 +1000,10 @@ slides:
   - System-level testing
   - Real-World Patterns
   notes: From MODULE7 Topics Covered.
+  narration: 5. System-Level Verification (1/24). Multi-DUT Verification Multiple
+    DUT instantiation Multi-DUT coordination System integration System-level testing
 - type: bullets
-  title: 5. System-Level Verification (2/11)
+  title: 5. System-Level Verification (2/24)
   bullets:
   - Practical verification scenarios
   - Production-quality testbenches
@@ -388,8 +1012,11 @@ slides:
   - 'Method Signature: `function bit randomize();`'
   - 'Return Type: `bit` (1 = success, 0 = failure)'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (2/24). Practical verification scenarios
+    Production-quality testbenches Maintainable verification environments Scalable
+    verification solutions Method Signature: function bit randomize();'
 - type: bullets
-  title: 5. System-Level Verification (3/11)
+  title: 5. System-Level Verification (3/24)
   bullets:
   - 'Purpose: Generate random DMA transfer parameters'
   - 'Usage: `void''(t.randomize() with { len inside {[1:20]}; });`'
@@ -398,8 +1025,13 @@ slides:
   - 'Example: `len inside {[1:20]}` constrains transfer length to 1-20 bytes'
   - 'Key: `void''()` suppresses Verilator warning about ignored return value'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (3/24). Purpose: Generate random DMA transfer
+    parameters Usage: void''(t.randomize() with { len inside {[1:20]}; }); Parameters:
+    None (randomizes all rand fields in object) Constraints: Use with { constraint_expression;
+    } to limit values Example: len inside {[1:20]} constrains transfer length to 1-20
+    bytes'
 - type: bullets
-  title: 5. System-Level Verification (4/11)
+  title: 5. System-Level Verification (4/24)
   bullets:
   - 'Constraint Syntax:'
   - '`len inside {[1:20]}` - Range constraint'
@@ -408,8 +1040,11 @@ slides:
   - 'Randomization Order:'
   - 'Pattern: Start pulse → Wait for done → Completion'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (4/24). Constraint Syntax: len inside {[1:20]}
+    - Range constraint len inside {1, 2, 4, 8, 16} - Set constraint len > 0 && len
+    < 100 - Boolean constraint Randomization Order:'
 - type: bullets
-  title: 5. System-Level Verification (5/11)
+  title: 5. System-Level Verification (5/24)
   bullets:
   - 'Key: `do-while` loop waits for `dma_done` pulse'
   - 'Pattern: Data → Start → Wait for busy deassert → Completion'
@@ -418,8 +1053,12 @@ slides:
   - 'Non-blocking Assignment: `<=` - schedule assignment for next time step'
   - 'Do-While Loop: `do @(posedge clk); while (condition);` - wait for condition'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (5/24). Key: do-while loop waits for dma_done
+    pulse Pattern: Data → Start → Wait for busy deassert → Completion Key: Wait for
+    tx_busy to deassert Event Control: @(posedge clk) - wait for positive clock edge
+    Non-blocking Assignment: <= - schedule assignment for next time step'
 - type: bullets
-  title: 5. System-Level Verification (6/11)
+  title: 5. System-Level Verification (6/24)
   bullets:
   - 'Purpose: Enable loopback testing'
   - 'Use Case: Minimal smoke testing without external device'
@@ -428,8 +1067,12 @@ slides:
   - 'Key: Standard UVM agent structure'
   - 'Macro: `uvm_info(id, message, verbosity)`'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (6/24). Purpose: Enable loopback testing
+    Use Case: Minimal smoke testing without external device Purpose: Package VIP components
+    for reusability Pattern: Agent encapsulates sequencer + driver Key: Standard UVM
+    agent structure'
 - type: bullets
-  title: 5. System-Level Verification (7/11)
+  title: 5. System-Level Verification (7/24)
   bullets:
   - 'Function: `$sformatf(format, args)` → string'
   - 'Purpose: Log transaction with formatted message'
@@ -438,8 +1081,11 @@ slides:
   - '`%08h` - 8-digit hexadecimal, zero-padded'
   - '`%0d` - Decimal, no padding'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (7/24). Function: $sformatf(format, args)
+    → string Purpose: Log transaction with formatted message Format Specifiers: %02h
+    - 2-digit hexadecimal, zero-padded %08h - 8-digit hexadecimal, zero-padded'
 - type: bullets
-  title: 5. System-Level Verification (8/11)
+  title: 5. System-Level Verification (8/24)
   bullets:
   - '`%s` - String'
   - 'Verbosity Levels: UVM_NONE, UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL'
@@ -448,8 +1094,12 @@ slides:
   - 'Pattern: Log at start of each phase'
   - 'Key: Consistent logging improves debugging'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (8/24). %s - String Verbosity Levels: UVM_NONE,
+    UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL Message IDs: Use consistent IDs for filtering
+    and debugging Purpose: Log execution flow through phases Pattern: Log at start
+    of each phase'
 - type: bullets
-  title: 5. System-Level Verification (9/11)
+  title: 5. System-Level Verification (9/24)
   bullets:
   - 'Method Signature:'
   - '`static function uvm_root get();` → returns singleton root'
@@ -458,8 +1108,12 @@ slides:
   - 'Timing: Call in `end_of_elaboration_phase()` (after all connections)'
   - 'Output: Prints complete component tree with hierarchical paths'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (9/24). Method Signature: static function
+    uvm_root get(); → returns singleton root function void print_topology(); → prints
+    hierarchy Purpose: Visualize component hierarchy Timing: Call in end_of_elaboration_phase()
+    (after all connections)'
 - type: bullets
-  title: 5. System-Level Verification (10/11)
+  title: 5. System-Level Verification (10/24)
   bullets:
   - 'Usage:'
   - 'Phase Type: Build-time phase (function, executes bottom-up)'
@@ -468,21 +1122,287 @@ slides:
   - 'Common Uses:'
   - Print topology
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (10/24). Usage: Phase Type: Build-time
+    phase (function, executes bottom-up) Purpose: Final elaboration tasks after all
+    connections Timing: After connect_phase(), before start_of_simulation_phase()
+    Common Uses:'
 - type: bullets
-  title: 5. System-Level Verification (11/11)
+  title: 5. System-Level Verification (11/24)
   bullets:
   - Validate configuration
   - Final checks
   - Setup verification
+  - 'Pattern: `forever #period clk = ~clk;`'
+  - 'Purpose: Generate continuous clock signal'
+  - 'Period: `#period` determines clock period (half period per edge)'
   notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (11/24). Validate configuration Final checks
+    Setup verification Pattern: forever #period clk = ~clk; Purpose: Generate continuous
+    clock signal'
+- type: bullets
+  title: 5. System-Level Verification (12/24)
+  bullets:
+  - 'Key: `forever` loop runs indefinitely'
+  - 'Pattern: `repeat(n) @(posedge clk);`'
+  - 'Purpose: Wait for n clock cycles'
+  - 'Usage: Reset sequences, initialization delays'
+  - 'Key: `repeat` loop with event control'
+  - 'Pattern: Set ConfigDB before `run_test()`'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (12/24). Key: forever loop runs indefinitely
+    Pattern: repeat(n) @(posedge clk); Purpose: Wait for n clock cycles Usage: Reset
+    sequences, initialization delays Key: repeat loop with event control'
+- type: bullets
+  title: 5. System-Level Verification (13/24)
+  bullets:
+  - 'Purpose: Configure components before test starts'
+  - 'Key: Use `null` context and `"*"` wildcard for global configuration'
+  - 'Operator: `@(event)` - event control'
+  - 'Purpose: Wait for event to occur'
+  - 'Behavior: Blocks until event occurs'
+  - 'Usage: Clock synchronization, signal change detection'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (13/24). Purpose: Configure components
+    before test starts Key: Use null context and "*" wildcard for global configuration
+    Operator: @(event) - event control Purpose: Wait for event to occur Behavior:
+    Blocks until event occurs'
+- type: bullets
+  title: 5. System-Level Verification (14/24)
+  bullets:
+  - 'Operator: `#time` - delay operator'
+  - 'Purpose: Wait for specified time'
+  - 'Behavior: Blocks for specified time units'
+  - 'Usage: Clock generation, timing delays'
+  - 'Operator: `<=` - non-blocking assignment'
+  - 'Purpose: Schedule assignment for next simulation time step'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (14/24). Operator: #time - delay operator
+    Purpose: Wait for specified time Behavior: Blocks for specified time units Usage:
+    Clock generation, timing delays Operator: <= - non-blocking assignment'
+- type: bullets
+  title: 5. System-Level Verification (15/24)
+  bullets:
+  - 'Behavior: All non-blocking assignments in current time step execute together'
+  - 'Usage: Clock-synchronized signal assignments'
+  - 'Statement: `repeat(n) statement;`'
+  - 'Purpose: Execute statement n times'
+  - 'Behavior: Loops n times'
+  - 'Usage: Reset sequences, initialization delays'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (15/24). Behavior: All non-blocking assignments
+    in current time step execute together Usage: Clock-synchronized signal assignments
+    Statement: repeat(n) statement; Purpose: Execute statement n times Behavior: Loops
+    n times'
+- type: bullets
+  title: 5. System-Level Verification (16/24)
+  bullets:
+  - 'Statement: `forever statement;`'
+  - 'Purpose: Execute statement indefinitely'
+  - 'Behavior: Infinite loop'
+  - 'Usage: Clock generation, continuous monitoring'
+  - 'Function: `$sformatf(format, args...)` → string'
+  - 'Purpose: Format string with variables'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (16/24). Statement: forever statement;
+    Purpose: Execute statement indefinitely Behavior: Infinite loop Usage: Clock generation,
+    continuous monitoring Function: $sformatf(format, args...) → string'
+- type: bullets
+  title: 5. System-Level Verification (17/24)
+  bullets:
+  - 'Return: Formatted string'
+  - 'Usage: Logging, debugging, reporting'
+  - 'Problem: Simulation hangs waiting for `dma_done`'
+  - 'Solution: Check DUT implementation, add timeout'
+  - 'Code:'
+  - 'Prevention: Add bounded wait with timeout checking'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (17/24). Return: Formatted string Usage:
+    Logging, debugging, reporting Problem: Simulation hangs waiting for dma_done Solution:
+    Check DUT implementation, add timeout Code:'
+- type: bullets
+  title: 5. System-Level Verification (18/24)
+  bullets:
+  - 'Problem: Simulation hangs waiting for `tx_busy` deassert'
+  - 'Solution: Check DUT implementation, verify clock'
+  - 'Code:'
+  - 'Prevention: Add bounded wait with timeout checking'
+  - 'Problem: `print_topology()` shows nothing'
+  - 'Solution: Call in `end_of_elaboration_phase()`, not earlier'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (18/24). Problem: Simulation hangs waiting
+    for tx_busy deassert Solution: Check DUT implementation, verify clock Code: Prevention:
+    Add bounded wait with timeout checking Problem: print_topology() shows nothing'
+- type: bullets
+  title: 5. System-Level Verification (19/24)
+  bullets:
+  - 'Code: Must be after `connect_phase()` completes'
+  - 'Check: Verify all components created in `build_phase()`'
+  - 'Problem: VIP agent hardcoded for specific use'
+  - 'Solution: Use ConfigDB for configuration, avoid hardcoded values'
+  - 'Code:'
+  - 'Problem: Too many log messages'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (19/24). Code: Must be after connect_phase()
+    completes Check: Verify all components created in build_phase() Problem: VIP agent
+    hardcoded for specific use Solution: Use ConfigDB for configuration, avoid hardcoded
+    values Code:'
+- type: bullets
+  title: 5. System-Level Verification (20/24)
+  bullets:
+  - 'Solution: Use appropriate verbosity levels'
+  - 'Code: `UVM_MEDIUM` for normal, `UVM_HIGH` for detailed'
+  - 'Control: Set verbosity via `+UVM_VERBOSITY=UVM_MEDIUM`'
+  - 'Problem: Simulation hangs, no progress'
+  - 'Solution: Verify clock generation in module'
+  - 'Code:'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (20/24). Solution: Use appropriate verbosity
+    levels Code: UVM_MEDIUM for normal, UVM_HIGH for detailed Control: Set verbosity
+    via +UVM_VERBOSITY=UVM_MEDIUM Problem: Simulation hangs, no progress Solution:
+    Verify clock generation in module'
+- type: bullets
+  title: 5. System-Level Verification (21/24)
+  bullets:
+  - 'Check: Clock must be in `initial` block, not `always` block'
+  - 'Problem: `uvm_fatal("NO_VIF", ...)` error'
+  - 'Solution: Set interface before `run_test()`'
+  - 'Code:'
+  - 'Timing: ConfigDB set → run_test() → component build_phase() retrieves'
+  - 'Problem: DUT stuck in reset'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (21/24). Check: Clock must be in initial
+    block, not always block Problem: uvm_fatal("NO_VIF", ...) error Solution: Set
+    interface before run_test() Code: Timing: ConfigDB set → run_test() → component
+    build_phase() retrieves'
+- type: bullets
+  title: 5. System-Level Verification (22/24)
+  bullets:
+  - 'Solution: Verify reset sequence completes'
+  - 'Code:'
+  - 'Check: DUT `dma_done` signal implementation'
+  - 'Check: Clock running correctly'
+  - 'Check: Reset sequence completed'
+  - 'Check: Address/length values valid'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (22/24). Solution: Verify reset sequence
+    completes Code: Check: DUT dma_done signal implementation Check: Clock running
+    correctly Check: Reset sequence completed'
+- type: bullets
+  title: 5. System-Level Verification (23/24)
+  bullets:
+  - 'Check: DUT `tx_busy` signal implementation'
+  - 'Check: Clock running correctly'
+  - 'Check: Loopback connection (if used)'
+  - 'Check: Data values valid'
+  - 'Check: Called in `end_of_elaboration_phase()`'
+  - 'Check: All components created in `build_phase()`'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (23/24). Check: DUT tx_busy signal implementation
+    Check: Clock running correctly Check: Loopback connection (if used) Check: Data
+    values valid Check: Called in end_of_elaboration_phase()'
+- type: bullets
+  title: 5. System-Level Verification (24/24)
+  bullets:
+  - 'Check: All connections made in `connect_phase()`'
+  - 'Check: Virtual interface set via ConfigDB'
+  - 'Check: Agent configuration retrieved correctly'
+  - 'Check: Sequencer/driver connections made'
+  notes: From MODULE7 Topics Covered.
+  narration: '5. System-Level Verification (24/24). Check: All connections made in
+    connect_phase() Check: Virtual interface set via ConfigDB Check: Agent configuration
+    retrieved correctly Check: Sequencer/driver connections made'
+- type: code
+  title: 'Run: Example 7.1: DMA Verification'
+  language: bash
+  code: './scripts/module7.sh --dma
+
+    cd module7/examples/dma
+
+    verilator -sv --cc --exe --timing --trace dma.sv dma.cpp \
+
+    -I"$UVM_HOME" +incdir+"$UVM_HOME" +define+UVM_NO_DPI \
+
+    "$UVM_HOME/uvm_pkg.sv" ../dut/dma/simple_dma.v --top-module dma
+
+    make -C obj_dir -f Vdma.mk
+
+    ./obj_dir/Vdma'
+  notes: Execute from course root or example directory — see docs/MODULE7.md.
+  narration: 'Run: Example 7.1: DMA Verification. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE7.md.'
+- type: code
+  title: 'Run: Example 7.2: UART Verification'
+  language: bash
+  code: './scripts/module7.sh --protocols
+
+    cd module7/examples/protocols
+
+    verilator -sv --cc --exe --timing --trace uart_example.sv uart_example.cpp \
+
+    -I"$UVM_HOME" +incdir+"$UVM_HOME" +define+UVM_NO_DPI \
+
+    "$UVM_HOME/uvm_pkg.sv" ../dut/protocols/uart.v --top-module uart_example
+
+    make -C obj_dir -f Vuart_example.mk
+
+    ./obj_dir/Vuart_example'
+  notes: Execute from course root or example directory — see docs/MODULE7.md.
+  narration: 'Run: Example 7.2: UART Verification. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE7.md.'
+- type: code
+  title: 'Run: Example 7.5: VIP Development'
+  language: bash
+  code: './scripts/module7.sh --vip
+
+    cd module7/examples/vip
+
+    verilator -sv --cc --exe --timing --trace vip.sv vip.cpp \
+
+    -I"$UVM_HOME" +incdir+"$UVM_HOME" +define+UVM_NO_DPI \
+
+    "$UVM_HOME/uvm_pkg.sv" --top-module vip
+
+    make -C obj_dir -f Vvip.mk
+
+    ./obj_dir/Vvip'
+  notes: Execute from course root or example directory — see docs/MODULE7.md.
+  narration: 'Run: Example 7.5: VIP Development. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE7.md.'
+- type: code
+  title: 'Run: Example 7.6: Best Practices'
+  language: bash
+  code: './scripts/module7.sh --best-practices
+
+    cd module7/examples/best_practices
+
+    verilator -sv --cc --exe --timing --trace best_practices.sv best_practices.cpp
+    \
+
+    -I"$UVM_HOME" +incdir+"$UVM_HOME" +define+UVM_NO_DPI \
+
+    "$UVM_HOME/uvm_pkg.sv" --top-module best_practices
+
+    make -C obj_dir -f Vbest_practices.mk
+
+    ./obj_dir/Vbest_practices'
+  notes: Execute from course root or example directory — see docs/MODULE7.md.
+  narration: 'Run: Example 7.6: Best Practices. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE7.md.'
 - type: section
   title: Hands-on examples
+  narration: 'Next section: Hands-on examples.'
 - type: demo
   title: Module 7 self-check
-  command: ./scripts/module7.sh --dma
+  command: ./scripts/module7.sh --help
   screenshot: assets/screenshots/module7_check.png
-  expect_stdout_contains: completed successfully
+  expect_stdout_contains: Module
   notes: Run from course repository root.
+  narration: Module 7 self-check. Watch the terminal output and confirm you see the
+    expected pass message.
 - type: bullets
   title: 'Example 1: DMA Verification'
   bullets:
@@ -491,72 +1411,183 @@ slides:
   - 'Transaction (`DmaTxn`): DMA transaction with source address, destination address,
     length, and channel'
   - 'Sequence (`DmaSeq`): DMA sequence generating random DMA transfers'
+  - 'Driver (`DmaDriver`): DMA driver implementing DMA protocol'
+  - 'Environment (`DmaEnv`): DMA verification environment'
   notes: module7/examples/dma/README.md
+  narration: 'Example 1: DMA Verification. Interface (dma_if): DMA interface with
+    start, done, addresses, length, and channel signals Transaction (DmaTxn): DMA
+    transaction with source address, destination address, length, and channel Sequence
+    (DmaSeq): DMA sequence generating random DMA transfers Driver (DmaDriver): DMA
+    driver implementing DMA protocol Environment (DmaEnv): DMA verification environment...'
 - type: demo
   title: 'Demo: DMA Verification'
   command: ./scripts/module7.sh --dma
   screenshot: assets/screenshots/ex01_dma.png
   notes: 'Hands-on: module7/examples/dma/'
+  narration: 'Demo: DMA Verification. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 2: UART Verification'
   bullets:
   - 'Interface (`uart_if`): UART interface with TX/RX signals and control'
   - 'Transaction (`UartTxn`): UART transaction with data field'
   - 'Sequence (`UartSeq`): UART sequence generating random UART transfers'
+  - 'Driver (`UartDriver`): UART driver implementing UART protocol'
+  - 'Environment (`UartEnv`): UART verification environment'
   notes: module7/examples/protocols/README.md
+  narration: 'Example 2: UART Verification. Interface (uart_if): UART interface with
+    TX/RX signals and control Transaction (UartTxn): UART transaction with data field
+    Sequence (UartSeq): UART sequence generating random UART transfers Driver (UartDriver):
+    UART driver implementing UART protocol Environment (UartEnv): UART verification
+    environment module7/examples/protocols/README.md'
 - type: demo
   title: 'Demo: UART Verification'
   command: ./scripts/module7.sh --protocols
   screenshot: assets/screenshots/ex02_protocols.png
   notes: 'Hands-on: module7/examples/protocols/'
+  narration: 'Demo: UART Verification. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 3: SPI Verification'
   bullets:
   - 'Test (`SpiExampleTest`): SPI verification test scaffold'
   - 'UVM Pattern: Demonstrates UVM structure for SPI verification'
   notes: module7/examples/protocols/README.md
+  narration: 'Example 3: SPI Verification. Test (SpiExampleTest): SPI verification
+    test scaffold UVM Pattern: Demonstrates UVM structure for SPI verification module7/examples/protocols/README.md'
 - type: demo
   title: 'Demo: SPI Verification'
   command: ./scripts/module7.sh --protocols
   screenshot: assets/screenshots/ex03_protocols.png
   notes: 'Hands-on: module7/examples/protocols/'
+  narration: 'Demo: SPI Verification. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 4: I2C Verification'
   bullets:
   - 'Test (`I2cExampleTest`): I2C verification test scaffold'
   - 'UVM Pattern: Demonstrates UVM structure for I2C verification'
   notes: module7/examples/protocols/README.md
+  narration: 'Example 4: I2C Verification. Test (I2cExampleTest): I2C verification
+    test scaffold UVM Pattern: Demonstrates UVM structure for I2C verification module7/examples/protocols/README.md'
 - type: demo
   title: 'Demo: I2C Verification'
   command: ./scripts/module7.sh --protocols
   screenshot: assets/screenshots/ex04_protocols.png
   notes: 'Hands-on: module7/examples/protocols/'
+  narration: 'Demo: I2C Verification. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 5: VIP Development'
   bullets:
   - 'Transaction (`VipTxn`): VIP transaction with payload'
   - 'Sequence (`VipSeq`): VIP sequence generating transactions'
   - 'Driver (`VipDriver`): VIP driver'
+  - 'Agent (`VipAgent`): VIP agent containing sequencer and driver'
+  - 'Test (`VipTest`): VIP test demonstrating VIP usage'
   notes: module7/examples/vip/README.md
+  narration: 'Example 5: VIP Development. Transaction (VipTxn): VIP transaction with
+    payload Sequence (VipSeq): VIP sequence generating transactions Driver (VipDriver):
+    VIP driver Agent (VipAgent): VIP agent containing sequencer and driver Test (VipTest):
+    VIP test demonstrating VIP usage module7/examples/vip/README.md'
 - type: demo
   title: 'Demo: VIP Development'
-  command: ./scripts/module7.sh --vip
+  command: ./scripts/module7.sh --vip && cd module7/examples/vip && verilator -sv
+    --cc --exe --timing --trace vip.sv vip.cpp \ && -I"$UVM_HOME" +incdir+"$UVM_HOME"
+    +define+UVM_NO_DPI \
   screenshot: assets/screenshots/ex05_vip.png
   notes: 'Hands-on: module7/examples/vip/'
+  narration: 'Demo: VIP Development. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: bullets
   title: 'Example 6: Best Practices'
   bullets:
   - 'Test (`BestPracticesTest`): Test demonstrating best practices'
   - 'Phase Organization: Proper phase usage and logging'
   - 'Topology Printing: Component hierarchy visualization'
+  - 'Logging Patterns: Structured logging for maintainability'
   notes: module7/examples/best_practices/README.md
+  narration: 'Example 6: Best Practices. Test (BestPracticesTest): Test demonstrating
+    best practices Phase Organization: Proper phase usage and logging Topology Printing:
+    Component hierarchy visualization Logging Patterns: Structured logging for maintainability
+    module7/examples/best_practices/README.md'
 - type: demo
   title: 'Demo: Best Practices'
   command: ./scripts/module7.sh --best-practices
   screenshot: assets/screenshots/ex06_best_practices.png
   notes: 'Hands-on: module7/examples/best_practices/'
+  narration: 'Demo: Best Practices. Watch the terminal output and confirm you see
+    the expected pass message.'
+- type: section
+  title: Common pitfalls
+  narration: 'Next section: Common pitfalls.'
+- type: bullets
+  title: DMA Done Not Detected
+  bullets:
+  - 'Problem: Simulation hangs waiting for `dma_done`'
+  - 'Solution: Check DUT implementation, add timeout'
+  - 'Code:'
+  - 'Prevention: Add bounded wait with timeout checking'
+  notes: From MODULE7 Common Pitfalls.
+  narration: 'DMA Done Not Detected. Problem: Simulation hangs waiting for dma_done
+    Solution: Check DUT implementation, add timeout Code: Prevention: Add bounded
+    wait with timeout checking'
+- type: bullets
+  title: UART Busy Never Deasserts
+  bullets:
+  - 'Problem: Simulation hangs waiting for `tx_busy` deassert'
+  - 'Solution: Check DUT implementation, verify clock'
+  - 'Code:'
+  - 'Prevention: Add bounded wait with timeout checking'
+  notes: From MODULE7 Common Pitfalls.
+  narration: 'UART Busy Never Deasserts. Problem: Simulation hangs waiting for tx_busy
+    deassert Solution: Check DUT implementation, verify clock Code: Prevention: Add
+    bounded wait with timeout checking'
+- type: bullets
+  title: Topology Not Printed
+  bullets:
+  - 'Problem: `print_topology()` shows nothing'
+  - 'Solution: Call in `end_of_elaboration_phase()`, not earlier'
+  - 'Code: Must be after `connect_phase()` completes'
+  - 'Check: Verify all components created in `build_phase()`'
+  notes: From MODULE7 Common Pitfalls.
+  narration: 'Topology Not Printed. Problem: print_topology() shows nothing Solution:
+    Call in end_of_elaboration_phase(), not earlier Code: Must be after connect_phase()
+    completes Check: Verify all components created in build_phase()'
+- type: bullets
+  title: VIP Agent Not Reusable
+  bullets:
+  - 'Problem: VIP agent hardcoded for specific use'
+  - 'Solution: Use ConfigDB for configuration, avoid hardcoded values'
+  - 'Code:'
+  notes: From MODULE7 Common Pitfalls.
+  narration: 'VIP Agent Not Reusable. Problem: VIP agent hardcoded for specific use
+    Solution: Use ConfigDB for configuration, avoid hardcoded values Code:'
+- type: bullets
+  title: Phase Logging Too Verbose
+  bullets:
+  - 'Problem: Too many log messages'
+  - 'Solution: Use appropriate verbosity levels'
+  - 'Code: `UVM_MEDIUM` for normal, `UVM_HIGH` for detailed'
+  - 'Control: Set verbosity via `+UVM_VERBOSITY=UVM_MEDIUM`'
+  notes: From MODULE7 Common Pitfalls.
+  narration: 'Phase Logging Too Verbose. Problem: Too many log messages Solution:
+    Use appropriate verbosity levels Code: UVM_MEDIUM for normal, UVM_HIGH for detailed
+    Control: Set verbosity via +UVM_VERBOSITY=UVM_MEDIUM'
+- type: bullets
+  title: Clock Not Running
+  bullets:
+  - 'Problem: Simulation hangs, no progress'
+  - 'Solution: Verify clock generation in module'
+  - 'Code:'
+  - 'Check: Clock must be in `initial` block, not `always` block'
+  notes: From MODULE7 Common Pitfalls.
+  narration: 'Clock Not Running. Problem: Simulation hangs, no progress Solution:
+    Verify clock generation in module Code: Check: Clock must be in initial block,
+    not always block'
 - type: section
   title: Practice & assessment
+  narration: 'Next section: Practice & assessment.'
 - type: bullets
   title: What you should know (1/2)
   bullets:
@@ -567,6 +1598,11 @@ slides:
   - Create production-quality testbenches
   - Understand protocol verification patterns
   notes: From MODULE7 Learning Outcomes.
+  narration: By now you should be able to explain the following. Verify complex designs
+    (DMA, protocols) using UVM patterns Develop reusable VIP with proper architecture
+    Apply best practices for code organization and maintainability Perform system-level
+    verification with multiple DUTs Create production-quality testbenches From MODULE7
+    Learning Outcomes.
 - type: bullets
   title: What you should know (2/2)
   bullets:
@@ -575,6 +1611,9 @@ slides:
   - Implement phase-based logging
   - Apply real-world verification patterns
   notes: From MODULE7 Learning Outcomes.
+  narration: By now you should be able to explain the following. Package verification
+    components for reuse Use topology printing for debugging Implement phase-based
+    logging Apply real-world verification patterns From MODULE7 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -583,6 +1622,8 @@ slides:
   - VIP Development
   - Best Practices
   - System-Level Verification
+  narration: Exercises. DMA Verification Protocol Verification VIP Development Best
+    Practices System-Level Verification
 - type: bullets
   title: Assessment checklist
   bullets:
@@ -592,6 +1633,9 @@ slides:
   - Can perform system-level verification
   - Can create production-quality testbenches
   - Understands protocol verification patterns
+  narration: Assessment checklist. Can verify complex designs (DMA, protocols) Can
+    develop reusable VIP Can apply best practices Can perform system-level verification
+    Can create production-quality testbenches
 - type: bullets
   title: Summary & next steps
   bullets:
@@ -599,3 +1643,7 @@ slides:
   - Complete module7/CHECKLIST.md
   - Review module7/EXAMPLES.md and run each lab
   - 'Next: Next module in course'
+  narration: 'In summary: Apply UVM to real-world verification scenarios Next up:
+    Next module in course. Apply UVM to real-world verification scenarios Complete
+    module7/CHECKLIST.md Review module7/EXAMPLES.md and run each lab Next: Next module
+    in course'

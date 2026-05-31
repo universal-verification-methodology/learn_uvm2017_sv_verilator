@@ -22,7 +22,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module2.sh --clock-generation
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE2.md` and explore `module2/examples/clock_generation/`.
 
@@ -42,7 +42,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module2.sh --reset-patterns
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE2.md` and explore `module2/examples/reset_patterns/`.
 
@@ -62,7 +62,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module2.sh --signal-access
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE2.md` and explore `module2/examples/signal_access/`.
 
@@ -83,7 +83,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module2.sh --triggers
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE2.md` and explore `module2/examples/triggers/`.
 
@@ -104,6 +104,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module2.sh --common-patterns
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE2.md` and explore `module2/examples/common_patterns/`.

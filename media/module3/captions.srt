@@ -1,299 +1,579 @@
 1
-00:00:00,000 --> 00:00:02,760
-UVM Basics Module 3
+00:00:00,000 --> 00:00:08,328
+Welcome to module 3, UVM Basics. In this module you will master uvm class hierarchy and phases.
 
 2
-00:00:03,110 --> 00:00:07,718
-Learning objectives Master UVM class hierarchy and phases
+00:00:08,678 --> 00:00:15,086
+Here is what you will learn in this module. Master UVM class hierarchy and phases
 
 3
-00:00:08,068 --> 00:00:10,828
-Prerequisites See module README
+00:00:15,436 --> 00:00:21,484
+Before you start, make sure you have these prerequisites. See module README
 
 4
-00:00:11,178 --> 00:00:15,522
-Learning path Master UVM class hierarchy and phases
+00:00:21,834 --> 00:00:27,258
+Learning path. Master UVM class hierarchy and phases
 
 5
-00:00:15,872 --> 00:00:33,320
-Overview This module introduces the Universal Verification Methodology (UVM) using SystemVerilog. You'll learn the fundamental UVM concepts, class hierarchy, phases, and how to structure UVM testbenches. This module establishes t
+00:00:27,608 --> 00:00:39,152
+Overview. This module introduces the Universal Verification Methodology (UVM) using SystemVerilog. You'll learn the fundamental UVM concepts...
 
 6
-00:00:33,670 --> 00:00:35,926
-Syllabus topics
+00:00:39,502 --> 00:00:42,742
+Next section: Design architecture.
 
 7
-00:00:36,276 --> 00:00:39,084
-From MODULE3 Topics Covered.
+00:00:43,092 --> 00:01:13,332
+1. UVM class hierarchy (1/3). Object hierarchy: uvm_object → uvm_sequence_item → your transaction Component hierarchy: uvm_component → driver/monitor/agent/env/test Factory macros (uvm_component_utils) register types for type_id::create() Component tree: Test → Env → Agent → {Driver, Monitor, Sequencer} Refer to the diagram on the right.
 
 8
-00:00:39,434 --> 00:00:42,242
-From MODULE3 Topics Covered.
+00:01:13,682 --> 00:01:36,962
+1. UVM class hierarchy (2/3). uvm_test: Top-level; calls run_test(), owns environment uvm_env: Contains agents, scoreboard, coverage (as needed) uvm_agent: Groups driver, monitor, sequencer on one interface uvm_driver: Converts sequence items to pin wiggles
 
 9
-00:00:42,592 --> 00:00:45,400
-From MODULE3 Topics Covered.
+00:01:37,312 --> 00:01:52,384
+1. UVM class hierarchy (3/3). uvm_monitor: Observes bus/DUT; emits transactions uvm_sequence_item: Transaction payload (data, address, etc.)
 
 10
-00:00:45,750 --> 00:00:48,558
-From MODULE3 Topics Covered.
+00:01:52,734 --> 00:02:21,174
+2. UVM phase graph and execution order (1/2). Build-time (top-down): build_phase → connect_phase → end_of_elaboration_phase Run-time (bottom-up): run_phase with objections controlling sim time Report: report_phase summarizes UVM_INFO/WARNING/ERROR counts super.build_phase(phase) required in every override to preserve hierarchy Refer to the diagram on the right.
 
 11
-00:00:48,908 --> 00:00:51,716
-From MODULE3 Topics Covered.
+00:02:21,524 --> 00:02:32,012
+This section covers installation, setup, and how to run the examples. Simulation flow: elaboration → run_test() → phases → $finish
 
 12
-00:00:52,066 --> 00:00:54,874
-From MODULE3 Topics Covered.
+00:02:32,362 --> 00:03:06,178
+3. Module 3 repository map. 1: module3/examples/class_hierarchy/ — Minimal full UVM hierarchy demo 2: module3/examples/phases/ — Phase callback visibility 3: module3/dut/simple_blocks/adder.v — Small RTL for integrated UVM test 4: module3/tests/uvm_tests/test_adder_uvm.sv — End-to-end UVM testbench Refer to the diagram on the right.
 
 13
-00:00:55,224 --> 00:00:58,032
-From MODULE3 Topics Covered.
+00:03:06,528 --> 00:03:13,896
+RTL block diagram (reference). Module 3: DUT hierarchy and signal flow.
 
 14
-00:00:58,382 --> 00:01:01,190
-From MODULE3 Topics Covered.
+00:03:14,246 --> 00:03:22,718
+Verification / testbench diagram (reference). Module 3: stimulus, observation, and checking.
 
 15
-00:01:01,540 --> 00:01:04,348
-From MODULE3 Topics Covered.
+00:03:23,068 --> 00:03:27,100
+Next section: Execution & simulation flow.
 
 16
-00:01:04,698 --> 00:01:07,506
-From MODULE3 Topics Covered.
+00:03:27,450 --> 00:03:59,562
+How the example runs (toolchain). Match each bullet to files in the repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command: make SIM=verilator TEST=test_* (see module3 demo slide) Loopback / hooks connect...
 
 17
-00:01:07,856 --> 00:01:10,664
-From MODULE3 Topics Covered.
+00:03:59,912 --> 00:04:38,336
+Artifact flow (spec → sim). Match each bullet to files in the repository. 1: module3/examples/class_hierarchy/ — Minimal full UVM hierarchy demo 2: module3/examples/phases/ — Phase callback visibility 3: module3/dut/simple_blocks/adder.v — Small RTL for integrated UVM test 4: module3/tests/uvm_tests/test_adder_uvm.sv — End-to-end UVM testbench From MODULE3 — execution and artifact layout.
 
 18
-00:01:11,014 --> 00:01:13,822
-From MODULE3 Topics Covered.
+00:04:38,686 --> 00:05:10,582
+Example directory layout (1). Match each bullet to files in the repository. uvm_test: Top-level; calls run_test(), owns environment uvm_env: Contains agents, scoreboard, coverage (as needed) uvm_agent: Groups driver, monitor, sequencer on one interface uvm_driver: Converts sequence items to pin wiggles uvm_monitor: Observes bus/DUT; emits transactions Match each path to files under...
 
 19
-00:01:14,172 --> 00:01:16,980
-From MODULE3 Topics Covered.
+00:05:10,932 --> 00:05:28,044
+Example directory layout (2). Match each bullet to files in the repository. uvm_sequence_item: Transaction payload (data, address, etc.) Match each path to files under module/examples/.
 
 20
-00:01:17,330 --> 00:01:20,138
-From MODULE3 Topics Covered.
+00:05:28,394 --> 00:05:42,362
+Follow these steps in order when working through this module. ./scripts/module3.sh --class-hierarchy UVM report PASS elaboration run_test() Follow this order when tracing waveforms or debugging.
 
 21
-00:01:20,488 --> 00:01:23,296
-From MODULE3 Topics Covered.
+00:05:42,712 --> 00:05:51,160
+Follow these steps in order when working through this module. phases $finish Follow this order when tracing waveforms or debugging.
 
 22
-00:01:23,646 --> 00:01:26,454
-From MODULE3 Topics Covered.
+00:05:51,510 --> 00:05:55,614
+Next section: Verification & testing methods.
 
 23
-00:01:26,804 --> 00:01:29,612
-From MODULE3 Topics Covered.
+00:05:55,964 --> 00:06:23,372
+1. UVM infrastructure patterns. Factory — create components with type_id::create(); enable overrides later ConfigDB — pass virtual interfaces and config objects down the hierarchy Reporting — uvm_info/uvm_error with verbosity and ID filtering Objections — raise_objection/drop_objection in run_phase hold simulation alive Refer to the diagram on the right.
 
 24
-00:01:29,962 --> 00:01:32,770
-From MODULE3 Topics Covered.
+00:06:23,722 --> 00:06:55,402
+2. Verilator + UVM execution strategy (1/2). Compile with -I$UVM_HOME/src +define+UVM_NO_DPI (no DPI for Verilator) C++ main calls uvm_main or wrapper that invokes run_test("MyTest") Start with standalone examples (no DUT) to learn hierarchy and phases Progress to test_adder_uvm — connect virtual interface to RTL adder Refer to the diagram on the right.
 
 25
-00:01:33,120 --> 00:01:35,928
-From MODULE3 Topics Covered.
+00:06:55,752 --> 00:07:07,656
+This section covers installation, setup, and how to run the examples. Closure: zero UVM_ERROR/UVM_FATAL; expected INFO lines in log
 
 26
-00:01:36,278 --> 00:01:39,086
-From MODULE3 Topics Covered.
+00:07:08,006 --> 00:07:11,270
+Next section: Syllabus topics.
 
 27
-00:01:39,436 --> 00:01:42,244
-From MODULE3 Topics Covered.
+00:07:11,620 --> 00:07:15,412
+Next section: Protocol & design details.
 
 28
-00:01:42,594 --> 00:01:45,402
-From MODULE3 Topics Covered.
+00:07:15,762 --> 00:07:51,426
+Protocol and design detail: Example 3.1: Class Hierarchy (module3/examples/class_hierarchy/class_hierarchy.sv) (1). Transaction Class (MyTransaction): Extends uvm_sequence_item (uvm_object hierarchy) Driver Class (MyDriver): Extends uvm_driver (uvm_component hierarchy) Monitor Class (MyMonitor): Extends uvm_monitor (uvm_component hierarchy) Agent Class (MyAgent): Extends uvm_agent...
 
 29
-00:01:45,752 --> 00:01:48,560
-From MODULE3 Topics Covered.
+00:07:51,776 --> 00:08:24,656
+Protocol and design detail: Example 3.1: Class Hierarchy (module3/examples/class_hierarchy/class_hierarchy.sv) (2). Environment Class (MyEnv): Extends uvm_env, top-level verification environment Test Class (ClassHierarchyTest): Extends uvm_test, orchestrates test execution Purpose: Automatically register class with UVM factory Usage: Must be inside class definition From MODULE3 Topics Covered...
 
 30
-00:01:48,910 --> 00:01:51,718
-From MODULE3 Topics Covered.
+00:08:25,006 --> 00:08:54,022
+Protocol and design detail: Example 3.2: Phases (module3/examples/phases/phases.sv) (1). Build-Time Phases: Top-down execution (parent before child) Run-Time Phases: Bottom-up execution (child before parent) Cleanup Phases: Bottom-up execution (child before parent) Phase Execution Order: Demonstrates all UVM phases From MODULE3 Topics Covered — protocol/design depth.
 
 31
-00:01:52,068 --> 00:01:54,876
-From MODULE3 Topics Covered.
+00:08:54,372 --> 00:09:20,700
+Protocol and design detail: Example 3.2: Phases (module3/examples/phases/phases.sv) (2). Purpose: Component construction and setup Execution: Top-down (parent before child) Key: Use super.build_phase(phase) to maintain hierarchy Purpose: Test execution phases From MODULE3 Topics Covered — protocol/design depth.
 
 32
-00:01:55,226 --> 00:01:58,034
-From MODULE3 Topics Covered.
+00:09:21,050 --> 00:09:53,522
+Protocol and design detail: Example 3.3: Reporting (module3/examples/reporting/reporting.sv) (1). Severity Levels: INFO, WARNING, ERROR, FATAL Verbosity Levels: UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL, UVM_DEBUG Message Formatting: Formatted messages with data values Hierarchical Reporting: Component context in messages From MODULE3 Topics Covered — protocol/design depth.
 
 33
-00:01:58,384 --> 00:02:01,192
-From MODULE3 Topics Covered.
+00:09:53,872 --> 00:10:15,592
+Protocol and design detail: Example 3.3: Reporting (module3/examples/reporting/reporting.sv) (2). Purpose: Print formatted messages with severity Parameters: TAG: Message category/tag Message: Text to display From MODULE3 Topics Covered — protocol/design depth.
 
 34
-00:02:01,542 --> 00:02:04,350
-From MODULE3 Topics Covered.
+00:10:15,942 --> 00:10:42,990
+Protocol and design detail: Example 3.4: ConfigDB (module3/examples/configdb/configdb.sv) (1). Setting Configuration: Global and component-specific Getting Configuration: Hierarchical lookup Configuration Objects: Complex configuration data Scalar Values: Simple configuration values From MODULE3 Topics Covered — protocol/design depth.
 
 35
-00:02:04,700 --> 00:02:07,508
-From MODULE3 Topics Covered.
+00:10:43,340 --> 00:11:12,164
+Protocol and design detail: Example 3.4: ConfigDB (module3/examples/configdb/configdb.sv) (2). Purpose: Store configuration in database Syntax: uvm_config_db#(type)::set(contxt, path, field, value) Parameters: contxt: Context (usually this in test) From MODULE3 Topics Covered — protocol/design depth.
 
 36
-00:02:07,858 --> 00:02:10,666
-From MODULE3 Topics Covered.
+00:11:12,514 --> 00:11:41,794
+Protocol and design detail: Example 3.5: Factory (module3/examples/factory/factory.sv) (1). Factory Registration: Automatic registration via uvm_object_utils Factory Creation: Using type_id::create() Type Override: Substituting base class with extended class Instance Override: Overriding specific instances From MODULE3 Topics Covered — protocol/design depth.
 
 37
-00:02:11,016 --> 00:02:13,824
-From MODULE3 Topics Covered.
+00:11:42,144 --> 00:12:08,592
+Protocol and design detail: Example 3.5: Factory (module3/examples/factory/factory.sv) (2). Purpose: Automatically register class with factory Usage: Must be inside class definition Key: Enables factory-based creation and overrides Purpose: Create objects/components via factory From MODULE3 Topics Covered — protocol/design depth.
 
 38
-00:02:14,174 --> 00:02:16,982
-From MODULE3 Topics Covered.
+00:12:08,942 --> 00:12:35,606
+Protocol and design detail: Example 3.6: Objections (module3/examples/objections/objections.sv) (1). Raising Objections: Keep simulation running Dropping Objections: Allow phase completion Multiple Objections: Per-component objection tracking Coordinated Completion: Phase completes when all objections dropped From MODULE3 Topics Covered — protocol/design depth.
 
 39
-00:02:17,332 --> 00:02:20,140
-From MODULE3 Topics Covered.
+00:12:35,956 --> 00:13:00,844
+Protocol and design detail: Example 3.6: Objections (module3/examples/objections/objections.sv) (2). Purpose: Keep phase running until objection is dropped Usage: Call at start of run_phase() or other run-time phases Parameters: this: Component raising objection From MODULE3 Topics Covered — protocol/design depth.
 
 40
-00:02:20,490 --> 00:02:23,298
-From MODULE3 Topics Covered.
+00:13:01,194 --> 00:13:23,058
+Protocol and design detail: UVM Factory Macros and Methods (1). Purpose: Register class with UVM factory Location: Inside class definition Enables: Factory creation and overrides Syntax: ClassName::type_id::create(name, parent) From MODULE3 Topics Covered — protocol/design depth.
 
 41
-00:02:23,648 --> 00:02:26,456
-From MODULE3 Topics Covered.
+00:13:23,408 --> 00:13:39,368
+Protocol and design detail: UVM Factory Macros and Methods (2). Returns: Handle to created object/component Key: Factory applies overrides automatically From MODULE3 Topics Covered — protocol/design depth.
 
 42
-00:02:26,806 --> 00:02:29,614
-From MODULE3 Topics Covered.
+00:13:39,718 --> 00:13:59,398
+Protocol and design detail: UVM Reporting Macros (1). UVM_LOW - Always displayed (default) UVM_MEDIUM - Medium detail (most common) UVM_HIGH - High detail UVM_FULL - Full detail From MODULE3 Topics Covered — protocol/design depth.
 
 43
-00:02:29,964 --> 00:02:32,772
-From MODULE3 Topics Covered.
+00:13:59,748 --> 00:14:11,628
+Protocol and design detail: UVM Reporting Macros (2). UVM_DEBUG - Debug-level detail From MODULE3 Topics Covered — protocol/design depth.
 
 44
-00:02:33,122 --> 00:02:35,930
-From MODULE3 Topics Covered.
+00:14:11,978 --> 00:14:33,722
+Protocol and design detail: ConfigDB Methods (1). Set configuration in test's build_phase() before creating components Get configuration in component's build_phase() Always check return value of get() Provide default values if configuration not found From MODULE3 Topics Covered — protocol/design depth.
 
 45
-00:02:36,280 --> 00:02:39,088
-From MODULE3 Topics Covered.
+00:14:34,072 --> 00:14:46,648
+Protocol and design detail: ConfigDB Methods (2). Use hierarchical paths for component-specific configuration From MODULE3 Topics Covered — protocol/design depth.
 
 46
-00:02:39,438 --> 00:02:42,246
-From MODULE3 Topics Covered.
+00:14:46,998 --> 00:15:06,654
+Protocol and design detail: Objection Methods. Must raise objection if doing work in run-time phase Must drop objection when work completes Phase completes when all objections are dropped Each raise_objection() must have matching drop_objection() From MODULE3 Topics Covered — protocol/design depth.
 
 47
-00:02:42,596 --> 00:02:45,404
-From MODULE3 Topics Covered.
+00:15:07,004 --> 00:15:21,236
+Protocol and design detail: Component Utility Methods. Purpose: Component identification Usage: Logging, debugging, hierarchical paths From MODULE3 Topics Covered — protocol/design depth.
 
 48
-00:02:45,754 --> 00:02:48,562
-From MODULE3 Topics Covered.
+00:15:21,586 --> 00:15:41,074
+Protocol and design detail: Sequence Methods (1). Purpose: Generate and send transactions to driver Usage: Sequences generate test vectors Flow: Sequence → Sequencer → Driver → DUT Purpose: Post-processing after randomization From MODULE3 Topics Covered — protocol/design depth.
 
 49
-00:02:48,912 --> 00:02:51,720
-From MODULE3 Topics Covered.
+00:15:41,424 --> 00:15:53,760
+Protocol and design detail: Sequence Methods (2). Usage: Calculate expected results, validate data From MODULE3 Topics Covered — protocol/design depth.
 
 50
-00:02:52,070 --> 00:02:54,878
-From MODULE3 Topics Covered.
+00:15:54,110 --> 00:16:15,110
+Protocol and design detail: TLM Port Methods (Driver) (1). Purpose: Driver-sequencer communication Methods: get_next_item(txn): Get next transaction (blocking) item_done(): Signal transaction processing complete From MODULE3 Topics Covered — protocol/design depth.
 
 51
-00:02:55,228 --> 00:02:58,036
-From MODULE3 Topics Covered.
+00:16:15,460 --> 00:16:28,348
+Protocol and design detail: TLM Port Methods (Driver) (2). Flow: Sequencer provides → Driver receives → DUT From MODULE3 Topics Covered — protocol/design depth.
 
 52
-00:02:58,386 --> 00:03:01,194
-From MODULE3 Topics Covered.
+00:16:28,698 --> 00:16:52,386
+Protocol and design detail: Analysis Port Methods (Monitor/Scoreboard) (1). Purpose: Broadcast transactions to subscribers Usage: Monitor sends transactions to scoreboard, coverage, etc. Purpose: Receive transactions from monitor Usage: Scoreboard checks DUT behavior From MODULE3 Topics Covered — protocol/design depth.
 
 53
-00:03:01,544 --> 00:03:04,352
-From MODULE3 Topics Covered.
+00:16:52,736 --> 00:17:09,608
+Protocol and design detail: Analysis Port Methods (Monitor/Scoreboard) (2). Purpose: Connect analysis port to analysis export Usage: Establish monitor → scoreboard communication From MODULE3 Topics Covered — protocol/design depth.
 
 54
-00:03:04,702 --> 00:03:06,934
-Hands-on examples
+00:17:09,958 --> 00:17:35,134
+Protocol and design detail: Virtual Interface Methods. Purpose: Get virtual interface handle Usage: Driver/monitor access DUT signals via virtual interface Setting: uvm_config_db#(virtual interface_type)::set(null, "*", "vif", vif_inst) From MODULE3 Topics Covered — protocol/design depth.
 
 55
-00:03:07,284 --> 00:03:10,116
-Run from course repository root.
+00:17:35,484 --> 00:17:57,636
+Protocol and design detail: Top-Level UVM Functions. Purpose: Start UVM test execution Parameters: Test class name (string) Behavior: Creates test instance, executes all phases Override: +UVM_TESTNAME=TestName command line option From MODULE3 Topics Covered — protocol/design depth.
 
 56
-00:03:10,466 --> 00:03:14,474
-Exercise scaffold The following command is shown on screen.
+00:17:57,986 --> 00:18:05,786
+Verification flow (reference). Stimulus, DUT response, and check points for this module.
 
 57
-00:03:14,824 --> 00:03:20,608
-module3/examples/class_hierarchy/README.md
+00:18:06,136 --> 00:18:21,184
+1. Introduction to UVM (1/8). Universal Verification Methodology UVM standard (IEEE 1800.2-2017) UVM class library Methodology benefits Industry adoption
 
 58
-00:03:20,958 --> 00:03:26,574
-Hands-on: module3/examples/class_hierarchy/
+00:18:21,534 --> 00:18:36,726
+1. Introduction to UVM (2/8). Reusability Standardization Scalability Maintainability Transaction Class (MyTransaction): Extends uvm_sequence_item (uvm_object hierarchy)
 
 59
-00:03:26,924 --> 00:03:31,652
-module3/examples/phases/README.md
+00:18:37,076 --> 00:19:09,068
+1. Introduction to UVM (3/8). Monitor Class (MyMonitor): Extends uvm_monitor (uvm_component hierarchy) Agent Class (MyAgent): Extends uvm_agent, demonstrates component composition Environment Class (MyEnv): Extends uvm_env, top-level verification environment Test Class (ClassHierarchyTest): Extends uvm_test, orchestrates test execution Purpose: Automatically register class with UVM factory
 
 60
-00:03:32,002 --> 00:03:36,610
-Hands-on: module3/examples/phases/
+00:19:09,418 --> 00:19:25,858
+1. Introduction to UVM (4/8). Key: Enables factory-based object creation Purpose: Initialize UVM objects and components Parameters: name: Component/object name parent: Parent component (for hierarchy)
 
 61
-00:03:36,960 --> 00:03:41,784
-module3/examples/reporting/README.md
+00:19:26,208 --> 00:19:50,520
+1. Introduction to UVM (5/8). Purpose: Implement UVM phase behavior Key: Must call super.build_phase(phase) etc. to maintain hierarchy Objections: Use in run_phase() to control simulation Purpose: Create objects/components using factory Syntax: ClassName::type_id::create(name, parent)
 
 62
-00:03:42,134 --> 00:03:46,790
-Hands-on: module3/examples/reporting/
+00:19:50,870 --> 00:20:15,614
+1. Introduction to UVM (6/8). Purpose: Connect component ports in connect_phase() Usage: Connect driver to sequencer, monitor to scoreboard, etc. Purpose: Provide human-readable string representation Usage: Debugging, logging, reporting uvm_object - Base class for all UVM objects (transactions, sequences)
 
 63
-00:03:47,140 --> 00:03:52,348
-module3/examples/configdb/README.md
+00:20:15,964 --> 00:20:42,052
+1. Introduction to UVM (7/8). Component hierarchy: Test → Environment → Agent → Driver/Monitor Component creation using factory pattern Factory macros (uvm_object_utils, uvm_component_utils) enable registration Phase functions/tasks implement component behavior Factory creation (type_id::create()) enables overrides
 
 64
-00:03:52,698 --> 00:03:57,714
-Hands-on: module3/examples/configdb/
+00:20:42,402 --> 00:20:51,810
+1. Introduction to UVM (8/8). Phase execution demonstration Component creation and connection UVM report summary
 
 65
-00:03:58,064 --> 00:04:02,888
-module3/examples/factory/README.md
+00:20:52,160 --> 00:21:07,280
+2. UVM Class Hierarchy (1/3). Object vs Component uvm_object - Base for transactions, sequences uvm_component - Base for testbench components Lifetime differences Hierarchy differences
 
 66
-00:04:03,238 --> 00:04:07,870
-Hands-on: module3/examples/factory/
+00:21:07,630 --> 00:21:28,510
+2. UVM Class Hierarchy (2/3). uvm_test - Top-level test class uvm_env - Verification environment uvm_agent - Agent containing driver, monitor, sequencer uvm_driver - Drives transactions to DUT uvm_monitor - Observes DUT behavior
 
 67
-00:04:08,220 --> 00:04:13,164
-module3/examples/objections/README.md
+00:21:28,860 --> 00:21:43,356
+2. UVM Class Hierarchy (3/3). Object Classes uvm_sequence_item - Base transaction class uvm_sequence - Sequence of transactions Class relationships and inheritance
 
 68
-00:04:13,514 --> 00:04:18,338
-Hands-on: module3/examples/objections/
+00:21:43,706 --> 00:22:03,098
+3. UVM Phases (1/8). Build-Time Phases (Top-down) build_phase() - Component construction connect_phase() - Component connections end_of_elaboration_phase() - Final setup start_of_simulation_phase() - Simulation start
 
 69
-00:04:18,688 --> 00:04:21,016
-Practice & assessment
+00:22:03,448 --> 00:22:33,088
+3. UVM Phases (2/8). pre_reset_phase(), reset_phase(), post_reset_phase() pre_configure_phase(), configure_phase(), post_configure_phase() pre_main_phase(), main_phase(), post_main_phase() pre_shutdown_phase(), shutdown_phase(), post_shutdown_phase() Cleanup Phases (Bottom-up)
 
 70
-00:04:21,366 --> 00:04:24,318
-From MODULE3 Learning Outcomes.
+00:22:33,438 --> 00:22:52,062
+3. UVM Phases (3/8). check_phase() - Final checks report_phase() - Generate reports final_phase() - Final cleanup Build-Time Phases: Top-down execution (parent before child) Run-Time Phases: Bottom-up execution (child before parent)
 
 71
-00:04:24,668 --> 00:04:27,620
-From MODULE3 Learning Outcomes.
+00:22:52,412 --> 00:23:12,740
+3. UVM Phases (4/8). Phase Execution Order: Demonstrates all UVM phases Purpose: Component construction and setup Execution: Top-down (parent before child) Key: Use super.build_phase(phase) to maintain hierarchy Purpose: Test execution phases
 
 72
-00:04:27,970 --> 00:04:32,842
-Exercises Class Hierarchy Phases Reporting ConfigDB Factory
+00:23:13,090 --> 00:23:32,290
+3. UVM Phases (5/8). Key: Use objections in main_phase() to control simulation Purpose: Result extraction and reporting Execution: Bottom-up (child before parent) Key: Use for final verification and reporting Purpose: Get component identification
 
 73
-00:04:33,192 --> 00:04:35,736
-Exercises Objections
+00:23:32,640 --> 00:23:52,824
+3. UVM Phases (6/8). Build-time phases execute top-down (parent before child) Run-time phases execute bottom-up (child before parent) Cleanup phases execute bottom-up (child before parent) Phases enable structured testbench execution Build-time phases are functions (no delays allowed)
 
 74
-00:04:36,086 --> 00:04:49,334
-Assessment checklist Understands UVM class hierarchy Masters UVM phases Uses UVM reporting effectively Configures components using ConfigDB Understands factory pattern Controls simulation with objections
+00:23:53,174 --> 00:24:14,054
+3. UVM Phases (7/8). Cleanup phases are functions (no delays allowed) Must call super.phase_name(phase) to maintain hierarchy Use get_name() and get_full_name() for component identification All build-time phases executed in order All run-time phases executed in order
 
 75
-00:04:49,684 --> 00:05:02,956
-Summary & next steps Master UVM class hierarchy and phases Complete module3/CHECKLIST.md Review module3/EXAMPLES.md and run each lab Next: Next module in course
+00:24:14,404 --> 00:24:20,236
+3. UVM Phases (8/8). Phase execution logging
+
+76
+00:24:20,586 --> 00:24:40,986
+4. UVM Reporting (1/8). UVM Messaging System Severity levels: FATAL, ERROR, WARNING, INFO, DEBUG Verbosity levels: UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL, UVM_DEBUG Message formatting Hierarchical reporting
+
+77
+00:24:41,336 --> 00:25:04,088
+4. UVM Reporting (2/8). Verbosity Levels: UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL, UVM_DEBUG Message Formatting: Formatted messages with data values Hierarchical Reporting: Component context in messages Purpose: Print formatted messages with severity Parameters:
+
+78
+00:25:04,438 --> 00:25:25,438
+4. UVM Reporting (3/8). Message: Text to display Verbosity: For uvm_info only (UVM_LOW, UVM_MEDIUM, etc.) Usage: Standard UVM messaging Purpose: Include data values in messages Uses: $sformatf() for string formatting
+
+79
+00:25:25,788 --> 00:25:49,020
+4. UVM Reporting (4/8). Purpose: Control message visibility Usage: Set in build_phase() or test Levels: UVM_LOW < UVM_MEDIUM < UVM_HIGH < UVM_FULL < UVM_DEBUG Purpose: Include component hierarchy in messages Uses: get_full_name() for hierarchical path
+
+80
+00:25:49,370 --> 00:26:10,706
+4. UVM Reporting (5/8). WARNING: Potential issues (non-fatal) ERROR: Actual errors (may stop simulation) FATAL: Fatal errors (stops simulation immediately) UVM_LOW: Always displayed (default) UVM_MEDIUM: Medium detail (default for most messages)
+
+81
+00:26:11,056 --> 00:26:27,280
+4. UVM Reporting (6/8). UVM_FULL: Full detail UVM_DEBUG: Debug-level detail Severity indicates message importance Verbosity controls message visibility Messages include component hierarchy context
+
+82
+00:26:27,630 --> 00:26:49,254
+4. UVM Reporting (7/8). uvm_info is most common (with verbosity control) uvm_warning for non-critical issues uvm_error for errors (may stop simulation) uvm_fatal for fatal errors (stops simulation) Use $sformatf() for formatted messages with data
+
+83
+00:26:49,604 --> 00:26:59,324
+4. UVM Reporting (8/8). Verbosity control demonstrated Formatted messages with data Hierarchical message context
+
+84
+00:26:59,674 --> 00:27:11,098
+5. ConfigDB (1/7). Configuration Database Basics Setting configuration Getting configuration Configuration hierarchy Configuration objects
+
+85
+00:27:11,448 --> 00:27:34,128
+5. ConfigDB (2/7). Getting Configuration: Hierarchical lookup Configuration Objects: Complex configuration data Scalar Values: Simple configuration values Purpose: Store configuration in database Syntax: uvm_config_db#(type)::set(contxt, path, field, value)
+
+86
+00:27:34,478 --> 00:27:56,078
+5. ConfigDB (3/7). contxt: Context (usually this in test) path: Component path ("*" for global, "comp_name" for specific) field: Configuration field name (string) value: Value to store Usage: Set in test's build_phase() before creating components
+
+87
+00:27:56,428 --> 00:28:20,260
+5. ConfigDB (4/7). Syntax: uvm_config_db#(type)::get(contxt, path, field, var) Returns: 1 if found, 0 if not found Usage: Get in component's build_phase() Key: Always check return value, provide defaults if not found Purpose: String representation of configuration
+
+88
+00:28:20,610 --> 00:28:41,730
+5. ConfigDB (5/7). ConfigDB enables flexible test configuration Configuration can be set globally or per-component Components look up configuration in build_phase() Hierarchical paths enable component-specific config Set before create: Configuration must be set before components are created
+
+89
+00:28:42,080 --> 00:29:01,472
+5. ConfigDB (6/7). Check return value: Always check if get() succeeded Provide defaults: Use default values if configuration not found Type safety: ConfigDB is type-safe (uses template parameter) Configuration setting and getting Hierarchical configuration lookup
+
+90
+00:29:01,822 --> 00:29:08,350
+5. ConfigDB (7/7). Configuration object usage
+
+91
+00:29:08,700 --> 00:29:18,396
+6. Factory Pattern (1/6). Factory Pattern Basics Factory registration Factory creation Type override Instance override
+
+92
+00:29:18,746 --> 00:29:38,642
+6. Factory Pattern (2/6). Factory Creation: Using type_id::create() Type Override: Substituting base class with extended class Instance Override: Overriding specific instances Purpose: Automatically register class with factory Usage: Must be inside class definition
+
+93
+00:29:38,992 --> 00:30:02,536
+6. Factory Pattern (3/6). Purpose: Create objects/components via factory Syntax: ClassName::type_id::create(name, parent) Key: Factory applies overrides automatically Purpose: Replace all instances of base class with extended class Usage: Set in test's build_phase() before creating components
+
+94
+00:30:02,886 --> 00:30:22,806
+6. Factory Pattern (4/6). Purpose: Replace specific instance with extended class Usage: Set in test's build_phase() before creating components Effect: Only specified instance is overridden Purpose: Get type wrapper for override operations Usage: Used in override methods
+
+95
+00:30:23,156 --> 00:30:46,580
+6. Factory Pattern (5/6). Type override affects all instances Instance override affects specific instances Overrides enable test customization Factory macros (uvm_object_utils, uvm_component_utils) register classes Factory creation (type_id::create()) applies overrides automatically
+
+96
+00:30:46,930 --> 00:31:02,386
+6. Factory Pattern (6/6). Type override: Affects all instances of the base class Instance override: Affects only the specified instance Factory creation demonstrated Type override demonstrated Instance override demonstrated
+
+97
+00:31:02,736 --> 00:31:12,240
+7. Objections (1/6). Objection Mechanism Raising objections Dropping objections Phase completion Simulation control
+
+98
+00:31:12,590 --> 00:31:33,806
+7. Objections (2/6). Dropping Objections: Allow phase completion Multiple Objections: Per-component objection tracking Coordinated Completion: Phase completes when all objections dropped Purpose: Keep phase running until objection is dropped Usage: Call at start of run_phase() or other run-time phases
+
+99
+00:31:34,156 --> 00:31:51,244
+7. Objections (3/6). this: Component raising objection description: Optional description for named objections Key: Must raise objection if doing work in run-time phase Purpose: Signal that work is complete Usage: Call when work in phase is finished
+
+100
+00:31:51,594 --> 00:32:09,450
+7. Objections (4/6). Pattern: Raise at start, drop when complete Key: Ensures phase doesn't end prematurely Purpose: Track multiple independent tasks Usage: Use named objections for different tasks Key: Each named objection is tracked separately
+
+101
+00:32:09,800 --> 00:32:28,448
+7. Objections (5/6). Drop objection when work completes Phase completes when all objections dropped Multiple objections per component supported Raise at start: Call raise_objection() at beginning of work Drop when done: Call drop_objection() when work completes
+
+102
+00:32:28,798 --> 00:32:45,406
+7. Objections (6/6). Named objections: Use for tracking multiple tasks Must match: Each raise_objection() must have matching drop_objection() Objection raising and dropping Phase completion control Multiple objection handling
+
+103
+00:32:45,756 --> 00:33:06,276
+8. UVM Functions and Methods Reference (1/8). Purpose: Register class with UVM factory Location: Inside class definition Enables: Factory creation and overrides Syntax: ClassName::type_id::create(name, parent) Returns: Handle to created object/component
+
+104
+00:33:06,626 --> 00:33:25,178
+8. UVM Functions and Methods Reference (2/8). UVM_LOW - Always displayed (default) UVM_MEDIUM - Medium detail (most common) UVM_HIGH - High detail UVM_FULL - Full detail UVM_DEBUG - Debug-level detail
+
+105
+00:33:25,528 --> 00:33:44,968
+8. UVM Functions and Methods Reference (3/8). Get configuration in component's build_phase() Always check return value of get() Provide default values if configuration not found Use hierarchical paths for component-specific configuration Must raise objection if doing work in run-time phase
+
+106
+00:33:45,318 --> 00:34:05,262
+8. UVM Functions and Methods Reference (4/8). Phase completes when all objections are dropped Each raise_objection() must have matching drop_objection() Purpose: Component identification Usage: Logging, debugging, hierarchical paths Purpose: Generate and send transactions to driver
+
+107
+00:34:05,612 --> 00:34:22,628
+8. UVM Functions and Methods Reference (5/8). Flow: Sequence → Sequencer → Driver → DUT Purpose: Post-processing after randomization Usage: Calculate expected results, validate data Purpose: Driver-sequencer communication Methods:
+
+108
+00:34:22,978 --> 00:34:45,106
+8. UVM Functions and Methods Reference (6/8). item_done(): Signal transaction processing complete Flow: Sequencer provides → Driver receives → DUT Purpose: Broadcast transactions to subscribers Usage: Monitor sends transactions to scoreboard, coverage, etc. Purpose: Receive transactions from monitor
+
+109
+00:34:45,456 --> 00:35:13,320
+8. UVM Functions and Methods Reference (7/8). Purpose: Connect analysis port to analysis export Usage: Establish monitor → scoreboard communication Purpose: Get virtual interface handle Usage: Driver/monitor access DUT signals via virtual interface Setting: uvm_config_db#(virtual interface_type)::set(null, "*", "vif", vif_inst)
+
+110
+00:35:13,670 --> 00:35:29,582
+8. UVM Functions and Methods Reference (8/8). Parameters: Test class name (string) Behavior: Creates test instance, executes all phases Override: +UVM_TESTNAME=TestName command line option
+
+111
+00:35:29,932 --> 00:35:44,212
+Run: Example 3.1: Class Hierarchy. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE3.md.
+
+112
+00:35:44,562 --> 00:35:58,554
+Run: Example 3.2: Phases. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE3.md.
+
+113
+00:35:58,904 --> 00:36:12,824
+Run: Example 3.3: Reporting. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE3.md.
+
+114
+00:36:13,174 --> 00:36:27,406
+Run: Example 3.4: ConfigDB. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE3.md.
+
+115
+00:36:27,756 --> 00:36:41,748
+Run: Example 3.5: Factory. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE3.md.
+
+116
+00:36:42,098 --> 00:36:56,282
+Run: Example 3.6: Objections. Review the code on screen and match it to files in the repository. Execute from course root or example directory — see docs/MODULE3.md.
+
+117
+00:36:56,632 --> 00:36:59,872
+Next section: Hands-on examples.
+
+118
+00:37:00,222 --> 00:37:07,278
+Module 3 self-check. Watch the terminal output and confirm you see the expected pass message.
+
+119
+00:37:07,628 --> 00:37:14,012
+Exercise scaffold. Review the code on screen and match it to files in the repository.
+
+120
+00:37:14,362 --> 00:37:47,914
+Example 1: Class Hierarchy. Transaction Class (MyTransaction): Extends uvm_sequence_item (uvm_object hierarchy) Driver Class (MyDriver): Extends uvm_driver (uvm_component hierarchy) Monitor Class (MyMonitor): Extends uvm_monitor (uvm_component hierarchy) Agent Class (MyAgent): Extends uvm_agent, demonstrates component composition Environment Class (MyEnv): Extends uvm_env, top-level...
+
+121
+00:37:48,264 --> 00:37:55,656
+Demo: Class Hierarchy. Watch the terminal output and confirm you see the expected pass message.
+
+122
+00:37:56,006 --> 00:38:18,422
+Example 2: Phases. Build-Time Phases: Top-down execution (parent before child) Run-Time Phases: Bottom-up execution (child before parent) Cleanup Phases: Bottom-up execution (child before parent) Phase Execution Order: Demonstrates all UVM phases module3/examples/phases/README.md
+
+123
+00:38:18,772 --> 00:38:25,804
+Demo: Phases. Watch the terminal output and confirm you see the expected pass message.
+
+124
+00:38:26,154 --> 00:38:51,786
+Example 3: Reporting. Severity Levels: INFO, WARNING, ERROR, FATAL Verbosity Levels: UVM_LOW, UVM_MEDIUM, UVM_HIGH, UVM_FULL, UVM_DEBUG Message Formatting: Formatted messages with data values Hierarchical Reporting: Component context in messages module3/examples/reporting/README.md
+
+125
+00:38:52,136 --> 00:38:59,072
+Demo: Reporting. Watch the terminal output and confirm you see the expected pass message.
+
+126
+00:38:59,422 --> 00:39:19,198
+Example 4: ConfigDB. Setting Configuration: Global and component-specific Getting Configuration: Hierarchical lookup Configuration Objects: Complex configuration data Scalar Values: Simple configuration values module3/examples/configdb/README.md
+
+127
+00:39:19,548 --> 00:39:26,748
+Demo: ConfigDB. Watch the terminal output and confirm you see the expected pass message.
+
+128
+00:39:27,098 --> 00:39:49,610
+Example 5: Factory. Factory Registration: Automatic registration via uvm_object_utils Factory Creation: Using type_id::create() Type Override: Substituting base class with extended class Instance Override: Overriding specific instances module3/examples/factory/README.md
+
+129
+00:39:49,960 --> 00:39:56,944
+Demo: Factory. Watch the terminal output and confirm you see the expected pass message.
+
+130
+00:39:57,294 --> 00:40:17,118
+Example 6: Objections. Raising Objections: Keep simulation running Dropping Objections: Allow phase completion Multiple Objections: Per-component objection tracking Coordinated Completion: Phase completes when all objections dropped module3/examples/objections/README.md
+
+131
+00:40:17,468 --> 00:40:24,644
+Demo: Objections. Watch the terminal output and confirm you see the expected pass message.
+
+132
+00:40:24,994 --> 00:40:28,186
+Next section: Common pitfalls.
+
+133
+00:40:28,536 --> 00:40:41,832
+Class Hierarchy. Create transaction classes extending uvm_sequence_item Create component classes extending uvm_component Build component hierarchy Test component creation
+
+134
+00:40:42,182 --> 00:40:50,726
+Phases. Implement all build-time phases Implement run-time phases Implement cleanup phases Verify phase execution order
+
+135
+00:40:51,076 --> 00:40:59,164
+Reporting. Use different severity levels Control verbosity Format messages with data Test hierarchical reporting
+
+136
+00:40:59,514 --> 00:41:09,402
+ConfigDB. Set global configuration Set component-specific configuration Get configuration in components Use configuration objects
+
+137
+00:41:09,752 --> 00:41:18,536
+Factory. Register classes with factory Create objects using factory Implement type overrides Implement instance overrides
+
+138
+00:41:18,886 --> 00:41:28,462
+Objections. Raise objections in run_phase Drop objections when work completes Test multiple objections Verify phase completion
+
+139
+00:41:28,812 --> 00:41:32,196
+Next section: Practice & assessment.
+
+140
+00:41:32,546 --> 00:41:59,186
+By now you should be able to explain the following. Understand UVM class hierarchy (uvm_object vs uvm_component) Master UVM phases (build-time, run-time, cleanup) Use UVM reporting effectively (severity, verbosity, formatting) Configure components using ConfigDB Understand factory pattern (registration, creation, overrides) From MODULE3 Learning Outcomes.
+
+141
+00:41:59,536 --> 00:42:07,792
+By now you should be able to explain the following. Structure UVM testbenches properly From MODULE3 Learning Outcomes.
+
+142
+00:42:08,142 --> 00:42:14,142
+Exercises. Class Hierarchy Phases Reporting ConfigDB Factory
+
+143
+00:42:14,492 --> 00:42:18,284
+Exercises. Objections
+
+144
+00:42:18,634 --> 00:42:30,778
+Assessment checklist. Understands UVM class hierarchy Masters UVM phases Uses UVM reporting effectively Configures components using ConfigDB Understands factory pattern
+
+145
+00:42:31,128 --> 00:42:49,440
+In summary: Master UVM class hierarchy and phases Next up: Next module in course. Master UVM class hierarchy and phases Complete module3/CHECKLIST.md Review module3/EXAMPLES.md and run each lab Next: Next module in course

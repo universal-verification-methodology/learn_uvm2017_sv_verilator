@@ -58,6 +58,57 @@ cd module2/tests/uvm_tests
 make SIM=verilator TEST=test_simple_register
 ```
 
+## Design Architecture
+
+### 1. SystemVerilog testbench architecture
+
+| Component | Role |
+|-----------|------|
+| `module2/dut/` | RTL blocks under test (registers, FIFOs, state machines) |
+| `module2/examples/*/` | Focused TB patterns (clock, reset, triggers, access) |
+| `module2/tests/uvm_tests/` | UVM wrappers on the same DUTs (bridge to Module 3) |
+| Testbench module | Instantiates DUT + interfaces; generates clk/rst |
+| `sim_main.cpp` | C++ entry: drives time, calls `eval()` each cycle |
+
+- **DUT boundary**: signals cross via module ports or SystemVerilog interfaces
+- **Hierarchy**: TB module → DUT instance → optional interface instance
+- **Time**: `#delay`, `@posedge`, and C++ time loop must stay consistent
+- See [SYSTEMVERILOG_VERILATOR_INTERACTION.md](SYSTEMVERILOG_VERILATOR_INTERACTION.md) for compile/sim details
+
+### 2. RTL block architecture (example DUTs)
+
+- Register files — address decode, read/write timing, reset behavior
+- FIFOs — full/empty flags, pointer management, back-pressure
+- State machines — explicit states, transition conditions, output logic
+- **Signal flow**: clk/rst → sequential logic → status flags → TB monitors
+
+### 3. Verilator execution pipeline
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | `Makefile` | Invokes Verilator with `--cc --exe --timing` |
+| 2 | `obj_dir/V*.cpp` | Generated cycle-accurate C++ model |
+| 3 | `sim_main.cpp` | Clock generation and `$finish` coordination |
+| 4 | `./obj_dir/V*` | Executable; TB prints PASS/FAIL |
+| **Self-check flow**: `make` → link → run → grep PASS in log
+
+## Verification & Testing Methods
+
+### 1. Stimulus and timing strategy
+
+- **Clock generation**: parameterized period/duty; multiple clocks for CDC awareness
+- **Reset sequences**: assert length, sync deassert, mid-test reset injection
+- **Triggers**: `@posedge`, `wait()`, `fork-join` for parallel activity
+- **Signal access**: hierarchical references and interface modport access
+
+### 2. Checking and debug workflow
+
+- Self-checking tests compare DUT outputs against expected values each cycle
+- Waveforms (`--trace`) for debugging timing and reset issues
+- **Closure criteria**: all directed cases PASS; no `$error` or timeout
+- `./scripts/module2.sh --all-examples` for module-level regression
+- UVM tests reuse same DUTs — compare directed vs phase-based execution in Module 3
+
 ## Topics Covered
 
 ### 1. SystemVerilog Testbench Architecture

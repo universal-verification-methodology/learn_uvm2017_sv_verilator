@@ -22,7 +22,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module6.sh --architecture
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE6.md` and explore `module6/examples/architecture/`.
 
@@ -43,7 +43,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module6.sh --multi-agent
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE6.md` and explore `module6/examples/multi_agent/`.
 
@@ -64,7 +64,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module6.sh --protocol
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE6.md` and explore `module6/examples/protocol/`.
 
@@ -81,10 +81,10 @@ Run commands from the **course repository root** unless noted.
 **Run:**
 
 ```bash
-./scripts/module6.sh --protocol-checkers
+./scripts/module6.sh --protocol-checkers && cd module6/examples/protocol_checkers && verilator -sv --cc --exe --timing --trace protocol_checkers.sv protocol_checkers.cpp \ && -I"$UVM_HOME" +incdir+"$UVM_HOME" +define+UVM_NO_DPI \
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE6.md` and explore `module6/examples/protocol_checkers/`.
 
@@ -104,6 +104,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module6.sh --scoreboards
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE6.md` and explore `module6/examples/scoreboards/`.

@@ -22,7 +22,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module3.sh --class-hierarchy
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE3.md` and explore `module3/examples/class_hierarchy/`.
 
@@ -42,7 +42,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module3.sh --phases
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE3.md` and explore `module3/examples/phases/`.
 
@@ -62,7 +62,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module3.sh --reporting
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE3.md` and explore `module3/examples/reporting/`.
 
@@ -82,7 +82,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module3.sh --configdb
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE3.md` and explore `module3/examples/configdb/`.
 
@@ -102,7 +102,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module3.sh --factory
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE3.md` and explore `module3/examples/factory/`.
 
@@ -122,6 +122,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module3.sh --objections
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE3.md` and explore `module3/examples/objections/`.

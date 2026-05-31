@@ -7,26 +7,433 @@ slides:
 - type: title
   title: Module 4
   subtitle: UVM Components
+  narration: Welcome to module 4, UVM Components. In this module you will build complete
+    uvm agents with driver, monitor, and sequencer.
 - type: bullets
   title: Learning objectives
   bullets:
   - Build complete UVM agents with driver, monitor, and sequencer
+  narration: Here is what you will learn in this module. Build complete UVM agents
+    with driver, monitor, and sequencer
 - type: bullets
   title: Prerequisites
   bullets:
   - See module README
+  narration: Before you start, make sure you have these prerequisites. See module
+    README
 - type: image
   title: Learning path
   image: assets/diagrams/learning_path.png
   caption: Build complete UVM agents with driver, monitor, and sequencer
+  narration: Learning path. Build complete UVM agents with driver, monitor, and sequencer
 - type: bullets
   title: Overview
   bullets:
-  - 'This module covers the core UVM components used to build verification environments.
-    You''ll learn how to create agents, drivers, monitors, sequencers, and sequences
-    to build complete verification environments. The module '
+  - This module covers the core UVM components used to build verification environments.
+    You'll learn how to create agents, drivers...
+  narration: Overview. This module covers the core UVM components used to build verification
+    environments. You'll learn how to create agents, drivers...
+- type: section
+  title: Design architecture
+  narration: 'Next section: Design architecture.'
+- type: two_column
+  title: 1. UVM agent internal architecture (1/3)
+  left:
+  - 'Active agent: sequencer + driver + monitor (generates and observes stimulus)'
+  - 'Passive agent: monitor only (observation/checking on monitored bus)'
+  - Agent `is_active` config selects build-time component set
+  - 'Sequencer-driver TLM: `driver.seq_item_port.connect(sequencer.seq_item_export)`'
+  right: assets/diagrams/rtl_architecture.png
+  notes: From MODULE4 Design Architecture.
+  narration: '1. UVM agent internal architecture (1/3). Active agent: sequencer +
+    driver + monitor (generates and observes stimulus) Passive agent: monitor only
+    (observation/checking on monitored bus) Agent is_active config selects build-time
+    component set Sequencer-driver TLM: driver.seq_item_port.connect(sequencer.seq_item_export)
+    Refer to the diagram on the right.'
+- type: bullets
+  title: 1. UVM agent internal architecture (2/3)
+  bullets:
+  - 'uvm_sequencer: Arbitrates sequences; exports seq_item_export'
+  - 'uvm_driver: seq_item_port pulls items; drives virtual interface'
+  - 'uvm_monitor: Passive observation; broadcasts via analysis port'
+  - 'uvm_agent: Configures active/passive; builds child components'
+  notes: From MODULE4 Design Architecture.
+  narration: '1. UVM agent internal architecture (2/3). uvm_sequencer: Arbitrates
+    sequences; exports seq_item_export uvm_driver: seq_item_port pulls items; drives
+    virtual interface uvm_monitor: Passive observation; broadcasts via analysis port
+    uvm_agent: Configures active/passive; builds child components'
+- type: bullets
+  title: 1. UVM agent internal architecture (3/3)
+  bullets:
+  - 'uvm_sequence: Produces randomized/constrained transactions'
+  notes: From MODULE4 Design Architecture.
+  narration: '1. UVM agent internal architecture (3/3). uvm_sequence: Produces randomized/constrained
+    transactions'
+- type: two_column
+  title: 2. Transaction-level data path (1/3)
+  left:
+  - 'TLM ports: `uvm_analysis_port` / `uvm_analysis_export` for monitor → scoreboard'
+  - Transactions implement `do_copy`, `do_compare`, `convert2string` for debug and
+    checking
+  - 'Execution sequence: build agent → connect TLM → start sequence in `run_phase`'
+  - '1: Sequence — randomize() transaction fields'
+  right: assets/diagrams/verification_architecture.png
+  notes: From MODULE4 Design Architecture.
+  narration: '2. Transaction-level data path (1/3). TLM ports: uvm_analysis_port /
+    uvm_analysis_export for monitor → scoreboard Transactions implement do_copy, do_compare,
+    convert2string for debug and checking Execution sequence: build agent → connect
+    TLM → start sequence in run_phase 1: Sequence — randomize() transaction fields
+    Refer to the diagram on the right.'
+- type: bullets
+  title: 2. Transaction-level data path (2/3)
+  bullets:
+  - '2: Sequencer — Sends item to driver via TLM port'
+  - '3: Driver — Drives interface signals from item'
+  - '4: DUT — Responds on bus/interface'
+  - '5: Monitor — Captures pin activity → transaction'
+  notes: From MODULE4 Design Architecture.
+  narration: '2. Transaction-level data path (2/3). 2: Sequencer — Sends item to driver
+    via TLM port 3: Driver — Drives interface signals from item 4: DUT — Responds
+    on bus/interface 5: Monitor — Captures pin activity → transaction'
+- type: bullets
+  title: 2. Transaction-level data path (3/3)
+  bullets:
+  - '6: Scoreboard — Compares expected vs observed (Module 4 examples)'
+  notes: From MODULE4 Design Architecture.
+  narration: '2. Transaction-level data path (3/3). 6: Scoreboard — Compares expected
+    vs observed (Module 4 examples)'
+- type: two_column
+  title: 3. Module 4 example progression (1/2)
+  left:
+  - '`examples/transactions/` → data modeling fundamentals'
+  - '`examples/drivers/`, `monitors/`, `sequencers/` → individual components'
+  - '`examples/tlm/`, `scoreboards/` → communication and checking'
+  - '`examples/agents/` → integrated active agent'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE4 Design Architecture.
+  narration: 3. Module 4 example progression (1/2). examples/transactions/ → data
+    modeling fundamentals examples/drivers/, monitors/, sequencers/ → individual components
+    examples/tlm/, scoreboards/ → communication and checking examples/agents/ → integrated
+    active agent Refer to the diagram on the right.
+- type: bullets
+  title: 3. Module 4 example progression (2/2)
+  bullets:
+  - '`tests/uvm_tests/test_complete_agent_uvm.sv` — full agent on interface DUT'
+  notes: From MODULE4 Design Architecture.
+  narration: 3. Module 4 example progression (2/2). tests/uvm_tests/test_complete_agent_uvm.sv
+    — full agent on interface DUT
+- type: image
+  title: RTL block diagram (reference)
+  image: assets/diagrams/rtl_architecture.png
+  caption: 'Module 4: DUT hierarchy and signal flow.'
+  narration: 'RTL block diagram (reference). Module 4: DUT hierarchy and signal flow.'
+- type: image
+  title: Verification / testbench diagram (reference)
+  image: assets/diagrams/verification_architecture.png
+  caption: 'Module 4: stimulus, observation, and checking.'
+  narration: 'Verification / testbench diagram (reference). Module 4: stimulus, observation,
+    and checking.'
+- type: section
+  title: Execution & simulation flow
+  narration: 'Next section: Execution & simulation flow.'
+- type: bullets
+  title: How the example runs (toolchain)
+  bullets:
+  - 'Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv'
+  - 'UVM phases: build → connect → run_test → report (same pattern as Module 2)'
+  - Sequence → driver → DUT → monitor → scoreboard (read SCOREBOARD at end)
+  - 'Typical command: make SIM=verilator TEST=test_* (see module4 demo slide)'
+  - Loopback / hooks connect monitor observations to scoreboard checks
+  notes: From MODULE4 — execution and artifact layout.
+  narration: 'How the example runs (toolchain). Match each bullet to files in the
+    repository. Makefile: Verilator + UVM_HOME compile RTL, interface, and test_*.sv
+    UVM phases: build → connect → run_test → report (same pattern as Module 2) Sequence
+    → driver → DUT → monitor → scoreboard (read SCOREBOARD at end) Typical command:
+    make SIM=verilator TEST=test_* (see module4 demo slide) Loopback / hooks connect...'
+- type: bullets
+  title: Artifact flow (spec → sim) (1)
+  bullets:
+  - '1: Sequence — randomize() transaction fields'
+  - '2: Sequencer — Sends item to driver via TLM port'
+  - '3: Driver — Drives interface signals from item'
+  - '4: DUT — Responds on bus/interface'
+  notes: From MODULE4 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (1). Match each bullet to files in the repository.
+    1: Sequence — randomize() transaction fields 2: Sequencer — Sends item to driver
+    via TLM port 3: Driver — Drives interface signals from item 4: DUT — Responds
+    on bus/interface From MODULE4 — execution and artifact layout.'
+- type: bullets
+  title: Artifact flow (spec → sim) (2)
+  bullets:
+  - '5: Monitor — Captures pin activity → transaction'
+  - '6: Scoreboard — Compares expected vs observed (Module 4 examples)'
+  notes: From MODULE4 — execution and artifact layout.
+  narration: 'Artifact flow (spec → sim) (2). Match each bullet to files in the repository.
+    5: Monitor — Captures pin activity → transaction 6: Scoreboard — Compares expected
+    vs observed (Module 4 examples) From MODULE4 — execution and artifact layout.'
+- type: bullets
+  title: Example directory layout
+  bullets:
+  - 'uvm_sequencer: Arbitrates sequences; exports seq_item_export'
+  - 'uvm_driver: seq_item_port pulls items; drives virtual interface'
+  - 'uvm_monitor: Passive observation; broadcasts via analysis port'
+  - 'uvm_agent: Configures active/passive; builds child components'
+  - 'uvm_sequence: Produces randomized/constrained transactions'
+  notes: Match each path to files under module/examples/.
+  narration: 'Example directory layout. Match each bullet to files in the repository.
+    uvm_sequencer: Arbitrates sequences; exports seq_item_export uvm_driver: seq_item_port
+    pulls items; drives virtual interface uvm_monitor: Passive observation; broadcasts
+    via analysis port uvm_agent: Configures active/passive; builds child components
+    uvm_sequence: Produces randomized/constrained transactions Match each path...'
+- type: bullets
+  title: Directed test execution sequence
+  bullets:
+  - build agent
+  - connect TLM
+  - start sequence in run_phase
+  notes: Follow this order when tracing waveforms or debugging.
+  narration: Follow these steps in order when working through this module. build agent
+    connect TLM start sequence in run_phase Follow this order when tracing waveforms
+    or debugging.
+- type: section
+  title: Verification & testing methods
+  narration: 'Next section: Verification & testing methods.'
+- type: two_column
+  title: 1. Component-level verification strategy
+  left:
+  - Verify each component in isolation before agent integration
+  - 'Driver: loopback or simple slave model confirms pin wiggles match items'
+  - 'Monitor: drive known patterns; confirm reconstructed transactions'
+  - 'Sequencer: run single sequence; count items completed vs requested'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE4 Verification & Testing Methods.
+  narration: '1. Component-level verification strategy. Verify each component in isolation
+    before agent integration Driver: loopback or simple slave model confirms pin wiggles
+    match items Monitor: drive known patterns; confirm reconstructed transactions
+    Sequencer: run single sequence; count items completed vs requested Refer to the
+    diagram on the right.'
+- type: two_column
+  title: 2. Agent integration and closure (1/2)
+  left:
+  - Connect monitor analysis port to scoreboard export in `connect_phase`
+  - Use `uvm_config_db` to pass virtual interface to driver and monitor
+  - 'Regression: `./scripts/module4.sh --all-examples` then `--uvm-tests`'
+  - 'Pass criteria: scoreboard match count equals transaction count; no UVM_ERROR'
+  right: assets/diagrams/testing_methods.png
+  notes: From MODULE4 Verification & Testing Methods.
+  narration: '2. Agent integration and closure (1/2). Connect monitor analysis port
+    to scoreboard export in connect_phase Use uvm_config_db to pass virtual interface
+    to driver and monitor Regression: ./scripts/module4.sh --all-examples then --uvm-tests
+    Pass criteria: scoreboard match count equals transaction count; no UVM_ERROR Refer
+    to the diagram on the right.'
+- type: bullets
+  title: 2. Agent integration and closure (2/2)
+  bullets:
+  - Waveform optional — rely on transaction logs and scoreboard summary first
+  notes: From MODULE4 Verification & Testing Methods.
+  narration: 2. Agent integration and closure (2/2). Waveform optional — rely on transaction
+    logs and scoreboard summary first
 - type: section
   title: Syllabus topics
+  narration: 'Next section: Syllabus topics.'
+- type: section
+  title: Protocol & design details
+  narration: 'Next section: Protocol & design details.'
+- type: bullets
+  title: 'Detail: Example 4.1: Transactions (`module4/examples/transactions/transactions.sv`)
+    (1)'
+  bullets:
+  - 'BaseTransaction: Basic transaction with `data` and `address` fields'
+  - 'ExtendedTransaction: Extended transaction with `control` and `status` fields'
+  - 'ConstrainedTransaction: Transaction with randomization constraints'
+  - 'Transaction Operations: Copy, comparison, and string conversion'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.1: Transactions (module4/examples/transactions/transactions.sv)
+    (1). BaseTransaction: Basic transaction with data and address fields ExtendedTransaction:
+    Extended transaction with control and status fields ConstrainedTransaction: Transaction
+    with randomization constraints Transaction Operations: Copy, comparison, and string
+    conversion From MODULE4 Topics...'
+- type: bullets
+  title: 'Detail: Example 4.1: Transactions (`module4/examples/transactions/transactions.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Provide human-readable string representation'
+  - 'Usage: Debugging, logging, reporting'
+  - 'Key: Override from `uvm_object` base class'
+  - 'Purpose: Create independent copy of transaction'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.1: Transactions (module4/examples/transactions/transactions.sv)
+    (2). Purpose: Provide human-readable string representation Usage: Debugging, logging,
+    reporting Key: Override from uvm_object base class Purpose: Create independent
+    copy of transaction From MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.2: Drivers (`module4/examples/drivers/drivers.sv`) (1)'
+  bullets:
+  - 'SimpleDriver: Basic driver implementation with transaction reception'
+  - 'ProtocolDriver: Protocol-aware driver with handshaking'
+  - 'Driver-Sequencer Communication: Using `seq_item_port` for transaction flow'
+  - 'Signal Driving: Converting transactions to DUT signals'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.2: Drivers (module4/examples/drivers/drivers.sv)
+    (1). SimpleDriver: Basic driver implementation with transaction reception ProtocolDriver:
+    Protocol-aware driver with handshaking Driver-Sequencer Communication: Using seq_item_port
+    for transaction flow Signal Driving: Converting transactions to DUT signals From
+    MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.2: Drivers (`module4/examples/drivers/drivers.sv`) (2)'
+  bullets:
+  - 'Purpose: Get transaction from sequencer (blocking)'
+  - 'Usage: Called in driver''s `run_phase()` forever loop'
+  - 'Key: Blocks until sequencer provides transaction'
+  - 'Purpose: Signal that transaction processing is complete'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.2: Drivers (module4/examples/drivers/drivers.sv)
+    (2). Purpose: Get transaction from sequencer (blocking) Usage: Called in driver''s
+    run_phase() forever loop Key: Blocks until sequencer provides transaction Purpose:
+    Signal that transaction processing is complete From MODULE4 Topics Covered — protocol/design
+    depth.'
+- type: bullets
+  title: 'Detail: Example 4.3: Monitors (`module4/examples/monitors/monitors.sv`)
+    (1)'
+  bullets:
+  - 'SimpleMonitor: Basic monitor implementation with signal sampling'
+  - 'ProtocolMonitor: Protocol-aware monitor with handshake monitoring'
+  - 'Transaction Creation: Creating transactions from sampled signals'
+  - 'Analysis Port: Forwarding transactions via analysis port'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.3: Monitors (module4/examples/monitors/monitors.sv)
+    (1). SimpleMonitor: Basic monitor implementation with signal sampling ProtocolMonitor:
+    Protocol-aware monitor with handshake monitoring Transaction Creation: Creating
+    transactions from sampled signals Analysis Port: Forwarding transactions via analysis
+    port From MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.3: Monitors (`module4/examples/monitors/monitors.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Broadcast transaction to all subscribers'
+  - 'Usage: Called after creating transaction from sampled signals'
+  - 'Key: Non-blocking, broadcasts to all connected subscribers'
+  - 'Purpose: Create analysis port in constructor'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.3: Monitors (module4/examples/monitors/monitors.sv)
+    (2). Purpose: Broadcast transaction to all subscribers Usage: Called after creating
+    transaction from sampled signals Key: Non-blocking, broadcasts to all connected
+    subscribers Purpose: Create analysis port in constructor From MODULE4 Topics Covered
+    — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.4: Sequencers (`module4/examples/sequencers/sequencers.sv`)
+    (1)'
+  bullets:
+  - 'SimpleSequence: Basic sequence implementation'
+  - 'ExtendedSequence: Extended sequence with configurable item count'
+  - 'Sequence Execution: Starting sequences on sequencers'
+  - 'Sequence Item Generation: Creating and sending sequence items'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.4: Sequencers (module4/examples/sequencers/sequencers.sv)
+    (1). SimpleSequence: Basic sequence implementation ExtendedSequence: Extended
+    sequence with configurable item count Sequence Execution: Starting sequences on
+    sequencers Sequence Item Generation: Creating and sending sequence items From
+    MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.4: Sequencers (`module4/examples/sequencers/sequencers.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Generate and send sequence items'
+  - 'Usage: Main sequence logic'
+  - 'Key: Called when sequence is started'
+  - 'Purpose: Request sequence item from sequencer'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.4: Sequencers (module4/examples/sequencers/sequencers.sv)
+    (2). Purpose: Generate and send sequence items Usage: Main sequence logic Key:
+    Called when sequence is started Purpose: Request sequence item from sequencer
+    From MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.5: TLM (`module4/examples/tlm/tlm.sv`) (1)'
+  bullets:
+  - 'TlmProducer: Uses `uvm_blocking_put_port` to produce transactions'
+  - 'TlmConsumer: Uses `uvm_blocking_get_export` to consume transactions'
+  - 'AnalysisProducer: Uses `uvm_analysis_port` to broadcast transactions'
+  - 'AnalysisSubscriber: Uses `uvm_subscriber` to receive transactions'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.5: TLM (module4/examples/tlm/tlm.sv)
+    (1). TlmProducer: Uses uvm_blocking_put_port to produce transactions TlmConsumer:
+    Uses uvm_blocking_get_export to consume transactions AnalysisProducer: Uses uvm_analysis_port
+    to broadcast transactions AnalysisSubscriber: Uses uvm_subscriber to receive transactions
+    From MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.5: TLM (`module4/examples/tlm/tlm.sv`) (2)'
+  bullets:
+  - 'Purpose: Send transaction to consumer (blocking)'
+  - 'Usage: Producer sends transactions'
+  - 'Key: Blocks until consumer receives'
+  - 'Purpose: Receive transaction from producer (blocking)'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.5: TLM (module4/examples/tlm/tlm.sv)
+    (2). Purpose: Send transaction to consumer (blocking) Usage: Producer sends transactions
+    Key: Blocks until consumer receives Purpose: Receive transaction from producer
+    (blocking) From MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.6: Scoreboards (`module4/examples/scoreboards/scoreboards.sv`)
+    (1)'
+  bullets:
+  - 'SimpleScoreboard: Basic scoreboard with transaction comparison'
+  - 'Transaction Storage: Storing expected and actual transactions'
+  - 'Comparison Logic: Comparing transactions for verification'
+  - 'Result Reporting: Reporting pass/fail counts'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.6: Scoreboards (module4/examples/scoreboards/scoreboards.sv)
+    (1). SimpleScoreboard: Basic scoreboard with transaction comparison Transaction
+    Storage: Storing expected and actual transactions Comparison Logic: Comparing
+    transactions for verification Result Reporting: Reporting pass/fail counts From
+    MODULE4 Topics Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.6: Scoreboards (`module4/examples/scoreboards/scoreboards.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Receive transactions from monitor'
+  - 'Usage: Called automatically when monitor writes to analysis port'
+  - 'Key: Compares actual vs expected results'
+  - 'Purpose: Store expected transaction for later comparison'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.6: Scoreboards (module4/examples/scoreboards/scoreboards.sv)
+    (2). Purpose: Receive transactions from monitor Usage: Called automatically when
+    monitor writes to analysis port Key: Compares actual vs expected results Purpose:
+    Store expected transaction for later comparison From MODULE4 Topics Covered —
+    protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.7: Complete Agents (`module4/examples/agents/agents.sv`)
+    (1)'
+  bullets:
+  - 'CompleteAgent: Contains driver, monitor, and sequencer'
+  - 'Agent Configuration: Configurable as active or passive'
+  - 'Component Integration: Integrating all agent components'
+  - 'Agent Testing: Testing complete agent functionality'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.7: Complete Agents (module4/examples/agents/agents.sv)
+    (1). CompleteAgent: Contains driver, monitor, and sequencer Agent Configuration:
+    Configurable as active or passive Component Integration: Integrating all agent
+    components Agent Testing: Testing complete agent functionality From MODULE4 Topics
+    Covered — protocol/design depth.'
+- type: bullets
+  title: 'Detail: Example 4.7: Complete Agents (`module4/examples/agents/agents.sv`)
+    (2)'
+  bullets:
+  - 'Purpose: Create agent components based on configuration'
+  - 'Key: Active agent has driver+sequencer, passive has monitor only'
+  - 'Monitor: Always created (both active and passive modes)'
+  - 'Driver/Sequencer: Only created in active mode'
+  notes: From MODULE4 Topics Covered — protocol/design depth.
+  narration: 'Protocol and design detail: Example 4.7: Complete Agents (module4/examples/agents/agents.sv)
+    (2). Purpose: Create agent components based on configuration Key: Active agent
+    has driver+sequencer, passive has monitor only Monitor: Always created (both active
+    and passive modes) Driver/Sequencer: Only created in active mode From MODULE4
+    Topics Covered — protocol/design depth.'
+- type: image
+  title: Verification flow (reference)
+  image: assets/diagrams/testing_methods.png
+  caption: Stimulus, DUT response, and check points for this module.
+  narration: Verification flow (reference). Stimulus, DUT response, and check points
+    for this module.
 - type: bullets
   title: 1. UVM Agent Architecture (1/9)
   bullets:
@@ -37,6 +444,9 @@ slides:
   - Active vs passive agents
   - Agent Components
   notes: From MODULE4 Topics Covered.
+  narration: 1. UVM Agent Architecture (1/9). Agent Overview and Structure Agent purpose
+    and responsibilities Agent components (driver, monitor, sequencer) Agent configuration
+    Active vs passive agents
 - type: bullets
   title: 1. UVM Agent Architecture (2/9)
   bullets:
@@ -47,6 +457,9 @@ slides:
   - 'BaseTransaction: Basic transaction with `data` and `address` fields'
   - 'ExtendedTransaction: Extended transaction with `control` and `status` fields'
   notes: From MODULE4 Topics Covered.
+  narration: '1. UVM Agent Architecture (2/9). Driver for stimulus generation Monitor
+    for observation Sequencer for sequence management Agent integration BaseTransaction:
+    Basic transaction with data and address fields'
 - type: bullets
   title: 1. UVM Agent Architecture (3/9)
   bullets:
@@ -57,6 +470,10 @@ slides:
   - 'Key: Override from `uvm_object` base class'
   - 'Purpose: Create independent copy of transaction'
   notes: From MODULE4 Topics Covered.
+  narration: '1. UVM Agent Architecture (3/9). ConstrainedTransaction: Transaction
+    with randomization constraints Transaction Operations: Copy, comparison, and string
+    conversion Purpose: Provide human-readable string representation Usage: Debugging,
+    logging, reporting Key: Override from uvm_object base class'
 - type: bullets
   title: 1. UVM Agent Architecture (4/9)
   bullets:
@@ -67,6 +484,10 @@ slides:
   - 'Key: Returns 1 if all fields match, 0 otherwise'
   - 'Purpose: Generate random values satisfying constraints'
   notes: From MODULE4 Topics Covered.
+  narration: '1. UVM Agent Architecture (4/9). Usage: txn2.copy(txn1) - creates deep
+    copy Key: Must call super.do_copy(rhs) first, then copy all fields Purpose: Compare
+    two transactions for equality Usage: if (txn1.compare(txn2)) - returns 1 if equal
+    Key: Returns 1 if all fields match, 0 otherwise'
 - type: bullets
   title: 1. UVM Agent Architecture (5/9)
   bullets:
@@ -77,6 +498,10 @@ slides:
   - 'Key: Called automatically after `randomize()` succeeds'
   - 'Example: Calculate expected results, checksums, derived values'
   notes: From MODULE4 Topics Covered.
+  narration: '1. UVM Agent Architecture (5/9). Usage: txn.randomize() - returns 1
+    if successful Key: Constraints ensure protocol compliance Purpose: Post-process
+    after randomization Usage: Calculate derived fields, validate constraints Key:
+    Called automatically after randomize() succeeds'
 - type: bullets
   title: 1. UVM Agent Architecture (6/9)
   bullets:
@@ -87,6 +512,10 @@ slides:
   - 'Key: Must call `super` methods to handle base class fields'
   - Transaction class design extending `uvm_sequence_item`
   notes: From MODULE4 Topics Covered.
+  narration: '1. UVM Agent Architecture (6/9). Purpose: Type-safe conversion from
+    uvm_object to specific type Usage: Required in do_copy() and do_compare() Key:
+    Always check return value, handle type mismatch Purpose: Extend base transaction
+    with additional fields Key: Must call super methods to handle base class fields'
 - type: bullets
   title: 1. UVM Agent Architecture (7/9)
   bullets:
@@ -97,6 +526,9 @@ slides:
   - '`convert2string()` for debugging and logging'
   - '`do_copy()` for deep copying transactions'
   notes: From MODULE4 Topics Covered.
+  narration: 1. UVM Agent Architecture (7/9). Transaction fields and data members
+    Transaction copy and comparison operations Extended transactions with inheritance
+    Constrained random transactions convert2string() for debugging and logging
 - type: bullets
   title: 1. UVM Agent Architecture (8/9)
   bullets:
@@ -107,12 +539,17 @@ slides:
   - Transaction copy operations
   - Transaction comparison operations
   notes: From MODULE4 Topics Covered.
+  narration: 1. UVM Agent Architecture (8/9). do_compare() for transaction comparison
+    randomize() for constrained random generation Constraints ensure protocol compliance
+    Transaction creation and initialization Transaction copy operations
 - type: bullets
   title: 1. UVM Agent Architecture (9/9)
   bullets:
   - Extended transaction inheritance
   - Constrained random transaction generation
   notes: From MODULE4 Topics Covered.
+  narration: 1. UVM Agent Architecture (9/9). Extended transaction inheritance Constrained
+    random transaction generation
 - type: bullets
   title: 2. UVM Driver Implementation (1/8)
   bullets:
@@ -123,6 +560,9 @@ slides:
   - Transaction-to-signal conversion
   - Driver Implementation
   notes: From MODULE4 Topics Covered.
+  narration: 2. UVM Driver Implementation (1/8). Driver Purpose and Responsibilities
+    Stimulus generation Protocol implementation Signal driving Transaction-to-signal
+    conversion
 - type: bullets
   title: 2. UVM Driver Implementation (2/8)
   bullets:
@@ -133,6 +573,9 @@ slides:
   - 'SimpleDriver: Basic driver implementation with transaction reception'
   - 'ProtocolDriver: Protocol-aware driver with handshaking'
   notes: From MODULE4 Topics Covered.
+  narration: '2. UVM Driver Implementation (2/8). Driver class structure Sequencer
+    communication Transaction reception Signal driving patterns SimpleDriver: Basic
+    driver implementation with transaction reception'
 - type: bullets
   title: 2. UVM Driver Implementation (3/8)
   bullets:
@@ -143,6 +586,10 @@ slides:
   - 'Key: Blocks until sequencer provides transaction'
   - 'Purpose: Signal that transaction processing is complete'
   notes: From MODULE4 Topics Covered.
+  narration: '2. UVM Driver Implementation (3/8). Driver-Sequencer Communication:
+    Using seq_item_port for transaction flow Signal Driving: Converting transactions
+    to DUT signals Purpose: Get transaction from sequencer (blocking) Usage: Called
+    in driver''s run_phase() forever loop Key: Blocks until sequencer provides transaction'
 - type: bullets
   title: 2. UVM Driver Implementation (4/8)
   bullets:
@@ -153,6 +600,10 @@ slides:
   - 'Key: Implements protocol-specific driving logic'
   - 'Purpose: Implement protocol-specific handshaking'
   notes: From MODULE4 Topics Covered.
+  narration: '2. UVM Driver Implementation (4/8). Usage: Called after driving transaction
+    to DUT Key: Allows sequencer to provide next transaction Purpose: Convert transaction
+    to DUT signals Usage: Called after get_next_item() Key: Implements protocol-specific
+    driving logic'
 - type: bullets
   title: 2. UVM Driver Implementation (5/8)
   bullets:
@@ -163,6 +614,9 @@ slides:
   - Driver class structure extending `uvm_driver`
   - Transaction reception from sequencer via `seq_item_port`
   notes: From MODULE4 Topics Covered.
+  narration: '2. UVM Driver Implementation (5/8). Key: Handles request/grant, timing,
+    protocol compliance Purpose: Connect driver to sequencer Usage: In agent''s connect_phase()
+    Key: Establishes TLM communication channel Driver class structure extending uvm_driver'
 - type: bullets
   title: 2. UVM Driver Implementation (6/8)
   bullets:
@@ -173,6 +627,9 @@ slides:
   - '`item_done()` - Signal transaction completion'
   - '`drive_transaction()` - Convert transaction to signals'
   notes: From MODULE4 Topics Covered.
+  narration: 2. UVM Driver Implementation (6/8). Signal driving to DUT Driver-sequencer
+    communication Protocol-specific driving patterns get_next_item() - Get transaction
+    from sequencer (blocking) item_done() - Signal transaction completion
 - type: bullets
   title: 2. UVM Driver Implementation (7/8)
   bullets:
@@ -183,11 +640,15 @@ slides:
   - Signal driving to DUT
   - Protocol-specific driving patterns
   notes: From MODULE4 Topics Covered.
+  narration: 2. UVM Driver Implementation (7/8). TLM connection - seq_item_port.connect(sequencer.seq_item_export)
+    Forever loop - Driver continuously processes transactions Driver creation and
+    initialization Transaction reception from sequencer Signal driving to DUT
 - type: bullets
   title: 2. UVM Driver Implementation (8/8)
   bullets:
   - Driver-sequencer communication
   notes: From MODULE4 Topics Covered.
+  narration: 2. UVM Driver Implementation (8/8). Driver-sequencer communication
 - type: bullets
   title: 3. UVM Monitor Implementation (1/7)
   bullets:
@@ -198,6 +659,8 @@ slides:
   - Analysis port usage
   - Monitor Implementation
   notes: From MODULE4 Topics Covered.
+  narration: 3. UVM Monitor Implementation (1/7). Monitor Purpose and Responsibilities
+    DUT observation Signal sampling Transaction creation Analysis port usage
 - type: bullets
   title: 3. UVM Monitor Implementation (2/7)
   bullets:
@@ -208,6 +671,9 @@ slides:
   - 'SimpleMonitor: Basic monitor implementation with signal sampling'
   - 'ProtocolMonitor: Protocol-aware monitor with handshake monitoring'
   notes: From MODULE4 Topics Covered.
+  narration: '3. UVM Monitor Implementation (2/7). Monitor class structure Signal
+    sampling Transaction creation Analysis port forwarding SimpleMonitor: Basic monitor
+    implementation with signal sampling'
 - type: bullets
   title: 3. UVM Monitor Implementation (3/7)
   bullets:
@@ -218,6 +684,11 @@ slides:
   - 'Key: Non-blocking, broadcasts to all connected subscribers'
   - 'Purpose: Create analysis port in constructor'
   notes: From MODULE4 Topics Covered.
+  narration: '3. UVM Monitor Implementation (3/7). Transaction Creation: Creating
+    transactions from sampled signals Analysis Port: Forwarding transactions via analysis
+    port Purpose: Broadcast transaction to all subscribers Usage: Called after creating
+    transaction from sampled signals Key: Non-blocking, broadcasts to all connected
+    subscribers'
 - type: bullets
   title: 3. UVM Monitor Implementation (4/7)
   bullets:
@@ -228,6 +699,10 @@ slides:
   - 'Key: One monitor can connect to multiple subscribers'
   - 'Purpose: Receive transactions from analysis port'
   notes: From MODULE4 Topics Covered.
+  narration: '3. UVM Monitor Implementation (4/7). Key: Analysis ports created in
+    constructor, not build_phase Purpose: Sample DUT signals and create transactions
+    Key: Monitor is passive (doesn''t drive DUT) Purpose: Connect monitor to subscribers
+    (scoreboard, coverage, etc.) Key: One monitor can connect to multiple subscribers'
 - type: bullets
   title: 3. UVM Monitor Implementation (5/7)
   bullets:
@@ -238,6 +713,10 @@ slides:
   - Transaction creation from sampled signals
   - Analysis port usage
   notes: From MODULE4 Topics Covered.
+  narration: '3. UVM Monitor Implementation (5/7). Usage: Scoreboard, coverage collector,
+    logger Key: Automatically called when monitor writes to analysis port Monitor
+    class structure extending uvm_monitor Signal sampling from DUT Transaction creation
+    from sampled signals'
 - type: bullets
   title: 3. UVM Monitor Implementation (6/7)
   bullets:
@@ -248,6 +727,10 @@ slides:
   - Transaction creation - Create from sampled signals
   - Subscriber pattern - Components receive via `write()` method
   notes: From MODULE4 Topics Covered.
+  narration: 3. UVM Monitor Implementation (6/7). Protocol-specific monitoring ap.write(txn)
+    - Broadcast transaction to subscribers Analysis port creation - In constructor,
+    not build_phase Signal sampling - Wait for protocol events, sample signals Transaction
+    creation - Create from sampled signals
 - type: bullets
   title: 3. UVM Monitor Implementation (7/7)
   bullets:
@@ -257,6 +740,9 @@ slides:
   - Analysis port forwarding
   - Protocol-specific monitoring
   notes: From MODULE4 Topics Covered.
+  narration: 3. UVM Monitor Implementation (7/7). Monitor creation and initialization
+    Signal sampling from DUT Transaction creation from signals Analysis port forwarding
+    Protocol-specific monitoring
 - type: bullets
   title: 4. UVM Sequencer and Sequences (1/8)
   bullets:
@@ -267,6 +753,8 @@ slides:
   - Sequencer-driver communication
   - Sequence Implementation
   notes: From MODULE4 Topics Covered.
+  narration: 4. UVM Sequencer and Sequences (1/8). Sequencer Implementation Sequencer
+    purpose Sequence item management Sequence execution Sequencer-driver communication
 - type: bullets
   title: 4. UVM Sequencer and Sequences (2/8)
   bullets:
@@ -277,6 +765,9 @@ slides:
   - 'SimpleSequence: Basic sequence implementation'
   - 'ExtendedSequence: Extended sequence with configurable item count'
   notes: From MODULE4 Topics Covered.
+  narration: '4. UVM Sequencer and Sequences (2/8). Sequence items (uvm_sequence_item)
+    Sequences (uvm_sequence) Sequence execution Sequence libraries SimpleSequence:
+    Basic sequence implementation'
 - type: bullets
   title: 4. UVM Sequencer and Sequences (3/8)
   bullets:
@@ -287,6 +778,10 @@ slides:
   - 'Key: Called when sequence is started'
   - 'Purpose: Request sequence item from sequencer'
   notes: From MODULE4 Topics Covered.
+  narration: '4. UVM Sequencer and Sequences (3/8). Sequence Execution: Starting sequences
+    on sequencers Sequence Item Generation: Creating and sending sequence items Purpose:
+    Generate and send sequence items Usage: Main sequence logic Key: Called when sequence
+    is started'
 - type: bullets
   title: 4. UVM Sequencer and Sequences (4/8)
   bullets:
@@ -297,6 +792,10 @@ slides:
   - 'Key: Item flows: Sequence → Sequencer → Driver'
   - 'Purpose: Start sequence execution on sequencer'
   notes: From MODULE4 Topics Covered.
+  narration: '4. UVM Sequencer and Sequences (4/8). Usage: Called before setting item
+    fields Key: Blocking call, waits for sequencer availability Purpose: Send sequence
+    item to driver Usage: Called after setting item fields Key: Item flows: Sequence
+    → Sequencer → Driver'
 - type: bullets
   title: 4. UVM Sequencer and Sequences (5/8)
   bullets:
@@ -307,6 +806,9 @@ slides:
   - 'Purpose: Configurable sequence with parameters'
   - 'Key: Can be configured via ConfigDB or constructor'
   notes: From MODULE4 Topics Covered.
+  narration: '4. UVM Sequencer and Sequences (5/8). Usage: In test''s run_phase()
+    Key: Sequence executes body() task Purpose: Generate random test vectors Key:
+    Constraints ensure valid values Purpose: Configurable sequence with parameters'
 - type: bullets
   title: 4. UVM Sequencer and Sequences (6/8)
   bullets:
@@ -317,6 +819,9 @@ slides:
   - Sequence libraries
   - '`body()` - Main sequence logic (generates items)'
   notes: From MODULE4 Topics Covered.
+  narration: 4. UVM Sequencer and Sequences (6/8). Sequencer implementation Sequence
+    items (uvm_sequence_item) Sequences (uvm_sequence) Sequence execution Sequence
+    libraries
 - type: bullets
   title: 4. UVM Sequencer and Sequences (7/8)
   bullets:
@@ -327,6 +832,10 @@ slides:
   - Sequencer creation and initialization
   - Sequence item generation
   notes: From MODULE4 Topics Covered.
+  narration: '4. UVM Sequencer and Sequences (7/8). start_item(item) - Request item
+    from sequencer finish_item(item) - Send item to driver seq.start(sequencer) -
+    Start sequence execution Item flow: Sequence → Sequencer → Driver Sequencer creation
+    and initialization'
 - type: bullets
   title: 4. UVM Sequencer and Sequences (8/8)
   bullets:
@@ -334,6 +843,8 @@ slides:
   - Sequencer-driver communication
   - Sequence libraries
   notes: From MODULE4 Topics Covered.
+  narration: 4. UVM Sequencer and Sequences (8/8). Sequence execution Sequencer-driver
+    communication Sequence libraries
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (1/8)
   bullets:
@@ -344,6 +855,8 @@ slides:
   - Analysis interfaces
   - TLM Components
   notes: From MODULE4 Topics Covered.
+  narration: 5. TLM (Transaction-Level Modeling) (1/8). TLM Interfaces Put/get interfaces
+    Peek interfaces Transport interfaces Analysis interfaces
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (2/8)
   bullets:
@@ -354,6 +867,9 @@ slides:
   - 'TlmProducer: Uses `uvm_blocking_put_port` to produce transactions'
   - 'TlmConsumer: Uses `uvm_blocking_get_export` to consume transactions'
   notes: From MODULE4 Topics Covered.
+  narration: '5. TLM (Transaction-Level Modeling) (2/8). TLM ports and exports TLM
+    FIFOs Analysis ports and exports TLM connections TlmProducer: Uses uvm_blocking_put_port
+    to produce transactions'
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (3/8)
   bullets:
@@ -364,6 +880,10 @@ slides:
   - 'Key: Blocks until consumer receives'
   - 'Purpose: Receive transaction from producer (blocking)'
   notes: From MODULE4 Topics Covered.
+  narration: '5. TLM (Transaction-Level Modeling) (3/8). AnalysisProducer: Uses uvm_analysis_port
+    to broadcast transactions AnalysisSubscriber: Uses uvm_subscriber to receive transactions
+    Purpose: Send transaction to consumer (blocking) Usage: Producer sends transactions
+    Key: Blocks until consumer receives'
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (4/8)
   bullets:
@@ -374,6 +894,10 @@ slides:
   - 'Key: FIFO stores transactions temporarily'
   - 'Purpose: Broadcast transaction to multiple subscribers'
   notes: From MODULE4 Topics Covered.
+  narration: '5. TLM (Transaction-Level Modeling) (4/8). Usage: Consumer receives
+    transactions Key: Blocks until producer sends Purpose: Buffer between producer
+    and consumer Usage: Decouples producer and consumer timing Key: FIFO stores transactions
+    temporarily'
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (5/8)
   bullets:
@@ -384,6 +908,10 @@ slides:
   - 'Key: Automatically called when producer writes'
   - TLM interfaces (put, get, peek, transport)
   notes: From MODULE4 Topics Covered.
+  narration: '5. TLM (Transaction-Level Modeling) (5/8). Usage: One-to-many communication
+    Key: Non-blocking, broadcasts to all subscribers Purpose: Receive transactions
+    from analysis port Usage: Scoreboard, coverage, logger Key: Automatically called
+    when producer writes'
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (6/8)
   bullets:
@@ -394,6 +922,9 @@ slides:
   - '`put_port.put(txn)` - Send transaction (blocking)'
   - '`get_export.get(txn)` - Receive transaction (blocking)'
   notes: From MODULE4 Topics Covered.
+  narration: 5. TLM (Transaction-Level Modeling) (6/8). TLM ports and exports TLM
+    FIFOs Analysis ports and exports TLM connections put_port.put(txn) - Send transaction
+    (blocking)
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (7/8)
   bullets:
@@ -404,6 +935,10 @@ slides:
   - TLM port/export creation
   - TLM connection establishment
   notes: From MODULE4 Topics Covered.
+  narration: 5. TLM (Transaction-Level Modeling) (7/8). ap.write(txn) - Broadcast
+    transaction (non-blocking) write(t) - Receive in subscriber (automatic) TLM FIFO
+    - Decouples producer and consumer Analysis port - One-to-many communication TLM
+    port/export creation
 - type: bullets
   title: 5. TLM (Transaction-Level Modeling) (8/8)
   bullets:
@@ -411,6 +946,8 @@ slides:
   - Analysis port broadcasting
   - TLM FIFO usage
   notes: From MODULE4 Topics Covered.
+  narration: 5. TLM (Transaction-Level Modeling) (8/8). Transaction flow via TLM Analysis
+    port broadcasting TLM FIFO usage
 - type: bullets
   title: 6. Scoreboards (1/8)
   bullets:
@@ -421,6 +958,8 @@ slides:
   - Verification closure
   - Scoreboard Implementation
   notes: From MODULE4 Topics Covered.
+  narration: 6. Scoreboards (1/8). Scoreboard Purpose Result checking Transaction
+    comparison Pass/fail tracking Verification closure
 - type: bullets
   title: 6. Scoreboards (2/8)
   bullets:
@@ -431,6 +970,8 @@ slides:
   - 'SimpleScoreboard: Basic scoreboard with transaction comparison'
   - 'Transaction Storage: Storing expected and actual transactions'
   notes: From MODULE4 Topics Covered.
+  narration: '6. Scoreboards (2/8). Scoreboard structure Transaction storage Comparison
+    logic Result reporting SimpleScoreboard: Basic scoreboard with transaction comparison'
 - type: bullets
   title: 6. Scoreboards (3/8)
   bullets:
@@ -441,6 +982,10 @@ slides:
   - 'Key: Compares actual vs expected results'
   - 'Purpose: Store expected transaction for later comparison'
   notes: From MODULE4 Topics Covered.
+  narration: '6. Scoreboards (3/8). Comparison Logic: Comparing transactions for verification
+    Result Reporting: Reporting pass/fail counts Purpose: Receive transactions from
+    monitor Usage: Called automatically when monitor writes to analysis port Key:
+    Compares actual vs expected results'
 - type: bullets
   title: 6. Scoreboards (4/8)
   bullets:
@@ -451,6 +996,10 @@ slides:
   - 'Purpose: Compare actual vs expected results'
   - 'Key: Reports pass/fail, tracks counts'
   notes: From MODULE4 Topics Covered.
+  narration: '6. Scoreboards (4/8). Usage: Called before actual transaction arrives
+    Key: Queue stores expected transactions in order Purpose: Manage expected transaction
+    queue Key: FIFO queue ensures order matching Purpose: Compare actual vs expected
+    results'
 - type: bullets
   title: 6. Scoreboards (5/8)
   bullets:
@@ -461,6 +1010,9 @@ slides:
   - 'Key: Monitor writes → Scoreboard receives'
   - Scoreboard purpose and structure
   notes: From MODULE4 Topics Covered.
+  narration: '6. Scoreboards (5/8). Purpose: Report final test results Usage: Called
+    in cleanup phase Key: Provides test pass/fail summary Purpose: Connect monitor
+    to scoreboard Key: Monitor writes → Scoreboard receives'
 - type: bullets
   title: 6. Scoreboards (6/8)
   bullets:
@@ -471,6 +1023,9 @@ slides:
   - '`add_expected(txn)` - Store expected transaction'
   - Queue operations - `push_back()`, `pop_front()`, `size()`
   notes: From MODULE4 Topics Covered.
+  narration: 6. Scoreboards (6/8). Transaction comparison Result checking Pass/fail
+    tracking write(txn) - Receive transaction from monitor add_expected(txn) - Store
+    expected transaction
 - type: bullets
   title: 6. Scoreboards (7/8)
   bullets:
@@ -481,12 +1036,16 @@ slides:
   - Transaction storage
   - Transaction comparison
   notes: From MODULE4 Topics Covered.
+  narration: 6. Scoreboards (7/8). Comparison logic - Compare actual vs expected Report
+    phase - Final test results Analysis export - uvm_analysis_imp receives transactions
+    Scoreboard creation and initialization Transaction storage
 - type: bullets
   title: 6. Scoreboards (8/8)
   bullets:
   - Pass/fail tracking
   - Result reporting
   notes: From MODULE4 Topics Covered.
+  narration: 6. Scoreboards (8/8). Pass/fail tracking Result reporting
 - type: bullets
   title: 7. Complete Agent Example (1/6)
   bullets:
@@ -497,6 +1056,8 @@ slides:
   - Active vs passive agents
   - 'CompleteAgent: Contains driver, monitor, and sequencer'
   notes: From MODULE4 Topics Covered.
+  narration: 7. Complete Agent Example (1/6). Building Complete Agents Agent structure
+    Component integration Agent configuration Active vs passive agents
 - type: bullets
   title: 7. Complete Agent Example (2/6)
   bullets:
@@ -507,6 +1068,11 @@ slides:
   - 'Key: Active agent has driver+sequencer, passive has monitor only'
   - 'Monitor: Always created (both active and passive modes)'
   notes: From MODULE4 Topics Covered.
+  narration: '7. Complete Agent Example (2/6). Agent Configuration: Configurable as
+    active or passive Component Integration: Integrating all agent components Agent
+    Testing: Testing complete agent functionality Purpose: Create agent components
+    based on configuration Key: Active agent has driver+sequencer, passive has monitor
+    only'
 - type: bullets
   title: 7. Complete Agent Example (3/6)
   bullets:
@@ -517,6 +1083,10 @@ slides:
   - 'Purpose: Configure agent as active or passive'
   - 'Usage: Set before creating agent'
   notes: From MODULE4 Topics Covered.
+  narration: '7. Complete Agent Example (3/6). Driver/Sequencer: Only created in active
+    mode Purpose: Connect agent components Key: Driver-sequencer connection only for
+    active agents Note: Monitor analysis port connected in environment''s connect_phase
+    Purpose: Configure agent as active or passive'
 - type: bullets
   title: 7. Complete Agent Example (4/6)
   bullets:
@@ -527,6 +1097,10 @@ slides:
   - Agent structure
   - Component integration
   notes: From MODULE4 Topics Covered.
+  narration: '7. Complete Agent Example (4/6). Key: Active = driver+sequencer+monitor,
+    Passive = monitor only Timing: Must be set in test''s build_phase before agent
+    creation Purpose: Use agent based on mode Key: Check is_active before using driver/sequencer
+    Agent structure'
 - type: bullets
   title: 7. Complete Agent Example (5/6)
   bullets:
@@ -537,6 +1111,9 @@ slides:
   - Configuration - Via ConfigDB before creation
   - Component creation - Based on active/passive mode
   notes: From MODULE4 Topics Covered.
+  narration: 7. Complete Agent Example (5/6). Agent configuration Active vs passive
+    agents Active agent - Driver + Sequencer + Monitor Passive agent - Monitor only
+    Configuration - Via ConfigDB before creation
 - type: bullets
   title: 7. Complete Agent Example (6/6)
   bullets:
@@ -547,105 +1124,230 @@ slides:
   - Active/passive agent modes
   - Agent functionality
   notes: From MODULE4 Topics Covered.
+  narration: 7. Complete Agent Example (6/6). Connection - Driver-sequencer only for
+    active agents Complete agent creation Component integration Agent configuration
+    Active/passive agent modes
+- type: code
+  title: 'Run: Example 4.1: Transactions'
+  language: bash
+  code: './scripts/module4.sh --transactions
+
+    cd module4/examples/transactions
+
+    verilator -sv --cc --exe --timing --trace \
+
+    -I$UVM_HOME/src +incdir+$UVM_HOME/src +define+UVM_NO_DPI \
+
+    --binary $UVM_HOME/src/uvm_pkg.sv transactions.sv transactions.cpp \
+
+    --top-module transactions
+
+    make -C obj_dir -f Vtransactions.mk
+
+    ./obj_dir/Vtransactions'
+  notes: Execute from course root or example directory — see docs/MODULE4.md.
+  narration: 'Run: Example 4.1: Transactions. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE4.md.'
+- type: code
+  title: 'Run: Example 4.2: Drivers'
+  language: bash
+  code: ./scripts/module4.sh --drivers
+  notes: Execute from course root or example directory — see docs/MODULE4.md.
+  narration: 'Run: Example 4.2: Drivers. Review the code on screen and match it to
+    files in the repository. Execute from course root or example directory — see docs/MODULE4.md.'
+- type: code
+  title: 'Run: Example 4.3: Monitors'
+  language: bash
+  code: ./scripts/module4.sh --monitors
+  notes: Execute from course root or example directory — see docs/MODULE4.md.
+  narration: 'Run: Example 4.3: Monitors. Review the code on screen and match it to
+    files in the repository. Execute from course root or example directory — see docs/MODULE4.md.'
+- type: code
+  title: 'Run: Example 4.4: Sequencers'
+  language: bash
+  code: ./scripts/module4.sh --sequencers
+  notes: Execute from course root or example directory — see docs/MODULE4.md.
+  narration: 'Run: Example 4.4: Sequencers. Review the code on screen and match it
+    to files in the repository. Execute from course root or example directory — see
+    docs/MODULE4.md.'
+- type: code
+  title: 'Run: Example 4.5: TLM'
+  language: bash
+  code: ./scripts/module4.sh --tlm
+  notes: Execute from course root or example directory — see docs/MODULE4.md.
+  narration: 'Run: Example 4.5: TLM. Review the code on screen and match it to files
+    in the repository. Execute from course root or example directory — see docs/MODULE4.md.'
+- type: code
+  title: 'Run: Example 4.6: Scoreboards'
+  language: bash
+  code: ./scripts/module4.sh --scoreboards
+  notes: Execute from course root or example directory — see docs/MODULE4.md.
+  narration: 'Run: Example 4.6: Scoreboards. Review the code on screen and match it
+    to files in the repository. Execute from course root or example directory — see
+    docs/MODULE4.md.'
+- type: code
+  title: 'Run: Example 4.7: Complete Agents'
+  language: bash
+  code: ./scripts/module4.sh --agents
+  notes: Execute from course root or example directory — see docs/MODULE4.md.
+  narration: 'Run: Example 4.7: Complete Agents. Review the code on screen and match
+    it to files in the repository. Execute from course root or example directory —
+    see docs/MODULE4.md.'
 - type: section
   title: Hands-on examples
+  narration: 'Next section: Hands-on examples.'
 - type: demo
   title: Module 4 self-check
-  command: ./scripts/module4.sh --transactions
+  command: ./scripts/module4.sh --help
   screenshot: assets/screenshots/module4_check.png
-  expect_stdout_contains: completed successfully
+  expect_stdout_contains: Module
   notes: Run from course repository root.
+  narration: Module 4 self-check. Watch the terminal output and confirm you see the
+    expected pass message.
 - type: code
   title: Exercise scaffold
   language: bash
   source_file: scripts/module4.sh
   code: ./scripts/module4.sh --scaffold
+  narration: Exercise scaffold. Review the code on screen and match it to files in
+    the repository.
 - type: bullets
   title: 'Example 1: Transactions'
   bullets:
   - 'BaseTransaction: Basic transaction with `data` and `address` fields'
   - 'ExtendedTransaction: Extended transaction with `control` and `status` fields'
   - 'ConstrainedTransaction: Transaction with randomization constraints'
+  - 'Transaction Operations: Copy, comparison, and string conversion'
   notes: module4/examples/transactions/README.md
+  narration: 'Example 1: Transactions. BaseTransaction: Basic transaction with data
+    and address fields ExtendedTransaction: Extended transaction with control and
+    status fields ConstrainedTransaction: Transaction with randomization constraints
+    Transaction Operations: Copy, comparison, and string conversion module4/examples/transactions/README.md'
 - type: demo
   title: 'Demo: Transactions'
   command: ./scripts/module4.sh --transactions
   screenshot: assets/screenshots/ex01_transactions.png
   notes: 'Hands-on: module4/examples/transactions/'
+  narration: 'Demo: Transactions. Watch the terminal output and confirm you see the
+    expected pass message.'
 - type: bullets
   title: 'Example 2: Drivers'
   bullets:
   - 'SimpleDriver: Basic driver implementation with transaction reception'
   - 'ProtocolDriver: Protocol-aware driver with handshaking'
   - 'Driver-Sequencer Communication: Using `seq_item_port` for transaction flow'
+  - 'Signal Driving: Converting transactions to DUT signals'
   notes: module4/examples/drivers/README.md
+  narration: 'Example 2: Drivers. SimpleDriver: Basic driver implementation with transaction
+    reception ProtocolDriver: Protocol-aware driver with handshaking Driver-Sequencer
+    Communication: Using seq_item_port for transaction flow Signal Driving: Converting
+    transactions to DUT signals module4/examples/drivers/README.md'
 - type: demo
   title: 'Demo: Drivers'
   command: ./scripts/module4.sh --drivers
   screenshot: assets/screenshots/ex02_drivers.png
   notes: 'Hands-on: module4/examples/drivers/'
+  narration: 'Demo: Drivers. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 3: Monitors'
   bullets:
   - 'SimpleMonitor: Basic monitor implementation with signal sampling'
   - 'ProtocolMonitor: Protocol-aware monitor with handshake monitoring'
   - 'Transaction Creation: Creating transactions from sampled signals'
+  - 'Analysis Port: Forwarding transactions via analysis port'
   notes: module4/examples/monitors/README.md
+  narration: 'Example 3: Monitors. SimpleMonitor: Basic monitor implementation with
+    signal sampling ProtocolMonitor: Protocol-aware monitor with handshake monitoring
+    Transaction Creation: Creating transactions from sampled signals Analysis Port:
+    Forwarding transactions via analysis port module4/examples/monitors/README.md'
 - type: demo
   title: 'Demo: Monitors'
   command: ./scripts/module4.sh --monitors
   screenshot: assets/screenshots/ex03_monitors.png
   notes: 'Hands-on: module4/examples/monitors/'
+  narration: 'Demo: Monitors. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 4: Sequencers'
   bullets:
   - 'SimpleSequence: Basic sequence implementation'
   - 'ExtendedSequence: Extended sequence with configurable item count'
   - 'Sequence Execution: Starting sequences on sequencers'
+  - 'Sequence Item Generation: Creating and sending sequence items'
   notes: module4/examples/sequencers/README.md
+  narration: 'Example 4: Sequencers. SimpleSequence: Basic sequence implementation
+    ExtendedSequence: Extended sequence with configurable item count Sequence Execution:
+    Starting sequences on sequencers Sequence Item Generation: Creating and sending
+    sequence items module4/examples/sequencers/README.md'
 - type: demo
   title: 'Demo: Sequencers'
   command: ./scripts/module4.sh --sequencers
   screenshot: assets/screenshots/ex04_sequencers.png
   notes: 'Hands-on: module4/examples/sequencers/'
+  narration: 'Demo: Sequencers. Watch the terminal output and confirm you see the
+    expected pass message.'
 - type: bullets
   title: 'Example 5: TLM'
   bullets:
   - 'TlmProducer: Uses `uvm_blocking_put_port` to produce transactions'
   - 'TlmConsumer: Uses `uvm_blocking_get_export` to consume transactions'
   - 'AnalysisProducer: Uses `uvm_analysis_port` to broadcast transactions'
+  - 'AnalysisSubscriber: Uses `uvm_subscriber` to receive transactions'
   notes: module4/examples/tlm/README.md
+  narration: 'Example 5: TLM. TlmProducer: Uses uvm_blocking_put_port to produce transactions
+    TlmConsumer: Uses uvm_blocking_get_export to consume transactions AnalysisProducer:
+    Uses uvm_analysis_port to broadcast transactions AnalysisSubscriber: Uses uvm_subscriber
+    to receive transactions module4/examples/tlm/README.md'
 - type: demo
   title: 'Demo: TLM'
   command: ./scripts/module4.sh --tlm
   screenshot: assets/screenshots/ex05_tlm.png
   notes: 'Hands-on: module4/examples/tlm/'
+  narration: 'Demo: TLM. Watch the terminal output and confirm you see the expected
+    pass message.'
 - type: bullets
   title: 'Example 6: Scoreboards'
   bullets:
   - 'SimpleScoreboard: Basic scoreboard with transaction comparison'
   - 'Transaction Storage: Storing expected and actual transactions'
   - 'Comparison Logic: Comparing transactions for verification'
+  - 'Result Reporting: Reporting pass/fail counts'
   notes: module4/examples/scoreboards/README.md
+  narration: 'Example 6: Scoreboards. SimpleScoreboard: Basic scoreboard with transaction
+    comparison Transaction Storage: Storing expected and actual transactions Comparison
+    Logic: Comparing transactions for verification Result Reporting: Reporting pass/fail
+    counts module4/examples/scoreboards/README.md'
 - type: demo
   title: 'Demo: Scoreboards'
   command: ./scripts/module4.sh --scoreboards
   screenshot: assets/screenshots/ex06_scoreboards.png
   notes: 'Hands-on: module4/examples/scoreboards/'
+  narration: 'Demo: Scoreboards. Watch the terminal output and confirm you see the
+    expected pass message.'
 - type: bullets
   title: 'Example 7: Complete Agents'
   bullets:
   - 'CompleteAgent: Contains driver, monitor, and sequencer'
   - 'Agent Configuration: Configurable as active or passive'
   - 'Component Integration: Integrating all agent components'
+  - 'Agent Testing: Testing complete agent functionality'
   notes: module4/examples/agents/README.md
+  narration: 'Example 7: Complete Agents. CompleteAgent: Contains driver, monitor,
+    and sequencer Agent Configuration: Configurable as active or passive Component
+    Integration: Integrating all agent components Agent Testing: Testing complete
+    agent functionality module4/examples/agents/README.md'
 - type: demo
   title: 'Demo: Complete Agents'
   command: ./scripts/module4.sh --agents
   screenshot: assets/screenshots/ex07_agents.png
   notes: 'Hands-on: module4/examples/agents/'
+  narration: 'Demo: Complete Agents. Watch the terminal output and confirm you see
+    the expected pass message.'
 - type: section
   title: Practice & assessment
+  narration: 'Next section: Practice & assessment.'
 - type: bullets
   title: What you should know (1/2)
   bullets:
@@ -656,12 +1358,19 @@ slides:
   - Use TLM for component communication
   - Create scoreboards for result checking
   notes: From MODULE4 Learning Outcomes.
+  narration: By now you should be able to explain the following. Design and implement
+    transaction classes Create drivers for DUT stimulus generation Implement monitors
+    for DUT observation Build sequencers and sequences for test generation Use TLM
+    for component communication From MODULE4 Learning Outcomes.
 - type: bullets
   title: What you should know (2/2)
   bullets:
   - Build complete agents with all components integrated
   - Apply UVM component patterns in testbenches
   notes: From MODULE4 Learning Outcomes.
+  narration: By now you should be able to explain the following. Build complete agents
+    with all components integrated Apply UVM component patterns in testbenches From
+    MODULE4 Learning Outcomes.
 - type: bullets
   title: Exercises
   bullets:
@@ -670,11 +1379,14 @@ slides:
   - Monitor Implementation
   - Sequencer and Sequences
   - TLM Communication
+  narration: Exercises. Transaction Modeling Driver Implementation Monitor Implementation
+    Sequencer and Sequences TLM Communication
 - type: bullets
   title: Exercises
   bullets:
   - Scoreboards
   - Complete Agents
+  narration: Exercises. Scoreboards Complete Agents
 - type: bullets
   title: Assessment checklist
   bullets:
@@ -684,6 +1396,9 @@ slides:
   - Can build sequencers and sequences
   - Can use TLM for component communication
   - Can create scoreboards for result checking
+  narration: Assessment checklist. Can design and implement transaction classes Can
+    create drivers for DUT stimulus Can implement monitors for DUT observation Can
+    build sequencers and sequences Can use TLM for component communication
 - type: bullets
   title: Summary & next steps
   bullets:
@@ -691,3 +1406,7 @@ slides:
   - Complete module4/CHECKLIST.md
   - Review module4/EXAMPLES.md and run each lab
   - 'Next: Next module in course'
+  narration: 'In summary: Build complete UVM agents with driver, monitor, and sequencer
+    Next up: Next module in course. Build complete UVM agents with driver, monitor,
+    and sequencer Complete module4/CHECKLIST.md Review module4/EXAMPLES.md and run
+    each lab Next: Next module in course'

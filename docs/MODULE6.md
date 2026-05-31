@@ -67,6 +67,59 @@ cd module6/tests/uvm_tests
 make SIM=verilator TEST=test_complex_testbench_uvm
 ```
 
+## Design Architecture
+
+### 1. Multi-agent testbench architecture
+
+| Component | Role |
+|-----------|------|
+| `uvm_env` (top) | Instantiates multiple agents, scoreboards, predictors |
+| Master agent | Initiates protocol transactions (e.g., AXI master) |
+| Slave agent | Responds to bus requests; memory model |
+| Protocol checker | Passive monitor enforcing protocol rules |
+| Multi-channel scoreboard | Per-channel expected vs actual queues |
+
+- **Horizontal reuse**: one agent type per interface; duplicate for multi-port DUTs
+- **Vertical reuse**: env composes agents + checkers + scoreboard
+- `module6/dut/protocols/axi4_lite_slave.v` — realistic protocol DUT
+- Environment config object controls agent count, active/passive, address maps
+
+### 2. Protocol verification architecture
+
+| Step | Artifact | Description |
+|------|----------|-------------|
+| 1 | Interface SVA / checker | Legal handshake and timing rules |
+| 2 | Monitor | Transaction reconstruction from pins |
+| 3 | Predictor / reference model | Expected response from stimulus |
+| 4 | Scoreboard | Compare monitor vs predictor streams |
+| 5 | Report | Protocol violations as UVM_ERROR |
+| **Execution sequence**: reset → config agents → concurrent sequences → drain scoreboards
+
+### 3. Module 6 example map
+
+- `examples/architecture/` — env composition patterns
+- `examples/multi_agent/` — two (or more) agents in one env
+- `examples/protocol/` + `protocol_checkers/` — bus rules and checking
+- `examples/scoreboards/` — multi-stream compare
+- `test_complex_testbench_uvm.sv` — production-style integration
+
+## Verification & Testing Methods
+
+### 1. Multi-agent coordination strategy
+
+- Assign each agent a virtual interface and address/data range via ConfigDB
+- Run **parallel sequences** with objections on env or test (not per short sequence)
+- Protocol checker runs passively — does not drive, only flags violations
+- Use predictable directed traffic before enabling constrained-random stress
+
+### 2. System-level closure workflow
+
+- **Scoreboard empty** at end — no pending expected transactions
+- **Protocol checker** reports zero violations
+- **Regression**: `./scripts/module6.sh --all-examples --uvm-tests`
+- Debug order: signal wave → monitor log → scoreboard mismatch → checker message
+- Performance: `--jobs N` for parallel example builds during development
+
 ## Topics Covered
 
 ### 1. Testbench Architecture

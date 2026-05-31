@@ -22,7 +22,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --clp
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/clp/`.
 
@@ -42,7 +42,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --comparators
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/comparators/`.
 
@@ -61,7 +61,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --recorders
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/recorders/`.
 
@@ -80,7 +80,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --pools
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/pools/`.
 
@@ -99,7 +99,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --queues
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/queues/`.
 
@@ -117,7 +117,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --string-utils
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/string_utils/`.
 
@@ -135,7 +135,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --math-utils
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/math_utils/`.
 
@@ -153,7 +153,7 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --random-utils
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/random_utils/`.
 
@@ -173,6 +173,6 @@ Run commands from the **course repository root** unless noted.
 ./scripts/module8.sh --integration
 ```
 
-**You should see:** Build/run success messages from the module script (look for "completed successfully").
+**You should see:** Build/run success (check module script output).
 
 **Go deeper:** Read the full walkthrough in `docs/MODULE8.md` and explore `module8/examples/integration/`.

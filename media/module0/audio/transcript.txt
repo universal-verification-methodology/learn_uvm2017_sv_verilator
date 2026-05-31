@@ -1,113 +1,149 @@
-[Slide 1] Installation and Setup Module 0
+[Slide 1] Welcome to module 0, Installation and Setup. In this module you will set up development environment and verify installation.
 
-[Slide 2] Learning objectives Set up development environment and verify installation
+[Slide 2] Here is what you will learn in this module. Set up development environment and verify installation
 
-[Slide 3] Prerequisites See module README
+[Slide 3] Before you start, make sure you have these prerequisites. See module README
 
-[Slide 4] Learning path Set up development environment and verify installation
+[Slide 4] Learning path. Set up development environment and verify installation
 
-[Slide 5] Overview This module covers the complete setup of your verification environment, including all required tools and dependencies. By the end of this module, you should have a working environment capable of running SystemVerilog UVM
+[Slide 5] Overview. This module covers the complete setup of your verification environment, including all required tools and dependencies. By the end of...
 
-[Slide 6] Syllabus topics
+[Slide 6] Next section: Design architecture.
 
-[Slide 7] From MODULE0 Topics Covered.
+[Slide 7] 1. Course repository layout (1/3). Project-local install (--local) keeps tools inside the repo for reproducibility WSL2/Linux is the primary target; macOS supported via Homebrew Environment variables: VERILATOR_ROOT, UVM_HOME must resolve before running labs tools/verilator/: Git submodule — SystemVerilog/Verilog simulator (build from source) Refer to the diagram on the right.
 
-[Slide 8] From MODULE0 Topics Covered.
+[Slide 8] 1. Course repository layout (2/3). tools/uvm-2017/: IEEE 1800.2-2017 UVM library sources (UVM_HOME) scripts/installation.sh: One-shot installer for Verilator + UVM + dependencies scripts/moduleN.sh: Per-module example orchestrator (modules 1–8) moduleN/examples/: Hands-on labs referenced by slides and EXAMPLES.md
 
-[Slide 9] From MODULE0 Topics Covered.
+[Slide 9] 1. Course repository layout (3/3). media/moduleN/: Generated slides, PDF, and narrated video per module
 
-[Slide 10] From MODULE0 Topics Covered.
+[Slide 10] 2. Build and simulation artifact flow (1/2). Verilator compiles design + testbench into a single fast C++ binary UVM examples add -I$UVM_HOME/src and +define+UVM_NO_DPI for Verilator compatibility Self-check flow: install → verilator --version → ./scripts/module0.sh --check → run Module 1 lab 1: Source .v/.sv — RTL and testbench SystemVerilog Refer to the diagram on the right.
 
-[Slide 11] From MODULE0 Topics Covered.
+[Slide 11] 2. Build and simulation artifact flow (2/2). Match each bullet to files in the repository. 2: verilator --cc — Emits C++ model under obj_dir/ 3: make -C obj_dir — Links Vtop (or V<module>) executable 4: ./obj_dir/V* — Runs simulation; prints PASS/FAIL or UVM report 5: *.vcd (optional) — Waveform when --trace enabled
 
-[Slide 12] From MODULE0 Topics Covered.
+[Slide 12] Next section: Installation & execution.
 
-[Slide 13] From MODULE0 Topics Covered.
+[Slide 13] How to run this module. From repo root: ./scripts/module0.sh --check — validate environment ./scripts/module0.sh --demo — print demo commands to run locally ./scripts/module0.sh --scaffold — create ~/unix_practice/ exercise files Open module0/EXAMPLES.md — run each numbered lab in your terminal Track progress with module0/CHECKLIST.md before moving on From MODULE0 — execution and artifact layout.
 
-[Slide 14] From MODULE0 Topics Covered.
+[Slide 14] Artifact flow (spec → sim) (1). Match each bullet to files in the repository. 1: Source .v/.sv — RTL and testbench SystemVerilog 2: verilator --cc — Emits C++ model under obj_dir/ 3: make -C obj_dir — Links Vtop (or V<module>) executable 4: ./obj_dir/V* — Runs simulation; prints PASS/FAIL or UVM report From MODULE0 — execution and artifact layout.
 
-[Slide 15] From MODULE0 Topics Covered.
+[Slide 15] Artifact flow (spec → sim) (2). Match each bullet to files in the repository. 5: *.vcd (optional) — Waveform when --trace enabled From MODULE0 — execution and artifact layout.
 
-[Slide 16] From MODULE0 Topics Covered.
+[Slide 16] Example directory layout (1). Match each bullet to files in the repository. tools/verilator/: Git submodule — SystemVerilog/Verilog simulator (build from source) tools/uvm-2017/: IEEE 1800.2-2017 UVM library sources (UVM_HOME) scripts/installation.sh: One-shot installer for Verilator + UVM + dependencies scripts/moduleN.sh: Per-module example orchestrator (modules 1–8) moduleN/examples/...
 
-[Slide 17] From MODULE0 Topics Covered.
+[Slide 17] Example directory layout (2). Match each bullet to files in the repository. media/moduleN/: Generated slides, PDF, and narrated video per module Match each path to files under module/examples/.
 
-[Slide 18] From MODULE0 Topics Covered.
+[Slide 18] Follow these steps in order when working through this module. install verilator --version ./scripts/module0.sh --check run Module 1 lab
 
-[Slide 19] From MODULE0 Topics Covered.
+[Slide 19] Next section: Verification & testing methods.
 
-[Slide 20] From MODULE0 Topics Covered.
+[Slide 20] 1. Environment verification strategy (1/2). Run ./scripts/installation.sh (or per-tool scripts) before any module labs Verify compiler toolchain: gcc --version, make --version, git --version Confirm Verilator: verilator --version and a minimal --lint-only compile Confirm UVM: echo $UVM_HOME points at tools/uvm-2017/1800.2-2017-1.0/src Refer to the diagram on the right.
 
-[Slide 21] From MODULE0 Topics Covered.
+[Slide 21] 1. Environment verification strategy (2/2). Use ./scripts/module0.sh --check for an automated PASS summary
 
-[Slide 22] From MODULE0 Topics Covered.
+[Slide 22] 2. Smoke test and troubleshooting workflow (1/2). Smoke test: compile one trivial Verilog file with Verilator; expect clean exit UVM smoke: run module3/examples/class_hierarchy after Module 0 completes Common failures: missing UVM_HOME, wrong Verilator version, WSL path issues Logs: capture terminal output; search for Error, %Error, UVM_FATAL Refer to the diagram on the right.
 
-[Slide 23] From MODULE0 Topics Covered.
+[Slide 23] 2. Smoke test and troubleshooting workflow (2/2). Escalation: re-run installer with --from-submodule for a clean Verilator build
 
-[Slide 24] From MODULE0 Topics Covered.
+[Slide 24] Next section: Syllabus topics.
 
-[Slide 25] From MODULE0 Topics Covered.
+[Slide 25] Before you start, make sure you have these prerequisites. Operating System Support Linux (Ubuntu/Debian, CentOS/RHEL, Fedora) macOS (Intel and Apple Silicon) Windows (WSL2 recommended) Hardware Requirements
 
-[Slide 26] From MODULE0 Topics Covered.
+[Slide 26] Before you start, make sure you have these prerequisites. 10GB free disk space Multi-core processor recommended Software Prerequisites C/C++ compiler (GCC 7+, Clang 10+, or MSVC) Make or Ninja build system
 
-[Slide 27] From MODULE0 Topics Covered.
+[Slide 27] Before you start, make sure you have these prerequisites. Perl (for UVM library)
 
-[Slide 28] From MODULE0 Topics Covered.
+[Slide 28] 2. Verilator Installation (1/6). What is Verilator? Open-source Verilog/SystemVerilog simulator Fast compilation and simulation Limited SystemVerilog support (see limitations section) Automated Installation (Recommended)
 
-[Slide 29] From MODULE0 Topics Covered.
+[Slide 29] 2. Verilator Installation (2/6). The script automatically: Checks for existing installations Installs system dependencies (build tools, libraries) Sets up git submodule in tools/verilator/ Builds and installs Verilator
 
-[Slide 30] From MODULE0 Topics Covered.
+[Slide 30] 2. Verilator Installation (3/6). Manual Installation Methods Linux Installation Ubuntu/Debian: sudo apt-get install verilator CentOS/RHEL: sudo yum install verilator or sudo dnf install verilator Fedora: sudo dnf install verilator
 
-[Slide 31] From MODULE0 Topics Covered.
+[Slide 31] 2. Verilator Installation (4/6). macOS Installation Homebrew installation: brew install verilator MacPorts installation (alternative) Building from source Windows/WSL2 Installation
 
-[Slide 32] From MODULE0 Topics Covered.
+[Slide 32] 2. Verilator Installation (5/6). Building from source in WSL2 Verifying installation Uninstallation Verification Steps Check Verilator version: verilator --version
 
-[Slide 33] From MODULE0 Topics Covered.
+[Slide 33] 2. Verilator Installation (6/6). Verify compilation works
 
-[Slide 34] From MODULE0 Topics Covered.
+[Slide 34] 3. UVM Library Installation (1/5). What is UVM? Universal Verification Methodology IEEE 1800.2-2017 standard Industry-standard verification framework Automated Installation (Recommended)
 
-[Slide 35] From MODULE0 Topics Covered.
+[Slide 35] 3. UVM Library Installation (2/5). The script automatically: Downloads Accellera UVM 2017-1.0 tarball to tools/uvm-2017/ Extracts and sets up UVM library Creates environment setup script (scripts/setup_uvm_env.sh) Configures UVM library paths
 
-[Slide 36] From MODULE0 Topics Covered.
+[Slide 36] 3. UVM Library Installation (3/5). From Accellera Tarball: From System Package (if available): Some Linux distributions provide UVM packages Check your distribution's package manager Uninstallation
 
-[Slide 37] From MODULE0 Topics Covered.
+[Slide 37] 3. UVM Library Installation (4/5). UVM_HOME: Path to UVM library UVM_VERBOSITY: Default verbosity level Include paths for compilation Verification Steps Check UVM library exists: ls $UVM_HOME/uvm_pkg.sv (after sourcing scripts/setup_uvm_env.sh)
 
-[Slide 38] From MODULE0 Topics Covered.
+[Slide 38] 3. UVM Library Installation (5/5). Verify UVM classes available
 
-[Slide 39] From MODULE0 Topics Covered.
+[Slide 39] 4. Commercial Simulator Setup (Optional) (1/2). Synopsys VCS Installation from Synopsys License setup UVM library integration Mentor QuestaSim/ModelSim
 
-[Slide 40] From MODULE0 Topics Covered.
+[Slide 40] 4. Commercial Simulator Setup (Optional) (2/2). License setup UVM library integration Cadence Xcelium Installation from Cadence License setup
 
-[Slide 41] From MODULE0 Topics Covered.
+[Slide 41] 5. Build System Configuration (1/3). Makefile Setup Basic Makefile for Verilator Compilation flags Include paths Test execution
 
-[Slide 42] From MODULE0 Topics Covered.
+[Slide 42] 5. Build System Configuration (2/3). SystemVerilog flags: -sv, --timing Include paths: +incdir+$UVM_HOME (UVM_HOME already points to the src directory) Optimization flags Coverage options Commercial Simulator Setup
 
-[Slide 43] From MODULE0 Topics Covered.
+[Slide 43] 5. Build System Configuration (3/3). Simulation scripts Waveform generation
 
-[Slide 44] From MODULE0 Topics Covered.
+[Slide 44] 6. IDE Setup and Configuration (1/3). Recommended IDEs VS Code with SystemVerilog extension Verible (SystemVerilog linter/formatter) Sigasi Studio (commercial) Vim/Neovim with LSP
 
-[Slide 45] From MODULE0 Topics Covered.
+[Slide 45] 6. IDE Setup and Configuration (2/3). SystemVerilog extension setup Verilator integration Debugging configuration Task runner setup for simulations Extension recommendations
 
-[Slide 46] Hands-on examples
+[Slide 46] 6. IDE Setup and Configuration (3/3). SystemVerilog formatting (Verible) Linting (Verilator, Verible) Code formatting on save Syntax highlighting
 
-[Slide 47] Run from course repository root.
+[Slide 47] 7. Project Structure Setup (1/4). Directory Structure Source code organization Test directory structure DUT (Design Under Test) organization Configuration files
 
-[Slide 48] Hands-on: module0/examples/install/
+[Slide 48] 7. Project Structure Setup (2/4). Git Submodules Management Verilator is managed as a git submodule in tools/verilator/ UVM is downloaded as a tarball to tools/uvm-2017/ (not a git submodule) Initialize submodules: ./scripts/init_submodules.sh or git submodule update --init --recursive Update submodules: ./scripts/update_submodules.sh or git submodule update --remote
 
-[Slide 49] Hands-on: module0/examples/project/
+[Slide 49] 7. Project Structure Setup (3/4). Remove submodule: ./scripts/remove_submodule.sh <path> Makefile/Configuration Simple Makefile for running tests Verilator configuration Environment variable management
 
-[Slide 50] Hands-on: module0/examples/install-full/
+[Slide 50] 7. Project Structure Setup (4/4). Git initialization .gitignore for SystemVerilog and simulation (include build artifacts, waveforms) Initial commit structure Git submodules in .gitmodules file (only Verilator, not UVM)
 
-[Slide 51] Hands-on: module0/examples/hello/
+[Slide 51] 8. First "Hello World" Verification Test (1/3). Prerequisites Ensure all tools are installed: ./scripts/installation.sh Verify tools are accessible: verilator --version and ls $UVM_HOME/uvm_pkg.sv (after sourcing scripts/setup_uvm_env.sh) Simple DUT Creation Basic Verilog module (e.g., AND gate)
 
-[Slide 52] Practice & assessment
+[Slide 52] 8. First "Hello World" Verification Test (2/3). SystemVerilog Test Basic SystemVerilog testbench structure Clock generation Signal driving and reading Running the test
 
-[Slide 53] From MODULE0 Learning Outcomes.
+[Slide 53] 8. First "Hello World" Verification Test (3/3). First UVM test class Basic UVM phases Running UVM test Understanding output
 
-[Slide 54] From MODULE0 Learning Outcomes.
+[Slide 54] 9. Verilator Limitations and Workarounds (1/3). Known Limitations Limited SystemVerilog support Some UVM classes may not work Complex TLM connections may fail Full assertion support limited
 
-[Slide 55] Exercises Installation Verification Environment Setup First Test IDE Configuration Project Structure
+[Slide 55] 9. Verilator Limitations and Workarounds (2/3). Use simplified patterns where possible Document commercial alternatives Focus on concepts over tool features Commercial Simulator Alternatives When Verilator doesn't support a feature
 
-[Slide 56] Assessment checklist Can install all required tools independently Can set up Verilator Can verify Verilator installation Can verify UVM library installation Can configure IDE for verification work Can create and run a simple test
+[Slide 56] 9. Verilator Limitations and Workarounds (3/3). Compatibility notes
 
-[Slide 57] Summary & next steps Set up development environment and verify installation Complete module0/CHECKLIST.md Review module0/EXAMPLES.md and run each lab Next: Next module in course
+[Slide 57] 10. Troubleshooting Common Issues (1/4). Verilator Issues Compilation errors Missing dependencies Version compatibility Path issues
+
+[Slide 58] 10. Troubleshooting Common Issues (2/4). UVM Library Issues Import errors Path configuration Version compatibility Compilation errors
+
+[Slide 59] 10. Troubleshooting Common Issues (3/4). Makefile errors Include path problems Compilation flags IDE Issues SystemVerilog syntax highlighting
+
+[Slide 60] 10. Troubleshooting Common Issues (4/4). Debugging not working
+
+[Slide 61] 11. Verification Checklist (1/3). C/C++ compiler installed and working Verilator installed and verified Using script: ./scripts/install_verilator.sh --from-submodule Verify: verilator --version UVM library installed and verified
+
+[Slide 62] 11. Verification Checklist (2/3). Verify: ls $UVM_HOME/uvm_pkg.sv (after sourcing scripts/setup_uvm_env.sh) All tools verified together: Run ./scripts/installation.sh and verify with verilator --version and ls $UVM_HOME/uvm_pkg.sv (after... IDE configured and working First test runs successfully Can create and run simple testbench
+
+[Slide 63] 11. Verification Checklist (3/3). Know how to get help when stuck Understand Verilator limitations
+
+[Slide 64] Next section: Hands-on examples.
+
+[Slide 65] Module 0 self-check. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 66] Demo: Verify toolchain. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 67] Demo: Project layout. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 68] Demo: Optional full install. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 69] Demo: First smoke test. Watch the terminal output and confirm you see the expected pass message.
+
+[Slide 70] Next section: Practice & assessment.
+
+[Slide 71] By now you should be able to explain the following. Install and configure all required tools Set up Verilator Install and verify UVM library Configure your IDE for verification work Create a basic project structure From MODULE0 Learning Outcomes.
+
+[Slide 72] By now you should be able to explain the following. Understand Verilator limitations Troubleshoot common installation issues From MODULE0 Learning Outcomes.
+
+[Slide 73] Exercises. Installation Verification Environment Setup First Test IDE Configuration Project Structure
+
+[Slide 74] Assessment checklist. Can install all required tools independently Can set up Verilator Can verify Verilator installation Can verify UVM library installation Can configure IDE for verification work
+
+[Slide 75] In summary: Set up development environment and verify installation Next up: Next module in course. Set up development environment and verify installation Complete module0/CHECKLIST.md Review module0/EXAMPLES.md and run each lab Next: Next module in course
